@@ -1,0 +1,577 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Your Project — Hyna Studio</title>
+    <meta name="description"
+        content="Tell us about your project. Hyna Studio builds websites, apps, SaaS platforms, and cloud solutions for startups and enterprises.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --ink: #0A0A0F;
+            --paper: #F7F6F2;
+            --accent: #4F3FF0;
+            --accent2: #00D9A3;
+            --muted: #6B7280;
+            --font-body: 'Inter', sans-serif;
+            --font-display: 'Syne', sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--ink);
+            color: var(--paper);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 50px;
+            padding: 0.75rem 1.5rem;
+            width: min(900px, calc(100% - 3rem));
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+        }
+
+        .logo-img { height: 28px; width: 28px; object-fit: contain; }
+
+        .logo-text { display: flex; flex-direction: column; }
+
+        .logo-main {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: var(--paper);
+            line-height: 1;
+        }
+
+        .logo-highlight { color: var(--accent2); }
+
+        .logo-sub {
+            font-size: 0.55rem;
+            color: rgba(247, 246, 242, 0.4);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-top: 1px;
+        }
+
+        .nav-back {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: rgba(247, 246, 242, 0.65);
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-back:hover { color: var(--paper); }
+
+        /* ── HERO BANNER ── */
+        .page-hero {
+            padding: 10rem 2rem 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 60% 50% at 50% 0%, rgba(79, 63, 240, 0.25) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 30% at 80% 60%, rgba(0, 217, 163, 0.12) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .page-hero .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent2);
+            margin-bottom: 1rem;
+        }
+
+        .page-hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 1.2rem;
+        }
+
+        .page-hero h1 em {
+            font-style: normal;
+            background: linear-gradient(135deg, var(--accent2), #7C3AED);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-hero p {
+            font-size: 1.05rem;
+            color: rgba(247, 246, 242, 0.6);
+            max-width: 52ch;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ── FORM LAYOUT ── */
+        .form-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem 6rem;
+        }
+
+        .form-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 3rem;
+            backdrop-filter: blur(12px);
+        }
+
+        .form-section-title {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--accent2);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group.full { grid-column: 1 / -1; }
+
+        label {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: rgba(247, 246, 242, 0.7);
+            letter-spacing: 0.03em;
+        }
+
+        label .req { color: var(--accent2); margin-left: 2px; }
+
+        input, select, textarea {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 0.8rem 1rem;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            color: var(--paper);
+            outline: none;
+            transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: rgba(247, 246, 242, 0.25);
+        }
+
+        select option { background: #1a1a2e; color: var(--paper); }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--accent);
+            background: rgba(79, 63, 240, 0.06);
+            box-shadow: 0 0 0 3px rgba(79, 63, 240, 0.15);
+        }
+
+        textarea { resize: vertical; min-height: 130px; }
+
+        /* ── CHECKBOX GROUP ── */
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 0.75rem;
+            margin-top: 0.25rem;
+        }
+
+        .check-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+            padding: 0.7rem 1rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+            color: rgba(247, 246, 242, 0.75);
+        }
+
+        .check-item:hover {
+            border-color: rgba(79, 63, 240, 0.4);
+            background: rgba(79, 63, 240, 0.06);
+            color: var(--paper);
+        }
+
+        .check-item input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--accent);
+            border-radius: 4px;
+            flex-shrink: 0;
+            padding: 0;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .check-item.selected {
+            border-color: var(--accent);
+            background: rgba(79, 63, 240, 0.12);
+            color: var(--paper);
+        }
+
+        /* ── DIVIDER ── */
+        .form-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.06);
+            margin: 2rem 0;
+        }
+
+        /* ── SUBMIT BUTTON ── */
+        .btn-submit {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--accent), #7C3AED);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+            box-shadow: 0 4px 24px rgba(79, 63, 240, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            margin-top: 2rem;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(79, 63, 240, 0.5);
+        }
+
+        .btn-submit:active { transform: translateY(0); }
+
+        /* ── SUCCESS STATE ── */
+        .success-banner {
+            display: none;
+            text-align: center;
+            padding: 3rem 2rem;
+            background: rgba(0, 217, 163, 0.06);
+            border: 1px solid rgba(0, 217, 163, 0.2);
+            border-radius: 20px;
+            margin-top: 2rem;
+        }
+
+        .success-banner .success-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .success-banner h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: var(--accent2);
+        }
+
+        .success-banner p {
+            color: rgba(247, 246, 242, 0.65);
+            font-size: 0.95rem;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 600px) {
+            nav { top: 1rem; padding: 0.65rem 1.2rem; }
+            .form-card { padding: 1.75rem 1.25rem; }
+            .form-grid { grid-template-columns: 1fr; }
+            .checkbox-group { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a href="index.html" class="nav-logo">
+            <img src="logo.png" class="logo-img" alt="Hyna Studio Logo">
+            <div class="logo-text">
+                <span class="logo-main">Hyna Studio</span>
+                <span class="logo-sub">Democratizing Entrepreneurship</span>
+            </div>
+        </a>
+        <a href="index.html" class="nav-back">
+            ← Back to Home
+        </a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="page-hero">
+        <div class="section-label">// Let's build together</div>
+        <h1>Start Your <em>Project</em></h1>
+        <p>Tell us what you're building. We'll get back to you within 24 hours with a plan tailored to your needs.</p>
+    </section>
+
+    <!-- FORM -->
+    <div class="form-wrapper">
+        <div class="form-card">
+            <form id="project-form" novalidate>
+
+                <!-- Contact Info -->
+                <div class="form-section-title">01 — Your Details</div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="fullName">Full Name <span class="req">*</span></label>
+                        <input type="text" id="fullName" name="fullName" placeholder="John Smith" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="req">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="john@company.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210">
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company / Startup Name</label>
+                        <input type="text" id="company" name="company" placeholder="Acme Inc.">
+                    </div>
+                </div>
+
+                <div class="form-divider"></div>
+
+                <!-- Project Info -->
+                <div class="form-section-title">02 — About Your Project</div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="projectType">Type of Project <span class="req">*</span></label>
+                        <select id="projectType" name="projectType" required>
+                            <option value="" disabled selected>Select a type…</option>
+                            <option>Website / Landing Page</option>
+                            <option>Web Application</option>
+                            <option>Mobile App (iOS / Android)</option>
+                            <option>SaaS Platform</option>
+                            <option>UI / UX Design</option>
+                            <option>Cloud & DevOps</option>
+                            <option>Data Platform Engineering</option>
+                            <option>Solution Architecture</option>
+                            <option>Cloud & IaC</option>
+                            <option>AI / ML Integration</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="budget">Estimated Budget</label>
+                        <select id="budget" name="budget">
+                            <option value="" disabled selected>Select a range…</option>
+                            <option>Under ₹50,000</option>
+                            <option>₹50,000 – ₹1,00,000</option>
+                            <option>₹1,00,000 – ₹5,00,000</option>
+                            <option>₹5,00,000 – ₹20,00,000</option>
+                            <option>₹20,00,000+</option>
+                            <option>Let's discuss</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="timeline">Desired Timeline</label>
+                        <select id="timeline" name="timeline">
+                            <option value="" disabled selected>Select timeline…</option>
+                            <option>ASAP (under 2 weeks)</option>
+                            <option>1 – 2 months</option>
+                            <option>3 – 6 months</option>
+                            <option>6+ months</option>
+                            <option>Ongoing / Retainer</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="stage">Current Stage</label>
+                        <select id="stage" name="stage">
+                            <option value="" disabled selected>Select stage…</option>
+                            <option>Just an idea</option>
+                            <option>Have a design / wireframe</option>
+                            <option>Existing product needing work</option>
+                            <option>Ready to scale</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Services Needed</label>
+                    <div class="checkbox-group" id="services-group">
+                        <label class="check-item">
+                            <input type="checkbox" name="services" value="Web Development"> Web Development
+                        </label>
+                        <label class="check-item">
+                            <input type="checkbox" name="services" value="App Development"> App Development
+                        </label>
+                        <label class="check-item">
+                            <input type="checkbox" name="services" value="UI/UX Design"> UI / UX Design
+                        </label>
+                        <label class="check-item">
+                            <input type="checkbox" name="services" value="Cloud & DevOps"> Cloud & DevOps
+                        </label>
+                        <label class="check-item">
+                            <input type="checkbox" name="services" value="SaaS Development"> SaaS Development
+                        </label>
+                        <label class="check-item">
+                            <input type="checkbox" name="services" value="Data Platform Engineering"> Data Platform Engineering
+                        </label>
+                        <label class="check-item">
+                            <input type="checkbox" name="services" value="Solution Architecture"> Solution Architecture
+                        </label>
+                        <label class="check-item">
+                            <input type="checkbox" name="services" value="Cloud & IaC"> Cloud & IaC
+                        </label>
+                        <label class="check-item">
+                            <input type="checkbox" name="services" value="AI/ML"> AI / ML
+                        </label>
+                        <label class="check-item">
+                            <input type="checkbox" name="services" value="Branding"> Branding
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-top:1.25rem;">
+                    <label for="description">Project Description <span class="req">*</span></label>
+                    <textarea id="description" name="description" rows="5"
+                        placeholder="Describe your project, goals, target audience, any references you like…" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="referral">How did you hear about us?</label>
+                    <select id="referral" name="referral">
+                        <option value="" disabled selected>Select…</option>
+                        <option>Google Search</option>
+                        <option>Social Media</option>
+                        <option>Referral / Word of Mouth</option>
+                        <option>LinkedIn</option>
+                        <option>GitHub</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-submit" id="submit-btn">
+                    Send Project Brief
+                    <span>→</span>
+                </button>
+            </form>
+
+            <!-- Success -->
+            <div class="success-banner" id="success-banner">
+                <div class="success-icon">🎉</div>
+                <h3>We've received your brief!</h3>
+                <p>Our team will review your project and get back to you within 24 hours.<br>Check your inbox for a
+                    confirmation.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Checkbox highlight toggle
+        document.querySelectorAll('.check-item').forEach(label => {
+            const cb = label.querySelector('input[type="checkbox"]');
+            cb.addEventListener('change', () => {
+                label.classList.toggle('selected', cb.checked);
+            });
+        });
+
+        // Form submission
+        document.getElementById('project-form').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const btn = document.getElementById('submit-btn');
+            btn.textContent = 'Sending…';
+            btn.disabled = true;
+
+            // Collect data
+            const data = {
+                fullName: document.getElementById('fullName').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                company: document.getElementById('company').value.trim(),
+                projectType: document.getElementById('projectType').value,
+                budget: document.getElementById('budget').value,
+                timeline: document.getElementById('timeline').value,
+                stage: document.getElementById('stage').value,
+                services: [...document.querySelectorAll('input[name="services"]:checked')].map(c => c.value),
+                description: document.getElementById('description').value.trim(),
+                referral: document.getElementById('referral').value,
+            };
+
+            // Basic validation
+            if (!data.fullName || !data.email || !data.projectType || !data.description) {
+                alert('Please fill in all required fields.');
+                btn.innerHTML = 'Send Project Brief <span>→</span>';
+                btn.disabled = false;
+                return;
+            }
+
+            // Simulate submission (replace with your backend / Formspree / EmailJS)
+            await new Promise(r => setTimeout(r, 1200));
+
+            document.getElementById('project-form').style.display = 'none';
+            document.getElementById('success-banner').style.display = 'block';
+        });
+    </script>
+    <script src="cookie-consent.js" defer></script>
+
+</body>
+
+</html>
