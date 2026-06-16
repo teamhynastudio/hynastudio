@@ -2554,6 +2554,38 @@
                 width: clamp(200px, 80vw, 300px);
             }
         }
+        .as-img-wrapper {
+    position: relative;
+}
+
+.coming-soon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 10;
+
+    background: linear-gradient(135deg, #00d4ff, #8b5cf6);
+    color: #fff;
+
+    padding: 8px 16px;
+    border-radius: 30px;
+
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+    animation: pulseBadge 2s infinite;
+}
+
+@keyframes pulseBadge {
+    0%,100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.08);
+    }
+}
 
         /* TiltedCard Component from React Bits */
         .tilted-card-figure {
@@ -2725,9 +2757,11 @@
 
                 <!-- Floating image wrapper -->
                 <div class="as-img-wrapper">
-                    <img src="hyna_agent_studio.png" alt="Hyna Studio AI" loading="lazy">
-                </div>
 
+                       <div class="coming-soon">COMING SOON</div>
+
+                    <img src="hyna_agent_studio.png" alt="Hyna Studio AI Agent Studio">
+                </div>
                 <!-- Badge at bottom -->
                 <div class="agent-studio-img-badge">
                     <div class="badge-dot"></div>
