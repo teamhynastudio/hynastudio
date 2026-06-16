@@ -2760,1210 +2760,1136 @@
     </section>
 
     <!-- SERVICES -->
-    <!DOCTYPE html>
-    <html lang="en">
-
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <title>Hyna Studio Services</title>
-
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&display=swap"
-            rel="stylesheet">
-
-        <style>
-            /* SECTION-ONLY STYLES */
-
-            .services {
-                --bg: #050816;
-                --card-bg: rgba(18, 22, 35, 0.8);
-                --border: rgba(255, 255, 255, 0.08);
-                --text: #ffffff;
-                --muted: #9ea4b5;
-                --accent: #00e7b3;
-
-                font-family: "Space Grotesk", sans-serif;
-                color: var(--text);
-                padding: 120px 8%;
-                position: relative;
-                overflow: hidden;
-
-                background:
-                    radial-gradient(circle at top left,
-                        rgba(0, 231, 179, 0.12),
-                        transparent 40%),
-                    radial-gradient(circle at bottom right,
-                        rgba(124, 58, 237, 0.1),
-                        transparent 40%),
-                    var(--bg);
-            }
-
-            .services,
-            .services * {
-                box-sizing: border-box;
-            }
-
-            .services::before {
-                content: "";
-                position: absolute;
-                inset: 0;
-                background-image:
-                    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-                background-size: 40px 40px;
-                mask-image: radial-gradient(circle at center, black 40%, transparent 85%);
-                pointer-events: none;
-            }
-
-            .services .container {
-                max-width: 1400px;
-                margin: 0 auto;
-                position: relative;
-                z-index: 2;
-            }
-
-            .services .tag {
-                display: block;
-                color: var(--accent);
-                letter-spacing: 3px;
-                font-size: 13px;
-                margin-bottom: 20px;
-            }
-
-            .services .title {
-                max-width: 900px;
-                font-size: clamp(3rem, 6vw, 4.5rem);
-                font-weight: 800;
-                line-height: 1;
-                margin: 0 0 25px;
-            }
-
-            .services .desc {
-                max-width: 700px;
-                color: var(--muted);
-                line-height: 1.8;
-                margin: 0 0 60px;
-            }
-
-            .services .grid {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                gap: 20px;
-            }
-
-            .services .card {
-                background: var(--card-bg);
-                border: 1px solid var(--border);
-                border-radius: 24px;
-                padding: 35px;
-                transition: all 0.4s ease;
-                backdrop-filter: blur(12px);
-            }
-
-            .services .card:hover {
-                transform: translateY(-10px);
-                border-color: rgba(0, 231, 179, 0.5);
-                box-shadow: 0 20px 40px rgba(0, 231, 179, 0.15);
-            }
-
-            .services .icon {
-                width: 70px;
-                height: 70px;
-                border-radius: 18px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin-bottom: 25px;
-
-                background: linear-gradient(135deg,
-                        rgba(0, 231, 179, 0.15),
-                        rgba(124, 58, 237, 0.15));
-
-                animation: float 4s ease-in-out infinite;
-            }
-
-            .services .icon svg {
-                width: 32px;
-                height: 32px;
-                stroke: #ffffff;
-                stroke-width: 1.8;
-                fill: none;
-                stroke-linecap: round;
-                stroke-linejoin: round;
-            }
-
-            .services .card h3 {
-                margin: 0 0 12px;
-                font-size: 22px;
-                color: var(--text);
-            }
-
-            .services .card p {
-                margin: 0;
-                color: var(--muted);
-                line-height: 1.7;
-            }
-
-            /* ANIMATION DELAYS */
-
-            .services .card:nth-child(2) .icon {
-                animation-delay: .5s;
-            }
-
-            .services .card:nth-child(3) .icon {
-                animation-delay: 1s;
-            }
-
-            .services .card:nth-child(4) .icon {
-                animation-delay: 1.5s;
-            }
-
-            .services .card:nth-child(5) .icon {
-                animation-delay: 2s;
-            }
-
-            .services .card:nth-child(6) .icon {
-                animation-delay: 2.5s;
-            }
-
-            .services .card:nth-child(7) .icon {
-                animation-delay: 3s;
-            }
-
-            .services .card:nth-child(8) .icon {
-                animation-delay: 3.5s;
-            }
-
-            @keyframes float {
-
-                0%,
-                100% {
-                    transform: translateY(0);
-                }
-
-                50% {
-                    transform: translateY(-8px);
-                }
-            }
-
-            /* RESPONSIVE */
-
-            @media (max-width: 1200px) {
-                .services .grid {
-                    grid-template-columns: repeat(2, 1fr);
-                }
-            }
-
-            @media (max-width: 700px) {
-                .services {
-                    padding: 80px 5%;
-                }
-
-                .services .grid {
-                    grid-template-columns: 1fr;
-                }
-            }
-        </style>
-    </head>
-
-    <body>
-
-        <section class="services">
-
-            <div class="container">
-
-                <span class="tag">// WHAT WE DO</span>
-
-                <h1 class="title">
-                    Every layer of your digital stack, covered.
-                </h1>
-
-                <p class="desc">
-                    From pixel-perfect interfaces to cloud-native backends — we design, build, and ship production-grade
-                    digital products end-to-end.
-                </p>
-
-                <div class="grid">
-
-                    <div class="card">
-                        <div class="icon">
-                            <svg viewBox="0 0 24 24">
-                                <circle cx="12" cy="12" r="9"></circle>
-                                <path d="M3 12h18"></path>
-                                <path d="M12 3a15 15 0 0 1 0 18"></path>
-                                <path d="M12 3a15 15 0 0 0 0 18"></path>
-                            </svg>
-                        </div>
-                        <h3>Web Development</h3>
-                        <p>Modern, scalable websites and web applications optimized for performance.</p>
-                    </div>
-
-                    <div class="card">
-                        <div class="icon">
-                            <svg viewBox="0 0 24 24">
-                                <rect x="7" y="2" width="10" height="20" rx="2"></rect>
-                                <line x1="12" y1="18" x2="12" y2="18"></line>
-                            </svg>
-                        </div>
-                        <h3>App Development</h3>
-                        <p>Native and cross-platform mobile applications for iOS and Android.</p>
-                    </div>
-
-                    <div class="card">
-                        <div class="icon">
-                            <svg viewBox="0 0 24 24">
-                                <circle cx="13.5" cy="6.5" r="2.5"></circle>
-                                <circle cx="17.5" cy="10.5" r="2"></circle>
-                                <circle cx="8" cy="17" r="3"></circle>
-                                <path d="M6 8c3-5 8-5 11-1"></path>
-                            </svg>
-                        </div>
-                        <h3>UI / UX Design</h3>
-                        <p>Beautiful user experiences crafted with modern design principles.</p>
-                    </div>
-
-                    <div class="card">
-                        <div class="icon">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M17.5 19H9a7 7 0 1 1 1.4-13.8A5.5 5.5 0 1 1 17.5 19z"></path>
-                            </svg>
-                        </div>
-                        <h3>Cloud & DevOps</h3>
-                        <p>AWS, Azure, Kubernetes, CI/CD pipelines and infrastructure automation.</p>
-                    </div>
-
-                    <div class="card">
-                        <div class="icon">
-                            <svg viewBox="0 0 24 24">
-                                <path
-                                    d="M5 15c-1.5 0-3-1.3-3-3s1.5-3 3-3c.3-3.4 3.1-6 6.5-6 2.7 0 5.1 1.7 6 4.1A4.5 4.5 0 1 1 19 15H5z">
-                                </path>
-                                <path d="M12 11v7"></path>
-                                <path d="M9 15l3 3 3-3"></path>
-                            </svg>
-                        </div>
-                        <h3>SaaS Products</h3>
-                        <p>End-to-end SaaS development — multi-tenant architecture, billing integrations, admin
-                            dashboards, and growth tooling built in.</p>
-                    </div>
-
-                    <div class="card">
-                        <div class="icon">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M3 3v18h18"></path>
-                                <path d="M7 15l4-4 3 3 5-7"></path>
-                            </svg>
-                        </div>
-                        <h3>Data Platform Engineering</h3>
-                        <p>Scalable data pipelines, real-time analytics, data warehousing, and robust ETL/ELT processes
-                            designed for data-driven decision making.</p>
-                    </div>
-
-                    <div class="card">
-                        <div class="icon">
-                            <svg viewBox="0 0 24 24">
-                                <rect x="3" y="3" width="7" height="7" rx="1"></rect>
-                                <rect x="14" y="3" width="7" height="7" rx="1"></rect>
-                                <rect x="14" y="14" width="7" height="7" rx="1"></rect>
-                                <path d="M10 6h4"></path>
-                                <path d="M17 10v4"></path>
-                                <path d="M10 18h4"></path>
-                            </svg>
-                        </div>
-                        <h3>Solution Architecture</h3>
-                        <p>Robust, secure, and future-proof system design. We align technical infrastructure with
-                            business goals for high performance.</p>
-                    </div>
-
-                    <div class="card">
-                        <div class="icon">
-                            <svg viewBox="0 0 24 24">
-                                <circle cx="12" cy="12" r="3"></circle>
-                                <path d="M12 2v3"></path>
-                                <path d="M12 19v3"></path>
-                                <path d="M4.9 4.9l2.1 2.1"></path>
-                                <path d="M17 17l2.1 2.1"></path>
-                                <path d="M2 12h3"></path>
-                                <path d="M19 12h3"></path>
-                                <path d="M4.9 19.1l2.1-2.1"></path>
-                                <path d="M17 7l2.1-2.1"></path>
-                            </svg>
-                        </div>
-                        <h3>Cloud & IaC</h3>
-                        <p>Automated provisioning and management of cloud resources. We use Terraform, Ansible, and
-                            CloudFormation to ensure consistent environments.</p>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </body>
-
-    </html>
-
-</html>
-<!-- ABOUT -->
-<section id="about">
-    <div class="about-inner">
-        <div class="about-visual">
-            <div class="about-visual-inner">
-                <!-- TiltedCard Component from React Bits -->
-                <figure class="tilted-card-figure">
-                    <div class="tilted-card-inner">
-                        <img src="https://i.postimg.cc/0yJhg03Q/teamhynastudio.jpg" alt="Team Hyna Studio"
-                            class="tilted-card-img" style="width: 300px; height: 300px;">
-                        <div class="tilted-card-overlay">
-                            <p class="tilted-card-demo-text">Team Hyna Studio</p>
-                        </div>
-                    </div>
-                </figure>
-                <div class="about-manifesto">We don't just write code.<br><em>We craft digital experiences.</em>
-                </div>
-                <div class="about-badges">
-                    <span class="badge">React / Next.js</span>
-                    <span class="badge">Flutter</span>
-                    <span class="badge">AWS / GCP</span>
-                    <span class="badge">Kubernetes</span>
-                    <span class="badge">Figma</span>
-                    <span class="badge">Node.js</span>
-                    <span class="badge">Python</span>
-                    <span class="badge">Zero Trust</span>
-                </div>
-            </div>
-        </div>
-        <div class="about-text">
-            <div class="section-label">// About Hyna Studio</div>
-            <h2 class="section-title">A studio built for the age of digital-first business.</h2>
-            <p>Hyna Studio was founded by a team of engineers, designers, and cloud architects who were tired of
-                watching great ideas fail because of bad execution. We built the studio we wished existed.</p>
-            <p>We work with <strong>startups, scale-ups, and enterprise teams</strong> to design and build the
-                digital products they need to grow — without the agency bloat, missed deadlines, or post-launch
-                silence.</p>
-            <p>Our team spans full-stack development, cloud infrastructure, product design, and cybersecurity —
-                giving clients a single studio that covers every layer of their digital presence.</p>
-            <div class="about-values">
-                <div class="value-row">
-                    <div class="value-icon">⚡</div>
-                    <div>
-                        <h4>Execution over promises</h4>
-                        <p>We ship. Every sprint has a deliverable. Every project has a clear timeline and owner.
-                        </p>
-                    </div>
-                </div>
-                <div class="value-row">
-                    <div class="value-icon">🔬</div>
-                    <div>
-                        <h4>Engineering rigour</h4>
-                        <p>Code reviewed, tested, documented. We build things that last beyond the launch day.</p>
-                    </div>
-                </div>
-                <div class="value-row">
-                    <div class="value-icon">🤝</div>
-                    <div>
-                        <h4>Transparent partnership</h4>
-                        <p>Direct access to the people building your product. No account managers in the middle.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- TECHNOLOGIES -->
-<section id="technologies">
-    <div class="section-label">// Stack & Tooling</div>
-    <h2 class="section-title">Technologies We Focus On</h2>
-    <p class="section-sub">Stay ahead with the latest technologies and tools in the industry.</p>
-    <div class="tech-marquee-container">
-        <div class="tech-marquee-track">
-            <!-- Set 1 -->
-            <div class="tech-card">
-                <span class="tech-icon">⚛️</span>
-                <h3>React</h3>
-            </div>
-            <div class="tech-card">
-                <span class="tech-icon">🟢</span>
-                <h3>Node.js</h3>
-            </div>
-            <div class="tech-card">
-                <span class="tech-icon">🐍</span>
-                <h3>Python</h3>
-            </div>
-            <div class="tech-card">
-                <span class="tech-icon">☕</span>
-                <h3>Java</h3>
-            </div>
-            <div class="tech-card">
-                <span class="tech-icon">🟨</span>
-                <h3>JavaScript</h3>
-            </div>
-            <div class="tech-card">
-                <span class="tech-icon">🔷</span>
-                <h3>TypeScript</h3>
-            </div>
-            <div class="tech-card">
-                <span class="tech-icon">🐳</span>
-                <h3>Docker</h3>
-            </div>
-            <div class="tech-card">
-                <span class="tech-icon">☁️</span>
-                <h3>AWS</h3>
-            </div>
-            <div class="tech-card">
-                <span class="tech-icon">🌿</span>
-                <h3>Git</h3>
-            </div>
-            <div class="tech-card">
-                <span class="tech-icon">🍃</span>
-                <h3>MongoDB</h3>
-            </div>
-            <div class="tech-card">
-                <span class="tech-icon">🐬</span>
-                <h3>SQL</h3>
-            </div>
-            <div class="tech-card">
-                <span class="tech-icon">🤖</span>
-                <h3>Machine Learning</h3>
-            </div>
-            <!-- Set 2 -->
-            <div class="tech-card">
-                <span class="tech-icon">⚛️</span>
-                <h3>React</h3>
-            </div>
-            <div class="tech-card">
-                <span class="tech-icon">🟢</span>
-                <h3>Node.js</h3>
-            </div>
-            <div class="tech-card">
-                <span class="tech-icon">🐍</span>
-                <h3>Python</h3>
-            </div>
-            <div class="tech-card">
-                <span class="tech-icon">☕</span>
-                <h3>Java</h3>
-            </div>
-            <div class="tech-card">
-                <span class="tech-icon">🟨</span>
-                <h3>JavaScript</h3>
-            </div>
-            <div class="tech-card">
-                <span class="tech-icon">🔷</span>
-                <h3>TypeScript</h3>
-            </div>
-            <div class="tech-card">
-                <span class="tech-icon">🐳</span>
-                <h3>Docker</h3>
-            </div>
-            <div class="tech-card">
-                <span class="tech-icon">☁️</span>
-                <h3>AWS</h3>
-            </div>
-            <div class="tech-card">
-                <span class="tech-icon">🌿</span>
-                <h3>Git</h3>
-            </div>
-            <div class="tech-card">
-                <span class="tech-icon">🍃</span>
-                <h3>MongoDB</h3>
-            </div>
-            <div class="tech-card">
-                <span class="tech-icon">🐬</span>
-                <h3>SQL</h3>
-            </div>
-            <div class="tech-card">
-                <span class="tech-icon">🤖</span>
-                <h3>Machine Learning</h3>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- TEAM -->
-<section id="team">
-    <div class="team-header">
-        <div>
-            <div class="section-label">// The team</div>
-            <h2 class="section-title">Six guys, one studio.</h2>
-            <p class="section-sub">Each member brings deep expertise in their domain — together we cover everything
-                your product needs.</p>
-        </div>
-    </div>
-    <div class="team-grid">
-
-        <!-- Member 1 -->
-        <div class="member-card" role="button" tabindex="0" data-name="Asthamil" data-role="Web Developer"
-            data-bio="Asthamil leads our engineering efforts—building scalable web experiences with clean architecture, strong performance, and thoughtful UX."
-            data-photo="https://i.postimg.cc/Jnwtf3ZZ/Whats-App-Image-2026-02-20-at-7-00-57-PM.jpg" data-portfolio="#"
-            data-github="#" data-linkedin="#" data-college="Stella Mary's College of Engineering"
-            data-degree="B.E - Computer Science And Engineering"
-            data-college-logo="https://i.postimg.cc/k5yLvDBC/download.png">
-            <div class="member-card-inner">
-                <div class="member-card-front">
-                    <div class="member-photo">
-                        <img src="https://i.postimg.cc/Jnwtf3ZZ/Whats-App-Image-2026-02-20-at-7-00-57-PM.jpg"
-                            alt="Web Developer"
-                            onerror="this.parentElement.innerHTML='<div class=\'member-photo-placeholder\'>👨‍💻</div>'">
-                    </div>
-                    <div class="member-info">
-                        <div class="member-name">Asthamil</div>
-                        <div class="member-role">Web Developer</div>
-                        <div class="member-skills">
-                            <span class="skill-tag">React</span>
-                            <span class="skill-tag">Next.js</span>
-                            <span class="skill-tag">TypeScript</span>
-                            <span class="skill-tag">Node.js</span>
-                            <span class="skill-tag">PostgreSQL</span>
-                            <span class="skill-tag">REST APIs</span>
-                            <span class="skill-tag">GraphQL</span>
-                            <span class="skill-tag">Tailwind</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="member-card-back">
-                    <div class="member-back-content">
-                        <h4>About Asthamil</h4>
-                        <p class="member-back-bio">Asthamil leads our engineering efforts—building scalable web
-                            experiences with clean architecture, strong performance, and thoughtful UX.</p>
-                        <div class="member-back-edu">
-                            <img src="https://i.postimg.cc/k5yLvDBC/download.png"
-                                alt="Stella Mary's College of Engineering Logo">
-                            <div class="member-back-edu-text">
-                                <span class="member-back-college">Stella Mary's College</span>
-                                <span class="member-back-degree">B.E - CSE</span>
-                            </div>
-                        </div>
-                        <div class="member-back-links">
-                            <a href="#" class="member-back-link" target="_blank" rel="noopener noreferrer">Portfolio</a>
-                            <a href="#" class="member-back-link" target="_blank" rel="noopener noreferrer">GitHub</a>
-                            <a href="#" class="member-back-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Vignesh -->
-        <div class="member-card" role="button" tabindex="0" data-name="Vignesh" data-role="Cloud Architect"
-            data-bio="Vignesh designs reliable cloud platforms—focusing on scalability, security, cost efficiency, and operational excellence across AWS/GCP/Azure."
-            data-photo="https://i.postimg.cc/mkg4JhXX/IMG-33081.jpg"
-            data-portfolio="https://vigneshvl-dev.github.io/PORTFOLIO//" data-github="https://github.com/vigneshvl-dev"
-            data-linkedin="https://www.linkedin.com/in/vigneshvl-dev/"
-            data-college="Stella Mary's College of Engineering" data-degree="B.E - Computer Science And Engineering"
-            data-college-logo="https://i.postimg.cc/k5yLvDBC/download.png">
-            <div class="member-card-inner">
-                <div class="member-card-front">
-                    <div class="member-photo">
-                        <img src="https://i.postimg.cc/mkg4JhXX/IMG-33081.jpg" alt="Vignesh"
-                            onerror="this.parentElement.innerHTML='<div class=\'member-photo-placeholder\'>☁️</div>'">
-                    </div>
-                    <div class="member-info">
-                        <div class="member-name">Vignesh</div>
-                        <div class="member-role">Cloud Architect</div>
-                        <div class="member-skills">
-                            <span class="skill-tag">AWS</span>
-                            <span class="skill-tag">GCP</span>
-                            <span class="skill-tag">Azure</span>
-                            <span class="skill-tag">Kubernetes</span>
-                            <span class="skill-tag">Terraform</span>
-                            <span class="skill-tag">Docker</span>
-                            <span class="skill-tag">CI/CD</span>
-                            <span class="skill-tag">Serverless</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="member-card-back">
-                    <div class="member-back-content">
-                        <h4>About Vignesh</h4>
-                        <p class="member-back-bio">Vignesh designs reliable cloud platforms—focusing on scalability,
-                            security, cost efficiency, and operational excellence across AWS/GCP/Azure.</p>
-                        <div class="member-back-edu">
-                            <img src="https://i.postimg.cc/k5yLvDBC/download.png"
-                                alt="Stella Mary's College of Engineering Logo">
-                            <div class="member-back-edu-text">
-                                <span class="member-back-college">Stella Mary's College</span>
-                                <span class="member-back-degree">B.E - CSE</span>
-                            </div>
-                        </div>
-                        <div class="member-back-links">
-                            <a href="https://vigneshvl-dev.github.io/PORTFOLIO//" class="member-back-link"
-                                target="_blank" rel="noopener noreferrer">Portfolio</a>
-                            <a href="https://github.com/vigneshvl-dev" class="member-back-link" target="_blank"
-                                rel="noopener noreferrer">GitHub</a>
-                            <a href="https://www.linkedin.com/in/vigneshvl-dev/" class="member-back-link"
-                                target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Jashwin -->
-        <div class="member-card" role="button" tabindex="0" data-name="Jashwin" data-role="Full Stack Developer"
-            data-bio="Jashwin builds end-to-end systems—responsive frontends, robust APIs, and data-driven backends—focused on reliability and clean developer experience."
-            data-photo="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" data-portfolio="#"
-            data-github="#" data-linkedin="#" data-college="Stella Mary's College of Engineering"
-            data-degree="B.E - Computer Science And Engineering"
-            data-college-logo="https://i.postimg.cc/k5yLvDBC/download.png">
-            <div class="member-card-inner">
-                <div class="member-card-front">
-                    <div class="member-photo">
-                        <img src="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" alt="Jashwin"
-                            onerror="this.parentElement.innerHTML='<div class=\'member-photo-placeholder\'>🧑‍💻</div>'">
-                    </div>
-                    <div class="member-info">
-                        <div class="member-name">Jashwin</div>
-                        <div class="member-role">Full Stack Developer</div>
-                        <div class="member-skills">
-                            <span class="skill-tag">Vue.js</span>
-                            <span class="skill-tag">Nuxt.js</span>
-                            <span class="skill-tag">Express.js</span>
-                            <span class="skill-tag">MongoDB</span>
-                            <span class="skill-tag">MySQL</span>
-                            <span class="skill-tag">REST APIs</span>
-                            <span class="skill-tag">GraphQL</span>
-                            <span class="skill-tag">Sass</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="member-card-back">
-                    <div class="member-back-content">
-                        <h4>About Jashwin</h4>
-                        <p class="member-back-bio">Jashwin builds end-to-end systems—responsive frontends, robust
-                            APIs, and data-driven backends—focused on reliability and clean developer experience.
-                        </p>
-                        <div class="member-back-edu">
-                            <img src="https://i.postimg.cc/k5yLvDBC/download.png"
-                                alt="Stella Mary's College of Engineering Logo">
-                            <div class="member-back-edu-text">
-                                <span class="member-back-college">Stella Mary's College</span>
-                                <span class="member-back-degree">B.E - CSE</span>
-                            </div>
-                        </div>
-                        <div class="member-back-links">
-                            <a href="#" class="member-back-link" target="_blank" rel="noopener noreferrer">Portfolio</a>
-                            <a href="#" class="member-back-link" target="_blank" rel="noopener noreferrer">GitHub</a>
-                            <a href="#" class="member-back-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Dharshan -->
-        <div class="member-card" role="button" tabindex="0" data-name="Dharshan" data-role="Cyber Security Analyst"
-            data-bio="Dharshan protects products through threat modeling, penetration testing, and secure engineering practices—helping teams build safer systems from day one."
-            data-photo="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg"
-            data-portfolio="https://portholio-zeta.vercel.app/#" data-github="https://github.com/dharshan00814"
-            data-linkedin="www.linkedin.com/in/dharshan-jm" data-college="Stella Mary's College of Engineering"
-            data-degree="B.E - Computer Science And Engineering"
-            data-college-logo="https://i.postimg.cc/k5yLvDBC/download.png">
-            <div class="member-card-inner">
-                <div class="member-card-front">
-                    <div class="member-photo">
-                        <img src="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg"
-                            alt="Dharshan"
-                            onerror="this.parentElement.innerHTML='<div class=\'member-photo-placeholder\'>🔐</div>'">
-                    </div>
-                    <div class="member-info">
-                        <div class="member-name">Dharshan</div>
-                        <div class="member-role">Cyber Security Analyst</div>
-                        <div class="member-skills">
-                            <span class="skill-tag">Penetration Testing</span>
-                            <span class="skill-tag">VAPT</span>
-                            <span class="skill-tag">OWASP</span>
-                            <span class="skill-tag">Zero Trust</span>
-                            <span class="skill-tag">SOC 2</span>
-                            <span class="skill-tag">Ethical Hacking</span>
-                            <span class="skill-tag">Kali Linux</span>
-                            <span class="skill-tag">Forensics</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="member-card-back">
-                    <div class="member-back-content">
-                        <h4>About Dharshan</h4>
-                        <p class="member-back-bio">Dharshan protects products through threat modeling, penetration
-                            testing, and secure engineering practices—helping teams build safer systems from day
-                            one.</p>
-                        <div class="member-back-edu">
-                            <img src="https://i.postimg.cc/k5yLvDBC/download.png"
-                                alt="Stella Mary's College of Engineering Logo">
-                            <div class="member-back-edu-text">
-                                <span class="member-back-college">Stella Mary's College</span>
-                                <span class="member-back-degree">B.E - CSE</span>
-                            </div>
-                        </div>
-                        <div class="member-back-links">
-                            <a href="https://portholio-zeta.vercel.app/#" class="member-back-link" target="_blank"
-                                rel="noopener noreferrer">Portfolio</a>
-                            <a href="https://github.com/dharshan00814" class="member-back-link" target="_blank"
-                                rel="noopener noreferrer">GitHub</a>
-                            <a href="https://www.linkedin.com/in/dharshan-jm" class="member-back-link" target="_blank"
-                                rel="noopener noreferrer">LinkedIn</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tharun Krishna -->
-        <div class="member-card" role="button" tabindex="0" data-name="Tharun Krishna" data-role="UI/UX Designer"
-            data-bio="Tharun creates intuitive and engaging user experiences through thoughtful design and research."
-            data-photo="https://i.postimg.cc/TP5Jj9Th/Whats-App-Image-2026-06-11-at-11-26-46-AM.jpg" data-portfolio="#"
-            data-github="#" data-linkedin="#" data-college="Stella Mary's College of Engineering"
-            data-degree="B.E - Computer Science And Engineering"
-            data-college-logo="https://i.postimg.cc/k5yLvDBC/download.png">
-            <div class="member-card-inner">
-                <div class="member-card-front">
-                    <div class="member-photo">
-                        <img src="https://i.postimg.cc/TP5Jj9Th/Whats-App-Image-2026-06-11-at-11-26-46-AM.jpg"
-                            alt="Tharun Krishna"
-                            onerror="this.parentElement.innerHTML='<div class=\'member-photo-placeholder\'>🎨</div>'">
-                    </div>
-                    <div class="member-info">
-                        <div class="member-name">Tharun Krishna</div>
-                        <div class="member-role">UI/UX Designer</div>
-                        <div class="member-skills">
-                            <span class="skill-tag">Figma</span>
-                            <span class="skill-tag">UI Design</span>
-                            <span class="skill-tag">UX Research</span>
-                            <span class="skill-tag">Prototyping</span>
-                            <span class="skill-tag">Design Systems</span>
-                            <span class="skill-tag">Motion</span>
-                            <span class="skill-tag">Branding</span>
-                            <span class="skill-tag">Framer</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="member-card-back">
-                    <div class="member-back-content">
-                        <h4>About Tharun Krishna</h4>
-                        <p class="member-back-bio">Tharun creates intuitive and engaging user experiences through
-                            thoughtful design and research.</p>
-                        <div class="member-back-edu">
-                            <img src="https://i.postimg.cc/k5yLvDBC/download.png"
-                                alt="Stella Mary's College of Engineering Logo">
-                            <div class="member-back-edu-text">
-                                <span class="member-back-college">Stella Mary's College</span>
-                                <span class="member-back-degree">B.E - CSE</span>
-                            </div>
-                        </div>
-                        <div class="member-back-links">
-                            <a href="#" class="member-back-link" target="_blank" rel="noopener noreferrer">Portfolio</a>
-                            <a href="#" class="member-back-link" target="_blank" rel="noopener noreferrer">GitHub</a>
-                            <a href="#" class="member-back-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Mohammad Zarif -->
-        <div class="member-card" role="button" tabindex="0" data-name="Mohammad Zarif" data-role="App Developer"
-            data-bio="Mohammad is a passionate app developer with a keen eye for detail and a love for creating seamless user experiences."
-            data-photo="https://i.postimg.cc/1zWvJd1C/zarif.jpg" data-portfolio="#" data-github="#" data-linkedin="#"
-            data-college="Stella Mary's College of Engineering" data-degree="B.E - Computer Science And Engineering"
-            data-college-logo="https://i.postimg.cc/k5yLvDBC/download.png">
-            <div class="member-card-inner">
-                <div class="member-card-front">
-                    <div class="member-photo">
-                        <img src="https://i.postimg.cc/1zWvJd1C/zarif.jpg" alt="Mohammad Zarif"
-                            onerror="this.parentElement.innerHTML='<div class=\'member-photo-placeholder\'>📱</div>'">
-                    </div>
-                    <div class="member-info">
-                        <div class="member-name">Mohammad Zarif</div>
-                        <div class="member-role">App Developer</div>
-                        <div class="member-skills">
-                            <span class="skill-tag">Flutter</span>
-                            <span class="skill-tag">React Native</span>
-                            <span class="skill-tag">Swift</span>
-                            <span class="skill-tag">Kotlin</span>
-                            <span class="skill-tag">Firebase</span>
-                            <span class="skill-tag">App Store</span>
-                            <span class="skill-tag">Push Notifications</span>
-                            <span class="skill-tag">Offline Mode</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="member-card-back">
-                    <div class="member-back-content">
-                        <h4>About Mohammad Zarif</h4>
-                        <p class="member-back-bio">Mohammad is a passionate app developer with a keen eye for detail
-                            and a love for creating seamless user experiences.</p>
-                        <div class="member-back-edu">
-                            <img src="https://i.postimg.cc/k5yLvDBC/download.png"
-                                alt="Stella Mary's College of Engineering Logo">
-                            <div class="member-back-edu-text">
-                                <span class="member-back-college">Stella Mary's College</span>
-                                <span class="member-back-degree">B.E - CSE</span>
-                            </div>
-                        </div>
-                        <div class="member-back-links">
-                            <a href="#" class="member-back-link" target="_blank" rel="noopener noreferrer">Portfolio</a>
-                            <a href="#" class="member-back-link" target="_blank" rel="noopener noreferrer">GitHub</a>
-                            <a href="#" class="member-back-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-</section>
-
-<!-- PROCESS -->
-<section id="process">
-    <div class="section-label">// How we work</div>
-    <h2 class="section-title">From brief to launch in four phases.</h2>
-    <p class="section-sub">A clear, collaborative process that keeps you informed and in control at every step.</p>
-    <div class="process-steps">
-        <div class="process-step">
-            <div class="step-num">1</div>
-            <h4>Discovery</h4>
-            <p>We dig into your goals, users, and constraints — then define exactly what we're building and why.</p>
-        </div>
-        <div class="process-step">
-            <div class="step-num">2</div>
-            <h4>Design</h4>
-            <p>Wireframes, prototypes, and a polished design system — validated with real users before a line of
-                code is written.</p>
-        </div>
-        <div class="process-step">
-            <div class="step-num">3</div>
-            <h4>Build</h4>
-            <p>Two-week sprints with live demos. You see progress every fortnight — no disappearing acts.</p>
-        </div>
-        <div class="process-step">
-            <div class="step-num">4</div>
-            <h4>Launch & Grow</h4>
-            <p>Deploy, monitor, iterate. We stay on after launch to help you scale what's working.</p>
-        </div>
-    </div>
-</section>
-
-<!-- CTA -->
-<div class="cta-banner" id="contact">
-    <h2>Ready to build something great?</h2>
-    <p>Tell us about your project — we'll get back within 24 hours.</p>
-    <a href="mailto:team.hynastudio@gmail.com" class="btn-white">Start a conversation →</a>
-</div>
-
-<!-- FOOTER -->
-<footer>
-    <div class="footer-top">
-        <div class="footer-brand">
-            <a href="#" class="nav-logo">
-                <img src="logo.png" class="logo-img" alt="Hyna Studio Logo">
-                <div class="logo-text">
-                    <span class="logo-main" style="color: #ffffff;">Hyna Studio</span>
-                    <span class="logo-sub" style="color: rgba(255, 255, 255, 0.45);">Tech & Experiences</span>
-                </div>
-            </a>
-            <p>A full-spectrum digital studio building products that matter.</p>
-        </div>
-        <div class="footer-links">
-            <h5>Services</h5>
-            <ul>
-                <li><a href="#services">Web Development</a></li>
-                <li><a href="#services">App Development</a></li>
-                <li><a href="#services">UI / UX Design</a></li>
-                <li><a href="#services">Cloud & DevOps</a></li>
-                <li><a href="#services">SaaS Products</a></li>
-                <li><a href="#services">Data Platform Engineering</a></li>
-                <li><a href="#services">Solution Architecture</a></li>
-                <li><a href="#services">Cloud & IaC</a></li>
-            </ul>
-        </div>
-        <div class="footer-links">
-            <h5>Studio</h5>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#team">Team</a></li>
-                <li><a href="#process">Process</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-        <div class="footer-links">
-            <h5>Contact</h5>
-            <ul>
-                <li><a href="mailto:team.hynastudio@gmail.com">team.hynastudio@gmail.com</a></li>
-                <li><a href="#">LinkedIn</a></li>
-                <li><a href="#">GitHub</a></li>
-                <li><a href="#">Twitter / X</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>© 2026 Hyna Studio. All rights reserved.</p>
-        <div class="footer-bottom-links">
-            <a href="#">Privacy</a>
-            <a href="#">Terms</a>
-        </div>
-    </div>
-</footer>
-
-<!-- Team Modal (injected content target) -->
-<div class="modal-overlay" id="teamModalOverlay" aria-hidden="true">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="teamModalName">
-        <div class="modal-header">
-            <div class="modal-title">
-                <div class="modal-name" id="teamModalName">—</div>
-                <div class="modal-role" id="teamModalRole">—</div>
-            </div>
-            <button class="modal-close" type="button" id="teamModalClose" aria-label="Close modal">✕</button>
-        </div>
-        <div class="modal-body">
-            <div class="modal-grid">
-                <div class="modal-photo" aria-hidden="true">
-                    <img id="teamModalPhoto" alt="" src=""
-                        onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend', '<div class=\'member-photo-placeholder\'>👤</div>')">
-                </div>
-                <div>
-                    <div class="modal-bio" id="teamModalBio">—</div>
-                    <div class="modal-links" id="teamModalLinks"></div>
-                    <div class="modal-education" id="teamModalEducation"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    (function () {
-        const overlay = document.getElementById('teamModalOverlay');
-        const closeBtn = document.getElementById('teamModalClose');
-
-        const nameEl = document.getElementById('teamModalName');
-        const roleEl = document.getElementById('teamModalRole');
-        const photoEl = document.getElementById('teamModalPhoto');
-        const bioEl = document.getElementById('teamModalBio');
-        const linksEl = document.getElementById('teamModalLinks');
-        const educationEl = document.getElementById('teamModalEducation');
-
-        const cards = Array.from(document.querySelectorAll('#team .member-card[role="button"]'));
-
-        let lastFocused = null;
-
-        function escapeHtml(str) {
-            return String(str)
-                .replaceAll('&', '&amp;')
-                .replaceAll('<', '<')
-                .replaceAll('>', '>')
-                .replaceAll('"', '"')
-                .replaceAll("'", '&#039;');
+    <style>
+        #hyna-services {
+            --bg: #050816;
+            --card-bg: rgba(18, 22, 35, 0.8);
+            --border: rgba(255, 255, 255, 0.08);
+            --text: #ffffff;
+            --muted: #9ea4b5;
+            --accent: #00e7b3;
+
+            font-family: "Space Grotesk", sans-serif;
+            color: var(--text);
+            padding: 120px 8%;
+            position: relative;
+            overflow: hidden;
+
+            background:
+                radial-gradient(circle at top left,
+                    rgba(0, 231, 179, 0.12),
+                    transparent 40%),
+                radial-gradient(circle at bottom right,
+                    rgba(124, 58, 237, 0.1),
+                    transparent 40%),
+                var(--bg);
         }
 
-        function buildLink(label, href) {
-            const safeLabel = escapeHtml(label);
-            const safeHref = escapeHtml(href);
-            return `
+        #hyna-services * {
+            box-sizing: border-box;
+        }
+
+        #hyna-services::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            mask-image: radial-gradient(circle at center, black 40%, transparent 85%);
+            pointer-events: none;
+        }
+
+        #hyna-services .hs-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        #hyna-services .hs-tag {
+            display: block;
+            color: var(--accent);
+            letter-spacing: 3px;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        #hyna-services .hs-title {
+            max-width: 900px;
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1;
+            margin: 0 0 25px;
+        }
+
+        #hyna-services .hs-desc {
+            max-width: 700px;
+            color: var(--muted);
+            line-height: 1.8;
+            margin: 0 0 60px;
+        }
+
+        #hyna-services .hs-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        #hyna-services .hs-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 32px;
+            min-width: 0;
+            backdrop-filter: blur(12px);
+            transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+        }
+
+        #hyna-services .hs-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 231, 179, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 231, 179, 0.15);
+        }
+
+        #hyna-services .hs-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+
+            background: linear-gradient(135deg,
+                    rgba(0, 231, 179, 0.15),
+                    rgba(124, 58, 237, 0.15));
+
+            animation: hs-float 4s ease-in-out infinite;
+        }
+
+        #hyna-services .hs-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: #ffffff;
+            stroke-width: 1.8;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        #hyna-services .hs-card:nth-child(2) .hs-icon {
+            animation-delay: .5s;
+        }
+
+        #hyna-services .hs-card:nth-child(3) .hs-icon {
+            animation-delay: 1s;
+        }
+
+        #hyna-services .hs-card:nth-child(4) .hs-icon {
+            animation-delay: 1.5s;
+        }
+
+        #hyna-services .hs-card:nth-child(5) .hs-icon {
+            animation-delay: 2s;
+        }
+
+        #hyna-services .hs-card:nth-child(6) .hs-icon {
+            animation-delay: 2.5s;
+        }
+
+        #hyna-services .hs-card:nth-child(7) .hs-icon {
+            animation-delay: 3s;
+        }
+
+        #hyna-services .hs-card:nth-child(8) .hs-icon {
+            animation-delay: 3.5s;
+        }
+
+        #hyna-services .hs-card h3 {
+            margin: 0 0 12px;
+            font-size: 22px;
+        }
+
+        #hyna-services .hs-card p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        @keyframes hs-float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        @media (max-width: 1200px) {
+            #hyna-services .hs-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            #hyna-services {
+                padding: 80px 5%;
+            }
+
+            #hyna-services .hs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <section id="hyna-services">
+        <div class="hs-container">
+
+            <span class="hs-tag">// WHAT WE DO</span>
+
+            <h2 class="hs-title">
+                Every layer of your digital stack, covered.
+            </h2>
+
+            <p class="hs-desc">
+                From pixel-perfect interfaces to cloud-native backends — we design, build, and ship production-grade
+                digital products end-to-end.
+            </p>
+
+            <div class="hs-grid">
+
+                <div class="hs-card">
+                    <div class="hs-icon">🌐</div>
+                    <h3>Web Development</h3>
+                    <p>Modern, scalable websites and web applications optimized for performance.</p>
+                </div>
+
+                <div class="hs-card">
+                    <div class="hs-icon">📱</div>
+                    <h3>App Development</h3>
+                    <p>Native and cross-platform mobile applications for iOS and Android.</p>
+                </div>
+
+                <div class="hs-card">
+                    <div class="hs-icon">🎨</div>
+                    <h3>UI / UX Design</h3>
+                    <p>Beautiful user experiences crafted with modern design principles.</p>
+                </div>
+
+                <div class="hs-card">
+                    <div class="hs-icon">☁️</div>
+                    <h3>Cloud & DevOps</h3>
+                    <p>AWS, Azure, Kubernetes, CI/CD pipelines and infrastructure automation.</p>
+                </div>
+
+                <div class="hs-card">
+                    <div class="hs-icon">🚀</div>
+                    <h3>SaaS Products</h3>
+                    <p>End-to-end SaaS development — multi-tenant architecture, billing integrations, admin dashboards,
+                        and growth tooling built in.</p>
+                </div>
+
+                <div class="hs-card">
+                    <div class="hs-icon">📊</div>
+                    <h3>Data Platform Engineering</h3>
+                    <p>Scalable data pipelines, real-time analytics, data warehousing, and robust ETL/ELT processes
+                        designed for data-driven decision making.</p>
+                </div>
+
+                <div class="hs-card">
+                    <div class="hs-icon">🏗️</div>
+                    <h3>Solution Architecture</h3>
+                    <p>Robust, secure, and future-proof system design. We align technical infrastructure with business
+                        goals for high performance.</p>
+                </div>
+
+                <div class="hs-card">
+                    <div class="hs-icon">⚙️</div>
+                    <h3>Cloud & IaC</h3>
+                    <p>Automated provisioning and management of cloud resources. We use Terraform, Ansible, and
+                        CloudFormation to ensure consistent environments.</p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="about-inner">
+            <div class="about-visual">
+                <div class="about-visual-inner">
+                    <!-- TiltedCard Component from React Bits -->
+                    <figure class="tilted-card-figure">
+                        <div class="tilted-card-inner">
+                            <img src="https://i.postimg.cc/0yJhg03Q/teamhynastudio.jpg" alt="Team Hyna Studio"
+                                class="tilted-card-img" style="width: 300px; height: 300px;">
+                            <div class="tilted-card-overlay">
+                                <p class="tilted-card-demo-text">Team Hyna Studio</p>
+                            </div>
+                        </div>
+                    </figure>
+                    <div class="about-manifesto">We don't just write code.<br><em>We craft digital experiences.</em>
+                    </div>
+                    <div class="about-badges">
+                        <span class="badge">React / Next.js</span>
+                        <span class="badge">Flutter</span>
+                        <span class="badge">AWS / GCP</span>
+                        <span class="badge">Kubernetes</span>
+                        <span class="badge">Figma</span>
+                        <span class="badge">Node.js</span>
+                        <span class="badge">Python</span>
+                        <span class="badge">Zero Trust</span>
+                    </div>
+                </div>
+            </div>
+            <div class="about-text">
+                <div class="section-label">// About Hyna Studio</div>
+                <h2 class="section-title">A studio built for the age of digital-first business.</h2>
+                <p>Hyna Studio was founded by a team of engineers, designers, and cloud architects who were tired of
+                    watching great ideas fail because of bad execution. We built the studio we wished existed.</p>
+                <p>We work with <strong>startups, scale-ups, and enterprise teams</strong> to design and build the
+                    digital products they need to grow — without the agency bloat, missed deadlines, or post-launch
+                    silence.</p>
+                <p>Our team spans full-stack development, cloud infrastructure, product design, and cybersecurity —
+                    giving clients a single studio that covers every layer of their digital presence.</p>
+                <div class="about-values">
+                    <div class="value-row">
+                        <div class="value-icon">⚡</div>
+                        <div>
+                            <h4>Execution over promises</h4>
+                            <p>We ship. Every sprint has a deliverable. Every project has a clear timeline and owner.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="value-row">
+                        <div class="value-icon">🔬</div>
+                        <div>
+                            <h4>Engineering rigour</h4>
+                            <p>Code reviewed, tested, documented. We build things that last beyond the launch day.</p>
+                        </div>
+                    </div>
+                    <div class="value-row">
+                        <div class="value-icon">🤝</div>
+                        <div>
+                            <h4>Transparent partnership</h4>
+                            <p>Direct access to the people building your product. No account managers in the middle.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TECHNOLOGIES -->
+    <section id="technologies">
+        <div class="section-label">// Stack & Tooling</div>
+        <h2 class="section-title">Technologies We Focus On</h2>
+        <p class="section-sub">Stay ahead with the latest technologies and tools in the industry.</p>
+        <div class="tech-marquee-container">
+            <div class="tech-marquee-track">
+                <!-- Set 1 -->
+                <div class="tech-card">
+                    <span class="tech-icon">⚛️</span>
+                    <h3>React</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon">🟢</span>
+                    <h3>Node.js</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon">🐍</span>
+                    <h3>Python</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon">☕</span>
+                    <h3>Java</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon">🟨</span>
+                    <h3>JavaScript</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon">🔷</span>
+                    <h3>TypeScript</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon">🐳</span>
+                    <h3>Docker</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon">☁️</span>
+                    <h3>AWS</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon">🌿</span>
+                    <h3>Git</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon">🍃</span>
+                    <h3>MongoDB</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon">🐬</span>
+                    <h3>SQL</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon">🤖</span>
+                    <h3>Machine Learning</h3>
+                </div>
+                <!-- Set 2 -->
+                <div class="tech-card">
+                    <span class="tech-icon">⚛️</span>
+                    <h3>React</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon">🟢</span>
+                    <h3>Node.js</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon">🐍</span>
+                    <h3>Python</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon">☕</span>
+                    <h3>Java</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon">🟨</span>
+                    <h3>JavaScript</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon">🔷</span>
+                    <h3>TypeScript</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon">🐳</span>
+                    <h3>Docker</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon">☁️</span>
+                    <h3>AWS</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon">🌿</span>
+                    <h3>Git</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon">🍃</span>
+                    <h3>MongoDB</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon">🐬</span>
+                    <h3>SQL</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon">🤖</span>
+                    <h3>Machine Learning</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section id="team">
+        <div class="team-header">
+            <div>
+                <div class="section-label">// The team</div>
+                <h2 class="section-title">Six guys, one studio.</h2>
+                <p class="section-sub">Each member brings deep expertise in their domain — together we cover everything
+                    your product needs.</p>
+            </div>
+        </div>
+        <div class="team-grid">
+
+            <!-- Member 1 -->
+            <div class="member-card" role="button" tabindex="0" data-name="Asthamil" data-role="Web Developer"
+                data-bio="Asthamil leads our engineering efforts—building scalable web experiences with clean architecture, strong performance, and thoughtful UX."
+                data-photo="https://i.postimg.cc/Jnwtf3ZZ/Whats-App-Image-2026-02-20-at-7-00-57-PM.jpg"
+                data-portfolio="#" data-github="#" data-linkedin="#" data-college="Stella Mary's College of Engineering"
+                data-degree="B.E - Computer Science And Engineering"
+                data-college-logo="https://i.postimg.cc/k5yLvDBC/download.png">
+                <div class="member-card-inner">
+                    <div class="member-card-front">
+                        <div class="member-photo">
+                            <img src="https://i.postimg.cc/Jnwtf3ZZ/Whats-App-Image-2026-02-20-at-7-00-57-PM.jpg"
+                                alt="Web Developer"
+                                onerror="this.parentElement.innerHTML='<div class=\'member-photo-placeholder\'>👨‍💻</div>'">
+                        </div>
+                        <div class="member-info">
+                            <div class="member-name">Asthamil</div>
+                            <div class="member-role">Web Developer</div>
+                            <div class="member-skills">
+                                <span class="skill-tag">React</span>
+                                <span class="skill-tag">Next.js</span>
+                                <span class="skill-tag">TypeScript</span>
+                                <span class="skill-tag">Node.js</span>
+                                <span class="skill-tag">PostgreSQL</span>
+                                <span class="skill-tag">REST APIs</span>
+                                <span class="skill-tag">GraphQL</span>
+                                <span class="skill-tag">Tailwind</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="member-card-back">
+                        <div class="member-back-content">
+                            <h4>About Asthamil</h4>
+                            <p class="member-back-bio">Asthamil leads our engineering efforts—building scalable web
+                                experiences with clean architecture, strong performance, and thoughtful UX.</p>
+                            <div class="member-back-edu">
+                                <img src="https://i.postimg.cc/k5yLvDBC/download.png"
+                                    alt="Stella Mary's College of Engineering Logo">
+                                <div class="member-back-edu-text">
+                                    <span class="member-back-college">Stella Mary's College</span>
+                                    <span class="member-back-degree">B.E - CSE</span>
+                                </div>
+                            </div>
+                            <div class="member-back-links">
+                                <a href="#" class="member-back-link" target="_blank"
+                                    rel="noopener noreferrer">Portfolio</a>
+                                <a href="#" class="member-back-link" target="_blank"
+                                    rel="noopener noreferrer">GitHub</a>
+                                <a href="#" class="member-back-link" target="_blank"
+                                    rel="noopener noreferrer">LinkedIn</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vignesh -->
+            <div class="member-card" role="button" tabindex="0" data-name="Vignesh" data-role="Cloud Architect"
+                data-bio="Vignesh designs reliable cloud platforms—focusing on scalability, security, cost efficiency, and operational excellence across AWS/GCP/Azure."
+                data-photo="https://i.postimg.cc/mkg4JhXX/IMG-33081.jpg"
+                data-portfolio="https://vigneshvl-dev.github.io/PORTFOLIO//"
+                data-github="https://github.com/vigneshvl-dev"
+                data-linkedin="https://www.linkedin.com/in/vigneshvl-dev/"
+                data-college="Stella Mary's College of Engineering" data-degree="B.E - Computer Science And Engineering"
+                data-college-logo="https://i.postimg.cc/k5yLvDBC/download.png">
+                <div class="member-card-inner">
+                    <div class="member-card-front">
+                        <div class="member-photo">
+                            <img src="https://i.postimg.cc/mkg4JhXX/IMG-33081.jpg" alt="Vignesh"
+                                onerror="this.parentElement.innerHTML='<div class=\'member-photo-placeholder\'>☁️</div>'">
+                        </div>
+                        <div class="member-info">
+                            <div class="member-name">Vignesh</div>
+                            <div class="member-role">Cloud Architect</div>
+                            <div class="member-skills">
+                                <span class="skill-tag">AWS</span>
+                                <span class="skill-tag">GCP</span>
+                                <span class="skill-tag">Azure</span>
+                                <span class="skill-tag">Kubernetes</span>
+                                <span class="skill-tag">Terraform</span>
+                                <span class="skill-tag">Docker</span>
+                                <span class="skill-tag">CI/CD</span>
+                                <span class="skill-tag">Serverless</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="member-card-back">
+                        <div class="member-back-content">
+                            <h4>About Vignesh</h4>
+                            <p class="member-back-bio">Vignesh designs reliable cloud platforms—focusing on scalability,
+                                security, cost efficiency, and operational excellence across AWS/GCP/Azure.</p>
+                            <div class="member-back-edu">
+                                <img src="https://i.postimg.cc/k5yLvDBC/download.png"
+                                    alt="Stella Mary's College of Engineering Logo">
+                                <div class="member-back-edu-text">
+                                    <span class="member-back-college">Stella Mary's College</span>
+                                    <span class="member-back-degree">B.E - CSE</span>
+                                </div>
+                            </div>
+                            <div class="member-back-links">
+                                <a href="https://vigneshvl-dev.github.io/PORTFOLIO//" class="member-back-link"
+                                    target="_blank" rel="noopener noreferrer">Portfolio</a>
+                                <a href="https://github.com/vigneshvl-dev" class="member-back-link" target="_blank"
+                                    rel="noopener noreferrer">GitHub</a>
+                                <a href="https://www.linkedin.com/in/vigneshvl-dev/" class="member-back-link"
+                                    target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jashwin -->
+            <div class="member-card" role="button" tabindex="0" data-name="Jashwin" data-role="Full Stack Developer"
+                data-bio="Jashwin builds end-to-end systems—responsive frontends, robust APIs, and data-driven backends—focused on reliability and clean developer experience."
+                data-photo="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" data-portfolio="#"
+                data-github="#" data-linkedin="#" data-college="Stella Mary's College of Engineering"
+                data-degree="B.E - Computer Science And Engineering"
+                data-college-logo="https://i.postimg.cc/k5yLvDBC/download.png">
+                <div class="member-card-inner">
+                    <div class="member-card-front">
+                        <div class="member-photo">
+                            <img src="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" alt="Jashwin"
+                                onerror="this.parentElement.innerHTML='<div class=\'member-photo-placeholder\'>🧑‍💻</div>'">
+                        </div>
+                        <div class="member-info">
+                            <div class="member-name">Jashwin</div>
+                            <div class="member-role">Full Stack Developer</div>
+                            <div class="member-skills">
+                                <span class="skill-tag">Vue.js</span>
+                                <span class="skill-tag">Nuxt.js</span>
+                                <span class="skill-tag">Express.js</span>
+                                <span class="skill-tag">MongoDB</span>
+                                <span class="skill-tag">MySQL</span>
+                                <span class="skill-tag">REST APIs</span>
+                                <span class="skill-tag">GraphQL</span>
+                                <span class="skill-tag">Sass</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="member-card-back">
+                        <div class="member-back-content">
+                            <h4>About Jashwin</h4>
+                            <p class="member-back-bio">Jashwin builds end-to-end systems—responsive frontends, robust
+                                APIs, and data-driven backends—focused on reliability and clean developer experience.
+                            </p>
+                            <div class="member-back-edu">
+                                <img src="https://i.postimg.cc/k5yLvDBC/download.png"
+                                    alt="Stella Mary's College of Engineering Logo">
+                                <div class="member-back-edu-text">
+                                    <span class="member-back-college">Stella Mary's College</span>
+                                    <span class="member-back-degree">B.E - CSE</span>
+                                </div>
+                            </div>
+                            <div class="member-back-links">
+                                <a href="#" class="member-back-link" target="_blank"
+                                    rel="noopener noreferrer">Portfolio</a>
+                                <a href="#" class="member-back-link" target="_blank"
+                                    rel="noopener noreferrer">GitHub</a>
+                                <a href="#" class="member-back-link" target="_blank"
+                                    rel="noopener noreferrer">LinkedIn</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dharshan -->
+            <div class="member-card" role="button" tabindex="0" data-name="Dharshan" data-role="Cyber Security Analyst"
+                data-bio="Dharshan protects products through threat modeling, penetration testing, and secure engineering practices—helping teams build safer systems from day one."
+                data-photo="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg"
+                data-portfolio="https://portholio-zeta.vercel.app/#" data-github="https://github.com/dharshan00814"
+                data-linkedin="www.linkedin.com/in/dharshan-jm" data-college="Stella Mary's College of Engineering"
+                data-degree="B.E - Computer Science And Engineering"
+                data-college-logo="https://i.postimg.cc/k5yLvDBC/download.png">
+                <div class="member-card-inner">
+                    <div class="member-card-front">
+                        <div class="member-photo">
+                            <img src="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg"
+                                alt="Dharshan"
+                                onerror="this.parentElement.innerHTML='<div class=\'member-photo-placeholder\'>🔐</div>'">
+                        </div>
+                        <div class="member-info">
+                            <div class="member-name">Dharshan</div>
+                            <div class="member-role">Cyber Security Analyst</div>
+                            <div class="member-skills">
+                                <span class="skill-tag">Penetration Testing</span>
+                                <span class="skill-tag">VAPT</span>
+                                <span class="skill-tag">OWASP</span>
+                                <span class="skill-tag">Zero Trust</span>
+                                <span class="skill-tag">SOC 2</span>
+                                <span class="skill-tag">Ethical Hacking</span>
+                                <span class="skill-tag">Kali Linux</span>
+                                <span class="skill-tag">Forensics</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="member-card-back">
+                        <div class="member-back-content">
+                            <h4>About Dharshan</h4>
+                            <p class="member-back-bio">Dharshan protects products through threat modeling, penetration
+                                testing, and secure engineering practices—helping teams build safer systems from day
+                                one.</p>
+                            <div class="member-back-edu">
+                                <img src="https://i.postimg.cc/k5yLvDBC/download.png"
+                                    alt="Stella Mary's College of Engineering Logo">
+                                <div class="member-back-edu-text">
+                                    <span class="member-back-college">Stella Mary's College</span>
+                                    <span class="member-back-degree">B.E - CSE</span>
+                                </div>
+                            </div>
+                            <div class="member-back-links">
+                                <a href="https://portholio-zeta.vercel.app/#" class="member-back-link" target="_blank"
+                                    rel="noopener noreferrer">Portfolio</a>
+                                <a href="https://github.com/dharshan00814" class="member-back-link" target="_blank"
+                                    rel="noopener noreferrer">GitHub</a>
+                                <a href="https://www.linkedin.com/in/dharshan-jm" class="member-back-link"
+                                    target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tharun Krishna -->
+            <div class="member-card" role="button" tabindex="0" data-name="Tharun Krishna" data-role="UI/UX Designer"
+                data-bio="Tharun creates intuitive and engaging user experiences through thoughtful design and research."
+                data-photo="https://i.postimg.cc/TP5Jj9Th/Whats-App-Image-2026-06-11-at-11-26-46-AM.jpg"
+                data-portfolio="#" data-github="#" data-linkedin="#" data-college="Stella Mary's College of Engineering"
+                data-degree="B.E - Computer Science And Engineering"
+                data-college-logo="https://i.postimg.cc/k5yLvDBC/download.png">
+                <div class="member-card-inner">
+                    <div class="member-card-front">
+                        <div class="member-photo">
+                            <img src="https://i.postimg.cc/TP5Jj9Th/Whats-App-Image-2026-06-11-at-11-26-46-AM.jpg"
+                                alt="Tharun Krishna"
+                                onerror="this.parentElement.innerHTML='<div class=\'member-photo-placeholder\'>🎨</div>'">
+                        </div>
+                        <div class="member-info">
+                            <div class="member-name">Tharun Krishna</div>
+                            <div class="member-role">UI/UX Designer</div>
+                            <div class="member-skills">
+                                <span class="skill-tag">Figma</span>
+                                <span class="skill-tag">UI Design</span>
+                                <span class="skill-tag">UX Research</span>
+                                <span class="skill-tag">Prototyping</span>
+                                <span class="skill-tag">Design Systems</span>
+                                <span class="skill-tag">Motion</span>
+                                <span class="skill-tag">Branding</span>
+                                <span class="skill-tag">Framer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="member-card-back">
+                        <div class="member-back-content">
+                            <h4>About Tharun Krishna</h4>
+                            <p class="member-back-bio">Tharun creates intuitive and engaging user experiences through
+                                thoughtful design and research.</p>
+                            <div class="member-back-edu">
+                                <img src="https://i.postimg.cc/k5yLvDBC/download.png"
+                                    alt="Stella Mary's College of Engineering Logo">
+                                <div class="member-back-edu-text">
+                                    <span class="member-back-college">Stella Mary's College</span>
+                                    <span class="member-back-degree">B.E - CSE</span>
+                                </div>
+                            </div>
+                            <div class="member-back-links">
+                                <a href="#" class="member-back-link" target="_blank"
+                                    rel="noopener noreferrer">Portfolio</a>
+                                <a href="#" class="member-back-link" target="_blank"
+                                    rel="noopener noreferrer">GitHub</a>
+                                <a href="#" class="member-back-link" target="_blank"
+                                    rel="noopener noreferrer">LinkedIn</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mohammad Zarif -->
+            <div class="member-card" role="button" tabindex="0" data-name="Mohammad Zarif" data-role="App Developer"
+                data-bio="Mohammad is a passionate app developer with a keen eye for detail and a love for creating seamless user experiences."
+                data-photo="https://i.postimg.cc/1zWvJd1C/zarif.jpg" data-portfolio="#" data-github="#"
+                data-linkedin="#" data-college="Stella Mary's College of Engineering"
+                data-degree="B.E - Computer Science And Engineering"
+                data-college-logo="https://i.postimg.cc/k5yLvDBC/download.png">
+                <div class="member-card-inner">
+                    <div class="member-card-front">
+                        <div class="member-photo">
+                            <img src="https://i.postimg.cc/1zWvJd1C/zarif.jpg" alt="Mohammad Zarif"
+                                onerror="this.parentElement.innerHTML='<div class=\'member-photo-placeholder\'>📱</div>'">
+                        </div>
+                        <div class="member-info">
+                            <div class="member-name">Mohammad Zarif</div>
+                            <div class="member-role">App Developer</div>
+                            <div class="member-skills">
+                                <span class="skill-tag">Flutter</span>
+                                <span class="skill-tag">React Native</span>
+                                <span class="skill-tag">Swift</span>
+                                <span class="skill-tag">Kotlin</span>
+                                <span class="skill-tag">Firebase</span>
+                                <span class="skill-tag">App Store</span>
+                                <span class="skill-tag">Push Notifications</span>
+                                <span class="skill-tag">Offline Mode</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="member-card-back">
+                        <div class="member-back-content">
+                            <h4>About Mohammad Zarif</h4>
+                            <p class="member-back-bio">Mohammad is a passionate app developer with a keen eye for detail
+                                and a love for creating seamless user experiences.</p>
+                            <div class="member-back-edu">
+                                <img src="https://i.postimg.cc/k5yLvDBC/download.png"
+                                    alt="Stella Mary's College of Engineering Logo">
+                                <div class="member-back-edu-text">
+                                    <span class="member-back-college">Stella Mary's College</span>
+                                    <span class="member-back-degree">B.E - CSE</span>
+                                </div>
+                            </div>
+                            <div class="member-back-links">
+                                <a href="#" class="member-back-link" target="_blank"
+                                    rel="noopener noreferrer">Portfolio</a>
+                                <a href="#" class="member-back-link" target="_blank"
+                                    rel="noopener noreferrer">GitHub</a>
+                                <a href="#" class="member-back-link" target="_blank"
+                                    rel="noopener noreferrer">LinkedIn</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process">
+        <div class="section-label">// How we work</div>
+        <h2 class="section-title">From brief to launch in four phases.</h2>
+        <p class="section-sub">A clear, collaborative process that keeps you informed and in control at every step.</p>
+        <div class="process-steps">
+            <div class="process-step">
+                <div class="step-num">1</div>
+                <h4>Discovery</h4>
+                <p>We dig into your goals, users, and constraints — then define exactly what we're building and why.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-num">2</div>
+                <h4>Design</h4>
+                <p>Wireframes, prototypes, and a polished design system — validated with real users before a line of
+                    code is written.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-num">3</div>
+                <h4>Build</h4>
+                <p>Two-week sprints with live demos. You see progress every fortnight — no disappearing acts.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-num">4</div>
+                <h4>Launch & Grow</h4>
+                <p>Deploy, monitor, iterate. We stay on after launch to help you scale what's working.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="cta-banner" id="contact">
+        <h2>Ready to build something great?</h2>
+        <p>Tell us about your project — we'll get back within 24 hours.</p>
+        <a href="mailto:team.hynastudio@gmail.com" class="btn-white">Start a conversation →</a>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-top">
+            <div class="footer-brand">
+                <a href="#" class="nav-logo">
+                    <img src="logo.png" class="logo-img" alt="Hyna Studio Logo">
+                    <div class="logo-text">
+                        <span class="logo-main" style="color: #ffffff;">Hyna Studio</span>
+                        <span class="logo-sub" style="color: rgba(255, 255, 255, 0.45);">Tech & Experiences</span>
+                    </div>
+                </a>
+                <p>A full-spectrum digital studio building products that matter.</p>
+            </div>
+            <div class="footer-links">
+                <h5>Services</h5>
+                <ul>
+                    <li><a href="#services">Web Development</a></li>
+                    <li><a href="#services">App Development</a></li>
+                    <li><a href="#services">UI / UX Design</a></li>
+                    <li><a href="#services">Cloud & DevOps</a></li>
+                    <li><a href="#services">SaaS Products</a></li>
+                    <li><a href="#services">Data Platform Engineering</a></li>
+                    <li><a href="#services">Solution Architecture</a></li>
+                    <li><a href="#services">Cloud & IaC</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h5>Studio</h5>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#process">Process</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h5>Contact</h5>
+                <ul>
+                    <li><a href="mailto:team.hynastudio@gmail.com">team.hynastudio@gmail.com</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">GitHub</a></li>
+                    <li><a href="#">Twitter / X</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Hyna Studio. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Team Modal (injected content target) -->
+    <div class="modal-overlay" id="teamModalOverlay" aria-hidden="true">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="teamModalName">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <div class="modal-name" id="teamModalName">—</div>
+                    <div class="modal-role" id="teamModalRole">—</div>
+                </div>
+                <button class="modal-close" type="button" id="teamModalClose" aria-label="Close modal">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-grid">
+                    <div class="modal-photo" aria-hidden="true">
+                        <img id="teamModalPhoto" alt="" src=""
+                            onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend', '<div class=\'member-photo-placeholder\'>👤</div>')">
+                    </div>
+                    <div>
+                        <div class="modal-bio" id="teamModalBio">—</div>
+                        <div class="modal-links" id="teamModalLinks"></div>
+                        <div class="modal-education" id="teamModalEducation"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            const overlay = document.getElementById('teamModalOverlay');
+            const closeBtn = document.getElementById('teamModalClose');
+
+            const nameEl = document.getElementById('teamModalName');
+            const roleEl = document.getElementById('teamModalRole');
+            const photoEl = document.getElementById('teamModalPhoto');
+            const bioEl = document.getElementById('teamModalBio');
+            const linksEl = document.getElementById('teamModalLinks');
+            const educationEl = document.getElementById('teamModalEducation');
+
+            const cards = Array.from(document.querySelectorAll('#team .member-card[role="button"]'));
+
+            let lastFocused = null;
+
+            function escapeHtml(str) {
+                return String(str)
+                    .replaceAll('&', '&amp;')
+                    .replaceAll('<', '<')
+                    .replaceAll('>', '>')
+                    .replaceAll('"', '"')
+                    .replaceAll("'", '&#039;');
+            }
+
+            function buildLink(label, href) {
+                const safeLabel = escapeHtml(label);
+                const safeHref = escapeHtml(href);
+                return `
                     <a class="modal-link" href="${safeHref}" target="_blank" rel="noopener noreferrer">
                         ${safeLabel} →
                     </a>
                 `;
-        }
+            }
 
-        function openModal(card) {
-            lastFocused = document.activeElement;
+            function openModal(card) {
+                lastFocused = document.activeElement;
 
-            const name = card.getAttribute('data-name') || '';
-            const role = card.getAttribute('data-role') || '';
-            const bio = card.getAttribute('data-bio') || '';
-            const photo = card.getAttribute('data-photo') || '';
-            const portfolio = card.getAttribute('data-portfolio') || '#';
-            const github = card.getAttribute('data-github') || '#';
-            const linkedin = card.getAttribute('data-linkedin') || '#';
-            const college = card.getAttribute('data-college') || '';
-            const degree = card.getAttribute('data-degree') || '';
-            const collegeLogo = card.getAttribute('data-college-logo') || '';
+                const name = card.getAttribute('data-name') || '';
+                const role = card.getAttribute('data-role') || '';
+                const bio = card.getAttribute('data-bio') || '';
+                const photo = card.getAttribute('data-photo') || '';
+                const portfolio = card.getAttribute('data-portfolio') || '#';
+                const github = card.getAttribute('data-github') || '#';
+                const linkedin = card.getAttribute('data-linkedin') || '#';
+                const college = card.getAttribute('data-college') || '';
+                const degree = card.getAttribute('data-degree') || '';
+                const collegeLogo = card.getAttribute('data-college-logo') || '';
 
-            nameEl.textContent = name;
-            roleEl.textContent = role;
-            bioEl.textContent = bio;
+                nameEl.textContent = name;
+                roleEl.textContent = role;
+                bioEl.textContent = bio;
 
-            // Reset photo
-            photoEl.style.display = '';
-            photoEl.src = photo;
-            photoEl.alt = name;
+                // Reset photo
+                photoEl.style.display = '';
+                photoEl.src = photo;
+                photoEl.alt = name;
 
-            // Reset placeholder if previous error inserted it
-            const photoContainer = photoEl.parentElement;
-            Array.from(photoContainer.querySelectorAll('.member-photo-placeholder')).forEach(n => n.remove());
+                // Reset placeholder if previous error inserted it
+                const photoContainer = photoEl.parentElement;
+                Array.from(photoContainer.querySelectorAll('.member-photo-placeholder')).forEach(n => n.remove());
 
-            // Links
-            const items = [];
-            if (portfolio && portfolio !== '#') items.push(buildLink('Portfolio', portfolio));
-            else items.push(buildLink('Portfolio', portfolio));
-            if (github && github !== '#') items.push(buildLink('GitHub', github));
-            else items.push(buildLink('GitHub', github));
-            if (linkedin && linkedin !== '#') items.push(buildLink('LinkedIn', linkedin));
-            else items.push(buildLink('LinkedIn', linkedin));
+                // Links
+                const items = [];
+                if (portfolio && portfolio !== '#') items.push(buildLink('Portfolio', portfolio));
+                else items.push(buildLink('Portfolio', portfolio));
+                if (github && github !== '#') items.push(buildLink('GitHub', github));
+                else items.push(buildLink('GitHub', github));
+                if (linkedin && linkedin !== '#') items.push(buildLink('LinkedIn', linkedin));
+                else items.push(buildLink('LinkedIn', linkedin));
 
-            linksEl.innerHTML = items.join('');
+                linksEl.innerHTML = items.join('');
 
-            // Render Education Details
-            if (college) {
-                educationEl.style.display = 'flex';
-                educationEl.innerHTML = `
+                // Render Education Details
+                if (college) {
+                    educationEl.style.display = 'flex';
+                    educationEl.innerHTML = `
                         ${collegeLogo ? `<img class="modal-education-logo" src="${escapeHtml(collegeLogo)}" alt="${escapeHtml(college)} Logo">` : ''}
                         <div class="modal-education-info">
                             <div class="modal-education-college">${escapeHtml(college)}</div>
                             <div class="modal-education-degree">${escapeHtml(degree)}</div>
                         </div>
                     `;
-            } else {
-                educationEl.style.display = 'none';
-                educationEl.innerHTML = '';
-            }
-
-            overlay.classList.add('is-open');
-            overlay.setAttribute('aria-hidden', 'false');
-            document.body.style.overflow = 'hidden';
-
-            // Focus close button for accessibility
-            closeBtn.focus();
-        }
-
-        function closeModal() {
-            overlay.classList.remove('is-open');
-            overlay.setAttribute('aria-hidden', 'true');
-            document.body.style.overflow = '';
-
-            if (lastFocused && typeof lastFocused.focus === 'function') {
-                lastFocused.focus();
-            }
-        }
-
-        // Open handlers
-        cards.forEach(card => {
-            card.addEventListener('click', (e) => {
-                if (e.target.closest('.member-card-front')) {
-                    openModal(card);
+                } else {
+                    educationEl.style.display = 'none';
+                    educationEl.innerHTML = '';
                 }
-            });
-            card.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    openModal(card);
+
+                overlay.classList.add('is-open');
+                overlay.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+
+                // Focus close button for accessibility
+                closeBtn.focus();
+            }
+
+            function closeModal() {
+                overlay.classList.remove('is-open');
+                overlay.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+
+                if (lastFocused && typeof lastFocused.focus === 'function') {
+                    lastFocused.focus();
                 }
-            });
-        });
-
-        // Close handlers
-        closeBtn.addEventListener('click', closeModal);
-
-        overlay.addEventListener('click', (e) => {
-            if (e.target === overlay) closeModal();
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && overlay.classList.contains('is-open')) {
-                closeModal();
-            }
-        });
-
-        // Scroll entrance animations for team cards
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const teamObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    const cardIndex = cards.indexOf(entry.target);
-                    setTimeout(() => {
-                        entry.target.classList.add('is-visible');
-                    }, cardIndex >= 0 ? (cardIndex % 3) * 150 : 0);
-                    teamObserver.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        cards.forEach(card => {
-            teamObserver.observe(card);
-        });
-
-
-
-        // ── AGENT STUDIO SLIDE: Scroll reveal animation ──
-        (function () {
-            const slide = document.getElementById('agent-studio-slide');
-            if (!slide) return;
-
-            const imgPanel = slide.querySelector('.agent-studio-image-panel');
-            const contentPanel = slide.querySelector('.agent-studio-content-panel');
-
-            // Initial hidden state
-            if (imgPanel) {
-                imgPanel.style.opacity = '0';
-                imgPanel.style.transform = 'translateX(-40px)';
-                imgPanel.style.transition = 'opacity 0.9s ease, transform 0.9s ease';
-            }
-            if (contentPanel) {
-                contentPanel.style.opacity = '0';
-                contentPanel.style.transform = 'translateX(40px)';
-                contentPanel.style.transition = 'opacity 0.9s ease 0.15s, transform 0.9s ease 0.15s';
             }
 
-            const agentObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        if (imgPanel) {
-                            imgPanel.style.opacity = '1';
-                            imgPanel.style.transform = 'translateX(0)';
-                        }
-                        if (contentPanel) {
-                            contentPanel.style.opacity = '1';
-                            contentPanel.style.transform = 'translateX(0)';
-                        }
-                        agentObserver.unobserve(entry.target);
+            // Open handlers
+            cards.forEach(card => {
+                card.addEventListener('click', (e) => {
+                    if (e.target.closest('.member-card-front')) {
+                        openModal(card);
                     }
                 });
-            }, { threshold: 0.15 });
+                card.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        openModal(card);
+                    }
+                });
+            });
 
-            agentObserver.observe(slide);
+            // Close handlers
+            closeBtn.addEventListener('click', closeModal);
+
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) closeModal();
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && overlay.classList.contains('is-open')) {
+                    closeModal();
+                }
+            });
+
+            // Scroll entrance animations for team cards
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const teamObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const cardIndex = cards.indexOf(entry.target);
+                        setTimeout(() => {
+                            entry.target.classList.add('is-visible');
+                        }, cardIndex >= 0 ? (cardIndex % 3) * 150 : 0);
+                        teamObserver.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            cards.forEach(card => {
+                teamObserver.observe(card);
+            });
+
+
+
+            // ── AGENT STUDIO SLIDE: Scroll reveal animation ──
+            (function () {
+                const slide = document.getElementById('agent-studio-slide');
+                if (!slide) return;
+
+                const imgPanel = slide.querySelector('.agent-studio-image-panel');
+                const contentPanel = slide.querySelector('.agent-studio-content-panel');
+
+                // Initial hidden state
+                if (imgPanel) {
+                    imgPanel.style.opacity = '0';
+                    imgPanel.style.transform = 'translateX(-40px)';
+                    imgPanel.style.transition = 'opacity 0.9s ease, transform 0.9s ease';
+                }
+                if (contentPanel) {
+                    contentPanel.style.opacity = '0';
+                    contentPanel.style.transform = 'translateX(40px)';
+                    contentPanel.style.transition = 'opacity 0.9s ease 0.15s, transform 0.9s ease 0.15s';
+                }
+
+                const agentObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            if (imgPanel) {
+                                imgPanel.style.opacity = '1';
+                                imgPanel.style.transform = 'translateX(0)';
+                            }
+                            if (contentPanel) {
+                                contentPanel.style.opacity = '1';
+                                contentPanel.style.transform = 'translateX(0)';
+                            }
+                            agentObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.15 });
+
+                agentObserver.observe(slide);
+            })();
+
+            // TiltedCard interactive mouse movement
+            document.querySelectorAll('.tilted-card-figure').forEach(card => {
+                const inner = card.querySelector('.tilted-card-inner');
+                const rotateAmplitude = 20;
+                const scaleOnHover = 1.1;
+
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const offsetX = e.clientX - rect.left - rect.width / 2;
+                    const offsetY = e.clientY - rect.top - rect.height / 2;
+
+                    const rotationX = (offsetY / (rect.height / 2)) * -rotateAmplitude;
+                    const rotationY = (offsetX / (rect.width / 2)) * rotateAmplitude;
+
+                    inner.style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg) scale(${scaleOnHover})`;
+                });
+
+                card.addEventListener('mouseenter', () => {
+                    inner.style.transform = `scale(${scaleOnHover})`;
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    inner.style.transform = `rotateX(0deg) rotateY(0deg) scale(1)`;
+                });
+            });
+
+            // Initialize Lucide Icons
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+
+            // Animations toggle (removed from navbar)
         })();
-
-        // TiltedCard interactive mouse movement
-        document.querySelectorAll('.tilted-card-figure').forEach(card => {
-            const inner = card.querySelector('.tilted-card-inner');
-            const rotateAmplitude = 20;
-            const scaleOnHover = 1.1;
-
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const offsetX = e.clientX - rect.left - rect.width / 2;
-                const offsetY = e.clientY - rect.top - rect.height / 2;
-
-                const rotationX = (offsetY / (rect.height / 2)) * -rotateAmplitude;
-                const rotationY = (offsetX / (rect.width / 2)) * rotateAmplitude;
-
-                inner.style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg) scale(${scaleOnHover})`;
-            });
-
-            card.addEventListener('mouseenter', () => {
-                inner.style.transform = `scale(${scaleOnHover})`;
-            });
-
-            card.addEventListener('mouseleave', () => {
-                inner.style.transform = `rotateX(0deg) rotateY(0deg) scale(1)`;
-            });
-        });
-
-        // Initialize Lucide Icons
-        if (window.lucide) {
-            lucide.createIcons();
-        }
-
-        // Animations toggle (removed from navbar)
-    })();
-</script>
-<script src="cookie-consent.js" defer></script>
+    </script>
+    <script src="cookie-consent.js" defer></script>
 
 </body>
 
