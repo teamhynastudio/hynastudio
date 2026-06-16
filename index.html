@@ -156,6 +156,82 @@
             font-weight: 500;
             text-transform: uppercase;
         }
+        /* ── SERVICES DROPDOWN ── */
+.nav-item-dropdown {
+    position: relative;
+}
+
+.nav-link-has-dropdown {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    cursor: pointer;
+}
+
+.nav-arrow {
+    font-size: 0.7rem;
+    transition: transform 0.2s ease;
+    display: inline-block;
+}
+
+.nav-item-dropdown:hover .nav-arrow {
+    transform: rotate(180deg);
+}
+
+.nav-dropdown {
+    position: absolute;
+    top: calc(100% + 1.2rem);
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    width: 240px;
+    background: rgba(12, 19, 32, 0.92);
+    backdrop-filter: blur(24px) saturate(190%);
+    -webkit-backdrop-filter: blur(24px) saturate(190%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    padding: 0.5rem;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+    z-index: 200;
+}
+
+.nav-item-dropdown:hover .nav-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.nav-dropdown::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid rgba(255, 255, 255, 0.12);
+}
+
+.nav-dropdown a {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 0.9rem;
+    border-radius: 8px;
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-size: 0.82rem !important;
+    font-weight: 500 !important;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+}
+
+.nav-dropdown a:hover {
+    background: rgba(79, 63, 240, 0.25);
+    color: #ffffff !important;
+}
 
         .nav-links {
             display: flex;
@@ -2666,12 +2742,24 @@
                 <span class="logo-sub">Democratizing Entrepreneurship</span>
             </div>
         </a>
-        <ul class="nav-links">
-            <li><a href="#services">Services</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#team">Team</a></li>
-            <li><a href="#process">Process</a></li>
-        </ul>
+    <ul class="nav-links">
+        <li class="nav-item-dropdown">
+            <a href="#hyna-services" class="nav-link-has-dropdown">Services <span class="nav-arrow">▾</span></a>
+                 <div class="nav-dropdown">
+                   <a href="#hyna-services">🌐 Web Development</a>
+                   <a href="#hyna-services">📱 App Development</a>
+                  <a href="#hyna-services">🎨 UI / UX Design</a>
+                  <a href="#hyna-services">☁️ Cloud & DevOps</a>
+                   <a href="#hyna-services">🚀 SaaS Products</a>
+                   <a href="#hyna-services">📊 Data Platform Engineering</a>
+                     <a href="#hyna-services">🏗️ Solution Architecture</a>
+                     <a href="#hyna-services">⚙️ Cloud & IaC</a>
+                  </div>
+         </li>
+         <li><a href="#about">About</a></li>
+         <li><a href="#team">Team</a></li>
+         <li><a href="#process">Process</a></li>
+    </ul>
         <a href="#agent-studio-slide" class="nav-cta"
             style="color: #0a0a14; font-weight: 800; background: #a78bfa; box-shadow: 0 0 15px rgba(167, 139, 250, 0.4); border: none;">Agent
             Studio ✦</a>
