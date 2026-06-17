@@ -379,19 +379,19 @@
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="fullName">Full Name <span class="req">*</span></label>
-                        <input type="text" id="fullName" name="fullName" placeholder="John Smith" required>
+                        <input type="text" id="fullName" name="full_name" placeholder="John Smith" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email Address <span class="req">*</span></label>
-                        <input type="email" id="email" name="email" placeholder="john@company.com" required>
+                        <input type="email" id="email" name="email_address" placeholder="john@company.com" required>
                     </div>
                     <div class="form-group">
                         <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210">
+                        <input type="tel" id="phone" name="phone_number" placeholder="+91 98765 43210">
                     </div>
                     <div class="form-group">
-                        <label for="company">Company / Startup Name(optional)</label>
-                        <input type="text" id="company" name="company" placeholder="Acme Inc.">
+                        <label for="company">Company / Startup Name</label>
+                        <input type="text" id="company" name="company_name" placeholder="Acme Inc.">
                     </div>
                 </div>
 
@@ -402,7 +402,7 @@
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="projectType">Type of Project <span class="req">*</span></label>
-                        <select id="projectType" name="projectType" required>
+                        <select id="projectType" name="project_type" required>
                             <option value="" disabled selected>Select a type…</option>
                             <option>Website / Landing Page</option>
                             <option>Web Application</option>
@@ -454,7 +454,7 @@
 
                 <div class="form-group" style="margin-top:1.25rem;">
                     <label for="description">Project Description <span class="req">*</span></label>
-                    <textarea id="description" name="description" rows="5"
+                    <textarea id="description" name="project_description" rows="5"
                         placeholder="Describe your project, goals, target audience, any references you like…" required></textarea>
                 </div>
 
@@ -486,8 +486,9 @@
             </div>
         </div>
     </div>
+    <script type="module">
+        import { supabase } from './supabaseClient.js';
 
-    <script>
         // Checkbox highlight toggle
         document.querySelectorAll('.check-item').forEach(label => {
             const cb = label.querySelector('input[type="checkbox"]');
@@ -497,45 +498,82 @@
         });
 
         // Form submission
-        document.getElementById('project-form').addEventListener('submit', async function (e) {
-            e.preventDefault();
+        document.getElementById('project-form').addEventListener('submit', async function (event) {
+            event.preventDefault();
 
+            const form = event.target;
+            const formData = new FormData(form);
+            
             const btn = document.getElementById('submit-btn');
             btn.textContent = 'Sending…';
             btn.disabled = true;
 
-            // Collect data
-            const data = {
-                fullName: document.getElementById('fullName').value.trim(),
-                email: document.getElementById('email').value.trim(),
-                phone: document.getElementById('phone').value.trim(),
-                company: document.getElementById('company').value.trim(),
-                projectType: document.getElementById('projectType').value,
-                budget: document.getElementById('budget').value,
-                timeline: document.getElementById('timeline').value,
-                stage: document.getElementById('stage').value,
-                services: [...document.querySelectorAll('input[name="services"]:checked')].map(c => c.value),
-                description: document.getElementById('description').value.trim(),
-                referral: document.getElementById('referral').value,
-            };
+            const companyName = document.getElementById('company').value;
+            const estimatedBudget = document.getElementById('budget').value;
+            const desiredTimeline = document.getElementById('timeline').value;
+            const currentStage = document.getElementById('stage').value;
+            const referralSource = document.getElementById('referral').value;
 
-            // Basic validation
-            if (!data.fullName || !data.email || !data.projectType || !data.description) {
-                alert('Please fill in all required fields.');
+            console.log("Payload data:", {
+                companyName,
+                estimatedBudget,
+                desiredTimeline,
+                currentStage,
+                referralSource
+            });
+
+            try {
+                // Step 1: Upsert into 'leads' table and get the new ID
+                const { data: leadData, error: leadError } = await supabase
+                    .from('leads')
+                    .upsert(
+                        {
+                            full_name: formData.get('full_name'),
+                            email_address: formData.get('email_address'),
+                            phone_number: formData.get('phone_number'),
+                            company_name: companyName,
+                            updated_at: new Date().toISOString()
+                        },
+                        { onConflict: 'email_address' }
+                    )
+                    .select();
+
+                if (leadError) {
+                    console.error('Error upserting lead:', leadError);
+                    throw leadError;
+                }
+                const leadId = leadData[0].id;
+
+                // Step 2: Insert into project_briefs table
+                const { error: briefError } = await supabase
+                    .from('project_briefs')
+                    .insert({
+                        lead_id: leadId,
+                        project_type: formData.get('project_type'),
+                        project_description: formData.get('project_description'),
+                        estimated_budget: estimatedBudget,
+                        desired_timeline: desiredTimeline,
+                        current_stage: currentStage,
+                        referral_source: referralSource
+                    });
+
+                if (briefError) {
+                    throw briefError;
+                }
+
+                // Step 3: Show success state
+                document.getElementById('project-form').style.display = 'none';
+                document.getElementById('success-banner').style.display = 'block';
+
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                alert('There was an error submitting your project brief. Please try again.');
                 btn.innerHTML = 'Send Project Brief <span>→</span>';
                 btn.disabled = false;
-                return;
             }
-
-            // Simulate submission (replace with your backend / Formspree / EmailJS)
-            await new Promise(r => setTimeout(r, 1200));
-
-            document.getElementById('project-form').style.display = 'none';
-            document.getElementById('success-banner').style.display = 'block';
         });
     </script>
     <script src="cookie-consent.js" defer></script>
-<script type="module" src="./supabaseClient.js"></script>
 </body>
 
 </html>
