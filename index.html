@@ -12,6 +12,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
+        <!-- Devicon CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <style>
         *,
         *::before,
@@ -673,6 +676,24 @@
             line-height: 1.7;
             font-size: 1rem;
         }
+        .service-icon i,
+.tech-icon i {
+    font-size: 42px;
+    color: #00d4ff;
+    transition: all 0.3s ease;
+}
+
+.service-card:hover .service-icon i,
+.tech-card:hover .tech-icon i {
+    transform: scale(1.15) rotate(5deg);
+}
+
+.service-icon,
+.tech-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
         /* ── SERVICES ── */
         #services {
@@ -745,6 +766,14 @@
             color: rgba(247, 246, 242, 0.55);
             line-height: 1.65;
         }
+        .service-icon i {
+              font-size: 42px;
+              color: #ff9900;
+        }
+        .service-icon i {
+    font-size: 42px;
+    color: #00d4ff;
+}
 
         /* ── ABOUT ── */
         #about {
@@ -3082,31 +3111,41 @@
             <div class="hs-grid">
 
                 <div class="hs-card">
-                    <div class="hs-icon">🌐</div>
+                    <span class="service-icon">
+                           <i class="devicon-html5-plain colored"></i>
+                    </span>
                     <h3>Web Development</h3>
                     <p>Modern, scalable websites and web applications optimized for performance.</p>
                 </div>
 
                 <div class="hs-card">
-                    <div class="hs-icon">📱</div>
+                    <span class="service-icon">
+                           <i class="devicon-flutter-plain colored"></i>
+                    </span>
                     <h3>App Development</h3>
                     <p>Native and cross-platform mobile applications for iOS and Android.</p>
                 </div>
 
                 <div class="hs-card">
-                    <div class="hs-icon">🎨</div>
+                     <span class="service-icon">
+                            <i class="devicon-figma-plain colored"></i> 
+                     </span>          
                     <h3>UI / UX Design</h3>
                     <p>Beautiful user experiences crafted with modern design principles.</p>
                 </div>
 
                 <div class="hs-card">
-                    <div class="hs-icon">☁️</div>
+                    <span class="service-icon">
+                            <i class="fa-brands fa-aws"></i>
+                    </span>      
                     <h3>Cloud & DevOps</h3>
                     <p>AWS, Azure, Kubernetes, CI/CD pipelines and infrastructure automation.</p>
                 </div>
 
                 <div class="hs-card">
-                    <div class="hs-icon">🚀</div>
+                    <span class="service-icon">
+                           <i class="devicon-nodejs-plain colored"></i>
+                    </span>
                     <h3>SaaS Products</h3>
                     <p>End-to-end SaaS development — multi-tenant architecture, billing integrations, admin
                         dashboards,
@@ -3114,14 +3153,18 @@
                 </div>
 
                 <div class="hs-card">
-                    <div class="hs-icon">📊</div>
+                    <span class="service-icon">
+                           <i class="fa-solid fa-server"></i>
+                    </span>
                     <h3>Data Platform Engineering</h3>
                     <p>Scalable data pipelines, real-time analytics, data warehousing, and robust ETL/ELT processes
                         designed for data-driven decision making.</p>
                 </div>
 
                 <div class="hs-card">
-                    <div class="hs-icon">🏗️</div>
+                    <span class="service-icon">
+                            <i class="fa-solid fa-diagram-project"></i>
+                    </span>
                     <h3>Solution Architecture</h3>
                     <p>Robust, secure, and future-proof system design. We align technical infrastructure with
                         business
@@ -3129,7 +3172,9 @@
                 </div>
 
                 <div class="hs-card">
-                    <div class="hs-icon">⚙️</div>
+                    <span class="service-icon">
+                           <i class="devicon-azure-plain colored"></i>
+                    </span>
                     <h3>Cloud & IaC</h3>
                     <p>Automated provisioning and management of cloud resources. We use Terraform, Ansible, and
                         CloudFormation to ensure consistent environments.</p>
@@ -3262,7 +3307,7 @@
                 </div>
                 <div class="tech-card">
                     <span class="tech-icon">
-                           <i class="devicon-aws-plain colored"></i>
+                           <i class="fa-brands fa-aws"></i>
                     </span>
                     <h3>AWS</h3>
                 </div>
@@ -3285,7 +3330,9 @@
                     <h3>SQL</h3>
                 </div>
                 <div class="tech-card">
-                    <span class="tech-icon">🤖</span>
+                    <span class="tech-icon">
+                           <i class="fa-solid fa-brain"></i>
+                    </span>
                     <h3>Machine Learning</h3>
                     
                 </div>
@@ -3334,7 +3381,7 @@
                 </div>
                 <div class="tech-card">
                     <span class="tech-icon">
-                           <i class="devicon-aws-plain colored"></i>
+                          <i class="devicon-amazonwebservices-original colored"></i>
                     </span>
                     <h3>AWS</h3>
                 </div>
@@ -3352,7 +3399,7 @@
                 </div>
                 <div class="tech-card">
                     <span class="tech-icon">
-                           <i class="devicon-sqlite-plain colored"></i>
+                           <i class="fa-solid fa-database"></i>
                     </span>
                     <h3>SQL</h3>
                 </div>
@@ -3457,6 +3504,9 @@
             transition: opacity 0.3s ease;
 
             -webkit-mask:
+                linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+            mask:
                 linear-gradient(#fff 0 0) content-box,
                 linear-gradient(#fff 0 0);
 
