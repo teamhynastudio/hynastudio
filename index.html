@@ -3365,356 +3365,361 @@
     </section>
 
     <!-- TEAM -->
-    <section id="team">
+    <style>
+        .team-section {
+            padding: 100px 8%;
+            background: #f6f4f4;
+        }
+ .team-header {
+    max-width: 1200px;
+    margin: 0 auto 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* vertically aligns heading and subheading */
+    gap: 40px;
+}
+
+.team-header h2 {
+    flex: 1;
+    margin: 0;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: #1f1b3a;
+}
+
+.team-header h2 span {
+    display: block;
+    text-align: center; /* centers "Innovation Team" */
+}
+
+.team-header p {
+    flex: 1;
+    margin: 0;
+    max-width: 500px;
+    color: #8a8699;
+    font-size: 1rem;
+    text-align: right;
+}
+
+@media (max-width: 768px) {
+    .team-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .team-header h2 span,
+    .team-header p {
+        text-align: center;
+    }
+}
+.team-header h2 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: #1f1b3a;
+    margin: 0;
+    flex: 1;
+}
+.team-header p {
+    color: #8a8699;
+    font-size: 1rem;
+    margin: 0;
+    flex: 1;
+    text-align: right;
+    max-width: 500px;
+}
+
+.team-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 32px;
+}
+
+        .team-card {
+            --x: 50%;
+            --y: 50%;
+
+            position: relative;
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 40px 30px;
+            text-align: center;
+            overflow: hidden;
+
+            border: 1px solid rgba(255, 255, 255, 0.15);
+
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+            transition: all 0.35s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        .team-card::before {
+            content: "";
+            position: absolute;
+            inset: -2px;
+            border-radius: inherit;
+            padding: 2px;
+
+            background:
+                radial-gradient(circle at var(--x) var(--y),
+                    #c084fc 0%,
+                    #f472b6 30%,
+                    #38bdf8 60%,
+                    transparent 75%);
+
+            opacity: 0;
+            transition: opacity 0.3s ease;
+
+            -webkit-mask:
+                linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+
+            pointer-events: none;
+        }
+
+        .team-card:hover::before {
+            opacity: 1;
+        }
+
+        .team-avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(192, 132, 252, 0.8);
+
+            box-shadow:
+                0 0 10px rgba(192, 132, 252, 0.4),
+                0 0 20px rgba(56, 189, 248, 0.25);
+
+            margin-bottom: 24px;
+        }
+
+        .team-card h3 {
+            font-size: 1.7rem;
+            color: #2c1b4d;
+            margin-bottom: 8px;
+        }
+
+        .team-role {
+            display: block;
+            color: #666;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .team-description {
+            color: #7a7a7a;
+            line-height: 1.7;
+            margin-bottom: 24px;
+            min-height: 110px;
+        }
+
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+        }
+
+        .team-social a {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #f2f2f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2c1b4d;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .team-social a:hover {
+            background: #2c1b4d;
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .team-section {
+                padding: 80px 5%;
+            }
+
+            .team-description {
+                min-height: auto;
+            }
+        }
+    </style>
+
+    <section id="team" class="team-section">
+
         <div class="team-header">
-            <div>
-                <div class="section-label">// The team</div>
-                <h2 class="section-title">Six guys, one studio.</h2>
-                <p class="section-sub">Each member brings deep expertise in their domain — together we cover
-                    everything
-                    your product needs.</p>
-            </div>
+            <h2>Our Leadership & Innovation Team</h2>
+            <p>Passionate experts transforming ideas into impactful solutions through design, technology, and
+                collaboration</p>
         </div>
+
         <div class="team-grid">
 
-            <!-- Member 1 -->
-            <div class="member-card" role="button" tabindex="0" data-name="Asthamil" data-role="Web Developer"
-                data-bio="Asthamil leads our engineering efforts—building scalable web experiences with clean architecture, strong performance, and thoughtful UX."
-                data-photo="https://i.postimg.cc/Jnwtf3ZZ/Whats-App-Image-2026-02-20-at-7-00-57-PM.jpg"
-                data-portfolio="#" data-github="#" data-linkedin="#" data-college="Stella Mary's College of Engineering"
-                data-degree="B.E - Computer Science And Engineering"
-                data-college-logo="https://i.postimg.cc/k5yLvDBC/download.png">
-                <div class="member-card-inner">
-                    <div class="member-card-front">
-                        <div class="member-photo">
-                            <img src="https://i.postimg.cc/Jnwtf3ZZ/Whats-App-Image-2026-02-20-at-7-00-57-PM.jpg"
-                                alt="Web Developer"
-                                onerror="this.parentElement.innerHTML='<div class=\'member-photo-placeholder\'>👨‍💻</div>'">
-                        </div>
-                        <div class="member-info">
-                            <div class="member-name">Asthamil</div>
-                            <div class="member-role">Web Developer</div>
-                            <div class="member-skills">
-                                <span class="skill-tag">React</span>
-                                <span class="skill-tag">Next.js</span>
-                                <span class="skill-tag">TypeScript</span>
-                                <span class="skill-tag">Node.js</span>
-                                <span class="skill-tag">PostgreSQL</span>
-                                <span class="skill-tag">REST APIs</span>
-                                <span class="skill-tag">GraphQL</span>
-                                <span class="skill-tag">Tailwind</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="member-card-back">
-                        <div class="member-back-content">
-                            <h4>About Asthamil</h4>
-                            <p class="member-back-bio">Asthamil leads our engineering efforts—building scalable web
-                                experiences with clean architecture, strong performance, and thoughtful UX.</p>
-                            <div class="member-back-edu">
-                                <img src="https://i.postimg.cc/k5yLvDBC/download.png"
-                                    alt="Stella Mary's College of Engineering Logo">
-                                <div class="member-back-edu-text">
-                                    <span class="member-back-college">Stella Mary's College</span>
-                                    <span class="member-back-degree">B.E - CSE</span>
-                                </div>
-                            </div>
-                            <div class="member-back-links">
-                                <a href="#" class="member-back-link" target="_blank"
-                                    rel="noopener noreferrer">Portfolio</a>
-                                <a href="#" class="member-back-link" target="_blank"
-                                    rel="noopener noreferrer">GitHub</a>
-                                <a href="#" class="member-back-link" target="_blank"
-                                    rel="noopener noreferrer">LinkedIn</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <!-- Vignesh -->
-            <div class="member-card" role="button" tabindex="0" data-name="Vignesh" data-role="Cloud Architect"
-                data-bio="Vignesh designs reliable cloud platforms—focusing on scalability, security, cost efficiency, and operational excellence across AWS/GCP/Azure."
-                data-photo="https://i.postimg.cc/mkg4JhXX/IMG-33081.jpg"
-                data-portfolio="https://vigneshvl-dev.github.io/PORTFOLIO//"
-                data-github="https://github.com/vigneshvl-dev"
-                data-linkedin="https://www.linkedin.com/in/vigneshvl-dev/"
-                data-college="Stella Mary's College of Engineering" data-degree="B.E - Computer Science And Engineering"
-                data-college-logo="https://i.postimg.cc/k5yLvDBC/download.png">
-                <div class="member-card-inner">
-                    <div class="member-card-front">
-                        <div class="member-photo">
-                            <img src="https://i.postimg.cc/mkg4JhXX/IMG-33081.jpg" alt="Vignesh"
-                                onerror="this.parentElement.innerHTML='<div class=\'member-photo-placeholder\'>☁️</div>'">
-                        </div>
-                        <div class="member-info">
-                            <div class="member-name">Vignesh</div>
-                            <div class="member-role">Cloud Architect</div>
-                            <div class="member-skills">
-                                <span class="skill-tag">AWS</span>
-                                <span class="skill-tag">GCP</span>
-                                <span class="skill-tag">Azure</span>
-                                <span class="skill-tag">Kubernetes</span>
-                                <span class="skill-tag">Terraform</span>
-                                <span class="skill-tag">Docker</span>
-                                <span class="skill-tag">CI/CD</span>
-                                <span class="skill-tag">Serverless</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="member-card-back">
-                        <div class="member-back-content">
-                            <h4>About Vignesh</h4>
-                            <p class="member-back-bio">Vignesh designs reliable cloud platforms—focusing on
-                                scalability,
-                                security, cost efficiency, and operational excellence across AWS/GCP/Azure.</p>
-                            <div class="member-back-edu">
-                                <img src="https://i.postimg.cc/k5yLvDBC/download.png"
-                                    alt="Stella Mary's College of Engineering Logo">
-                                <div class="member-back-edu-text">
-                                    <span class="member-back-college">Stella Mary's College</span>
-                                    <span class="member-back-degree">B.E - CSE</span>
-                                </div>
-                            </div>
-                            <div class="member-back-links">
-                                <a href="https://vigneshvl-dev.github.io/PORTFOLIO//" class="member-back-link"
-                                    target="_blank" rel="noopener noreferrer">Portfolio</a>
-                                <a href="https://github.com/vigneshvl-dev" class="member-back-link" target="_blank"
-                                    rel="noopener noreferrer">GitHub</a>
-                                <a href="https://www.linkedin.com/in/vigneshvl-dev/" class="member-back-link"
-                                    target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                            </div>
-                        </div>
-                    </div>
+            <div class="team-card">
+                <img src="https://i.postimg.cc/mkg4JhXX/IMG-33081.jpg" alt="Vignesh" class="team-avatar">
+
+                <h3>Vignesh</h3>
+                <span class="team-role">Cloud Architect</span>
+
+                <p class="team-description">
+                    Designs reliable cloud platforms focused on scalability, security,
+                    cost efficiency, and operational excellence.
+                </p>
+
+                <div class="team-social">
+                    <a href="https://vigneshvl-dev.github.io/PORTFOLIO/" target="_blank" title="Portfolio">
+                        <i class="fas fa-globe"></i>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/vigneshvl-dev/" target="_blank" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+
+                    <a href="https://github.com/vigneshvl-dev" target="_blank" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
                 </div>
             </div>
 
             <!-- Jashwin -->
-            <div class="member-card" role="button" tabindex="0" data-name="Jashwin" data-role="Full Stack Developer"
-                data-bio="Jashwin builds end-to-end systems—responsive frontends, robust APIs, and data-driven backends—focused on reliability and clean developer experience."
-                data-photo="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" data-portfolio="#"
-                data-github="#" data-linkedin="#" data-college="Stella Mary's College of Engineering"
-                data-degree="B.E - Computer Science And Engineering"
-                data-college-logo="https://i.postimg.cc/k5yLvDBC/download.png">
-                <div class="member-card-inner">
-                    <div class="member-card-front">
-                        <div class="member-photo">
-                            <img src="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" alt="Jashwin"
-                                onerror="this.parentElement.innerHTML='<div class=\'member-photo-placeholder\'>🧑‍💻</div>'">
-                        </div>
-                        <div class="member-info">
-                            <div class="member-name">Jashwin</div>
-                            <div class="member-role">Full Stack Developer</div>
-                            <div class="member-skills">
-                                <span class="skill-tag">Vue.js</span>
-                                <span class="skill-tag">Nuxt.js</span>
-                                <span class="skill-tag">Express.js</span>
-                                <span class="skill-tag">MongoDB</span>
-                                <span class="skill-tag">MySQL</span>
-                                <span class="skill-tag">REST APIs</span>
-                                <span class="skill-tag">GraphQL</span>
-                                <span class="skill-tag">Sass</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="member-card-back">
-                        <div class="member-back-content">
-                            <h4>About Jashwin</h4>
-                            <p class="member-back-bio">Jashwin builds end-to-end systems—responsive frontends,
-                                robust
-                                APIs, and data-driven backends—focused on reliability and clean developer
-                                experience.
-                            </p>
-                            <div class="member-back-edu">
-                                <img src="https://i.postimg.cc/k5yLvDBC/download.png"
-                                    alt="Stella Mary's College of Engineering Logo">
-                                <div class="member-back-edu-text">
-                                    <span class="member-back-college">Stella Mary's College</span>
-                                    <span class="member-back-degree">B.E - CSE</span>
-                                </div>
-                            </div>
-                            <div class="member-back-links">
-                                <a href="#" class="member-back-link" target="_blank"
-                                    rel="noopener noreferrer">Portfolio</a>
-                                <a href="#" class="member-back-link" target="_blank"
-                                    rel="noopener noreferrer">GitHub</a>
-                                <a href="#" class="member-back-link" target="_blank"
-                                    rel="noopener noreferrer">LinkedIn</a>
-                            </div>
-                        </div>
-                    </div>
+            <div class="team-card">
+                <img src="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" alt="Jashwin"
+                    class="team-avatar">
+
+                <h3>Jashwin</h3>
+                <span class="team-role">Full Stack Developer</span>
+
+                <p class="team-description">
+                    Builds responsive frontends, robust APIs, and data-driven backends
+                    with a focus on reliability.
+                </p>
+
+                <div class="team-social">
+                    <a href="#" title="Portfolio"><i class="fas fa-globe"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
                 </div>
             </div>
 
             <!-- Dharshan -->
-            <div class="member-card" role="button" tabindex="0" data-name="Dharshan" data-role="Cyber Security Analyst"
-                data-bio="Dharshan protects products through threat modeling, penetration testing, and secure engineering practices—helping teams build safer systems from day one."
-                data-photo="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg"
-                data-portfolio="https://portholio-zeta.vercel.app/#" data-github="https://github.com/dharshan00814"
-                data-linkedin="www.linkedin.com/in/dharshan-jm" data-college="Stella Mary's College of Engineering"
-                data-degree="B.E - Computer Science And Engineering"
-                data-college-logo="https://i.postimg.cc/k5yLvDBC/download.png">
-                <div class="member-card-inner">
-                    <div class="member-card-front">
-                        <div class="member-photo">
-                            <img src="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg"
-                                alt="Dharshan"
-                                onerror="this.parentElement.innerHTML='<div class=\'member-photo-placeholder\'>🔐</div>'">
-                        </div>
-                        <div class="member-info">
-                            <div class="member-name">Dharshan</div>
-                            <div class="member-role">Cyber Security Analyst</div>
-                            <div class="member-skills">
-                                <span class="skill-tag">Penetration Testing</span>
-                                <span class="skill-tag">VAPT</span>
-                                <span class="skill-tag">OWASP</span>
-                                <span class="skill-tag">Zero Trust</span>
-                                <span class="skill-tag">SOC 2</span>
-                                <span class="skill-tag">Ethical Hacking</span>
-                                <span class="skill-tag">Kali Linux</span>
-                                <span class="skill-tag">Forensics</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="member-card-back">
-                        <div class="member-back-content">
-                            <h4>About Dharshan</h4>
-                            <p class="member-back-bio">Dharshan protects products through threat modeling,
-                                penetration
-                                testing, and secure engineering practices—helping teams build safer systems from day
-                                one.</p>
-                            <div class="member-back-edu">
-                                <img src="https://i.postimg.cc/k5yLvDBC/download.png"
-                                    alt="Stella Mary's College of Engineering Logo">
-                                <div class="member-back-edu-text">
-                                    <span class="member-back-college">Stella Mary's College</span>
-                                    <span class="member-back-degree">B.E - CSE</span>
-                                </div>
-                            </div>
-                            <div class="member-back-links">
-                                <a href="https://portholio-zeta.vercel.app/#" class="member-back-link" target="_blank"
-                                    rel="noopener noreferrer">Portfolio</a>
-                                <a href="https://github.com/dharshan00814" class="member-back-link" target="_blank"
-                                    rel="noopener noreferrer">GitHub</a>
-                                <a href="https://www.linkedin.com/in/dharshan-jm" class="member-back-link"
-                                    target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                            </div>
-                        </div>
-                    </div>
+            <div class="team-card">
+                <img src="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg" alt="Dharshan"
+                    class="team-avatar">
+
+                <h3>Dharshan</h3>
+                <span class="team-role">Cyber Security Analyst</span>
+
+                <p class="team-description">
+                    Protects products through threat modeling, penetration testing,
+                    and secure engineering practices.
+                </p>
+
+                <div class="team-social">
+                    <a href="https://portholio-zeta.vercel.app/" target="_blank" title="Portfolio">
+                        <i class="fas fa-globe"></i>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/dharshan-jm" target="_blank" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+
+                    <a href="https://github.com/dharshan00814" target="_blank" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Asthamil -->
+            <div class="team-card">
+                <img src="https://i.postimg.cc/Jnwtf3ZZ/Whats-App-Image-2026-02-20-at-7-00-57-PM.jpg" alt="Asthamil"
+                    class="team-avatar">
+
+                <h3>Asthamil</h3>
+                <span class="team-role">Web Developer</span>
+
+                <p class="team-description">
+                    Builds scalable web experiences with clean architecture,
+                    strong performance, and thoughtful user experiences.
+                </p>
+
+                <div class="team-social">
+                    <a href="#" title="Portfolio"><i class="fas fa-globe"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
                 </div>
             </div>
 
             <!-- Tharun Krishna -->
-            <div class="member-card" role="button" tabindex="0" data-name="Tharun Krishna" data-role="UI/UX Designer"
-                data-bio="Tharun creates intuitive and engaging user experiences through thoughtful design and research."
-                data-photo="https://i.postimg.cc/TP5Jj9Th/Whats-App-Image-2026-06-11-at-11-26-46-AM.jpg"
-                data-portfolio="#" data-github="#" data-linkedin="#" data-college="Stella Mary's College of Engineering"
-                data-degree="B.E - Computer Science And Engineering"
-                data-college-logo="https://i.postimg.cc/k5yLvDBC/download.png">
-                <div class="member-card-inner">
-                    <div class="member-card-front">
-                        <div class="member-photo">
-                            <img src="https://i.postimg.cc/TP5Jj9Th/Whats-App-Image-2026-06-11-at-11-26-46-AM.jpg"
-                                alt="Tharun Krishna"
-                                onerror="this.parentElement.innerHTML='<div class=\'member-photo-placeholder\'>🎨</div>'">
-                        </div>
-                        <div class="member-info">
-                            <div class="member-name">Tharun Krishna</div>
-                            <div class="member-role">UI/UX Designer</div>
-                            <div class="member-skills">
-                                <span class="skill-tag">Figma</span>
-                                <span class="skill-tag">UI Design</span>
-                                <span class="skill-tag">UX Research</span>
-                                <span class="skill-tag">Prototyping</span>
-                                <span class="skill-tag">Design Systems</span>
-                                <span class="skill-tag">Motion</span>
-                                <span class="skill-tag">Branding</span>
-                                <span class="skill-tag">Framer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="member-card-back">
-                        <div class="member-back-content">
-                            <h4>About Tharun Krishna</h4>
-                            <p class="member-back-bio">Tharun creates intuitive and engaging user experiences
-                                through
-                                thoughtful design and research.</p>
-                            <div class="member-back-edu">
-                                <img src="https://i.postimg.cc/k5yLvDBC/download.png"
-                                    alt="Stella Mary's College of Engineering Logo">
-                                <div class="member-back-edu-text">
-                                    <span class="member-back-college">Stella Mary's College</span>
-                                    <span class="member-back-degree">B.E - CSE</span>
-                                </div>
-                            </div>
-                            <div class="member-back-links">
-                                <a href="#" class="member-back-link" target="_blank"
-                                    rel="noopener noreferrer">Portfolio</a>
-                                <a href="#" class="member-back-link" target="_blank"
-                                    rel="noopener noreferrer">GitHub</a>
-                                <a href="#" class="member-back-link" target="_blank"
-                                    rel="noopener noreferrer">LinkedIn</a>
-                            </div>
-                        </div>
-                    </div>
+            <div class="team-card">
+                <img src="https://i.postimg.cc/TP5Jj9Th/Whats-App-Image-2026-06-11-at-11-26-46-AM.jpg"
+                    alt="Tharun Krishna" class="team-avatar">
+
+                <h3>Tharun Krishna</h3>
+                <span class="team-role">UI/UX Designer</span>
+
+                <p class="team-description">
+                    Creates intuitive and engaging digital experiences through
+                    thoughtful design, research, and prototyping.
+                </p>
+
+                <div class="team-social">
+                    <a href="#" title="Portfolio"><i class="fas fa-globe"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
                 </div>
             </div>
 
-            <!-- Mohammad Zarif -->
-            <div class="member-card" role="button" tabindex="0" data-name="Mohammad Zarif" data-role="App Developer"
-                data-bio="Mohammad is a passionate app developer with a keen eye for detail and a love for creating seamless user experiences."
-                data-photo="https://i.postimg.cc/1zWvJd1C/zarif.jpg" data-portfolio="#" data-github="#"
-                data-linkedin="#" data-college="Stella Mary's College of Engineering"
-                data-degree="B.E - Computer Science And Engineering"
-                data-college-logo="https://i.postimg.cc/k5yLvDBC/download.png">
-                <div class="member-card-inner">
-                    <div class="member-card-front">
-                        <div class="member-photo">
-                            <img src="https://i.postimg.cc/1zWvJd1C/zarif.jpg" alt="Mohammad Zarif"
-                                onerror="this.parentElement.innerHTML='<div class=\'member-photo-placeholder\'>📱</div>'">
-                        </div>
-                        <div class="member-info">
-                            <div class="member-name">Mohammad Zarif</div>
-                            <div class="member-role">App Developer</div>
-                            <div class="member-skills">
-                                <span class="skill-tag">Flutter</span>
-                                <span class="skill-tag">React Native</span>
-                                <span class="skill-tag">Swift</span>
-                                <span class="skill-tag">Kotlin</span>
-                                <span class="skill-tag">Firebase</span>
-                                <span class="skill-tag">App Store</span>
-                                <span class="skill-tag">Push Notifications</span>
-                                <span class="skill-tag">Offline Mode</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="member-card-back">
-                        <div class="member-back-content">
-                            <h4>About Mohammad Zarif</h4>
-                            <p class="member-back-bio">Mohammad is a passionate app developer with a keen eye for
-                                detail
-                                and a love for creating seamless user experiences.</p>
-                            <div class="member-back-edu">
-                                <img src="https://i.postimg.cc/k5yLvDBC/download.png"
-                                    alt="Stella Mary's College of Engineering Logo">
-                                <div class="member-back-edu-text">
-                                    <span class="member-back-college">Stella Mary's College</span>
-                                    <span class="member-back-degree">B.E - CSE</span>
-                                </div>
-                            </div>
-                            <div class="member-back-links">
-                                <a href="#" class="member-back-link" target="_blank"
-                                    rel="noopener noreferrer">Portfolio</a>
-                                <a href="#" class="member-back-link" target="_blank"
-                                    rel="noopener noreferrer">GitHub</a>
-                                <a href="#" class="member-back-link" target="_blank"
-                                    rel="noopener noreferrer">LinkedIn</a>
-                            </div>
-                        </div>
-                    </div>
+            <!-- Zarif -->
+            <div class="team-card">
+                <img src="https://i.postimg.cc/1zWvJd1C/zarif.jpg" alt="Mohammad Zarif" class="team-avatar">
+
+                <h3>Mohammad Zarif</h3>
+                <span class="team-role">App Developer</span>
+
+                <p class="team-description">
+                    Develops modern mobile applications with seamless user experiences
+                    and strong cross-platform capabilities.
+                </p>
+
+                <div class="team-social">
+                    <a href="#" title="Portfolio"><i class="fas fa-globe"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
                 </div>
             </div>
+
+        </div>
+
     </section>
+
+    <script>
+        document.querySelectorAll('.team-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+                card.style.setProperty('--x', `${x}%`);
+                card.style.setProperty('--y', `${y}%`);
+            });
+        });
+    </script>
 
     <!-- PROCESS -->
     <section id="process">
