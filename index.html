@@ -5255,8 +5255,7 @@
             document.querySelectorAll('.tilted-card-figure').forEach(card => {
                 const inner = card.querySelector('.tilted-card-inner');
                 const rotateAmplitude = 20;
-                const scaleOnHover = 1.1;
-
+                const scaleOnHover = 1.0;
                 card.addEventListener('mousemove', (e) => {
                     const rect = card.getBoundingClientRect();
                     const offsetX = e.clientX - rect.left - rect.width / 2;
