@@ -1996,10 +1996,41 @@
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
             letter-spacing: 0.05em;
         }
+        .whatsapp-btn{
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 65px;
+    height: 65px;
+    background: #25D366;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 34px;
+    z-index: 9999;
+    box-shadow: 0 10px 25px rgba(37,211,102,.4);
+    transition: all .3s ease;
+}
+
+.whatsapp-btn:hover{
+    transform: scale(1.1);
+}
+
+.whatsapp-btn i{
+    line-height: 1;
+}
     </style>
 </head>
 
 <body>
+    <a href="https://wa.me/917305104191?text=Hi%20Hyna%20Studio"
+   class="whatsapp-btn"
+   target="_blank">
+    <i class="fa-brands fa-whatsapp"></i>
+</a>
 
     <!-- NAV -->
     <nav>
@@ -4052,6 +4083,7 @@
                             deliver high-quality solutions.</p>
                     </div>
                 </div>
+                
 
                 <!-- Q5 -->
                 <div class="faq-item">
