@@ -1839,9 +1839,10 @@
                 padding: 3rem 1.5rem 2rem;
             }
 
-            .member-card {
-                opacity: 1;
-                transform: none;
+            .member-card,
+            .team-card {
+                opacity: 1 !important;
+                transform: none !important;
             }
 
             .member-card-inner {
@@ -2039,7 +2040,7 @@
         </a>
 
         <!-- Mobile-only Book a Call CTA -->
-        <a href="mailto:team.hynastudio@gmail.com?subject=Project%20Inquiry%20-%20Hyna%20Studio&body=Hello%20Hyna%20Studio,%0D%0A%0D%0AI%20would%20like%20to%20discuss%20a%20project.%0D%0A%0D%0AName:%20%0D%0ACompany:%20%0D%0APhone:%20%0D%0AProject%20Details:%20"
+        <a href="#contact"
             class="nav-book-call"
             id="nav-book-call-btn">
             <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -2522,9 +2523,9 @@
                     <h3>Java</h3>
                 </div>
                 <div class="tech-card">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg"
-     alt="Go"
-     width="60">
+                    <span class="tech-icon">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg" alt="Go" style="width: 28px; height: 28px; object-fit: contain;">
+                    </span>
                     <h3>Go</h3>
                 </div>
                 <div class="tech-card">
@@ -2558,7 +2559,9 @@
                     <h3>Java</h3>
                 </div>
                 <div class="tech-card">
-                    <span class="tech-icon"><i class="devicon-go-original colored"></i></span>
+                    <span class="tech-icon">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg" alt="Go" style="width: 28px; height: 28px; object-fit: contain;">
+                    </span>
                     <h3>Go</h3>
                 </div>
                 <div class="tech-card">
@@ -2726,7 +2729,7 @@
 
             position: relative;
             background: #ffffff;
-            border-radius: 8px;
+            border-radius: 16px;
             padding: 35px 25px;
             text-align: center;
             overflow: hidden;
@@ -2734,7 +2737,19 @@
             border: 1px solid rgba(10, 10, 15, 0.08);
 
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-            transition: all 0.35s ease;
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+            cursor: pointer;
+
+            /* Scroll-entrance initial state */
+            opacity: 0;
+            transform: translateY(30px);
+            will-change: opacity, transform;
+        }
+
+        .team-card.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+            will-change: auto;
         }
 
         .team-card:hover {
@@ -2780,11 +2795,16 @@
         .team-avatar {
             width: 150px;
             height: 150px;
-            border-radius: 200%;
+            border-radius: 50%;
             object-fit: cover;
             border: 4px solid #ffffff;
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
             margin-bottom: 24px;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .team-card:hover .team-avatar {
+            transform: scale(1.05);
         }
 
         .team-card h3 {
@@ -2857,7 +2877,17 @@
         <div class="team-grid">
 
             <!-- Vignesh -->
-            <div class="team-card">
+            <div class="team-card" role="button" tabindex="0"
+                data-name="Vignesh"
+                data-role="Founder | CEO"
+                data-bio="&quot;Leadership is not about control, it is about building people who can lead without you.&quot; Vignesh drives the strategic vision and engineering standards at Hyna Studio."
+                data-photo="https://i.postimg.cc/wjtYqBpS/IMG-33081.jpg"
+                data-portfolio="https://vigneshvl-dev.github.io/PORTFOLIO/"
+                data-github="https://github.com/vigneshvl-dev"
+                data-linkedin="https://www.linkedin.com/in/vigneshvl-dev/"
+                data-college="Anna University"
+                data-degree="B.E. Computer Science & Engineering"
+                data-college-logo="">
                 <img src="https://i.postimg.cc/wjtYqBpS/IMG-33081.jpg" alt="Vignesh" class="team-avatar">
 
                 <h3>Vignesh</h3>
@@ -2883,7 +2913,17 @@
             </div>
 
             <!-- Jashwin -->
-            <div class="team-card">
+            <div class="team-card" role="button" tabindex="0"
+                data-name="Jashwin"
+                data-role="Co-Founder & Project Management Lead"
+                data-bio="&quot;Deadlines don’t fail because of time, they fail because alignment is missing.&quot; Jashwin ensures that every project at Hyna Studio is aligned with stakeholder goals and delivered seamlessly."
+                data-photo="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png"
+                data-portfolio="#"
+                data-github="https://github.com/jashwinj2008"
+                data-linkedin="https://www.linkedin.com/in/jashwin-j-16b06240a?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+                data-college="Anna University"
+                data-degree="B.E. Computer Science & Engineering"
+                data-college-logo="">
                 <img src="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" alt="Jashwin"
                     class="team-avatar">
 
@@ -2904,7 +2944,17 @@
             </div>
 
             <!-- Dharshan -->
-            <div class="team-card">
+            <div class="team-card" role="button" tabindex="0"
+                data-name="Dharshan"
+                data-role="Co-Founder & Chief Technology Officer (CTO)"
+                data-bio="&quot;A co-founder in tech doesn’t follow trends, he builds what will become the next standard.&quot; Dharshan leads our systems architecture, cloud infrastructure, and technical execution."
+                data-photo="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg"
+                data-portfolio="https://portholio-zeta.vercel.app/"
+                data-github="https://github.com/dharshan00814"
+                data-linkedin="https://www.linkedin.com/in/dharshan-jm"
+                data-college="Anna University"
+                data-degree="B.E. Computer Science & Engineering"
+                data-college-logo="">
                 <img src="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg" alt="Dharshan"
                     class="team-avatar">
 
@@ -2933,7 +2983,17 @@
             </div>
 
             <!-- Asthamil -->
-            <div class="team-card">
+            <div class="team-card" role="button" tabindex="0"
+                data-name="Asthamil"
+                data-role="Chief Product Officer (CPO) & Director"
+                data-bio="&quot;Product thinking is not about features, it is about solving the right problem in the right way.&quot; Asthamil directs product roadmap strategy, user research, and functional design."
+                data-photo="https://i.postimg.cc/Jnwtf3ZZ/Whats-App-Image-2026-02-20-at-7-00-57-PM.jpg"
+                data-portfolio="#"
+                data-github="#"
+                data-linkedin="#"
+                data-college="Anna University"
+                data-degree="B.E. Computer Science & Engineering"
+                data-college-logo="">
                 <img src="https://i.postimg.cc/Jnwtf3ZZ/Whats-App-Image-2026-02-20-at-7-00-57-PM.jpg" alt="Asthamil"
                     class="team-avatar">
 
@@ -2954,7 +3014,17 @@
             </div>
 
             <!-- Tharun Krishna -->
-            <div class="team-card">
+            <div class="team-card" role="button" tabindex="0"
+                data-name="Tharun Krishna"
+                data-role="Chief Design Officer (CDO) & Director"
+                data-bio="&quot;Good design is invisible, but its impact is impossible to ignore.&quot; Tharun translates brand visions into premium user interfaces, styling guidelines, and interactive experiences."
+                data-photo="https://i.postimg.cc/TP5Jj9Th/Whats-App-Image-2026-06-11-at-11-26-46-AM.jpg"
+                data-portfolio="#"
+                data-github="#"
+                data-linkedin="https://www.linkedin.com/in/tharun-krishna-347b123a0?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+                data-college="Anna University"
+                data-degree="B.E. Computer Science & Engineering"
+                data-college-logo="">
                 <img src="https://i.postimg.cc/TP5Jj9Th/Whats-App-Image-2026-06-11-at-11-26-46-AM.jpg"
                     alt="Tharun Krishna" class="team-avatar">
 
@@ -2975,7 +3045,17 @@
             </div>
 
             <!-- Zarif -->
-            <div class="team-card">
+            <div class="team-card" role="button" tabindex="0"
+                data-name="Mohammad Zarif"
+                data-role="Chief Operating Officer (COO)"
+                data-bio="&quot;Execution is not about speed alone, it is about consistency, structure, and discipline.&quot; Mohammad oversees business operations, client partnerships, and project scaling."
+                data-photo="https://i.postimg.cc/1zWvJd1C/zarif.jpg"
+                data-portfolio="#"
+                data-github="#"
+                data-linkedin="https://www.linkedin.com/in/muhamed-zarif-80860a37a?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
+                data-college="Anna University"
+                data-degree="B.E. Computer Science & Engineering"
+                data-college-logo="">
                 <img src="https://i.postimg.cc/1zWvJd1C/zarif.jpg" alt="Mohammad Zarif" class="team-avatar">
 
                 <h3>Mohammad Zarif</h3>
@@ -3685,7 +3765,7 @@
                 <div class="card" id="process-c1">
                     <span class="step-label">Step 1</span>
                     <h3 class="card-title">Strategy & Figma Design</h3>
-                    <p class="card-desc">We start with a conversion-first strategy and design your store from scratch in
+                    <p class="card-desc">We start with a conversion-first strategy and design your digital product from scratch in
                         Figma, focused on user flow, brand aesthetics, and sales psychology.</p>
                     <div class="card-visual">
                         <div class="radar-visual">
@@ -3713,7 +3793,7 @@
                 <div class="card" id="process-c2">
                     <span class="step-label">Step 2</span>
                     <h3 class="card-title">Development</h3>
-                    <p class="card-desc">Your approved designs are translated into a pixel-perfect Shopify store using
+                    <p class="card-desc">Your approved designs are translated into a pixel-perfect website or application using
                         clean, scalable code — fully responsive, fast, and built to handle growth.</p>
                     <div class="card-visual">
                         <div class="code-visual">
@@ -3745,8 +3825,8 @@
                 <div class="card" id="process-c3">
                     <span class="step-label">Step 3</span>
                     <h3 class="card-title">Testing & Quality Assurance</h3>
-                    <p class="card-desc">Every page, interaction, and checkout flow is rigorously tested across devices
-                        and browsers to ensure a smooth, error-free shopping experience.</p>
+                    <p class="card-desc">Every page, interaction, and conversion flow is rigorously tested across devices
+                        and browsers to ensure a smooth, error-free user experience.</p>
                     <div class="card-visual">
                         <div class="compat-visual">
                             <div class="device-box">
@@ -3772,8 +3852,8 @@
                 <div class="card" id="process-c4">
                     <span class="step-label">Step 4</span>
                     <h3 class="card-title">Performance Optimization & Launch</h3>
-                    <p class="card-desc">We fine-tune CRO elements, UX, and performance metrics to ensure your store
-                        launches optimised for conversions.</p>
+                    <p class="card-desc">We fine-tune CRO elements, UX, and performance metrics to ensure your platform
+                        launches optimized for conversions.</p>
                     <div class="card-visual">
                         <div class="metrics-visual">
                             <div class="metric-row">
@@ -4213,16 +4293,16 @@
             const linksEl = document.getElementById('teamModalLinks');
             const educationEl = document.getElementById('teamModalEducation');
 
-            const cards = Array.from(document.querySelectorAll('#team .member-card[role="button"]'));
+            const cards = Array.from(document.querySelectorAll('#team .team-card[role="button"]'));
 
             let lastFocused = null;
 
             function escapeHtml(str) {
                 return String(str)
                     .replaceAll('&', '&amp;')
-                    .replaceAll('<', '<')
-                    .replaceAll('>', '>')
-                    .replaceAll('"', '"')
+                    .replaceAll('<', '&lt;')
+                    .replaceAll('>', '&gt;')
+                    .replaceAll('"', '&quot;')
                     .replaceAll("'", '&#039;');
             }
 
@@ -4266,11 +4346,8 @@
                 // Links
                 const items = [];
                 if (portfolio && portfolio !== '#') items.push(buildLink('Portfolio', portfolio));
-                else items.push(buildLink('Portfolio', portfolio));
                 if (github && github !== '#') items.push(buildLink('GitHub', github));
-                else items.push(buildLink('GitHub', github));
                 if (linkedin && linkedin !== '#') items.push(buildLink('LinkedIn', linkedin));
-                else items.push(buildLink('LinkedIn', linkedin));
 
                 linksEl.innerHTML = items.join('');
 
@@ -4310,9 +4387,11 @@
             // Open handlers
             cards.forEach(card => {
                 card.addEventListener('click', (e) => {
-                    if (e.target.closest('.member-card-front')) {
-                        openModal(card);
+                    // Prevent modal opening when clicking social links/icons
+                    if (e.target.closest('.team-social') || e.target.closest('a')) {
+                        return;
                     }
+                    openModal(card);
                 });
                 card.addEventListener('keydown', (e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
