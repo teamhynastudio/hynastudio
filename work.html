@@ -449,40 +449,47 @@
     </style>
 </head>
 <script>
-document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", () => {
+        // URL -> category mapping for work.html filtering.
+        // Required params from navbar:
+        //   web, app, design, cloud, security
+        const params = new URLSearchParams(window.location.search);
+        const service = (params.get("service") || "").toLowerCase().trim();
+        if (!service) return;
 
-    const params = new URLSearchParams(window.location.search);
-    const service = params.get("service");
+        const serviceToCategory = {
+            web: 'web',
+            app: 'app',
+            design: 'design',
+            uiux: 'design',
+            cloud: 'cloud',
+            security: 'security'
+        };
 
-    if (!service) return;
+        const category = serviceToCategory[service] || 'all';
 
-    const cards = document.querySelectorAll(".project-card");
+        const filterBar = document.getElementById('filter-bar');
+        const gridWrapper = document.getElementById('projects-grid');
+        if (!filterBar || !gridWrapper) return;
 
-    cards.forEach(card => {
+        // Mark active button and trigger the same existing click handler.
+        const targetBtn = filterBar.querySelector(`.filter-btn[data-filter="${category}"]`);
+        filterBar.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.classList.toggle('active', btn === targetBtn);
+        });
 
-        const category = card.dataset.category;
-
-        if (category === service) {
-            card.style.display = "block";
-
-            setTimeout(() => {
-                card.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center"
-                });
-
-                card.style.border = "2px solid #4F3FF0";
-                card.style.boxShadow = "0 0 30px rgba(79,63,240,.5)";
-            }, 500);
-
-        } else {
-            card.style.display = "none";
+        if (targetBtn) {
+            targetBtn.click();
         }
 
+        // Smooth scroll after cards are re-rendered.
+        setTimeout(() => {
+            gridWrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 350);
     });
-
-});
 </script>
+
+
 <body>
 
     <!-- NAV -->
