@@ -34,6 +34,7 @@
         html {
             scroll-behavior: smooth;
         }
+        
 
         body {
             font-family: var(--font-body);
@@ -447,7 +448,41 @@
         }
     </style>
 </head>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
 
+    const params = new URLSearchParams(window.location.search);
+    const service = params.get("service");
+
+    if (!service) return;
+
+    const cards = document.querySelectorAll(".project-card");
+
+    cards.forEach(card => {
+
+        const category = card.dataset.category;
+
+        if (category === service) {
+            card.style.display = "block";
+
+            setTimeout(() => {
+                card.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+                card.style.border = "2px solid #4F3FF0";
+                card.style.boxShadow = "0 0 30px rgba(79,63,240,.5)";
+            }, 500);
+
+        } else {
+            card.style.display = "none";
+        }
+
+    });
+
+});
+</script>
 <body>
 
     <!-- NAV -->
@@ -470,7 +505,16 @@
             our studio.</p>
     </section>
 
-    
+    <!-- FILTERS -->
+    <div class="filter-bar" id="filter-bar">
+        <button class="filter-btn active" data-filter="all">All Projects</button>
+        <button class="filter-btn" data-filter="web">Web</button>
+        <button class="filter-btn" data-filter="app">App</button>
+        <button class="filter-btn" data-filter="saas">SaaS</button>
+        <button class="filter-btn" data-filter="cloud">Cloud</button>
+        <button class="filter-btn" data-filter="design">Design</button>
+        <button class="filter-btn" data-filter="security">Security</button>
+    </div>
 
     <!-- PROJECTS -->
     <div class="projects-wrapper">
@@ -486,7 +530,129 @@
         <a href="contact.html" class="btn-white">Start Your Project →</a>
     </section>
 
-    
+    <script>
+        const projects = [
+            {
+                title: "Hyna Studio — Studio Website",
+                desc: "Our own studio website — a fully responsive, glassmorphic landing page with smooth scroll animations, 3D team cards, and a premium feel.",
+                tags: ["HTML5", "CSS3", "JavaScript", "Responsive"],
+                category: "web",
+                client: "Internal Project",
+                status: "completed",
+                badge: "Web Development",
+                link: "index.html",
+                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
+            },
+            {
+                title: "Hyna Studio Careers Portal",
+                desc: "A multi-step recruitment platform with role-based applications, admin dashboard, real-time form validation, and candidate management system.",
+                tags: ["HTML5", "JavaScript", "Zod", "Supabase", "REST API"],
+                category: "web",
+                client: "Internal Project",
+                status: "completed",
+                badge: "Web App",
+                link: "careers.html",
+                image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
+            },
+            {
+                title: "Client Project Inquiry System",
+                desc: "A streamlined project brief submission form with service selection, budget estimation, and automated client onboarding workflow.",
+                tags: ["HTML5", "CSS3", "JavaScript", "Forms"],
+                category: "web",
+                client: "Internal Project",
+                status: "completed",
+                badge: "Web Development",
+                link: "contact.html",
+                image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80"
+            },
+            {
+                title: "Cloud Infrastructure Setup",
+                desc: "Designed and deployed a multi-region cloud architecture on AWS with auto-scaling, load balancing, CI/CD pipelines, and 99.9% uptime SLA.",
+                tags: ["AWS", "Terraform", "Docker", "Kubernetes", "CI/CD"],
+                category: "cloud",
+                client: "Hyna Studio",
+                status: "completed",
+                badge: "Cloud & DevOps",
+                link: "#",
+                image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80"
+            },
+            {
+                title: "Security Audit & VAPT",
+                desc: "Comprehensive vulnerability assessment and penetration testing for web applications — identifying and remediating critical security gaps.",
+                tags: ["OWASP", "Burp Suite", "Nmap", "Security Audit"],
+                category: "security",
+                client: "Hyna Studio",
+                status: "completed",
+                badge: "Cyber Security",
+                link: "#",
+                image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&q=80"
+            },
+            {
+                title: "Brand Identity System",
+                desc: "Complete visual identity — logo, color system, typography, and brand guidelines designed to project a premium, modern studio image.",
+                tags: ["Figma", "Branding", "Typography", "Color System"],
+                category: "design",
+                client: "Hyna Studio",
+                status: "completed",
+                badge: "UI / UX Design",
+                link: "#",
+                image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80"
+            }
+        ];
+
+        const grid = document.getElementById('projects-grid');
+        const filterBar = document.getElementById('filter-bar');
+
+        function renderProjects(filter = 'all') {
+            const filtered = filter === 'all' ? projects : projects.filter(p => p.category === filter);
+            grid.innerHTML = '';
+
+            filtered.forEach((project, i) => {
+                const card = document.createElement('div');
+                card.className = 'project-card';
+                card.setAttribute('data-category', project.category);
+
+                card.innerHTML = `
+                    <div class="project-thumb">
+                        <img src="${project.image}" alt="${project.title}" loading="lazy"
+                            onerror="this.style.display='none'">
+                        <span class="project-badge">${project.badge}</span>
+                        <span class="project-status completed">
+                            <span class="dot"></span>
+                            Shipped
+                        </span>
+                    </div>
+                    <div class="project-body">
+                        <h3>${project.title}</h3>
+                        <p class="project-desc">${project.desc}</p>
+                        <div class="project-tags">
+                            ${project.tags.map(t => `<span class="project-tag">${t}</span>`).join('')}
+                        </div>
+                        <div class="project-footer">
+                            <span class="project-client"><strong>${project.client}</strong></span>
+                            ${project.link !== '#' ? `<a href="${project.link}" class="project-link">View Project →</a>` : `<span class="project-link" style="opacity:0.4;cursor:default;">Internal</span>`}
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+
+                // Staggered reveal animation
+                setTimeout(() => card.classList.add('is-visible'), 100 + i * 120);
+            });
+        }
+
+        // Filter buttons
+        filterBar.addEventListener('click', (e) => {
+            const btn = e.target.closest('.filter-btn');
+            if (!btn) return;
+            filterBar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderProjects(btn.dataset.filter);
+        });
+
+        // Initial render
+        renderProjects();
+    </script>
     <script src="cookie-consent.js" defer></script>
 
 </body>
