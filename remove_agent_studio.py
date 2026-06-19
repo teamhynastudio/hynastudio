@@ -1,11 +1,11 @@
 import re
 
-with open('zypher_ai.html', 'r', encoding='utf-8') as f:
+with open('index.html', 'r', encoding='utf-8') as f:
     content = f.read()
 
 lines = content.split('\n')
 
-# 1. Remove CSS block: from '/* -- AGENT STUDIO SLIDE -- */' to the line before '/* TiltedCard Component'
+# 1. Remove CSS block: from '/* ── AGENT STUDIO SLIDE ── */' to the line before '/* TiltedCard Component'
 start_css = None
 end_css = None
 for i, line in enumerate(lines):
@@ -35,7 +35,7 @@ content2 = re.sub(r'\s*// ── AGENT STUDIO SLIDE: Scroll reveal animation ─
 # 5. Clean up any leftover comment
 content2 = content2.replace('/* Agent Studio Slide styles removed */\n', '')
 
-with open('zypher_ai.html', 'w', encoding='utf-8') as f:
+with open('index.html', 'w', encoding='utf-8') as f:
     f.write(content2)
 
 print('Done. File updated successfully.')
