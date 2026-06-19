@@ -1566,69 +1566,108 @@
 
         /* ── TECHNOLOGIES ── */
         #technologies {
-            background: var(--paper);
+            padding: 100px 0 110px;
+            background: linear-gradient(180deg, #0a0a14 0%, #0d0d1a 50%, #0a0a14 100%);
             position: relative;
             overflow: hidden;
         }
 
+        #technologies .section-label {
+            display: block;
+            text-align: center;
+            padding: 0 8%;
+            color: #a78bfa;
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        #technologies .section-title {
+            display: block;
+            text-align: center;
+            padding: 0 8%;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 800;
+            color: #f8fafc;
+            margin: 0 0 14px;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+        }
+
+        #technologies .section-sub {
+            display: block;
+            text-align: center;
+            padding: 0 8%;
+            color: #8892a4;
+            font-size: 1rem;
+            margin: 0 auto 60px;
+            max-width: 520px;
+            line-height: 1.65;
+        }
+
         .tech-marquee-container {
-            overflow: hidden;
             width: 100%;
-            padding: 2rem 0;
-            position: relative;
-            mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
-            margin-top: 2rem;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 20px;
+            -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+            mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
         }
 
         .tech-marquee-track {
             display: flex;
-            gap: 1.5rem;
+            gap: 20px;
             width: max-content;
             will-change: transform;
-            transform: translate3d(0, 0, 0);
-            -webkit-transform: translate3d(0, 0, 0);
         }
 
         .tech-marquee-track.scroll-left {
-            animation: marquee-scroll-left 35s linear infinite;
+            animation: marquee-left 38s linear infinite;
         }
 
         .tech-marquee-track.scroll-right {
-            animation: marquee-scroll-right 35s linear infinite;
+            animation: marquee-right 44s linear infinite;
         }
 
-        .tech-marquee-track:hover {
+        .tech-marquee-container:hover .tech-marquee-track {
             animation-play-state: paused;
         }
 
         .tech-card {
+            flex-shrink: 0;
             display: flex;
             align-items: center;
-            gap: 1rem;
-            padding: 0.8rem 2rem;
-            background: rgba(255, 255, 255, 0.65);
-            border: 1px solid rgba(10, 10, 15, 0.08);
-            border-radius: 50px;
+            gap: 12px;
+            padding: 14px 22px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(167, 139, 250, 0.12);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
             cursor: default;
-            transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
-            flex-shrink: 0;
             white-space: nowrap;
-            box-shadow: 0 2px 10px rgba(10, 10, 15, 0.05);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
         }
 
         .tech-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(79, 63, 240, 0.35);
-            box-shadow: 0 12px 28px rgba(79, 63, 240, 0.1);
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(167, 139, 250, 0.1);
+            border-color: rgba(167, 139, 250, 0.4);
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 8px 28px rgba(139, 92, 246, 0.25);
         }
 
         .tech-icon {
-            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            width: 36px;
+            height: 36px;
+            flex-shrink: 0;
             transition: transform 0.25s;
         }
 
@@ -1637,29 +1676,21 @@
         }
 
         .tech-card h3 {
-            font-family: var(--font-display);
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: var(--ink);
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #e2e8f0;
             margin: 0;
+            letter-spacing: 0.01em;
         }
 
-        @keyframes marquee-scroll-left {
-            0% {
-                transform: translate3d(0, 0, 0);
-            }
-            100% {
-                transform: translate3d(calc(-50% - 0.75rem), 0, 0);
-            }
+        @keyframes marquee-left {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
 
-        @keyframes marquee-scroll-right {
-            0% {
-                transform: translate3d(calc(-50% - 0.75rem), 0, 0);
-            }
-            100% {
-                transform: translate3d(0, 0, 0);
-            }
+        @keyframes marquee-right {
+            0%   { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
         }
 
         /* ── RESPONSIVE ── */
@@ -2460,164 +2491,6 @@
     </section>
 
     <!-- TECHNOLOGIES -->
-    <style>
-        /* ── Tech Stack: 3-Layer Infinite Marquee ── */
-        #technologies {
-            padding: 100px 0 110px;
-            background: linear-gradient(180deg, #0a0a14 0%, #0d0d1a 50%, #0a0a14 100%);
-            overflow: hidden;
-            position: relative;
-        }
-
-        #technologies .section-label,
-        #technologies .section-title,
-        #technologies .section-sub {
-            text-align: center;
-            padding: 0 8%;
-        }
-
-        #technologies .section-label {
-            color: #a78bfa;
-            font-family: 'JetBrains Mono', 'Fira Code', monospace;
-            font-size: 0.8rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            margin-bottom: 14px;
-        }
-
-        #technologies .section-title {
-            font-size: clamp(2rem, 5vw, 3.2rem);
-            font-weight: 800;
-            color: #f8fafc;
-            margin: 0 0 14px;
-            letter-spacing: -0.02em;
-            line-height: 1.15;
-        }
-
-        #technologies .section-sub {
-            color: #8892a4;
-            font-size: 1rem;
-            margin: 0 auto 60px;
-            max-width: 520px;
-            line-height: 1.65;
-        }
-
-        /* Container: clips & adds side fade */
-        .tech-marquee-container {
-            width: 100%;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            -webkit-mask-image: linear-gradient(
-                90deg,
-                transparent 0%,
-                #000 10%,
-                #000 90%,
-                transparent 100%
-            );
-            mask-image: linear-gradient(
-                90deg,
-                transparent 0%,
-                #000 10%,
-                #000 90%,
-                transparent 100%
-            );
-        }
-
-        /* Each row: a flex strip that scrolls */
-        .tech-marquee-track {
-            display: flex;
-            gap: 20px;
-            width: max-content;
-            will-change: transform;
-        }
-
-        /* Left → right (Row 1 & 3) */
-        .tech-marquee-track.scroll-left {
-            animation: marquee-left 38s linear infinite;
-        }
-        /* Right → left (Row 2) */
-        .tech-marquee-track.scroll-right {
-            animation: marquee-right 44s linear infinite;
-        }
-
-        /* Pause on hover */
-        .tech-marquee-container:hover .tech-marquee-track {
-            animation-play-state: paused;
-        }
-
-        @keyframes marquee-left {
-            0%   { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        @keyframes marquee-right {
-            0%   { transform: translateX(-50%); }
-            100% { transform: translateX(0); }
-        }
-
-        /* Individual tech cards */
-        .tech-card {
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 14px 22px;
-            border-radius: 14px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(167, 139, 250, 0.12);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease,
-                        box-shadow 0.3s ease;
-            cursor: default;
-            white-space: nowrap;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .tech-card:hover {
-            background: rgba(167, 139, 250, 0.1);
-            border-color: rgba(167, 139, 250, 0.4);
-            transform: translateY(-4px) scale(1.03);
-            box-shadow: 0 8px 28px rgba(139, 92, 246, 0.25);
-        }
-
-        .tech-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.6rem;
-            width: 36px;
-            height: 36px;
-            flex-shrink: 0;
-        }
-
-        .tech-card h3 {
-            font-size: 0.88rem;
-            font-weight: 600;
-            color: #e2e8f0;
-            margin: 0;
-            letter-spacing: 0.01em;
-        }
-
-        @media (max-width: 768px) {
-            #technologies {
-                padding: 70px 0 80px;
-            }
-            .tech-marquee-container {
-                gap: 14px;
-            }
-            .tech-card {
-                padding: 12px 18px;
-            }
-            .tech-icon {
-                font-size: 1.3rem;
-                width: 28px;
-                height: 28px;
-            }
-        }
-    </style>
-
     <section id="technologies">
         <div class="section-label">// Stack & Tooling</div>
         <h2 class="section-title">Technologies We Focus On</h2>
