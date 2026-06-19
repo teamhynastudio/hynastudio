@@ -1471,10 +1471,10 @@
 
         /* ── FOOTER ── */
         footer {
-            background: #ffffff;
-            color: var(--ink);
+            background: #0a0a0e;
+            color: var(--paper);
             padding: 4rem 4rem 2.5rem;
-            border-top: 1px solid var(--border);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .footer-top {
@@ -1482,25 +1482,25 @@
             justify-content: space-between;
             align-items: flex-start;
             padding-bottom: 3rem;
-            border-bottom: 1px solid rgba(10, 10, 15, 0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             margin-bottom: 2rem;
         }
 
         .footer-brand .nav-logo {
-            color: var(--ink);
+            color: var(--paper);
         }
 
         .footer-brand .logo-text .logo-main {
-            color: var(--accent) !important;
+            color: #ffffff !important;
         }
 
         .footer-brand .logo-text .logo-sub {
-            color: var(--muted) !important;
+            color: rgba(255, 255, 255, 0.6) !important;
         }
 
         .footer-brand p {
             font-size: 0.85rem;
-            color: var(--muted);
+            color: rgba(255, 255, 255, 0.6);
             margin-top: 0.8rem;
             max-width: 28ch;
         }
@@ -1511,7 +1511,7 @@
             letter-spacing: 0.08em;
             text-transform: uppercase;
             margin-bottom: 1rem;
-            color: var(--ink);
+            color: #ffffff;
         }
 
         .footer-links ul {
@@ -1523,13 +1523,13 @@
 
         .footer-links a {
             text-decoration: none;
-            color: var(--muted);
+            color: rgba(255, 255, 255, 0.65);
             font-size: 0.88rem;
             transition: color 0.2s;
         }
 
         .footer-links a:hover {
-            color: var(--accent);
+            color: var(--accent2);
         }
 
         .footer-bottom {
@@ -1540,7 +1540,7 @@
 
         .footer-bottom p {
             font-size: 0.8rem;
-            color: var(--muted);
+            color: rgba(255, 255, 255, 0.45);
         }
 
         .footer-bottom-links {
@@ -1550,13 +1550,13 @@
 
         .footer-bottom-links a {
             font-size: 0.8rem;
-            color: var(--muted);
+            color: rgba(255, 255, 255, 0.45);
             text-decoration: none;
             transition: color 0.2s;
         }
 
         .footer-bottom-links a:hover {
-            color: var(--accent);
+            color: var(--accent2);
         }
 
         #technologies {
@@ -1974,6 +1974,7 @@
             <li><a href="#about">About</a></li>
             <li><a href="#team">Team</a></li>
             <li><a href="#process">Process</a></li>
+            <li><a href="#faq">FAQ</a></li>
         </ul>
 
     </nav>
@@ -3745,6 +3746,271 @@
             })();
         </script>
     </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="faq-section">
+        <style>
+            .faq-section {
+                padding: 120px 8%;
+                background: var(--paper);
+                border-top: 1px solid var(--border);
+                position: relative;
+                overflow: hidden;
+            }
+
+            .faq-container {
+                max-width: 900px;
+                margin: 0 auto;
+                position: relative;
+                z-index: 2;
+            }
+
+            .faq-header {
+                text-align: center;
+                margin-bottom: 60px;
+            }
+
+            .faq-header h2 {
+                font-size: clamp(2.5rem, 5vw, 3.5rem);
+                font-weight: 700;
+                line-height: 1.2;
+                color: var(--ink);
+                font-family: var(--font-display);
+                margin-bottom: 20px;
+            }
+
+            .faq-header p {
+                color: var(--muted);
+                font-size: 1.1rem;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            .faq-list {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .faq-item {
+                background: #ffffff;
+                border: 1px solid var(--border);
+                border-radius: 12px;
+                overflow: hidden;
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .faq-item:hover {
+                border-color: rgba(79, 63, 240, 0.3);
+                box-shadow: 0 10px 25px rgba(79, 63, 240, 0.04);
+            }
+
+            .faq-item.active {
+                border-color: var(--accent);
+                box-shadow: 0 12px 30px rgba(79, 63, 240, 0.06);
+            }
+
+            .faq-question {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 24px 30px;
+                background: none;
+                border: none;
+                text-align: left;
+                cursor: pointer;
+                outline: none;
+                font-family: var(--font-display);
+                font-size: 1.2rem;
+                font-weight: 600;
+                color: var(--ink);
+                gap: 20px;
+                transition: color 0.3s;
+            }
+
+            .faq-question:hover {
+                color: var(--accent);
+            }
+
+            .faq-icon-wrapper {
+                width: 32px;
+                height: 32px;
+                border-radius: 50%;
+                background: #f5f5f7;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+                transition: all 0.3s ease;
+                color: var(--ink);
+            }
+
+            .faq-item:hover .faq-icon-wrapper {
+                background: rgba(79, 63, 240, 0.08);
+                color: var(--accent);
+            }
+
+            .faq-item.active .faq-icon-wrapper {
+                background: var(--accent);
+                color: #ffffff;
+                transform: rotate(45deg);
+            }
+
+            .faq-icon-wrapper i {
+                font-size: 14px;
+                transition: transform 0.3s;
+            }
+
+            .faq-answer {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), padding 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+                padding: 0 30px;
+                color: var(--muted);
+                font-family: var(--font-body);
+                font-size: 1rem;
+                line-height: 1.7;
+            }
+
+            .faq-item.active .faq-answer {
+                padding-bottom: 24px;
+            }
+
+            @media (max-width: 768px) {
+                .faq-section {
+                    padding: 80px 20px;
+                }
+
+                .faq-header {
+                    margin-bottom: 40px;
+                }
+
+                .faq-question {
+                    padding: 20px 24px;
+                    font-size: 1.1rem;
+                }
+
+                .faq-answer {
+                    padding: 0 24px;
+                }
+
+                .faq-item.active .faq-answer {
+                    padding-bottom: 20px;
+                }
+            }
+        </style>
+
+        <div class="faq-container">
+            <div class="faq-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Have questions? Here are the most common things people ask about Hyna Studio.</p>
+            </div>
+
+            <div class="faq-list">
+                <!-- Q1 -->
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-a1">
+                        What is Hyna Studio?
+                        <span class="faq-icon-wrapper">
+                            <i class="fa-solid fa-plus"></i>
+                        </span>
+                    </button>
+                    <div id="faq-a1" class="faq-answer" role="region">
+                        <p>Hyna Studio is a student-led technology startup that designs and develops innovative websites, mobile applications, and digital solutions.</p>
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-a2">
+                        What services does Hyna Studio offer?
+                        <span class="faq-icon-wrapper">
+                            <i class="fa-solid fa-plus"></i>
+                        </span>
+                    </button>
+                    <div id="faq-a2" class="faq-answer" role="region">
+                        <p>We provide website development, mobile app development, UI/UX design, branding, and custom software solutions.</p>
+                    </div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-a3">
+                        Who can work with Hyna Studio?
+                        <span class="faq-icon-wrapper">
+                            <i class="fa-solid fa-plus"></i>
+                        </span>
+                    </button>
+                    <div id="faq-a3" class="faq-answer" role="region">
+                        <p>We collaborate with startups, small businesses, student organizations, educational institutions, and entrepreneurs.</p>
+                    </div>
+                </div>
+
+                <!-- Q4 -->
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-a4">
+                        How does the project process work?
+                        <span class="faq-icon-wrapper">
+                            <i class="fa-solid fa-plus"></i>
+                        </span>
+                    </button>
+                    <div id="faq-a4" class="faq-answer" role="region">
+                        <p>Our process includes discovery, planning, design, development, testing, and deployment to deliver high-quality solutions.</p>
+                    </div>
+                </div>
+
+                <!-- Q5 -->
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-a5">
+                        How can I contact Hyna Studio?
+                        <span class="faq-icon-wrapper">
+                            <i class="fa-solid fa-plus"></i>
+                        </span>
+                    </button>
+                    <div id="faq-a5" class="faq-answer" role="region">
+                        <p>You can reach us through our website's contact form, email, or social media channels to discuss your project requirements.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const faqItems = document.querySelectorAll('.faq-item');
+                
+                faqItems.forEach(item => {
+                    const button = item.querySelector('.faq-question');
+                    const answer = item.querySelector('.faq-answer');
+                    
+                    button.addEventListener('click', () => {
+                        const isOpen = item.classList.contains('active');
+                        
+                        // Close all other items
+                        faqItems.forEach(otherItem => {
+                            if (otherItem !== item) {
+                                otherItem.classList.remove('active');
+                                otherItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                                otherItem.querySelector('.faq-answer').style.maxHeight = null;
+                            }
+                        });
+                        
+                        // Toggle current item
+                        if (isOpen) {
+                            item.classList.remove('active');
+                            button.setAttribute('aria-expanded', 'false');
+                            answer.style.maxHeight = null;
+                        } else {
+                            item.classList.add('active');
+                            button.setAttribute('aria-expanded', 'true');
+                            answer.style.maxHeight = answer.scrollHeight + 'px';
+                        }
+                    });
+                });
+            });
+        </script>
+    </section>
+
     <!-- CTA -->
     <div class="cta-banner" id="contact">
         <h2>Ready to build something great?</h2>
@@ -3791,6 +4057,7 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#team">Team</a></li>
                     <li><a href="#process">Process</a></li>
+                    <li><a href="#faq">FAQ</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
