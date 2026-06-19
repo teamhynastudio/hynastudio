@@ -287,11 +287,11 @@
 
         /* ── HERO ── */
         .hero {
-            min-height: 100vh;
+            min-height: 80vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 8rem 4rem 5rem;
+            padding: 8rem 4rem 2rem;
             position: relative;
             overflow: hidden;
         }
@@ -358,132 +358,13 @@
         }
 
         .hero-container {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 4rem;
+            display: flex;
+            flex-direction: column;
             align-items: center;
+            text-align: center;
             position: relative;
             z-index: 2;
             width: 100%;
-        }
-
-        @media(max-width: 1024px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .hero-visual-panel {
-                width: 100%;
-            }
-
-            .water-glass-card {
-                padding: 1.8rem;
-            }
-        }
-
-        .water-glass-card {
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-            color: var(--ink);
-            animation: slideIn 1s ease-out forwards;
-        }
-
-        .water-glass-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -50%;
-            width: 200%;
-            height: 100%;
-            background: linear-gradient(90deg,
-                    transparent,
-                    rgba(255, 255, 255, 0.2),
-                    transparent);
-            transform: skewX(-25deg);
-            transition: 0.75s;
-        }
-
-        .water-glass-card:hover::before {
-            left: 125%;
-        }
-
-        .water-glass-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 30px 60px rgba(79, 63, 240, 0.08),
-                inset 0 20px 20px -10px rgba(255, 255, 255, 0.4);
-        }
-
-        .water-glass-tag {
-            font-family: var(--font-mono);
-            font-size: 0.72rem;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            display: block;
-            margin-bottom: 1rem;
-        }
-
-        .water-glass-card h3 {
-            font-family: var(--font-body);
-            font-size: 1.6rem;
-            font-weight: 600;
-            line-height: 1.25;
-            letter-spacing: -0.01em;
-            margin-bottom: 0.5rem;
-        }
-
-        .hero-logo {
-            width: 48px;
-            height: auto;
-            display: block;
-            margin: 0 auto 0.5rem;
-        }
-
-        .water-glass-card p {
-            font-family: var(--font-body);
-            font-size: 0.9rem;
-            color: var(--muted);
-            line-height: 1.5;
-            margin-bottom: 2rem;
-        }
-
-        .water-glass-metrics {
-            display: flex;
-            gap: 2rem;
-            border-top: 1px solid rgba(10, 10, 15, 0.08);
-            padding-top: 1.5rem;
-        }
-
-        .metric {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .metric-val {
-            font-family: var(--font-display);
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: var(--accent);
-        }
-
-        .metric-lbl {
-            font-size: 0.72rem;
-            color: var(--muted);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-top: 0.2rem;
-        }
-
-        .hero-laptop {
-            width: 500px;
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-
-            filter:
-                drop-shadow(0 25px 35px rgba(0, 0, 0, 0.25)) drop-shadow(0 0 30px rgba(0, 174, 239, 0.3));
         }
 
         .hero-tag {
@@ -533,13 +414,15 @@
 
         .hero h1 {
             font-family: var(--font-display);
-            font-size: clamp(1.5rem, 2.5vw, 2rem);
+            font-size: clamp(2rem, 4vw, 3.2rem);
             font-weight: 800;
             line-height: 1.1;
             letter-spacing: -0.02em;
-            max-width: 26ch;
+            max-width: 45ch;
             margin-bottom: 1.8rem;
             position: relative;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .hero h1 em {
@@ -553,16 +436,20 @@
         .hero-sub {
             font-size: 1.15rem;
             color: var(--muted);
-            max-width: 48ch;
+            max-width: 60ch;
             line-height: 1.7;
             margin-bottom: 2.5rem;
             position: relative;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .hero-actions {
             display: flex;
+            flex-wrap: wrap;
             gap: 1rem;
             align-items: center;
+            justify-content: center;
             position: relative;
         }
 
@@ -627,11 +514,17 @@
 
         .hero-stats {
             display: flex;
+            flex-wrap: wrap;
             gap: 3rem;
+            justify-content: center;
             margin-top: 5rem;
+            margin-left: auto;
+            margin-right: auto;
             padding-top: 2.5rem;
             border-top: 1px solid var(--border);
             position: relative;
+            width: 100%;
+            max-width: 800px;
         }
 
         .stat-num {
@@ -1689,21 +1582,31 @@
         .tech-marquee-container {
             overflow: hidden;
             width: 100%;
-            padding: 3rem 0;
+            padding: 2rem 0;
             position: relative;
-            mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
-            margin-top: 3rem;
+            mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
         }
 
         .tech-marquee-track {
             display: flex;
             gap: 1.5rem;
             width: max-content;
-            animation: marquee-scroll 40s linear infinite;
             will-change: transform;
             transform: translate3d(0, 0, 0);
             -webkit-transform: translate3d(0, 0, 0);
+        }
+
+        .tech-marquee-track.scroll-left {
+            animation: marquee-scroll-left 35s linear infinite;
+        }
+
+        .tech-marquee-track.scroll-right {
+            animation: marquee-scroll-right 35s linear infinite;
         }
 
         .tech-marquee-track:hover {
@@ -1714,15 +1617,15 @@
             display: flex;
             align-items: center;
             gap: 1rem;
-            padding: 1rem 2.2rem;
-            background: rgba(255, 255, 255, 0.6);
+            padding: 0.8rem 2rem;
+            background: rgba(255, 255, 255, 0.65);
             border: 1px solid rgba(10, 10, 15, 0.08);
             border-radius: 50px;
             cursor: default;
             transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
             flex-shrink: 0;
             white-space: nowrap;
-            box-shadow: 0 2px 12px rgba(10, 10, 15, 0.06);
+            box-shadow: 0 2px 10px rgba(10, 10, 15, 0.05);
         }
 
         .tech-card:hover {
@@ -1749,13 +1652,21 @@
             margin: 0;
         }
 
-        @keyframes marquee-scroll {
+        @keyframes marquee-scroll-left {
             0% {
                 transform: translate3d(0, 0, 0);
             }
-
             100% {
                 transform: translate3d(calc(-50% - 0.75rem), 0, 0);
+            }
+        }
+
+        @keyframes marquee-scroll-right {
+            0% {
+                transform: translate3d(calc(-50% - 0.75rem), 0, 0);
+            }
+            100% {
+                transform: translate3d(0, 0, 0);
             }
         }
 
@@ -2938,26 +2849,24 @@
                 </div>
             </div>
 
-            <div class="hero-visual-panel">
-                <div class="water-glass-card">
-                    <span class="water-glass-tag"></span>
-                    <img src="lap.png" alt="Hyna Studio Laptop" class="hero-laptop" />
 
-
-
-                </div>
-            </div>
         </div>
     </section>
 
     <!-- PARTNERS -->
     <section id="partners" class="partners-section">
+        <div class="hero-grid-bg"></div>
         <style>
             .partners-section {
                 background: transparent;
-                padding: 60px 24px 80px;
+                padding: 20px 24px 80px;
                 text-align: center;
                 border-top: 1px solid rgba(255, 255, 255, 0.05);
+                position: relative;
+                z-index: 2;
+            }
+
+            .partners-container {
                 position: relative;
                 z-index: 2;
             }
@@ -3477,151 +3386,216 @@
         <h2 class="section-title">Technologies We Focus On</h2>
         <p class="section-sub">Stay ahead with the latest technologies and tools in the industry.</p>
         <div class="tech-marquee-container">
-            <div class="tech-marquee-track">
+            <!-- Row 1: Frontend & Design (Left) -->
+            <div class="tech-marquee-track scroll-left">
                 <!-- Set 1 -->
                 <div class="tech-card">
-                    <span class="tech-icon">
-                        <i class="devicon-react-original colored"></i>
-                    </span>
+                    <span class="tech-icon"><i class="devicon-react-original colored"></i></span>
                     <h3>React</h3>
                 </div>
                 <div class="tech-card">
-                    <span class="tech-icon">
-                        <i class="devicon-nodejs-plain colored"></i>
-                    </span>
-                    <h3>Node.js</h3>
+                    <span class="tech-icon"><i class="devicon-nextjs-plain"></i></span>
+                    <h3>Next.js</h3>
                 </div>
                 <div class="tech-card">
-                    <span class="tech-icon">
-                        <i class="devicon-python-plain colored"></i>
-                    </span>
-                    <h3>Python</h3>
-                </div>
-                <div class="tech-card">
-                    <span class="tech-icon">
-                        <i class="devicon-java-plain colored"></i>
-                    </span>
-                    <h3>Java</h3>
-                </div>
-                <div class="tech-card">
-                    <span class="tech-icon">
-                        <i class="devicon-javascript-plain colored"></i>
-                    </span>
-                    <h3>JavaScript</h3>
-                </div>
-                <div class="tech-card">
-                    <span class="tech-icon">
-                        <i class="devicon-typescript-plain colored"></i>
-                    </span>
+                    <span class="tech-icon"><i class="devicon-typescript-plain colored"></i></span>
                     <h3>TypeScript</h3>
                 </div>
                 <div class="tech-card">
-                    <span class="tech-icon">
-                        <i class="devicon-docker-plain colored"></i>
-                    </span>
-                    <h3>Docker</h3>
+                    <span class="tech-icon"><i class="devicon-javascript-plain colored"></i></span>
+                    <h3>JavaScript</h3>
                 </div>
                 <div class="tech-card">
-                    <span class="tech-icon">
-                        <i class="fa-brands fa-aws"></i>
-                    </span>
-                    <h3>AWS</h3>
+                    <span class="tech-icon"><i class="devicon-tailwindcss-original colored"></i></span>
+                    <h3>Tailwind CSS</h3>
                 </div>
                 <div class="tech-card">
-                    <span class="tech-icon">
-                        <i class="devicon-git-plain colored"></i>
-                    </span>
-                    <h3>Git</h3>
+                    <span class="tech-icon"><i class="devicon-figma-plain colored"></i></span>
+                    <h3>Figma</h3>
                 </div>
                 <div class="tech-card">
-                    <span class="tech-icon">
-                        <i class="devicon-mongodb-plain colored"></i>
-                    </span>
-                    <h3>MongoDB</h3>
+                    <span class="tech-icon"><i class="devicon-html5-plain colored"></i></span>
+                    <h3>HTML5</h3>
                 </div>
                 <div class="tech-card">
-                    <span class="tech-icon">
-                        <i class="devicon-sqlite-plain colored"></i>
-                    </span>
-                    <h3>SQL</h3>
+                    <span class="tech-icon"><i class="devicon-css3-plain colored"></i></span>
+                    <h3>CSS3</h3>
                 </div>
-                <div class="tech-card">
-                    <span class="tech-icon">
-                        <i class="fa-solid fa-brain"></i>
-                    </span>
-                    <h3>Machine Learning</h3>
 
-                </div>
-                <!-- Set 2 -->
+                <!-- Set 2 (Duplicate for seamless loop) -->
                 <div class="tech-card">
-                    <span class="tech-icon">
-                        <i class="devicon-react-original colored"></i>
-                    </span>
+                    <span class="tech-icon"><i class="devicon-react-original colored"></i></span>
                     <h3>React</h3>
                 </div>
                 <div class="tech-card">
-                    <span class="tech-icon">
-                        <i class="devicon-nodejs-plain colored"></i>
-                    </span>
-                    <h3>Node.js</h3>
+                    <span class="tech-icon"><i class="devicon-nextjs-plain"></i></span>
+                    <h3>Next.js</h3>
                 </div>
                 <div class="tech-card">
-                    <span class="tech-icon">
-                        <i class="devicon-python-plain colored"></i>
-                    </span>
-                    <h3>Python</h3>
-                </div>
-                <div class="tech-card">
-                    <span class="tech-icon">
-                        <i class="devicon-java-plain colored"></i>
-                    </span>
-                    <h3>Java</h3>
-                </div>
-                <div class="tech-card">
-                    <span class="tech-icon">
-                        <i class="devicon-javascript-plain colored"></i>
-                    </span>
-                    <h3>JavaScript</h3>
-                </div>
-                <div class="tech-card">
-                    <span class="tech-icon">
-                        <i class="devicon-typescript-plain colored"></i>
-                    </span>
+                    <span class="tech-icon"><i class="devicon-typescript-plain colored"></i></span>
                     <h3>TypeScript</h3>
                 </div>
                 <div class="tech-card">
-                    <span class="tech-icon">
-                        <i class="devicon-docker-plain colored"></i>
-                    </span>
-                    <h3>Docker</h3>
+                    <span class="tech-icon"><i class="devicon-javascript-plain colored"></i></span>
+                    <h3>JavaScript</h3>
                 </div>
                 <div class="tech-card">
-                    <span class="tech-icon">
-                        <i class="devicon-amazonwebservices-original colored"></i>
-                    </span>
-                    <h3>AWS</h3>
+                    <span class="tech-icon"><i class="devicon-tailwindcss-original colored"></i></span>
+                    <h3>Tailwind CSS</h3>
                 </div>
                 <div class="tech-card">
-                    <span class="tech-icon">
-                        <i class="devicon-git-plain colored"></i>
-                    </span>
-                    <h3>Git</h3>
+                    <span class="tech-icon"><i class="devicon-figma-plain colored"></i></span>
+                    <h3>Figma</h3>
                 </div>
                 <div class="tech-card">
-                    <span class="tech-icon">
-                        <i class="devicon-mongodb-plain colored"></i>
-                    </span>
+                    <span class="tech-icon"><i class="devicon-html5-plain colored"></i></span>
+                    <h3>HTML5</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon"><i class="devicon-css3-plain colored"></i></span>
+                    <h3>CSS3</h3>
+                </div>
+            </div>
+
+            <!-- Row 2: Backend & Database (Right) -->
+            <div class="tech-marquee-track scroll-right">
+                <!-- Set 1 -->
+                <div class="tech-card">
+                    <span class="tech-icon"><i class="devicon-nodejs-plain colored"></i></span>
+                    <h3>Node.js</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon"><i class="devicon-python-plain colored"></i></span>
+                    <h3>Python</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon"><i class="devicon-java-plain colored"></i></span>
+                    <h3>Java</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon"><i class="devicon-go-original colored"></i></span>
+                    <h3>Go</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon"><i class="devicon-postgresql-plain colored"></i></span>
+                    <h3>PostgreSQL</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon"><i class="devicon-mongodb-plain colored"></i></span>
                     <h3>MongoDB</h3>
                 </div>
                 <div class="tech-card">
-                    <span class="tech-icon">
-                        <i class="fa-solid fa-database"></i>
-                    </span>
-                    <h3>SQL</h3>
+                    <span class="tech-icon"><i class="devicon-redis-plain colored"></i></span>
+                    <h3>Redis</h3>
                 </div>
                 <div class="tech-card">
-                    <span class="tech-icon">🤖</span>
+                    <span class="tech-icon"><i class="devicon-supabase-plain colored"></i></span>
+                    <h3>Supabase</h3>
+                </div>
+
+                <!-- Set 2 (Duplicate for seamless loop) -->
+                <div class="tech-card">
+                    <span class="tech-icon"><i class="devicon-nodejs-plain colored"></i></span>
+                    <h3>Node.js</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon"><i class="devicon-python-plain colored"></i></span>
+                    <h3>Python</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon"><i class="devicon-java-plain colored"></i></span>
+                    <h3>Java</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon"><i class="devicon-go-original colored"></i></span>
+                    <h3>Go</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon"><i class="devicon-postgresql-plain colored"></i></span>
+                    <h3>PostgreSQL</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon"><i class="devicon-mongodb-plain colored"></i></span>
+                    <h3>MongoDB</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon"><i class="devicon-redis-plain colored"></i></span>
+                    <h3>Redis</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon"><i class="devicon-supabase-plain colored"></i></span>
+                    <h3>Supabase</h3>
+                </div>
+            </div>
+
+            <!-- Row 3: DevOps, Cloud & AI (Left) -->
+            <div class="tech-marquee-track scroll-left">
+                <!-- Set 1 -->
+                <div class="tech-card">
+                    <span class="tech-icon"><i class="devicon-docker-plain colored"></i></span>
+                    <h3>Docker</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon"><i class="devicon-kubernetes-plain colored"></i></span>
+                    <h3>Kubernetes</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon"><i class="fa-brands fa-aws" style="color:#FF9900;"></i></span>
+                    <h3>AWS</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon"><i class="devicon-azure-plain colored"></i></span>
+                    <h3>Azure</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon"><i class="devicon-googlecloud-plain colored"></i></span>
+                    <h3>GCP</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon"><i class="devicon-git-plain colored"></i></span>
+                    <h3>Git</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon"><i class="fa-solid fa-brain" style="color:#8b5cf6;"></i></span>
                     <h3>Machine Learning</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon"><i class="fa-solid fa-robot" style="color:#10b981;"></i></span>
+                    <h3>AI Agents</h3>
+                </div>
+
+                <!-- Set 2 (Duplicate for seamless loop) -->
+                <div class="tech-card">
+                    <span class="tech-icon"><i class="devicon-docker-plain colored"></i></span>
+                    <h3>Docker</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon"><i class="devicon-kubernetes-plain colored"></i></span>
+                    <h3>Kubernetes</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon"><i class="fa-brands fa-aws" style="color:#FF9900;"></i></span>
+                    <h3>AWS</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon"><i class="devicon-azure-plain colored"></i></span>
+                    <h3>Azure</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon"><i class="devicon-googlecloud-plain colored"></i></span>
+                    <h3>GCP</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon"><i class="devicon-git-plain colored"></i></span>
+                    <h3>Git</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon"><i class="fa-solid fa-brain" style="color:#8b5cf6;"></i></span>
+                    <h3>Machine Learning</h3>
+                </div>
+                <div class="tech-card">
+                    <span class="tech-icon"><i class="fa-solid fa-robot" style="color:#10b981;"></i></span>
+                    <h3>AI Agents</h3>
                 </div>
             </div>
         </div>
