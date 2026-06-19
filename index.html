@@ -116,6 +116,14 @@
             transition: all 0.3s ease;
         }
 
+        nav.nav-scrolled {
+            top: 0.75rem;
+            padding: 0.5rem 2rem;
+            background: rgba(12, 19, 32, 0.85);
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
         .nav-logo {
             display: flex;
             align-items: center;
@@ -1758,6 +1766,10 @@
                 display: none;
             }
 
+            .nav-cta.hide-mobile {
+                display: none;
+            }
+
             /* Show Book a Call button on mobile */
             .nav-book-call {
                 display: inline-flex;
@@ -2019,6 +2031,13 @@
             <li><a href="#faq">FAQ</a></li>
         </ul>
 
+        <!-- Desktop Book a Call CTA -->
+        <a href="mailto:team.hynastudio@gmail.com?subject=Project%20Inquiry%20-%20Hyna%20Studio&body=Hello%20Hyna%20Studio,%0D%0A%0D%0AI%20would%20like%20to%20discuss%20a%20project.%0D%0A%0D%0AName:%20%0D%0ACompany:%20%0D%0APhone:%20%0D%0AProject%20Details:%20"
+            class="nav-cta hide-mobile"
+            id="nav-cta-btn">
+            Book a Call
+        </a>
+
         <!-- Mobile-only Book a Call CTA -->
         <a href="mailto:team.hynastudio@gmail.com?subject=Project%20Inquiry%20-%20Hyna%20Studio&body=Hello%20Hyna%20Studio,%0D%0A%0D%0AI%20would%20like%20to%20discuss%20a%20project.%0D%0A%0D%0AName:%20%0D%0ACompany:%20%0D%0APhone:%20%0D%0AProject%20Details:%20"
             class="nav-book-call"
@@ -2045,12 +2064,9 @@
                     and
                     brand identities for startups and scale-ups worldwide.</p>
                 <div class="hero-actions">
-                    <a href="work.html" class="btn-primary">Explore Our Work</a>
-
                     <a href="contact.html" class="btn-primary"
-                        style="background: var(--accent2); box-shadow: 0 4px 20px rgba(0, 217, 163, 0.3);">Start your
-                        project →</a>
-                    <a href="#team" class="btn-ghost">Meet the Team →</a>
+                        style="background: linear-gradient(135deg, var(--accent), #7C3AED); box-shadow: 0 4px 20px rgba(79, 63, 240, 0.45); border: none;">Start your project →</a>
+                    <a href="work.html" class="btn-ghost">Explore Our Work</a>
                 </div>
                 <div class="hero-stats">
                     <div>
@@ -2166,6 +2182,7 @@
             min-width: 0;
             backdrop-filter: blur(12px);
             transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+            cursor: pointer;
         }
 
         #hyna-services .hs-card:hover {
@@ -2198,6 +2215,16 @@
             fill: none;
             stroke-linecap: round;
             stroke-linejoin: round;
+        }
+
+        #hyna-services .hs-icon i {
+            font-size: 28px;
+            color: #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        #hyna-services .hs-card:hover .hs-icon i {
+            transform: scale(1.15) rotate(5deg);
         }
 
         #hyna-services .hs-card:nth-child(2) .hs-icon {
@@ -2237,6 +2264,31 @@
             margin: 0;
             color: var(--muted);
             line-height: 1.7;
+        }
+
+        #hyna-services .hs-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        #hyna-services .hs-card:hover .hs-card-link {
+            color: #ffffff;
+            gap: 12px;
+        }
+
+        #hyna-services .hs-card-link .arrow {
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        #hyna-services .hs-card:hover .hs-card-link .arrow {
+            transform: translateX(4px);
         }
 
         @keyframes hs-float {
@@ -2281,54 +2333,59 @@
             </p>
 
             <div class="hs-grid">
-<div class="hs-card" onclick="window.location.href='work.html?service=web'">
-    <span class="service-icon">
-        <i class="devicon-html5-plain colored"></i>
-    </span>
-    <h3>Web Development</h3>
-    <p>Modern, scalable websites and web applications optimized for performance.</p>
-</div>
+                <div class="hs-card" onclick="window.location.href='work.html?service=web'">
+                    <div class="hs-icon">
+                        <i class="devicon-html5-plain"></i>
+                    </div>
+                    <h3>Web Development</h3>
+                    <p>Modern, scalable websites and web applications optimized for performance.</p>
+                    <div class="hs-card-link">View projects <span class="arrow">→</span></div>
+                </div>
 
-<div class="hs-card" onclick="window.location.href='work.html?service=app'">
-    <span class="service-icon">
-        <i class="devicon-flutter-plain colored"></i>
-    </span>
-    <h3>App Development</h3>
-    <p>Native and cross-platform mobile applications for iOS and Android.</p>
-</div>
+                <div class="hs-card" onclick="window.location.href='work.html?service=app'">
+                    <div class="hs-icon">
+                        <i class="devicon-flutter-plain"></i>
+                    </div>
+                    <h3>App Development</h3>
+                    <p>Native and cross-platform mobile applications for iOS and Android.</p>
+                    <div class="hs-card-link">View projects <span class="arrow">→</span></div>
+                </div>
 
-<div class="hs-card" onclick="window.location.href='work.html?service=design'">
-    <span class="service-icon">
-        <i class="devicon-figma-plain colored"></i>
-    </span>
-    <h3>UI / UX Design</h3>
-    <p>Beautiful user experiences crafted with modern design principles.</p>
-</div>
+                <div class="hs-card" onclick="window.location.href='work.html?service=design'">
+                    <div class="hs-icon">
+                        <i class="devicon-figma-plain"></i>
+                    </div>
+                    <h3>UI / UX Design</h3>
+                    <p>Beautiful user experiences crafted with modern design principles.</p>
+                    <div class="hs-card-link">View projects <span class="arrow">→</span></div>
+                </div>
 
-<div class="hs-card" onclick="window.location.href='work.html?service=saas'">
-    <span class="service-icon">
-        <i class="devicon-nodejs-plain colored"></i>
-    </span>
-    <h3>SaaS Products</h3>
-    <p>End-to-end SaaS development — multi-tenant architecture, billing integrations, admin dashboards, and growth tooling built in.</p>
-</div>
+                <div class="hs-card" onclick="window.location.href='work.html?service=saas'">
+                    <div class="hs-icon">
+                        <i class="devicon-nodejs-plain"></i>
+                    </div>
+                    <h3>SaaS Products</h3>
+                    <p>End-to-end SaaS development — multi-tenant architecture, billing integrations, admin dashboards, and growth tooling built in.</p>
+                    <div class="hs-card-link">View projects <span class="arrow">→</span></div>
+                </div>
 
-<div class="hs-card" onclick="window.location.href='work.html?service=data'">
-    <span class="service-icon">
-        <i class="fa-solid fa-server"></i>
-    </span>
-    <h3>Data Platform Engineering</h3>
-    <p>Scalable data pipelines, real-time analytics, data warehousing, and robust ETL/ELT processes designed for data-driven decision making.</p>
-</div>
+                <div class="hs-card" onclick="window.location.href='work.html?service=data'">
+                    <div class="hs-icon">
+                        <i class="fa-solid fa-server"></i>
+                    </div>
+                    <h3>Data Platform Engineering</h3>
+                    <p>Scalable data pipelines, real-time analytics, data warehousing, and robust ETL/ELT processes designed for data-driven decision making.</p>
+                    <div class="hs-card-link">View projects <span class="arrow">→</span></div>
+                </div>
 
-<div class="hs-card" onclick="window.location.href='work.html?service=cloud'">
-    <span class="service-icon">
-        <i class="fa-solid fa-diagram-project"></i>
-    </span>
-    <h3>Solution Architecture</h3>
-    <p>Robust, secure, and future-proof system design. We align technical infrastructure with business goals for high performance.</p>
-</div>
-                
+                <div class="hs-card" onclick="window.location.href='work.html?service=cloud'">
+                    <div class="hs-icon">
+                        <i class="fa-solid fa-diagram-project"></i>
+                    </div>
+                    <h3>Solution Architecture</h3>
+                    <p>Robust, secure, and future-proof system design. We align technical infrastructure with business goals for high performance.</p>
+                    <div class="hs-card-link">View projects <span class="arrow">→</span></div>
+                </div>
             </div>
 
         </div>
@@ -4326,6 +4383,20 @@
                     inner.style.transform = `rotateX(0deg) rotateY(0deg) scale(1)`;
                 });
             });
+
+            // Scrolling navigation bar shrink effect
+            const navElement = document.querySelector('nav');
+            if (navElement) {
+                const handleScroll = () => {
+                    if (window.scrollY > 50) {
+                        navElement.classList.add('nav-scrolled');
+                    } else {
+                        navElement.classList.remove('nav-scrolled');
+                    }
+                };
+                window.addEventListener('scroll', handleScroll);
+                handleScroll();
+            }
 
             // Initialize Lucide Icons
             if (window.lucide) {
