@@ -4637,6 +4637,188 @@
         </div>
     </footer>
 
+    <!-- TRUSTED BUSINESSES MARQUEE -->
+    <style>
+        .trusted-marquee-section {
+            background: #080808; /* Premium dark background */
+            padding: 4rem 0;
+            overflow: hidden;
+            position: relative;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-family: 'Inter', sans-serif;
+            z-index: 10;
+        }
+
+        .trusted-marquee-title {
+            text-align: center;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .trusted-marquee-container {
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+            mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+        }
+
+        .trusted-marquee-track {
+            display: flex;
+            gap: 2rem;
+            width: max-content;
+            animation: trusted-marquee-scroll 35s linear infinite;
+            will-change: transform;
+        }
+
+        .trusted-marquee-track:hover {
+            animation-play-state: paused;
+        }
+
+        .trusted-brand-card {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.8rem 1.8rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 50px;
+            cursor: default;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            white-space: nowrap;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .trusted-brand-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(0, 217, 163, 0.35);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 8px 24px rgba(0, 217, 163, 0.15);
+        }
+
+        .trusted-brand-card i {
+            font-size: 1.4rem;
+            transition: transform 0.3s ease;
+        }
+
+        .trusted-brand-card:hover i {
+            transform: scale(1.15);
+        }
+
+        .trusted-brand-card h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.85);
+            margin: 0;
+        }
+
+        @keyframes trusted-marquee-scroll {
+            0% {
+                transform: translate3d(0, 0, 0);
+            }
+            100% {
+                transform: translate3d(calc(-50% - 1rem), 0, 0);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .trusted-marquee-track {
+                animation: none !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .trusted-marquee-section {
+                padding: 3rem 0;
+            }
+            .trusted-brand-card {
+                padding: 0.6rem 1.4rem;
+            }
+        }
+    </style>
+
+    <section class="trusted-marquee-section">
+        <h4 class="trusted-marquee-title">Trusted by teams at</h4>
+        <div class="trusted-marquee-container">
+            <div class="trusted-marquee-track">
+                <!-- Set 1 -->
+                <div class="trusted-brand-card">
+                    <i class="fa-brands fa-stripe" style="color: #635bff;"></i>
+                    <h3>Stripe</h3>
+                </div>
+                <div class="trusted-brand-card">
+                    <i class="devicon-shopify-plain colored"></i>
+                    <h3>Shopify</h3>
+                </div>
+                <div class="trusted-brand-card">
+                    <i class="devicon-figma-plain colored"></i>
+                    <h3>Figma</h3>
+                </div>
+                <div class="trusted-brand-card">
+                    <i class="fa-brands fa-aws" style="color: #ff9900;"></i>
+                    <h3>AWS</h3>
+                </div>
+                <div class="trusted-brand-card">
+                    <i class="devicon-vercel-original" style="color: #ffffff;"></i>
+                    <h3>Vercel</h3>
+                </div>
+                <div class="trusted-brand-card">
+                    <i class="fa-brands fa-slack" style="color: #4a154b;"></i>
+                    <h3>Slack</h3>
+                </div>
+                <div class="trusted-brand-card">
+                    <i class="devicon-salesforce-plain colored"></i>
+                    <h3>Salesforce</h3>
+                </div>
+                <div class="trusted-brand-card">
+                    <i class="fa-brands fa-hubspot" style="color: #ff7a59;"></i>
+                    <h3>HubSpot</h3>
+                </div>
+
+                <!-- Set 2 -->
+                <div class="trusted-brand-card">
+                    <i class="fa-brands fa-stripe" style="color: #635bff;"></i>
+                    <h3>Stripe</h3>
+                </div>
+                <div class="trusted-brand-card">
+                    <i class="devicon-shopify-plain colored"></i>
+                    <h3>Shopify</h3>
+                </div>
+                <div class="trusted-brand-card">
+                    <i class="devicon-figma-plain colored"></i>
+                    <h3>Figma</h3>
+                </div>
+                <div class="trusted-brand-card">
+                    <i class="fa-brands fa-aws" style="color: #ff9900;"></i>
+                    <h3>AWS</h3>
+                </div>
+                <div class="trusted-brand-card">
+                    <i class="devicon-vercel-original" style="color: #ffffff;"></i>
+                    <h3>Vercel</h3>
+                </div>
+                <div class="trusted-brand-card">
+                    <i class="fa-brands fa-slack" style="color: #4a154b;"></i>
+                    <h3>Slack</h3>
+                </div>
+                <div class="trusted-brand-card">
+                    <i class="devicon-salesforce-plain colored"></i>
+                    <h3>Salesforce</h3>
+                </div>
+                <div class="trusted-brand-card">
+                    <i class="fa-brands fa-hubspot" style="color: #ff7a59;"></i>
+                    <h3>HubSpot</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Team Modal -->
 
     <div class="modal-overlay" id="teamModalOverlay" aria-hidden="true">
