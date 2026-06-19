@@ -277,6 +277,42 @@
             transform: translateY(-1px);
         }
 
+        /* ── MOBILE BOOK CALL CTA ── */
+        .nav-book-call {
+            display: none; /* hidden on desktop */
+            align-items: center;
+            gap: 0.45rem;
+            background: linear-gradient(135deg, var(--accent), #7C3AED);
+            color: #ffffff;
+            padding: 0.55rem 1.2rem;
+            border-radius: 100px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-decoration: none;
+            border: none;
+            box-shadow: 0 4px 16px rgba(79, 63, 240, 0.45);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .nav-book-call:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 22px rgba(79, 63, 240, 0.6);
+            opacity: 0.9;
+        }
+
+        .nav-book-call svg {
+            width: 14px;
+            height: 14px;
+            stroke: #ffffff;
+            stroke-width: 2.5;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0;
+        }
+
         /* ── HERO ── */
         .hero {
             min-height: 80vh;
@@ -1417,6 +1453,7 @@
             box-shadow: 0 0 0 8px var(--paper);
         }
 
+
         .process-step h4 {
             font-family: var(--font-display);
             font-weight: 700;
@@ -1721,6 +1758,11 @@
                 display: none;
             }
 
+            /* Show Book a Call button on mobile */
+            .nav-book-call {
+                display: inline-flex;
+            }
+
             section {
                 padding: 4rem 1.5rem;
             }
@@ -1956,7 +1998,7 @@
                 <span class="logo-sub">Democratizing Entrepreneurship</span>
             </div>
         </a>
-        
+
         <ul class="nav-links">
             <li class="nav-item-dropdown">
                 <a href="#hyna-services" class="nav-link-has-dropdown">Services <span class="nav-arrow">▾</span></a>
@@ -1977,6 +2019,16 @@
             <li><a href="#faq">FAQ</a></li>
         </ul>
 
+        <!-- Mobile-only Book a Call CTA -->
+        <a href="mailto:team.hynastudio@gmail.com?subject=Project%20Inquiry%20-%20Hyna%20Studio&body=Hello%20Hyna%20Studio,%0D%0A%0D%0AI%20would%20like%20to%20discuss%20a%20project.%0D%0A%0D%0AName:%20%0D%0ACompany:%20%0D%0APhone:%20%0D%0AProject%20Details:%20"
+            class="nav-book-call"
+            id="nav-book-call-btn">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.08 6.08l1.28-1.28a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            Book a Call
+        </a>
+
     </nav>
 
     <!-- HERO -->
@@ -1994,7 +2046,7 @@
                     brand identities for startups and scale-ups worldwide.</p>
                 <div class="hero-actions">
                     <a href="work.html" class="btn-primary">Explore Our Work</a>
-                    
+
                     <a href="contact.html" class="btn-primary"
                         style="background: var(--accent2); box-shadow: 0 4px 20px rgba(0, 217, 163, 0.3);">Start your
                         project →</a>
@@ -2568,7 +2620,7 @@
     <style>
         .team-section {
             padding: 100px 8%;
-            background: 
+            background:
                 radial-gradient(circle at 50% 0%, rgba(79, 70, 229, 0.12) 0%, transparent 60%),
                 radial-gradient(circle at 20% 40%, rgba(0, 217, 163, 0.05) 0%, transparent 50%),
                 radial-gradient(circle at 80% 60%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
@@ -3917,7 +3969,8 @@
                         </span>
                     </button>
                     <div id="faq-a1" class="faq-answer" role="region">
-                        <p>Hyna Studio is a student-led technology startup that designs and develops innovative websites, mobile applications, and digital solutions.</p>
+                        <p>Hyna Studio is a student-led technology startup that designs and develops innovative
+                            websites, mobile applications, and digital solutions.</p>
                     </div>
                 </div>
 
@@ -3930,7 +3983,8 @@
                         </span>
                     </button>
                     <div id="faq-a2" class="faq-answer" role="region">
-                        <p>We provide website development, mobile app development, UI/UX design, branding, and custom software solutions.</p>
+                        <p>We provide website development, mobile app development, UI/UX design, branding, and custom
+                            software solutions.</p>
                     </div>
                 </div>
 
@@ -3943,7 +3997,8 @@
                         </span>
                     </button>
                     <div id="faq-a3" class="faq-answer" role="region">
-                        <p>We collaborate with startups, small businesses, student organizations, educational institutions, and entrepreneurs.</p>
+                        <p>We collaborate with startups, small businesses, student organizations, educational
+                            institutions, and entrepreneurs.</p>
                     </div>
                 </div>
 
@@ -3956,7 +4011,8 @@
                         </span>
                     </button>
                     <div id="faq-a4" class="faq-answer" role="region">
-                        <p>Our process includes discovery, planning, design, development, testing, and deployment to deliver high-quality solutions.</p>
+                        <p>Our process includes discovery, planning, design, development, testing, and deployment to
+                            deliver high-quality solutions.</p>
                     </div>
                 </div>
 
@@ -3969,7 +4025,8 @@
                         </span>
                     </button>
                     <div id="faq-a5" class="faq-answer" role="region">
-                        <p>You can reach us through our website's contact form, email, or social media channels to discuss your project requirements.</p>
+                        <p>You can reach us through our website's contact form, email, or social media channels to
+                            discuss your project requirements.</p>
                     </div>
                 </div>
             </div>
@@ -3978,14 +4035,14 @@
         <script>
             document.addEventListener('DOMContentLoaded', () => {
                 const faqItems = document.querySelectorAll('.faq-item');
-                
+
                 faqItems.forEach(item => {
                     const button = item.querySelector('.faq-question');
                     const answer = item.querySelector('.faq-answer');
-                    
+
                     button.addEventListener('click', () => {
                         const isOpen = item.classList.contains('active');
-                        
+
                         // Close all other items
                         faqItems.forEach(otherItem => {
                             if (otherItem !== item) {
@@ -3994,7 +4051,7 @@
                                 otherItem.querySelector('.faq-answer').style.maxHeight = null;
                             }
                         });
-                        
+
                         // Toggle current item
                         if (isOpen) {
                             item.classList.remove('active');
