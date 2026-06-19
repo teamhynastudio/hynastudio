@@ -2094,7 +2094,7 @@
             top: 30%;
             left: 20%;
             animation-duration: 9s;
-
+            
             animation-delay: 1.2s;
         }
 
@@ -2945,6 +2945,157 @@
 
 
 
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PARTNERS -->
+    <section id="partners" class="partners-section">
+        <style>
+            .partners-section {
+                background: transparent;
+                padding: 60px 24px 80px;
+                text-align: center;
+                border-top: 1px solid rgba(255, 255, 255, 0.05);
+                position: relative;
+                z-index: 2;
+            }
+
+            .partners-title {
+                font-family: 'Sora', sans-serif;
+                font-size: clamp(1.8rem, 4vw, 2.5rem);
+                font-weight: 800;
+                color: #000000;
+                margin-bottom: 8px;
+                letter-spacing: -0.025em;
+            }
+
+            .partners-subtitle {
+                font-family: 'Inter', sans-serif;
+                font-size: 14px;
+                color: #8a8f9a;
+                margin-bottom: 40px;
+            }
+
+            .partners-slider-viewport {
+                overflow: hidden;
+                width: 440px;
+                /* Exactly 2 logos (200px each) + 1 gap (40px) */
+                max-width: 100%;
+                margin: 0 auto;
+                position: relative;
+
+            }
+
+            .partners-slider-track {
+                display: flex;
+                gap: 40px;
+                width: max-content;
+                animation: partners-marquee-scroll 40s linear infinite;
+            }
+
+            .partners-logo-item {
+                width: 200px;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+            }
+
+            .partners-logo-item img {
+                max-width: 100%;
+                max-height: 100%;
+                object-fit: contain;
+                filter: none;
+                transition: filter 0.3s ease, transform 0.3s ease;
+            }
+
+            .partners-logo-item svg {
+                max-width: 100%;
+                max-height: 100%;
+                filter: none;
+                transition: filter 0.3s ease, transform 0.3s ease;
+            }
+
+            .partners-logo-item:hover img {
+                filter: grayscale(0%) brightness(1);
+                transform: scale(1.03);
+            }
+
+            .partners-logo-item:hover svg {
+                filter: grayscale(0%) opacity(1);
+                transform: scale(1.03);
+            }
+
+            @keyframes partners-marquee-scroll {
+                0% {
+                    transform: translate3d(0, 0, 0);
+                }
+
+                100% {
+                    transform: translate3d(calc(-50% - 20px), 0, 0);
+                    /* Half of 10 items + half of gap */
+                }
+            }
+        </style>
+
+        <div class="partners-container">
+            <h2 class="partners-title">Trusted Partners</h2>
+            <p class="partners-subtitle">Over 6+ businesses trust us</p>
+            <div class="partners-slider-viewport">
+                <div class="partners-slider-track">
+                    <!-- Set 1 -->
+
+                    <div class="partners-logo-item"><img
+                            src="https://i.postimg.cc/MKpx1cpn/Screenshot-2026-06-18-111616.png" alt="Nutbit Choco"
+                            style="max-width:100%;height:auto;" /></div>
+                    <div class="partners-logo-item">
+                        <svg viewBox="0 0 160 45" width="160" height="45" xmlns="http://www.w3.org/2000/svg">
+                            <g transform="translate(5, 2)" fill="#10b981">
+                                <path d="M20 10 C30 10, 35 20, 20 35 C5 20, 10 10, 20 10 Z" fill="#10b981" />
+                                <path d="M20 15 C25 15, 28 22, 20 30 C12 22, 15 15, 20 15 Z" fill="#047857" />
+                            </g>
+                            <text x="50" y="24" fill="#10b981" font-family="'Syne', sans-serif" font-weight="800"
+                                font-size="18">OGPL</text>
+                            <text x="50" y="34" fill="#34d399" font-family="'Inter', sans-serif" font-weight="600"
+                                font-size="6" letter-spacing="0.5">ONE GOOD PACK FOR LIFE</text>
+                        </svg>
+                    </div>
+                    <div class="partners-logo-item">
+                        <svg viewBox="0 0 150 40" width="150" height="40" xmlns="http://www.w3.org/2000/svg">
+                            <text x="50%" y="28" fill="#14b8a6" font-family="'Times New Roman', Times, serif"
+                                font-weight="700" font-size="24" letter-spacing="2" text-anchor="middle">ARUMAYI</text>
+                        </svg>
+                    </div>
+                    <div class="partners-logo-item">
+                        <img src="https://i.postimg.cc/VLKYrsfJ/472894309-1108437250976075-929380907003234168-n.jpg"
+                            alt="ad_micro_craft Logo" style="border-radius: 8px;">
+                    </div>
+
+                    <div class="partners-logo-item">
+                        <svg viewBox="0 0 160 45" width="160" height="45" xmlns="http://www.w3.org/2000/svg">
+                            <g transform="translate(5, 2)" fill="#10b981">
+                                <path d="M20 10 C30 10, 35 20, 20 35 C5 20, 10 10, 20 10 Z" fill="#10b981" />
+                                <path d="M20 15 C25 15, 28 22, 20 30 C12 22, 15 15, 20 15 Z" fill="#047857" />
+                            </g>
+                            <text x="50" y="24" fill="#10b981" font-family="'Syne', sans-serif" font-weight="800"
+                                font-size="18">OGPL</text>
+                            <text x="50" y="34" fill="#34d399" font-family="'Inter', sans-serif" font-weight="600"
+                                font-size="6" letter-spacing="0.5">ONE GOOD PACK FOR LIFE</text>
+                        </svg>
+                    </div>
+                    <div class="partners-logo-item">
+                        <svg viewBox="0 0 150 40" width="150" height="40" xmlns="http://www.w3.org/2000/svg">
+                            <text x="50%" y="28" fill="#14b8a6" font-family="'Times New Roman', Times, serif"
+                                font-weight="700" font-size="24" letter-spacing="2" text-anchor="middle">ARUMAYI</text>
+                        </svg>
+                    </div>
+                    <div class="partners-logo-item">
+                        <img src="https://i.postimg.cc/VLKYrsfJ/472894309-1108437250976075-929380907003234168-n.jpg"
+                            alt="ad_micro_craft Logo" style="border-radius: 8px;">
+                    </div>
                 </div>
             </div>
         </div>
@@ -3835,8 +3986,238 @@
                 padding: 0;
             }
 
+
+            #process.process-conversion-section {
+                background: transparent;
+                color: #ffffff;
+                font-family: 'Inter', sans-serif;
+                min-height: 100vh;
+                overflow: hidden;
+                padding: 0;
+                position: relative;
+            }
+
+            /* Floating animated gradient blur blobs for the background */
+            .process-conversion-section::before,
+            .process-conversion-section::after {
+                content: '';
+                position: absolute;
+                width: 500px;
+                height: 500px;
+                border-radius: 50%;
+                background: radial-gradient(circle, rgba(45, 212, 191, 0.08) 0%, rgba(45, 212, 191, 0) 70%);
+                filter: blur(80px);
+                pointer-events: none;
+                z-index: 1;
+            }
+
+            .process-conversion-section::before {
+                top: -10%;
+                left: -150px;
+                animation: process-orb-1 20s infinite alternate ease-in-out;
+            }
+
+            .process-conversion-section::after {
+                bottom: -10%;
+                right: -150px;
+                background: radial-gradient(circle, rgba(79, 63, 240, 0.08) 0%, rgba(79, 63, 240, 0) 70%);
+                animation: process-orb-2 24s infinite alternate ease-in-out;
+            }
+
+            @keyframes process-orb-1 {
+                0% {
+                    transform: translate(0, 0) scale(1);
+                }
+
+                50% {
+                    transform: translate(120px, 80px) scale(1.2);
+                }
+
+                100% {
+                    transform: translate(60px, -40px) scale(0.9);
+                }
+            }
+
+            @keyframes process-orb-2 {
+                0% {
+                    transform: translate(0, 0) scale(1);
+                }
+
+                50% {
+                    transform: translate(-100px, -80px) scale(1.15);
+                }
+
+                100% {
+                    transform: translate(-50px, 50px) scale(0.95);
+                }
+            }
+
+            .process-conversion-section .section {
+                padding: 90px 24px 100px;
+                max-width: 960px;
+                margin: 0 auto;
+                position: relative;
+                z-index: 2;
+            }
+
+            .process-conversion-section :root {
+                --bg: #080808;
+                --card: #1b1a1a;
+                --card-border: #1e2025;
+                --teal: #0a8c7b;
+                --teal-dim: rgba(45, 212, 191, 0.12);
+                --teal-glow: rgba(45, 212, 191, 0.25);
+                --white: #020202;
+                --muted: #8a8f9a;
+                --label-bg: #1a1d22;
+            }
+
+            .process-conversion-section .eyebrow {
+                display: inline-block;
+                background: var(--label-bg);
+                border: 1px solid var(--card-border);
+                color: var(--muted);
+                font-size: 12px;
+                font-weight: 500;
+                letter-spacing: .12em;
+                text-transform: uppercase;
+                padding: 6px 16px;
+                border-radius: 20px;
+                margin-bottom: 28px;
+                opacity: 0;
+                transform: translateY(16px);
+                transition: opacity .6s ease, transform .6s ease;
+            }
+
+            .process-conversion-section .eyebrow.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .process-conversion-section .headline {
+                font-family: 'Sora', sans-serif;
+                font-size: clamp(2rem, 5vw, 3.4rem);
+                color: #ffffff;
+                font-weight: 800;
+                line-height: 1.1;
+                letter-spacing: -.02em;
+                max-width: 700px;
+                margin: 0 auto 20px;
+                text-align: center;
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity .7s .1s ease, transform .7s .1s ease;
+            }
+
+            .process-conversion-section .headline.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .process-conversion-section .subline {
+                color: var(--muted);
+                font-size: 16px;
+                line-height: 1.65;
+                max-width: 540px;
+                margin: 0 auto 64px;
+                text-align: center;
+                opacity: 0;
+                transform: translateY(16px);
+                transition: opacity .7s .2s ease, transform .7s .2s ease;
+            }
+
+            .process-conversion-section .subline.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .process-conversion-section .grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+
+            @media (max-width: 640px) {
+                .process-conversion-section .grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            .process-conversion-section .card {
+                background: transparent;
+                border: 1px solid var(--card-border);
+                border-radius: 16px;
+                padding: 28px 28px 0;
+                position: relative;
+                overflow: hidden;
+                opacity: 0;
+                transform: translateY(32px);
+                transition: opacity .65s ease, transform .65s ease, border-color .3s, box-shadow .3s;
+                cursor: default;
+            }
+
+            .process-conversion-section .card.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .process-conversion-section .card:hover {
+                border-color: rgba(45, 212, 191, .35);
+                box-shadow: 0 0 40px rgba(45, 212, 191, .07);
+            }
+
+            .process-conversion-section .card:nth-child(2) {
+                transition-delay: .1s;
+            }
+
+            .process-conversion-section .card:nth-child(3) {
+                transition-delay: .18s;
+            }
+
+            .process-conversion-section .card:nth-child(4) {
+                transition-delay: .26s;
+            }
+
+            .process-conversion-section .card::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                border-radius: 16px;
+                background: radial-gradient(circle at top left, var(--teal-dim) 0%, transparent 60%);
+                opacity: 0;
+                transition: opacity .4s;
+            }
+
+            .process-conversion-section .card:hover::before {
+                opacity: 1;
+            }
+
+            .process-conversion-section .step-label {
+                font-size: 11px;
+                font-weight: 600;
+                letter-spacing: .1em;
+                text-transform: uppercase;
+                color: #ffffff;
+                background: var(--teal-dim);
+                border: 1px solid rgba(45, 212, 191, .2);
+                padding: 3px 10px;
+                border-radius: 20px;
+                display: inline-block;
+                margin-bottom: 14px;
+            }
+
+            .process-conversion-section .card-title {
+                font-family: 'Sora', sans-serif;
+                font-size: 1.35rem;
+                font-weight: 700;
+                line-height: 1.25;
+                margin-bottom: 10px;
+                letter-spacing: -.01em;
+            }
+
+
             .process-conversion-section {
-                background: #eeecec;
+                background: #080808;
                 color: #ffffff;
                 color: #ffffff;
                 font-family: 'Inter', sans-serif;
@@ -3925,19 +4306,19 @@
             .process-conversion-section .grid {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
-                gap: 20px;
+                gap: 50px;
             }
 
-            @media (max-width: 640px) {
+            @media (max-width: 550px) {
                 .process-conversion-section .grid {
                     grid-template-columns: 1fr;
                 }
             }
 
             .process-conversion-section .card {
-                background: #000000;
+                background: transparent;
                 border: 1px solid var(--card-border);
-                border-radius: 16px;
+                border-radius: 12px;
                 padding: 28px 28px 0;
                 position: relative;
                 overflow: hidden;
@@ -3995,6 +4376,7 @@
                 border-radius: 20px;
                 display: inline-block;
                 margin-bottom: 14px;
+                color: #0a8c7b;
             }
 
             .process-conversion-section .card-title {
@@ -4004,6 +4386,7 @@
                 line-height: 1.25;
                 margin-bottom: 10px;
                 letter-spacing: -.01em;
+                color: #000000;
             }
 
             .process-conversion-section .card-desc {
@@ -4011,6 +4394,7 @@
                 color: var(--muted);
                 line-height: 1.65;
                 margin-bottom: 24px;
+
             }
 
             .process-conversion-section .card-visual {
@@ -4136,7 +4520,7 @@
             }
 
             .process-conversion-section .card:hover .checklist li {
-                color: #c0c5d0;
+                color: #0c0c0e;
             }
 
             .process-conversion-section .code-visual {
@@ -4399,7 +4783,11 @@
 
         <div class="section">
             <div style="text-align:center">
-                <span class="eyebrow" id="process-ey">Our Process</span>
+               <span class="eyebrow" id="process-ey">
+                <img src="logo.png" alt="Logo" style="height:24px; vertical-align:middle; margin-right:8px;">
+                     Our Process
+</span>
+
                 <h2 class="headline" id="process-hl">Our Conversion-Driven Process</h2>
                 <p class="subline" id="process-sl">A structured, CRO-focused approach that takes your website from
                     strategy and design to a high-performance launch — engineered to look premium, function flawlessly,
@@ -4566,9 +4954,6 @@
             })();
         </script>
     </section>
-
-
-
     <!-- CTA -->
     <div class="cta-banner" id="contact">
         <h2>Ready to build something great?</h2>
@@ -4636,188 +5021,6 @@
             </div>
         </div>
     </footer>
-
-    <!-- TRUSTED BUSINESSES MARQUEE -->
-    <style>
-        .trusted-marquee-section {
-            background: #080808; /* Premium dark background */
-            padding: 4rem 0;
-            overflow: hidden;
-            position: relative;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            font-family: 'Inter', sans-serif;
-            z-index: 10;
-        }
-
-        .trusted-marquee-title {
-            text-align: center;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: rgba(255, 255, 255, 0.4);
-            margin-bottom: 2rem;
-            font-weight: 600;
-        }
-
-        .trusted-marquee-container {
-            overflow: hidden;
-            width: 100%;
-            position: relative;
-            mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
-        }
-
-        .trusted-marquee-track {
-            display: flex;
-            gap: 2rem;
-            width: max-content;
-            animation: trusted-marquee-scroll 35s linear infinite;
-            will-change: transform;
-        }
-
-        .trusted-marquee-track:hover {
-            animation-play-state: paused;
-        }
-
-        .trusted-brand-card {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.8rem 1.8rem;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 50px;
-            cursor: default;
-            transition: all 0.3s ease;
-            flex-shrink: 0;
-            white-space: nowrap;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .trusted-brand-card:hover {
-            transform: translateY(-2px);
-            border-color: rgba(0, 217, 163, 0.35);
-            background: rgba(255, 255, 255, 0.06);
-            box-shadow: 0 8px 24px rgba(0, 217, 163, 0.15);
-        }
-
-        .trusted-brand-card i {
-            font-size: 1.4rem;
-            transition: transform 0.3s ease;
-        }
-
-        .trusted-brand-card:hover i {
-            transform: scale(1.15);
-        }
-
-        .trusted-brand-card h3 {
-            font-family: 'Syne', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: rgba(255, 255, 255, 0.85);
-            margin: 0;
-        }
-
-        @keyframes trusted-marquee-scroll {
-            0% {
-                transform: translate3d(0, 0, 0);
-            }
-            100% {
-                transform: translate3d(calc(-50% - 1rem), 0, 0);
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .trusted-marquee-track {
-                animation: none !important;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .trusted-marquee-section {
-                padding: 3rem 0;
-            }
-            .trusted-brand-card {
-                padding: 0.6rem 1.4rem;
-            }
-        }
-    </style>
-
-    <section class="trusted-marquee-section">
-        <h4 class="trusted-marquee-title">Trusted by teams at</h4>
-        <div class="trusted-marquee-container">
-            <div class="trusted-marquee-track">
-                <!-- Set 1 -->
-                <div class="trusted-brand-card">
-                    <i class="fa-brands fa-stripe" style="color: #635bff;"></i>
-                    <h3>Stripe</h3>
-                </div>
-                <div class="trusted-brand-card">
-                    <i class="devicon-shopify-plain colored"></i>
-                    <h3>Shopify</h3>
-                </div>
-                <div class="trusted-brand-card">
-                    <i class="devicon-figma-plain colored"></i>
-                    <h3>Figma</h3>
-                </div>
-                <div class="trusted-brand-card">
-                    <i class="fa-brands fa-aws" style="color: #ff9900;"></i>
-                    <h3>AWS</h3>
-                </div>
-                <div class="trusted-brand-card">
-                    <i class="devicon-vercel-original" style="color: #ffffff;"></i>
-                    <h3>Vercel</h3>
-                </div>
-                <div class="trusted-brand-card">
-                    <i class="fa-brands fa-slack" style="color: #4a154b;"></i>
-                    <h3>Slack</h3>
-                </div>
-                <div class="trusted-brand-card">
-                    <i class="devicon-salesforce-plain colored"></i>
-                    <h3>Salesforce</h3>
-                </div>
-                <div class="trusted-brand-card">
-                    <i class="fa-brands fa-hubspot" style="color: #ff7a59;"></i>
-                    <h3>HubSpot</h3>
-                </div>
-
-                <!-- Set 2 -->
-                <div class="trusted-brand-card">
-                    <i class="fa-brands fa-stripe" style="color: #635bff;"></i>
-                    <h3>Stripe</h3>
-                </div>
-                <div class="trusted-brand-card">
-                    <i class="devicon-shopify-plain colored"></i>
-                    <h3>Shopify</h3>
-                </div>
-                <div class="trusted-brand-card">
-                    <i class="devicon-figma-plain colored"></i>
-                    <h3>Figma</h3>
-                </div>
-                <div class="trusted-brand-card">
-                    <i class="fa-brands fa-aws" style="color: #ff9900;"></i>
-                    <h3>AWS</h3>
-                </div>
-                <div class="trusted-brand-card">
-                    <i class="devicon-vercel-original" style="color: #ffffff;"></i>
-                    <h3>Vercel</h3>
-                </div>
-                <div class="trusted-brand-card">
-                    <i class="fa-brands fa-slack" style="color: #4a154b;"></i>
-                    <h3>Slack</h3>
-                </div>
-                <div class="trusted-brand-card">
-                    <i class="devicon-salesforce-plain colored"></i>
-                    <h3>Salesforce</h3>
-                </div>
-                <div class="trusted-brand-card">
-                    <i class="fa-brands fa-hubspot" style="color: #ff7a59;"></i>
-                    <h3>HubSpot</h3>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Team Modal -->
 
