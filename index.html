@@ -29,7 +29,7 @@
         }
 
         :root {
-            --ink: #0A0A0F;
+            --ink: #0a0a0e;
             --paper: #F7F6F2;
             --accent: #4F3FF0;
             --accent2: #00D9A3;
@@ -66,7 +66,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0.8rem 2.5rem;
+            padding: 0.7rem 2.5rem;
             background: rgba(15, 32, 54, 0.45);
             backdrop-filter: blur(24px) saturate(190%);
             -webkit-backdrop-filter: blur(24px) saturate(190%);
@@ -116,7 +116,7 @@
 
         /* Continue nav styles */
         nav {
-            border-radius: 100px;
+            border-radius: 60px;
             border: 1px solid rgba(255, 255, 255, 0.18);
             /* Polished white glass border */
             box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3),
@@ -2094,6 +2094,7 @@
             top: 30%;
             left: 20%;
             animation-duration: 9s;
+
             animation-delay: 1.2s;
         }
 
@@ -2948,183 +2949,7 @@
             </div>
         </div>
     </section>
-    <!-- PARTNERS -->
-    <section id="partners" class="partners-section">
-        <style>
-            .partners-section {
-                background: #080808;
-                padding: 60px 24px 80px;
-                text-align: center;
-                border-top: 1px solid rgba(255, 255, 255, 0.05);
-                position: relative;
-                z-index: 2;
-            }
 
-            .partners-title {
-                font-family: 'Sora', sans-serif;
-                font-size: clamp(1.8rem, 4vw, 2.5rem);
-                font-weight: 800;
-                color: #ffffff;
-                margin-bottom: 8px;
-                letter-spacing: -0.025em;
-            }
-
-            .partners-subtitle {
-                font-family: 'Inter', sans-serif;
-                font-size: 14px;
-                color: #8a8f9a;
-                margin-bottom: 40px;
-            }
-
-            .partners-slider-viewport {
-                overflow: hidden;
-                width: 440px;
-                /* Exactly 2 logos (200px each) + 1 gap (40px) */
-                max-width: 100%;
-                margin: 0 auto;
-                position: relative;
-
-            }
-
-            .partners-slider-track {
-                display: flex;
-                gap: 40px;
-                width: max-content;
-                animation: partners-marquee-scroll 40s linear infinite;
-            }
-
-            .partners-logo-item {
-                width: 200px;
-                height: 50px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-shrink: 0;
-            }
-
-            .partners-logo-item img {
-                max-width: 100%;
-                max-height: 100%;
-                object-fit: contain;
-                filter: none;
-                transition: filter 0.3s ease, transform 0.3s ease;
-            }
-
-            .partners-logo-item svg {
-                max-width: 100%;
-                max-height: 100%;
-                filter: none;
-                transition: filter 0.3s ease, transform 0.3s ease;
-            }
-
-            .partners-logo-item:hover img {
-                filter: grayscale(0%) brightness(1);
-                transform: scale(1.03);
-            }
-
-            .partners-logo-item:hover svg {
-                filter: grayscale(0%) opacity(1);
-                transform: scale(1.03);
-            }
-
-            @keyframes partners-marquee-scroll {
-                0% {
-                    transform: translate3d(0, 0, 0);
-                }
-
-                100% {
-                    transform: translate3d(calc(-50% - 20px), 0, 0);
-                    /* Half of 10 items + half of gap */
-                }
-            }
-        </style>
-
-        <div class="partners-container">
-            <h2 class="partners-title">Trusted Partners</h2>
-            <p class="partners-subtitle">Over 50+ businesses trust us</p>
-            <div class="partners-slider-viewport">
-                <div class="partners-slider-track">
-                    <!-- Set 1 -->
-                    <div class="partners-logo-item">
-                        <svg viewBox="0 0 160 40" width="160" height="40" xmlns="http://www.w3.org/2000/svg">
-                            <text x="50%" y="28" fill="#ffffff" font-family="'Syne', sans-serif" font-weight="800"
-                                font-size="22" letter-spacing="2" text-anchor="middle">CALIUM</text>
-                        </svg>
-                    </div>
-                    <div class="partners-logo-item"><img
-                            src="https://i.postimg.cc/vZfw755R/Screenshot-2026-06-18-101322.png" alt="Nutbit Choco"
-                            style="max-width:100%;height:auto;" /></div>
-                    <div class="partners-logo-item">
-                        <svg viewBox="0 0 160 45" width="160" height="45" xmlns="http://www.w3.org/2000/svg">
-                            <g transform="translate(5, 2)" fill="#10b981">
-                                <path d="M20 10 C30 10, 35 20, 20 35 C5 20, 10 10, 20 10 Z" fill="#10b981" />
-                                <path d="M20 15 C25 15, 28 22, 20 30 C12 22, 15 15, 20 15 Z" fill="#047857" />
-                            </g>
-                            <text x="50" y="24" fill="#10b981" font-family="'Syne', sans-serif" font-weight="800"
-                                font-size="18">OGPL</text>
-                            <text x="50" y="34" fill="#34d399" font-family="'Inter', sans-serif" font-weight="600"
-                                font-size="6" letter-spacing="0.5">ONE GOOD PACK FOR LIFE</text>
-                        </svg>
-                    </div>
-                    <div class="partners-logo-item">
-                        <svg viewBox="0 0 150 40" width="150" height="40" xmlns="http://www.w3.org/2000/svg">
-                            <text x="50%" y="28" fill="#14b8a6" font-family="'Times New Roman', Times, serif"
-                                font-weight="700" font-size="24" letter-spacing="2" text-anchor="middle">ARUMAYI</text>
-                        </svg>
-                    </div>
-                    <div class="partners-logo-item">
-                        <img src="https://i.postimg.cc/VLKYrsfJ/472894309-1108437250976075-929380907003234168-n.jpg"
-                            alt="ad_micro_craft Logo" style="border-radius: 8px;">
-                    </div>
-
-                    <!-- Set 2 (Duplicated for seamless infinite looping) -->
-                    <div class="partners-logo-item">
-                        <svg viewBox="0 0 160 40" width="160" height="40" xmlns="http://www.w3.org/2000/svg">
-                            <text x="50%" y="28" fill="#ffffff" font-family="'Syne', sans-serif" font-weight="800"
-                                font-size="22" letter-spacing="2" text-anchor="middle">CALIUM</text>
-                        </svg>
-                    </div>
-                    <div class="partners-logo-item">
-                        <svg viewBox="0 0 200 45" width="200" height="45" xmlns="http://www.w3.org/2000/svg">
-                            <g transform="translate(5, 5)">
-                                <path d="M22 17 C12 7, 7 12, 17 22 C21 26, 25 24, 25 18 Z" fill="#ff4d4d" />
-                                <path d="M28 17 C38 7, 43 12, 33 22 C29 26, 25 24, 25 18 Z" fill="#ff4d4d" />
-                                <circle cx="25" cy="18" r="4.5" fill="#d92b2b" />
-                                <path d="M23 21 L15 32 C13 34, 11 32, 13 30 L21 21 Z" fill="#ff4d4d" />
-                                <path d="M27 21 L35 32 C37 34, 39 32, 37 30 L29 21 Z" fill="#ff4d4d" />
-                            </g>
-                            <text x="60" y="22" fill="#fca5a5" font-family="'Sora', sans-serif" font-weight="800"
-                                font-size="14">Nutbit Choco</text>
-                            <text x="60" y="34" fill="#a78bfa" font-family="'Inter', sans-serif" font-weight="500"
-                                font-size="7" letter-spacing="1">PREMIUM ARTISAN</text>
-                        </svg>
-                    </div>
-                    <div class="partners-logo-item">
-                        <svg viewBox="0 0 160 45" width="160" height="45" xmlns="http://www.w3.org/2000/svg">
-                            <g transform="translate(5, 2)" fill="#10b981">
-                                <path d="M20 10 C30 10, 35 20, 20 35 C5 20, 10 10, 20 10 Z" fill="#10b981" />
-                                <path d="M20 15 C25 15, 28 22, 20 30 C12 22, 15 15, 20 15 Z" fill="#047857" />
-                            </g>
-                            <text x="50" y="24" fill="#10b981" font-family="'Syne', sans-serif" font-weight="800"
-                                font-size="18">OGPL</text>
-                            <text x="50" y="34" fill="#34d399" font-family="'Inter', sans-serif" font-weight="600"
-                                font-size="6" letter-spacing="0.5">ONE GOOD PACK FOR LIFE</text>
-                        </svg>
-                    </div>
-                    <div class="partners-logo-item">
-                        <svg viewBox="0 0 150 40" width="150" height="40" xmlns="http://www.w3.org/2000/svg">
-                            <text x="50%" y="28" fill="#14b8a6" font-family="'Times New Roman', Times, serif"
-                                font-weight="700" font-size="24" letter-spacing="2" text-anchor="middle">ARUMAYI</text>
-                        </svg>
-                    </div>
-                    <div class="partners-logo-item">
-                        <img src="https://i.postimg.cc/VLKYrsfJ/472894309-1108437250976075-929380907003234168-n.jpg"
-                            alt="ad_micro_craft Logo" style="border-radius: 8px;">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
     <!-- AGENT STUDIO SLIDE -->
     <section id="agent-studio-slide">
         <!-- Animated background: beams and particles -->
@@ -3845,7 +3670,7 @@
 
             <!-- Vignesh -->
             <div class="team-card">
-                <img src="https://i.postimg.cc/mkg4JhXX/IMG-33081.jpg" alt="Vignesh" class="team-avatar">
+                <img src="https://i.postimg.cc/SKBzy2pQ/1781629193091.jpg" alt="Vignesh" class="team-avatar">
 
                 <h3>Vignesh</h3>
                 <span class="team-role">Founder|CEO</span>
@@ -4010,77 +3835,20 @@
                 padding: 0;
             }
 
-            #process.process-conversion-section {
-                background: #080808;
+            .process-conversion-section {
+                background: #eeecec;
+                color: #ffffff;
                 color: #ffffff;
                 font-family: 'Inter', sans-serif;
                 min-height: 100vh;
-                overflow: hidden;
+                overflow-x: hidden;
                 padding: 0;
-                position: relative;
-            }
-
-            /* Floating animated gradient blur blobs for the background */
-            .process-conversion-section::before,
-            .process-conversion-section::after {
-                content: '';
-                position: absolute;
-                width: 500px;
-                height: 500px;
-                border-radius: 50%;
-                background: radial-gradient(circle, rgba(45, 212, 191, 0.08) 0%, rgba(45, 212, 191, 0) 70%);
-                filter: blur(80px);
-                pointer-events: none;
-                z-index: 1;
-            }
-
-            .process-conversion-section::before {
-                top: -10%;
-                left: -150px;
-                animation: process-orb-1 20s infinite alternate ease-in-out;
-            }
-
-            .process-conversion-section::after {
-                bottom: -10%;
-                right: -150px;
-                background: radial-gradient(circle, rgba(79, 63, 240, 0.08) 0%, rgba(79, 63, 240, 0) 70%);
-                animation: process-orb-2 24s infinite alternate ease-in-out;
-            }
-
-            @keyframes process-orb-1 {
-                0% {
-                    transform: translate(0, 0) scale(1);
-                }
-
-                50% {
-                    transform: translate(120px, 80px) scale(1.2);
-                }
-
-                100% {
-                    transform: translate(60px, -40px) scale(0.9);
-                }
-            }
-
-            @keyframes process-orb-2 {
-                0% {
-                    transform: translate(0, 0) scale(1);
-                }
-
-                50% {
-                    transform: translate(-100px, -80px) scale(1.15);
-                }
-
-                100% {
-                    transform: translate(-50px, 50px) scale(0.95);
-                }
             }
 
             .process-conversion-section .section {
                 padding: 90px 24px 100px;
                 max-width: 960px;
                 margin: 0 auto;
-                position: relative;
-                z-index: 2;
             }
 
             .process-conversion-section :root {
@@ -4120,7 +3888,7 @@
             .process-conversion-section .headline {
                 font-family: 'Sora', sans-serif;
                 font-size: clamp(2rem, 5vw, 3.4rem);
-                color: #ffffff;
+                color: #000000;
                 font-weight: 800;
                 line-height: 1.1;
                 letter-spacing: -.02em;
@@ -4133,7 +3901,7 @@
             }
 
             .process-conversion-section .headline.visible {
-                opacity: 1;
+                opacity: 10;
                 transform: translateY(0);
             }
 
@@ -4799,6 +4567,8 @@
         </script>
     </section>
 
+
+
     <!-- CTA -->
     <div class="cta-banner" id="contact">
         <h2>Ready to build something great?</h2>
@@ -4812,13 +4582,16 @@
 
     <!-- FOOTER -->
     <footer>
+
+
+
         <div class="footer-top">
             <div class="footer-brand">
                 <a href="#" class="nav-logo">
                     <img src="logo.png" class="logo-img" alt="Hyna Studio Logo">
                     <div class="logo-text">
-                        <span class="logo-main" style="color: #ffffff;">Hyna Studio</span>
-                        <span class="logo-sub" style="color: rgba(255, 255, 255, 0.45);">Tech & Experiences</span>
+                        <span class="logo-main" style="color: #76ecf0;">Hyna Studio</span>
+                        <span class="logo-sub" style="color: rgba(93, 214, 230, 0.801);">Tech & Experiences</span>
                     </div>
                 </a>
                 <p>A full-spectrum digital studio building products that matter.</p>
@@ -4864,7 +4637,8 @@
         </div>
     </footer>
 
-    <!-- Team Modal (injected content target) -->
+    <!-- Team Modal -->
+
     <div class="modal-overlay" id="teamModalOverlay" aria-hidden="true">
         <div class="modal" role="dialog" aria-modal="true" aria-labelledby="teamModalName">
             <div class="modal-header">
@@ -5091,8 +4865,7 @@
             document.querySelectorAll('.tilted-card-figure').forEach(card => {
                 const inner = card.querySelector('.tilted-card-inner');
                 const rotateAmplitude = 20;
-                const scaleOnHover = 1.1;
-
+                const scaleOnHover = 1.0;
                 card.addEventListener('mousemove', (e) => {
                     const rect = card.getBoundingClientRect();
                     const offsetX = e.clientX - rect.left - rect.width / 2;
