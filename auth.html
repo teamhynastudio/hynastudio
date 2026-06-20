@@ -77,7 +77,8 @@
 
         /* ── LEFT PANEL (DARK) ── */
         .left-panel {
-            background: radial-gradient(circle at 30% 30%, #0F122B 0%, #040409 100%);
+            background: #020205; /* Almost black */
+            background: radial-gradient(circle at 80% 50%, #0c0d24 0%, #030308 100%);
             color: #FFFFFF;
             padding: 3.5rem 4rem;
             display: flex;
@@ -91,82 +92,98 @@
         .left-panel::before {
             content: '';
             position: absolute;
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, rgba(79, 63, 240, 0.25) 0%, transparent 70%);
-            top: -50px;
-            left: -50px;
-            filter: blur(50px);
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(79, 63, 240, 0.22) 0%, transparent 70%);
+            top: -100px;
+            left: -100px;
+            filter: blur(60px);
             pointer-events: none;
+            z-index: 1;
         }
 
         .left-panel::after {
             content: '';
             position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(0, 217, 163, 0.12) 0%, transparent 70%);
-            bottom: -80px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 102, 254, 0.15) 0%, transparent 70%);
+            bottom: -150px;
             right: -100px;
-            filter: blur(60px);
+            filter: blur(80px);
             pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Thin concentric curved digital grid waves */
+        .panel-waves {
+            position: absolute;
+            inset: 0;
+            opacity: 0.35;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000'><g fill='none' stroke='rgba(99, 102, 241, 0.15)' stroke-width='1.25'><circle cx='1000' cy='500' r='100'/><circle cx='1000' cy='500' r='150'/><circle cx='1000' cy='500' r='200'/><circle cx='1000' cy='500' r='250'/><circle cx='1000' cy='500' r='300'/><circle cx='1000' cy='500' r='350'/><circle cx='1000' cy='500' r='400'/><circle cx='1000' cy='500' r='450'/><circle cx='1000' cy='500' r='500'/><circle cx='1000' cy='500' r='550'/><circle cx='1000' cy='500' r='600'/><circle cx='1000' cy='500' r='650'/><circle cx='1000' cy='500' r='700'/><circle cx='1000' cy='500' r='750'/><circle cx='1000' cy='500' r='800'/><circle cx='1000' cy='500' r='850'/><circle cx='1000' cy='500' r='900'/><circle cx='1000' cy='500' r='950'/><circle cx='1000' cy='500' r='1000'/><circle cx='1000' cy='500' r='1100'/><circle cx='1000' cy='500' r='1200'/></g></svg>");
+            background-size: cover;
+            background-position: right center;
+            pointer-events: none;
+            z-index: 2;
         }
 
         .brand-logo {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 1rem;
             text-decoration: none;
             color: #FFFFFF;
             z-index: 10;
         }
 
         .brand-logo img {
-            height: 38px;
-            width: 38px;
+            height: 48px;
+            width: 48px;
             object-fit: contain;
         }
 
         .brand-logo-text {
             display: flex;
             flex-direction: column;
-            line-height: 1.1;
+            line-height: 1.05;
+            letter-spacing: 0.45em;
+            text-transform: uppercase;
+            font-family: var(--font-display);
+            font-weight: 700;
         }
 
         .brand-logo-main {
-            font-family: var(--font-display);
-            font-weight: 800;
-            font-size: 1.15rem;
-            letter-spacing: -0.01em;
-            text-transform: uppercase;
+            font-size: 1.35rem;
+            line-height: 1;
         }
 
         .brand-logo-sub {
-            font-size: 0.58rem;
-            color: rgba(255, 255, 255, 0.5);
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            margin-top: 0.1rem;
-            font-weight: 600;
+            font-size: 0.95rem;
+            line-height: 1;
+            margin-top: 0.25rem;
+            color: #FFFFFF;
+            font-weight: 700;
         }
 
         .hero-section {
-            margin: 4rem 0;
+            margin: 4.5rem 0;
             z-index: 10;
             max-width: 480px;
+            position: relative;
         }
 
         .hero-title {
-            font-family: var(--font-display);
-            font-size: clamp(2rem, 3.5vw, 2.75rem);
-            font-weight: 800;
+            font-family: var(--font-body);
+            font-size: clamp(2rem, 3.5vw, 2.85rem);
+            font-weight: 700;
             line-height: 1.15;
             letter-spacing: -0.02em;
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.5rem;
         }
 
         .hero-title span.highlight {
-            background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
+            color: #007CFF;
+            background: linear-gradient(135deg, #0084FF 0%, #00C2FF 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -174,16 +191,18 @@
 
         .hero-desc {
             color: rgba(255, 255, 255, 0.7);
-            font-size: 0.98rem;
-            line-height: 1.6;
+            font-size: 0.96rem;
+            line-height: 1.65;
             margin-bottom: 2rem;
+            font-weight: 400;
         }
 
         .divider-line {
-            height: 1px;
-            background: rgba(255, 255, 255, 0.1);
-            width: 40px;
-            margin-bottom: 2rem;
+            height: 3px;
+            background: #0066FE;
+            width: 48px;
+            margin-bottom: 2.25rem;
+            border-radius: 2px;
         }
 
         .benefits-list {
@@ -195,16 +214,16 @@
 
         .benefit-item {
             display: flex;
-            align-items: flex-start;
-            gap: 1rem;
+            align-items: center;
+            gap: 1.25rem;
         }
 
         .benefit-icon-wrapper {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
+            background: rgba(10, 15, 30, 0.6);
+            border: 1px solid rgba(0, 102, 254, 0.25);
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -213,9 +232,16 @@
         }
 
         .benefit-item:hover .benefit-icon-wrapper {
-            border-color: rgba(59, 130, 246, 0.5);
-            background: rgba(59, 130, 246, 0.1);
+            border-color: rgba(0, 102, 254, 0.6);
+            background: rgba(0, 102, 254, 0.15);
             transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 102, 254, 0.15);
+        }
+
+        .benefit-icon-wrapper svg {
+            width: 20px;
+            height: 20px;
+            color: #0066fe;
         }
 
         .benefit-icon-wrapper svg {
@@ -610,12 +636,15 @@
     <div class="auth-container">
         <!-- LEFT PANEL: BRAND & TEXT -->
         <div class="left-panel">
+            <!-- Background waves -->
+            <div class="panel-waves"></div>
+
             <!-- Brand Logo -->
             <a href="index.html" class="brand-logo">
                 <img src="logo.png" alt="Hyna Studio Logo">
                 <div class="brand-logo-text">
-                    <span class="brand-logo-main">Hyna Studio</span>
-                    <span class="brand-logo-sub">Democratizing Entrepreneurship</span>
+                    <span class="brand-logo-main">Hyna</span>
+                    <span class="brand-logo-sub">Studio</span>
                 </div>
             </a>
 
@@ -718,16 +747,7 @@
                     <div class="divider">or continue with</div>
 
                     <div class="social-buttons">
-                        <button type="button" class="btn-social" onclick="handleSocialLogin('google')">
-                            <!-- Google Icon SVG -->
-                            <svg viewBox="0 0 24 24" width="18" height="18">
-                                <path fill="#EA4335" d="M12 5.04c1.65 0 3.13.57 4.3 1.69l3.21-3.21C17.57 1.86 14.97 1 12 1 7.24 1 3.2 3.74 1.25 7.74l3.86 3C6.02 7.77 8.78 5.04 12 5.04z"></path>
-                                <path fill="#4285F4" d="M23.49 12.27c0-.81-.07-1.59-.2-2.34H12v4.44h6.44c-.28 1.47-1.11 2.72-2.36 3.56l3.66 2.84c2.14-1.98 3.39-4.88 3.39-8.5z"></path>
-                                <path fill="#FBBC05" d="M5.11 14.74c-.23-.69-.36-1.42-.36-2.18s.13-1.49.36-2.18v-3L1.25 7.74C.45 9.38 0 11.2 0 13.1c0 1.9.45 3.72 1.25 5.36l3.86-3z"></path>
-                                <path fill="#34A853" d="M12 23c3.24 0 5.97-1.07 7.96-2.91l-3.66-2.84c-1.01.68-2.31 1.09-3.7 1.09-3.22 0-5.98-2.73-6.89-5.7l-3.86 3C3.2 20.26 7.24 23 12 23z"></path>
-                            </svg>
-                            <span>Google</span>
-                        </button>
+                        <div id="google-btn-container-signin" style="min-height: 40px; display: flex; align-items: center; justify-content: center;"></div>
                         <button type="button" class="btn-social" onclick="handleSocialLogin('github')">
                             <!-- GitHub Icon SVG -->
                             <svg fill="currentColor" viewBox="0 0 24 24" width="18" height="18">
@@ -787,15 +807,7 @@
                     <div class="divider">or continue with</div>
 
                     <div class="social-buttons">
-                        <button type="button" class="btn-social" onclick="handleSocialLogin('google')">
-                            <svg viewBox="0 0 24 24" width="18" height="18">
-                                <path fill="#EA4335" d="M12 5.04c1.65 0 3.13.57 4.3 1.69l3.21-3.21C17.57 1.86 14.97 1 12 1 7.24 1 3.2 3.74 1.25 7.74l3.86 3C6.02 7.77 8.78 5.04 12 5.04z"></path>
-                                <path fill="#4285F4" d="M23.49 12.27c0-.81-.07-1.59-.2-2.34H12v4.44h6.44c-.28 1.47-1.11 2.72-2.36 3.56l3.66 2.84c2.14-1.98 3.39-4.88 3.39-8.5z"></path>
-                                <path fill="#FBBC05" d="M5.11 14.74c-.23-.69-.36-1.42-.36-2.18s.13-1.49.36-2.18v-3L1.25 7.74C.45 9.38 0 11.2 0 13.1c0 1.9.45 3.72 1.25 5.36l3.86-3z"></path>
-                                <path fill="#34A853" d="M12 23c3.24 0 5.97-1.07 7.96-2.91l-3.66-2.84c-1.01.68-2.31 1.09-3.7 1.09-3.22 0-5.98-2.73-6.89-5.7l-3.86 3C3.2 20.26 7.24 23 12 23z"></path>
-                            </svg>
-                            <span>Google</span>
-                        </button>
+                        <div id="google-btn-container-signup" style="min-height: 40px; display: flex; align-items: center; justify-content: center;"></div>
                         <button type="button" class="btn-social" onclick="handleSocialLogin('github')">
                             <svg fill="currentColor" viewBox="0 0 24 24" width="18" height="18">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C19.138 20.197 22 16.44 22 12.017 22 6.484 17.522 2 12 2z"></path>
@@ -821,15 +833,90 @@
     <script type="module">
         import { supabase } from './supabaseClient.js';
 
-        // Check if user is already logged in
+        // Check if user is already logged in & load GIS client
         window.addEventListener('load', async () => {
             lucide.createIcons();
             const { data: { session } } = await supabase.auth.getSession();
             if (session) {
                 // If already logged in, redirect to contact.html
                 window.location.href = 'contact.html';
+            } else {
+                loadGis();
             }
         });
+
+        // Load Google Identity Services dynamically
+        const loadGis = () => {
+            const script = document.createElement('script');
+            script.src = 'https://accounts.google.com/gsi/client';
+            script.async = true;
+            script.defer = true;
+            script.onload = () => {
+                initializeGoogleSignIn();
+            };
+            document.head.appendChild(script);
+        };
+
+        const initializeGoogleSignIn = () => {
+            if (window.location.protocol === 'file:') return;
+
+            google.accounts.id.initialize({
+                client_id: '1072348196199-f7u5rffbgmli1v3c3a3l5vuq5uo60d1t.apps.googleusercontent.com',
+                callback: handleGoogleCredentialResponse,
+                ux_mode: 'popup'
+            });
+
+            // Render Google Sign-In Button on Sign In View
+            const signinBtnContainer = document.getElementById('google-btn-container-signin');
+            if (signinBtnContainer) {
+                google.accounts.id.renderButton(signinBtnContainer, {
+                    theme: 'outline',
+                    size: 'large',
+                    shape: 'rectangular',
+                    width: 220,
+                    logo_alignment: 'left'
+                });
+            }
+
+            // Render Google Sign-In Button on Sign Up View
+            const signupBtnContainer = document.getElementById('google-btn-container-signup');
+            if (signupBtnContainer) {
+                google.accounts.id.renderButton(signupBtnContainer, {
+                    theme: 'outline',
+                    size: 'large',
+                    shape: 'rectangular',
+                    width: 220,
+                    logo_alignment: 'left'
+                });
+            }
+
+            // Prompt One Tap
+            google.accounts.id.prompt();
+        };
+
+        const handleGoogleCredentialResponse = async (response) => {
+            const activeView = document.getElementById('signin-view').classList.contains('view-hidden') ? 'signup' : 'signin';
+            const alertContainer = `${activeView}-alert-container`;
+
+            try {
+                showAlert(alertContainer, 'Signing in with Google...', 'success');
+
+                const { data, error } = await supabase.auth.signInWithIdToken({
+                    provider: 'google',
+                    token: response.credential
+                });
+
+                if (error) throw error;
+
+                showAlert(alertContainer, 'Login successful! Redirecting...', 'success');
+                setTimeout(() => {
+                    window.location.href = 'contact.html';
+                }, 1000);
+            } catch (err) {
+                console.error('Google ID token sign-in error:', err);
+                showAlert(alertContainer, `Google Sign-In failed: ${err.message}`);
+            }
+        };
 
         // Toggle Auth View between signin and signup
         window.toggleAuthView = function(view, event) {
