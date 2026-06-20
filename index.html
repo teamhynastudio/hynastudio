@@ -2698,12 +2698,12 @@
         .team-section {
             padding: 100px 8%;
             background:
-                radial-gradient(circle at 50% 0%, rgba(79, 70, 229, 0.25) 0%, transparent 60%),
-                radial-gradient(circle at 20% 40%, rgba(0, 217, 163, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 60%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
-                linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-                #07070d;
+                radial-gradient(circle at 50% 0%, rgba(79, 70, 229, 0.12) 0%, transparent 60%),
+                radial-gradient(circle at 20% 40%, rgba(0, 217, 163, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 60%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
+                linear-gradient(rgba(10, 10, 15, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(10, 10, 15, 0.03) 1px, transparent 1px),
+                #ffffff;
             background-size: 100% 100%, 100% 100%, 100% 100%, 50px 50px, 50px 50px;
             position: relative;
             overflow: hidden;
@@ -2725,7 +2725,7 @@
             font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 700;
             line-height: 1.2;
-            color: #ffffff;
+            color: var(--ink);
             margin: 0;
             font-family: var(--font-display);
         }
@@ -2737,7 +2737,7 @@
 
         .team-header p {
             max-width: 700px;
-            color: rgba(255, 255, 255, 0.6);
+            color: var(--muted);
             font-size: 1rem;
             margin: 0 auto;
             line-height: 1.6;
@@ -2766,15 +2766,15 @@
             --y: 50%;
 
             position: relative;
-            background: #0d121f;
+            background: #ffffff;
             border-radius: 16px;
-            padding: 0;
-            text-align: left;
+            padding: 35px 25px;
+            text-align: center;
             overflow: hidden;
 
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(10, 10, 15, 0.08);
 
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
             transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s ease;
             cursor: pointer;
 
@@ -2792,8 +2792,8 @@
 
         .team-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(79, 63, 240, 0.25);
-            border-color: rgba(79, 63, 240, 0.4);
+            box-shadow: 0 20px 40px rgba(79, 63, 240, 0.1);
+            border-color: rgba(79, 63, 240, 0.3);
         }
 
         .team-card::before {
@@ -2824,107 +2824,82 @@
             mask-composite: exclude;
 
             pointer-events: none;
-            z-index: 5;
         }
 
         .team-card:hover::before {
             opacity: 1;
         }
 
-        .team-image-wrapper {
-            position: relative;
-            width: 100%;
-            height: 320px;
-            overflow: hidden;
-        }
-
-        .team-image-wrapper::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, transparent 40%, #0d121f 100%);
-            pointer-events: none;
-        }
-
         .team-avatar {
-            width: 100%;
-            height: 100%;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
             object-fit: cover;
-            border-radius: 16px 16px 0 0;
-            border: none;
-            box-shadow: none;
-            margin-bottom: 0;
-            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 4px solid #ffffff;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            margin-bottom: 24px;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .team-card:hover .team-avatar {
-            transform: scale(1.04);
+            transform: scale(1.05);
         }
 
-        .team-card-content {
-            padding: 24px;
-            position: relative;
-            z-index: 10;
-        }
-
-        .team-card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 6px;
-        }
-
-        .team-card-header h3 {
-            font-size: 1.45rem;
-            color: #ffffff;
-            margin: 0;
+        .team-card h3 {
+            font-size: 1.7rem;
+            color: var(--ink);
+            margin-bottom: 8px;
             font-family: var(--font-display);
-            font-weight: 700;
-        }
-
-        .team-linkedin-link {
-            color: #3b82f6;
-            font-size: 1.35rem;
-            transition: color 0.2s, transform 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .team-linkedin-link:hover {
-            color: #60a5fa;
-            transform: scale(1.1);
         }
 
         .team-role {
             display: block;
-            color: #3b82f6;
-            margin-bottom: 16px;
-            font-weight: 600;
-            font-size: 0.88rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            text-align: left;
-        }
-
-        .team-card-divider {
-            height: 1px;
-            background: rgba(255, 255, 255, 0.08);
-            margin-bottom: 16px;
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-weight: 500;
         }
 
         .team-description {
-            color: rgba(255, 255, 255, 0.65);
-            font-size: 0.88rem;
-            line-height: 1.6;
-            margin-bottom: 0;
-            min-height: auto;
-            text-align: left;
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 24px;
+            min-height: 110px;
+        }
+
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+        }
+
+        .team-social a {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #f5f5f7;
+            border: 1px solid rgba(10, 10, 15, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--ink);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .team-social a:hover {
+            background: var(--accent);
+            color: #ffffff;
+            border-color: var(--accent);
+            transform: translateY(-2px);
         }
 
         @media (max-width: 768px) {
             .team-section {
                 padding: 80px 5%;
+            }
+
+            .team-description {
+                min-height: auto;
             }
         }
     </style>
@@ -2947,21 +2922,27 @@
                 data-github="https://github.com/vigneshvl-dev"
                 data-linkedin="https://www.linkedin.com/in/vigneshvl-dev/" data-college="Anna University"
                 data-degree="B.E. Computer Science & Engineering" data-college-logo="">
-                <div class="team-image-wrapper">
-                    <img src="https://i.postimg.cc/wjtYqBpS/IMG-33081.jpg" alt="Vignesh" class="team-avatar">
-                </div>
-                <div class="team-card-content">
-                    <div class="team-card-header">
-                        <h3>Vignesh</h3>
-                        <a href="https://www.linkedin.com/in/vigneshvl-dev/" target="_blank" class="team-linkedin-link" onclick="event.stopPropagation()">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                    </div>
-                    <span class="team-role">Founder | CEO</span>
-                    <div class="team-card-divider"></div>
-                    <p class="team-description">
-                        "Leadership is not about control, it is about building people who can lead without you."
-                    </p>
+                <img src="https://i.postimg.cc/wjtYqBpS/IMG-33081.jpg" alt="Vignesh" class="team-avatar">
+
+                <h3>Vignesh</h3>
+                <span class="team-role">Founder|CEO</span>
+
+                <p class="team-description">
+                    "Leadership is not about control,it is about building people who can lead without you."
+                </p>
+
+                <div class="team-social">
+                    <a href="https://vigneshvl-dev.github.io/PORTFOLIO/" target="_blank" title="Portfolio">
+                        <i class="fas fa-globe"></i>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/vigneshvl-dev/" target="_blank" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+
+                    <a href="https://github.com/vigneshvl-dev" target="_blank" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
                 </div>
             </div>
 
@@ -2973,21 +2954,23 @@
                 data-github="https://github.com/jashwinj2008"
                 data-linkedin="https://www.linkedin.com/in/jashwin-j-16b06240a?utm_source=share_via&utm_content=profile&utm_medium=member_android"
                 data-college="Anna University" data-degree="B.E. Computer Science & Engineering" data-college-logo="">
-                <div class="team-image-wrapper">
-                    <img src="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" alt="Jashwin" class="team-avatar">
-                </div>
-                <div class="team-card-content">
-                    <div class="team-card-header">
-                        <h3>Jashwin</h3>
-                        <a href="https://www.linkedin.com/in/jashwin-j-16b06240a?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="team-linkedin-link" onclick="event.stopPropagation()">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                    </div>
-                    <span class="team-role">Co-Founder & Project Management Lead</span>
-                    <div class="team-card-divider"></div>
-                    <p class="team-description">
-                        "Deadlines don’t fail because of time, they fail because alignment is missing."
-                    </p>
+                <img src="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" alt="Jashwin"
+                    class="team-avatar">
+
+                <h3>Jashwin</h3>
+                <span class="team-role">Co-Founder & Project
+                    Management Lead </span>
+
+                <p class="team-description">
+                    "Deadlines don’t fail because of time,
+                    they fail because alignment is missing."
+                </p>
+
+                <div class="team-social">
+                    <a href="#" title="Portfolio"><i class="fas fa-globe"></i></a>
+                    <a href="https://www.linkedin.com/in/jashwin-j-16b06240a?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+                        title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/jashwinj2008" title="GitHub"><i class="fab fa-github"></i></a>
                 </div>
             </div>
 
@@ -2999,21 +2982,30 @@
                 data-portfolio="https://portholio-zeta.vercel.app/" data-github="https://github.com/dharshan00814"
                 data-linkedin="https://www.linkedin.com/in/dharshan-jm" data-college="Anna University"
                 data-degree="B.E. Computer Science & Engineering" data-college-logo="">
-                <div class="team-image-wrapper">
-                    <img src="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg" alt="Dharshan" class="team-avatar">
-                </div>
-                <div class="team-card-content">
-                    <div class="team-card-header">
-                        <h3>Dharshan</h3>
-                        <a href="https://www.linkedin.com/in/dharshan-jm" target="_blank" class="team-linkedin-link" onclick="event.stopPropagation()">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                    </div>
-                    <span class="team-role">Co-Founder & Chief Technology Officer (CTO)</span>
-                    <div class="team-card-divider"></div>
-                    <p class="team-description">
-                        "A co-founder in tech doesn’t follow trends, he builds what will become the next standard."
-                    </p>
+                <img src="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg" alt="Dharshan"
+                    class="team-avatar">
+
+                <h3>Dharshan</h3>
+                <span class="team-role">Co-Founder & Chief
+                    Technology Officer (CTO)</span>
+
+                <p class="team-description">
+                    "A co-founder in tech doesn’t follow trends,
+                    he builds what will become the next standard."
+                </p>
+
+                <div class="team-social">
+                    <a href="https://portholio-zeta.vercel.app/" target="_blank" title="Portfolio">
+                        <i class="fas fa-globe"></i>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/dharshan-jm" target="_blank" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+
+                    <a href="https://github.com/dharshan00814" target="_blank" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
                 </div>
             </div>
 
@@ -3024,18 +3016,22 @@
                 data-photo="https://i.postimg.cc/Jnwtf3ZZ/Whats-App-Image-2026-02-20-at-7-00-57-PM.jpg"
                 data-portfolio="#" data-github="#" data-linkedin="#" data-college="Anna University"
                 data-degree="B.E. Computer Science & Engineering" data-college-logo="">
-                <div class="team-image-wrapper">
-                    <img src="https://i.postimg.cc/Jnwtf3ZZ/Whats-App-Image-2026-02-20-at-7-00-57-PM.jpg" alt="Asthamil" class="team-avatar">
-                </div>
-                <div class="team-card-content">
-                    <div class="team-card-header">
-                        <h3>Asthamil</h3>
-                    </div>
-                    <span class="team-role">Chief Product Officer (CPO) & Director</span>
-                    <div class="team-card-divider"></div>
-                    <p class="team-description">
-                        "Product thinking is not about features, it is about solving the right problem in the right way."
-                    </p>
+                <img src="https://i.postimg.cc/Jnwtf3ZZ/Whats-App-Image-2026-02-20-at-7-00-57-PM.jpg" alt="Asthamil"
+                    class="team-avatar">
+
+                <h3>Asthamil</h3>
+                <span class="team-role">Chief Product Officer (CPO) &
+                    Director </span>
+
+                <p class="team-description">
+                    "Product thinking is not about features,
+                    it is about solving the right problem in the right way."
+                </p>
+
+                <div class="team-social">
+                    <a href="#" title="Portfolio"><i class="fas fa-globe"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
                 </div>
             </div>
 
@@ -3047,21 +3043,23 @@
                 data-portfolio="#" data-github="#"
                 data-linkedin="https://www.linkedin.com/in/tharun-krishna-347b123a0?utm_source=share_via&utm_content=profile&utm_medium=member_android"
                 data-college="Anna University" data-degree="B.E. Computer Science & Engineering" data-college-logo="">
-                <div class="team-image-wrapper">
-                    <img src="https://i.postimg.cc/TP5Jj9Th/Whats-App-Image-2026-06-11-at-11-26-46-AM.jpg" alt="Tharun Krishna" class="team-avatar">
-                </div>
-                <div class="team-card-content">
-                    <div class="team-card-header">
-                        <h3>Tharun Krishna</h3>
-                        <a href="https://www.linkedin.com/in/tharun-krishna-347b123a0?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="team-linkedin-link" onclick="event.stopPropagation()">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                    </div>
-                    <span class="team-role">Chief Design Officer (CDO) & Director</span>
-                    <div class="team-card-divider"></div>
-                    <p class="team-description">
-                        "Good design is invisible, but its impact is impossible to ignore."
-                    </p>
+                <img src="https://i.postimg.cc/TP5Jj9Th/Whats-App-Image-2026-06-11-at-11-26-46-AM.jpg"
+                    alt="Tharun Krishna" class="team-avatar">
+
+                <h3>Tharun Krishna</h3>
+                <span class="team-role">Chief Design Officer (CDO) &
+                    Director </span>
+
+                <p class="team-description">
+                    "Good design is invisible,
+                    but its impact is impossible to ignore."
+                </p>
+
+                <div class="team-social">
+                    <a href="#" title="Portfolio"><i class="fas fa-globe"></i></a>
+                    <a href="https://www.linkedin.com/in/tharun-krishna-347b123a0?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+                        title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
                 </div>
             </div>
 
@@ -3072,21 +3070,21 @@
                 data-photo="https://i.postimg.cc/1zWvJd1C/zarif.jpg" data-portfolio="#" data-github="#"
                 data-linkedin="https://www.linkedin.com/in/muhamed-zarif-80860a37a?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
                 data-college="Anna University" data-degree="B.E. Computer Science & Engineering" data-college-logo="">
-                <div class="team-image-wrapper">
-                    <img src="https://i.postimg.cc/1zWvJd1C/zarif.jpg" alt="Mohammad Zarif" class="team-avatar">
-                </div>
-                <div class="team-card-content">
-                    <div class="team-card-header">
-                        <h3>Mohammad Zarif</h3>
-                        <a href="https://www.linkedin.com/in/muhamed-zarif-80860a37a?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" class="team-linkedin-link" onclick="event.stopPropagation()">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                    </div>
-                    <span class="team-role">Chief Operating Officer (COO)</span>
-                    <div class="team-card-divider"></div>
-                    <p class="team-description">
-                        "Execution is not about speed alone, it is about consistency, structure, and discipline."
-                    </p>
+                <img src="https://i.postimg.cc/1zWvJd1C/zarif.jpg" alt="Mohammad Zarif" class="team-avatar">
+
+                <h3>Mohammad Zarif</h3>
+                <span class="team-role">Chief Operating Officer (COO)</span>
+
+                <p class="team-description">
+                    "Execution is not about speed alone,
+                    it is about consistency, structure, and discipline."
+                </p>
+
+                <div class="team-social">
+                    <a href="#" title="Portfolio"><i class="fas fa-globe"></i></a>
+                    <a href="https://www.linkedin.com/in/muhamed-zarif-80860a37a?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
+                        title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/muhamedzarif" title="GitHub"><i class="fab fa-github"></i></a>
                 </div>
             </div>
 
