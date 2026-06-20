@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication — Hyna Studio</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --ink: #0A0A0F;
+            --paper: #F7F6F2;
+            --accent: #4F3FF0;
+            --accent-glow: rgba(79, 63, 240, 0.15);
+            --accent-blue: #0066FE;
+            --accent-blue-hover: #0052cc;
+            --accent2: #00D9A3;
+            --muted: #6B7280;
+            --border-light: #E5E7EB;
+            --font-body: 'Inter', sans-serif;
+            --font-display: 'Syne', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: #FFFFFF;
+            color: var(--ink);
+            min-height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+        }
+
+        /* ── LAYOUT ── */
+        .auth-container {
+            display: grid;
+            grid-template-columns: 1.1fr 1.3fr;
+            width: 100vw;
+            min-height: 100vh;
+        }
+
+        /* ── LEFT PANEL (DARK) ── */
+        .left-panel {
+            background: radial-gradient(circle at 30% 30%, #0F122B 0%, #040409 100%);
+            color: #FFFFFF;
+            padding: 3.5rem 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Glowing backdrop blobs */
+        .left-panel::before {
+            content: '';
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(79, 63, 240, 0.25) 0%, transparent 70%);
+            top: -50px;
+            left: -50px;
+            filter: blur(50px);
+            pointer-events: none;
+        }
+
+        .left-panel::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 217, 163, 0.12) 0%, transparent 70%);
+            bottom: -80px;
+            right: -100px;
+            filter: blur(60px);
+            pointer-events: none;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: #FFFFFF;
+            z-index: 10;
+        }
+
+        .brand-logo img {
+            height: 38px;
+            width: 38px;
+            object-fit: contain;
+        }
+
+        .brand-logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .brand-logo-main {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1.15rem;
+            letter-spacing: -0.01em;
+            text-transform: uppercase;
+        }
+
+        .brand-logo-sub {
+            font-size: 0.58rem;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-top: 0.1rem;
+            font-weight: 600;
+        }
+
+        .hero-section {
+            margin: 4rem 0;
+            z-index: 10;
+            max-width: 480px;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 3.5vw, 2.75rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero-title span.highlight {
+            background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-desc {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.98rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .divider-line {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            margin-bottom: 2rem;
+        }
+
+        .benefits-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            z-index: 10;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .benefit-icon-wrapper {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-item:hover .benefit-icon-wrapper {
+            border-color: rgba(59, 130, 246, 0.5);
+            background: rgba(59, 130, 246, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .benefit-icon-wrapper svg {
+            width: 18px;
+            height: 18px;
+            color: #3B82F6;
+        }
+
+        .benefit-content h3 {
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: #FFFFFF;
+            margin-bottom: 0.25rem;
+        }
+
+        .benefit-content p {
+            font-size: 0.84rem;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.4;
+        }
+
+        .left-footer {
+            font-size: 0.78rem;
+            color: rgba(255, 255, 255, 0.4);
+            z-index: 10;
+        }
+
+        /* ── RIGHT PANEL (LIGHT) ── */
+        .right-panel {
+            background: #F9FAFB;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 3rem 2rem;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .card-wrapper {
+            width: 100%;
+            max-width: 500px;
+            margin: auto;
+            background: #FFFFFF;
+            border-radius: 24px;
+            padding: 2.75rem 3rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 10px 15px -3px rgba(0, 0, 0, 0.03), 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.02);
+            transition: all 0.3s ease;
+        }
+
+        .card-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .card-header h2 {
+            font-family: var(--font-body);
+            font-size: 1.85rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-header p {
+            font-size: 0.88rem;
+            color: var(--muted);
+        }
+
+        /* Form styling */
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+        }
+
+        .form-group label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-wrapper svg.input-icon {
+            position: absolute;
+            left: 1rem;
+            width: 18px;
+            height: 18px;
+            color: var(--muted);
+            pointer-events: none;
+            transition: color 0.2s;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            padding: 0.85rem 1rem 0.85rem 2.75rem;
+            border: 1px solid var(--border-light);
+            background: #FAFAFA;
+            border-radius: 12px;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            color: var(--ink);
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .input-wrapper input:focus {
+            border-color: var(--accent-blue);
+            background: #FFFFFF;
+            box-shadow: 0 0 0 4px rgba(0, 102, 254, 0.08);
+        }
+
+        .input-wrapper input:focus + svg.input-icon {
+            color: var(--accent-blue);
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 1rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4px;
+        }
+
+        .password-toggle:hover {
+            color: var(--ink);
+        }
+
+        .password-toggle svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Remember & Forgot Password */
+        .form-options {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.82rem;
+            margin-top: 0.25rem;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            color: #4B5563;
+            user-select: none;
+        }
+
+        .checkbox-container input {
+            cursor: pointer;
+            accent-color: var(--accent-blue);
+            width: 15px;
+            height: 15px;
+        }
+
+        .forgot-link {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .forgot-link:hover {
+            color: var(--accent-blue-hover);
+            text-decoration: underline;
+        }
+
+        /* Action Buttons */
+        .btn-submit {
+            width: 100%;
+            padding: 0.95rem;
+            background: var(--accent-blue);
+            color: #FFFFFF;
+            border: none;
+            border-radius: 12px;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .btn-submit:hover {
+            background: var(--accent-blue-hover);
+            box-shadow: 0 4px 12px rgba(0, 102, 254, 0.2);
+        }
+
+        .btn-submit:disabled {
+            background: #9CA3AF;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        /* Social Divider */
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 1.75rem 0;
+            color: var(--muted);
+            font-size: 0.78rem;
+            font-weight: 500;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .divider:not(:empty)::before {
+            margin-right: .75rem;
+        }
+
+        .divider:not(:empty)::after {
+            margin-left: .75rem;
+        }
+
+        /* Social Buttons */
+        .social-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .btn-social {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            padding: 0.8rem;
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            font-family: var(--font-body);
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: #374151;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-social:hover {
+            background: #FAFAFA;
+            border-color: #D1D5DB;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Toggle Link */
+        .toggle-link {
+            text-align: center;
+            font-size: 0.86rem;
+            color: #4B5563;
+            margin-top: 1.75rem;
+        }
+
+        .toggle-link a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .toggle-link a:hover {
+            color: var(--accent-blue-hover);
+            text-decoration: underline;
+        }
+
+        /* Alerts */
+        .alert {
+            padding: 0.85rem 1rem;
+            border-radius: 10px;
+            font-size: 0.82rem;
+            line-height: 1.4;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .alert-error {
+            background: #FEF2F2;
+            border: 1px solid #FEE2E2;
+            color: #991B1B;
+        }
+
+        .alert-success {
+            background: #ECFDF5;
+            border: 1px solid #D1FAE5;
+            color: #065F46;
+        }
+
+        .alert svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .right-footer {
+            font-size: 0.78rem;
+            color: var(--muted);
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        /* Views switching classes */
+        .view-hidden {
+            display: none !important;
+        }
+
+        /* Loading spinner */
+        .spinner {
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #FFFFFF;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .auth-container {
+                grid-template-columns: 1fr;
+            }
+
+            .left-panel {
+                display: none; /* Hide brand panel on smaller tablets/mobile */
+            }
+
+            .right-panel {
+                min-height: 100vh;
+                justify-content: center;
+            }
+
+            .card-wrapper {
+                padding: 2.25rem 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card-wrapper {
+                border-radius: 16px;
+                border: none;
+                box-shadow: none;
+                background: transparent;
+                padding: 1.5rem 0.5rem;
+            }
+
+            .right-panel {
+                background: #FFFFFF;
+                padding: 1.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="auth-container">
+        <!-- LEFT PANEL: BRAND & TEXT -->
+        <div class="left-panel">
+            <!-- Brand Logo -->
+            <a href="index.html" class="brand-logo">
+                <img src="logo.png" alt="Hyna Studio Logo">
+                <div class="brand-logo-text">
+                    <span class="brand-logo-main">Hyna Studio</span>
+                    <span class="brand-logo-sub">Democratizing Entrepreneurship</span>
+                </div>
+            </a>
+
+            <!-- Headline Content -->
+            <div class="hero-section">
+                <h1 class="hero-title">We Build Digital <span class="highlight">Experiences</span> That Inspire.</h1>
+                <p class="hero-desc">
+                    Hyna Studio is a creative digital agency specializing in web development, app development, UI/UX design, and branding.
+                </p>
+                <div class="divider-line"></div>
+
+                <!-- Benefits List -->
+                <div class="benefits-list">
+                    <!-- Benefit 1 -->
+                    <div class="benefit-item">
+                        <div class="benefit-icon-wrapper">
+                            <i data-lucide="mail"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h3>Creative Solutions</h3>
+                            <p>We craft unique digital experiences.</p>
+                        </div>
+                    </div>
+                    <!-- Benefit 2 -->
+                    <div class="benefit-item">
+                        <div class="benefit-icon-wrapper">
+                            <i data-lucide="heart"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h3>Modern Technologies</h3>
+                            <p>Using the latest tools & technologies.</p>
+                        </div>
+                    </div>
+                    <!-- Benefit 3 -->
+                    <div class="benefit-item">
+                        <div class="benefit-icon-wrapper">
+                            <i data-lucide="lock"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h3>Client Focused</h3>
+                            <p>Your success is our top priority.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer copyright -->
+            <div class="left-footer">
+                &copy; 2024 Hyna Studio. All rights reserved.
+            </div>
+        </div>
+
+        <!-- RIGHT PANEL: AUTH CARD -->
+        <div class="right-panel">
+            <div class="card-wrapper">
+                
+                <!-- SIGN IN VIEW -->
+                <div id="signin-view">
+                    <div class="card-header">
+                        <h2>Welcome Back</h2>
+                        <p>Sign in to your Hyna Studio account</p>
+                    </div>
+
+                    <div id="signin-alert-container"></div>
+
+                    <form id="signin-form" class="auth-form" novalidate>
+                        <!-- Email -->
+                        <div class="form-group">
+                            <div class="input-wrapper">
+                                <input type="email" id="signin-email" placeholder="Email Address" required>
+                                <i data-lucide="mail" class="input-icon"></i>
+                            </div>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="form-group">
+                            <div class="input-wrapper">
+                                <input type="password" id="signin-password" placeholder="Password" required>
+                                <i data-lucide="lock" class="input-icon"></i>
+                                <button type="button" class="password-toggle" onclick="togglePasswordVisibility('signin-password', this)">
+                                    <i data-lucide="eye"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Remember & Forgot -->
+                        <div class="form-options">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="remember-me">
+                                <span>Remember me</span>
+                            </label>
+                            <a href="#" class="forgot-link" onclick="handleForgotPassword(event)">Forgot Password?</a>
+                        </div>
+
+                        <button type="submit" class="btn-submit" id="signin-submit-btn">
+                            <span>Sign In</span>
+                        </button>
+                    </form>
+
+                    <div class="divider">or continue with</div>
+
+                    <div class="social-buttons">
+                        <button type="button" class="btn-social" onclick="handleSocialLogin('google')">
+                            <!-- Google Icon SVG -->
+                            <svg viewBox="0 0 24 24" width="18" height="18">
+                                <path fill="#EA4335" d="M12 5.04c1.65 0 3.13.57 4.3 1.69l3.21-3.21C17.57 1.86 14.97 1 12 1 7.24 1 3.2 3.74 1.25 7.74l3.86 3C6.02 7.77 8.78 5.04 12 5.04z"></path>
+                                <path fill="#4285F4" d="M23.49 12.27c0-.81-.07-1.59-.2-2.34H12v4.44h6.44c-.28 1.47-1.11 2.72-2.36 3.56l3.66 2.84c2.14-1.98 3.39-4.88 3.39-8.5z"></path>
+                                <path fill="#FBBC05" d="M5.11 14.74c-.23-.69-.36-1.42-.36-2.18s.13-1.49.36-2.18v-3L1.25 7.74C.45 9.38 0 11.2 0 13.1c0 1.9.45 3.72 1.25 5.36l3.86-3z"></path>
+                                <path fill="#34A853" d="M12 23c3.24 0 5.97-1.07 7.96-2.91l-3.66-2.84c-1.01.68-2.31 1.09-3.7 1.09-3.22 0-5.98-2.73-6.89-5.7l-3.86 3C3.2 20.26 7.24 23 12 23z"></path>
+                            </svg>
+                            <span>Google</span>
+                        </button>
+                        <button type="button" class="btn-social" onclick="handleSocialLogin('github')">
+                            <!-- GitHub Icon SVG -->
+                            <svg fill="currentColor" viewBox="0 0 24 24" width="18" height="18">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C19.138 20.197 22 16.44 22 12.017 22 6.484 17.522 2 12 2z"></path>
+                            </svg>
+                            <span>GitHub</span>
+                        </button>
+                    </div>
+
+                    <div class="toggle-link">
+                        Don't have an account? <a href="#" onclick="toggleAuthView('signup', event)">Sign up</a>
+                    </div>
+                </div>
+
+                <!-- SIGN UP VIEW -->
+                <div id="signup-view" class="view-hidden">
+                    <div class="card-header">
+                        <h2>Create Account</h2>
+                        <p>Sign up for a Hyna Studio account</p>
+                    </div>
+
+                    <div id="signup-alert-container"></div>
+
+                    <form id="signup-form" class="auth-form" novalidate>
+                        <!-- Full Name -->
+                        <div class="form-group">
+                            <div class="input-wrapper">
+                                <input type="text" id="signup-name" placeholder="Full Name" required>
+                                <i data-lucide="user" class="input-icon"></i>
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="form-group">
+                            <div class="input-wrapper">
+                                <input type="email" id="signup-email" placeholder="Email Address" required>
+                                <i data-lucide="mail" class="input-icon"></i>
+                            </div>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="form-group">
+                            <div class="input-wrapper">
+                                <input type="password" id="signup-password" placeholder="Password (min 6 chars)" required>
+                                <i data-lucide="lock" class="input-icon"></i>
+                                <button type="button" class="password-toggle" onclick="togglePasswordVisibility('signup-password', this)">
+                                    <i data-lucide="eye"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-submit" id="signup-submit-btn">
+                            <span>Create Account</span>
+                        </button>
+                    </form>
+
+                    <div class="divider">or continue with</div>
+
+                    <div class="social-buttons">
+                        <button type="button" class="btn-social" onclick="handleSocialLogin('google')">
+                            <svg viewBox="0 0 24 24" width="18" height="18">
+                                <path fill="#EA4335" d="M12 5.04c1.65 0 3.13.57 4.3 1.69l3.21-3.21C17.57 1.86 14.97 1 12 1 7.24 1 3.2 3.74 1.25 7.74l3.86 3C6.02 7.77 8.78 5.04 12 5.04z"></path>
+                                <path fill="#4285F4" d="M23.49 12.27c0-.81-.07-1.59-.2-2.34H12v4.44h6.44c-.28 1.47-1.11 2.72-2.36 3.56l3.66 2.84c2.14-1.98 3.39-4.88 3.39-8.5z"></path>
+                                <path fill="#FBBC05" d="M5.11 14.74c-.23-.69-.36-1.42-.36-2.18s.13-1.49.36-2.18v-3L1.25 7.74C.45 9.38 0 11.2 0 13.1c0 1.9.45 3.72 1.25 5.36l3.86-3z"></path>
+                                <path fill="#34A853" d="M12 23c3.24 0 5.97-1.07 7.96-2.91l-3.66-2.84c-1.01.68-2.31 1.09-3.7 1.09-3.22 0-5.98-2.73-6.89-5.7l-3.86 3C3.2 20.26 7.24 23 12 23z"></path>
+                            </svg>
+                            <span>Google</span>
+                        </button>
+                        <button type="button" class="btn-social" onclick="handleSocialLogin('github')">
+                            <svg fill="currentColor" viewBox="0 0 24 24" width="18" height="18">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C19.138 20.197 22 16.44 22 12.017 22 6.484 17.522 2 12 2z"></path>
+                            </svg>
+                            <span>GitHub</span>
+                        </button>
+                    </div>
+
+                    <div class="toggle-link">
+                        Already have an account? <a href="#" onclick="toggleAuthView('signin', event)">Sign in</a>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="right-footer">
+                &copy; 2024 Hyna Studio. All rights reserved.
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase / Supabase Integration -->
+    <script type="module">
+        import { supabase } from './supabaseClient.js';
+
+        // Check if user is already logged in
+        window.addEventListener('load', async () => {
+            lucide.createIcons();
+            const { data: { session } } = await supabase.auth.getSession();
+            if (session) {
+                // If already logged in, redirect to contact.html
+                window.location.href = 'contact.html';
+            }
+        });
+
+        // Toggle Auth View between signin and signup
+        window.toggleAuthView = function(view, event) {
+            if (event) event.preventDefault();
+            
+            const signinView = document.getElementById('signin-view');
+            const signupView = document.getElementById('signup-view');
+            
+            // Clear alerts
+            document.getElementById('signin-alert-container').innerHTML = '';
+            document.getElementById('signup-alert-container').innerHTML = '';
+
+            if (view === 'signup') {
+                signinView.classList.add('view-hidden');
+                signupView.classList.remove('view-hidden');
+                document.title = "Create Account — Hyna Studio";
+            } else {
+                signupView.classList.add('view-hidden');
+                signinView.classList.remove('view-hidden');
+                document.title = "Sign In — Hyna Studio";
+            }
+            lucide.createIcons();
+        }
+
+        // Toggle Password Input Visibility
+        window.togglePasswordVisibility = function(inputId, buttonEl) {
+            const input = document.getElementById(inputId);
+            if (input.type === 'password') {
+                input.type = 'text';
+                buttonEl.innerHTML = `<i data-lucide="eye-off"></i>`;
+            } else {
+                input.type = 'password';
+                buttonEl.innerHTML = `<i data-lucide="eye"></i>`;
+            }
+            lucide.createIcons();
+        }
+
+        // Show Alert utility
+        function showAlert(containerId, message, type = 'error') {
+            const container = document.getElementById(containerId);
+            const alertClass = type === 'error' ? 'alert-error' : 'alert-success';
+            const iconName = type === 'error' ? 'alert-circle' : 'check-circle';
+            
+            container.innerHTML = `
+                <div class="alert ${alertClass}">
+                    <i data-lucide="${iconName}"></i>
+                    <div>${message}</div>
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        // Handle Social Login (OAuth)
+        window.handleSocialLogin = async function(provider) {
+            const activeView = document.getElementById('signin-view').classList.contains('view-hidden') ? 'signup' : 'signin';
+            
+            // Check for file:// protocol which OAuth does not support
+            if (window.location.protocol === 'file:') {
+                showAlert(`${activeView}-alert-container`, `Google and GitHub logins require running this website on a local development server (like Live Server or http://localhost) rather than opening the file directly from disk. Please use email & password login or run a server.`);
+                return;
+            }
+
+            try {
+                // Calculate redirect URL to point to contact.html
+                const currentUrl = window.location.href;
+                const redirectUrl = currentUrl.substring(0, currentUrl.lastIndexOf('/')) + '/contact.html';
+
+                const { data, error } = await supabase.auth.signInWithOAuth({
+                    provider: provider,
+                    options: {
+                        redirectTo: redirectUrl
+                    }
+                });
+
+                if (error) throw error;
+            } catch (err) {
+                console.error(`OAuth error with ${provider}:`, err);
+                showAlert(`${activeView}-alert-container`, `Authentication failed: ${err.message}`);
+            }
+        }
+
+        // Handle Forgot Password
+        window.handleForgotPassword = async function(event) {
+            event.preventDefault();
+            const emailInput = document.getElementById('signin-email').value.trim();
+            if (!emailInput) {
+                showAlert('signin-alert-container', 'Please enter your email address to reset your password.');
+                return;
+            }
+
+            try {
+                const currentUrl = window.location.href;
+                const redirectUrl = currentUrl.substring(0, currentUrl.lastIndexOf('/')) + '/contact.html';
+                
+                const { error } = await supabase.auth.resetPasswordForEmail(emailInput, {
+                    redirectTo: redirectUrl,
+                });
+
+                if (error) throw error;
+                showAlert('signin-alert-container', 'Password reset email sent! Check your inbox.', 'success');
+            } catch (err) {
+                showAlert('signin-alert-container', `Password reset failed: ${err.message}`);
+            }
+        }
+
+        // Handle Sign In submission
+        document.getElementById('signin-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('signin-email').value.trim();
+            const password = document.getElementById('signin-password').value.trim();
+            const submitBtn = document.getElementById('signin-submit-btn');
+
+            if (!email || !password) {
+                showAlert('signin-alert-container', 'Please fill in all fields.');
+                return;
+            }
+
+            // Set loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<span class="spinner"></span> <span>Signing in...</span>`;
+
+            try {
+                const { data, error } = await supabase.auth.signInWithPassword({
+                    email,
+                    password
+                });
+
+                if (error) throw error;
+
+                // Successful login, redirect to contact.html
+                window.location.href = 'contact.html';
+            } catch (err) {
+                let displayError = err.message;
+                if (err.message && (err.message.includes('Invalid login credentials') || err.message.toLowerCase().includes('invalid credential') || err.message.toLowerCase().includes('password'))) {
+                    displayError = 'Password is incorrect. Please try again.';
+                }
+                showAlert('signin-alert-container', displayError);
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = `<span>Sign In</span>`;
+            }
+        });
+
+        // Handle Sign Up submission
+        document.getElementById('signup-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('signup-name').value.trim();
+            const email = document.getElementById('signup-email').value.trim();
+            const password = document.getElementById('signup-password').value.trim();
+            const submitBtn = document.getElementById('signup-submit-btn');
+
+            if (!name || !email || !password) {
+                showAlert('signup-alert-container', 'Please fill in all fields.');
+                return;
+            }
+
+            if (password.length < 6) {
+                showAlert('signup-alert-container', 'Password must be at least 6 characters long.');
+                return;
+            }
+
+            // Set loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<span class="spinner"></span> <span>Creating account...</span>`;
+
+            try {
+                const { data, error } = await supabase.auth.signUp({
+                    email,
+                    password,
+                    options: {
+                        data: {
+                            full_name: name
+                        }
+                    }
+                });
+
+                if (error) throw error;
+
+                // Depending on Supabase settings, if email verification is off, user is logged in.
+                // If email verification is on, data.session might be null, but they get a confirm mail.
+                if (data.session) {
+                    showAlert('signup-alert-container', 'Account created successfully! Redirecting...', 'success');
+                    setTimeout(() => {
+                        window.location.href = 'contact.html';
+                    }, 1500);
+                } else {
+                    showAlert('signup-alert-container', 'Registration successful! Please check your email to verify your account.', 'success');
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = `<span>Create Account</span>`;
+                }
+
+            } catch (err) {
+                showAlert('signup-alert-container', err.message);
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = `<span>Create Account</span>`;
+            }
+        });
+    </script>
+</body>
+
+</html>
