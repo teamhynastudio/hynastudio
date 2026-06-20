@@ -4,6 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        if (window.location.protocol === 'file:') {
+            document.addEventListener('DOMContentLoaded', () => {
+                const warningDiv = document.createElement('div');
+                warningDiv.style.background = '#FEF2F2';
+                warningDiv.style.borderBottom = '1px solid #FCA5A5';
+                warningDiv.style.color = '#991B1B';
+                warningDiv.style.padding = '0.75rem 1.5rem';
+                warningDiv.style.textAlign = 'center';
+                warningDiv.style.fontWeight = '600';
+                warningDiv.style.fontSize = '0.85rem';
+                warningDiv.style.fontFamily = 'system-ui, sans-serif';
+                warningDiv.style.position = 'sticky';
+                warningDiv.style.top = '0';
+                warningDiv.style.zIndex = '9999';
+                warningDiv.innerHTML = '⚠️ Browser blocks database and script features when opening local files directly. Please run a local development server (e.g. VS Code Live Server or python -m http.server) to test signing in and form redirects.';
+                document.body.prepend(warningDiv);
+            });
+        }
+    </script>
     <title>Start Your Project — Hyna Studio</title>
     <meta name="description"
         content="Tell us about your project. Hyna Studio builds websites, apps, SaaS platforms, and cloud solutions for startups and enterprises.">
