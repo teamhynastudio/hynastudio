@@ -463,9 +463,16 @@
         const serviceToCategory = {
             web: 'web',
             app: 'app',
+            ios: 'app',
+            android: 'app',
+            shopify: 'ecommerce',
+            ecommerce: 'ecommerce',
             design: 'design',
             uiux: 'design',
-            cloud: 'cloud',
+            saas: 'saas',
+            software: 'saas',
+            erp: 'erp',
+            crm: 'erp',
             security: 'security'
         };
 
@@ -521,7 +528,8 @@
         <button class="filter-btn" data-filter="web">Web</button>
         <button class="filter-btn" data-filter="app">App</button>
         <button class="filter-btn" data-filter="saas">SaaS</button>
-        <button class="filter-btn" data-filter="cloud">Cloud</button>
+        <button class="filter-btn" data-filter="erp">ERP</button>
+        <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
         <button class="filter-btn" data-filter="design">Design</button>
         <button class="filter-btn" data-filter="security">Security</button>
     </div>
@@ -575,17 +583,7 @@
                 link: "contact.html",
                 image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80"
             },
-            {
-                title: "Cloud Infrastructure Setup",
-                desc: "Designed and deployed a multi-region cloud architecture on AWS with auto-scaling, load balancing, CI/CD pipelines, and 99.9% uptime SLA.",
-                tags: ["AWS", "Terraform", "Docker", "Kubernetes", "CI/CD"],
-                category: "cloud",
-                client: "Hyna Studio",
-                status: "completed",
-                badge: "Cloud & DevOps",
-                link: "#",
-                image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80"
-            },
+
             {
                 title: "Security Audit & VAPT",
                 desc: "Comprehensive vulnerability assessment and penetration testing for web applications — identifying and remediating critical security gaps.",
