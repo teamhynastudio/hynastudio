@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>nexOPS IQ Careers | Future of Tech Recruitment</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Join nexOPS IQ, a forward-looking digital studio. Build digital products that scale and work on bleeding-edge projects. Apply today!">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Syne:wght@700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- CDNs for Required Libraries -->
+  <!-- Zod UMD from CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/zod@3.22.4/lib/index.umd.min.js"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Supabase JS Client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  
+  <!-- Stylesheet Links -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="zoho-theme">
+
+  <!-- Futuristic Background Grid & Ambient Glows -->
+  <div class="grid-background"></div>
+  <div class="glow-orb glow-orb-1"></div>
+  <div class="glow-orb glow-orb-2"></div>
+
+  <!-- Header / Floating Capsule Navbar -->
+  <header class="navbar-wrapper">
+    <nav class="capsule-navbar">
+      <a href="index.html" class="nav-logo" id="nav-logo-btn">
+        <img src="logo.png" class="logo-icon" style="object-fit: contain;" alt="nexOPS IQ Logo">
+        <div class="logo-text">
+          <span class="logo-main">nexOPS <span class="logo-highlight">IQ</span></span>
+          <span class="logo-sub">CAREERS</span>
+        </div>
+      </a>
+      
+      <div class="nav-links">
+        <a href="#about" class="nav-link-item active" id="link-about">Why Join</a>
+        <a href="#positions" class="nav-link-item" id="link-positions">Positions</a>
+        <a href="#culture" class="nav-link-item" id="link-culture">Culture</a>
+        <a href="#projects" class="nav-link-item" id="link-projects">Projects</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="index.html" class="btn-outline-sm" style="text-decoration: none;"><i data-lucide="arrow-left"></i> Back to Home</a>
+        <button class="btn-outline-sm btn-project-nav" id="navbar-request-btn" title="Start a Project">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil-ruler">
+            <path d="m15 5 3 3"/>
+            <path d="M9 17 4 12"/>
+            <path d="M17 13.5 13.5 17"/>
+            <path d="M12 9 9 12"/>
+            <path d="M14.5 6.5 17 4 20 7 17.5 9.5"/>
+            <path d="m12.5 17.5 1.5-1.5"/>
+            <path d="m8.5 13.5 1-1"/>
+            <path d="m10.5 15.5 1-1"/>
+            <path d="m6.5 11.5 1-1"/>
+            <path d="m14 19 6-6"/>
+            <path d="M4 20L5 15L15 5L19 9L9 19L4 20z"/>
+          </svg>
+        </button>
+        <button class="btn-primary" id="navbar-apply-btn">Join Our Team <i data-lucide="arrow-up-right"></i></button>
+        <button class="btn-glass hidden" id="navbar-admin-btn"><i data-lucide="shield-check"></i> Admin</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="content-container">
+
+    <!-- ================= PAGE 1: LANDING PAGE ================= -->
+    <section id="landing-page" class="page-section active">
+      
+      <!-- Custom Careers Hero Segment -->
+      <section class="careers-hero">
+        <h1 class="hero-title">Build products that behave like <em>water glass</em>.</h1>
+        <p class="hero-subtitle">We are looking for pristine builders, creators, and security specialists to join nexOPS IQ cell.</p>
+        <div class="hero-actions">
+          <button class="btn-primary btn-large" id="hero-join-btn">View Open Tracks <i data-lucide="arrow-down"></i></button>
+        </div>
+      </section>
+
+      <!-- Why Join Us Section -->
+      <section id="about" class="section-container">
+        <div class="section-header">
+          <span class="section-tag">// ACCELERATE YOUR GROWTH</span>
+          <h2 class="section-title">Why Join nexOPS IQ?</h2>
+        </div>
+        <div class="card-grid">
+          <div class="feature-card">
+            <div class="card-icon gradient-blue-bg"><i data-lucide="cpu"></i></div>
+            <h3 class="card-title">Bleeding Edge Stack</h3>
+            <p class="card-text">We work with the latest in AI, cloud-native infrastructure, and high-performance frontend frameworks. No legacy drag here.</p>
+          </div>
+          <div class="feature-card">
+            <div class="card-icon gradient-green-bg"><i data-lucide="zap"></i></div>
+            <h3 class="card-title">Rapid Innovation</h3>
+            <p class="card-text">Ship features to millions of users weekly. We bypass bureaucratic overhead with high trust and autonomous team cells.</p>
+          </div>
+          <div class="feature-card">
+            <div class="card-icon gradient-purple-bg"><i data-lucide="globe"></i></div>
+            <h3 class="card-title">100% Remote-First</h3>
+            <p class="card-text">Work from anywhere. We value deep work over desk presence. Work asynchronously with flexible hours and stipend options.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Open Positions Section -->
+      <section id="positions" class="section-container border-top">
+        <div class="section-header">
+          <span class="section-tag">// ACTIVE ENLISTMENT</span>
+          <h2 class="section-title">Open Tracks</h2>
+          <p class="section-description">We are actively recruiting builders, creators, and security specialists. Click a position to apply directly.</p>
+        </div>
+        
+        <div class="positions-list">
+          <!-- Position 1 -->
+          <div class="position-item" data-team="AI/ML">
+            <div class="pos-info">
+              <span class="pos-team">AI / ML</span>
+              <h3 class="pos-title">Generative AI Engineer</h3>
+              <div class="pos-meta">
+                <span><i data-lucide="map-pin"></i> Remote</span>
+                <span><i data-lucide="clock"></i> Full-Time / Part-Time</span>
+              </div>
+            </div>
+            <button class="btn-outline pos-apply-btn">Apply Now <i data-lucide="chevron-right"></i></button>
+          </div>
+
+          <!-- Position 2 -->
+          <div class="position-item" data-team="Full Stack">
+            <div class="pos-info">
+              <span class="pos-team">Full Stack</span>
+              <h3 class="pos-title">Senior Full Stack Developer</h3>
+              <div class="pos-meta">
+                <span><i data-lucide="map-pin"></i> Remote</span>
+                <span><i data-lucide="clock"></i> Full-Time</span>
+              </div>
+            </div>
+            <button class="btn-outline pos-apply-btn">Apply Now <i data-lucide="chevron-right"></i></button>
+          </div>
+
+          <!-- Position 3 -->
+          <div class="position-item" data-team="Cybersecurity">
+            <div class="pos-info">
+              <span class="pos-team">Cybersecurity</span>
+              <h3 class="pos-title">Security Researcher & Auditor</h3>
+              <div class="pos-meta">
+                <span><i data-lucide="map-pin"></i> Remote</span>
+                <span><i data-lucide="clock"></i> Project-Based</span>
+              </div>
+            </div>
+            <button class="btn-outline pos-apply-btn">Apply Now <i data-lucide="chevron-right"></i></button>
+          </div>
+
+          <!-- Position 4 -->
+          <div class="position-item" data-team="DevOps">
+            <div class="pos-info">
+              <span class="pos-team">DevOps</span>
+              <h3 class="pos-title">Infrastructure Engineer (Kubernetes/AWS)</h3>
+              <div class="pos-meta">
+                <span><i data-lucide="map-pin"></i> Remote</span>
+                <span><i data-lucide="clock"></i> Full-Time</span>
+              </div>
+            </div>
+            <button class="btn-outline pos-apply-btn">Apply Now <i data-lucide="chevron-right"></i></button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Team Culture Section -->
+      <section id="culture" class="section-container border-top">
+        <div class="section-header">
+          <span class="section-tag">// OUR DNA</span>
+          <h2 class="section-title">Team Culture</h2>
+        </div>
+        <div class="culture-gallery">
+          <div class="gallery-item main-item">
+            <div class="gallery-overlay">
+              <h4>Collaborative Sprints</h4>
+              <p>Weekly design jams and architectural syncs where all voices build the product.</p>
+            </div>
+            <div class="mock-photo-container grad-1">
+              <span class="culture-text-watermark">INNOVATE</span>
+            </div>
+          </div>
+          <div class="gallery-subgrid">
+            <div class="gallery-item">
+              <div class="gallery-overlay">
+                <h4>Hackathons & R&D</h4>
+                <p>Quarterly 48-hour labs dedicated to experimental ideas.</p>
+              </div>
+              <div class="mock-photo-container grad-2">
+                <span class="culture-text-watermark">CREATIVE</span>
+              </div>
+            </div>
+            <div class="gallery-item">
+              <div class="gallery-overlay">
+                <h4>Global Retreats</h4>
+                <p>Gathering twice a year on physical summits to bond.</p>
+              </div>
+              <div class="mock-photo-container grad-3">
+                <span class="culture-text-watermark">TOGETHER</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects Showcase -->
+      <section id="projects" class="section-container border-top pb-large">
+        <div class="section-header">
+          <span class="section-tag">// BUILT BY THE TEAM</span>
+          <h2 class="section-title">Projects Showcase</h2>
+        </div>
+        <div class="project-showcase-grid">
+          <div class="showcase-card">
+            <div class="showcase-preview-box pgrad-1">
+              <span class="showcase-tech">Next.js • Tailwind • WebGL</span>
+            </div>
+            <div class="showcase-detail">
+              <h3>Vortex Core UI</h3>
+              <p>A high-performance cloud management panel displaying clusters as interactive 3D nodes.</p>
+            </div>
+          </div>
+          <div class="showcase-card">
+            <div class="showcase-preview-box pgrad-2">
+              <span class="showcase-tech">Python • Rust • Kubernetes</span>
+            </div>
+            <div class="showcase-detail">
+              <h3>Aegis Sentinel</h3>
+              <p>An automated cybersecurity audit engine scanning smart contracts and reporting vulnerabilities in real time.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- ================= PAGE 2: APPLICATION FORM ================= -->
+    <section id="application-form-page" class="page-section">
+      <div class="form-container-card">
+        <!-- Form Header -->
+        <div class="form-header">
+          <div class="form-title-group">
+            <h2 class="form-main-title">nexOPS IQ Application Portal</h2>
+            <p class="form-step-indicator">Step <span id="current-step-text">1</span> of 10: <span id="step-name-text">Personal Details</span></p>
+          </div>
+          <div class="form-actions-top">
+            <button type="button" class="btn-glass-sm" id="btn-save-draft"><i data-lucide="save"></i> Save Draft</button>
+            <button type="button" class="btn-glass-sm text-red" id="btn-clear-draft"><i data-lucide="trash-2"></i> Clear</button>
+          </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-bar-container">
+          <div class="progress-bar-fill" id="progress-bar-fill"></div>
+          <div class="progress-dots" id="progress-dots">
+            <!-- Dynamic dots added by JS -->
+          </div>
+        </div>
+
+        <!-- Draft Loaded Toast notification -->
+        <div id="draft-toast" class="toast hidden">
+          <span class="toast-icon"><i data-lucide="check-circle-2"></i></span>
+          <span class="toast-message">Draft loaded successfully!</span>
+        </div>
+
+        <form id="career-application-form" novalidate>
+          
+          <!-- STEP 1: Personal Details -->
+          <div class="form-step active" data-step="1">
+            <h3 class="step-title">Personal Details</h3>
+            <div class="input-grid">
+              <div class="input-group">
+                <label for="fullName">Full Name <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <i data-lucide="user" class="input-icon"></i>
+                  <input type="text" id="fullName" name="fullName" placeholder="John Doe">
+                </div>
+                <p class="error-msg" data-for="fullName"></p>
+              </div>
+
+              <div class="input-group">
+                <label for="email">Email Address <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <i data-lucide="mail" class="input-icon"></i>
+                  <input type="email" id="email" name="email" placeholder="john.doe@example.com">
+                </div>
+                <p class="error-msg" data-for="email"></p>
+              </div>
+
+              <div class="input-group">
+                <label for="phone">Phone Number <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <i data-lucide="phone" class="input-icon"></i>
+                  <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000">
+                </div>
+                <p class="error-msg" data-for="phone"></p>
+              </div>
+
+              <div class="input-group">
+                <label for="location">Location <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <i data-lucide="map-pin" class="input-icon"></i>
+                  <input type="text" id="location" name="location" placeholder="City, Country">
+                </div>
+                <p class="error-msg" data-for="location"></p>
+              </div>
+
+              <div class="input-group">
+                <label for="dob">Date of Birth <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <i data-lucide="calendar" class="input-icon"></i>
+                  <input type="date" id="dob" name="dob">
+                </div>
+                <p class="error-msg" data-for="dob"></p>
+              </div>
+
+              <div class="input-group col-span-2">
+                <label>Profile Photo Upload <span class="required">*</span></label>
+                <div class="photo-upload-zone" id="photo-drop-zone">
+                  <input type="file" id="profilePhoto" name="profilePhoto" accept="image/*" class="file-hidden-input">
+                  <div class="photo-preview-container" id="photo-preview-container">
+                    <div class="photo-placeholder-icon">
+                      <i data-lucide="camera" class="size-large"></i>
+                    </div>
+                  </div>
+                  <div class="upload-instructions">
+                    <p class="upload-primary-text">Drag and drop profile image here, or <span>browse</span></p>
+                    <p class="upload-sub-text">PNG, JPG, or WEBP up to 2MB</p>
+                  </div>
+                </div>
+                <p class="error-msg" data-for="profilePhoto"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 2: Education -->
+          <div class="form-step" data-step="2">
+            <div class="step-header-with-action">
+              <h3 class="step-title">Education Records</h3>
+              <button type="button" class="btn-outline-sm" id="btn-add-education"><i data-lucide="plus"></i> Add Education</button>
+            </div>
+            <p class="step-desc">List your academic qualifications. Add at least one record.</p>
+            
+            <div id="education-records-list" class="dynamic-rows-container">
+              <!-- Dynamic rows injected here by JS -->
+            </div>
+            <p class="error-msg" data-for="education"></p>
+          </div>
+
+          <!-- STEP 3: Skills -->
+          <div class="form-step" data-step="3">
+            <h3 class="step-title">Technical Expertise</h3>
+            <p class="step-desc">Add tags representing your skills. Press Enter or comma to create a pill.</p>
+            
+            <div class="input-grid">
+              <div class="input-group col-span-2">
+                <label>Programming Languages <span class="required">*</span></label>
+                <div class="tag-input-container" data-field="languages">
+                  <div class="tag-pills" id="tags-languages"></div>
+                  <input type="text" placeholder="e.g. JavaScript, Python, Rust" class="tag-raw-input">
+                </div>
+                <p class="error-msg" data-for="languages"></p>
+              </div>
+
+              <div class="input-group col-span-2">
+                <label>Frameworks & Libraries</label>
+                <div class="tag-input-container" data-field="frameworks">
+                  <div class="tag-pills" id="tags-frameworks"></div>
+                  <input type="text" placeholder="e.g. React, Next.js, FastAPI" class="tag-raw-input">
+                </div>
+                <p class="error-msg" data-for="frameworks"></p>
+              </div>
+
+              <div class="input-group">
+                <label>Databases</label>
+                <div class="tag-input-container" data-field="databases">
+                  <div class="tag-pills" id="tags-databases"></div>
+                  <input type="text" placeholder="e.g. PostgreSQL, Redis" class="tag-raw-input">
+                </div>
+                <p class="error-msg" data-for="databases"></p>
+              </div>
+
+              <div class="input-group">
+                <label>DevOps & Cloud Tools</label>
+                <div class="tag-input-container" data-field="devops">
+                  <div class="tag-pills" id="tags-devops"></div>
+                  <input type="text" placeholder="e.g. Docker, AWS, Terraform" class="tag-raw-input">
+                </div>
+                <p class="error-msg" data-for="devops"></p>
+              </div>
+
+              <div class="input-group col-span-2">
+                <label>Cybersecurity Skills</label>
+                <div class="tag-input-container" data-field="cyber">
+                  <div class="tag-pills" id="tags-cyber"></div>
+                  <input type="text" placeholder="e.g. Penetration Testing, OWASP, Wireshark" class="tag-raw-input">
+                </div>
+                <p class="error-msg" data-for="cyber"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 4: Projects -->
+          <div class="form-step" data-step="4">
+            <div class="step-header-with-action">
+              <h3 class="step-title">Personal / Professional Projects</h3>
+              <button type="button" class="btn-outline-sm" id="btn-add-project"><i data-lucide="plus"></i> Add Project</button>
+            </div>
+            <p class="step-desc">Showcase up to 5 major projects you built. Add at least one.</p>
+
+            <div id="projects-records-list" class="dynamic-rows-container">
+              <!-- Dynamic rows injected here by JS -->
+            </div>
+            <p class="error-msg" data-for="projects"></p>
+          </div>
+
+          <!-- STEP 5: Experience -->
+          <div class="form-step" data-step="5">
+            <div class="step-header-with-action">
+              <h3 class="step-title">Work Experience</h3>
+              <button type="button" class="btn-outline-sm" id="btn-add-experience"><i data-lucide="plus"></i> Add Experience</button>
+            </div>
+            <p class="step-desc">List your prior internships, employment, or freelance work.</p>
+
+            <div id="experience-records-list" class="dynamic-rows-container">
+              <!-- Dynamic rows injected here by JS -->
+            </div>
+            <p class="error-msg" data-for="experience"></p>
+          </div>
+
+          <!-- STEP 6: Certifications -->
+          <div class="form-step" data-step="6">
+            <div class="step-header-with-action">
+              <h3 class="step-title">Certifications & Achievements</h3>
+              <button type="button" class="btn-outline-sm" id="btn-add-certification"><i data-lucide="plus"></i> Add Certificate</button>
+            </div>
+            <p class="step-desc">Upload certificates or list milestones.</p>
+
+            <div id="certifications-records-list" class="dynamic-rows-container">
+              <!-- Dynamic rows injected here by JS -->
+            </div>
+            <p class="error-msg" data-for="certifications"></p>
+          </div>
+
+          <!-- STEP 7: Social Profiles -->
+          <div class="form-step" data-step="7">
+            <h3 class="step-title">Social & Coding Profiles</h3>
+            <p class="step-desc">Provide links to help us evaluate your contributions and profiles.</p>
+
+            <div class="input-grid">
+              <div class="input-group">
+                <label for="githubUrl">GitHub Profile URL</label>
+                <div class="input-wrapper">
+                  <i data-lucide="github" class="input-icon"></i>
+                  <input type="url" id="githubUrl" name="githubUrl" placeholder="https://github.com/username">
+                </div>
+                <p class="error-msg" data-for="githubUrl"></p>
+              </div>
+
+              <div class="input-group">
+                <label for="linkedinUrl">LinkedIn URL</label>
+                <div class="input-wrapper">
+                  <i data-lucide="linkedin" class="input-icon"></i>
+                  <input type="url" id="linkedinUrl" name="linkedinUrl" placeholder="https://linkedin.com/in/username">
+                </div>
+                <p class="error-msg" data-for="linkedinUrl"></p>
+              </div>
+
+              <div class="input-group">
+                <label for="portfolioUrl">Portfolio Website</label>
+                <div class="input-wrapper">
+                  <i data-lucide="globe" class="input-icon"></i>
+                  <input type="url" id="portfolioUrl" name="portfolioUrl" placeholder="https://myportfolio.com">
+                </div>
+                <p class="error-msg" data-for="portfolioUrl"></p>
+              </div>
+
+              <div class="input-group">
+                <label for="leetcodeUrl">LeetCode Profile</label>
+                <div class="input-wrapper">
+                  <i data-lucide="code" class="input-icon"></i>
+                  <input type="url" id="leetcodeUrl" name="leetcodeUrl" placeholder="https://leetcode.com/username">
+                </div>
+                <p class="error-msg" data-for="leetcodeUrl"></p>
+              </div>
+
+              <div class="input-group">
+                <label for="hackerrankUrl">HackerRank Profile</label>
+                <div class="input-wrapper">
+                  <i data-lucide="terminal" class="input-icon"></i>
+                  <input type="url" id="hackerrankUrl" name="hackerrankUrl" placeholder="https://hackerrank.com/username">
+                </div>
+                <p class="error-msg" data-for="hackerrankUrl"></p>
+              </div>
+
+              <div class="input-group">
+                <label for="tryhackmeUrl">TryHackMe Profile</label>
+                <div class="input-wrapper">
+                  <i data-lucide="shield" class="input-icon"></i>
+                  <input type="url" id="tryhackmeUrl" name="tryhackmeUrl" placeholder="https://tryhackme.com/p/username">
+                </div>
+                <p class="error-msg" data-for="tryhackmeUrl"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 8: Resume Upload -->
+          <div class="form-step" data-step="8">
+            <h3 class="step-title">Resume Upload</h3>
+            <p class="step-desc">Drag and drop your professional resume or upload from files.</p>
+
+            <div class="resume-upload-wrapper">
+              <div class="resume-drop-zone" id="resume-drop-zone">
+                <input type="file" id="resumeFile" name="resumeFile" accept=".pdf,.docx" class="file-hidden-input">
+                <div class="upload-icon-box">
+                  <i data-lucide="file-text" class="size-large text-gradient-blue"></i>
+                </div>
+                <div class="upload-instructions">
+                  <p class="upload-primary-text">Drag & drop your resume file here, or <span>browse files</span></p>
+                  <p class="upload-sub-text">PDF or DOCX only (Max 5MB)</p>
+                </div>
+              </div>
+
+              <div id="resume-preview-panel" class="resume-preview-panel hidden">
+                <div class="file-info">
+                  <i data-lucide="file" class="file-icon"></i>
+                  <div class="file-details">
+                    <p class="file-name" id="preview-file-name">Resume.pdf</p>
+                    <p class="file-size" id="preview-file-size">1.2 MB</p>
+                  </div>
+                </div>
+                <button type="button" class="btn-circle-red" id="btn-remove-resume"><i data-lucide="x"></i></button>
+              </div>
+            </div>
+            <p class="error-msg" data-for="resumeFile"></p>
+          </div>
+
+          <!-- STEP 9: Team Preference -->
+          <div class="form-step" data-step="9">
+            <h3 class="step-title">Select Team Preference</h3>
+            <p class="step-desc">Select the track you are applying to. This will route your profile to the correct leads.</p>
+
+            <input type="hidden" id="teamPreference" name="teamPreference" value="">
+
+            <div class="team-selection-grid">
+              <div class="team-card" data-preference="Frontend">
+                <div class="team-card-icon"><i data-lucide="layout"></i></div>
+                <h4>Frontend Engineering</h4>
+                <p>Develop rich responsive UI, animations, state management.</p>
+              </div>
+              <div class="team-card" data-preference="Backend">
+                <div class="team-card-icon"><i data-lucide="database"></i></div>
+                <h4>Backend Engineering</h4>
+                <p>Databases, scalable architecture, heavy payload routing.</p>
+              </div>
+              <div class="team-card" data-preference="Full Stack">
+                <div class="team-card-icon"><i data-lucide="layers"></i></div>
+                <h4>Full Stack</h4>
+                <p>Own the user experience end-to-end. Bridge system design and UI.</p>
+              </div>
+              <div class="team-card" data-preference="AI/ML">
+                <div class="team-card-icon"><i data-lucide="brain"></i></div>
+                <h4>AI / Machine Learning</h4>
+                <p>Model pipeline training, embeddings integration, Generative AI agent tools.</p>
+              </div>
+              <div class="team-card" data-preference="DevOps">
+                <div class="team-card-icon"><i data-lucide="server"></i></div>
+                <h4>DevOps & Cloud</h4>
+                <p>IaC pipelines, Docker, K8s orchestration, server monitoring.</p>
+              </div>
+              <div class="team-card" data-preference="Cybersecurity">
+                <div class="team-card-icon"><i data-lucide="shield-alert"></i></div>
+                <h4>Cybersecurity</h4>
+                <p>Red teaming, smart contract audits, risk mitigation.</p>
+              </div>
+              <div class="team-card" data-preference="UI/UX">
+                <div class="team-card-icon"><i data-lucide="palette"></i></div>
+                <h4>UI / UX Design</h4>
+                <p>Create visual languages, layouts, wireframes, user testing.</p>
+              </div>
+              <div class="team-card" data-preference="Research">
+                <div class="team-card-icon"><i data-lucide="binary"></i></div>
+                <h4>R&D Science</h4>
+                <p>Solve algorithm challenges, scientific computations, mathematics.</p>
+              </div>
+            </div>
+            <p class="error-msg" data-for="teamPreference"></p>
+          </div>
+
+          <!-- STEP 10: Final Questions -->
+          <div class="form-step" data-step="10">
+            <h3 class="step-title">Final Wrap-up</h3>
+            <p class="step-desc">Just a few questions to understand your motivations and availability.</p>
+
+            <div class="input-grid">
+              <div class="input-group col-span-2">
+                <label for="whyJoin">Why do you want to join nexOPS IQ? <span class="required">*</span></label>
+                <textarea id="whyJoin" name="whyJoin" rows="4" placeholder="Tell us what drives you..."></textarea>
+                <p class="error-msg" data-for="whyJoin"></p>
+              </div>
+
+              <div class="input-group col-span-2">
+                <label for="contribution">What can you contribute to the team? <span class="required">*</span></label>
+                <textarea id="contribution" name="contribution" rows="4" placeholder="Explain your unique skills, energy or ideas..."></textarea>
+                <p class="error-msg" data-for="contribution"></p>
+              </div>
+
+              <div class="input-group">
+                <label for="hoursPerWeek">Available hours per week? <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <i data-lucide="clock" class="input-icon"></i>
+                  <input type="number" id="hoursPerWeek" name="hoursPerWeek" placeholder="e.g. 40" min="1" max="168">
+                </div>
+                <p class="error-msg" data-for="hoursPerWeek"></p>
+              </div>
+
+              <div class="input-group">
+                <label for="expectedStipend">Expected monthly stipend? <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <i data-lucide="dollar-sign" class="input-icon"></i>
+                  <input type="text" id="expectedStipend" name="expectedStipend" placeholder="e.g. $1,500 USD or Competitor Match">
+                </div>
+                <p class="error-msg" data-for="expectedStipend"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form Navigation Actions -->
+          <div class="form-navigation">
+            <button type="button" class="btn-outline btn-large" id="form-prev-btn"><i data-lucide="arrow-left"></i> Previous</button>
+            <button type="button" class="btn-primary btn-large" id="form-next-btn">Next Step <i data-lucide="arrow-right"></i></button>
+            <button type="submit" class="btn-primary btn-large hidden" id="form-submit-btn">Submit Application <i data-lucide="check"></i></button>
+          </div>
+
+        </form>
+      </div>
+    </section>
+
+    <!-- ================= PAGE 2B: PROJECT REQUEST FORM ================= -->
+    <section id="project-request-page" class="page-section">
+      <div class="form-container-card">
+        <!-- Form Header -->
+        <div class="form-header">
+          <div class="form-title-group">
+            <h2 class="form-main-title">Start a Project with nexOPS</h2>
+            <p class="form-step-indicator">Tell us about your digital product requirements and timeline</p>
+          </div>
+        </div>
+
+        <form id="project-request-form" novalidate>
+          
+          <!-- Section 1: Client Information -->
+          <div class="form-section-card">
+            <h3 class="step-title"><i data-lucide="user-check" class="text-gradient-blue" style="vertical-align: middle; margin-right: 6px;"></i>Client Information</h3>
+            <p class="step-desc" style="margin-bottom: 20px;">Provide your contact details and company name.</p>
+            <div class="input-grid">
+              <div class="input-group">
+                <label for="clientName">Full Name <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <i data-lucide="user" class="input-icon"></i>
+                  <input type="text" id="clientName" name="clientName" placeholder="Sarah Connor">
+                </div>
+                <p class="error-msg" data-for="clientName"></p>
+              </div>
+
+              <div class="input-group">
+                <label for="companyName">Company / Organization <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <i data-lucide="building" class="input-icon"></i>
+                  <input type="text" id="companyName" name="companyName" placeholder="Wayne Corp">
+                </div>
+                <p class="error-msg" data-for="companyName"></p>
+              </div>
+
+              <div class="input-group">
+                <label for="clientEmail">Email Address <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <i data-lucide="mail" class="input-icon"></i>
+                  <input type="email" id="clientEmail" name="clientEmail" placeholder="sconnor@skynet.com">
+                </div>
+                <p class="error-msg" data-for="clientEmail"></p>
+              </div>
+
+              <div class="input-group">
+                <label for="clientPhone">Phone Number <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <i data-lucide="phone" class="input-icon"></i>
+                  <input type="tel" id="clientPhone" name="clientPhone" placeholder="+1 (555) 000-0000">
+                </div>
+                <p class="error-msg" data-for="clientPhone"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 2: Project Details -->
+          <div class="form-section-card border-top" style="padding-top: 32px; margin-top: 32px;">
+            <h3 class="step-title"><i data-lucide="layout-grid" class="text-gradient-blue" style="vertical-align: middle; margin-right: 6px;"></i>Project Details</h3>
+            <p class="step-desc" style="margin-bottom: 20px;">What kind of product are we building?</p>
+            <div class="input-grid">
+              <div class="input-group">
+                <label for="websiteType">Website / Application Type <span class="required">*</span></label>
+                <select id="websiteType" name="websiteType">
+                  <option value="">-- Choose Option --</option>
+                  <option value="Business">Business Website</option>
+                  <option value="Portfolio">Portfolio Showcase</option>
+                  <option value="E-commerce">E-commerce Store</option>
+                  <option value="Blog">Blog / Content Platform</option>
+                  <option value="SaaS">SaaS Application Panel</option>
+                  <option value="Other">Other Custom Product</option>
+                </select>
+                <p class="error-msg" data-for="websiteType"></p>
+              </div>
+
+              <div class="input-group">
+                <label>Number of Pages / Sections <span class="required">*</span></label>
+                <div class="radio-card-group" style="display: flex; gap: 12px; margin-top: 4px;">
+                  <label class="custom-radio-card" style="flex: 1; text-align: center; border: 1px solid var(--border-color); padding: 10px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; background: var(--bg-primary);">
+                    <input type="radio" name="pageCount" value="1-5" checked style="margin-right: 6px; width: auto;"> 1-5 Pages
+                  </label>
+                  <label class="custom-radio-card" style="flex: 1; text-align: center; border: 1px solid var(--border-color); padding: 10px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; background: var(--bg-primary);">
+                    <input type="radio" name="pageCount" value="5-10" style="margin-right: 6px; width: auto;"> 5-10 Pages
+                  </label>
+                  <label class="custom-radio-card" style="flex: 1; text-align: center; border: 1px solid var(--border-color); padding: 10px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; background: var(--bg-primary);">
+                    <input type="radio" name="pageCount" value="10+" style="margin-right: 6px; width: auto;"> 10+ Pages
+                  </label>
+                </div>
+                <p class="error-msg" data-for="pageCount"></p>
+              </div>
+
+              <div class="input-group col-span-2">
+                <label for="projectGoals">Goals & Purpose of Website <span class="required">*</span></label>
+                <textarea id="projectGoals" name="projectGoals" rows="3" placeholder="Outline the main business objectives and what users should achieve on this site..."></textarea>
+                <p class="error-msg" data-for="projectGoals"></p>
+              </div>
+
+              <div class="input-group col-span-2">
+                <label for="targetAudience">Target Audience <span class="required">*</span></label>
+                <textarea id="targetAudience" name="targetAudience" rows="2" placeholder="Who are your target users? (e.g. B2B, Tech-savvy consumers, Students)"></textarea>
+                <p class="error-msg" data-for="targetAudience"></p>
+              </div>
+
+              <div class="input-group col-span-2">
+                <label>Preferred Technology Stack (Choose all that apply) <span class="required">*</span></label>
+                <div class="tech-checkbox-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-top: 8px;">
+                  <label class="custom-checkbox-card" style="border: 1px solid var(--border-color); padding: 10px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; background: var(--bg-primary);"><input type="checkbox" name="prefTech" value="React" style="margin-right: 8px; width: auto;"> React</label>
+                  <label class="custom-checkbox-card" style="border: 1px solid var(--border-color); padding: 10px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; background: var(--bg-primary);"><input type="checkbox" name="prefTech" value="Next.js" style="margin-right: 8px; width: auto;"> Next.js</label>
+                  <label class="custom-checkbox-card" style="border: 1px solid var(--border-color); padding: 10px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; background: var(--bg-primary);"><input type="checkbox" name="prefTech" value="TailwindCSS" style="margin-right: 8px; width: auto;"> TailwindCSS</label>
+                  <label class="custom-checkbox-card" style="border: 1px solid var(--border-color); padding: 10px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; background: var(--bg-primary);"><input type="checkbox" name="prefTech" value="WebGL/Three.js" style="margin-right: 8px; width: auto;"> WebGL / Three.js</label>
+                  <label class="custom-checkbox-card" style="border: 1px solid var(--border-color); padding: 10px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; background: var(--bg-primary);"><input type="checkbox" name="prefTech" value="Node.js" style="margin-right: 8px; width: auto;"> Node.js</label>
+                  <label class="custom-checkbox-card" style="border: 1px solid var(--border-color); padding: 10px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; background: var(--bg-primary);"><input type="checkbox" name="prefTech" value="Python/FastAPI" style="margin-right: 8px; width: auto;"> Python / FastAPI</label>
+                  <label class="custom-checkbox-card" style="border: 1px solid var(--border-color); padding: 10px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; background: var(--bg-primary);"><input type="checkbox" name="prefTech" value="PostgreSQL" style="margin-right: 8px; width: auto;"> PostgreSQL</label>
+                  <label class="custom-checkbox-card" style="border: 1px solid var(--border-color); padding: 10px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; background: var(--bg-primary);"><input type="checkbox" name="prefTech" value="Supabase" style="margin-right: 8px; width: auto;"> Supabase / Firebase</label>
+                </div>
+                <p class="error-msg" data-for="prefTech"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 3: Design Preferences -->
+          <div class="form-section-card border-top" style="padding-top: 32px; margin-top: 32px;">
+            <h3 class="step-title"><i data-lucide="palette" class="text-gradient-blue" style="vertical-align: middle; margin-right: 6px;"></i>Design Preferences</h3>
+            <p class="step-desc" style="margin-bottom: 20px;">Help us visualize your brand alignment.</p>
+            <div class="input-grid">
+              <div class="input-group">
+                <label for="colorScheme">Preferred Color Scheme <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <i data-lucide="paint-bucket" class="input-icon"></i>
+                  <input type="text" id="colorScheme" name="colorScheme" placeholder="e.g. Cyberpunk Dark (neon green/black), Minimalist Clean (white/gray)">
+                </div>
+                <p class="error-msg" data-for="colorScheme"></p>
+              </div>
+
+              <div class="input-group">
+                <label for="designStyle">Visual Style <span class="required">*</span></label>
+                <select id="designStyle" name="designStyle">
+                  <option value="">-- Choose Style --</option>
+                  <option value="Minimal">Minimalist & Clean</option>
+                  <option value="Modern">Modern Tech Grid</option>
+                  <option value="Corporate">Professional Corporate</option>
+                  <option value="Creative">Creative & Bold</option>
+                  <option value="Futuristic">Futuristic / Glassmorphism</option>
+                </select>
+                <p class="error-msg" data-for="designStyle"></p>
+              </div>
+
+              <div class="input-group col-span-2">
+                <label for="referenceUrls">Reference Websites (URLs - one per line)</label>
+                <textarea id="referenceUrls" name="referenceUrls" rows="3" placeholder="https://awwwards.com/&#10;https://myfavorite-site.com"></textarea>
+                <p class="error-msg" data-for="referenceUrls"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 4: Content & Integrations -->
+          <div class="form-section-card border-top" style="padding-top: 32px; margin-top: 32px;">
+            <h3 class="step-title"><i data-lucide="puzzle" class="text-gradient-blue" style="vertical-align: middle; margin-right: 6px;"></i>Content & Integrations</h3>
+            <p class="step-desc" style="margin-bottom: 20px;">What assets and third-party systems are required?</p>
+            <div class="input-grid">
+              <div class="input-group">
+                <label>Will you provide all website content (copy, text, assets)? <span class="required">*</span></label>
+                <div class="radio-card-group" style="display: flex; gap: 12px; margin-top: 4px;">
+                  <label class="custom-radio-card" style="flex: 1; text-align: center; border: 1px solid var(--border-color); padding: 10px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; background: var(--bg-primary);">
+                    <input type="radio" name="provideContent" value="true" checked style="margin-right: 6px; width: auto;"> Yes, I have it ready
+                  </label>
+                  <label class="custom-radio-card" style="flex: 1; text-align: center; border: 1px solid var(--border-color); padding: 10px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; background: var(--bg-primary);">
+                    <input type="radio" name="provideContent" value="false" style="margin-right: 6px; width: auto;"> No, I need help
+                  </label>
+                </div>
+                <p class="error-msg" data-for="provideContent"></p>
+              </div>
+
+              <div class="input-group col-span-2">
+                <label>Required Integrations (Choose all that apply)</label>
+                <div class="tech-checkbox-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-top: 8px;">
+                  <label class="custom-checkbox-card" style="border: 1px solid var(--border-color); padding: 10px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; background: var(--bg-primary);"><input type="checkbox" name="reqIntegrations" value="Portfolio" style="margin-right: 8px; width: auto;"> Portfolio Showcase</label>
+                  <label class="custom-checkbox-card" style="border: 1px solid var(--border-color); padding: 10px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; background: var(--bg-primary);"><input type="checkbox" name="reqIntegrations" value="GitHub" style="margin-right: 8px; width: auto;"> GitHub Sync</label>
+                  <label class="custom-checkbox-card" style="border: 1px solid var(--border-color); padding: 10px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; background: var(--bg-primary);"><input type="checkbox" name="reqIntegrations" value="LinkedIn" style="margin-right: 8px; width: auto;"> LinkedIn API</label>
+                  <label class="custom-checkbox-card" style="border: 1px solid var(--border-color); padding: 10px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; background: var(--bg-primary);"><input type="checkbox" name="reqIntegrations" value="Payment" style="margin-right: 8px; width: auto;"> Stripe Payments</label>
+                  <label class="custom-checkbox-card" style="border: 1px solid var(--border-color); padding: 10px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; background: var(--bg-primary);"><input type="checkbox" name="reqIntegrations" value="Database" style="margin-right: 8px; width: auto;"> Supabase Setup</label>
+                  <label class="custom-checkbox-card" style="border: 1px solid var(--border-color); padding: 10px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; background: var(--bg-primary);"><input type="checkbox" name="reqIntegrations" value="Auth" style="margin-right: 8px; width: auto;"> OAuth Secure Login</label>
+                </div>
+                <p class="error-msg" data-for="reqIntegrations"></p>
+              </div>
+
+              <div class="input-group col-span-2">
+                <label>Additional Website Features</label>
+                <div class="tech-checkbox-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-top: 8px;">
+                  <label class="custom-checkbox-card" style="border: 1px solid var(--border-color); padding: 10px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; background: var(--bg-primary);"><input type="checkbox" name="addFeatures" value="Contact" style="margin-right: 8px; width: auto;"> Contact Form</label>
+                  <label class="custom-checkbox-card" style="border: 1px solid var(--border-color); padding: 10px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; background: var(--bg-primary);"><input type="checkbox" name="addFeatures" value="Chatbot" style="margin-right: 8px; width: auto;"> AI Chatbot</label>
+                  <label class="custom-checkbox-card" style="border: 1px solid var(--border-color); padding: 10px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; background: var(--bg-primary);"><input type="checkbox" name="addFeatures" value="Newsletter" style="margin-right: 8px; width: auto;"> Newsletter Signup</label>
+                  <label class="custom-checkbox-card" style="border: 1px solid var(--border-color); padding: 10px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; background: var(--bg-primary);"><input type="checkbox" name="addFeatures" value="SEO" style="margin-right: 8px; width: auto;"> Advanced SEO Setup</label>
+                  <label class="custom-checkbox-card" style="border: 1px solid var(--border-color); padding: 10px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; background: var(--bg-primary);"><input type="checkbox" name="addFeatures" value="Analytics" style="margin-right: 8px; width: auto;"> Analytics integration</label>
+                  <label class="custom-checkbox-card" style="border: 1px solid var(--border-color); padding: 10px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; background: var(--bg-primary);"><input type="checkbox" name="addFeatures" value="Blog" style="margin-right: 8px; width: auto;"> Blog CMS Panel</label>
+                </div>
+                <p class="error-msg" data-for="addFeatures"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 5: Budget & Timeline -->
+          <div class="form-section-card border-top" style="padding-top: 32px; margin-top: 32px;">
+            <h3 class="step-title"><i data-lucide="calendar" class="text-gradient-blue" style="vertical-align: middle; margin-right: 6px;"></i>Budget & Timeline</h3>
+            <p class="step-desc" style="margin-bottom: 20px;">What is your target launch schedule and allocated budget?</p>
+            <div class="input-grid">
+              <div class="input-group">
+                <label for="deliveryDate">Target Delivery Date <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <i data-lucide="calendar" class="input-icon"></i>
+                  <input type="date" id="deliveryDate" name="deliveryDate">
+                </div>
+                <p class="error-msg" data-for="deliveryDate"></p>
+              </div>
+
+              <div class="input-group">
+                <label for="budgetRange">Allocated Budget Range <span class="required">*</span></label>
+                <select id="budgetRange" name="budgetRange">
+                  <option value="">-- Select Budget --</option>
+                  <option value="<$2,000">&lt; $2,000 USD</option>
+                  <option value="$2,000-$5,000">$2,000 - $5,000 USD</option>
+                  <option value="$5,000-$10,000">$5,000 - $10,000 USD</option>
+                  <option value="$10,000+">$10,000+ USD</option>
+                </select>
+                <p class="error-msg" data-for="budgetRange"></p>
+              </div>
+
+              <div class="input-group col-span-2">
+                <label>Attachments (PDF, images, brand briefs)</label>
+                <div class="photo-upload-zone" id="req-file-drop-zone">
+                  <input type="file" id="requestFiles" name="requestFiles" accept=".pdf,.png,.jpg,.jpeg,.zip" class="file-hidden-input">
+                  <div class="photo-placeholder-icon">
+                    <i data-lucide="paperclip" class="size-large"></i>
+                  </div>
+                  <div class="upload-instructions">
+                    <p class="upload-primary-text">Drag and drop details brief file here, or <span>browse</span></p>
+                    <p class="upload-sub-text">Max size 5MB</p>
+                  </div>
+                </div>
+                
+                <div id="req-file-info-pill" class="resume-preview-panel hidden" style="margin-top: 10px;">
+                  <div class="file-info">
+                    <i data-lucide="file" class="file-icon"></i>
+                    <div class="file-details">
+                      <p class="file-name" id="req-preview-name">Brief.pdf</p>
+                      <p class="file-size" id="req-preview-size">1.2 MB</p>
+                    </div>
+                  </div>
+                  <button type="button" class="btn-circle-red" id="btn-remove-req-file"><i data-lucide="x"></i></button>
+                </div>
+                <p class="error-msg" data-for="requestFiles"></p>
+              </div>
+
+              <div class="input-group col-span-2" style="margin-top: 10px;">
+                <label class="checkbox-container" style="display: flex; align-items: flex-start; cursor: pointer; gap: 8px;">
+                  <input type="checkbox" id="requestConfirm" name="requestConfirm" style="margin-top: 4px; width: auto; flex-shrink: 0;">
+                  <span style="font-size: 0.88rem; color: rgba(255, 255, 255, 0.75);">I confirm the accuracy of these details and project scopes. nexOPS will process this under NDA.</span>
+                </label>
+                <p class="error-msg" data-for="requestConfirm"></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-navigation" style="margin-top: 32px;">
+            <button type="submit" class="btn-primary btn-large" style="width: 100%;">Submit Project Request <i data-lucide="check"></i></button>
+          </div>
+
+        </form>
+      </div>
+    </section>
+
+    <!-- ================= PAGE 3: SUCCESS VIEW ================= -->
+    <section id="success-page" class="page-section">
+      <div class="form-container-card" style="text-align: center; padding: 4rem 2rem;">
+        <div class="success-icon-box" style="margin: 0 auto 24px; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; background: rgba(16, 185, 129, 0.15); border: 2px solid #10b981; border-radius: 50%;">
+          <i data-lucide="check-circle" style="width: 48px; height: 48px; color: #10b981;"></i>
+        </div>
+        <h2 class="form-main-title" style="margin-bottom: 8px;">Transmission Completed</h2>
+        <p style="color: rgba(255, 255, 255, 0.75); margin-bottom: 32px;">Your application has been registered into our decentralized database nodes.</p>
+        
+        <div class="success-details-card" style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; max-width: 480px; margin: 0 auto 32px; text-align: left;">
+          <div class="success-card-row" style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; margin-bottom: 10px;">
+            <span style="color: rgba(255, 255, 255, 0.5);">Reference Node:</span>
+            <span id="success-ref-id" style="font-family: var(--font-mono); font-weight: 600; color: var(--accent2);">NEX-X902A</span>
+          </div>
+          <div class="success-card-row" style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; margin-bottom: 10px;">
+            <span style="color: rgba(255, 255, 255, 0.5);">Selected Track:</span>
+            <span id="success-track" style="font-weight: 500;">Generative AI</span>
+          </div>
+          <div class="success-card-row" style="display: flex; justify-content: space-between;">
+            <span style="color: rgba(255, 255, 255, 0.5);">Confirmation to:</span>
+            <span id="success-email" style="font-weight: 500;">candidate@domain.com</span>
+          </div>
+        </div>
+        
+        <button class="btn-outline btn-large" id="success-return-btn" style="margin: 0 auto;">Return to Main Hub <i data-lucide="home"></i></button>
+      </div>
+    </section>
+
+    <!-- ================= PAGE 4: ADMIN LOGIN ================= -->
+    <section id="admin-login-page" class="page-section">
+      <div class="form-container-card" style="max-width: 480px; margin: 4rem auto; padding: 3rem 2rem;">
+        <div style="text-align: center; margin-bottom: 30px;">
+          <i data-lucide="lock" style="width: 40px; height: 40px; color: var(--accent2); margin-bottom: 10px;"></i>
+          <h2 class="form-main-title" style="font-size: 1.6rem;">Admin Node Access</h2>
+          <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.88rem;">Double-click logo to access, enter node key below.</p>
+        </div>
+        
+        <form id="admin-login-form" novalidate>
+          <div class="input-group" style="margin-bottom: 20px;">
+            <label for="adminPassword">Access Code Key</label>
+            <div class="input-wrapper">
+              <i data-lucide="shield-alert" class="input-icon"></i>
+              <input type="password" id="adminPassword" placeholder="Enter key (e.g. nexops123)">
+            </div>
+            <p id="admin-login-error" class="error-msg" style="color: #ef4444; margin-top: 8px; font-size: 0.85rem; font-weight: 500;"></p>
+          </div>
+          
+          <button type="submit" class="btn-primary btn-large" style="width: 100%;">Authorize Access <i data-lucide="key-round"></i></button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ================= PAGE 5: ADMIN DASHBOARD ================= -->
+    <section id="admin-dashboard-page" class="page-section">
+      <div class="admin-container">
+        
+        <!-- Header -->
+        <div class="admin-header">
+          <div>
+            <h2 class="form-main-title" style="font-size: 1.8rem; display: flex; align-items: center; gap: 8px;">
+              <i data-lucide="layout-dashboard" class="text-gradient-blue"></i> nexOPS IQ Control Center
+            </h2>
+            <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.88rem;">Review recruitment pipeline nodes and client project request scopes.</p>
+          </div>
+          <button class="btn-glass-sm text-red" id="btn-admin-logout"><i data-lucide="log-out"></i> Disconnect Node</button>
+        </div>
+
+        <!-- Section Tabs Switcher -->
+        <div style="display: flex; gap: 16px; margin-bottom: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px;">
+          <button class="btn-tab active" id="tab-btn-candidates"><i data-lucide="users"></i> Candidate Pool</button>
+          <button class="btn-tab" id="tab-btn-requests"><i data-lucide="file-spreadsheet"></i> Project Requests</button>
+        </div>
+
+        <!-- SUBVIEW A: CANDIDATES POOL -->
+        <div class="admin-tab-view active" id="tab-view-candidates">
+          <!-- Stats Grid -->
+          <div class="admin-stats-grid">
+            <div class="admin-stat-card">
+              <span class="stat-lbl">Total Enlisted</span>
+              <div class="stat-val" id="stat-total">0</div>
+            </div>
+            <div class="admin-stat-card">
+              <span class="stat-lbl">Shortlisted Nodes</span>
+              <div class="stat-val" id="stat-shortlisted" style="color: var(--accent2);">0</div>
+            </div>
+            <div class="admin-stat-card">
+              <span class="stat-lbl">Accepted Candidates</span>
+              <div class="stat-val" id="stat-accepted" style="color: #10b981;">0</div>
+            </div>
+          </div>
+
+          <!-- Filters Controls -->
+          <div class="admin-controls">
+            <div class="admin-search-wrapper">
+              <i data-lucide="search"></i>
+              <input type="text" id="admin-search-input" placeholder="Search by name, location, email...">
+            </div>
+            <div class="admin-filters">
+              <select id="admin-filter-track">
+                <option value="">All Tracks</option>
+                <option value="Frontend">Frontend</option>
+                <option value="Backend">Backend</option>
+                <option value="Full Stack">Full Stack</option>
+                <option value="AI/ML">AI/ML</option>
+                <option value="DevOps">DevOps</option>
+                <option value="Cybersecurity">Cybersecurity</option>
+                <option value="UI/UX">UI/UX Design</option>
+                <option value="Research">Research</option>
+              </select>
+              <select id="admin-filter-status">
+                <option value="">All Statuses</option>
+                <option value="Pending">Pending</option>
+                <option value="Shortlisted">Shortlisted</option>
+                <option value="Accepted">Accepted</option>
+                <option value="Rejected">Rejected</option>
+              </select>
+              <select id="admin-filter-skill">
+                <option value="">All Skills</option>
+                <option value="Python">Python</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="TypeScript">TypeScript</option>
+                <option value="Rust">Rust</option>
+                <option value="React">React</option>
+                <option value="Node.js">Node.js</option>
+                <option value="Kubernetes">Kubernetes</option>
+                <option value="AWS">AWS</option>
+                <option value="Penetration Testing">Penetration Testing</option>
+                <option value="OWASP">OWASP</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Candidates Table -->
+          <div class="admin-table-wrapper">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Node ID</th>
+                  <th>Candidate</th>
+                  <th>Location</th>
+                  <th>Selected Track</th>
+                  <th>Status</th>
+                  <th>Applied On</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="candidates-table-body">
+                <!-- Dynamically rendered by JS -->
+              </tbody>
+            </table>
+            <div id="no-candidates-msg" class="empty-table-msg hidden">
+              <i data-lucide="users-round"></i>
+              <p>No candidates found matching active filters.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUBVIEW B: PROJECT REQUESTS -->
+        <div class="admin-tab-view" id="tab-view-requests">
+          <!-- Stats Grid -->
+          <div class="admin-stats-grid">
+            <div class="admin-stat-card">
+              <span class="stat-lbl">Total Projects</span>
+              <div class="stat-val" id="stat-req-total">0</div>
+            </div>
+            <div class="admin-stat-card">
+              <span class="stat-lbl">Under Review</span>
+              <div class="stat-val" id="stat-req-review" style="color: var(--accent2);">0</div>
+            </div>
+            <div class="admin-stat-card">
+              <span class="stat-lbl">Accepted Projects</span>
+              <div class="stat-val" id="stat-req-accepted" style="color: #10b981;">0</div>
+            </div>
+          </div>
+
+          <!-- Filters Controls -->
+          <div class="admin-controls">
+            <div class="admin-search-wrapper">
+              <i data-lucide="search"></i>
+              <input type="text" id="admin-req-search-input" placeholder="Search client, company...">
+            </div>
+            <div class="admin-filters">
+              <select id="admin-req-filter-type">
+                <option value="">All Types</option>
+                <option value="Business">Business</option>
+                <option value="Portfolio">Portfolio</option>
+                <option value="E-commerce">E-commerce</option>
+                <option value="Blog">Blog</option>
+                <option value="SaaS">SaaS</option>
+                <option value="Other">Other</option>
+              </select>
+              <select id="admin-req-filter-status">
+                <option value="">All Statuses</option>
+                <option value="New">New</option>
+                <option value="Under Review">Under Review</option>
+                <option value="Accepted">Accepted</option>
+                <option value="Declined">Declined</option>
+              </select>
+              <select id="admin-req-filter-tech">
+                <option value="">All Tech</option>
+                <option value="React">React</option>
+                <option value="Next.js">Next.js</option>
+                <option value="TailwindCSS">TailwindCSS</option>
+                <option value="WebGL/Three.js">WebGL</option>
+                <option value="Node.js">Node.js</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Table -->
+          <div class="admin-table-wrapper">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Request ID</th>
+                  <th>Client Name</th>
+                  <th>Company</th>
+                  <th>App Type</th>
+                  <th>Delivery Target</th>
+                  <th>Budget</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="requests-table-body">
+                <!-- Dynamically rendered by JS -->
+              </tbody>
+            </table>
+            <div id="no-requests-msg" class="empty-table-msg hidden">
+              <i data-lucide="folder-open"></i>
+              <p>No project requests found matching filters.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Detail Dialog Modal Overlay -->
+  <div id="candidate-modal" class="modal-overlay-custom hidden">
+    <div class="modal-custom">
+      <div class="modal-header">
+        <h3 id="modal-title-text" style="font-size: 1.3rem;">Details Profile</h3>
+        <button class="modal-close" id="btn-close-modal">✕</button>
+      </div>
+      <div class="modal-body">
+        
+        <div id="modal-details-container">
+          <!-- Injected details -->
+        </div>
+        
+        <div class="modal-footer" style="margin-top: 30px; border-top: 1px solid var(--border-color); padding-top: 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <label for="modal-update-status-select" style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.6);">Update Status:</label>
+            <select id="modal-update-status-select" style="padding: 6px 12px; font-size: 0.9rem;">
+              <option value="Pending">Pending</option>
+              <option value="Shortlisted">Shortlisted</option>
+              <option value="Accepted">Accepted</option>
+              <option value="Rejected">Rejected</option>
+            </select>
+          </div>
+          <button class="btn-primary" id="modal-update-request-status" style="padding: 8px 16px; font-size: 0.9rem;">Apply Status Node</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <footer style="margin-top: 100px; padding: 40px 20px; border-top: 1px solid var(--border-color); text-align: center;">
+    <p style="color: rgba(255, 255, 255, 0.5); font-size: 0.88rem;">© 2026 nexOPS IQ. Careers Platform Hub.</p>
+  </footer>
+
+  <!-- Career Application Flow JS Client Engine -->
+  <script src="careers.js"></script>
+</body>
+</html>
