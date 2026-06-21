@@ -2098,12 +2098,10 @@
             <li class="nav-item-dropdown">
                 <a href="#hyna-services" class="nav-link-has-dropdown">Services <span class="nav-arrow">▾</span></a>
                 <div class="nav-dropdown">
+                    <a href="work.html?service=software">🖥️ Software & SaaS</a>
                     <a href="work.html?service=web">🌐 Web Development</a>
-                    <a href="work.html?service=app">📱 App Development</a>
-                    <a href="work.html?service=uiux">🎨 UI / UX Design</a>
-                    <a href="work.html?service=saas">🚀 SaaS Products</a>
-                    <a href="work.html?service=data">📊 Data Platform Engineering</a>
-                    <a href="work.html?service=solution">🏗️ Solution Architecture</a>
+                    <a href="work.html?service=shopify">📱 Shopify & Mobile</a>
+                    <a href="work.html?service=design">🎨 Design & Marketing</a>
                 </div>
             </li>
             <li><a href="#about">About</a></li>
@@ -2236,9 +2234,9 @@
 
         #hyna-services .hs-title {
             max-width: 900px;
-            font-size: clamp(3rem, 6vw, 4.5rem);
+            font-size: clamp(2.2rem, 6vw, 3.8rem);
             font-weight: 800;
-            line-height: 1;
+            line-height: 1.1;
             margin: 0 0 25px;
         }
 
@@ -2514,11 +2512,14 @@
 
             #hyna-services .hs-tabs-container {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 32px;
             }
 
             #hyna-services .hs-tabs-nav {
+                display: flex;
                 flex-direction: row;
+                flex-wrap: nowrap;
+                gap: 10px;
                 overflow-x: auto;
                 padding-bottom: 12px;
                 margin: 0 -20px;
@@ -2540,9 +2541,10 @@
                 width: auto;
                 flex-shrink: 0;
                 scroll-snap-align: start;
-                padding: 12px 18px;
+                padding: 10px 16px;
                 border-radius: 12px;
-                gap: 10px;
+                gap: 8px;
+                white-space: nowrap;
             }
 
             #hyna-services .hs-tab-btn:hover {
@@ -2584,13 +2586,22 @@
         }
 
         @media (max-width: 768px) {
+            #hyna-services {
+                padding: 60px 20px;
+            }
+
+            #hyna-services .hs-tab-btn .tab-badge {
+                display: none;
+            }
+
             #hyna-services .hs-sub-grid {
                 grid-template-columns: 1fr;
                 gap: 16px;
             }
 
             #hyna-services .hs-sub-card {
-                padding: 24px;
+                padding: 20px;
+                gap: 12px;
             }
         }
     </style>
@@ -2636,143 +2647,195 @@
                     </button>
                 </div>
 
-                <div class="hs-card" onclick="window.location.href='work.html?service=app'">
-                    <div class="hs-icon">
-                        <i class="devicon-flutter-plain"></i>
+                <!-- Panels Content Area -->
+                <div class="hs-panels-container">
+                    <!-- PANEL 1: SOFTWARE & SAAS -->
+                    <div class="hs-tab-panel active" id="panel-software" role="tabpanel" aria-labelledby="tab-software">
+                        <div class="hs-sub-grid">
+                            <div class="hs-sub-card" onclick="window.location.href='work.html?service=software'">
+                                <div class="hs-sub-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                                <h3>Software Development</h3>
+                                <p>Custom APIs, robust integrations, and scalable core business logic designed for speed.</p>
+                                <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
+                            </div>
+                            <div class="hs-sub-card" onclick="window.location.href='work.html?service=software'">
+                                <div class="hs-sub-icon"><i class="fa-solid fa-gears"></i></div>
+                                <h3>Custom Software</h3>
+                                <p>Tailored software solutions engineered to solve your specific organizational challenges.</p>
+                                <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
+                            </div>
+                            <div class="hs-sub-card" onclick="window.location.href='work.html?service=saas'">
+                                <div class="hs-sub-icon"><i class="fa-solid fa-cloud"></i></div>
+                                <h3>SaaS Development</h3>
+                                <p>End-to-end multi-tenant SaaS platforms with secure billing and user management.</p>
+                                <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
+                            </div>
+                            <div class="hs-sub-card" onclick="window.location.href='work.html?service=saas'">
+                                <div class="hs-sub-icon"><i class="fa-solid fa-rocket"></i></div>
+                                <h3>SaaS MVP</h3>
+                                <p>High-quality, fast-to-market products designed to validate your concept with real users.</p>
+                                <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
+                            </div>
+                            <div class="hs-sub-card" onclick="window.location.href='work.html?service=erp'">
+                                <div class="hs-sub-icon"><i class="fa-solid fa-users-gear"></i></div>
+                                <h3>CRM Development</h3>
+                                <p>Custom Customer Relationship Management tools configured for your unique sales pipelines.</p>
+                                <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
+                            </div>
+                            <div class="hs-sub-card" onclick="window.location.href='work.html?service=erp'">
+                                <div class="hs-sub-icon"><i class="fa-solid fa-building-columns"></i></div>
+                                <h3>ERP Development</h3>
+                                <p>Unified Enterprise Resource Planning systems to manage inventory, finance, and operations.</p>
+                                <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
+                            </div>
+                            <div class="hs-sub-card" onclick="window.location.href='work.html?service=erp'">
+                                <div class="hs-sub-icon"><i class="fa-solid fa-id-card"></i></div>
+                                <h3>HRM Software</h3>
+                                <p>Streamlined Human Resource Management systems for staff directory, payroll, and timesheets.</p>
+                                <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
+                            </div>
+                        </div>
                     </div>
-                    <h3>App Development</h3>
-                    <p>Native and cross-platform mobile applications for iOS and Android.</p>
-                    <div class="hs-card-link">View projects <span class="arrow">→</span></div>
-                </div>
 
-                <div class="hs-card" onclick="window.location.href='work.html?service=design'">
-                    <div class="hs-icon">
-                        <i class="devicon-figma-plain"></i>
+                    <!-- PANEL 2: WEB DEVELOPMENT -->
+                    <div class="hs-tab-panel" id="panel-web" role="tabpanel" aria-labelledby="tab-web">
+                        <div class="hs-sub-grid">
+                            <div class="hs-sub-card" onclick="window.location.href='work.html?service=web'">
+                                <div class="hs-sub-icon"><i class="devicon-html5-plain"></i></div>
+                                <h3>Web Development</h3>
+                                <p>High-performance, SEO-friendly websites built with modern frameworks.</p>
+                                <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
+                            </div>
+                            <div class="hs-sub-card" onclick="window.location.href='work.html?service=web'">
+                                <div class="hs-sub-icon"><i class="devicon-wordpress-plain"></i></div>
+                                <h3>WordPress</h3>
+                                <p>Custom, enterprise-grade WordPress themes and scalable CMS architectures.</p>
+                                <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
+                            </div>
+                            <div class="hs-sub-card" onclick="window.location.href='work.html?service=web'">
+                                <div class="hs-sub-icon"><i class="fa-solid fa-compass-drafting"></i></div>
+                                <h3>Webflow</h3>
+                                <p>Pixel-perfect, visually designed Webflow sites for rapid deployment and easy updates.</p>
+                                <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
+                            </div>
+                            <div class="hs-sub-card" onclick="window.location.href='work.html?service=web'">
+                                <div class="hs-sub-icon"><i class="devicon-react-original"></i></div>
+                                <h3>React</h3>
+                                <p>Dynamic, interactive user interfaces powered by React and Next.js.</p>
+                                <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
+                            </div>
+                            <div class="hs-sub-card" onclick="window.location.href='work.html?service=design'">
+                                <div class="hs-sub-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                                <h3>Web Design</h3>
+                                <p>Immersive UI/UX layouts optimized for conversions and premium aesthetic appeal.</p>
+                                <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
+                            </div>
+                            <div class="hs-sub-card" onclick="window.location.href='work.html?service=web'">
+                                <div class="hs-sub-icon"><i class="fa-solid fa-rotate"></i></div>
+                                <h3>Website Redesign</h3>
+                                <p>Complete overhaul of legacy sites to improve performance, responsiveness, and conversion rates.</p>
+                                <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
+                            </div>
+                            <div class="hs-sub-card" onclick="window.location.href='work.html?service=web'">
+                                <div class="hs-sub-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                                <h3>Maintenance</h3>
+                                <p>Proactive support, security patching, page speed optimization, and regular backups.</p>
+                                <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
+                            </div>
+                        </div>
                     </div>
-                    <h3>UI / UX Design</h3>
-                    <p>Beautiful user experiences crafted with modern design principles.</p>
-                    <div class="hs-card-link">View projects <span class="arrow">→</span></div>
-                </div>
 
-                <div class="hs-card" onclick="window.location.href='work.html?service=saas'">
-                    <div class="hs-icon">
-                        <i class="devicon-nodejs-plain"></i>
+                    <!-- PANEL 3: SHOPIFY & MOBILE -->
+                    <div class="hs-tab-panel" id="panel-shopify" role="tabpanel" aria-labelledby="tab-shopify">
+                        <div class="hs-sub-grid">
+                            <div class="hs-sub-card" onclick="window.location.href='work.html?service=ecommerce'">
+                                <div class="hs-sub-icon"><i class="devicon-shopify-plain"></i></div>
+                                <h3>Shopify Development</h3>
+                                <p>Fully custom, high-converting storefronts tailored to represent your brand online.</p>
+                                <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
+                            </div>
+                            <div class="hs-sub-card" onclick="window.location.href='work.html?service=ecommerce'">
+                                <div class="hs-sub-icon"><i class="fa-solid fa-crown"></i></div>
+                                <h3>Shopify Plus Agency</h3>
+                                <p>High-volume e-commerce scaling, advanced automation, checkout scripting, and ERP syncs.</p>
+                                <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
+                            </div>
+                            <div class="hs-sub-card" onclick="window.location.href='work.html?service=ecommerce'">
+                                <div class="hs-sub-icon"><i class="fa-solid fa-truck-ramp-box"></i></div>
+                                <h3>Shopify Migration</h3>
+                                <p>Secure replatforming from WooCommerce, Magento, or custom code with full data preservation.</p>
+                                <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
+                            </div>
+                            <div class="hs-sub-card" onclick="window.location.href='work.html?service=app'">
+                                <div class="hs-sub-icon"><i class="devicon-flutter-plain"></i></div>
+                                <h3>Mobile App Dev</h3>
+                                <p>Beautiful, fluid cross-platform mobile apps for iOS and Android built on Flutter/React Native.</p>
+                                <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
+                            </div>
+                            <div class="hs-sub-card" onclick="window.location.href='work.html?service=app'">
+                                <div class="hs-sub-icon"><i class="fa-brands fa-apple"></i></div>
+                                <h3>iOS App Dev</h3>
+                                <p>High-performance native iOS apps engineered in Swift for premium Apple ecosystem experiences.</p>
+                                <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
+                            </div>
+                            <div class="hs-sub-card" onclick="window.location.href='work.html?service=app'">
+                                <div class="hs-sub-icon"><i class="fa-brands fa-android"></i></div>
+                                <h3>Android App Dev</h3>
+                                <p>Clean, native Android applications written in Kotlin following modern Material Design principles.</p>
+                                <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
+                            </div>
+                        </div>
                     </div>
-                    <h3>SaaS Products</h3>
-                    <p>End-to-end SaaS development — multi-tenant architecture, billing integrations, admin dashboards,
-                        and growth tooling built in.</p>
-                    <div class="hs-card-link">View projects <span class="arrow">→</span></div>
-                </div>
 
-                <!-- PANEL 2: WEB DEVELOPMENT -->
-                <div class="hs-tab-panel" id="panel-web" role="tabpanel" aria-labelledby="tab-web">
-                    <div class="hs-sub-grid">
-                        <div class="hs-sub-card" onclick="window.location.href='work.html?service=web'">
-                            <div class="hs-sub-icon"><i class="devicon-html5-plain"></i></div>
-                            <h3>Web Development</h3>
-                            <p>High-performance, SEO-friendly websites built with modern frameworks.</p>
-                            <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
-                        </div>
-                        <div class="hs-sub-card" onclick="window.location.href='work.html?service=web'">
-                            <div class="hs-sub-icon"><i class="devicon-wordpress-plain"></i></div>
-                            <h3>WordPress</h3>
-                            <p>Custom, enterprise-grade WordPress themes and scalable CMS architectures.</p>
-                            <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
-                        </div>
-                        <div class="hs-sub-card" onclick="window.location.href='work.html?service=web'">
-                            <div class="hs-sub-icon"><i class="fa-solid fa-compass-drafting"></i></div>
-                            <h3>Webflow</h3>
-                            <p>Pixel-perfect, visually designed Webflow sites for rapid deployment and easy updates.</p>
-                            <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
-                        </div>
-                        <div class="hs-sub-card" onclick="window.location.href='work.html?service=web'">
-                            <div class="hs-sub-icon"><i class="devicon-react-original"></i></div>
-                            <h3>React</h3>
-                            <p>Dynamic, interactive user interfaces powered by React and Next.js.</p>
-                            <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
-                        </div>
-                        <div class="hs-sub-card" onclick="window.location.href='work.html?service=design'">
-                            <div class="hs-sub-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-                            <h3>Web Design</h3>
-                            <p>Immersive UI/UX layouts optimized for conversions and premium aesthetic appeal.</p>
-                            <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
-                        </div>
-                        <div class="hs-sub-card" onclick="window.location.href='work.html?service=web'">
-                            <div class="hs-sub-icon"><i class="fa-solid fa-rotate"></i></div>
-                            <h3>Website Redesign</h3>
-                            <p>Complete overhaul of legacy sites to improve performance, responsiveness, and conversion
-                                rates.</p>
-                            <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
-                        </div>
-                        <div class="hs-sub-card" onclick="window.location.href='work.html?service=web'">
-                            <div class="hs-sub-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
-                            <h3>Maintenance</h3>
-                            <p>Proactive support, security patching, page speed optimization, and regular backups.</p>
-                            <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
+                    <!-- PANEL 4: DESIGN & MARKETING -->
+                    <div class="hs-tab-panel" id="panel-design" role="tabpanel" aria-labelledby="tab-design">
+                        <div class="hs-sub-grid">
+                            <div class="hs-sub-card" onclick="window.location.href='work.html?service=design'">
+                                <div class="hs-sub-icon"><i class="devicon-figma-plain"></i></div>
+                                <h3>UI/UX Design</h3>
+                                <p>Intuitive user journeys, layouts, wireframes, and interactive prototypes built in Figma.</p>
+                                <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
+                            </div>
+                            <div class="hs-sub-card" onclick="window.location.href='work.html?service=design'">
+                                <div class="hs-sub-icon"><i class="fa-solid fa-compass"></i></div>
+                                <h3>Brand Identity</h3>
+                                <p>Complete design systems, brand guidelines, color palettes, and typographic scales.</p>
+                                <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
+                            </div>
+                            <div class="hs-sub-card" onclick="window.location.href='work.html?service=design'">
+                                <div class="hs-sub-icon"><i class="fa-solid fa-signature"></i></div>
+                                <h3>Logo Design</h3>
+                                <p>Timeless, memorable logos that encapsulate your brand message and core values.</p>
+                                <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
+                            </div>
+                            <div class="hs-sub-card" onclick="window.location.href='work.html?service=design'">
+                                <div class="hs-sub-icon"><i class="fa-solid fa-file-invoice"></i></div>
+                                <h3>Landing Page</h3>
+                                <p>Laser-focused lead generation and campaign landing pages designed for high conversion.</p>
+                                <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
+                            </div>
+                            <div class="hs-sub-card" onclick="window.location.href='work.html?service=design'">
+                                <div class="hs-sub-icon"><i class="fa-solid fa-chart-line"></i></div>
+                                <h3>Growth Strategy</h3>
+                                <p>Data-backed playbooks, user acquisition strategies, and marketing funnel setup.</p>
+                                <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
+                            </div>
+                            <div class="hs-sub-card" onclick="window.location.href='work.html?service=design'">
+                                <div class="hs-sub-icon"><i class="fa-solid fa-comments-dollar"></i></div>
+                                <h3>Paid Acquisition</h3>
+                                <p>Targeted PPC campaign management across Google Ads, Meta, LinkedIn, and major platforms.</p>
+                                <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
+                            </div>
+                            <div class="hs-sub-card" onclick="window.location.href='work.html?service=design'">
+                                <div class="hs-sub-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                                <h3>SEO</h3>
+                                <p>Performance SEO, keyword targeting, content audits, and technical site optimizations.</p>
+                                <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="hs-card" onclick="window.location.href='work.html?service=cloud'">
-                    <div class="hs-icon">
-                        <i class="fa-solid fa-diagram-project"></i>
-                    </div>
-                    <h3>Solution Architecture</h3>
-                    <p>Robust, secure, and future-proof system design. We align technical infrastructure with business
-                        goals for high performance.</p>
-                    <div class="hs-card-link">View projects <span class="arrow">→</span></div>
                 </div>
             </div>
-
-            <!-- PANEL 4: DESIGN & MARKETING -->
-            <div class="hs-tab-panel" id="panel-design" role="tabpanel" aria-labelledby="tab-design">
-                <div class="hs-sub-grid">
-                    <div class="hs-sub-card" onclick="window.location.href='work.html?service=design'">
-                        <div class="hs-sub-icon"><i class="devicon-figma-plain"></i></div>
-                        <h3>UI/UX Design</h3>
-                        <p>Intuitive user journeys, layouts, wireframes, and interactive prototypes built in Figma.</p>
-                        <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
-                    </div>
-                    <div class="hs-sub-card" onclick="window.location.href='work.html?service=design'">
-                        <div class="hs-sub-icon"><i class="fa-solid fa-compass"></i></div>
-                        <h3>Brand Identity</h3>
-                        <p>Complete design systems, brand guidelines, color palettes, and typographic scales.</p>
-                        <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
-                    </div>
-                    <div class="hs-sub-card" onclick="window.location.href='work.html?service=design'">
-                        <div class="hs-sub-icon"><i class="fa-solid fa-signature"></i></div>
-                        <h3>Logo Design</h3>
-                        <p>Timeless, memorable logos that encapsulate your brand message and core values.</p>
-                        <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
-                    </div>
-                    <div class="hs-sub-card" onclick="window.location.href='work.html?service=design'">
-                        <div class="hs-sub-icon"><i class="fa-solid fa-file-invoice"></i></div>
-                        <h3>Landing Page</h3>
-                        <p>Laser-focused lead generation and campaign landing pages designed for high conversion.</p>
-                        <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
-                    </div>
-                    <div class="hs-sub-card" onclick="window.location.href='work.html?service=design'">
-                        <div class="hs-sub-icon"><i class="fa-solid fa-chart-line"></i></div>
-                        <h3>Growth Strategy</h3>
-                        <p>Data-backed playbooks, user acquisition strategies, and marketing funnel setup.</p>
-                        <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
-                    </div>
-                    <div class="hs-sub-card" onclick="window.location.href='work.html?service=design'">
-                        <div class="hs-sub-icon"><i class="fa-solid fa-comments-dollar"></i></div>
-                        <h3>Paid Acquisition</h3>
-                        <p>Targeted PPC campaign management across Google Ads, Meta, LinkedIn, and major platforms.</p>
-                        <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
-                    </div>
-                    <div class="hs-sub-card" onclick="window.location.href='work.html?service=design'">
-                        <div class="hs-sub-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
-                        <h3>SEO</h3>
-                        <p>Performance SEO, keyword targeting, content audits, and technical site optimizations.</p>
-                        <div class="hs-sub-card-link">View projects <span class="arrow">→</span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div>
         </div>
 
         <script>
@@ -4687,12 +4750,10 @@
             <div class="footer-links">
                 <h5>Services</h5>
                 <ul>
-                    <li><a href="#services">Web Development</a></li>
-                    <li><a href="#services">App Development</a></li>
-                    <li><a href="#services">UI / UX Design</a></li>
-                    <li><a href="#services">SaaS Products</a></li>
-                    <li><a href="#services">Data Platform Engineering</a></li>
-                    <li><a href="#services">Solution Architecture</a></li>
+                    <li><a href="index.html?service=software#hyna-services">Software & SaaS</a></li>
+                    <li><a href="index.html?service=web#hyna-services">Web Development</a></li>
+                    <li><a href="index.html?service=shopify#hyna-services">Shopify & Mobile</a></li>
+                    <li><a href="index.html?service=design#hyna-services">Design & Marketing</a></li>
                 </ul>
             </div>
             <div class="footer-links">

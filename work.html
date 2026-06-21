@@ -462,18 +462,18 @@
 
         const serviceToCategory = {
             web: 'web',
-            app: 'app',
-            ios: 'app',
-            android: 'app',
-            shopify: 'ecommerce',
-            ecommerce: 'ecommerce',
+            app: 'shopify',
+            ios: 'shopify',
+            android: 'shopify',
+            shopify: 'shopify',
+            ecommerce: 'shopify',
             design: 'design',
             uiux: 'design',
-            saas: 'saas',
-            software: 'saas',
-            erp: 'erp',
-            crm: 'erp',
-            security: 'security'
+            saas: 'software',
+            software: 'software',
+            erp: 'software',
+            crm: 'software',
+            security: 'software'
         };
 
         const category = serviceToCategory[service] || 'all';
@@ -525,13 +525,10 @@
     <!-- FILTERS -->
     <div class="filter-bar" id="filter-bar">
         <button class="filter-btn active" data-filter="all">All Projects</button>
-        <button class="filter-btn" data-filter="web">Web</button>
-        <button class="filter-btn" data-filter="app">App</button>
-        <button class="filter-btn" data-filter="saas">SaaS</button>
-        <button class="filter-btn" data-filter="erp">ERP</button>
-        <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
-        <button class="filter-btn" data-filter="design">Design</button>
-        <button class="filter-btn" data-filter="security">Security</button>
+        <button class="filter-btn" data-filter="software">Software & SaaS</button>
+        <button class="filter-btn" data-filter="web">Web Development</button>
+        <button class="filter-btn" data-filter="shopify">Shopify & Mobile</button>
+        <button class="filter-btn" data-filter="design">Design & Marketing</button>
     </div>
 
     <!-- PROJECTS -->
@@ -588,7 +585,7 @@
                 title: "Security Audit & VAPT",
                 desc: "Comprehensive vulnerability assessment and penetration testing for web applications — identifying and remediating critical security gaps.",
                 tags: ["OWASP", "Burp Suite", "Nmap", "Security Audit"],
-                category: "security",
+                category: "software",
                 client: "Hyna Studio",
                 status: "completed",
                 badge: "Cyber Security",
