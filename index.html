@@ -2135,7 +2135,7 @@
         }
 
         .aira-hero-character {
-            width: 160px;
+            width: 190px;
             height: auto;
             object-fit: contain;
             pointer-events: none;
@@ -2258,9 +2258,9 @@
         }
 
         .aira-header-btn {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            color: var(--text-secondary);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #ffffff;
             width: 32px;
             height: 32px;
             border-radius: 50%;
@@ -2273,9 +2273,9 @@
         }
 
         .aira-header-btn:hover {
-            background: rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.2);
             color: #ffffff;
-            border-color: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
             transform: scale(1.05);
         }
 
@@ -2339,7 +2339,7 @@
         .aira-message-row.bot .aira-msg-bubble {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            color: var(--text-primary);
+            color: #ffffff;
             border-top-left-radius: 4px;
         }
 
@@ -2355,7 +2355,7 @@
             align-items: center;
             gap: 6px;
             font-size: 0.72rem;
-            color: var(--text-muted);
+            color: rgba(255, 255, 255, 0.55);
             margin-top: 4px;
             margin-left: 4px;
         }
@@ -2386,7 +2386,7 @@
         .aira-choice-btn {
             background: rgba(59, 130, 246, 0.08);
             border: 1px solid rgba(59, 130, 246, 0.2);
-            color: var(--text-primary);
+            color: #ffffff;
             padding: 10px 16px;
             border-radius: 100px;
             font-size: 0.82rem;
@@ -2416,7 +2416,7 @@
         .aira-typing-dot {
             width: 7px;
             height: 7px;
-            background: var(--text-secondary);
+            background: #ffffff;
             border-radius: 50%;
             opacity: 0.4;
             animation: typingWave 1.4s infinite ease-in-out;
@@ -2573,10 +2573,10 @@
 
         <!-- Hero Banner: AIRA Character above chat -->
         <div class="aira-hero-banner">
-            <img src="aira_trigger_badge.png" alt="AIRA" class="aira-hero-character">
+            <img src="ask_hyna_transparent.png" alt="Hyna" class="aira-hero-character">
             <div class="aira-hero-glow-ring"></div>
             <div class="aira-hero-label">
-                <div class="aira-hero-name">AIRA</div>
+                <div class="aira-hero-name">HYNA</div>
                 <div class="aira-hero-sub">Your Agentic Assistant</div>
             </div>
         </div>
@@ -2598,12 +2598,12 @@
             <!-- Initial Greeting -->
             <div class="aira-message-row bot">
                 <div class="aira-msg-avatar">
-                    <img src="aira_avatar.png" alt="AIRA">
+                    <img src="aira_avatar.png" alt="Hyna">
                 </div>
                 <div class="aira-msg-content">
                     <div class="aira-msg-bubble">
                         Great solutions start with the right conversation. 💡<br><br>
-                        I'm AIRA, Hyna's intelligent business advisor.<br><br>
+                        I'm Hyna, your intelligent business advisor.<br><br>
                         At <strong>Hyna Studio</strong>, we provide end-to-end digital expertise to bring your ideas to life. Here is a summary of our services:<br><br>
                         <ul>
                             <li>🖥️ <strong>Software & SaaS:</strong> Custom software, scalable APIs, SaaS MVPs, CRM/ERP/HRM platforms.</li>
@@ -2616,7 +2616,6 @@
                     </div>
                     <div class="aira-msg-meta">
                         <span class="aira-msg-time" id="airaInitialTime">03:15 pm</span>
-                        <i class="fas fa-volume-up aira-msg-speaker" title="Speak message" role="button" tabindex="0"></i>
                     </div>
                 </div>
             </div>
@@ -2748,37 +2747,6 @@
                 const choicesContainer = document.getElementById("airaChoicesContainer");
                 choicesContainer.style.display = "flex";
                 chatBody.appendChild(choicesContainer);
-                speak("Conversation reset. How can I help you today?");
-            });
-
-            // Handle Text-To-Speech (TTS)
-            let speechUtterance = null;
-            function speak(text) {
-                if ('speechSynthesis' in window) {
-                    window.speechSynthesis.cancel();
-                    const cleanText = text.replace(/<[^>]*>/g, ' ');
-                    speechUtterance = new SpeechSynthesisUtterance(cleanText);
-                    speechUtterance.rate = 1.05;
-                    speechUtterance.pitch = 1.0;
-                    const voices = window.speechSynthesis.getVoices();
-                    const preferredVoice = voices.find(voice => 
-                        voice.name.includes("Google US English") || 
-                        voice.name.includes("Microsoft Zira") ||
-                        voice.name.includes("Female")
-                    );
-                    if (preferredVoice) speechUtterance.voice = preferredVoice;
-                    window.speechSynthesis.speak(speechUtterance);
-                }
-            }
-
-            // Speak on icon click
-            chatBody.addEventListener("click", (e) => {
-                if (e.target.classList.contains("aira-msg-speaker")) {
-                    const bubble = e.target.closest(".aira-msg-content").querySelector(".aira-msg-bubble");
-                    if (bubble) {
-                        speak(bubble.innerHTML);
-                    }
-                }
             });
 
             const getFormattedTime = () => {
@@ -2811,7 +2779,7 @@
                 typingRow.className = "aira-message-row bot typing-indicator-row";
                 typingRow.innerHTML = `
                     <div class="aira-msg-avatar">
-                        <img src="aira_avatar.png" alt="AIRA">
+                        <img src="aira_avatar.png" alt="Hyna">
                     </div>
                     <div class="aira-msg-content">
                         <div class="aira-msg-bubble">
@@ -2834,13 +2802,12 @@
                     botRow.className = "aira-message-row bot";
                     botRow.innerHTML = `
                         <div class="aira-msg-avatar">
-                            <img src="aira_avatar.png" alt="AIRA">
+                            <img src="aira_avatar.png" alt="Hyna">
                         </div>
                         <div class="aira-msg-content">
                             <div class="aira-msg-bubble">${htmlText}</div>
                             <div class="aira-msg-meta">
                                 <span class="aira-msg-time">${getFormattedTime()}</span>
-                                <i class="fas fa-volume-up aira-msg-speaker" title="Speak message" role="button" tabindex="0"></i>
                             </div>
                         </div>
                     `;
@@ -2854,7 +2821,6 @@
                     }
                     
                     chatBody.scrollTop = chatBody.scrollHeight;
-                    speak(htmlText);
                 }, 1200);
             };
 
