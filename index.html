@@ -3224,6 +3224,22 @@
             overflow: hidden;
         }
 
+        .team-section::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(15deg);
+            width: 80vw;
+            max-width: 750px;
+            height: 80vw;
+            max-height: 750px;
+            background: url('team_bg_logo.png') no-repeat center center / contain;
+            opacity: 0.05;
+            pointer-events: none;
+            z-index: 1;
+        }
+
         .team-header {
             max-width: 1200px;
             margin: 0 auto 100px;
