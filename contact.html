@@ -1,10 +1,33 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        if (window.location.protocol === 'file:') {
+            document.addEventListener('DOMContentLoaded', () => {
+                const warningDiv = document.createElement('div');
+                warningDiv.style.background = '#FEF2F2';
+                warningDiv.style.borderBottom = '1px solid #FCA5A5';
+                warningDiv.style.color = '#991B1B';
+                warningDiv.style.padding = '0.75rem 1.5rem';
+                warningDiv.style.textAlign = 'center';
+                warningDiv.style.fontWeight = '600';
+                warningDiv.style.fontSize = '0.85rem';
+                warningDiv.style.fontFamily = 'system-ui, sans-serif';
+                warningDiv.style.position = 'sticky';
+                warningDiv.style.top = '0';
+                warningDiv.style.zIndex = '9999';
+                warningDiv.innerHTML = '⚠️ Browser blocks database and script features when opening local files directly. Please run a local development server (e.g. VS Code Live Server or python -m http.server) to test signing in and form redirects.';
+                document.body.prepend(warningDiv);
+            });
+        }
+    </script>
     <title>Start Your Project — Hyna Studio</title>
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <meta name="description"
         content="Tell us about your project. Hyna Studio builds websites, apps, SaaS platforms, and cloud solutions for startups and enterprises.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -351,15 +374,17 @@
     <!-- NAV -->
     <nav>
         <a href="index.html" class="nav-logo">
-            <img src="logo.png" class="logo-img" alt="Hyna Studio Logo">
+            <img src="https://i.postimg.cc/Pfwp9w25/Whats-App-Image-2026-06-11-at-2-05-50-PM-removebg-preview-(1).png" class="logo-img" alt="Hyna Studio Logo">
             <div class="logo-text">
                 <span class="logo-main">Hyna Studio</span>
                 <span class="logo-sub">Democratizing Entrepreneurship</span>
             </div>
         </a>
-        <a href="index.html" class="nav-back">
-            ← Back to Home
-        </a>
+        <div style="display: flex; align-items: center; gap: 1.5rem;">
+            <a href="index.html" class="nav-back">
+                ← Back to Home
+            </a>
+        </div>
     </nav>
 
     <!-- HERO -->
