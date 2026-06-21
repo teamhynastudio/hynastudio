@@ -2049,43 +2049,869 @@
             letter-spacing: 0.05em;
         }
 
-        .whatsapp-btn {
+        .hyna-chat-trigger {
             position: fixed;
-            bottom: 25px;
-            right: 25px;
-            width: 65px;
-            height: 65px;
-            background: #25D366;
-            color: #fff;
+            bottom: 0;
+            right: 0;
+            width: 220px;
+            height: 148px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+            cursor: pointer;
+            z-index: 9999;
+            /* Slide into the side — hide most of the button, show only the right edge */
+            transform: translateX(90px);
+            opacity: 0.9;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: auto;
+        }
+
+        .hyna-chat-trigger:hover,
+        .hyna-chat-trigger:focus-within {
+            transform: translateX(0);
+            opacity: 1;
+            /* Neon blue glow tracing the character + button */
+            filter: drop-shadow(0 0 14px rgba(37, 99, 235, 0.8)) drop-shadow(0 0 35px rgba(59, 130, 246, 0.45));
+        }
+
+        /* Trigger Image */
+        .trigger-image {
+            width: 220px;
+            height: 148px;
+            object-fit: contain;
+            object-position: center bottom;
+            pointer-events: none;
+            transition: transform 0.3s ease;
+        }
+
+        .hyna-chat-trigger:hover .trigger-image {
+            transform: translateY(-4px);
+        }
+
+        /* Chat Widget Container */
+        .aira-chat-widget {
+            position: fixed;
+            bottom: 160px;
+            right: 5px;
+            width: 440px;
+            height: 680px;
+            max-width: calc(100vw - 15px);
+            max-height: calc(100vh - 160px);
+            background: linear-gradient(160deg, rgba(8, 12, 28, 0.92) 0%, rgba(4, 6, 18, 0.97) 100%);
+            backdrop-filter: blur(30px) saturate(200%);
+            -webkit-backdrop-filter: blur(30px) saturate(200%);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 22px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(59, 130, 246, 0.12), inset 0 1px 0 rgba(255,255,255,0.05);
+            display: flex;
+            flex-direction: column;
+            z-index: 10000;
+            opacity: 0;
+            transform: translateX(30px) translateY(20px) scale(0.94);
+            pointer-events: none;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow: hidden;
+        }
+
+        .aira-chat-widget.is-open {
+            opacity: 1;
+            transform: translateX(0) translateY(0) scale(1);
+            pointer-events: auto;
+        }
+
+        /* Hero Banner – AIRA Character at the top of chat */
+        .aira-hero-banner {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            padding-bottom: 16px;
+            background: linear-gradient(180deg, rgba(20, 30, 70, 0.6) 0%, rgba(8, 12, 28, 0.0) 100%);
+            overflow: visible;
+            flex-shrink: 0;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.12);
+        }
+
+        .aira-hero-character {
+            width: 160px;
+            height: auto;
+            object-fit: contain;
+            pointer-events: none;
+            /* Glow that traces character outline */
+            filter: drop-shadow(0 0 18px rgba(59, 130, 246, 0.65)) drop-shadow(0 0 40px rgba(99, 102, 241, 0.35));
+            animation: airaFloat 3.5s ease-in-out infinite;
+            margin-bottom: -4px;
+        }
+
+        @keyframes airaFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
+
+        .aira-hero-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            margin-top: 8px;
+        }
+
+        .aira-hero-name {
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: 1.6rem;
+            letter-spacing: 0.12em;
+            background: linear-gradient(90deg, #60a5fa 0%, #818cf8 50%, #34d399 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: none;
+        }
+
+        .aira-hero-sub {
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.45);
+            letter-spacing: 0.18em;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .aira-hero-glow-ring {
+            position: absolute;
+            bottom: 10px;
+            width: 130px;
+            height: 24px;
+            background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.35) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(6px);
+            pointer-events: none;
+        }
+
+        /* Header – absolute overlay on top-right of widget */
+        .aira-chat-header {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 2;
+        }
+
+        .aira-header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .aira-header-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--accent1);
+            background: #0d132d;
+            padding: 1px;
+        }
+
+        .aira-header-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .aira-header-info {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .aira-header-title {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            letter-spacing: 0.02em;
+        }
+
+        .aira-header-title span.title-highlight {
+            background: linear-gradient(90deg, var(--accent1), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .aira-header-subtitle {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+            font-weight: 500;
+        }
+
+        .aira-header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .aira-header-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-secondary);
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-size: 0.85rem;
+        }
+
+        .aira-header-btn:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        /* Messages Body */
+        .aira-chat-body {
+            flex: 1;
+            padding: 24px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            scroll-behavior: smooth;
+        }
+
+        /* Message Structure */
+        .aira-message-row {
+            display: flex;
+            gap: 12px;
+            max-width: 85%;
+        }
+
+        .aira-message-row.bot {
+            align-self: flex-start;
+        }
+
+        .aira-message-row.user {
+            align-self: flex-end;
+            flex-direction: row-reverse;
+        }
+
+        .aira-msg-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1.5px solid var(--accent1);
+            background: #0d132d;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .aira-msg-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .aira-msg-content {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .aira-msg-bubble {
+            padding: 14px 18px;
+            border-radius: 18px;
+            font-size: 0.92rem;
+            line-height: 1.5;
+            position: relative;
+        }
+
+        .aira-message-row.bot .aira-msg-bubble {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-primary);
+            border-top-left-radius: 4px;
+        }
+
+        .aira-message-row.user .aira-msg-bubble {
+            background: linear-gradient(135deg, var(--accent1) 0%, var(--accent3) 100%);
+            color: #ffffff;
+            border-top-right-radius: 4px;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+        }
+
+        .aira-msg-meta {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+            margin-left: 4px;
+        }
+
+        .aira-message-row.user .aira-msg-meta {
+            justify-content: flex-end;
+            margin-right: 4px;
+            margin-left: 0;
+        }
+
+        .aira-msg-speaker {
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .aira-msg-speaker:hover {
+            color: var(--accent2);
+        }
+
+        /* Choice Chips */
+        .aira-choices-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 0 10px 10px 44px;
+        }
+
+        .aira-choice-btn {
+            background: rgba(59, 130, 246, 0.08);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            color: var(--text-primary);
+            padding: 10px 16px;
+            border-radius: 100px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .aira-choice-btn:hover {
+            background: rgba(59, 130, 246, 0.2);
+            border-color: var(--accent1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+        }
+
+        /* Typing Indicator */
+        .aira-typing-indicator {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+            padding: 4px 8px;
+        }
+
+        .aira-typing-dot {
+            width: 7px;
+            height: 7px;
+            background: var(--text-secondary);
+            border-radius: 50%;
+            opacity: 0.4;
+            animation: typingWave 1.4s infinite ease-in-out;
+        }
+
+        .aira-typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .aira-typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typingWave {
+            0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+            30% { transform: translateY(-6px); opacity: 1; }
+        }
+
+        /* Bottom Input Form */
+        .aira-chat-input-form {
+            padding: 18px 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(5, 7, 15, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .aira-input-wrapper {
+            flex: 1;
+            position: relative;
+        }
+
+        .aira-chat-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            padding: 12px 18px;
+            border-radius: 100px;
+            font-size: 0.9rem;
+            outline: none;
+            transition: all 0.3s ease;
+            font-family: var(--font-body);
+        }
+
+        .aira-chat-input:focus {
+            border-color: var(--accent1);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.15);
+        }
+
+        .aira-send-btn {
+            background: var(--accent1);
+            border: none;
+            color: #ffffff;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            flex-shrink: 0;
+        }
+
+        .aira-send-btn:hover {
+            background: var(--accent3);
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(99, 102, 241, 0.45);
+        }
+
+        .aira-send-btn i {
+            font-size: 0.95rem;
+            margin-left: 2px;
+        }
+
+        /* Markdown list/bold stylings in chat bubbles */
+        .aira-msg-bubble ul {
+            margin: 6px 0 0 16px;
+            padding: 0;
+            list-style-type: disc;
+        }
+
+        .aira-msg-bubble li {
+            margin-bottom: 4px;
+        }
+
+        /* Action Link Button in Chat Bubble */
+        .aira-chat-action-btn {
+            display: inline-block;
+            margin-top: 10px;
+            background: linear-gradient(135deg, var(--accent2) 0%, var(--accent1) 100%);
+            color: #ffffff !important;
+            padding: 8px 16px;
+            border-radius: 8px;
             text-decoration: none;
-            font-size: 34px;
-            z-index: 9999;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, .4);
-            transition: all .3s ease;
+            font-weight: 600;
+            font-size: 0.82rem;
+            transition: all 0.25s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
         }
 
-        .whatsapp-btn:hover {
-            transform: scale(1.1);
+        .aira-chat-action-btn:hover {
+            filter: brightness(1.1);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 217, 163, 0.25);
         }
 
-        .whatsapp-btn i {
-            line-height: 1;
+        /* Mobile adaptation */
+        @media (max-width: 500px) {
+            .aira-chat-widget {
+                bottom: 0 !important;
+                right: 0 !important;
+                width: 100% !important;
+                height: 100% !important;
+                max-width: 100% !important;
+                max-height: 100% !important;
+                border-radius: 0 !important;
+                border: none !important;
+            }
+            
+            .aira-hero-character {
+                width: 120px;
+            }
+
+            .hyna-chat-trigger {
+                bottom: 0;
+                right: 0;
+                width: 165px;
+                height: 110px;
+                transform: translateX(70px);
+            }
+            
+            .hyna-chat-trigger:hover,
+            .hyna-chat-trigger:focus-within {
+                transform: translateX(0);
+            }
+
+            .trigger-image {
+                width: 165px;
+                height: 110px;
+            }
         }
     </style>
 </head>
 
 <body>
-    <a href="https://wa.me/917305104191?text=Hi%20Hyna%20Studio" class="whatsapp-btn" target="_blank">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
+    <!-- AIRA AGENTIC CHAT TRIGGER -->
+    <div class="hyna-chat-trigger" id="hynaChatTrigger" role="button" aria-label="Ask Hyna AI Assistant" tabindex="0">
+        <img src="ask_hyna_transparent.png" alt="Ask Hyna AI" class="trigger-image">
+    </div>
+
+    <!-- AIRA CHAT WIDGET -->
+    <div class="aira-chat-widget" id="airaChatWidget" aria-hidden="true">
+
+        <!-- Hero Banner: AIRA Character above chat -->
+        <div class="aira-hero-banner">
+            <img src="aira_trigger_badge.png" alt="AIRA" class="aira-hero-character">
+            <div class="aira-hero-glow-ring"></div>
+            <div class="aira-hero-label">
+                <div class="aira-hero-name">AIRA</div>
+                <div class="aira-hero-sub">Your Agentic Assistant</div>
+            </div>
+        </div>
+
+        <!-- Slim Action Header -->
+        <div class="aira-chat-header">
+            <div class="aira-header-actions">
+                <button class="aira-header-btn" id="airaResetBtn" title="Reset Conversation" aria-label="Reset Conversation">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+                <button class="aira-header-btn" id="airaCloseBtn" title="Close Chat" aria-label="Close Chat">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Chat Body -->
+        <div class="aira-chat-body" id="airaChatBody">
+            <!-- Initial Greeting -->
+            <div class="aira-message-row bot">
+                <div class="aira-msg-avatar">
+                    <img src="aira_avatar.png" alt="AIRA">
+                </div>
+                <div class="aira-msg-content">
+                    <div class="aira-msg-bubble">
+                        Great solutions start with the right conversation. 💡<br><br>
+                        I'm AIRA, Hyna's intelligent business advisor.<br><br>
+                        At <strong>Hyna Studio</strong>, we provide end-to-end digital expertise to bring your ideas to life. Here is a summary of our services:<br><br>
+                        <ul>
+                            <li>🖥️ <strong>Software & SaaS:</strong> Custom software, scalable APIs, SaaS MVPs, CRM/ERP/HRM platforms.</li>
+                            <li>🌐 <strong>Web Development:</strong> Next.js/React web apps, enterprise WordPress, and custom Webflow development.</li>
+                            <li>📱 <strong>Shopify & Mobile:</strong> E-commerce custom Shopify setups, native/hybrid iOS & Android mobile apps.</li>
+                            <li>🎨 <strong>Design & Marketing:</strong> Complete UI/UX designs, brand identity packages, pitch decks, and marketing campaigns.</li>
+                            <li>🤖 <strong>AI & Automation:</strong> Intelligent AI agents, custom workflow automations, and LLM integrations.</li>
+                        </ul>
+                        Select a service category below to see details or discuss your project:
+                    </div>
+                    <div class="aira-msg-meta">
+                        <span class="aira-msg-time" id="airaInitialTime">03:15 pm</span>
+                        <i class="fas fa-volume-up aira-msg-speaker" title="Speak message" role="button" tabindex="0"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Choice Chips -->
+            <div class="aira-choices-container" id="airaChoicesContainer">
+                <button class="aira-choice-btn" data-choice="Software & SaaS">Software & SaaS</button>
+                <button class="aira-choice-btn" data-choice="Web Development">Web Development</button>
+                <button class="aira-choice-btn" data-choice="Shopify & Mobile">Shopify & Mobile</button>
+                <button class="aira-choice-btn" data-choice="Design & Marketing">Design & Marketing</button>
+                <button class="aira-choice-btn" data-choice="Data, AI & Automation">AI & Automation</button>
+                <button class="aira-choice-btn" data-choice="Managed Services & Support">Support & Maintenance</button>
+                <button class="aira-choice-btn" data-choice="Partnership Opportunities">Partnerships</button>
+                <button class="aira-choice-btn" data-choice="Other">Other</button>
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <form class="aira-chat-input-form" id="airaChatForm">
+            <div class="aira-input-wrapper">
+                <input type="text" class="aira-chat-input" id="airaChatInput" placeholder="Or type your goal or challenge..." autocomplete="off" required>
+            </div>
+            <button type="submit" class="aira-send-btn" aria-label="Send Message">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const trigger = document.getElementById("hynaChatTrigger");
+            const widget = document.getElementById("airaChatWidget");
+            const closeBtn = document.getElementById("airaCloseBtn");
+            const resetBtn = document.getElementById("airaResetBtn");
+            const chatBody = document.getElementById("airaChatBody");
+            const chatForm = document.getElementById("airaChatForm");
+            const chatInput = document.getElementById("airaChatInput");
+            const initialTimeSpan = document.getElementById("airaInitialTime");
+
+            // Responses for buttons
+            const botResponses = {
+                "Software & SaaS": `We engineer robust, scalable software products and multi-tenant SaaS platforms configured for your business. 🖥️🚀<br><br>Our capabilities cover:<br><ul><li>Custom APIs & Backend Logic (Go, Python, Node.js)</li><li>SaaS MVPs & SaaS Accelerators</li><li>Enterprise CRM, ERP, and HRM software</li></ul><br>Want to map out your software architecture?<br><a href="mailto:team.hynastudio@gmail.com?subject=Software%20and%20SaaS%20Inquiry" class="aira-chat-action-btn">Discuss Your Project</a>`,
+                
+                "Web Development": `We build high-performance, responsive, and SEO-friendly websites using modern tools and frameworks. 🌐<br><br>Our Web Development services include:<br><ul><li>Custom web apps with React, Next.js, and TypeScript</li><li>Enterprise WordPress and content management architectures</li><li>Pixel-perfect Webflow sites for rapid deployment</li></ul><br>Ready to create a stunning web experience?<br><a href="mailto:team.hynastudio@gmail.com?subject=Web%20Development%20Inquiry" class="aira-chat-action-btn">Start Web Project</a>`,
+                
+                "Shopify & Mobile": `Get high-converting custom Shopify storefronts or fully native/hybrid mobile apps for iOS and Android. 📱🛍️<br><br>What we build:<br><ul><li>Custom Shopify storefronts, theme setups, and custom apps</li><li>Native iOS & Android mobile apps (React Native, Flutter)</li><li>Cross-platform product design & API integrations</li></ul><br>Let's scale your mobile or e-commerce presence.<br><a href="mailto:team.hynastudio@gmail.com?subject=Shopify%20and%20Mobile%20Inquiry" class="aira-chat-action-btn">Contact E-commerce Expert</a>`,
+                
+                "Design & Marketing": `From immersive UI/UX wireframes to beautiful brand identity systems, we design with your user in mind. 🎨📣<br><br>Our design & marketing services cover:<br><ul><li>Interactive UI/UX prototypes (Figma)</li><li>Branding, logo design, and visual assets</li><li>Pitch deck design & organic growth marketing</li></ul><br>Let's elevate your brand aesthetics.<br><a href="mailto:team.hynastudio@gmail.com?subject=Design%20and%20Marketing%20Inquiry" class="aira-chat-action-btn">Start Designing</a>`,
+
+                "Digital Transformation": `Digital transformation is at the core of what we do. We help traditional enterprises modernize their stacks, automate operations, and transition safely to modern cloud-first architectures. 🚀<br><br>Our team specializes in:<br><ul><li>Legacy codebase modernization</li><li>Cloud migration (AWS/Azure/GCP)</li><li>Custom API integrations</li></ul><br>Would you like to discuss how we can transform your business workflows?<br><a href="mailto:team.hynastudio@gmail.com?subject=Digital%20Transformation%20Inquiry" class="aira-chat-action-btn">Schedule a Consultation</a>`,
+                
+                "Enterprise Platforms": `We engineer resilient, scalable platforms designed to handle massive throughput and complex enterprise business logic. 🏢<br><br>We design and build:<br><ul><li>CRM & Custom ERP solutions</li><li>High-performance databases (PostgreSQL, MongoDB)</li><li>Robust backend microservices (Go, Python, Java)</li></ul><br>Let's build a secure foundation for your scaling operations.<br><a href="mailto:team.hynastudio@gmail.com?subject=Enterprise%20Platforms%20Inquiry" class="aira-chat-action-btn">Request Enterprise Call</a>`,
+                
+                "Product Engineering": `From concept to market launch, we craft software products with an obsession for speed, design, and user experience. 💻<br><br>Our product engineering covers:<br><ul><li>End-to-end full-stack development</li><li>High-fidelity interactive prototypes</li><li>Agile MVP development for startups</li></ul><br>Have an idea you want to bring to life?<br><a href="mailto:team.hynastudio@gmail.com?subject=Product%20Engineering%20Inquiry" class="aira-chat-action-btn">Discuss Your MVP</a>`,
+                
+                "Data, AI & Automation": `Welcome to the age of agentic business. We build custom AI models, intelligent agents, and automated data pipelines that multiply your team's productivity. 🤖<br><br>Our AI capabilities include:<br><ul><li>Custom AI Agents & workflow automations</li><li>Machine Learning pipelines</li><li>LLM integrations & fine-tuning</li></ul><br>Let's automate your repetitive tasks and leverage your data.<br><a href="mailto:team.hynastudio@gmail.com?subject=AI%20and%20Automation%20Inquiry" class="aira-chat-action-btn">Automate Your Workflow</a>`,
+                
+                "Cloud & Infrastructure Services": `We design zero-downtime, secure, and auto-scaling cloud infrastructure to keep your systems fast and compliant. ☁️<br><br>Our cloud expertise covers:<br><ul><li>Container orchestration (Docker, Kubernetes)</li><li>CI/CD automated deployment pipelines</li><li>Cloud cost optimization & audits</li></ul><br>Is your infrastructure ready for high traffic?<br><a href="mailto:team.hynastudio@gmail.com?subject=Cloud%20Infrastructure%20Inquiry" class="aira-chat-action-btn">Optimize Cloud Setup</a>`,
+                
+                "Strategy & IT Consulting": `Great technology starts with a smart strategy. We provide fractional CTO advisory and IT architecture planning to ensure your technical investments align with business growth. 🎯<br><br>We help you with:<br><ul><li>Tech stack selection & architecture design</li><li>Compliance, security, and security audits</li><li>Scalability mapping</li></ul><br>Let's plan your technical roadmap together.<br><a href="mailto:team.hynastudio@gmail.com?subject=Strategy%20Consulting%20Inquiry" class="aira-chat-action-btn">Book Advisory Session</a>`,
+                
+                "Managed Services & Support": `We don't just build and leave. We offer proactive maintenance, security monitoring, and regular updates so you can focus on running your business. 🛠️<br><br>Our support plans include:<br><ul><li>24/7 server & application monitoring</li><li>Security patches and software updates</li><li>Bug fixes and prompt feature requests</li></ul><br>Need a reliable partner to manage your digital assets?<br><a href="mailto:team.hynastudio@gmail.com?subject=Managed%20Services%20Inquiry" class="aira-chat-action-btn">Explore Support Plans</a>`,
+                
+                "Hyniva Products & Solutions": `Hyna Studio designs and license out pre-built enterprise modules, SaaS accelerators, and automation toolkits that help speed up development times by up to 60%. ⚡<br><br>Our solutions include:<br><ul><li>Hyniva Admin Dashboards & SaaS boilers</li><li>Dynamic content management toolkits</li><li>Automated customer billing integrations</li></ul><br>Would you like a demo of our accelerators?<br><a href="mailto:team.hynastudio@gmail.com?subject=Hyniva%20Products%20Demo" class="aira-chat-action-btn">Request Product Demo</a>`,
+                
+                "Partnership Opportunities": `We love collaborating with design agencies, marketing firms, startup incubators, and individual entrepreneurs. Let's combine forces to deliver outstanding results. 🤝<br><br>How we partner:<br><ul><li>White-label development services</li><li>Referral and commission programs</li><li>Joint venture integrations</li></ul><br>Let's discuss how we can grow together.<br><a href="mailto:team.hynastudio@gmail.com?subject=Partnership%20Opportunity" class="aira-chat-action-btn">Discuss Partnership</a>`,
+                
+                "Other": `Tell us what you're looking for! Whether it's a quick fix, an unlisted service, or just a general inquiry, our team is happy to chat. 💡<br><br>Please drop your request in the chat below, or email us directly at:<br><ul><li><strong>team.hynastudio@gmail.com</strong></li></ul><br>We usually reply in under 2 hours!<br><a href="mailto:team.hynastudio@gmail.com?subject=General%20Inquiry" class="aira-chat-action-btn">Send Email</a>`
+            };
+
+            // Set current time for initial greeting
+            const updateInitialTime = () => {
+                const now = new Date();
+                let hours = now.getHours();
+                const minutes = String(now.getMinutes()).padStart(2, '0');
+                const ampm = hours >= 12 ? 'pm' : 'am';
+                hours = hours % 12;
+                hours = hours ? hours : 12;
+                initialTimeSpan.textContent = `${hours}:${minutes} ${ampm}`;
+            };
+            updateInitialTime();
+
+            // Toggle widget open/close with instant touch/click response
+            const toggleWidget = (e) => {
+                if (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+                const isOpen = widget.classList.toggle("is-open");
+                widget.setAttribute("aria-hidden", !isOpen);
+                if (isOpen) {
+                    setTimeout(() => chatInput.focus(), 300);
+                }
+            };
+
+            trigger.addEventListener("click", toggleWidget);
+            trigger.addEventListener("touchstart", toggleWidget, { passive: false });
+
+            const closeWidget = (e) => {
+                if (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+                widget.classList.remove("is-open");
+                widget.setAttribute("aria-hidden", "true");
+            };
+
+            closeBtn.addEventListener("click", closeWidget);
+            closeBtn.addEventListener("touchstart", closeWidget, { passive: false });
+
+            // Close when clicking/touching outside on mobile or desktop
+            const handleOutsideInteraction = (e) => {
+                if (!widget.contains(e.target) && !trigger.contains(e.target) && widget.classList.contains("is-open")) {
+                    widget.classList.remove("is-open");
+                    widget.setAttribute("aria-hidden", "true");
+                }
+            };
+            document.addEventListener("click", handleOutsideInteraction);
+            document.addEventListener("touchstart", handleOutsideInteraction, { passive: true });
+
+            // Restart Conversation
+            resetBtn.addEventListener("click", () => {
+                const messages = Array.from(chatBody.children);
+                messages.forEach(child => {
+                    if (child.id !== "airaChoicesContainer" && child !== messages[0]) {
+                        chatBody.removeChild(child);
+                    }
+                });
+                const choicesContainer = document.getElementById("airaChoicesContainer");
+                choicesContainer.style.display = "flex";
+                chatBody.appendChild(choicesContainer);
+                speak("Conversation reset. How can I help you today?");
+            });
+
+            // Handle Text-To-Speech (TTS)
+            let speechUtterance = null;
+            function speak(text) {
+                if ('speechSynthesis' in window) {
+                    window.speechSynthesis.cancel();
+                    const cleanText = text.replace(/<[^>]*>/g, ' ');
+                    speechUtterance = new SpeechSynthesisUtterance(cleanText);
+                    speechUtterance.rate = 1.05;
+                    speechUtterance.pitch = 1.0;
+                    const voices = window.speechSynthesis.getVoices();
+                    const preferredVoice = voices.find(voice => 
+                        voice.name.includes("Google US English") || 
+                        voice.name.includes("Microsoft Zira") ||
+                        voice.name.includes("Female")
+                    );
+                    if (preferredVoice) speechUtterance.voice = preferredVoice;
+                    window.speechSynthesis.speak(speechUtterance);
+                }
+            }
+
+            // Speak on icon click
+            chatBody.addEventListener("click", (e) => {
+                if (e.target.classList.contains("aira-msg-speaker")) {
+                    const bubble = e.target.closest(".aira-msg-content").querySelector(".aira-msg-bubble");
+                    if (bubble) {
+                        speak(bubble.innerHTML);
+                    }
+                }
+            });
+
+            const getFormattedTime = () => {
+                const now = new Date();
+                let hours = now.getHours();
+                const minutes = String(now.getMinutes()).padStart(2, '0');
+                const ampm = hours >= 12 ? 'pm' : 'am';
+                hours = hours % 12;
+                hours = hours ? hours : 12;
+                return `${hours}:${minutes} ${ampm}`;
+            };
+
+            const addUserMessage = (text) => {
+                const userRow = document.createElement("div");
+                userRow.className = "aira-message-row user";
+                userRow.innerHTML = `
+                    <div class="aira-msg-content">
+                        <div class="aira-msg-bubble">${text}</div>
+                        <div class="aira-msg-meta">
+                            <span class="aira-msg-time">${getFormattedTime()}</span>
+                        </div>
+                    </div>
+                `;
+                chatBody.appendChild(userRow);
+                chatBody.scrollTop = chatBody.scrollHeight;
+            };
+
+            const addBotMessage = (htmlText) => {
+                const typingRow = document.createElement("div");
+                typingRow.className = "aira-message-row bot typing-indicator-row";
+                typingRow.innerHTML = `
+                    <div class="aira-msg-avatar">
+                        <img src="aira_avatar.png" alt="AIRA">
+                    </div>
+                    <div class="aira-msg-content">
+                        <div class="aira-msg-bubble">
+                            <div class="aira-typing-indicator">
+                                <span class="aira-typing-dot"></span>
+                                <span class="aira-typing-dot"></span>
+                                <span class="aira-typing-dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                chatBody.appendChild(typingRow);
+                chatBody.scrollTop = chatBody.scrollHeight;
+
+                setTimeout(() => {
+                    if (typingRow.parentNode) {
+                        chatBody.removeChild(typingRow);
+                    }
+                    const botRow = document.createElement("div");
+                    botRow.className = "aira-message-row bot";
+                    botRow.innerHTML = `
+                        <div class="aira-msg-avatar">
+                            <img src="aira_avatar.png" alt="AIRA">
+                        </div>
+                        <div class="aira-msg-content">
+                            <div class="aira-msg-bubble">${htmlText}</div>
+                            <div class="aira-msg-meta">
+                                <span class="aira-msg-time">${getFormattedTime()}</span>
+                                <i class="fas fa-volume-up aira-msg-speaker" title="Speak message" role="button" tabindex="0"></i>
+                            </div>
+                        </div>
+                    `;
+                    chatBody.appendChild(botRow);
+                    
+                    // Always restore services choices at the bottom of the chat after a bot message
+                    const choicesContainer = document.getElementById("airaChoicesContainer");
+                    if (choicesContainer) {
+                        choicesContainer.style.display = "flex";
+                        chatBody.appendChild(choicesContainer);
+                    }
+                    
+                    chatBody.scrollTop = chatBody.scrollHeight;
+                    speak(htmlText);
+                }, 1200);
+            };
+
+            chatBody.addEventListener("click", (e) => {
+                if (e.target.classList.contains("aira-choice-btn")) {
+                    const choice = e.target.getAttribute("data-choice");
+                    const response = botResponses[choice];
+                    addUserMessage(choice);
+                    const choicesContainer = document.getElementById("airaChoicesContainer");
+                    choicesContainer.style.display = "none";
+                    addBotMessage(response);
+                }
+            });
+
+            chatForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                const query = chatInput.value.trim();
+                if (!query) return;
+
+                addUserMessage(query);
+                chatInput.value = "";
+
+                let responseHtml = "";
+                const lowercaseQuery = query.toLowerCase();
+
+                if (lowercaseQuery.includes("software") || lowercaseQuery.includes("saas") || lowercaseQuery.includes("product") || lowercaseQuery.includes("develop") || lowercaseQuery.includes("build") || lowercaseQuery.includes("erp") || lowercaseQuery.includes("crm")) {
+                    responseHtml = botResponses["Software & SaaS"];
+                } else if (lowercaseQuery.includes("web") || lowercaseQuery.includes("site") || lowercaseQuery.includes("wordpress") || lowercaseQuery.includes("webflow") || lowercaseQuery.includes("react") || lowercaseQuery.includes("next")) {
+                    responseHtml = botResponses["Web Development"];
+                } else if (lowercaseQuery.includes("shopify") || lowercaseQuery.includes("mobile") || lowercaseQuery.includes("ios") || lowercaseQuery.includes("android") || lowercaseQuery.includes("app")) {
+                    responseHtml = botResponses["Shopify & Mobile"];
+                } else if (lowercaseQuery.includes("design") || lowercaseQuery.includes("logo") || lowercaseQuery.includes("ui") || lowercaseQuery.includes("ux") || lowercaseQuery.includes("brand") || lowercaseQuery.includes("marketing")) {
+                    responseHtml = botResponses["Design & Marketing"];
+                } else if (lowercaseQuery.includes("ai") || lowercaseQuery.includes("agent") || lowercaseQuery.includes("automate") || lowercaseQuery.includes("bot") || lowercaseQuery.includes("chat")) {
+                    responseHtml = botResponses["Data, AI & Automation"];
+                } else if (lowercaseQuery.includes("cloud") || lowercaseQuery.includes("server") || lowercaseQuery.includes("aws") || lowercaseQuery.includes("kubernetes")) {
+                    responseHtml = botResponses["Cloud & Infrastructure Services"];
+                } else if (lowercaseQuery.includes("digital") || lowercaseQuery.includes("transform") || lowercaseQuery.includes("modern")) {
+                    responseHtml = botResponses["Digital Transformation"];
+                } else if (lowercaseQuery.includes("price") || lowercaseQuery.includes("cost") || lowercaseQuery.includes("estimate") || lowercaseQuery.includes("budget") || lowercaseQuery.includes("how much")) {
+                    responseHtml = `Our engineering services are custom-tailored to the scale and scope of each project. We offer highly competitive rates for premium quality execution. 💸<br><br>Please contact us directly for a free estimate:<br><ul><li>Email: <strong>team.hynastudio@gmail.com</strong></li></ul><br>We will respond with a full scope outline and price estimation within 24 hours.<br><a href="mailto:team.hynastudio@gmail.com?subject=Project%20Price%20Estimate%20Request" class="aira-chat-action-btn">Request Custom Estimate</a>`;
+                } else if (lowercaseQuery.includes("contact") || lowercaseQuery.includes("email") || lowercaseQuery.includes("call") || lowercaseQuery.includes("phone")) {
+                    responseHtml = `We would love to speak with you! You can reach the Hyna Studio team through the following channels:<br><br><ul><li>Email: <strong>team.hynastudio@gmail.com</strong></li><li>GitHub: <strong>github.com/teamhynastudio</strong></li></ul><br>Or simply drop your contact details in this chat and we'll reach out to you directly!`;
+                } else {
+                    responseHtml = `I'm on it! I've processed your message: "${query}". Let me get one of our lead engineers or product directors to get back to you on this. 🚀<br><br>In the meantime, feel free to choose one of our primary service areas below, or send us a direct email at <strong>team.hynastudio@gmail.com</strong>.`;
+                }
+
+                const choicesContainer = document.getElementById("airaChoicesContainer");
+                choicesContainer.style.display = "none";
+                addBotMessage(responseHtml);
+            });
+        });
+    </script>
 
     <!-- NAV -->
     <nav>
-        <a href="#" class="nav-logo">
+        <a href="index.html" class="nav-logo">
             <img src="https://i.postimg.cc/Pfwp9w25/Whats-App-Image-2026-06-11-at-2-05-50-PM-removebg-preview-(1).png"
                 class="logo-img" alt="Hyna Studio Logo">
             <div class="logo-text">
@@ -3235,7 +4061,7 @@
             height: 80vw;
             max-height: 750px;
             background: url('team_bg_logo.png') no-repeat center center / contain;
-            opacity: 0.05;
+            opacity: 0.15;
             pointer-events: none;
             z-index: 1;
         }
@@ -4752,7 +5578,7 @@
 
         <div class="footer-top">
             <div class="footer-brand">
-                <a href="#" class="nav-logo">
+                <a href="index.html" class="nav-logo">
                     <img src="https://i.postimg.cc/Pfwp9w25/Whats-App-Image-2026-06-11-at-2-05-50-PM-removebg-preview-(1).png"
                         class="logo-img" alt="Hyna Studio Logo">
                     <div class="logo-text">
