@@ -1,14 +1,14 @@
-/* Hyna Studio Legal Policy Pages Stylesheet */
+/* Hyna Studio Legal Policy Pages Stylesheet - Professional Light Theme */
 
 :root {
-    --ink: #07070d;
-    --paper: #F7F6F2;
-    --accent: #4F3FF0;      /* Electric Blue */
-    --accent-light: #76ecf0; /* Cyan Glow */
-    --accent2: #00D9A3;     /* Emerald Green */
-    --muted: #9ea4b5;       /* Muted grey */
-    --border: rgba(255, 255, 255, 0.08);
-    --card: rgba(255, 255, 255, 0.03);
+    --ink: #0f172a;         /* Slate 900 (Main text color) */
+    --paper: #f8fafc;       /* Slate 50 (Background color) */
+    --accent: #2563eb;      /* Royal/Electric Blue */
+    --accent-light: #3b82f6; /* Accent light */
+    --accent2: #0d9488;     /* Teal */
+    --muted: #475569;       /* Slate 600 */
+    --border: rgba(15, 23, 42, 0.08);
+    --card: #ffffff;
     
     --font-display: 'Syne', sans-serif;
     --font-body: 'Inter', sans-serif;
@@ -26,8 +26,8 @@ html {
 
 body {
     font-family: var(--font-body);
-    background-color: var(--ink);
-    color: var(--paper);
+    background-color: var(--paper);
+    color: var(--ink);
     line-height: 1.65;
     min-height: 100vh;
     overflow-x: hidden;
@@ -40,8 +40,8 @@ body::before {
     position: fixed;
     inset: 0;
     background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+        linear-gradient(rgba(15, 23, 42, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15, 23, 42, 0.015) 1px, transparent 1px);
     background-size: 40px 40px;
     pointer-events: none;
     z-index: -2;
@@ -53,7 +53,7 @@ body::after {
     position: fixed;
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(79, 63, 240, 0.12) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, transparent 70%);
     top: -150px;
     left: -150px;
     pointer-events: none;
@@ -65,7 +65,7 @@ body::after {
     position: fixed;
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(0, 217, 163, 0.08) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(13, 148, 136, 0.04) 0%, transparent 70%);
     bottom: -100px;
     right: -100px;
     pointer-events: none;
@@ -86,10 +86,10 @@ nav {
     align-items: center;
     justify-content: space-between;
     padding: 0.75rem 2.5rem;
-    background: rgba(55, 60, 70, 0.78);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(15, 23, 42, 0.08);
     border-radius: 60px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px rgba(15, 23, 42, 0.04), inset 0 1px 1px rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(20px) saturate(160%);
     -webkit-backdrop-filter: blur(20px) saturate(160%);
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -120,16 +120,16 @@ nav {
     font-weight: 800;
     font-size: 1.2rem;
     letter-spacing: -0.02em;
-    color: #ffffff;
+    color: var(--ink);
 }
 
 .logo-highlight {
-    color: var(--accent-light);
+    color: var(--accent);
 }
 
 .logo-sub {
     font-size: 0.6rem;
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--muted);
     letter-spacing: 0.05em;
     margin-top: 0.15rem;
     font-weight: 500;
@@ -141,14 +141,14 @@ nav {
     align-items: center;
     gap: 0.5rem;
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--muted);
     font-size: 0.88rem;
     font-weight: 600;
     transition: color 0.2s;
 }
 
 .nav-back:hover {
-    color: var(--accent-light);
+    color: var(--accent);
 }
 
 /* ── HERO BANNER ── */
@@ -163,7 +163,7 @@ nav {
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--accent-light);
+    color: var(--accent);
     margin-bottom: 1rem;
 }
 
@@ -174,11 +174,12 @@ nav {
     letter-spacing: -0.02em;
     line-height: 1.1;
     margin-bottom: 1rem;
+    color: var(--ink);
 }
 
 .page-hero h1 em {
     font-style: normal;
-    background: linear-gradient(135deg, var(--accent-light), var(--accent2));
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -217,7 +218,7 @@ nav {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: var(--accent-light);
+    color: var(--accent);
     margin-bottom: 0.75rem;
     padding-left: 0.5rem;
 }
@@ -231,23 +232,23 @@ nav {
     text-decoration: none;
     font-size: 0.92rem;
     font-weight: 500;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.03);
+    background: rgba(15, 23, 42, 0.015);
+    border: 1px solid rgba(15, 23, 42, 0.03);
     transition: all 0.25s ease;
 }
 
 .sidebar-link:hover {
-    background: rgba(255, 255, 255, 0.05);
-    color: #ffffff;
-    border-color: rgba(255, 255, 255, 0.08);
+    background: rgba(15, 23, 42, 0.03);
+    color: var(--ink);
+    border-color: rgba(15, 23, 42, 0.06);
 }
 
 .sidebar-link.active {
-    background: rgba(79, 63, 240, 0.15);
-    border-color: rgba(79, 63, 240, 0.35);
-    color: #ffffff;
+    background: rgba(37, 99, 235, 0.08);
+    border-color: rgba(37, 99, 235, 0.2);
+    color: var(--accent);
     font-weight: 600;
-    box-shadow: 0 4px 20px rgba(79, 63, 240, 0.1);
+    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.05);
 }
 
 /* Document Content */
@@ -256,7 +257,7 @@ nav {
     border: 1px solid var(--border);
     border-radius: 24px;
     padding: 3.5rem;
-    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.02), 0 1px 3px rgba(15, 23, 42, 0.01);
 }
 
 .doc-section {
@@ -271,7 +272,7 @@ nav {
     font-family: var(--font-display);
     font-size: 1.4rem;
     font-weight: 700;
-    color: #ffffff;
+    color: var(--ink);
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
@@ -283,7 +284,7 @@ nav {
     display: inline-block;
     width: 6px;
     height: 18px;
-    background: var(--accent2);
+    background: var(--accent);
     border-radius: 2px;
 }
 
@@ -307,7 +308,7 @@ nav {
 }
 
 .doc-section li strong {
-    color: #ffffff;
+    color: var(--ink);
 }
 
 .doc-section table {
@@ -324,8 +325,8 @@ nav {
 }
 
 .doc-section th {
-    background: rgba(255, 255, 255, 0.04);
-    color: #ffffff;
+    background: rgba(15, 23, 42, 0.03);
+    color: var(--ink);
     font-weight: 600;
 }
 
@@ -334,7 +335,7 @@ nav {
 }
 
 .doc-section .highlight-box {
-    background: rgba(79, 63, 240, 0.08);
+    background: rgba(37, 99, 235, 0.04);
     border-left: 3px solid var(--accent);
     padding: 1.25rem 1.5rem;
     border-radius: 0 12px 12px 0;
@@ -343,16 +344,16 @@ nav {
 
 .doc-section .highlight-box p {
     margin-bottom: 0;
-    color: #ffffff;
+    color: var(--ink);
     font-weight: 500;
 }
 
-/* ── FOOTER (MATCHING INDEX.HTML STYLE but localized) ── */
+/* ── FOOTER ── */
 footer {
-    background: #0a0a0e;
-    color: var(--paper);
+    background: #f1f5f9;
+    color: var(--ink);
     padding: 4rem 4rem 2.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
     position: relative;
     z-index: 10;
 }
@@ -362,7 +363,7 @@ footer {
     justify-content: space-between;
     align-items: flex-start;
     padding-bottom: 3rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
     margin-bottom: 2rem;
     max-width: 1200px;
     margin-left: auto;
@@ -370,20 +371,20 @@ footer {
 }
 
 .footer-brand .nav-logo {
-    color: var(--paper);
+    color: var(--ink);
 }
 
 .footer-brand .logo-text .logo-main {
-    color: #ffffff !important;
+    color: var(--ink) !important;
 }
 
 .footer-brand .logo-text .logo-sub {
-    color: rgba(255, 255, 255, 0.6) !important;
+    color: var(--muted) !important;
 }
 
 .footer-brand p {
     font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--muted);
     margin-top: 0.8rem;
     max-width: 28ch;
 }
@@ -394,7 +395,7 @@ footer {
     letter-spacing: 0.08em;
     text-transform: uppercase;
     margin-bottom: 1rem;
-    color: #ffffff;
+    color: var(--ink);
 }
 
 .footer-links ul {
@@ -406,13 +407,13 @@ footer {
 
 .footer-links a {
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.65);
+    color: var(--muted);
     font-size: 0.88rem;
     transition: color 0.2s;
 }
 
 .footer-links a:hover {
-    color: var(--accent-light);
+    color: var(--accent);
 }
 
 .footer-bottom {
@@ -426,7 +427,7 @@ footer {
 
 .footer-bottom p {
     font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.45);
+    color: var(--muted);
 }
 
 .footer-bottom-links {
@@ -436,13 +437,32 @@ footer {
 
 .footer-bottom-links a {
     font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.45);
+    color: var(--muted);
     text-decoration: none;
     transition: color 0.2s;
 }
 
 .footer-bottom-links a:hover {
-    color: var(--accent-light);
+    color: var(--accent);
+}
+
+/* Location Box Override for Light Theme */
+footer .footer-location h5 {
+    color: var(--ink) !important;
+}
+
+footer .footer-location strong {
+    color: var(--ink) !important;
+}
+
+footer .footer-location div {
+    color: var(--muted) !important;
+}
+
+footer .footer-location div[style*="width: 44px"] {
+    background: #ffffff !important;
+    border: 1.5px solid rgba(15, 23, 42, 0.08) !important;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05) !important;
 }
 
 /* ── RESPONSIVE ── */
