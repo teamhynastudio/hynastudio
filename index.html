@@ -2060,11 +2060,17 @@
             justify-content: flex-start;
             cursor: pointer;
             z-index: 9999;
-            /* Slide into the side — hide most of the button, show only the right edge */
-            transform: translateX(90px);
+            /* Default: fully visible (outside) when scroll stops */
+            transform: translateX(0);
             opacity: 0.9;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             pointer-events: auto;
+        }
+
+        /* Slide inside to the right when scrolling */
+        .hyna-chat-trigger.is-scrolling {
+            transform: translateX(180px);
+            opacity: 0.5;
         }
 
         .hyna-chat-trigger:hover,
@@ -2546,12 +2552,20 @@
                 right: 0;
                 width: 165px;
                 height: 110px;
-                transform: translateX(70px);
+                /* Default: fully visible (outside) when scroll stops */
+                transform: translateX(0);
+            }
+
+            /* Slide inside to the right when scrolling */
+            .hyna-chat-trigger.is-scrolling {
+                transform: translateX(135px);
+                opacity: 0.5;
             }
             
             .hyna-chat-trigger:hover,
             .hyna-chat-trigger:focus-within {
                 transform: translateX(0);
+                opacity: 1;
             }
 
             .trigger-image {
@@ -2654,6 +2668,32 @@
             const chatForm = document.getElementById("airaChatForm");
             const chatInput = document.getElementById("airaChatInput");
             const initialTimeSpan = document.getElementById("airaInitialTime");
+
+            // Scroll + touch-based slide behavior for Ask Hyna trigger widget
+            // Works on both desktop (scroll events) and mobile (touchmove/touchend)
+            let scrollTimeout;
+
+            function onScrolling() {
+                trigger.classList.add("is-scrolling");
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    trigger.classList.remove("is-scrolling");
+                }, 250);
+            }
+
+            // Desktop scroll
+            window.addEventListener("scroll", onScrolling, { passive: true });
+
+            // Mobile: touchmove = user is actively dragging (slide in)
+            window.addEventListener("touchmove", onScrolling, { passive: true });
+
+            // Mobile: touchend = finger lifted — start countdown to slide out
+            window.addEventListener("touchend", () => {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    trigger.classList.remove("is-scrolling");
+                }, 250);
+            }, { passive: true });
 
             // Responses for buttons
             const botResponses = {
