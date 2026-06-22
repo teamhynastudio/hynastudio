@@ -2886,28 +2886,149 @@
                 chatInput.value = "";
 
                 let responseHtml = "";
-                const lowercaseQuery = query.toLowerCase();
+                const q = query.toLowerCase();
 
-                if (lowercaseQuery.includes("software") || lowercaseQuery.includes("saas") || lowercaseQuery.includes("product") || lowercaseQuery.includes("develop") || lowercaseQuery.includes("build") || lowercaseQuery.includes("erp") || lowercaseQuery.includes("crm")) {
+                // ── TEAM / FOUNDER / CEO ──
+                if (q.includes("founder") || q.includes("ceo") || (q.includes("who") && q.includes("start"))) {
+                    responseHtml = `👑 <strong>Vignesh</strong> is the <strong>Founder &amp; CEO</strong> of Hyna Studio.<br><br>He drives the strategic vision and engineering standards at Hyna Studio.<br><br>"Leadership is not about control, it is about building people who can lead without you."<br><br>🎓 Anna University — B.E. Computer Science &amp; Engineering<br>🌐 <a href="https://vigneshvl-dev.github.io/PORTFOLIO/" target="_blank">Portfolio</a> &nbsp;|&nbsp; <a href="https://github.com/vigneshvl-dev" target="_blank">GitHub</a> &nbsp;|&nbsp; <a href="https://www.linkedin.com/in/vigneshvl-dev/" target="_blank">LinkedIn</a>`;
+
+                } else if (q.includes("cto") || (q.includes("chief") && q.includes("tech"))) {
+                    responseHtml = `⚙️ <strong>Dharshan</strong> is the <strong>Co-Founder &amp; Chief Technology Officer (CTO)</strong> at Hyna Studio.<br><br>He leads our systems architecture, cloud infrastructure, and technical execution.<br><br>"A co-founder in tech doesn't follow trends, he builds what will become the next standard."<br><br>🎓 Anna University — B.E. Computer Science &amp; Engineering<br>🌐 <a href="https://portholio-zeta.vercel.app/" target="_blank">Portfolio</a> &nbsp;|&nbsp; <a href="https://github.com/dharshan00814" target="_blank">GitHub</a> &nbsp;|&nbsp; <a href="https://www.linkedin.com/in/dharshan-jm" target="_blank">LinkedIn</a>`;
+
+                } else if (q.includes("coo") || (q.includes("chief") && q.includes("operat"))) {
+                    responseHtml = `🏢 <strong>Mohammad Zarif</strong> is the <strong>Chief Operating Officer (COO)</strong> at Hyna Studio.<br><br>He oversees business operations, client partnerships, and project scaling.<br><br>"Execution is not about speed alone, it is about consistency, structure, and discipline."<br><br>🎓 Anna University — B.E. Computer Science &amp; Engineering<br><a href="https://www.linkedin.com/in/muhamed-zarif-80860a37a" target="_blank">LinkedIn</a>`;
+
+                } else if (q.includes("cpo") || (q.includes("chief") && q.includes("product"))) {
+                    responseHtml = `📦 <strong>Asthamil</strong> is the <strong>Chief Product Officer (CPO) &amp; Director</strong> at Hyna Studio.<br><br>He directs the product roadmap strategy, user research, and functional design.<br><br>"Product thinking is not about features, it is about solving the right problem in the right way."<br><br>🎓 Anna University — B.E. Computer Science &amp; Engineering`;
+
+                } else if (q.includes("cdo") || (q.includes("chief") && q.includes("design")) || q.includes("design officer")) {
+                    responseHtml = `🎨 <strong>Tharun Krishna</strong> is the <strong>Chief Design Officer (CDO) &amp; Director</strong> at Hyna Studio.<br><br>He translates brand visions into premium user interfaces, styling guidelines, and interactive experiences.<br><br>"Good design is invisible, but its impact is impossible to ignore."<br><br>🎓 Anna University — B.E. Computer Science &amp; Engineering<br><a href="https://www.linkedin.com/in/tharun-krishna-347b123a0" target="_blank">LinkedIn</a>`;
+
+                } else if (q.includes("jashwin") || (q.includes("project") && q.includes("manag")) || q.includes("co-founder") || q.includes("cofounder")) {
+                    responseHtml = `📋 <strong>Jashwin</strong> is the <strong>Co-Founder &amp; Project Management Lead</strong> at Hyna Studio.<br><br>He ensures every project is aligned with stakeholder goals and delivered seamlessly.<br><br>"Deadlines don't fail because of time, they fail because alignment is missing."<br><br>🎓 Anna University — B.E. Computer Science &amp; Engineering<br><a href="https://github.com/jashwinj2008" target="_blank">GitHub</a> &nbsp;|&nbsp; <a href="https://www.linkedin.com/in/jashwin-j-16b06240a" target="_blank">LinkedIn</a>`;
+
+                } else if (q.includes("team") || q.includes("member") || q.includes("staff") || q.includes("people") || q.includes("who are") || q.includes("leadership")) {
+                    responseHtml = `👥 Meet the <strong>Hyna Studio Leadership Team</strong>:<br><br>
+<ul>
+  <li>👑 <strong>Vignesh</strong> — Founder &amp; CEO</li>
+  <li>📋 <strong>Jashwin</strong> — Co-Founder &amp; Project Management Lead</li>
+  <li>⚙️ <strong>Dharshan</strong> — Co-Founder &amp; CTO</li>
+  <li>📦 <strong>Asthamil</strong> — CPO &amp; Director</li>
+  <li>🎨 <strong>Tharun Krishna</strong> — CDO &amp; Director</li>
+  <li>🏢 <strong>Mohammad Zarif</strong> — COO</li>
+</ul><br>
+All team members are B.E. Computer Science graduates from <strong>Anna University</strong>.<br><br>Ask me about any specific team member for more details!`;
+
+                // ── ABOUT / COMPANY ──
+                } else if (q.includes("about") || q.includes("what is hyna") || q.includes("who is hyna") || q.includes("company") || q.includes("studio") || q.includes("what do you")) {
+                    responseHtml = `🏠 <strong>About Hyna Studio</strong><br><br>Hyna Studio is a <strong>student-led, full-spectrum digital studio</strong> that transforms bold ideas into impactful digital experiences.<br><br>We craft websites, apps, SaaS platforms, and brand identities for startups and scale-ups worldwide — from design to deployment.<br><br>📊 <strong>Key Stats:</strong><br><ul><li>🚀 1+ Projects Shipped</li><li>🎯 6 Core Disciplines</li><li>⭐ 98% Client Satisfaction</li><li>📅 6 Months of Studio Experience</li></ul><br>Our motto: <em>"Democratizing Entrepreneurship."</em><br><br>📧 Email: <strong>team.hynastudio@gmail.com</strong><br>💻 GitHub: <strong>github.com/teamhynastudio</strong>`;
+
+                // ── SERVICES ──
+                } else if (q.includes("service") || q.includes("offer") || q.includes("provide") || q.includes("help with") || q.includes("what can")) {
+                    responseHtml = `🛠️ <strong>Hyna Studio Services</strong><br><br>We are a full-spectrum digital studio offering:<br><ul><li>🖥️ <strong>Software &amp; SaaS</strong> — Custom software, APIs, MVPs, CRM/ERP/HRM</li><li>🌐 <strong>Web Development</strong> — React, Next.js, WordPress, Webflow</li><li>📱 <strong>Shopify &amp; Mobile</strong> — E-commerce &amp; iOS/Android apps</li><li>🎨 <strong>Design &amp; Marketing</strong> — UI/UX, branding, pitch decks, campaigns</li><li>🤖 <strong>AI &amp; Automation</strong> — AI agents, LLM integrations, workflow bots</li><li>☁️ <strong>Cloud &amp; Infrastructure</strong> — Docker, Kubernetes, CI/CD pipelines</li><li>🔄 <strong>Digital Transformation</strong> — Legacy modernisation, cloud migration</li><li>🎯 <strong>Strategy &amp; IT Consulting</strong> — Fractional CTO, architecture planning</li><li>🛠️ <strong>Managed Services &amp; Support</strong> — 24/7 monitoring, security, updates</li></ul><br>Select a category below or ask me about a specific service!`;
+
+                // ── SOFTWARE / SAAS ──
+                } else if (q.includes("software") || q.includes("saas") || q.includes("erp") || q.includes("crm") || q.includes("hrm") || q.includes("api") || q.includes("backend")) {
                     responseHtml = botResponses["Software & SaaS"];
-                } else if (lowercaseQuery.includes("web") || lowercaseQuery.includes("site") || lowercaseQuery.includes("wordpress") || lowercaseQuery.includes("webflow") || lowercaseQuery.includes("react") || lowercaseQuery.includes("next")) {
+
+                // ── WEB DEV ──
+                } else if (q.includes("web") || q.includes("website") || q.includes("wordpress") || q.includes("webflow") || q.includes("react") || q.includes("next.js") || q.includes("nextjs")) {
                     responseHtml = botResponses["Web Development"];
-                } else if (lowercaseQuery.includes("shopify") || lowercaseQuery.includes("mobile") || lowercaseQuery.includes("ios") || lowercaseQuery.includes("android") || lowercaseQuery.includes("app")) {
+
+                // ── SHOPIFY / MOBILE ──
+                } else if (q.includes("shopify") || q.includes("ecommerce") || q.includes("e-commerce") || q.includes("mobile") || q.includes("ios") || q.includes("android") || q.includes("flutter") || q.includes("react native")) {
                     responseHtml = botResponses["Shopify & Mobile"];
-                } else if (lowercaseQuery.includes("design") || lowercaseQuery.includes("logo") || lowercaseQuery.includes("ui") || lowercaseQuery.includes("ux") || lowercaseQuery.includes("brand") || lowercaseQuery.includes("marketing")) {
+
+                // ── DESIGN / MARKETING ──
+                } else if (q.includes("design") || q.includes("logo") || q.includes("ui") || q.includes("ux") || q.includes("brand") || q.includes("figma") || q.includes("marketing") || q.includes("pitch deck")) {
                     responseHtml = botResponses["Design & Marketing"];
-                } else if (lowercaseQuery.includes("ai") || lowercaseQuery.includes("agent") || lowercaseQuery.includes("automate") || lowercaseQuery.includes("bot") || lowercaseQuery.includes("chat")) {
+
+                // ── AI / AUTOMATION ──
+                } else if (q.includes("ai") || q.includes("artificial intelligence") || q.includes("machine learning") || q.includes("llm") || q.includes("automate") || q.includes("automation") || q.includes("agent") || q.includes("chatbot") || q.includes("gpt")) {
                     responseHtml = botResponses["Data, AI & Automation"];
-                } else if (lowercaseQuery.includes("cloud") || lowercaseQuery.includes("server") || lowercaseQuery.includes("aws") || lowercaseQuery.includes("kubernetes")) {
+
+                // ── CLOUD / INFRA ──
+                } else if (q.includes("cloud") || q.includes("server") || q.includes("aws") || q.includes("azure") || q.includes("gcp") || q.includes("kubernetes") || q.includes("docker") || q.includes("devops") || q.includes("ci/cd")) {
                     responseHtml = botResponses["Cloud & Infrastructure Services"];
-                } else if (lowercaseQuery.includes("digital") || lowercaseQuery.includes("transform") || lowercaseQuery.includes("modern")) {
+
+                // ── DIGITAL TRANSFORMATION ──
+                } else if (q.includes("digital transform") || q.includes("modernize") || q.includes("modernise") || q.includes("legacy") || q.includes("migrate") || q.includes("migration")) {
                     responseHtml = botResponses["Digital Transformation"];
-                } else if (lowercaseQuery.includes("price") || lowercaseQuery.includes("cost") || lowercaseQuery.includes("estimate") || lowercaseQuery.includes("budget") || lowercaseQuery.includes("how much")) {
-                    responseHtml = `Our engineering services are custom-tailored to the scale and scope of each project. We offer highly competitive rates for premium quality execution. 💸<br><br>Please contact us directly for a free estimate:<br><ul><li>Email: <strong>team.hynastudio@gmail.com</strong></li></ul><br>We will respond with a full scope outline and price estimation within 24 hours.<br><a href="mailto:team.hynastudio@gmail.com?subject=Project%20Price%20Estimate%20Request" class="aira-chat-action-btn">Request Custom Estimate</a>`;
-                } else if (lowercaseQuery.includes("contact") || lowercaseQuery.includes("email") || lowercaseQuery.includes("call") || lowercaseQuery.includes("phone")) {
-                    responseHtml = `We would love to speak with you! You can reach the Hyna Studio team through the following channels:<br><br><ul><li>Email: <strong>team.hynastudio@gmail.com</strong></li><li>GitHub: <strong>github.com/teamhynastudio</strong></li></ul><br>Or simply drop your contact details in this chat and we'll reach out to you directly!`;
+
+                // ── ENTERPRISE / PLATFORMS ──
+                } else if (q.includes("enterprise") || q.includes("platform") || q.includes("microservice") || q.includes("scalab")) {
+                    responseHtml = botResponses["Enterprise Platforms"];
+
+                // ── STRATEGY / CONSULTING ──
+                } else if (q.includes("consult") || q.includes("strategy") || q.includes("advisory") || q.includes("cto advisory") || q.includes("roadmap") || q.includes("architecture")) {
+                    responseHtml = botResponses["Strategy & IT Consulting"];
+
+                // ── MANAGED SERVICES / SUPPORT ──
+                } else if (q.includes("support") || q.includes("maintain") || q.includes("maintenance") || q.includes("managed") || q.includes("monitor") || q.includes("update") || q.includes("security patch")) {
+                    responseHtml = botResponses["Managed Services & Support"];
+
+                // ── PARTNERSHIP ──
+                } else if (q.includes("partner") || q.includes("collab") || q.includes("white-label") || q.includes("whitelabel") || q.includes("referral") || q.includes("joint venture")) {
+                    responseHtml = botResponses["Partnership Opportunities"];
+
+                // ── HYNIVA PRODUCTS ──
+                } else if (q.includes("hyniva") || q.includes("product demo") || q.includes("accelerator") || q.includes("boilerplate") || q.includes("saas boiler")) {
+                    responseHtml = botResponses["Hyniva Products & Solutions"];
+
+                // ── PROCESS / HOW IT WORKS ──
+                } else if (q.includes("process") || q.includes("how it works") || q.includes("how do you work") || q.includes("step") || q.includes("workflow") || q.includes("methodology")) {
+                    responseHtml = `🔄 <strong>Our Project Process</strong><br><br>We follow a structured 6-step approach to deliver high-quality solutions:<br><ol><li>🔍 <strong>Discovery</strong> — We learn about your business goals, users, and challenges.</li><li>📐 <strong>Planning</strong> — We scope the project, define the tech stack, and create a roadmap.</li><li>🎨 <strong>Design</strong> — High-fidelity UI/UX prototypes crafted in Figma.</li><li>💻 <strong>Development</strong> — Engineering your product with clean, scalable code.</li><li>🧪 <strong>Testing</strong> — QA across devices and browsers to ensure quality.</li><li>🚀 <strong>Deployment</strong> — Launch to production with CI/CD pipelines and monitoring.</li></ol><br>After launch, we offer ongoing <strong>Managed Services &amp; Support</strong> so you're never left alone.<br><br><a href="mailto:team.hynastudio@gmail.com?subject=Project%20Process%20Inquiry" class="aira-chat-action-btn">Start the Discovery Call</a>`;
+
+                // ── PRICING / COST ──
+                } else if (q.includes("price") || q.includes("pricing") || q.includes("cost") || q.includes("budget") || q.includes("estimate") || q.includes("how much") || q.includes("rate") || q.includes("fee")) {
+                    responseHtml = `💸 <strong>Pricing at Hyna Studio</strong><br><br>Our services are <strong>custom-tailored</strong> to the scope and scale of your project — so we don't publish fixed prices.<br><br>We offer highly competitive rates for premium-quality execution. Here's how to get a quote:<br><ul><li>📧 Email us: <strong>team.hynastudio@gmail.com</strong></li><li>⏱️ We respond within <strong>24 hours</strong> with a full scope outline and price estimate.</li></ul><br>Ready to get started?<br><a href="mailto:team.hynastudio@gmail.com?subject=Project%20Price%20Estimate%20Request" class="aira-chat-action-btn">Request Free Estimate</a>`;
+
+                // ── CONTACT / EMAIL / REACH ──
+                } else if (q.includes("contact") || q.includes("reach") || q.includes("email") || q.includes("get in touch") || q.includes("talk to") || q.includes("speak") || q.includes("phone") || q.includes("call")) {
+                    responseHtml = `📬 <strong>Contact Hyna Studio</strong><br><br>We'd love to hear from you!<br><ul><li>📧 Email: <strong>team.hynastudio@gmail.com</strong></li><li>💻 GitHub: <a href="https://github.com/teamhynastudio" target="_blank">github.com/teamhynastudio</a></li><li>🌐 Website: <strong>hynastudio.com</strong></li></ul><br>You can also use the <strong>Book a Call</strong> button in the top navigation to send us a project inquiry directly!<br><br>We typically reply within <strong>2 hours</strong> during business hours. 🚀`;
+
+                // ── FAQ: WHAT IS HYNA ──
+                } else if (q.includes("faq") || q.includes("frequently asked") || q.includes("question")) {
+                    responseHtml = `❓ <strong>Frequently Asked Questions</strong><br><br><strong>Q: What is Hyna Studio?</strong><br>A student-led tech startup designing websites, mobile apps, and digital solutions.<br><br><strong>Q: What services do you offer?</strong><br>Web &amp; app development, UI/UX, branding, SaaS, AI/automation, cloud, and consulting.<br><br><strong>Q: Who can work with you?</strong><br>Startups, small businesses, student orgs, educational institutions, and entrepreneurs.<br><br><strong>Q: How does the process work?</strong><br>Discovery → Planning → Design → Development → Testing → Deployment.<br><br><strong>Q: How do I contact you?</strong><br>Email: <strong>team.hynastudio@gmail.com</strong> or use the contact form on the website.`;
+
+                // ── STARTUP / WHO CAN WORK ──
+                } else if (q.includes("startup") || q.includes("small business") || q.includes("entrepreneur") || q.includes("student") || q.includes("who can")) {
+                    responseHtml = `🤝 <strong>Who Can Work with Hyna Studio?</strong><br><br>We collaborate with a wide range of clients:<br><ul><li>🚀 <strong>Startups</strong> — from idea to MVP to scale</li><li>🏢 <strong>Small &amp; medium businesses</strong> — digital transformation &amp; modernization</li><li>🎓 <strong>Student organizations</strong> — affordable tech solutions</li><li>🏫 <strong>Educational institutions</strong> — custom tools &amp; platforms</li><li>💡 <strong>Entrepreneurs</strong> — bring any idea to life</li></ul><br>No project is too small or too large for us! Let's talk.<br><a href="mailto:team.hynastudio@gmail.com?subject=Project%20Inquiry" class="aira-chat-action-btn">Start a Conversation</a>`;
+
+                // ── UNIVERSITY / COLLEGE / EDUCATION ──
+                } else if (q.includes("university") || q.includes("college") || q.includes("anna university") || q.includes("education") || q.includes("degree") || q.includes("student")) {
+                    responseHtml = `🎓 All members of the Hyna Studio team are students at <strong>Anna University</strong>, pursuing <strong>B.E. in Computer Science &amp; Engineering</strong>.<br><br>We are proud to be a <strong>student-led tech startup</strong>, bringing fresh perspectives and cutting-edge knowledge to every project.`;
+
+                // ── STATS / METRICS ──
+                } else if (q.includes("stat") || q.includes("project") || q.includes("satisfaction") || q.includes("experience") || q.includes("track record") || q.includes("how many")) {
+                    responseHtml = `📊 <strong>Hyna Studio by the Numbers</strong><br><br><ul><li>🚀 <strong>1+</strong> Projects Shipped</li><li>🎯 <strong>6</strong> Core Disciplines</li><li>⭐ <strong>98%</strong> Client Satisfaction</li><li>📅 <strong>6 months</strong> of Studio Experience</li></ul><br>We are a young, fast-moving studio with a strong commitment to quality and client success.`;
+
+                // ── TECHNOLOGIES / TECH STACK ──
+                } else if (q.includes("tech") || q.includes("stack") || q.includes("language") || q.includes("framework") || q.includes("tool") || q.includes("typescript") || q.includes("python") || q.includes("go ") || q.includes("node") || q.includes("postgres")) {
+                    responseHtml = `💻 <strong>Technologies We Use at Hyna Studio</strong><br><br><ul><li>🌐 <strong>Frontend:</strong> React, Next.js, TypeScript, Webflow, WordPress</li><li>⚙️ <strong>Backend:</strong> Node.js, Python, Go, Java, REST &amp; GraphQL APIs</li><li>📱 <strong>Mobile:</strong> React Native, Flutter (iOS &amp; Android)</li><li>🗄️ <strong>Databases:</strong> PostgreSQL, MongoDB, Supabase</li><li>☁️ <strong>Cloud:</strong> AWS, Azure, GCP, Docker, Kubernetes</li><li>🎨 <strong>Design:</strong> Figma, Adobe Suite</li><li>🤖 <strong>AI/ML:</strong> LLM integrations, custom AI agents, automation workflows</li></ul>`;
+
+                // ── TIMELINE / HOW LONG ──
+                } else if (q.includes("timeline") || q.includes("how long") || q.includes("duration") || q.includes("deadline") || q.includes("deliver") || q.includes("launch")) {
+                    responseHtml = `⏱️ <strong>Project Timelines</strong><br><br>Every project is unique, but here's a general guide:<br><ul><li>🏃 <strong>Landing pages / Small sites:</strong> 1–2 weeks</li><li>🌐 <strong>Full web apps / MVPs:</strong> 4–8 weeks</li><li>📱 <strong>Mobile apps:</strong> 6–12 weeks</li><li>🏢 <strong>Enterprise platforms / SaaS:</strong> 3–6 months</li></ul><br>Our process (Discovery → Design → Development → Testing → Deployment) ensures quality at every stage.<br><br>Contact us for a detailed project timeline estimate!<br><a href="mailto:team.hynastudio@gmail.com?subject=Project%20Timeline%20Inquiry" class="aira-chat-action-btn">Get Timeline Estimate</a>`;
+
+                // ── HOW TO START / GET STARTED ──
+                } else if (q.includes("start") || q.includes("begin") || q.includes("get started") || q.includes("how do i") || q.includes("next step") || q.includes("onboard")) {
+                    responseHtml = `🚀 <strong>Getting Started with Hyna Studio</strong><br><br>It's simple! Here's how:<br><ol><li>📧 <strong>Email us</strong> at team.hynastudio@gmail.com with your project idea</li><li>📞 <strong>Schedule a discovery call</strong> — we'll discuss your goals &amp; requirements</li><li>📐 <strong>Receive a proposal</strong> — scope, timeline &amp; pricing within 24 hours</li><li>✅ <strong>Approve &amp; kick off</strong> — we start building right away!</li></ol><br><a href="mailto:team.hynastudio@gmail.com?subject=Project%20Inquiry%20-%20Hyna%20Studio" class="aira-chat-action-btn">Start Your Project →</a>`;
+
+                // ── SOCIAL / GITHUB / LINKEDIN ──
+                } else if (q.includes("github") || q.includes("linkedin") || q.includes("social") || q.includes("portfolio") || q.includes("link")) {
+                    responseHtml = `🔗 <strong>Find Us Online</strong><br><br><ul><li>💻 <strong>GitHub:</strong> <a href="https://github.com/teamhynastudio" target="_blank">github.com/teamhynastudio</a></li><li>📧 <strong>Email:</strong> team.hynastudio@gmail.com</li></ul><br>Team member profiles:<br><ul><li>🌐 <a href="https://vigneshvl-dev.github.io/PORTFOLIO/" target="_blank">Vignesh (Portfolio)</a></li><li>🌐 <a href="https://portholio-zeta.vercel.app/" target="_blank">Dharshan (Portfolio)</a></li><li>👔 <a href="https://www.linkedin.com/in/vigneshvl-dev/" target="_blank">Vignesh (LinkedIn)</a></li><li>👔 <a href="https://www.linkedin.com/in/dharshan-jm" target="_blank">Dharshan (LinkedIn)</a></li><li>👔 <a href="https://www.linkedin.com/in/jashwin-j-16b06240a" target="_blank">Jashwin (LinkedIn)</a></li><li>👔 <a href="https://www.linkedin.com/in/tharun-krishna-347b123a0" target="_blank">Tharun Krishna (LinkedIn)</a></li><li>👔 <a href="https://www.linkedin.com/in/muhamed-zarif-80860a37a" target="_blank">Mohammad Zarif (LinkedIn)</a></li></ul>`;
+
+                // ── GREETING / HELLO ──
+                } else if (q.includes("hi") || q.includes("hello") || q.includes("hey") || q.includes("good morning") || q.includes("good afternoon") || q.includes("good evening") || q === "hyna") {
+                    responseHtml = `👋 Hello! I'm <strong>Hyna</strong>, your intelligent business advisor at Hyna Studio.<br><br>I can help you with:<br><ul><li>🏠 <strong>About Hyna Studio</strong> — company info, team, stats</li><li>🛠️ <strong>Services</strong> — web, app, AI, cloud, design &amp; more</li><li>👥 <strong>Team</strong> — founders, roles, and profiles</li><li>💰 <strong>Pricing &amp; timelines</strong></li><li>📬 <strong>How to get started</strong></li></ul><br>What would you like to know? 😊`;
+
+                // ── THANK YOU ──
+                } else if (q.includes("thank") || q.includes("thanks") || q.includes("great") || q.includes("awesome") || q.includes("perfect")) {
+                    responseHtml = `😊 You're welcome! We're always happy to help.<br><br>Is there anything else you'd like to know about Hyna Studio? Feel free to ask about our team, services, pricing, or how to get started!<br><br>📧 Or reach us anytime at <strong>team.hynastudio@gmail.com</strong>`;
+
                 } else {
-                    responseHtml = `I'm on it! I've processed your message: "${query}". Let me get one of our lead engineers or product directors to get back to you on this. 🚀<br><br>In the meantime, feel free to choose one of our primary service areas below, or send us a direct email at <strong>team.hynastudio@gmail.com</strong>.`;
+                    responseHtml = `🤔 I didn't quite catch that, but I'm here to help! Here are some things you can ask me:<br><ul><li>👤 "Who is the CEO / founder?"</li><li>🛠️ "What services do you offer?"</li><li>💰 "How much does it cost?"</li><li>🔄 "How does your process work?"</li><li>📬 "How do I contact Hyna Studio?"</li><li>👥 "Tell me about the team"</li></ul><br>Or email us directly at <strong>team.hynastudio@gmail.com</strong> — we reply within 2 hours! 🚀`;
                 }
 
                 const choicesContainer = document.getElementById("airaChoicesContainer");
