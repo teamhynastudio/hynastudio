@@ -8,32 +8,20 @@
         if (window.location.protocol === 'file:') {
             document.addEventListener('DOMContentLoaded', () => {
                 const warningDiv = document.createElement('div');
-                warningDiv.style.background = '#FEF2F2';
-                warningDiv.style.borderBottom = '1px solid #FCA5A5';
-                warningDiv.style.color = '#991B1B';
-                warningDiv.style.padding = '0.75rem 1.5rem';
-                warningDiv.style.textAlign = 'center';
-                warningDiv.style.fontWeight = '600';
-                warningDiv.style.fontSize = '0.85rem';
-                warningDiv.style.fontFamily = 'system-ui, sans-serif';
-                warningDiv.style.position = 'sticky';
-                warningDiv.style.top = '0';
-                warningDiv.style.zIndex = '9999';
-                warningDiv.innerHTML = '⚠️ Browser blocks database and script features when opening local files directly. Please run a local development server (e.g. VS Code Live Server or python -m http.server) to test signing in and form redirects.';
+                warningDiv.style.cssText = 'background:#FEF2F2;border-bottom:1px solid #FCA5A5;color:#991B1B;padding:0.75rem 1.5rem;text-align:center;font-weight:600;font-size:0.85rem;font-family:system-ui,sans-serif;position:sticky;top:0;z-index:9999;';
+                warningDiv.innerHTML = '⚠️ Browser blocks database features when opening local files. Run a local server (VS Code Live Server or python -m http.server) to test form submissions.';
                 document.body.prepend(warningDiv);
             });
         }
     </script>
     <title>Start Your Project — Hyna Studio</title>
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <meta name="description"
-        content="Tell us about your project. Hyna Studio builds websites, apps, SaaS platforms, and cloud solutions for startups and enterprises.">
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta name="description" content="Tell us about your project. Hyna Studio builds websites, apps, SaaS platforms, and cloud solutions for startups and enterprises.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -45,6 +33,7 @@
             --muted: #6B7280;
             --font-body: 'Inter', sans-serif;
             --font-display: 'Syne', sans-serif;
+            --font-sign: 'Caveat', cursive;
         }
 
         html { scroll-behavior: smooth; }
@@ -59,312 +48,176 @@
 
         /* ── NAV ── */
         nav {
-            position: fixed;
-            top: 1.5rem;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 2rem;
-            background: rgba(10, 10, 15, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 50px;
-            padding: 0.75rem 1.5rem;
-            width: min(900px, calc(100% - 3rem));
+            position: fixed; top: 1.5rem; left: 50%; transform: translateX(-50%);
+            z-index: 200; display: flex; align-items: center; justify-content: space-between;
+            gap: 2rem; background: rgba(10, 10, 15, 0.85); backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 50px; padding: 0.75rem 1.5rem; width: min(900px, calc(100% - 3rem));
         }
-
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            text-decoration: none;
-        }
-
+        .nav-logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
         .logo-img { height: 28px; width: 28px; object-fit: contain; }
-
         .logo-text { display: flex; flex-direction: column; }
-
-        .logo-main {
-            font-family: var(--font-display);
-            font-size: 0.95rem;
-            font-weight: 800;
-            color: var(--paper);
-            line-height: 1;
-        }
-
-        .logo-highlight { color: var(--accent2); }
-
-        .logo-sub {
-            font-size: 0.55rem;
-            color: rgba(247, 246, 242, 0.4);
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            margin-top: 1px;
-        }
-
-        .nav-back {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            text-decoration: none;
-            color: rgba(247, 246, 242, 0.65);
-            font-size: 0.88rem;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-
+        .logo-main { font-family: var(--font-display); font-size: 0.95rem; font-weight: 800; color: var(--paper); line-height: 1; }
+        .logo-sub { font-size: 0.55rem; color: rgba(247,246,242,0.4); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 1px; }
+        .nav-back { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: rgba(247,246,242,0.65); font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
         .nav-back:hover { color: var(--paper); }
 
-        /* ── HERO BANNER ── */
-        .page-hero {
-            padding: 10rem 2rem 5rem;
-            text-align: center;
-            position: relative;
+        /* ── HERO ── */
+        .page-hero { padding: 10rem 2rem 5rem; text-align: center; position: relative; overflow: hidden; }
+        .page-hero::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(79,63,240,0.25) 0%, transparent 70%), radial-gradient(ellipse 40% 30% at 80% 60%, rgba(0,217,163,0.12) 0%, transparent 60%); pointer-events:none; }
+        .section-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent2); margin-bottom: 1rem; }
+        .page-hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem,5vw,3.8rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.2rem; }
+        .page-hero h1 em { font-style:normal; background: linear-gradient(135deg, var(--accent2), #7C3AED); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+        .page-hero p { font-size: 1.05rem; color: rgba(247,246,242,0.6); max-width: 52ch; margin: 0 auto; line-height: 1.7; }
+
+        /* ── STEP INDICATOR ── */
+        .step-indicator { display: flex; align-items: center; justify-content: center; gap: 0; max-width: 360px; margin: 0 auto 3rem; }
+        .step-dot { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; border: 2px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.05); transition: all 0.3s; flex-shrink: 0; }
+        .step-dot.active { border-color: var(--accent); color: #fff; background: var(--accent); box-shadow: 0 0 16px rgba(79,63,240,0.5); }
+        .step-dot.done { border-color: var(--accent2); color: #fff; background: var(--accent2); }
+        .step-line { flex: 1; height: 2px; background: rgba(255,255,255,0.1); transition: background 0.3s; }
+        .step-line.done { background: var(--accent2); }
+
+        /* ── FORM WRAPPER ── */
+        .form-wrapper { max-width: 800px; margin: 0 auto; padding: 0 2rem 6rem; }
+        .form-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 3rem; backdrop-filter: blur(12px); }
+        .form-section-title { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--accent2); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem; }
+        .form-group { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.25rem; }
+        label { font-size: 0.82rem; font-weight: 600; color: rgba(247,246,242,0.7); letter-spacing: 0.03em; }
+        label .req { color: var(--accent2); margin-left: 2px; }
+        input, select, textarea { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.8rem 1rem; font-family: var(--font-body); font-size: 0.9rem; color: var(--paper); outline: none; transition: border-color 0.2s, background 0.2s, box-shadow 0.2s; }
+        input::placeholder, textarea::placeholder { color: rgba(247,246,242,0.25); }
+        select option { background: #1a1a2e; color: var(--paper); }
+        input:focus, select:focus, textarea:focus { border-color: var(--accent); background: rgba(79,63,240,0.06); box-shadow: 0 0 0 3px rgba(79,63,240,0.15); }
+        textarea { resize: vertical; min-height: 130px; }
+        .form-divider { height: 1px; background: rgba(255,255,255,0.06); margin: 2rem 0; }
+
+        /* ── BUTTONS ── */
+        .btn-submit {
+            width: 100%; padding: 1rem 2rem; background: linear-gradient(135deg, var(--accent), #7C3AED);
+            color: #fff; border: none; border-radius: 12px; font-family: var(--font-display);
+            font-size: 1rem; font-weight: 700; cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+            box-shadow: 0 4px 24px rgba(79,63,240,0.4);
+            display: flex; align-items: center; justify-content: center; gap: 0.6rem; margin-top: 2rem;
+        }
+        .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(79,63,240,0.5); }
+        .btn-submit:active { transform: translateY(0); }
+        .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+        .btn-back { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.7); padding: 0.75rem 1.5rem; border-radius: 10px; font-family: var(--font-body); font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+        .btn-back:hover { border-color: rgba(255,255,255,0.5); color: #fff; background: rgba(255,255,255,0.05); }
+
+        /* ── DOCUMENT PREVIEW OVERLAY ── */
+        #step-document {
+            display: none;
+            position: fixed; inset: 0; z-index: 300;
+            background: rgba(5, 5, 10, 0.92);
+            backdrop-filter: blur(12px);
+            overflow-y: auto;
+            padding: 2rem 1rem 4rem;
+        }
+        #step-document.visible { display: block; animation: fadeInDoc 0.4s ease; }
+        @keyframes fadeInDoc { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
+
+        .doc-actions {
+            display: flex; align-items: center; justify-content: space-between;
+            max-width: 820px; margin: 0 auto 1.5rem; flex-wrap: wrap; gap: 1rem;
+        }
+        .doc-actions-right { display: flex; gap: 1rem; align-items: center; }
+        .doc-title-tag { font-size: 0.8rem; color: rgba(255,255,255,0.5); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+
+        /* A4-style document */
+        .a4-doc {
+            background: #ffffff; color: #0a0a0f;
+            max-width: 820px; margin: 0 auto;
+            border-radius: 4px;
+            box-shadow: 0 32px 80px rgba(0,0,0,0.6);
             overflow: hidden;
         }
+        .a4-page { padding: 3.5rem 4rem; border-bottom: 1px solid #e5e7eb; }
+        .a4-page:last-child { border-bottom: none; }
 
-        .page-hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(ellipse 60% 50% at 50% 0%, rgba(79, 63, 240, 0.25) 0%, transparent 70%),
-                radial-gradient(ellipse 40% 30% at 80% 60%, rgba(0, 217, 163, 0.12) 0%, transparent 60%);
-            pointer-events: none;
-        }
+        /* Doc Header */
+        .doc-header { display: flex; align-items: center; justify-content: space-between; padding-bottom: 1.5rem; border-bottom: 2px solid #e5e7eb; margin-bottom: 2.5rem; }
+        .doc-brand { display: flex; align-items: center; gap: 0.75rem; }
+        .doc-brand img { height: 40px; width: 40px; object-fit: contain; }
+        .doc-brand-text { display: flex; flex-direction: column; }
+        .doc-brand-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 800; color: #0a0a0f; }
+        .doc-brand-sub { font-size: 0.6rem; color: #6b7280; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 2px; }
+        .doc-date-badge { font-size: 0.72rem; color: #6b7280; font-weight: 600; text-align: right; }
 
-        .page-hero .section-label {
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--accent2);
-            margin-bottom: 1rem;
-        }
+        .doc-title { font-family: var(--font-display); font-size: 2.2rem; font-weight: 800; color: #0a0a0f; margin-bottom: 0.4rem; }
+        .doc-title span { color: var(--accent); }
+        .doc-subtitle { font-size: 0.85rem; color: #6b7280; font-style: italic; margin-bottom: 2.5rem; }
 
-        .page-hero h1 {
-            font-family: var(--font-display);
-            font-size: clamp(2.2rem, 5vw, 3.8rem);
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            line-height: 1.1;
-            margin-bottom: 1.2rem;
-        }
+        /* Doc Sections */
+        .doc-section-heading { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.25rem; padding-bottom: 0.5rem; border-bottom: 1.5px solid #e5e7eb; }
+        .doc-field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 2rem; margin-bottom: 2rem; }
+        .doc-field { display: flex; flex-direction: column; gap: 0.25rem; }
+        .doc-field-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #9ca3af; }
+        .doc-field-value { font-size: 0.9rem; font-weight: 600; color: #0a0a0f; padding: 0.6rem 0; border-bottom: 1.5px solid #e5e7eb; min-height: 2.5rem; line-height: 1.4; }
+        .doc-field-value.full { grid-column: 1 / -1; }
+        .doc-field.full { grid-column: 1 / -1; }
 
-        .page-hero h1 em {
-            font-style: normal;
-            background: linear-gradient(135deg, var(--accent2), #7C3AED);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+        /* Terms */
+        .doc-terms-block { margin-bottom: 1.5rem; }
+        .doc-terms-block h3 { font-size: 0.88rem; font-weight: 700; color: #0a0a0f; margin-bottom: 0.5rem; }
+        .doc-terms-block p { font-size: 0.82rem; color: #374151; line-height: 1.75; text-align: justify; }
 
-        .page-hero p {
-            font-size: 1.05rem;
-            color: rgba(247, 246, 242, 0.6);
-            max-width: 52ch;
-            margin: 0 auto;
-            line-height: 1.7;
-        }
+        /* Signatures */
+        .doc-sigs-grid { display: grid; grid-template-columns: 1fr 1px 1fr 1px 1fr; gap: 0; margin-top: 2rem; }
+        .doc-sig-divider { background: #e5e7eb; }
+        .doc-sig { padding: 0 2rem; display: flex; flex-direction: column; align-items: center; }
+        .doc-sig:first-child { padding-left: 0; }
+        .doc-sig:last-child { padding-right: 0; }
+        .doc-sig-role { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #9ca3af; margin-bottom: 0.75rem; text-align: center; }
+        .doc-sig-name { font-family: var(--font-sign); font-size: 2rem; font-weight: 700; color: #1e40af; line-height: 1.1; text-align: center; min-height: 3rem; display: flex; align-items: center; }
+        .doc-sig-line { width: 100%; height: 1px; background: #9ca3af; margin-top: 0.5rem; }
+        .doc-sig-print { font-size: 0.7rem; color: #6b7280; margin-top: 0.3rem; text-align: center; }
 
-        /* ── FORM LAYOUT ── */
-        .form-wrapper {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 2rem 6rem;
-        }
+        /* Doc Footer */
+        .doc-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 1.5rem; border-top: 1px solid #e5e7eb; margin-top: 2rem; }
+        .doc-footer-brand { font-size: 0.7rem; color: #9ca3af; font-weight: 600; }
+        .doc-footer-page { font-size: 0.7rem; color: #9ca3af; }
 
-        .form-card {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 24px;
-            padding: 3rem;
-            backdrop-filter: blur(12px);
-        }
+        /* Confirm button row */
+        .doc-confirm-row { max-width: 820px; margin: 2rem auto 0; display: flex; gap: 1rem; justify-content: flex-end; }
+        .btn-confirm { padding: 1rem 2.5rem; background: linear-gradient(135deg, #00D9A3, #059669); color: #fff; border: none; border-radius: 12px; font-family: var(--font-display); font-size: 1rem; font-weight: 700; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(0,217,163,0.4); display: flex; align-items: center; gap: 0.5rem; }
+        .btn-confirm:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,217,163,0.5); }
+        .btn-confirm:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
-        .form-section-title {
-            font-family: var(--font-display);
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--accent2);
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.75rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.25rem;
-            margin-bottom: 1.25rem;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            margin-bottom: 1.25rem;
-        }
-
-        .form-group.full { grid-column: 1 / -1; }
-
-        label {
-            font-size: 0.82rem;
-            font-weight: 600;
-            color: rgba(247, 246, 242, 0.7);
-            letter-spacing: 0.03em;
-        }
-
-        label .req { color: var(--accent2); margin-left: 2px; }
-
-        input, select, textarea {
-            width: 100%;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 0.8rem 1rem;
-            font-family: var(--font-body);
-            font-size: 0.9rem;
-            color: var(--paper);
-            outline: none;
-            transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
-        }
-
-        input::placeholder, textarea::placeholder {
-            color: rgba(247, 246, 242, 0.25);
-        }
-
-        select option { background: #1a1a2e; color: var(--paper); }
-
-        input:focus, select:focus, textarea:focus {
-            border-color: var(--accent);
-            background: rgba(79, 63, 240, 0.06);
-            box-shadow: 0 0 0 3px rgba(79, 63, 240, 0.15);
-        }
-
-        textarea { resize: vertical; min-height: 130px; }
-
-        /* ── CHECKBOX GROUP ── */
-        .checkbox-group {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 0.75rem;
-            margin-top: 0.25rem;
-        }
-
-        .check-item {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            cursor: pointer;
-            padding: 0.7rem 1rem;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 10px;
-            transition: all 0.2s;
-            font-size: 0.85rem;
-            color: rgba(247, 246, 242, 0.75);
-        }
-
-        .check-item:hover {
-            border-color: rgba(79, 63, 240, 0.4);
-            background: rgba(79, 63, 240, 0.06);
-            color: var(--paper);
-        }
-
-        .check-item input[type="checkbox"] {
-            width: 16px;
-            height: 16px;
-            accent-color: var(--accent);
-            border-radius: 4px;
-            flex-shrink: 0;
-            padding: 0;
-            margin: 0;
-            cursor: pointer;
-        }
-
-        .check-item.selected {
-            border-color: var(--accent);
-            background: rgba(79, 63, 240, 0.12);
-            color: var(--paper);
-        }
-
-        /* ── DIVIDER ── */
-        .form-divider {
-            height: 1px;
-            background: rgba(255, 255, 255, 0.06);
-            margin: 2rem 0;
-        }
-
-        /* ── SUBMIT BUTTON ── */
-        .btn-submit {
-            width: 100%;
-            padding: 1rem 2rem;
-            background: linear-gradient(135deg, var(--accent), #7C3AED);
-            color: #fff;
-            border: none;
-            border-radius: 12px;
-            font-family: var(--font-display);
-            font-size: 1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
-            box-shadow: 0 4px 24px rgba(79, 63, 240, 0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.6rem;
-            margin-top: 2rem;
-        }
-
-        .btn-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 32px rgba(79, 63, 240, 0.5);
-        }
-
-        .btn-submit:active { transform: translateY(0); }
-
-        /* ── SUCCESS STATE ── */
-        .success-banner {
+        /* ── THANK YOU SCREEN ── */
+        #step-thankyou {
             display: none;
-            text-align: center;
-            padding: 3rem 2rem;
-            background: rgba(0, 217, 163, 0.06);
-            border: 1px solid rgba(0, 217, 163, 0.2);
-            border-radius: 20px;
-            margin-top: 2rem;
+            position: fixed; inset: 0; z-index: 400;
+            background: var(--ink);
+            flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; padding: 2rem;
         }
-
-        .success-banner .success-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .success-banner h3 {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-            color: var(--accent2);
-        }
-
-        .success-banner p {
-            color: rgba(247, 246, 242, 0.65);
-            font-size: 0.95rem;
-        }
+        #step-thankyou.visible { display: flex; animation: fadeInDoc 0.6s ease; }
+        .ty-icon { font-size: 5rem; margin-bottom: 1.5rem; animation: bounceIn 0.8s cubic-bezier(0.36, 0.07, 0.19, 0.97); }
+        @keyframes bounceIn { 0%{transform:scale(0)} 60%{transform:scale(1.2)} 80%{transform:scale(0.9)} 100%{transform:scale(1)} }
+        .ty-title { font-family: var(--font-display); font-size: clamp(2rem,5vw,3.5rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 1rem; background: linear-gradient(135deg, var(--accent2), #7C3AED); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+        .ty-sub { font-size: 1.1rem; color: rgba(247,246,242,0.65); max-width: 48ch; line-height: 1.7; margin-bottom: 0.75rem; }
+        .ty-detail { font-size: 0.85rem; color: rgba(247,246,242,0.4); margin-bottom: 2.5rem; }
+        .ty-actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+        .btn-home { padding: 0.85rem 2rem; background: var(--accent); color: #fff; border: none; border-radius: 10px; font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; cursor: pointer; text-decoration: none; transition: all 0.2s; }
+        .btn-home:hover { background: #3d2fd4; transform: translateY(-2px); }
+        .ty-confetti { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
 
         /* ── RESPONSIVE ── */
-        @media (max-width: 600px) {
-            nav { top: 1rem; padding: 0.65rem 1.2rem; }
-            .form-card { padding: 1.75rem 1.25rem; }
+        @media (max-width: 700px) {
             .form-grid { grid-template-columns: 1fr; }
-            .checkbox-group { grid-template-columns: 1fr 1fr; }
+            .doc-field-grid { grid-template-columns: 1fr; }
+            .a4-page { padding: 2rem 1.5rem; }
+            .doc-sigs-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .doc-sig-divider { display: none; }
+            .doc-sig { padding: 0; }
+            nav { top: 1rem; padding: 0.65rem 1.2rem; }
+            .doc-actions { flex-direction: column; }
+            .doc-confirm-row { flex-direction: column; }
         }
     </style>
 </head>
@@ -374,16 +227,14 @@
     <!-- NAV -->
     <nav>
         <a href="index.html" class="nav-logo">
-            <img src="https://i.postimg.cc/Pfwp9w25/Whats-App-Image-2026-06-11-at-2-05-50-PM-removebg-preview-(1).png" class="logo-img" alt="Hyna Studio Logo">
+            <img src="logo.png" class="logo-img" alt="Hyna Studio Logo">
             <div class="logo-text">
                 <span class="logo-main">Hyna Studio</span>
                 <span class="logo-sub">Democratizing Entrepreneurship</span>
             </div>
         </a>
         <div style="display: flex; align-items: center; gap: 1.5rem;">
-            <a href="index.html" class="nav-back">
-                ← Back to Home
-            </a>
+            <a href="index.html" class="nav-back">← Back to Home</a>
         </div>
     </nav>
 
@@ -394,12 +245,22 @@
         <p>Tell us what you're building. We'll get back to you within 24 hours with a plan tailored to your needs.</p>
     </section>
 
-    <!-- FORM -->
-    <div class="form-wrapper">
+    <!-- STEP 1: FORM -->
+    <div class="form-wrapper" id="step-form">
+
+        <!-- Step Indicator -->
+        <div class="step-indicator" id="step-indicator">
+            <div class="step-dot active" id="dot-1">1</div>
+            <div class="step-line" id="line-1"></div>
+            <div class="step-dot" id="dot-2">2</div>
+            <div class="step-line" id="line-2"></div>
+            <div class="step-dot" id="dot-3">✓</div>
+        </div>
+
         <div class="form-card">
             <form id="project-form" novalidate>
 
-                <!-- Contact Info -->
+                <!-- 01 Contact Info -->
                 <div class="form-section-title">01 — Your Details</div>
                 <div class="form-grid">
                     <div class="form-group">
@@ -422,7 +283,7 @@
 
                 <div class="form-divider"></div>
 
-                <!-- Project Info -->
+                <!-- 02 Project Info -->
                 <div class="form-section-title">02 — About Your Project</div>
                 <div class="form-grid">
                     <div class="form-group">
@@ -434,10 +295,10 @@
                             <option>Mobile App (iOS / Android)</option>
                             <option>SaaS Platform</option>
                             <option>UI / UX Design</option>
-                            <option>Cloud & DevOps</option>
+                            <option>Cloud &amp; DevOps</option>
                             <option>Data Platform Engineering</option>
                             <option>Solution Architecture</option>
-                            <option>Cloud & IaC</option>
+                            <option>Cloud &amp; IaC</option>
                             <option>AI / ML Integration</option>
                             <option>Other</option>
                         </select>
@@ -450,7 +311,6 @@
                             <option>Under ₹10,000</option>
                             <option>More than ₹15,000</option>
                             <option>More than ₹25,000</option>
-                           
                         </select>
                     </div>
                     <div class="form-group">
@@ -461,7 +321,6 @@
                             <option>1 – 2 months</option>
                             <option>3 – 6 months</option>
                             <option>6+ months</option>
-                            
                         </select>
                     </div>
                     <div class="form-group">
@@ -475,9 +334,8 @@
                         </select>
                     </div>
                 </div>
-            </div>
 
-                <div class="form-group" style="margin-top:1.25rem;">
+                <div class="form-group" style="margin-top:0.5rem;">
                     <label for="description">Project Description <span class="req">*</span></label>
                     <textarea id="description" name="project_description" rows="5"
                         placeholder="Describe your project, goals, target audience, any references you like…" required></textarea>
@@ -496,105 +354,298 @@
                     </select>
                 </div>
 
-                <button type="submit" class="btn-submit" id="submit-btn">
-                    Send Project Brief
-                    <span>→</span>
+                <button type="button" class="btn-submit" id="preview-btn">
+                    Preview Your Brief &nbsp;→
                 </button>
             </form>
-
-            <!-- Success -->
-            <div class="success-banner" id="success-banner">
-                <div class="success-icon">🎉</div>
-                <h3>We've received your brief!</h3>
-                <p>Our team will review your project and get back to you within 24 hours.<br>Check your inbox for a
-                    confirmation.</p>
-            </div>
         </div>
     </div>
+
+    <!-- STEP 2: DOCUMENT PREVIEW -->
+    <div id="step-document">
+
+        <div class="doc-actions">
+            <span class="doc-title-tag">📄 Project Initiation Brief — Review &amp; Confirm</span>
+            <div class="doc-actions-right">
+                <button class="btn-back" id="back-to-form-btn">← Edit Details</button>
+            </div>
+        </div>
+
+        <!-- PAGE 1 -->
+        <div class="a4-doc">
+            <div class="a4-page">
+
+                <!-- Header -->
+                <div class="doc-header">
+                    <div class="doc-brand">
+                        <img src="logo.png" alt="Hyna Studio Logo">
+                        <div class="doc-brand-text">
+                            <span class="doc-brand-name">Hyna Studio</span>
+                            <span class="doc-brand-sub">Democratizing Entrepreneurship</span>
+                        </div>
+                    </div>
+                    <div class="doc-date-badge">
+                        <div id="doc-date" style="font-weight:700;color:#0a0a0f;font-size:0.82rem;"></div>
+                        <div style="margin-top:2px;">Project Initiation Brief</div>
+                    </div>
+                </div>
+
+                <!-- Title -->
+                <div class="doc-title">Start Your <span>Project</span></div>
+                <div class="doc-subtitle">Project Initiation Brief, Mutual Terms of Engagement, and Authorized Sign-off Record.</div>
+
+                <!-- Section 01 -->
+                <div class="doc-section-heading">01 — Your Details</div>
+                <div class="doc-field-grid">
+                    <div class="doc-field">
+                        <div class="doc-field-label">Full Name *</div>
+                        <div class="doc-field-value" id="doc-name"></div>
+                    </div>
+                    <div class="doc-field">
+                        <div class="doc-field-label">Email Address *</div>
+                        <div class="doc-field-value" id="doc-email"></div>
+                    </div>
+                    <div class="doc-field">
+                        <div class="doc-field-label">Phone Number</div>
+                        <div class="doc-field-value" id="doc-phone"></div>
+                    </div>
+                    <div class="doc-field">
+                        <div class="doc-field-label">Company / Startup Name</div>
+                        <div class="doc-field-value" id="doc-company"></div>
+                    </div>
+                </div>
+
+                <!-- Section 02 -->
+                <div class="doc-section-heading">02 — About Your Project</div>
+                <div class="doc-field-grid">
+                    <div class="doc-field">
+                        <div class="doc-field-label">Type of Project *</div>
+                        <div class="doc-field-value" id="doc-type"></div>
+                    </div>
+                    <div class="doc-field">
+                        <div class="doc-field-label">Estimated Budget</div>
+                        <div class="doc-field-value" id="doc-budget"></div>
+                    </div>
+                    <div class="doc-field">
+                        <div class="doc-field-label">Desired Timeline</div>
+                        <div class="doc-field-value" id="doc-timeline"></div>
+                    </div>
+                    <div class="doc-field">
+                        <div class="doc-field-label">Current Stage</div>
+                        <div class="doc-field-value" id="doc-stage"></div>
+                    </div>
+                    <div class="doc-field full">
+                        <div class="doc-field-label">Project Description *</div>
+                        <div class="doc-field-value" id="doc-description" style="white-space:pre-wrap;min-height:5rem;"></div>
+                    </div>
+                    <div class="doc-field">
+                        <div class="doc-field-label">How Did You Hear About Us?</div>
+                        <div class="doc-field-value" id="doc-referral"></div>
+                    </div>
+                </div>
+
+                <!-- Section 03 -->
+                <div class="doc-section-heading">03 — Terms &amp; Policies</div>
+                <div class="doc-terms-block">
+                    <h3>1. Scope of Work &amp; Deliverables</h3>
+                    <p>Hyna Studio agrees to perform the services detailed in Section 02. Any modifications, feature additions, or structural changes to the project scope after signing will require a written and mutually approved Change Order.</p>
+                </div>
+
+                <div class="doc-footer">
+                    <span class="doc-footer-brand">Hyna Studio — Democratizing Entrepreneurship</span>
+                    <span class="doc-footer-page">Page 1 of 2</span>
+                </div>
+            </div>
+
+            <!-- PAGE 2 -->
+            <div class="a4-page">
+
+                <div class="doc-terms-block">
+                    <h3>2. Payment Terms</h3>
+                    <p>The client agrees to pay the total estimated budget structured around specific deliverables. Work will commence execution immediately upon the receipt of a 25% initial non-refundable project deposit.</p>
+                </div>
+
+                <div class="doc-terms-block">
+                    <h3>3. Intellectual Property (IP)</h3>
+                    <p>Upon final payment and successful milestone completion, all custom intellectual property rights, application source code, and designed assets will be fully transferred to the Client. Hyna Studio retains standard rights to showcase screenshots in architectural portfolios.</p>
+                </div>
+
+                <div class="doc-terms-block">
+                    <h3>4. Confidentiality &amp; Non-Disclosure</h3>
+                    <p>Both parties agree to hold all confidential metrics, software systems, and proprietary business insights shared during this engagement in strict professional confidence. This obligation survives any project termination lifecycle.</p>
+                </div>
+
+                <!-- Signatures -->
+                <div class="doc-section-heading" style="margin-top:2.5rem;">Signatures &amp; Approvals</div>
+                <div class="doc-sigs-grid">
+                    <div class="doc-sig">
+                        <div class="doc-sig-role">CEO</div>
+                        <div class="doc-sig-name">Vignesh</div>
+                        <div class="doc-sig-line"></div>
+                        <div class="doc-sig-print">Vignesh — Chief Executive Officer</div>
+                    </div>
+                    <div class="doc-sig-divider"></div>
+                    <div class="doc-sig">
+                        <div class="doc-sig-role">PML</div>
+                        <div class="doc-sig-name">Jashwin.J</div>
+                        <div class="doc-sig-line"></div>
+                        <div class="doc-sig-print">Jashwin J — Project Management Lead</div>
+                    </div>
+                    <div class="doc-sig-divider"></div>
+                    <div class="doc-sig">
+                        <div class="doc-sig-role">CTO</div>
+                        <div class="doc-sig-name">Dharshan.J.M</div>
+                        <div class="doc-sig-line"></div>
+                        <div class="doc-sig-print">Dharshan J M — Chief Technology Officer</div>
+                    </div>
+                </div>
+
+                <div class="doc-footer" style="margin-top:3rem;">
+                    <span class="doc-footer-brand">Hyna Studio — Democratizing Entrepreneurship</span>
+                    <span class="doc-footer-page">Page 2 of 2</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Confirm Row -->
+        <div class="doc-confirm-row">
+            <button class="btn-back" id="back-to-form-btn-2">← Edit Details</button>
+            <button class="btn-confirm" id="confirm-btn">
+                ✓ &nbsp; Confirm &amp; Submit Brief
+            </button>
+        </div>
+    </div>
+
+    <!-- STEP 3: THANK YOU -->
+    <div id="step-thankyou">
+        <div class="ty-confetti" id="confetti-canvas"></div>
+        <div class="ty-icon">🎉</div>
+        <div class="ty-title">Thank You for Choosing Us!</div>
+        <p class="ty-sub">Your project brief has been submitted and our team has been notified. We can't wait to bring your vision to life.</p>
+        <p class="ty-detail">We'll review your brief and get back to you within <strong>24 hours</strong> — check your inbox at <strong id="ty-email-display"></strong></p>
+        <div class="ty-actions">
+            <a href="index.html" class="btn-home">← Back to Home</a>
+        </div>
+    </div>
+
     <script type="module">
         import { supabase } from './supabaseClient.js';
 
-        // Checkbox highlight toggle
-        document.querySelectorAll('.check-item').forEach(label => {
-            const cb = label.querySelector('input[type="checkbox"]');
-            cb.addEventListener('change', () => {
-                label.classList.toggle('selected', cb.checked);
-            });
+        /* ── Helpers ── */
+        const $ = id => document.getElementById(id);
+        const val = id => (document.getElementById(id)?.value || '').trim();
+
+        /* ── Step navigation ── */
+        function showStep(step) {
+            $('step-form').style.display     = step === 1 ? 'block' : 'none';
+            const docEl = $('step-document');
+            const tyEl  = $('step-thankyou');
+            docEl.classList.toggle('visible', step === 2);
+            tyEl.classList.toggle('visible',  step === 3);
+            if (step !== 2) docEl.classList.remove('visible');
+            if (step !== 3) tyEl.classList.remove('visible');
+            if (step === 2) { docEl.classList.add('visible'); docEl.scrollTop = 0; }
+            if (step === 3) tyEl.classList.add('visible');
+            // update dots
+            updateDots(step);
+        }
+
+        function updateDots(step) {
+            const d1 = $('dot-1'), d2 = $('dot-2'), d3 = $('dot-3');
+            const l1 = $('line-1'), l2 = $('line-2');
+            d1.className = 'step-dot ' + (step > 1 ? 'done' : 'active');
+            d2.className = 'step-dot ' + (step === 2 ? 'active' : step > 2 ? 'done' : '');
+            d3.className = 'step-dot ' + (step === 3 ? 'done' : '');
+            l1.className = 'step-line ' + (step > 1 ? 'done' : '');
+            l2.className = 'step-line ' + (step > 2 ? 'done' : '');
+        }
+
+        /* ── Populate document with form values ── */
+        function populateDoc() {
+            const now = new Date();
+            $('doc-date').textContent = now.toLocaleDateString('en-IN', { day:'numeric', month:'long', year:'numeric' });
+            $('doc-name').textContent      = val('fullName')    || '—';
+            $('doc-email').textContent     = val('email')       || '—';
+            $('doc-phone').textContent     = val('phone')       || '—';
+            $('doc-company').textContent   = val('company')     || '—';
+            $('doc-type').textContent      = val('projectType') || '—';
+            $('doc-budget').textContent    = val('budget')      || '—';
+            $('doc-timeline').textContent  = val('timeline')    || '—';
+            $('doc-stage').textContent     = val('stage')       || '—';
+            $('doc-description').textContent = val('description') || '—';
+            $('doc-referral').textContent  = val('referral')    || '—';
+        }
+
+        /* ── Validate Step 1 ── */
+        function validateForm() {
+            const name   = val('fullName');
+            const email  = val('email');
+            const type   = val('projectType');
+            const desc   = val('description');
+            if (!name) { alert('Please enter your full name.'); $('fullName').focus(); return false; }
+            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Please enter a valid email address.'); $('email').focus(); return false; }
+            if (!type) { alert('Please select a type of project.'); $('projectType').focus(); return false; }
+            if (!desc) { alert('Please describe your project.'); $('description').focus(); return false; }
+            return true;
+        }
+
+        /* ── PREVIEW button ── */
+        $('preview-btn').addEventListener('click', () => {
+            if (!validateForm()) return;
+            populateDoc();
+            showStep(2);
         });
 
-        // Form submission
-        document.getElementById('project-form').addEventListener('submit', async function (event) {
-            event.preventDefault();
+        /* ── BACK buttons ── */
+        $('back-to-form-btn').addEventListener('click',   () => showStep(1));
+        $('back-to-form-btn-2').addEventListener('click', () => showStep(1));
 
-            const form = event.target;
-            const formData = new FormData(form);
-            
-            const btn = document.getElementById('submit-btn');
-            btn.textContent = 'Sending…';
+        /* ── CONFIRM & SUBMIT ── */
+        $('confirm-btn').addEventListener('click', async () => {
+            const btn = $('confirm-btn');
             btn.disabled = true;
-
-            const companyName = document.getElementById('company').value;
-            const estimatedBudget = document.getElementById('budget').value;
-            const desiredTimeline = document.getElementById('timeline').value;
-            const currentStage = document.getElementById('stage').value;
-            const referralSource = document.getElementById('referral').value;
-
-            console.log("Payload data:", {
-                companyName,
-                estimatedBudget,
-                desiredTimeline,
-                currentStage,
-                referralSource
-            });
+            btn.textContent = 'Submitting…';
 
             try {
-                // Step 1: Upsert into 'leads' table and get the new ID
+                /* 1 — Upsert lead */
                 const { data: leadData, error: leadError } = await supabase
                     .from('leads')
-                    .upsert(
-                        {
-                            full_name: formData.get('full_name'),
-                            email_address: formData.get('email_address'),
-                            phone_number: formData.get('phone_number'),
-                            company_name: companyName,
-                            updated_at: new Date().toISOString()
-                        },
-                        { onConflict: 'email_address' }
-                    )
+                    .upsert({
+                        full_name:    val('fullName'),
+                        email_address: val('email'),
+                        phone_number: val('phone'),
+                        company_name: val('company'),
+                        updated_at:   new Date().toISOString()
+                    }, { onConflict: 'email_address' })
                     .select();
 
-                if (leadError) {
-                    console.error('Error upserting lead:', leadError);
-                    throw leadError;
-                }
+                if (leadError) throw leadError;
                 const leadId = leadData[0].id;
 
-                // Step 2: Insert into project_briefs table
+                /* 2 — Insert project brief */
                 const { error: briefError } = await supabase
                     .from('project_briefs')
                     .insert({
-                        lead_id: leadId,
-                        project_type: formData.get('project_type'),
-                        project_description: formData.get('project_description'),
-                        estimated_budget: estimatedBudget,
-                        desired_timeline: desiredTimeline,
-                        current_stage: currentStage,
-                        referral_source: referralSource
+                        lead_id:             leadId,
+                        project_type:        val('projectType'),
+                        project_description: val('description'),
+                        estimated_budget:    val('budget'),
+                        desired_timeline:    val('timeline'),
+                        current_stage:       val('stage'),
+                        referral_source:     val('referral')
                     });
 
-                if (briefError) {
-                    throw briefError;
-                }
+                if (briefError) throw briefError;
 
-                // Step 3: Show success state
-                document.getElementById('project-form').style.display = 'none';
-                document.getElementById('success-banner').style.display = 'block';
+                /* 3 — Show thank you */
+                $('ty-email-display').textContent = val('email');
+                showStep(3);
 
-            } catch (error) {
-                console.error('Error submitting form:', error);
-                alert('There was an error submitting your project brief. Please try again.');
-                btn.innerHTML = 'Send Project Brief <span>→</span>';
+            } catch (err) {
+                console.error('Submission error:', err);
+                alert('There was an error submitting your brief. Please try again.');
                 btn.disabled = false;
+                btn.innerHTML = '✓ &nbsp; Confirm &amp; Submit Brief';
             }
         });
     </script>
