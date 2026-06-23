@@ -680,6 +680,7 @@
             display: flex;
             gap: 1rem;
             justify-content: flex-end;
+            align-items: center;
         }
 
         .btn-confirm {
@@ -708,6 +709,58 @@
             opacity: 0.6;
             cursor: not-allowed;
             transform: none;
+        }
+
+        .btn-download {
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.08);
+            color: rgba(247, 246, 242, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s, border-color 0.2s, box-shadow 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            backdrop-filter: blur(8px);
+        }
+
+        .btn-download:hover {
+            background: rgba(79, 63, 240, 0.2);
+            border-color: var(--accent);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(79, 63, 240, 0.25);
+        }
+
+        .btn-download:active {
+            transform: translateY(0);
+        }
+
+        /* ── PRINT STYLES (for PDF download) ── */
+        @media print {
+            nav, #step-indicator, .doc-actions, .doc-confirm-row,
+            #step-form, #step-thankyou, body > *:not(#step-document) {
+                display: none !important;
+            }
+            #step-document {
+                display: block !important;
+                position: static !important;
+                background: #fff !important;
+                backdrop-filter: none !important;
+                padding: 0 !important;
+                overflow: visible !important;
+            }
+            .a4-doc {
+                box-shadow: none !important;
+                border-radius: 0 !important;
+            }
+            .doc-actions {
+                display: none !important;
+            }
         }
 
         /* ── THANK YOU SCREEN ── */
@@ -1138,6 +1191,10 @@
         <!-- Confirm Row -->
         <div class="doc-confirm-row">
             <button class="btn-back" id="back-to-form-btn-2">← Edit Details</button>
+            <button class="btn-download" id="download-btn" title="Download your brief as a PDF">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download PDF
+            </button>
             <button class="btn-confirm" id="confirm-btn">
                 ✓ &nbsp; Confirm &amp; Submit Brief
             </button>
@@ -1229,6 +1286,18 @@
         /* ── BACK buttons ── */
         $('back-to-form-btn').addEventListener('click', () => showStep(1));
         $('back-to-form-btn-2').addEventListener('click', () => showStep(1));
+
+        /* ── DOWNLOAD PDF button ── */
+        $('download-btn').addEventListener('click', () => {
+            const btn = $('download-btn');
+            btn.textContent = 'Preparing…';
+            btn.disabled = true;
+            setTimeout(() => {
+                window.print();
+                btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download PDF';
+                btn.disabled = false;
+            }, 300);
+        });
 
         /* ── CONFIRM & SUBMIT ── */
         $('confirm-btn').addEventListener('click', async () => {
