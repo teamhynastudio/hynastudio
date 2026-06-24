@@ -10,7 +10,10 @@
            Vignesh Founder | Jashwin: Co-Founder & Project Management Lead | Dharshan: Co-Founder & CTO | Asthamil : Chief Product Officer | Tharun krishana : Chief Design Officer | Mohammad Zarif : Chief Operating Officer">
     <title>Hyna Studio</title>
     <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="favicon-48x48.png" sizes="48x48">
     <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -61,7 +64,7 @@
             line-height: 1.6;
         }
 
-        /* ── NAV ── */
+        /* ── NAV ── LIQUID GLASS MORPHISM ── */
         nav {
             position: fixed;
             top: 1.5rem;
@@ -74,21 +77,116 @@
             align-items: center;
             justify-content: space-between;
             padding: 0.7rem 2.5rem;
-            background: rgba(55, 60, 70, 0.78);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            /* Liquid multi-layer glass */
+            background:
+                radial-gradient(ellipse 80% 60% at var(--nav-glow-x, 50%) var(--nav-glow-y, 50%),
+                    rgba(99, 190, 255, 0.10) 0%,
+                    transparent 65%),
+                linear-gradient(135deg,
+                    rgba(30, 40, 60, 0.96) 0%,
+                    rgba(20, 28, 50, 0.98) 100%);
             border-radius: 60px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(20px) saturate(160%);
-            -webkit-backdrop-filter: blur(20px) saturate(160%);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.32),
+                0 2px 0px 0px rgba(255,255,255,0.07) inset,
+                0 -1px 0px 0px rgba(0,0,0,0.15) inset;
+            backdrop-filter: blur(24px) saturate(170%) brightness(1.05);
+            -webkit-backdrop-filter: blur(24px) saturate(170%) brightness(1.05);
+            transition: box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.15s ease;
+            overflow: visible;
+            /* liquid animated border via outline */
+            outline: 1px solid rgba(255, 255, 255, 0.10);
+            outline-offset: 0px;
+        }
+
+        /* Liquid shimmer top-edge highlight */
+        nav::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 60px;
+            background: linear-gradient(90deg,
+                transparent 0%,
+                rgba(255,255,255,0.12) var(--nav-shimmer-pos, 30%),
+                transparent 100%);
+            pointer-events: none;
+            z-index: 0;
+            animation: nav-liquid-shimmer 4s ease-in-out infinite;
+        }
+
+        /* Animated liquid border sweep */
+        nav::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 60px;
+            border: 1.5px solid transparent;
+            background:
+                linear-gradient(rgba(20,28,50,0), rgba(20,28,50,0)) padding-box,
+                linear-gradient(var(--nav-border-angle, 130deg),
+                    rgba(99,190,255,0.55) 0%,
+                    rgba(120,80,255,0.35) 30%,
+                    rgba(0,217,163,0.30) 60%,
+                    rgba(99,190,255,0.55) 100%) border-box;
+            pointer-events: none;
+            z-index: 0;
+            animation: nav-border-rotate 6s linear infinite;
+        }
+
+        @keyframes nav-liquid-shimmer {
+            0%   { opacity: 0.5; background-position: -100% 0; }
+            50%  { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+
+        @keyframes nav-border-rotate {
+            0%   { --nav-border-angle: 130deg; }
+            100% { --nav-border-angle: 490deg; }
+        }
+
+        /* Liquid glow orb that follows cursor inside nav */
+        .nav-liquid-orb {
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: radial-gradient(circle,
+                rgba(80, 170, 255, 0.22) 0%,
+                rgba(120, 80, 255, 0.12) 50%,
+                transparent 70%);
+            filter: blur(20px);
+            pointer-events: none;
+            z-index: 0;
+            transform: translate(-50%, -50%);
+            left: var(--nav-orb-x, 50%);
+            top: 50%;
+            transition: left 0.12s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s;
+            opacity: 0;
+        }
+
+        nav:hover .nav-liquid-orb {
+            opacity: 1;
+        }
+
+        /* Nav content sits above pseudo-elements */
+        .nav-logo, .nav-links, .nav-cta, .nav-book-call {
+            position: relative;
+            z-index: 1;
         }
 
         nav.nav-scrolled {
-            background: rgba(55, 60, 70, 0.88);
-            border-color: rgba(255, 255, 255, 0.16);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(28px) saturate(180%);
-            -webkit-backdrop-filter: blur(28px) saturate(180%);
+            background:
+                radial-gradient(ellipse 80% 60% at var(--nav-glow-x, 50%) var(--nav-glow-y, 50%),
+                    rgba(99, 190, 255, 0.13) 0%,
+                    transparent 65%),
+                linear-gradient(135deg,
+                    rgba(15, 22, 42, 0.98) 0%,
+                    rgba(10, 16, 35, 0.99) 100%);
+            box-shadow:
+                0 16px 48px rgba(0, 0, 0, 0.42),
+                0 2px 0px 0px rgba(255,255,255,0.09) inset;
+            backdrop-filter: blur(32px) saturate(190%) brightness(1.06);
+            -webkit-backdrop-filter: blur(32px) saturate(190%) brightness(1.06);
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -255,22 +353,64 @@
             list-style: none;
             margin-left: auto;
             margin-right: 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Liquid sliding indicator */
+        .nav-links {
+            --indicator-left: 0px;
+            --indicator-width: 0px;
+        }
+
+        .nav-link-indicator {
+            position: absolute;
+            bottom: -4px;
+            left: var(--indicator-left);
+            width: var(--indicator-width);
+            height: 2px;
+            background: linear-gradient(90deg, #7ec8e3, #a78bfa, #34d399);
+            border-radius: 100px;
+            transition: left 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+                        width 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 0 8px rgba(126, 200, 227, 0.7);
+            pointer-events: none;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(255, 255, 255, 0.85);
             font-size: 0.9rem;
             font-weight: 600;
-            transition: color 0.3s ease;
+            transition: color 0.25s ease;
+            position: relative;
+            padding: 0.25rem 0;
+            display: inline-block;
         }
 
         .nav-links a:hover {
-            color: #5293df;
+            color: #ffffff;
+            text-shadow: 0 0 18px rgba(140, 200, 255, 0.5);
+        }
+
+        /* Liquid ripple on nav link click */
+        .nav-ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(120, 200, 255, 0.55) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 2;
+            transform: scale(0);
+            animation: nav-ripple-expand 0.55s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+        }
+
+        @keyframes nav-ripple-expand {
+            from { transform: scale(0); opacity: 0.8; }
+            to   { transform: scale(4); opacity: 0; }
         }
 
         .nav-cta {
-            background: #2563eb;
+            background: linear-gradient(135deg, #3b82f6, #6366f1);
             color: #ffffff !important;
             padding: 0.65rem 1.6rem;
             border-radius: 100px;
@@ -278,14 +418,32 @@
             font-weight: 600;
             text-decoration: none;
             border: none;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
-            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(99, 102, 241, 0.45),
+                        inset 0 1px 0 rgba(255,255,255,0.25);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .nav-cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 100px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .nav-cta:hover {
-            background: #1d4ed8;
-            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.5);
-            transform: translateY(-1px);
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.65),
+                        inset 0 1px 0 rgba(255,255,255,0.35);
+        }
+
+        .nav-cta:hover::before {
+            opacity: 1;
         }
 
         /* ── MOBILE BOOK CALL CTA ── */
@@ -1764,7 +1922,7 @@
                 width: calc(100% - 2rem);
                 padding: 0.5rem 0.8rem !important;
                 border-radius: 40px !important;
-                background: rgba(55, 60, 70, 0.78) !important;
+                background: rgba(30, 40, 60, 0.96) !important;
                 border: 1px solid rgba(255, 255, 255, 0.12) !important;
                 box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25) !important;
                 backdrop-filter: blur(20px) saturate(160%) !important;
@@ -1778,7 +1936,7 @@
                 width: calc(100% - 1.5rem) !important;
                 padding: 0.45rem 0.8rem !important;
                 border-radius: 40px !important;
-                background: rgba(55, 60, 70, 0.88) !important;
+                background: rgba(15, 22, 42, 0.98) !important;
                 border: 1px solid rgba(255, 255, 255, 0.16) !important;
                 box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3) !important;
                 backdrop-filter: blur(28px) saturate(180%) !important;
@@ -3042,7 +3200,7 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
     <!-- NAV -->
     <nav>
         <a href="index.html" class="nav-logo">
-            <img src="./logo (2).png"
+            <img src="./hyna-logo.png"
                 class="logo-img" alt="Hyna Studio Logo">
             <div class="logo-text">
                 <span class="logo-main">Hyna Studio</span>
@@ -4190,8 +4348,8 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
             max-width: 750px;
             height: 80vw;
             max-height: 750px;
-            background: url('team_bg_logo.png') no-repeat center center / contain;
-            opacity: 0.08;
+            background: url('./hyna-logo.png') no-repeat center center / contain;
+            opacity: 0.06;
             pointer-events: none;
             z-index: 1;
         }
@@ -4616,6 +4774,23 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
                 --white: #ffffff;
                 --muted: #94a3b8;
                 --label-bg: rgba(255, 255, 255, 0.05);
+                position: relative;
+            }
+
+            .process-conversion-section::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 65vw;
+                max-width: 620px;
+                height: 65vw;
+                max-height: 620px;
+                background: url('./hyna-logo.png') no-repeat center center / contain;
+                opacity: 0.04;
+                pointer-events: none;
+                z-index: 0;
             }
 
             #process.process-conversion-section {
@@ -5248,7 +5423,7 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
         <div class="section">
             <div style="text-align:center">
                 <span class="eyebrow" id="process-ey">
-                    <img src="/logo (2).png"
+                    <img src="./hyna-logo.png"
                         alt="Logo" style="height:24px; vertical-align:middle; margin-right:8px;">
                     Our Process
                 </span>
@@ -5711,7 +5886,7 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
         <div class="footer-top">
             <div class="footer-brand">
                 <a href="index.html" class="nav-logo">
-                    <img src="./logo (2).png"
+                    <img src="./hyna-logo.png"
                         class="logo-img" alt="Hyna Studio Logo">
                     <div class="logo-text">
                         <span class="logo-main" style="color: #76ecf0;">Hyna Studio</span>
@@ -5978,6 +6153,82 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
                 window.addEventListener('scroll', handleScroll);
                 handleScroll();
             }
+
+            // ── LIQUID NAV: Cursor-tracking glow orb ──
+            (function() {
+                const nav = document.querySelector('nav');
+                if (!nav) return;
+
+                // Inject liquid orb element
+                const orb = document.createElement('div');
+                orb.className = 'nav-liquid-orb';
+                nav.prepend(orb);
+
+                // Inject sliding indicator under nav-links
+                const navLinks = nav.querySelector('.nav-links');
+                let indicator = null;
+                if (navLinks) {
+                    indicator = document.createElement('div');
+                    indicator.className = 'nav-link-indicator';
+                    navLinks.appendChild(indicator);
+                }
+
+                // Mouse tracking – updates CSS custom props for liquid orb and glow
+                nav.addEventListener('mousemove', (e) => {
+                    const rect = nav.getBoundingClientRect();
+                    const x = ((e.clientX - rect.left) / rect.width) * 100;
+                    const y = ((e.clientY - rect.top) / rect.height) * 100;
+                    nav.style.setProperty('--nav-glow-x', x + '%');
+                    nav.style.setProperty('--nav-glow-y', y + '%');
+                    orb.style.left = (e.clientX - rect.left) + 'px';
+                });
+
+                nav.addEventListener('mouseleave', () => {
+                    nav.style.setProperty('--nav-glow-x', '50%');
+                    nav.style.setProperty('--nav-glow-y', '50%');
+                });
+
+                // Liquid ripple on nav link click
+                nav.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        const ripple = document.createElement('span');
+                        ripple.className = 'nav-ripple';
+                        const size = 50;
+                        const rect2 = this.getBoundingClientRect();
+                        const navRect = nav.getBoundingClientRect();
+                        ripple.style.cssText = `
+                            width: ${size}px;
+                            height: ${size}px;
+                            left: ${e.clientX - navRect.left - size / 2}px;
+                            top: ${e.clientY - navRect.top - size / 2}px;
+                        `;
+                        nav.appendChild(ripple);
+                        ripple.addEventListener('animationend', () => ripple.remove());
+                    });
+                });
+
+                // Sliding liquid indicator on hover
+                if (navLinks && indicator) {
+                    const links = navLinks.querySelectorAll('a');
+                    links.forEach(link => {
+                        link.addEventListener('mouseenter', () => {
+                            const linkRect = link.getBoundingClientRect();
+                            const listRect = navLinks.getBoundingClientRect();
+                            indicator.style.setProperty('--indicator-left', (linkRect.left - listRect.left) + 'px');
+                            indicator.style.setProperty('--indicator-width', linkRect.width + 'px');
+                            navLinks.style.setProperty('--indicator-left', (linkRect.left - listRect.left) + 'px');
+                            navLinks.style.setProperty('--indicator-width', linkRect.width + 'px');
+                            indicator.style.opacity = '1';
+                        });
+                    });
+                    navLinks.addEventListener('mouseleave', () => {
+                        indicator.style.opacity = '0';
+                    });
+                    // Initially hidden
+                    indicator.style.opacity = '0';
+                    indicator.style.transition = 'left 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), width 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s';
+                }
+            })();
 
             // TiltedCard interactive mouse movement
             document.querySelectorAll('.tilted-card-figure').forEach(card => {
