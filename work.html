@@ -44,6 +44,31 @@
             color: var(--paper);
             min-height: 100vh;
             overflow-x: hidden;
+            body::before{
+content:"";
+position:fixed;
+top:-200px;
+right:-200px;
+width:700px;
+height:700px;
+background:#2563EB;
+filter:blur(250px);
+opacity:.15;
+pointer-events:none;
+}
+
+body::after{
+content:"";
+position:fixed;
+bottom:-200px;
+left:-200px;
+width:700px;
+height:700px;
+background:#7C3AED;
+filter:blur(250px);
+opacity:.12;
+pointer-events:none;
+}
         }
 
         /* ── NAV ── */
@@ -523,8 +548,8 @@
     <section class="page-hero">
         <div class="section-label">// Our portfolio</div>
         <h1>Projects We've <em>Shipped</em></h1>
-        <p>Real products built for real businesses — from concept to production. Here's a look at the work that defines
-            our studio.</p>
+        <p>We build high-performance websites, SaaS platforms, mobile applications,
+               and digital experiences that help businesses grow faster.</p>
     </section>
 
     <!-- FILTERS -->
