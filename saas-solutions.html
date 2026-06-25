@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Hyna Studio – SaaS & Website Development</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue-dark: #0a1f5c;
+    --blue-mid: #1a4fd8;
+    --blue-bright: #2563eb;
+    --blue-light: #3b82f6;
+    --blue-accent: #60a5fa;
+    --cyan: #06b6d4;
+    --bg-light: #f0f4ff;
+    --bg-white: #ffffff;
+    --text-dark: #0f172a;
+    --text-mid: #1e3a8a;
+    --text-muted: #475569;
+    --card-bg: #ffffff;
+    --icon-green: #10b981;
+    --icon-purple: #8b5cf6;
+    --icon-orange: #f97316;
+    --icon-red: #ef4444;
+    --icon-blue: #3b82f6;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-white);
+    color: var(--text-dark);
+    line-height: 1.6;
+  }
+
+  /* ── NAV ── */
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 18px 60px;
+    background: var(--bg-white);
+    border-bottom: 1px solid #e2e8f0;
+  }
+  .logo-icon {
+    width: 44px; height: 44px;
+    background: linear-gradient(135deg, var(--blue-mid), var(--blue-light));
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; color: #fff; font-weight: 900;
+  }
+  .logo-text { line-height: 1.1; }
+  .logo-text strong { display: block; font-size: 16px; font-weight: 800; color: var(--blue-dark); letter-spacing: .5px; }
+  .logo-text span { font-size: 11px; color: var(--text-muted); font-weight: 500; }
+
+  /* ── HERO ── */
+  /* ── HERO BANNER ── */
+  .hero-banner {
+    background: linear-gradient(120deg, #dbeafe 0%, #eff6ff 40%, #e0f2fe 70%, #f0fdf4 100%);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-banner::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 65% 40%, rgba(37,99,235,.10) 0%, transparent 55%),
+      radial-gradient(ellipse at 90% 80%, rgba(6,182,212,.07) 0%, transparent 40%);
+    pointer-events: none;
+  }
+
+  /* Inner nav row inside banner */
+  .hero-banner-nav {
+    display: flex;
+    align-items: center;
+    padding: 22px 60px 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-banner-nav a {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+  }
+
+  .hero-banner-nav .logo-text strong {
+    display: block; font-size: 15px; font-weight: 800;
+    color: var(--blue-dark); letter-spacing: .5px;
+  }
+
+  .hero-banner-nav .logo-text span {
+    font-size: 11px; color: var(--text-muted); font-weight: 500;
+  }
+
+  /* Two-column content row */
+  .hero-banner-body {
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    align-items: center;
+    gap: 0;
+    padding: 30px 60px 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-banner-left { padding: 10px 0 50px; }
+
+  .hero-banner-left h1 {
+    font-size: clamp(24px, 3vw, 40px);
+    font-weight: 900;
+    color: var(--text-dark);
+    line-height: 1.18;
+    margin-bottom: 18px;
+  }
+
+  .hero-banner-left h1 .blue { color: var(--blue-bright); }
+
+  .hero-banner-left p {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    max-width: 440px;
+    line-height: 1.65;
+  }
+
+  .hero-banner-left p strong { color: var(--text-dark); font-weight: 700; }
+
+  /* Badges row */
+  .badges {
+    display: flex; flex-wrap: wrap; gap: 24px;
+    margin-top: 26px;
+  }
+  .badge {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 600; color: var(--text-dark);
+  }
+  .badge-icon {
+    width: 34px; height: 34px; border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    background: rgba(37,99,235,.08);
+    border: 1px solid rgba(37,99,235,.12);
+  }
+  .badge-text { line-height: 1.3; }
+
+  /* Right column – image + floating icons */
+  .hero-banner-right {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    min-height: 340px;
+    padding-bottom: 0;
+  }
+
+  .hero-mockup-img {
+    max-width: 100%;
+    max-height: 360px;
+    object-fit: contain;
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 20px 40px rgba(37,99,235,.18));
+  }
+
+  /* Floating tech-icon chips */
+  .fi-chip {
+    position: absolute;
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 4px 18px rgba(37,99,235,.14);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 3;
+    animation: floatChip 3.5s ease-in-out infinite;
+  }
+
+  .fi-chip svg { width: 22px; height: 22px; }
+
+  .fi-chip:nth-child(1) { top: 8%;  right: 4%;  animation-delay: 0s;    }
+  .fi-chip:nth-child(2) { top: 22%; right: -2%; animation-delay: .5s;   }
+  .fi-chip:nth-child(3) { top: 40%; right: 2%;  animation-delay: 1s;    }
+  .fi-chip:nth-child(4) { top: 6%;  left: 38%;  animation-delay: 1.5s;  }
+  .fi-chip:nth-child(5) { top: 22%; left: 30%;  animation-delay: 2s;    }
+  .fi-chip:nth-child(6) { top: 42%; left: 28%;  animation-delay: 2.5s;  }
+
+  @keyframes floatChip {
+    0%, 100% { transform: translateY(0);    }
+    50%       { transform: translateY(-7px); }
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .hero-banner-body { grid-template-columns: 1fr; padding: 20px 30px 0; }
+    .hero-banner-nav  { padding: 18px 30px 0; }
+    .hero-banner-right { min-height: 260px; }
+    .fi-chip { display: none; }
+  }
+  @media (max-width: 600px) {
+    .hero-banner-body { padding: 16px 20px 0; }
+    .hero-banner-nav  { padding: 14px 20px 0; }
+    .hero-banner-left h1 { font-size: 22px; }
+  }
+
+  /* ── SECTION HEADING ── */
+  .section-heading {
+    text-align: center;
+    font-size: clamp(18px, 2.2vw, 24px);
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 36px;
+  }
+
+
+  /* ── SERVICES GRID ── */
+  .services {
+    padding: 60px 60px 50px;
+    background: var(--bg-white);
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .service-card {
+    border: 1.5px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 24px;
+    transition: box-shadow .2s, transform .2s;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 16px;
+    overflow: hidden;
+  }
+  .service-card:hover {
+    box-shadow: 0 8px 32px rgba(37,99,235,.10);
+    transform: translateY(-3px);
+  }
+  .card-content {
+    flex: 1.1;
+    display: flex;
+    flex-direction: column;
+  }
+  .card-illustration {
+    flex: 0.9;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 90px;
+    overflow: hidden;
+  }
+  .service-icon {
+    width: 46px; height: 46px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; margin-bottom: 14px;
+  }
+  .si-blue   { background: #dbeafe; }
+  .si-purple { background: #ede9fe; }
+  .si-green  { background: #d1fae5; }
+  .si-orange { background: #ffedd5; }
+  .si-red    { background: #fee2e2; }
+  .si-indigo { background: #e0e7ff; }
+
+  .service-card h3 {
+    font-size: 15px; font-weight: 700; color: var(--text-dark);
+    margin-bottom: 12px; line-height: 1.3;
+  }
+  .service-card ul {
+    list-style: none; padding: 0;
+  }
+  .service-card ul li {
+    font-size: 12.5px; color: var(--text-muted);
+    padding: 3px 0;
+    position: relative; padding-left: 14px;
+  }
+  .service-card ul li::before {
+    content: '•';
+    position: absolute; left: 0;
+    color: var(--blue-light);
+    font-weight: 700;
+  }
+
+  /* bottom 2/3 row */
+  .services-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.3fr;
+    gap: 24px;
+    margin-top: 24px;
+  }
+  .cta-card {
+    border-radius: 16px;
+    padding: 24px;
+    background: var(--bg-white);
+    border: 1.5px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 20px;
+  }
+  .cta-card h3 {
+    font-size: 20px; font-weight: 800; color: var(--text-dark);
+    margin-bottom: 12px; line-height: 1.25;
+  }
+
+  /* ── SPECIFIC MOCKUP ILLUSTRATION STYLES ── */
+  
+  /* Browser Mockup (Web Dev) */
+  .mockup-browser {
+    width: 100%;
+    height: 90px;
+    background: #f8fafc;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+  }
+  .browser-header {
+    height: 16px;
+    background: #e2e8f0;
+    display: flex;
+    align-items: center;
+    padding: 0 6px;
+    gap: 4px;
+  }
+  .browser-dots {
+    display: flex;
+    gap: 3px;
+  }
+  .browser-dots span {
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+  }
+  .browser-dots span:nth-child(1) { background: #ef4444; }
+  .browser-dots span:nth-child(2) { background: #eab308; }
+  .browser-dots span:nth-child(3) { background: #22c55e; }
+  .browser-bar {
+    flex: 1;
+    height: 8px;
+    background: #ffffff;
+    border-radius: 4px;
+    margin-left: 6px;
+  }
+  .browser-body {
+    flex: 1;
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .bb-nav {
+    height: 5px;
+    background: #e2e8f0;
+    border-radius: 2px;
+    width: 40%;
+  }
+  .bb-hero {
+    flex: 1;
+    display: flex;
+    gap: 6px;
+  }
+  .bb-hero-img {
+    width: 35%;
+    height: 100%;
+    background: #dbeafe;
+    border-radius: 4px;
+  }
+  .bb-hero-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    justify-content: center;
+  }
+  .bb-hero-text span {
+    height: 4px;
+    background: #e2e8f0;
+    border-radius: 2px;
+  }
+  .bb-hero-text span:nth-child(1) { width: 90%; }
+  .bb-hero-text span:nth-child(2) { width: 60%; }
+
+  /* Dark Dash Mockup (SaaS Dev) */
+  .mockup-dash-dark {
+    width: 100%;
+    height: 90px;
+    background: #0f172a;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    display: flex;
+    padding: 6px;
+    gap: 6px;
+  }
+  .mdd-sidebar {
+    width: 14px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 4px;
+    padding: 6px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .mdd-sidebar span {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+  }
+  .mdd-sidebar span:first-child { background: #3b82f6; }
+  .mdd-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .mdd-header {
+    height: 6px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    width: 50%;
+  }
+  .mdd-chart {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    background: rgba(255,255,255,0.02);
+    border-radius: 4px;
+    padding: 4px;
+  }
+  .mdd-chart .bar {
+    width: 10px;
+    border-radius: 2px 2px 0 0;
+  }
+  .bar-1 { height: 40%; background: #3b82f6; }
+  .bar-2 { height: 75%; background: #06b6d4; }
+  .bar-3 { height: 55%; background: #6366f1; }
+
+  /* Workflow automation (n8n node graph) */
+  .mockup-automation {
+    position: relative;
+    width: 100%;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .auto-node {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  }
+  .center-node {
+    width: 30px;
+    height: 30px;
+    background: #10b981;
+    color: #ffffff;
+    font-weight: 800;
+    border: none;
+    font-size: 8px;
+    z-index: 2;
+  }
+  .left-node {
+    left: 4px;
+    color: #22c55e;
+    border-color: #22c55e;
+  }
+  .right-node {
+    right: 4px;
+    color: #3b82f6;
+    border-color: #3b82f6;
+  }
+  .auto-line {
+    position: absolute;
+    height: 1.5px;
+    background: #cbd5e1;
+    z-index: 1;
+  }
+  .al-left {
+    left: 18px;
+    width: 32px;
+    transform: rotate(-10deg);
+  }
+  .al-right {
+    right: 18px;
+    width: 32px;
+    transform: rotate(10deg);
+  }
+
+  /* Rocket Mockup */
+  .mockup-rocket {
+    position: relative;
+    width: 100%;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  .rocket-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, #dbeafe, #eff6ff);
+  }
+  .rocket-ship {
+    position: relative;
+    width: 16px;
+    height: 40px;
+    z-index: 2;
+    animation: rocketFloat 3s ease-in-out infinite alternate;
+  }
+  .rocket-body {
+    width: 100%;
+    height: 80%;
+    background: #ffffff;
+    border-radius: 10px 10px 0 0;
+    border: 1.5px solid #2563eb;
+    position: relative;
+  }
+  .rocket-body::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #06b6d4;
+  }
+  .rocket-wing-l {
+    position: absolute;
+    bottom: 10%;
+    left: -6px;
+    width: 6px;
+    height: 12px;
+    background: #f97316;
+    clip-path: polygon(100% 0, 0 100%, 100% 100%);
+  }
+  .rocket-wing-r {
+    position: absolute;
+    bottom: 10%;
+    right: -6px;
+    width: 6px;
+    height: 12px;
+    background: #f97316;
+    clip-path: polygon(0 0, 0 100%, 100% 100%);
+  }
+  .rocket-flame {
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 10px;
+    background: linear-gradient(180deg, #ff8c00, #ff0000);
+    border-radius: 0 0 50% 50%;
+    animation: flicker 0.15s infinite;
+  }
+  .rocket-cloud {
+    position: absolute;
+    background: #ffffff;
+    border-radius: 50%;
+    z-index: 1;
+  }
+  .rc-1 { width: 50px; height: 25px; bottom: -10px; left: -10px; opacity: 0.9; }
+  .rc-2 { width: 40px; height: 20px; bottom: -8px; right: -5px; opacity: 0.9; }
+
+  /* Digital Growth Mockup */
+  .mockup-growth {
+    position: relative;
+    width: 100%;
+    height: 90px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    padding: 10px;
+  }
+  .growth-bar {
+    width: 8px;
+    border-radius: 3px 3px 0 0;
+    z-index: 1;
+  }
+  .gb-1 { height: 30px; background: #e2e8f0; }
+  .gb-2 { height: 50px; background: #cbd5e1; }
+  .gb-3 { height: 70px; background: #dbeafe; }
+  .growth-target {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .target-ring-1 {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ef4444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(239,68,68,0.25);
+  }
+  .target-ring-2 {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .target-center {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ef4444;
+  }
+
+  /* Management Dashboard Analytics Mockup */
+  .mockup-analytics {
+    width: 100%;
+    height: 90px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    padding: 6px;
+    display: flex;
+    gap: 8px;
+  }
+  .ma-left {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .ma-line {
+    height: 3px;
+    background: #e2e8f0;
+    border-radius: 2px;
+  }
+  .ma-line.w80 { width: 80%; }
+  .ma-line.w50 { width: 50%; }
+  .ma-bars {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    margin-top: 4px;
+  }
+  .ma-bars .mab {
+    flex: 1;
+    background: #e0e7ff;
+    height: 15px;
+    border-radius: 2px 2px 0 0;
+  }
+  .ma-bars .mab:nth-child(2) { height: 30px; background: #8b5cf6; }
+  .ma-bars .mab:nth-child(3) { height: 10px; }
+  .ma-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ma-donut {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: conic-gradient(#8b5cf6 0% 65%, #e2e8f0 65% 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ma-donut-inner {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #ffffff;
+  }
+
+  /* Cloud Stack Mockup (CTA Card) */
+  .mockup-cloud-servers {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .mcs-cloud {
+    background: #2563eb;
+    color: #ffffff;
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-size: 10px;
+    font-weight: 800;
+    box-shadow: 0 4px 12px rgba(37,99,235,0.3);
+    z-index: 2;
+    margin-bottom: -4px;
+    animation: mcsFloat 2.5s ease-in-out infinite alternate;
+  }
+  .mcs-stack {
+    width: 50px;
+    height: 32px;
+    background: #1e293b;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 3px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  }
+  .mcs-layer {
+    flex: 1;
+    background: rgba(255,255,255,0.05);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4px;
+  }
+  .mcs-layer span {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #06b6d4;
+    box-shadow: 0 0 6px #06b6d4;
+  }
+  .mcs-layer span:nth-child(2) {
+    background: #10b981;
+    box-shadow: 0 0 6px #10b981;
+  }
+
+  .cta-card p { font-size: 13px; color: var(--text-muted); margin-bottom: 20px; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--blue-bright);
+    color: #fff; border: none; border-radius: 8px;
+    padding: 12px 22px; font-size: 13.5px; font-weight: 600;
+    cursor: pointer; text-decoration: none;
+    transition: background .2s;
+    width: fit-content;
+  }
+  .btn-primary:hover { background: var(--blue-dark); }
+
+  .cta-illustration {
+    background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%);
+    border-radius: 14px;
+    height: 120px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 50px;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0f172a;
+    padding: 28px 60px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+  }
+  .footer-item {
+    display: flex; align-items: flex-start; gap: 14px;
+  }
+  .footer-icon {
+    width: 38px; height: 38px; min-width: 38px;
+    border-radius: 10px; background: rgba(255,255,255,.08);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+  .footer-item h4 { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 3px; }
+  .footer-item p  { font-size: 11.5px; color: #94a3b8; }
+
+
+  /* ── RESPONSIVE & HERO GRAPHICS ── */
+  .hero-right {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 380px;
+    height: 100%;
+    width: 100%;
+  }
+  .hero-mockup-img {
+    width: 100%;
+    max-width: 580px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 15px 35px rgba(37, 99, 235, 0.08));
+    animation: heroImageFloat 6s ease-in-out infinite alternate;
+  }
+
+  @keyframes heroImageFloat {
+    from { transform: translateY(0); }
+    to { transform: translateY(-8px); }
+  }
+
+  @media (max-width: 900px) {
+    nav, .hero, .services, footer { padding-left: 20px; padding-right: 20px; }
+    .hero {
+      grid-template-columns: 1fr;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .hero-right {
+      display: flex;
+      min-height: auto;
+      margin-top: 30px;
+    }
+    .hero-mockup-img {
+      max-width: 440px;
+    }
+    .hero-left h1 {
+      font-size: 32px;
+    }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .services-grid-2 { grid-template-columns: 1fr; }
+    footer { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .services-grid { grid-template-columns: 1fr; }
+    footer { grid-template-columns: 1fr; }
+  }
+
+  /* ── HYNA STUDIO ADVANTAGE SECTION ── */
+  .advantage-section {
+    padding: 100px 8%;
+    background: var(--bg-white);
+    border-top: 1px solid #e2e8f0;
+  }
+
+  .advantage-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .advantage-visual {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .advantage-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+  }
+
+  .advantage-img:hover {
+    transform: scale(1.015) translateY(-2px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+  }
+
+  .advantage-content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .advantage-title {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--text-dark);
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+
+  .advantage-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .advantage-card {
+    background: var(--bg-white);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .advantage-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    border-color: rgba(37, 99, 235, 0.2);
+  }
+
+  .advantage-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background: rgba(37, 99, 235, 0.04);
+    border: 1px solid rgba(37, 99, 235, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--blue-bright);
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+  }
+
+  .advantage-card:hover .advantage-icon-wrapper {
+    background: rgba(37, 99, 235, 0.08);
+    border-color: rgba(37, 99, 235, 0.2);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08);
+  }
+
+  .advantage-icon {
+    width: 24px;
+    height: 24px;
+    stroke-width: 2;
+  }
+
+  .advantage-text {
+    font-size: 14px;
+    font-weight: 550;
+    line-height: 1.4;
+    color: var(--text-muted);
+  }
+
+  .advantage-card:hover .advantage-text {
+    color: var(--text-dark);
+  }
+
+  @media (max-width: 1024px) {
+    .advantage-container {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .advantage-section {
+      padding: 60px 6%;
+    }
+    .advantage-visual {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .advantage-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .advantage-section {
+      padding: 50px 20px;
+    }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ── HERO BANNER ── -->
+<section class="hero-banner">
+
+  <!-- Logo row inside banner -->
+  <div class="hero-banner-nav">
+    <a href="index.html">
+      <img src="hyna-logo-new.png" alt="Hyna Studio Logo" style="width: 44px; height: 44px; object-fit: contain;">
+      <div class="logo-text">
+        <strong>HYNA STUDIO</strong>
+        <span>SaaS &amp; Website Development</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- Two-column body -->
+  <div class="hero-banner-body">
+
+    <!-- LEFT: heading + copy + badges -->
+    <div class="hero-banner-left">
+      <h1>Empowering Businesses Through<br>Innovative <span class="blue">SaaS Solutions</span> &amp;<br>Digital Transformation</h1>
+
+      <p>At Hyna Studio, we help businesses streamline operations, improve customer
+         engagement, and accelerate growth through modern SaaS applications,
+         custom websites, automation solutions, and digital platforms.</p>
+
+      <p>Our team specializes in creating scalable, secure, and user-friendly software
+         tailored to the unique needs of startups, small businesses, and enterprises.</p>
+
+      <p>From idea validation to deployment and ongoing support, we deliver
+         <strong>technology solutions that drive efficiency, innovation, and long-term success.</strong></p>
+
+      <div class="badges">
+        <div class="badge">
+          <div class="badge-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" width="18" height="18"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="badge-text">Scalable<br>Solutions</div>
+        </div>
+        <div class="badge">
+          <div class="badge-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" width="18" height="18"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <div class="badge-text">Secure &amp;<br>Reliable</div>
+        </div>
+        <div class="badge">
+          <div class="badge-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" width="18" height="18"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <div class="badge-text">Fast<br>Delivery</div>
+        </div>
+        <div class="badge">
+          <div class="badge-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" width="18" height="18"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+          </div>
+          <div class="badge-text">Ongoing<br>Support</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: mockup image + floating icon chips -->
+    <div class="hero-banner-right">
+
+      <!-- Floating tech icon chips -->
+      <div class="fi-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+      </div>
+      <div class="fi-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      </div>
+      <div class="fi-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+      </div>
+      <div class="fi-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+      </div>
+      <div class="fi-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div class="fi-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      </div>
+
+      <!-- Main mockup image -->
+      <img src="Copilot_20260620_011506.png" alt="SaaS &amp; Website Development Mockup" class="hero-mockup-img">
+    </div>
+
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section class="services">
+  <p class="section-heading">Accelerating Business Growth with Hyna Studio SaaS Solutions</p>
+
+  <div class="services-grid">
+
+    <!-- Website Dev -->
+    <div class="service-card">
+      <div class="card-content">
+        <div class="service-icon si-blue">🖥️</div>
+        <h3>Website Development</h3>
+        <ul>
+          <li>Business Websites</li>
+          <li>Portfolio Websites</li>
+          <li>E-Commerce Stores</li>
+          <li>Landing Pages</li>
+          <li>Corporate Websites</li>
+          <li>SEO Optimization</li>
+          <li>Website Maintenance</li>
+        </ul>
+      </div>
+      <div class="card-illustration">
+        <div class="mockup-browser">
+          <div class="browser-header">
+            <div class="browser-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="browser-bar"></div>
+          </div>
+          <div class="browser-body">
+            <div class="bb-nav"></div>
+            <div class="bb-hero">
+              <div class="bb-hero-img"></div>
+              <div class="bb-hero-text">
+                <span></span><span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SaaS App Dev -->
+    <div class="service-card">
+      <div class="card-content">
+        <div class="service-icon si-purple">☁️</div>
+        <h3>SaaS Application Development</h3>
+        <ul>
+          <li>Custom SaaS Platforms</li>
+          <li>Multi-Tenant Applications</li>
+          <li>Subscription Management</li>
+          <li>User Authentication</li>
+          <li>Dashboard Development</li>
+          <li>API Integration</li>
+          <li>Cloud Deployment</li>
+        </ul>
+      </div>
+      <div class="card-illustration">
+        <div class="mockup-dash-dark">
+          <div class="mdd-sidebar">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="mdd-main">
+            <div class="mdd-header"></div>
+            <div class="mdd-chart">
+              <div class="bar bar-1"></div>
+              <div class="bar bar-2"></div>
+              <div class="bar bar-3"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Business Automation -->
+    <div class="service-card">
+      <div class="card-content">
+        <div class="service-icon si-green">⚙️</div>
+        <h3>Business Automation</h3>
+        <ul>
+          <li>Workflow Automation</li>
+          <li>n8n Automation</li>
+          <li>CRM Integration</li>
+          <li>Lead Management</li>
+          <li>Email Automation</li>
+          <li>WhatsApp Automation</li>
+          <li>Process Optimization</li>
+        </ul>
+      </div>
+      <div class="card-illustration">
+        <div class="mockup-automation">
+          <div class="auto-node center-node">n8n</div>
+          <div class="auto-line al-left"></div>
+          <div class="auto-line al-right"></div>
+          <div class="auto-node left-node"><i class="fab fa-whatsapp"></i></div>
+          <div class="auto-node right-node"><i class="fas fa-envelope"></i></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Startup Solutions -->
+    <div class="service-card">
+      <div class="card-content">
+        <div class="service-icon si-orange">🚀</div>
+        <h3>Startup Solutions</h3>
+        <ul>
+          <li>MVP Development</li>
+          <li>Startup Launch Packages</li>
+          <li>Product Strategy</li>
+          <li>UI/UX Design</li>
+          <li>Market Validation</li>
+          <li>Growth Consultation</li>
+        </ul>
+      </div>
+      <div class="card-illustration">
+        <div class="mockup-rocket">
+          <div class="rocket-bg"></div>
+          <div class="rocket-ship">
+            <div class="rocket-body"></div>
+            <div class="rocket-wing-l"></div>
+            <div class="rocket-wing-r"></div>
+            <div class="rocket-flame"></div>
+          </div>
+          <div class="rocket-cloud rc-1"></div>
+          <div class="rocket-cloud rc-2"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="services-grid-2">
+
+    <!-- Digital Growth -->
+    <div class="service-card">
+      <div class="card-content">
+        <div class="service-icon si-red">📊</div>
+        <h3>Digital Growth Services</h3>
+        <ul>
+          <li>Search Engine Optimization</li>
+          <li>Social Media Management</li>
+          <li>Content Marketing</li>
+          <li>Brand Development</li>
+          <li>Performance Analytics</li>
+          <li>Conversion Optimization</li>
+        </ul>
+      </div>
+      <div class="card-illustration">
+        <div class="mockup-growth">
+          <div class="growth-bar gb-1"></div>
+          <div class="growth-bar gb-2"></div>
+          <div class="growth-bar gb-3"></div>
+          <div class="growth-target">
+            <div class="target-ring-1">
+              <div class="target-ring-2">
+                <div class="target-center"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Management Dashboard -->
+    <div class="service-card">
+      <div class="card-content">
+        <div class="service-icon si-indigo">📋</div>
+        <h3>Management Dashboard Solutions</h3>
+        <ul>
+          <li>Employee Management</li>
+          <li>Salary Management</li>
+          <li>Project Tracking</li>
+          <li>Client Management</li>
+          <li>Invoice Generation</li>
+          <li>Task Monitoring</li>
+          <li>Reporting &amp; Analytics</li>
+        </ul>
+      </div>
+      <div class="card-illustration">
+        <div class="mockup-analytics">
+          <div class="ma-left">
+            <span class="ma-line w80"></span>
+            <span class="ma-line w50"></span>
+            <div class="ma-bars">
+              <div class="mab"></div>
+              <div class="mab"></div>
+              <div class="mab"></div>
+            </div>
+          </div>
+          <div class="ma-right">
+            <div class="ma-donut">
+              <div class="ma-donut-inner"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Card -->
+    <div class="cta-card">
+      <div class="card-content">
+        <h3>Build, Automate &amp; Scale<br>with Hyna Studio</h3>
+        <p>Transform your business with modern websites, SaaS platforms, AI-powered automation, and scalable digital solutions designed to help your company grow faster and operate smarter.</p>
+        <a class="btn-primary" href="#">Let's Build Something Great &nbsp;→</a>
+      </div>
+      <div class="card-illustration">
+        <div class="mockup-cloud-servers">
+          <div class="mcs-cloud">SaaS</div>
+          <div class="mcs-stack">
+            <div class="mcs-layer"><span></span><span></span></div>
+            <div class="mcs-layer"><span></span><span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── HYNA STUDIO ADVANTAGE ── -->
+<section id="advantage" class="advantage-section">
+  <div class="advantage-container">
+    
+    <!-- Left Column: Image -->
+    <div class="advantage-visual">
+      <img src="handshake_advantage.png" alt="Hyna Studio Advantage" class="advantage-img">
+    </div>
+
+    <!-- Right Column: Content -->
+    <div class="advantage-content">
+      <h2 class="advantage-title">Hyna Studio Advantage</h2>
+      
+      <div class="advantage-grid">
+        
+        <!-- Item 1: End-to-End Expertise -->
+        <div class="advantage-card">
+          <div class="advantage-icon-wrapper">
+            <svg class="advantage-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+            </svg>
+          </div>
+          <p class="advantage-text">End-to-End Expertise Across SaaS, Cloud, Cybersecurity & Data/AI</p>
+        </div>
+
+        <!-- Item 2: Proven Delivery Excellence -->
+        <div class="advantage-card">
+          <div class="advantage-icon-wrapper">
+            <svg class="advantage-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="8" x2="12" y2="12" />
+              <line x1="12" y1="16" x2="12.01" y2="16" />
+            </svg>
+          </div>
+          <p class="advantage-text">Proven Delivery Excellence With Structured, Zero-Risk Execution</p>
+        </div>
+
+        <!-- Item 3: Future-Ready Cloud -->
+        <div class="advantage-card">
+          <div class="advantage-icon-wrapper">
+            <svg class="advantage-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 17.58A5 5 0 0 0 18 8h-1.26A8 8 0 1 0 4 16.25" />
+              <line x1="12" y1="12" x2="12" y2="21" />
+              <polyline points="9 18 12 21 15 18" />
+            </svg>
+          </div>
+          <p class="advantage-text">Future-Ready Cloud & Modernization Solutions</p>
+        </div>
+
+        <!-- Item 4: Security Built-In -->
+        <div class="advantage-card">
+          <div class="advantage-icon-wrapper">
+            <svg class="advantage-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+          </div>
+          <p class="advantage-text">Security Built Into Every Layer of Your Digital Ecosystem</p>
+        </div>
+
+        <!-- Item 5: Advanced Data & AI -->
+        <div class="advantage-card">
+          <div class="advantage-icon-wrapper">
+            <svg class="advantage-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1 0-3.12 3 3 0 0 1 0-3.88 2.5 2.5 0 0 1 0-3.12A2.5 2.5 0 0 1 9.5 2z" />
+              <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 0-3.12 3 3 0 0 0 0-3.88 2.5 2.5 0 0 0 0-3.12A2.5 2.5 0 0 0 14.5 2z" />
+              <path d="M12 8h2M12 12h3M12 16h2M12 10H10M12 14H9" />
+            </svg>
+          </div>
+          <p class="advantage-text">Advanced Data & AI Capabilities That Power Intelligent Decisions</p>
+        </div>
+
+        <!-- Item 6: Tailored Solutions -->
+        <div class="advantage-card">
+          <div class="advantage-icon-wrapper">
+            <svg class="advantage-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+            </svg>
+          </div>
+          <p class="advantage-text">Tailored Solutions Designed Around Your Industry and Goals</p>
+        </div>
+
+        <!-- Item 7: Customer-First Engagement -->
+        <div class="advantage-card">
+          <div class="advantage-icon-wrapper">
+            <svg class="advantage-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+          </div>
+          <p class="advantage-text">Customer-First Engagement With Transparent Collaboration</p>
+        </div>
+
+        <!-- Item 8: Scalable & Sustainable -->
+        <div class="advantage-card">
+          <div class="advantage-icon-wrapper">
+            <svg class="advantage-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5" />
+              <line x1="12" y1="22" x2="12" y2="15.5" />
+              <polyline points="22 8.5 12 15.5 2 8.5" />
+              <polyline points="2 15.5 12 8.5 22 15.5" />
+              <line x1="12" y1="2" x2="12" y2="8.5" />
+            </svg>
+          </div>
+          <p class="advantage-text">Scalable & Sustainable Innovation for High-Growth Enterprises</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-item">
+    <div class="footer-icon">⚡</div>
+    <div>
+      <h4>Modern Technology</h4>
+      <p>Latest tools &amp; frameworks</p>
+    </div>
+  </div>
+  <div class="footer-item">
+    <div class="footer-icon">🎨</div>
+    <div>
+      <h4>User-Centric Design</h4>
+      <p>Beautiful &amp; intuitive experiences</p>
+    </div>
+  </div>
+  <div class="footer-item">
+    <div class="footer-icon">🛡️</div>
+    <div>
+      <h4>Data Security</h4>
+      <p>Your data is always protected</p>
+    </div>
+  </div>
+  <div class="footer-item">
+    <div class="footer-icon">📐</div>
+    <div>
+      <h4>Scalable Architecture</h4>
+      <p>Built for growth &amp; performance</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
