@@ -56,154 +56,149 @@
   .logo-text strong { display: block; font-size: 16px; font-weight: 800; color: var(--blue-dark); letter-spacing: .5px; }
   .logo-text span { font-size: 11px; color: var(--text-muted); font-weight: 500; }
 
-  /* ── HERO ── */
   /* ── HERO BANNER ── */
   .hero-banner {
-    background: linear-gradient(120deg, #dbeafe 0%, #eff6ff 40%, #e0f2fe 70%, #f0fdf4 100%);
-    padding: 0;
+    background: linear-gradient(135deg, #f3f6fe 0%, #e3edff 65%, #f4f8fe 100%);
     position: relative;
     overflow: hidden;
+    border-bottom: 1px solid #f1f5f9;
   }
 
-  .hero-banner::before {
-    content: '';
-    position: absolute; inset: 0;
-    background:
-      radial-gradient(ellipse at 65% 40%, rgba(37,99,235,.10) 0%, transparent 55%),
-      radial-gradient(ellipse at 90% 80%, rgba(6,182,212,.07) 0%, transparent 40%);
-    pointer-events: none;
-  }
-
-  /* Inner nav row inside banner */
+  /* Logo nav inside banner */
   .hero-banner-nav {
     display: flex;
     align-items: center;
-    padding: 22px 60px 0;
+    padding: 20px 60px 0;
     position: relative;
     z-index: 2;
   }
-
   .hero-banner-nav a {
     display: flex; align-items: center; gap: 10px;
     text-decoration: none;
   }
-
-  .hero-banner-nav .logo-text strong {
+  .hero-banner-nav .hbn-logo-text { line-height: 1.15; }
+  .hero-banner-nav .hbn-logo-text strong {
     display: block; font-size: 15px; font-weight: 800;
-    color: var(--blue-dark); letter-spacing: .5px;
+    color: var(--blue-dark); letter-spacing: .4px;
+  }
+  .hero-banner-nav .hbn-logo-text span {
+    font-size: 10.5px; color: var(--text-muted); font-weight: 500;
   }
 
-  .hero-banner-nav .logo-text span {
-    font-size: 11px; color: var(--text-muted); font-weight: 500;
-  }
-
-  /* Two-column content row */
+  /* Two-column grid: left text | right image mockup */
   .hero-banner-body {
     display: grid;
-    grid-template-columns: 1fr 1.05fr;
+    grid-template-columns: 1.15fr 0.85fr;
     align-items: center;
-    gap: 0;
-    padding: 30px 60px 0;
+    padding: 28px 60px 48px 60px;
+    gap: 32px;
     position: relative;
     z-index: 2;
   }
 
-  .hero-banner-left { padding: 10px 0 50px; }
-
+  /* ── LEFT ── */
+  .hero-banner-left { padding-right: 20px; }
   .hero-banner-left h1 {
-    font-size: clamp(24px, 3vw, 40px);
+    font-size: clamp(26px, 3.2vw, 42px);
     font-weight: 900;
     color: var(--text-dark);
     line-height: 1.18;
-    margin-bottom: 18px;
+    margin-bottom: 20px;
+    letter-spacing: -.5px;
   }
-
   .hero-banner-left h1 .blue { color: var(--blue-bright); }
-
   .hero-banner-left p {
     font-size: 13.5px;
     color: var(--text-muted);
     margin-bottom: 10px;
-    max-width: 440px;
-    line-height: 1.65;
+    line-height: 1.7;
+    max-width: 420px;
   }
-
   .hero-banner-left p strong { color: var(--text-dark); font-weight: 700; }
 
-  /* Badges row */
+  /* Badges as Pill Tags */
   .badges {
-    display: flex; flex-wrap: wrap; gap: 24px;
-    margin-top: 26px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
   }
   .badge {
-    display: flex; align-items: center; gap: 8px;
-    font-size: 12px; font-weight: 600; color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 12px;
+    border: 1px solid transparent;
+  }
+  .badge-scalable {
+    background: #eff6ff;
+    border-color: #dbeafe;
+    color: #2563eb;
+  }
+  .badge-secure {
+    background: #f5f3ff;
+    border-color: #ede9fe;
+    color: #8b5cf6;
+  }
+  .badge-fast {
+    background: #ecfdf5;
+    border-color: #d1fae5;
+    color: #10b981;
+  }
+  .badge-ongoing {
+    background: #fff7ed;
+    border-color: #ffedd5;
+    color: #f97316;
   }
   .badge-icon {
-    width: 34px; height: 34px; border-radius: 9px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 16px;
-    background: rgba(37,99,235,.08);
-    border: 1px solid rgba(37,99,235,.12);
-  }
-  .badge-text { line-height: 1.3; }
-
-  /* Right column – image + floating icons */
-  .hero-banner-right {
-    position: relative;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
-    min-height: 340px;
+    flex-shrink: 0;
+  }
+  .badge-scalable .badge-icon { background: rgba(37, 99, 235, 0.1); }
+  .badge-secure .badge-icon   { background: rgba(139, 92, 246, 0.1); }
+  .badge-fast .badge-icon     { background: rgba(16, 185, 129, 0.1); }
+  .badge-ongoing .badge-icon  { background: rgba(249, 115, 22, 0.1); }
+  .badge-text {
+    line-height: 1.2;
+    font-size: 12px;
+  }
+
+  /* ── RIGHT: mockup image ── */
+  .hero-banner-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding-bottom: 0;
   }
-
   .hero-mockup-img {
     max-width: 100%;
-    max-height: 360px;
+    max-height: 380px;
     object-fit: contain;
-    position: relative;
-    z-index: 1;
-    filter: drop-shadow(0 20px 40px rgba(37,99,235,.18));
-  }
-
-  /* Floating tech-icon chips */
-  .fi-chip {
-    position: absolute;
-    width: 44px; height: 44px;
-    border-radius: 12px;
-    background: #fff;
-    box-shadow: 0 4px 18px rgba(37,99,235,.14);
-    display: flex; align-items: center; justify-content: center;
-    z-index: 3;
-    animation: floatChip 3.5s ease-in-out infinite;
-  }
-
-  .fi-chip svg { width: 22px; height: 22px; }
-
-  .fi-chip:nth-child(1) { top: 8%;  right: 4%;  animation-delay: 0s;    }
-  .fi-chip:nth-child(2) { top: 22%; right: -2%; animation-delay: .5s;   }
-  .fi-chip:nth-child(3) { top: 40%; right: 2%;  animation-delay: 1s;    }
-  .fi-chip:nth-child(4) { top: 6%;  left: 38%;  animation-delay: 1.5s;  }
-  .fi-chip:nth-child(5) { top: 22%; left: 30%;  animation-delay: 2s;    }
-  .fi-chip:nth-child(6) { top: 42%; left: 28%;  animation-delay: 2.5s;  }
-
-  @keyframes floatChip {
-    0%, 100% { transform: translateY(0);    }
-    50%       { transform: translateY(-7px); }
   }
 
   /* Responsive */
-  @media (max-width: 900px) {
-    .hero-banner-body { grid-template-columns: 1fr; padding: 20px 30px 0; }
-    .hero-banner-nav  { padding: 18px 30px 0; }
-    .hero-banner-right { min-height: 260px; }
-    .fi-chip { display: none; }
+  @media (max-width: 960px) {
+    .hero-banner-body {
+      grid-template-columns: 1fr;
+      padding: 24px 30px 40px;
+      gap: 24px;
+    }
+    .hero-banner-nav { padding: 18px 30px 0; }
+    .hero-banner-left { padding-right: 0; }
+    .hero-banner-right { padding-top: 16px; }
   }
   @media (max-width: 600px) {
-    .hero-banner-body { padding: 16px 20px 0; }
-    .hero-banner-nav  { padding: 14px 20px 0; }
-    .hero-banner-left h1 { font-size: 22px; }
+    .hero-banner-nav { padding: 14px 20px 0; }
+    .hero-banner-body { padding: 20px 20px 36px; }
+    .hero-banner-left h1 { font-size: 24px; }
   }
 
   /* ── SECTION HEADING ── */
@@ -990,87 +985,61 @@
 <!-- ── HERO BANNER ── -->
 <section class="hero-banner">
 
-  <!-- Logo row inside banner -->
+  <!-- Logo row -->
   <div class="hero-banner-nav">
     <a href="index.html">
       <img src="hyna-logo-new.png" alt="Hyna Studio Logo" style="width: 44px; height: 44px; object-fit: contain;">
-      <div class="logo-text">
+      <div class="hbn-logo-text">
         <strong>HYNA STUDIO</strong>
         <span>SaaS &amp; Website Development</span>
       </div>
     </a>
   </div>
 
-  <!-- Two-column body -->
+  <!-- Three-column body: text | image | icon rail -->
   <div class="hero-banner-body">
 
     <!-- LEFT: heading + copy + badges -->
     <div class="hero-banner-left">
       <h1>Empowering Businesses Through<br>Innovative <span class="blue">SaaS Solutions</span> &amp;<br>Digital Transformation</h1>
 
-      <p>At Hyna Studio, we help businesses streamline operations, improve customer
-         engagement, and accelerate growth through modern SaaS applications,
-         custom websites, automation solutions, and digital platforms.</p>
+      <p>At Hyna Studio, we help businesses streamline operations, improve customer engagement, and accelerate growth through modern SaaS applications, custom websites, automation solutions, and digital platforms.</p>
 
-      <p>Our team specializes in creating scalable, secure, and user-friendly software
-         tailored to the unique needs of startups, small businesses, and enterprises.</p>
+      <p>Our team specializes in creating scalable, secure, and user-friendly software tailored to the unique needs of startups, small businesses, and enterprises.</p>
 
-      <p>From idea validation to deployment and ongoing support, we deliver
-         <strong>technology solutions that drive efficiency, innovation, and long-term success.</strong></p>
+      <p>From idea validation to deployment and ongoing support, we deliver <strong>technology solutions that drive efficiency, innovation, and long-term success.</strong></p>
 
       <div class="badges">
-        <div class="badge">
+        <div class="badge badge-scalable">
           <div class="badge-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" width="18" height="18"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" width="16" height="16"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
           <div class="badge-text">Scalable<br>Solutions</div>
         </div>
-        <div class="badge">
+        <div class="badge badge-secure">
           <div class="badge-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" width="18" height="18"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2" width="16" height="16"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
           </div>
           <div class="badge-text">Secure &amp;<br>Reliable</div>
         </div>
-        <div class="badge">
+        <div class="badge badge-fast">
           <div class="badge-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" width="18" height="18"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" width="16" height="16"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
           </div>
           <div class="badge-text">Fast<br>Delivery</div>
         </div>
-        <div class="badge">
+        <div class="badge badge-ongoing">
           <div class="badge-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" width="18" height="18"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" width="16" height="16"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
           </div>
           <div class="badge-text">Ongoing<br>Support</div>
         </div>
       </div>
     </div>
 
-    <!-- RIGHT: mockup image + floating icon chips -->
+    <!-- RIGHT: mockup image -->
     <div class="hero-banner-right">
-
-      <!-- Floating tech icon chips -->
-      <div class="fi-chip">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
-      </div>
-      <div class="fi-chip">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-      </div>
-      <div class="fi-chip">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-      </div>
-      <div class="fi-chip">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
-      </div>
-      <div class="fi-chip">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-      </div>
-      <div class="fi-chip">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-      </div>
-
-      <!-- Main mockup image -->
-      <img src="Copilot_20260620_011506.png" alt="SaaS &amp; Website Development Mockup" class="hero-mockup-img">
+      <img src="saas_hero_mockup.png" alt="Hyna Studio SaaS & Website Development Mockup" class="hero-mockup-img">
     </div>
 
   </div>
