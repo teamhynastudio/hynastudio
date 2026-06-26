@@ -5387,20 +5387,23 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                gap: 24px;
-                padding: 40px 24px 80px;
+                gap: 120px;
+                padding: 40px 12px 240px;
                 background: #ffffff;
                 position: relative;
             }
             .process-card {
+                position: sticky;
+                top: 110px;
                 width: 100%;
-                max-width: 800px;
+                max-width: 860px;
                 border-radius: 24px;
-                padding: 36px 44px;
+                padding: 32px 36px;
                 overflow: hidden;
+                will-change: transform, opacity, filter;
                 display: flex;
                 flex-direction: column;
-                gap: 20px;
+                gap: 16px;
                 box-shadow: 0 4px 20px rgba(0,0,0,0.04), 0 16px 48px rgba(0,0,0,0.08);
             }
             .process-card-deco {
@@ -5439,8 +5442,8 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
                 margin-top: 4px;
             }
             .process-items-grid {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
+                display: flex;
+                flex-direction: column;
                 gap: 10px;
             }
             .process-item-pill {
@@ -5476,11 +5479,10 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
             .process-card.c5 { background: linear-gradient(140deg, #1e3a8a, #2563eb); }
             .process-card.c6 { background: linear-gradient(140deg, #134e4a, #0d9488); }
 
-            @media (max-width: 580px) {
-                .process-card { padding: 24px 20px; border-radius: 20px; }
+            @media (max-width: 768px) {
+                .process-stack-section { padding: 24px 10px 120px; gap: 60px; }
+                .process-card { padding: 24px 22px; border-radius: 20px; top: 80px; }
                 .process-card-deco { display: none; }
-                .process-items-grid { grid-template-columns: 1fr; }
-                .process-stack-section { gap: 16px; padding: 24px 16px 60px; }
             }
         </style>
 
@@ -5584,9 +5586,57 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
         </section>
     </section>
 
+    <script>
+        function initProcessScroll() {
+            if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+            gsap.registerPlugin(ScrollTrigger);
 
+            const cards = gsap.utils.toArray('.process-card');
 
+            cards.forEach((card, i) => {
+                // Entrance animation — slide up on scroll into view
+                gsap.fromTo(card,
+                    { y: 40, opacity: 0 },
+                    {
+                        y: 0, opacity: 1,
+                        duration: 0.5,
+                        ease: 'power2.out',
+                        scrollTrigger: {
+                            trigger: card,
+                            start: 'top 88%',
+                            toggleActions: 'play none none reverse',
+                        }
+                    }
+                );
 
+                // Stacking effect — previous card fades & scales as next card approaches
+                if (i < cards.length - 1) {
+                    const nextCard = cards[i + 1];
+                    ScrollTrigger.create({
+                        trigger: nextCard,
+                        start: 'top 220px',
+                        end: 'top 110px',
+                        scrub: true,
+                        onUpdate(self) {
+                            const p = self.progress;
+                            gsap.set(card, {
+                                scale: 1 - p * 0.04,
+                                y: -p * 20,
+                                filter: 'blur(' + (p * 3) + 'px)',
+                                opacity: 1 - p * 0.5,
+                            });
+                        }
+                    });
+                }
+            });
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initProcessScroll);
+        } else {
+            initProcessScroll();
+        }
+    </script>
 
     <!-- FAQ -->
     <section id="faq" class="faq-section">
