@@ -3648,6 +3648,7 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
             </li>
             <li><a href="#about">About</a></li>
             <li><a href="#team">Team</a></li>
+            <li><a href="#our-approach">process</a></li>
             <li><a href="#faq">FAQ</a></li>
         </ul>
 
@@ -5286,7 +5287,174 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
                     padding-bottom: 20px;
                 }
             }
+            /* --- SECTION BASE --- */
+.approach-section {
+  padding: 80px 8%;
+  background: linear-gradient(to bottom right, #ffffff, #ffffff);
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+}
+
+/* --- TITLE & SUBTITLE --- */
+.approach-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #1e40af;
+  margin-bottom: 12px;
+}
+
+.approach-subtitle {
+  font-size: 1.05rem;
+  color: #1d222a;
+  margin-bottom: 50px;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --- STEPS CONTAINER --- */
+.approach-steps {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 25px;
+}
+
+/* --- STEP CARD --- */
+.step-card {
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 12px;
+  padding: 30px 30px;
+  width: 220px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.step-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* --- STEP NUMBER --- */
+.step-number {
+  background: #1e40af;
+  color: #e8dcdc;
+  font-weight: 700;
+  font-size: 1.1rem;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+}
+
+/* --- STEP TEXT --- */
+.step-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.step-desc {
+  font-size: 0.9rem;
+  color: #475569;
+  line-height: 1.5;
+}
+
+/* --- ARROWS --- */
+.step-arrow {
+  font-size: 1.6rem;
+  color: #1e40af;
+  font-weight: 700;
+  align-self: center;
+}
+
+/* --- FOOTER --- */
+.approach-footer {
+  margin-top: 40px;
+  font-size: 1rem;
+  color: #334155;
+  font-weight: 500;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 992px) {
+  .approach-steps {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .step-card {
+    width: 45%;
+  }
+  .step-arrow {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .approach-title {
+    font-size: 2rem;
+  }
+  .approach-subtitle {
+    font-size: 0.95rem;
+  }
+  .step-card {
+    width: 100%;
+  }
+}
+
         </style>
+        <!-- OUR APPROACH SECTION -->
+<section id="our-approach" class="approach-section">
+    <div class="approach-container">
+        <h2 class="approach-title">Our Approach</h2>
+        <p class="approach-subtitle">
+            Everything starts with understanding the system. Then we build and scale with intent.
+        </p>
+
+        <div class="approach-steps">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h3 class="step-title">Assess</h3>
+                <p class="step-desc">Current state, constraints, risks, and success metrics.</p>
+            </div>
+
+            <div class="step-arrow">→</div>
+
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h3 class="step-title">Design</h3>
+                <p class="step-desc">Architecture and tradeoffs across reliability, cost, speed, and scale.</p>
+            </div>
+
+            <div class="step-arrow">→</div>
+
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h3 class="step-title">Build</h3>
+                <p class="step-desc">Structured delivery with working software checkpoints.</p>
+            </div>
+
+            <div class="step-arrow">→</div>
+
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <h3 class="step-title">Scale</h3>
+                <p class="step-desc">Monitoring, performance tuning, cost control, and continuous improvement.</p>
+            </div>
+        </div>
+
+        <p class="approach-footer">
+            Different roles. Shared context. Clear accountability.
+        </p>
+    </div>
+</section>
+
 
         <div class="faq-container">
             <div class="faq-header">
