@@ -17,6 +17,8 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link
@@ -4141,207 +4143,102 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
 
         /* ── EMPOWERMENT SECTION ── */
         .empowerment-section {
-            padding: 7rem 8%;
-            background-color: var(--paper);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
+    padding: 80px 10%;
+    background: linear-gradient(to right, #ffffff, #f8fbff);
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-        .empowerment-container {
-            max-width: 1300px;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1.15fr 1fr;
-            gap: 6rem;
-            align-items: center;
-        }
+.empowerment-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 40px;
+}
 
-        .empowerment-visual {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+.empowerment-content {
+    flex: 1 1 500px;
+}
 
-        .empowerment-img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 24px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.12), 0 0 2px 1px rgba(0, 0, 0, 0.02);
-            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
-        }
+.empowerment-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 20px;
+}
 
-        .empowerment-img:hover {
-            transform: scale(1.02) translateY(-2px);
-            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.18), 0 0 3px 1px rgba(0, 0, 0, 0.03);
-        }
+.highlight-blue {
+    color: #3b82f6;
+}
 
-        .empowerment-content {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
+.empowerment-desc,
+.empowerment-sub-desc,
+.empowerment-outro {
+    font-size: 1.1rem;
+    color: #475569;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
 
-        .empowerment-title {
-            font-family: var(--font-display);
-            font-size: clamp(1.4rem, 2vw, 1.9rem);
-            font-weight: 800;
-            line-height: 1.2;
-            color: var(--ink);
-            letter-spacing: -0.02em;
-            margin: 0;
-        }
+.expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
 
-        .empowerment-title .highlight-blue {
-            color: #2563eb;
-            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+.expertise-card {
+    background: #f1f5f9;
+    border-radius: 12px;
+    padding: 25px 20px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-        .empowerment-desc {
-            font-size: 1.15rem;
-            line-height: 1.75;
-            color: var(--muted);
-            margin: 0;
-        }
+.expertise-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
 
-        .empowerment-desc strong {
-            color: var(--ink);
-            font-weight: 600;
-        }
+.expertise-icon-wrapper i {
+    font-size: 2rem;
+    color: #3b82f6;
+    margin-bottom: 10px;
+}
 
-        .empowerment-sub-desc {
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: var(--ink);
-            margin: 0.5rem 0 0;
-        }
+.expertise-label {
+    font-weight: 600;
+    color: #1e293b;
+}
 
-        /* Expertise Grid */
-        .expertise-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 1rem;
-            margin: 0.8rem 0;
-        }
+.cta-button {
+    display: inline-block;
+    background: #3b82f6;
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
 
-        .expertise-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.8rem;
-            text-align: center;
-            text-decoration: none;
-            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-        }
+.cta-button:hover {
+    background: #2563eb;
+}
 
-        .expertise-card:hover {
-            transform: translateY(-6px);
-        }
+.empowerment-visual {
+    flex: 1 1 400px;
+    text-align: center;
+}
 
-        .expertise-icon-wrapper {
-            width: 64px;
-            height: 64px;
-            border-radius: 16px;
-            background: rgba(37, 99, 235, 0.05);
-            border: 1px solid rgba(37, 99, 235, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #2563eb;
-            transition: all 0.3s ease;
-        }
+.empowerment-img {
+    max-width: 100%;
+    border-radius: 10px;
+}
 
-        .expertise-card:hover .expertise-icon-wrapper {
-            background: rgba(37, 99, 235, 0.09);
-            border-color: rgba(37, 99, 235, 0.22);
-            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.15);
-        }
-
-        .expertise-icon {
-            width: 28px;
-            height: 28px;
-            stroke-width: 2;
-            transition: transform 0.3s ease;
-        }
-
-        .expertise-card:hover .expertise-icon {
-            transform: scale(1.1);
-        }
-
-        .expertise-label {
-            font-size: 0.85rem;
-            font-weight: 600;
-            line-height: 1.3;
-            color: var(--ink);
-        }
-
-        .empowerment-outro {
-            font-size: 1.1rem;
-            line-height: 1.75;
-            color: var(--muted);
-            margin: 0.5rem 0 0;
-        }
-
-        /* CTA Button */
-        .empowerment-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.6rem;
-            align-self: flex-start;
-            padding: 1rem 2.2rem;
-            font-family: var(--font-body);
-            font-size: 1rem;
-            font-weight: 600;
-            color: #ffffff;
-            background: #2563eb;
-            border: none;
-            border-radius: 14px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
-            margin-top: 0.5rem;
-        }
-
-        .empowerment-btn:hover {
-            background: #1d4ed8;
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
-            transform: translateY(-2px);
-        }
-
-        .empowerment-btn .btn-arrow {
-            width: 18px;
-            height: 18px;
-            stroke-width: 2.5;
-            transition: transform 0.3s ease;
-        }
-
-        .empowerment-btn:hover .btn-arrow {
-            transform: translate(2px, -2px);
-        }
-
-        /* Responsive styles */
-        @media (max-width: 1100px) {
-            .empowerment-container {
-                grid-template-columns: 1fr;
-                gap: 3.5rem;
-            }
-
-            .empowerment-section {
-                padding: 5rem 6%;
-            }
-
-            .empowerment-visual {
-                max-width: 700px;
-                margin: 0 auto;
-            }
-        }
 
         @media (max-width: 640px) {
             .empowerment-section {
@@ -4487,118 +4384,78 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
     </script>
     </section>
 
-    <!-- EMPOWERMENT SECTION -->
-    <section id="solutions-overview" class="empowerment-section">
-        
-        <div class="empowerment-container">
-            <!-- Left Column: Graphic Mockup -->
-            <div class="empowerment-visual">
-                <img src="./laptop.png" alt="Digital Solutions That Drive Growth" class="empowerment-img">
-            </div>
+   <!-- EMPOWERMENT SECTION -->
+<!-- Hyna Studio Empowerment Section -->
+<section id="solutions-overview" class="empowerment-section">
+    <div class="empowerment-container">
+        <div class="empowerment-content">
+            <h2 class="empowerment-title">
+                Empowering Businesses with <span class="highlight-blue">Smart Digital Solutions</span>
+            </h2>
+            <p class="empowerment-desc">
+                At <strong>Hyna Studio</strong>, we deliver end-to-end digital solutions that enable businesses
+                to innovate, scale, and stay ahead in today’s dynamic digital landscape.
+            </p>
 
-            <!-- Right Column: Content -->
-            <div class="empowerment-content">
-                <h2 class="empowerment-title">Empowering Businesses with <span class="highlight-blue">Smart Digital
-                        Solutions</span></h2>
-                <p class="empowerment-desc">
-                    At <strong>Hyna Studio</strong>, we deliver end-to-end digital solutions that help businesses
-                    innovate,
-                    scale, and stay ahead in a rapidly evolving world.
-                </p>
-                <p class="empowerment-sub-desc">Our expertise spans across key technology domains:</p>
+            <p class="empowerment-sub-desc">Our Expertise Spans Key Technology Domains:</p>
 
-                <!-- Expertise Cards Grid -->
-                <div class="expertise-grid">
-                    <!-- SaaS Solutions -->
-                    <div class="expertise-card">
-                        <div class="expertise-icon-wrapper">
-                            <svg class="expertise-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M17.5 19H9a7 7 0 1 1 6.71-9h.79a3 3 0 0 1 0 6h-.5" />
-                                <circle cx="11.5" cy="13.5" r="1.5" />
-                                <path d="M11.5 11v1m0 3v1m-2.5-2.5h1m3 0h1" />
-                            </svg>
-                        </div>
-                        <span class="expertise-label">SaaS Solutions</span>
+            <div class="expertise-grid">
+                <div class="expertise-card">
+                    <div class="expertise-icon-wrapper">
+                        <i class="fas fa-cloud"></i>
                     </div>
-
-                    <!-- Application Services -->
-                    <div class="expertise-card">
-                        <div class="expertise-icon-wrapper">
-                            <svg class="expertise-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-                                <line x1="8" y1="21" x2="16" y2="21" />
-                                <line x1="12" y1="17" x2="12" y2="21" />
-                                <polyline points="10 7 8 9 10 11" />
-                                <polyline points="14 7 16 9 14 11" />
-                            </svg>
-                        </div>
-                        <span class="expertise-label">Application Services</span>
-                    </div>
-
-                    <!-- Cloud Infrastructure -->
-                    <div class="expertise-card">
-                        <div class="expertise-icon-wrapper">
-                            <svg class="expertise-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25" />
-                                <rect x="8" y="13" width="8" height="3" rx="1" />
-                                <rect x="8" y="18" width="8" height="3" rx="1" />
-                            </svg>
-                        </div>
-                        <span class="expertise-label">Cloud Infrastructure</span>
-                    </div>
-
-                    <!-- Digitalization -->
-                    <div class="expertise-card">
-                        <div class="expertise-icon-wrapper">
-                            <svg class="expertise-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="18" y1="20" x2="18" y2="10" />
-                                <line x1="12" y1="20" x2="12" y2="4" />
-                                <line x1="6" y1="20" x2="6" y2="14" />
-                                <path d="M3 20h18" />
-                                <path d="M3 3l6 6 4-2 7 8" />
-                                <polyline points="14 15 20 15 20 9" />
-                            </svg>
-                        </div>
-                        <span class="expertise-label">Digitalization</span>
-                    </div>
-
-                    <!-- AI & Intelligence -->
-                    <div class="expertise-card">
-                        <div class="expertise-icon-wrapper">
-                            <svg class="expertise-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path
-                                    d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1 0-3.12 3.001 3.001 0 0 1 0-3.88 2.5 2.5 0 0 1 0-3.12A2.5 2.5 0 0 1 9.5 2z" />
-                                <path
-                                    d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 0-3.12 3.001 3.001 0 0 0 0-3.88 2.5 2.5 0 0 0 0-3.12A2.5 2.5 0 0 0 14.5 2z" />
-                                <path d="M12 8h2M12 12h3M12 16h2M12 10H10M12 14H9" />
-                            </svg>
-                        </div>
-                        <span class="expertise-label">AI & Intelligence</span>
-                    </div>
+                    <span class="expertise-label">SaaS Solutions</span>
                 </div>
 
-                <p class="empowerment-outro">
-                    From strategy to execution, we partner with you to build intelligent, secure, and future-ready
-                    solutions that drive measurable impact.
-                </p>
+                <div class="expertise-card">
+                    <div class="expertise-icon-wrapper">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <span class="expertise-label">Application Services</span>
+                </div>
 
-                <!-- Explore CTA Button -->
-                <a href="hyna-services.html" class="empowerment-btn">
-                    Explore Our Solutions
-                    <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="7" y1="17" x2="17" y2="7" />
-                        <polyline points="7 7 17 7 17 17" />
-                    </svg>
-                </a>
+                <div class="expertise-card">
+                    <div class="expertise-icon-wrapper">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <span class="expertise-label">Cloud Infrastructure</span>
+                </div>
+
+                <div class="expertise-card">
+                    <div class="expertise-icon-wrapper">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <span class="expertise-label">Digitalization</span>
+                </div>
+
+                <div class="expertise-card">
+                    <div class="expertise-icon-wrapper">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <span class="expertise-label">AI & Intelligence</span>
+                </div>
             </div>
+
+<p class="empowerment-outro">
+                From strategy to implementation, we partner with you to build secure, scalable,
+                and future-ready digital solutions that drive measurable impact.
+            </p>
+
+            <a href="hyna-services.html" class="cta-button">
+                Explore Our Solutions
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 6px;">
+                    <line x1="7" y1="17" x2="17" y2="7" />
+                    <polyline points="7 7 17 7 17 17" />
+                </svg>
+            </a>
+
         </div>
-    </section>
+
+        <div class="empowerment-visual">
+            <img src="https://cdn.corenexis.com/f/lam4fcWJrRk.png" alt="Professional Businesswoman" class="empowerment-img">
+        </div>
+    </div>
+</section>
 
     <!-- ABOUT -->
     <section id="about">

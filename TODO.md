@@ -1,3 +1,0 @@
-- [x] Insert Trusted Businesses marquee at the bottom of `index.html` (after footer, before Team Modal)
-- [x] Add scoped CSS for the marquee (namespaced to avoid conflicts)
-- [x] Verify in browser that the marquee animates and pauses on hover
