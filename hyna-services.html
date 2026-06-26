@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — Hyna Studio | Intelligent Digital Solutions</title>
+  <meta name="description" content="Hyna Studio delivers enterprise-grade SaaS, cloud infrastructure, AI, and application services for startups and scale-ups worldwide." />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #ffffff;
+      --bg-2:      #f8fafc;
+      --bg-3:      #f1f5f9;
+      --surface:   #ffffff;
+      --border:    #e2e8f0;
+      --border-2:  #cbd5e1;
+      --blue:      #2563eb;
+      --blue-l:    #3b82f6;
+      --blue-xl:   #2563eb;
+      --cyan:      #0891b2;
+      --cyan-l:    #0ea5e9;
+      --ink:       #0f172a;
+      --ink-2:     #1e293b;
+      --muted:     #64748b;
+      --muted-2:   #94a3b8;
+      --font-d:    'Syne', sans-serif;
+      --font-b:    'Inter', sans-serif;
+      --font-m:    'JetBrains Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-b);
+      background: var(--bg);
+      color: var(--ink);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg-2); }
+    ::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 4px; }
+
+    /* Remove noise overlay on light theme */
+    body::before { display: none; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 1.25rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1160px, calc(100% - 2.5rem));
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1.75rem;
+      background: rgba(255,255,255,0.88);
+      border: 1px solid var(--border);
+      border-radius: 56px;
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.04);
+      transition: all 0.4s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(255,255,255,0.96);
+      border-color: var(--border-2);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08), 0 16px 40px rgba(0,0,0,0.06);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .nav-logo img {
+      height: 40px;
+      width: 40px;
+      object-fit: contain;
+    }
+
+    .nav-logo-text { line-height: 1.1; }
+    .nav-logo-main {
+      font-family: var(--font-d);
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--ink);
+      display: block;
+    }
+    .nav-logo-sub {
+      font-size: 0.55rem;
+      color: var(--muted-2);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a.active { color: var(--blue); font-weight: 600; }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--blue);
+      color: #fff !important;
+      padding: 0.55rem 1.35rem;
+      border-radius: 100px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.25s, box-shadow 0.25s, transform 0.2s;
+      box-shadow: 0 4px 14px rgba(37,99,235,0.3);
+    }
+    .nav-cta:hover {
+      background: #1d4ed8;
+      box-shadow: 0 6px 20px rgba(37,99,235,0.45);
+      transform: translateY(-1px);
+    }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--ink-2);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+
+    /* ─── SECTION COMMON ─── */
+    .section {
+      position: relative;
+      z-index: 1;
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: var(--font-m);
+      font-size: 0.72rem;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .section-label::before {
+      content: '//';
+      color: var(--cyan);
+    }
+
+    .section-title {
+      font-family: var(--font-d);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 54ch;
+      line-height: 1.75;
+    }
+
+    /* ─── SERVICES SECTION ─── */
+    .services-section {
+      background: var(--bg-2);
+      padding: 8rem 2rem 7rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .services-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border-2), transparent);
+    }
+
+    .services-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .services-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .services-header .section-label { justify-content: center; }
+
+    /* Services Grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    /* First two cards span proportionally, last 2 span half */
+    .service-card {
+      position: relative;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.2rem;
+      cursor: default;
+      transition: border-color 0.35s, transform 0.35s, box-shadow 0.35s;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle 220px at var(--mx,50%) var(--my,50%), rgba(37,99,235,0.05), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s;
+      border-radius: 20px;
+      pointer-events: none;
+    }
+
+    .service-card:hover::before { opacity: 1; }
+
+    .service-card:hover {
+      border-color: rgba(37,99,235,0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(37,99,235,0.08), 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    /* Featured card (first) */
+    .service-card.featured {
+      grid-column: span 2;
+      background: linear-gradient(135deg, #eff6ff 0%, #f0f9ff 100%);
+      border-color: rgba(37,99,235,0.2);
+    }
+    .service-card.featured:hover {
+      border-color: rgba(37,99,235,0.4);
+      background: linear-gradient(135deg, #dbeafe 0%, #e0f2fe 100%);
+    }
+
+    /* Top accent line */
+    .service-card .card-accent {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--card-accent, var(--blue)), transparent);
+      opacity: 0;
+      transition: opacity 0.4s;
+      border-radius: 20px 20px 0 0;
+    }
+    .service-card:hover .card-accent { opacity: 1; }
+
+    .service-icon-wrap {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .si-blue   { background: rgba(37,99,235,0.15);  --card-accent: #3b82f6; }
+    .si-cyan   { background: rgba(6,182,212,0.15);  --card-accent: #06b6d4; }
+    .si-indigo { background: rgba(99,102,241,0.15); --card-accent: #818cf8; }
+    .si-violet { background: rgba(139,92,246,0.15); --card-accent: #a78bfa; }
+    .si-green  { background: rgba(16,185,129,0.15); --card-accent: #34d399; }
+
+    .service-icon-wrap svg {
+      width: 26px;
+      height: 26px;
+    }
+
+    .service-card h3 {
+      font-family: var(--font-d);
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .stag {
+      font-family: var(--font-m);
+      font-size: 0.67rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      background: #f1f5f9;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .service-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--blue);
+      text-decoration: none;
+      margin-top: 1.5rem;
+      transition: gap 0.2s, color 0.2s;
+    }
+    .service-link:hover { gap: 0.7rem; color: var(--cyan); }
+    .service-link svg { width: 14px; height: 14px; }
+
+    /* ─── WHY CHOOSE ─── */
+    .why-section {
+      padding: 7rem 2rem;
+      position: relative;
+      background: var(--bg);
+    }
+
+    .why-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .why-left {}
+
+    .why-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+    }
+
+    .why-stat {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .why-stat:hover {
+      border-color: rgba(37,99,235,0.3);
+      box-shadow: 0 4px 16px rgba(37,99,235,0.08);
+    }
+
+    .why-stat-val {
+      font-family: var(--font-d);
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .why-stat-label {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* Reasons list */
+    .why-right {}
+
+    .reason-item {
+      display: flex;
+      gap: 1.25rem;
+      padding: 1.75rem;
+      border-radius: 16px;
+      border: 1px solid transparent;
+      transition: all 0.3s;
+      margin-bottom: 1rem;
+    }
+    .reason-item:hover {
+      background: #ffffff;
+      border-color: var(--border);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+
+    .reason-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .reason-icon svg { width: 22px; height: 22px; }
+
+    .reason-title {
+      font-family: var(--font-d);
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--ink);
+    }
+
+    .reason-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ─── PROCESS / HOW WE WORK ─── */
+    .process-section {
+      padding: 7rem 2rem;
+      background: var(--bg-2);
+      position: relative;
+      overflow: hidden;
+    }
+    .process-section::before,
+    .process-section::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border-2), transparent);
+    }
+    .process-section::before { top: 0; }
+    .process-section::after  { bottom: 0; }
+
+    .process-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .process-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .process-header .section-label { justify-content: center; }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+
+    .process-step {
+      background: #ffffff;
+      padding: 2.5rem 2rem;
+      position: relative;
+      transition: background 0.3s;
+    }
+    .process-step:hover { background: #f8fafc; }
+
+    .step-num {
+      font-family: var(--font-m);
+      font-size: 0.65rem;
+      color: var(--blue);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      display: block;
+    }
+
+    .step-title {
+      font-family: var(--font-d);
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      color: var(--ink);
+    }
+
+    .step-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .step-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+    }
+    .step-icon svg { width: 20px; height: 20px; stroke: var(--blue); }
+
+    /* ─── CTA SECTION ─── */
+    .cta-section {
+      padding: 8rem 2rem;
+      position: relative;
+      overflow: hidden;
+      background: var(--bg);
+    }
+
+    .cta-glow { display: none; }
+
+    .cta-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, #1d4ed8 0%, #0369a1 100%);
+      border: none;
+      border-radius: 28px;
+      padding: 5rem 4rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(37,99,235,0.25), 0 4px 16px rgba(37,99,235,0.15);
+    }
+
+    .cta-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    }
+
+    .cta-box h2 {
+      font-family: var(--font-d);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      margin-bottom: 1.2rem;
+      color: #ffffff;
+    }
+
+    .cta-box h2 span {
+      color: #bae6fd;
+      -webkit-text-fill-color: #bae6fd;
+    }
+
+    .cta-box p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.75);
+      max-width: 50ch;
+      margin: 0 auto 2.5rem;
+      line-height: 1.75;
+    }
+
+    .cta-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .cta-box .btn-primary {
+      background: #ffffff;
+      color: var(--blue) !important;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    }
+    .cta-box .btn-primary:hover {
+      background: #f1f5f9;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+    .cta-box .btn-ghost {
+      border-color: rgba(255,255,255,0.35);
+      color: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.1);
+    }
+    .cta-box .btn-ghost:hover {
+      background: rgba(255,255,255,0.18);
+      border-color: rgba(255,255,255,0.55);
+      color: #fff;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--ink);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 4rem 2rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-brand .nav-logo { margin-bottom: 1rem; }
+    .footer-brand p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.7;
+      max-width: 28ch;
+    }
+
+    footer .nav-logo-main { color: #ffffff; }
+    footer .nav-logo-sub  { color: rgba(255,255,255,0.35); }
+
+    .footer-col h4 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-col a {
+      display: block;
+      text-decoration: none;
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 0.6rem;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: #ffffff; }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 2rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-copy {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.35);
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .footer-legal a {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.35);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-legal a:hover { color: rgba(255,255,255,0.7); }
+
+    /* ─── REVEAL ANIMATIONS ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+    .reveal-delay-4 { transition-delay: 0.32s; }
+    .reveal-delay-5 { transition-delay: 0.4s; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .service-card.featured { grid-column: span 2; }
+      .why-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-links.mobile-open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        inset: 0;
+        background: rgba(255,255,255,0.98);
+        padding: 6rem 2rem 2rem;
+        gap: 1.5rem;
+        z-index: 99;
+        align-items: center;
+        justify-content: center;
+      }
+      .nav-links.mobile-open a { font-size: 1.4rem; color: var(--ink); }
+      .services-grid { grid-template-columns: 1fr; }
+      .service-card.featured { grid-column: span 1; }
+      .process-steps { grid-template-columns: 1fr; }
+      .why-stats { grid-template-columns: 1fr 1fr; }
+      .cta-box { padding: 3rem 1.75rem; }
+      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-metrics { gap: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAV ─── -->
+  <nav id="nav">
+    <a href="index.html" class="nav-logo">
+      <img src="./hyna-logo-new.png" alt="Hyna Studio Logo" />
+      <div class="nav-logo-text">
+        <span class="nav-logo-main">Hyna Studio</span>
+        <span class="nav-logo-sub">Democratizing Entrepreneurship</span>
+      </div>
+    </a>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="hyna-services.html" class="active">Services</a></li>
+      <li><a href="saas-solutions.html">SaaS</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <div style="display:flex;align-items:center;gap:1rem;">
+      <a href="contact.html" class="nav-cta">
+        Book a Call
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+
+
+  <!-- ─── SERVICES GRID ─── -->
+  <section class="services-section" id="services">
+    <div class="services-inner">
+      <div class="services-header">
+        <div class="section-label">What We Build</div>
+        <h2 class="section-title reveal">Five Disciplines.<br />One Integrated Studio.</h2>
+        <p class="section-sub reveal reveal-delay-1" style="margin:0 auto;">
+          We combine deep technical expertise across five domains to deliver
+          cohesive, future-proof digital infrastructure for your business.
+        </p>
+      </div>
+
+      <div class="services-grid">
+
+        <!-- 1. SaaS Solutions (featured) -->
+        <div class="service-card featured reveal" data-delay="0">
+          <div class="card-accent" style="--card-accent: var(--blue-xl)"></div>
+          <div class="service-icon-wrap si-blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
+              <path d="M7 8h2M7 11h2M11 8h6M11 11h4"/>
+            </svg>
+          </div>
+          <h3>SaaS Solutions</h3>
+          <p>End-to-end SaaS platform development — from multi-tenant architecture and authentication systems to billing integrations and scalable API backends. We build the software your customers pay for every month.</p>
+          <div class="service-tags">
+            <span class="stag">Multi-tenant</span>
+            <span class="stag">Stripe billing</span>
+            <span class="stag">REST & GraphQL</span>
+            <span class="stag">Auth systems</span>
+            <span class="stag">Admin dashboards</span>
+            <span class="stag">Next.js / React</span>
+          </div>
+          <a href="saas-solutions.html" class="service-link">
+            Explore SaaS Services
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- 2. Application Services -->
+        <div class="service-card reveal reveal-delay-1" data-delay="1">
+          <div class="card-accent" style="--card-accent: var(--cyan)"></div>
+          <div class="service-icon-wrap si-cyan">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h3>Application Services</h3>
+          <p>Web and mobile applications built with precision — pixel-perfect UIs, performance-optimised codebases, and seamless cross-platform experiences from Figma to production.</p>
+          <div class="service-tags">
+            <span class="stag">React / Next.js</span>
+            <span class="stag">React Native</span>
+            <span class="stag">PWA</span>
+            <span class="stag">Shopify</span>
+          </div>
+          <a href="contact.html" class="service-link">
+            Get Started
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- 3. Cloud & Infrastructure -->
+        <div class="service-card reveal reveal-delay-2" data-delay="2">
+          <div class="card-accent" style="--card-accent: #818cf8"></div>
+          <div class="service-icon-wrap si-indigo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 16.58A5 5 0 0018 7h-1.26A8 8 0 104 15.25"/><line x1="12" y1="12" x2="12" y2="21"/><polyline points="8 17 12 21 16 17"/>
+            </svg>
+          </div>
+          <h3>Cloud & Infrastructure</h3>
+          <p>Architect and manage cloud-native infrastructure on AWS, GCP, and Azure. Kubernetes orchestration, CI/CD pipelines, auto-scaling, and infrastructure-as-code with Terraform.</p>
+          <div class="service-tags">
+            <span class="stag">AWS / GCP / Azure</span>
+            <span class="stag">Kubernetes</span>
+            <span class="stag">Terraform</span>
+            <span class="stag">Docker</span>
+          </div>
+          <a href="contact.html" class="service-link">
+            Discuss Architecture
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- 4. Data & AI -->
+        <div class="service-card reveal reveal-delay-3" data-delay="3">
+          <div class="card-accent" style="--card-accent: #a78bfa"></div>
+          <div class="service-icon-wrap si-violet">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9.5 2A2.5 2.5 0 0112 4.5v15a2.5 2.5 0 01-4.96-.44 2.5 2.5 0 010-3.12 3 3 0 000-3.88 2.5 2.5 0 010-3.12A2.5 2.5 0 019.5 2z"/>
+              <path d="M14.5 2A2.5 2.5 0 0112 4.5v15a2.5 2.5 0 004.96-.44 2.5 2.5 0 000-3.12 3 3 0 000-3.88 2.5 2.5 0 000-3.12A2.5 2.5 0 0014.5 2z"/>
+            </svg>
+          </div>
+          <h3>Data & AI</h3>
+          <p>Unlock the power of your data with AI-driven pipelines, ML model deployment, LLM integrations, and intelligent automation that turns raw data into a strategic asset.</p>
+          <div class="service-tags">
+            <span class="stag">LLM / OpenAI</span>
+            <span class="stag">ML pipelines</span>
+            <span class="stag">Langchain</span>
+            <span class="stag">Data engineering</span>
+          </div>
+          <a href="contact.html" class="service-link">
+            Explore AI Services
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- 5. Digitalization -->
+        <div class="service-card reveal reveal-delay-4" data-delay="4">
+          <div class="card-accent" style="--card-accent: #34d399"></div>
+          <div class="service-icon-wrap si-green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+              <path d="M3 20h18"/><path d="M3 3l6 6 4-2 7 8"/><polyline points="14 15 20 15 20 9"/>
+            </svg>
+          </div>
+          <h3>Digitalization</h3>
+          <p>Transform legacy operations into digital-first workflows. From brand identity and digital marketing to process automation and ERP integrations — we make your business truly digital.</p>
+          <div class="service-tags">
+            <span class="stag">Workflow automation</span>
+            <span class="stag">Brand identity</span>
+            <span class="stag">CRM / ERP</span>
+            <span class="stag">n8n / Zapier</span>
+          </div>
+          <a href="contact.html" class="service-link">
+            Transform Your Business
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── WHY CHOOSE HYNA STUDIO ─── -->
+  <section class="why-section" id="why">
+    <div class="why-inner">
+
+      <div class="why-left">
+        <div class="section-label reveal">Why Us</div>
+        <h2 class="section-title reveal reveal-delay-1">Why leading startups choose<br /><span style="background:linear-gradient(135deg,#2563eb,#0891b2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Hyna Studio</span></h2>
+        <p class="section-sub reveal reveal-delay-2">
+          We're not a traditional agency. We're a product-minded studio that
+          ships fast, thinks long-term, and embeds deeply into your stack.
+        </p>
+
+        <div class="why-stats reveal reveal-delay-3">
+          <div class="why-stat">
+            <div class="why-stat-val">Full-stack</div>
+            <div class="why-stat-label">End-to-end ownership</div>
+          </div>
+          <div class="why-stat">
+            <div class="why-stat-val">2–4 wk</div>
+            <div class="why-stat-label">Average time-to-MVP</div>
+          </div>
+          <div class="why-stat">
+            <div class="why-stat-val">24/7</div>
+            <div class="why-stat-label">Post-launch support</div>
+          </div>
+          <div class="why-stat">
+            <div class="why-stat-val">0 lock-in</div>
+            <div class="why-stat-label">You own everything</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="why-right">
+
+        <div class="reason-item reveal">
+          <div class="reason-icon" style="background:rgba(37,99,235,0.12);border:1px solid rgba(37,99,235,0.25);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <div>
+            <div class="reason-title">Speed without sacrifice</div>
+            <div class="reason-desc">We ship production-ready features in weeks, not months — using battle-tested stacks and iterative delivery to get you to market fast.</div>
+          </div>
+        </div>
+
+        <div class="reason-item reveal reveal-delay-1">
+          <div class="reason-icon" style="background:rgba(6,182,212,0.12);border:1px solid rgba(6,182,212,0.25);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <div>
+            <div class="reason-title">Transparent collaboration</div>
+            <div class="reason-desc">Daily standups, live Figma previews, and public project boards — you're never left in the dark about what we're building or when it lands.</div>
+          </div>
+        </div>
+
+        <div class="reason-item reveal reveal-delay-2">
+          <div class="reason-icon" style="background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.25);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <div class="reason-title">Security-first by default</div>
+            <div class="reason-desc">Every system we build is architected with OWASP principles, encrypted at rest and in transit, and passes penetration testing before go-live.</div>
+          </div>
+        </div>
+
+        <div class="reason-item reveal reveal-delay-3">
+          <div class="reason-icon" style="background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.25);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div>
+            <div class="reason-title">Built to scale infinitely</div>
+            <div class="reason-desc">Auto-scaling cloud architecture, stateless microservices, and CDN-first delivery means your platform handles 10 users or 10 million without a rewrite.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── HOW WE WORK ─── -->
+  <section class="process-section" id="process">
+    <div class="process-inner">
+      <div class="process-header">
+        <div class="section-label">Our Process</div>
+        <h2 class="section-title reveal">From brief to<br /><span style="background:linear-gradient(135deg,#2563eb,#0891b2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">live product</span></h2>
+        <p class="section-sub reveal reveal-delay-1" style="margin:0 auto;">
+          A repeatable, four-phase process that keeps projects on-time, on-budget, and on-brand.
+        </p>
+      </div>
+
+      <div class="process-steps reveal reveal-delay-2">
+        <div class="process-step">
+          <span class="step-num">01 — Discover</span>
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          </div>
+          <div class="step-title">Strategy & Scoping</div>
+          <div class="step-desc">Deep-dive workshops to map business goals, define technical scope, and align on KPIs before a single line of code is written.</div>
+        </div>
+
+        <div class="process-step">
+          <span class="step-num">02 — Design</span>
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <div class="step-title">UI/UX & Architecture</div>
+          <div class="step-desc">Conversion-optimised Figma designs and system architecture diagrams reviewed and approved before development begins.</div>
+        </div>
+
+        <div class="process-step">
+          <span class="step-num">03 — Build</span>
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <div class="step-title">Agile Development</div>
+          <div class="step-desc">Two-week sprints with continuous deployment to staging. You see real progress every fortnight — not just status updates.</div>
+        </div>
+
+        <div class="process-step">
+          <span class="step-num">04 — Launch</span>
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+          </div>
+          <div class="step-title">Deploy & Optimise</div>
+          <div class="step-desc">Zero-downtime deployment, performance audits, and 30-day post-launch monitoring ensure a flawless go-live experience.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA ─── -->
+  <section class="cta-section" id="cta">
+    <div class="cta-glow"></div>
+    <div class="cta-inner reveal">
+      <div class="cta-box">
+        <p class="section-label" style="justify-content:center;margin-bottom:1.5rem;">Ready to build?</p>
+        <h2>Let's turn your vision<br />into a <span>live product</span>.</h2>
+        <p>Whether you're a founder with an idea, a startup scaling fast, or an enterprise modernising legacy systems — we have the team to make it happen.</p>
+        <div class="cta-actions">
+          <a href="contact.html" class="btn-primary">
+            Book a Free Discovery Call
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="work.html" class="btn-ghost">See Case Studies</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" style="margin-bottom:1rem;display:flex;">
+            <img src="./hyna-logo-new.png" alt="Hyna Studio" style="height:36px;width:36px;object-fit:contain;margin-right:0.6rem;" />
+            <div class="nav-logo-text">
+              <span class="nav-logo-main">Hyna Studio</span>
+              <span class="nav-logo-sub">Democratizing Entrepreneurship</span>
+            </div>
+          </a>
+          <p>A full-spectrum digital studio building intelligent, scalable, and future-ready digital products for startups and enterprises worldwide.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="saas-solutions.html">SaaS Solutions</a>
+          <a href="hyna-services.html#services">Application Services</a>
+          <a href="hyna-services.html#services">Cloud & Infrastructure</a>
+          <a href="hyna-services.html#services">Data & AI</a>
+          <a href="hyna-services.html#services">Digitalization</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="index.html#about">About Us</a>
+          <a href="index.html#team">Team</a>
+          <a href="work.html">Our Work</a>
+          <a href="careers.html">Careers</a>
+          <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms-conditions.html">Terms & Conditions</a>
+          <a href="refund-policy.html">Refund Policy</a>
+          <a href="shipping-policy.html">Shipping Policy</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2026 Hyna Studio. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="privacy-policy.html">Privacy</a>
+          <a href="terms-conditions.html">Terms</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* ─── Nav scroll ─── */
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    /* ─── Hamburger ─── */
+    const ham  = document.getElementById('hamburger');
+    const navL = document.getElementById('nav-links');
+    ham.addEventListener('click', () => {
+      navL.classList.toggle('mobile-open');
+      const open = navL.classList.contains('mobile-open');
+      ham.querySelectorAll('span')[0].style.transform = open ? 'rotate(45deg) translate(5px,5px)' : '';
+      ham.querySelectorAll('span')[1].style.opacity  = open ? '0' : '1';
+      ham.querySelectorAll('span')[2].style.transform = open ? 'rotate(-45deg) translate(5px,-5px)' : '';
+    });
+    navL.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      navL.classList.remove('mobile-open');
+    }));
+
+    /* ─── Card mouse-glow ─── */
+    document.querySelectorAll('.service-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+        card.style.setProperty('--my', ((e.clientY - r.top)  / r.height* 100) + '%');
+      });
+    });
+
+    /* ─── Intersection Observer reveal ─── */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
