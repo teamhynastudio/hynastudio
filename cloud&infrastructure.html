@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,185 +17,298 @@
       --text-gray: #374151;
       --radius: 14px;
     }
-    body { font-family: 'Inter', sans-serif; margin:0; background:var(--bg-light); color:var(--text-dark); }
-    h1,h2,h3 { font-weight:700; }
-    section { padding:80px 20px; max-width:1200px; margin:auto; }
-    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; }
-    .card {
-      background:#fff; border-radius:var(--radius);
-      box-shadow:0 4px 12px rgba(0,0,0,0.08);
-      padding:30px; transition:.3s; text-align:center;
+
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background: var(--bg-light);
+      color: var(--text-dark);
     }
-    .card:hover { transform:translateY(-6px); box-shadow:0 8px 20px rgba(0,0,0,0.12); }
-    .card i { font-size:2rem; color:var(--primary); margin-bottom:15px; }
+
+    h1,
+    h2,
+    h3 {
+      font-weight: 700;
+    }
+
+    section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      padding: 30px;
+      transition: .3s;
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .card i {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
 
     /* Hero Section */
     .hero {
-      display:flex; align-items:center; justify-content:space-between;
-      background:linear-gradient(135deg,#e0f2fe,#f8fafc);
-      padding:100px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(135deg, #e0f2fe, #f8fafc);
+      padding: 100px 40px;
     }
+
     .hero-content {
-      flex:1; max-width:600px;
-      background:rgba(255,255,255,0.2);
-      backdrop-filter:blur(12px);
-      border-radius:var(--radius);
-      padding:40px;
+      flex: 1;
+      max-width: 600px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(12px);
+      border-radius: var(--radius);
+      padding: 40px;
     }
-    .hero-content h1 { font-size:2.8rem; margin-bottom:20px; color:var(--secondary); }
-    .hero-content p { font-size:1.1rem; margin-bottom:30px; color:var(--text-dark); }
+
+    .hero-content h1 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      color: var(--secondary);
+    }
+
+    .hero-content p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      color: var(--text-dark);
+    }
+
     .hero-buttons button {
-      margin-right:15px; padding:14px 28px; border:none; border-radius:8px;
-      font-weight:600; cursor:pointer; transition:.3s;
+      margin-right: 15px;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: .3s;
     }
-    .btn-primary { background:var(--primary); color:#fff; }
-    .btn-primary:hover { background:#1e40af; }
-    .btn-secondary { background:#fff; color:var(--secondary); border:2px solid var(--secondary); }
-    .btn-secondary:hover { background:#e0f2fe; }
-    .hero-illustration { flex:1; text-align:center; }
-    .hero-illustration img { max-width:100%; border-radius:var(--radius); }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #1e40af;
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: var(--secondary);
+      border: 2px solid var(--secondary);
+    }
+
+    .btn-secondary:hover {
+      background: #e0f2fe;
+    }
+
+    .hero-illustration {
+      flex: 1;
+      text-align: center;
+    }
+
+    .hero-illustration img {
+      max-width: 100%;
+      border-radius: var(--radius);
+    }
 
     /* CTA */
     .cta {
-      text-align:center;
-      background:linear-gradient(90deg,var(--secondary),var(--primary));
-      color:#fff; border-radius:var(--radius); padding:60px 20px;
+      text-align: center;
+      background: linear-gradient(90deg, var(--secondary), var(--primary));
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 60px 20px;
     }
+
     .cta button {
-      background:#fff; color:var(--secondary);
-      border:none; padding:14px 28px; border-radius:8px;
-      font-weight:600; cursor:pointer; transition:.3s;
+      background: #fff;
+      color: var(--secondary);
+      border: none;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: .3s;
     }
-    .cta button:hover { background:#e0f2fe; }
 
-    footer { background:#0f172a; color:#94a3b8; text-align:center; padding:25px; }
+    .cta button:hover {
+      background: #e0f2fe;
+    }
 
-    html { scroll-behavior:smooth; }
+    footer {
+      background: #0f172a;
+      color: #94a3b8;
+      text-align: center;
+      padding: 25px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
   </style>
 </head>
+
 <body>
-<!-- ===== NAVBAR ===== -->
-<nav 
-class="navbar">
-  <div class="nav-container">
-    <img src="./hyna-logo-new.png" alt="Hyna Studio Logo" style="width:44px;height:44px;object-fit:contain;">
-    <a href="#hero" class="logo">Hyna Studio</a>
-    
-    <ul class="nav-links">
-      <li><a href="#hero">Home</a></li>
-      <li><a href="#cloud-services">Cloud Services</a></li>
-      <li><a href="#infrastructure">Infrastructure</a></li>
-      <li><a href="#security">Security</a></li>
-      <li><a href="#monitoring">Monitoring</a></li>
-      <li><a href="#why">Why Choose Us</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#contact" class="cta-link">Contact</a></li>
-    </ul>
-    <div class="hamburger">
-      <span></span><span></span><span></span>
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <img src="./hyna-logo-new.png" alt="Hyna Studio Logo" style="width:44px;height:44px;object-fit:contain;">
+      <a href="#hero" class="logo">Hyna Studio</a>
+
+      <ul class="nav-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#cloud-services">Cloud Services</a></li>
+        <li><a href="#infrastructure">Infrastructure</a></li>
+        <li><a href="#security">Security</a></li>
+        <li><a href="#monitoring">Monitoring</a></li>
+        <li><a href="#why">Why Choose Us</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact" class="cta-link">Contact</a></li>
+      </ul>
+      <div class="hamburger">
+        <span></span><span></span><span></span>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
-<style>
-/* ===== NAVBAR STYLES ===== */
-.navbar {
-  position: fixed;
-  top: 0; left: 0; width: 100%;
-  background: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  z-index: 999;
-}
-.nav-container {
-  max-width: 1200px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 20px;
-}
-.logo {
-  font-weight: 700;
-  font-size: 1.2rem;
-  color: var(--secondary);
-  text-decoration: none;
-}
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 25px;
-}
-.nav-links a {
-  text-decoration: none;
-  color: var(--text-dark);
-  font-weight: 500;
-  transition: color 0.3s;
-}
-.nav-links a:hover {
-  color: var(--primary);
-}
-.cta-link {
-  background: linear-gradient(90deg,var(--secondary),var(--primary));
-  color: #fff !important;
-  padding: 8px 16px;
-  border-radius: var(--radius);
-}
-.cta-link:hover {
-  opacity: 0.9;
-}
+  <style>
+    /* ===== NAVBAR STYLES ===== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      z-index: 999;
+    }
 
-/* Hamburger for mobile */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-}
-.hamburger span {
-  height: 3px; width: 25px;
-  background: var(--text-dark);
-  margin: 4px 0;
-  border-radius: 2px;
-}
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+    }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .nav-links {
-    position: absolute;
-    top: 60px; left: 0;
-    width: 100%;
-    background: #fff;
-    flex-direction: column;
-    align-items: center;
-    display: none;
-    padding: 20px 0;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  }
-  .nav-links.active { display: flex; }
-  .hamburger { display: flex; }
-}
-</style>
+    .logo {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--secondary);
+      text-decoration: none;
+    }
 
-<script>
-// Toggle mobile menu
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
-hamburger.addEventListener('click', () => {
-  navLinks.classList.toggle('active');
-});
-</script>
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .cta-link {
+      background: linear-gradient(90deg, var(--secondary), var(--primary));
+      color: #fff !important;
+      padding: 8px 16px;
+      border-radius: var(--radius);
+    }
+
+    .cta-link:hover {
+      opacity: 0.9;
+    }
+
+    /* Hamburger for mobile */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      height: 3px;
+      width: 25px;
+      background: var(--text-dark);
+      margin: 4px 0;
+      border-radius: 2px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        flex-direction: column;
+        align-items: center;
+        display: none;
+        padding: 20px 0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+  </style>
+
+  <script>
+    // Toggle mobile menu
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  </script>
 
   <!-- Hero Banner -->
   <section class="hero" id="hero">
     <div class="hero-content">
       <h1>Cloud & Infrastructure Services</h1>
-      <p>Professional solutions for cloud migration, infrastructure optimization, and secure architecture — tailored for modern businesses.</p>
+      <p>Professional solutions for cloud migration, infrastructure optimization, and secure architecture — tailored for
+        modern businesses.</p>
       <div class="hero-buttons">
         <button class="btn-primary">Get Started</button>
         <button class="btn-secondary">Learn More</button>
       </div>
     </div>
-    <div class="hero-illustration">
-      <img src="./laptop.png" alt="Cloud Illustration">
+
     </div>
   </section>
 
@@ -202,10 +316,18 @@ hamburger.addEventListener('click', () => {
   <section id="cloud-services">
     <h2>Our Cloud Services</h2>
     <div class="grid">
-      <div class="card"><i class="fa-solid fa-cloud"></i><h3>Cloud Migration</h3></div>
-      <div class="card"><i class="fa-brands fa-aws"></i><h3>AWS / Azure / Google Cloud</h3></div>
-      <div class="card"><i class="fa-solid fa-diagram-project"></i><h3>Hybrid & Multi-Cloud</h3></div>
-      <div class="card"><i class="fa-solid fa-server"></i><h3>Server Management</h3></div>
+      <div class="card"><i class="fa-solid fa-cloud"></i>
+        <h3>Cloud Migration</h3>
+      </div>
+      <div class="card"><i class="fa-brands fa-aws"></i>
+        <h3>AWS / Azure / Google Cloud</h3>
+      </div>
+      <div class="card"><i class="fa-solid fa-diagram-project"></i>
+        <h3>Hybrid & Multi-Cloud</h3>
+      </div>
+      <div class="card"><i class="fa-solid fa-server"></i>
+        <h3>Server Management</h3>
+      </div>
     </div>
   </section>
 
@@ -213,12 +335,24 @@ hamburger.addEventListener('click', () => {
   <section id="infrastructure">
     <h2>Infrastructure Solutions</h2>
     <div class="grid">
-      <div class="card"><i class="fa-solid fa-server"></i><h3>Virtual Servers</h3></div>
-      <div class="card"><i class="fa-solid fa-database"></i><h3>Dedicated Servers</h3></div>
-      <div class="card"><i class="fa-brands fa-kubernetes"></i><h3>Kubernetes</h3></div>
-      <div class="card"><i class="fa-brands fa-docker"></i><h3>Docker</h3></div>
-      <div class="card"><i class="fa-solid fa-cloud-arrow-up"></i><h3>Backup & Disaster Recovery</h3></div>
-      <div class="card"><i class="fa-solid fa-globe"></i><h3>CDN</h3></div>
+      <div class="card"><i class="fa-solid fa-server"></i>
+        <h3>Virtual Servers</h3>
+      </div>
+      <div class="card"><i class="fa-solid fa-database"></i>
+        <h3>Dedicated Servers</h3>
+      </div>
+      <div class="card"><i class="fa-brands fa-kubernetes"></i>
+        <h3>Kubernetes</h3>
+      </div>
+      <div class="card"><i class="fa-brands fa-docker"></i>
+        <h3>Docker</h3>
+      </div>
+      <div class="card"><i class="fa-solid fa-cloud-arrow-up"></i>
+        <h3>Backup & Disaster Recovery</h3>
+      </div>
+      <div class="card"><i class="fa-solid fa-globe"></i>
+        <h3>CDN</h3>
+      </div>
     </div>
   </section>
 
@@ -226,12 +360,24 @@ hamburger.addEventListener('click', () => {
   <section id="security">
     <h2>Security</h2>
     <div class="grid">
-      <div class="card"><i class="fa-solid fa-shield-halved"></i><h3>Firewall</h3></div>
-      <div class="card"><i class="fa-solid fa-user-shield"></i><h3>Identity & Access Management</h3></div>
-      <div class="card"><i class="fa-solid fa-lock"></i><h3>Cloud Security</h3></div>
-      <div class="card"><i class="fa-solid fa-certificate"></i><h3>SSL</h3></div>
-      <div class="card"><i class="fa-solid fa-key"></i><h3>Data Encryption</h3></div>
-      <div class="card"><i class="fa-solid fa-scale-balanced"></i><h3>Compliance</h3></div>
+      <div class="card"><i class="fa-solid fa-shield-halved"></i>
+        <h3>Firewall</h3>
+      </div>
+      <div class="card"><i class="fa-solid fa-user-shield"></i>
+        <h3>Identity & Access Management</h3>
+      </div>
+      <div class="card"><i class="fa-solid fa-lock"></i>
+        <h3>Cloud Security</h3>
+      </div>
+      <div class="card"><i class="fa-solid fa-certificate"></i>
+        <h3>SSL</h3>
+      </div>
+      <div class="card"><i class="fa-solid fa-key"></i>
+        <h3>Data Encryption</h3>
+      </div>
+      <div class="card"><i class="fa-solid fa-scale-balanced"></i>
+        <h3>Compliance</h3>
+      </div>
     </div>
   </section>
 
@@ -239,10 +385,18 @@ hamburger.addEventListener('click', () => {
   <section id="monitoring">
     <h2>Monitoring</h2>
     <div class="grid">
-      <div class="card"><i class="fa-solid fa-eye"></i><h3>24/7 Monitoring</h3></div>
-      <div class="card"><i class="fa-solid fa-arrows-spin"></i><h3>Auto Scaling</h3></div>
-      <div class="card"><i class="fa-solid fa-gauge-high"></i><h3>Performance Optimization</h3></div>
-      <div class="card"><i class="fa-solid fa-money-bill-trend-up"></i><h3>Cost Optimization</h3></div>
+      <div class="card"><i class="fa-solid fa-eye"></i>
+        <h3>24/7 Monitoring</h3>
+      </div>
+      <div class="card"><i class="fa-solid fa-arrows-spin"></i>
+        <h3>Auto Scaling</h3>
+      </div>
+      <div class="card"><i class="fa-solid fa-gauge-high"></i>
+        <h3>Performance Optimization</h3>
+      </div>
+      <div class="card"><i class="fa-solid fa-money-bill-trend-up"></i>
+        <h3>Cost Optimization</h3>
+      </div>
     </div>
   </section>
 
@@ -250,10 +404,18 @@ hamburger.addEventListener('click', () => {
   <section id="why">
     <h2>Why Choose Us</h2>
     <div class="grid">
-      <div class="card"><i class="fa-solid fa-network-wired"></i><h3>High Availability</h3></div>
-      <div class="card"><i class="fa-solid fa-bolt"></i><h3>Fast Deployment</h3></div>
-      <div class="card"><i class="fa-solid fa-lock"></i><h3>Secure Architecture</h3></div>
-      <div class="card"><i class="fa-solid fa-user-tie"></i><h3>Expert Engineers</h3></div>
+      <div class="card"><i class="fa-solid fa-network-wired"></i>
+        <h3>High Availability</h3>
+      </div>
+      <div class="card"><i class="fa-solid fa-bolt"></i>
+        <h3>Fast Deployment</h3>
+      </div>
+      <div class="card"><i class="fa-solid fa-lock"></i>
+        <h3>Secure Architecture</h3>
+      </div>
+      <div class="card"><i class="fa-solid fa-user-tie"></i>
+        <h3>Expert Engineers</h3>
+      </div>
     </div>
   </section>
 

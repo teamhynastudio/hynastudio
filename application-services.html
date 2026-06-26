@@ -1,643 +1,1634 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Hyna Studio – Application Services</title>
-<meta name="description" content="Hyna Studio delivers premium web and mobile application development — React, Next.js, React Native, PWA, and pixel-perfect UI/UX from Figma to production."/>
-<link rel="icon" href="favicon.ico" sizes="any"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --blue-dark: #0a1f5c; --blue-mid: #1a4fd8; --blue-bright: #2563eb;
-    --blue-light: #3b82f6; --blue-accent: #60a5fa; --cyan: #06b6d4;
-    --bg-light: #f0f4ff; --bg-white: #ffffff;
-    --text-dark: #0f172a; --text-mid: #1e3a8a; --text-muted: #475569;
-    --card-bg: #ffffff; --icon-green: #10b981; --icon-purple: #8b5cf6;
-    --icon-orange: #f97316; --icon-red: #ef4444; --icon-blue: #3b82f6;
-  }
-  body { font-family: 'Inter', sans-serif; background: var(--bg-white); color: var(--text-dark); line-height: 1.6; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hyna Studio – Application Services</title>
+  <meta name="description"
+    content="Hyna Studio delivers premium web and mobile application development — React, Next.js, React Native, PWA, and pixel-perfect UI/UX from Figma to production." />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  /* ── HERO BANNER ── */
-  .hero-banner { background: linear-gradient(135deg, #f0f6ff 0%, #e2edff 65%, #f4f8fe 100%); position: relative; overflow: hidden; border-bottom: 1px solid #f1f5f9; }
-  .hero-banner-nav { display: flex; align-items: center; padding: 20px 60px 0; position: relative; z-index: 2; }
-  .hero-banner-nav a { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-  .hero-banner-nav .hbn-logo-text { line-height: 1.15; }
-  .hero-banner-nav .hbn-logo-text strong { display: block; font-size: 15px; font-weight: 800; color: var(--blue-dark); letter-spacing: .4px; }
-  .hero-banner-nav .hbn-logo-text span { font-size: 10.5px; color: var(--text-muted); font-weight: 500; }
-  .hero-banner-body { display: grid; grid-template-columns: 1.15fr 0.85fr; align-items: center; padding: 28px 60px 48px; gap: 32px; position: relative; z-index: 2; }
-  .hero-banner-left { padding-right: 20px; }
-  .hero-banner-left h1 { font-size: clamp(26px, 3.2vw, 42px); font-weight: 900; color: var(--text-dark); line-height: 1.18; margin-bottom: 20px; letter-spacing: -.5px; }
-  .hero-banner-left h1 .blue { color: var(--blue-bright); }
-  .hero-banner-left p { font-size: 13.5px; color: var(--text-muted); margin-bottom: 10px; line-height: 1.7; max-width: 420px; }
-  .hero-banner-left p strong { color: var(--text-dark); font-weight: 700; }
-  .badges { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
-  .badge { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; padding: 8px 14px; border-radius: 12px; border: 1px solid transparent; }
-  .badge-blue { background: #eff6ff; border-color: #dbeafe; color: #2563eb; }
-  .badge-purple { background: #f5f3ff; border-color: #ede9fe; color: #8b5cf6; }
-  .badge-green { background: #ecfdf5; border-color: #d1fae5; color: #10b981; }
-  .badge-orange { background: #fff7ed; border-color: #ffedd5; color: #f97316; }
-  .badge-icon { width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .badge-blue .badge-icon { background: rgba(37,99,235,0.1); }
-  .badge-purple .badge-icon { background: rgba(139,92,246,0.1); }
-  .badge-green .badge-icon { background: rgba(16,185,129,0.1); }
-  .badge-orange .badge-icon { background: rgba(249,115,22,0.1); }
-  .badge-text { line-height: 1.2; font-size: 12px; }
-  .hero-banner-right { display: flex; align-items: center; justify-content: center; }
-  .hero-illustration { width: 100%; max-width: 420px; height: 280px; background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%); border-radius: 20px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; box-shadow: 0 20px 60px rgba(37,99,235,0.12); animation: heroFloat 6s ease-in-out infinite alternate; }
-  @keyframes heroFloat { from { transform: translateY(0); } to { transform: translateY(-10px); } }
-  .hero-illus-inner { display: flex; flex-direction: column; gap: 12px; width: 80%; }
-  .hi-card { background: #fff; border-radius: 12px; padding: 14px 16px; box-shadow: 0 4px 20px rgba(37,99,235,0.08); display: flex; align-items: center; gap: 12px; }
-  .hi-icon { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
-  .hi-text { display: flex; flex-direction: column; gap: 4px; flex: 1; }
-  .hi-text span:first-child { height: 8px; background: #0f172a; border-radius: 4px; width: 70%; display: block; }
-  .hi-text span:last-child { height: 6px; background: #e2e8f0; border-radius: 3px; width: 50%; display: block; }
-  .hi-badge { background: #dcfce7; color: #16a34a; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 100px; }
+    :root {
+      --blue-dark: #0a1f5c;
+      --blue-mid: #1a4fd8;
+      --blue-bright: #2563eb;
+      --blue-light: #3b82f6;
+      --blue-accent: #60a5fa;
+      --cyan: #06b6d4;
+      --bg-light: #f0f4ff;
+      --bg-white: #ffffff;
+      --text-dark: #0f172a;
+      --text-mid: #1e3a8a;
+      --text-muted: #475569;
+      --card-bg: #ffffff;
+      --icon-green: #10b981;
+      --icon-purple: #8b5cf6;
+      --icon-orange: #f97316;
+      --icon-red: #ef4444;
+      --icon-blue: #3b82f6;
+    }
 
-  /* ── SECTION ── */
-  .section-heading { text-align: center; font-size: clamp(18px, 2.2vw, 24px); font-weight: 800; color: var(--text-dark); margin-bottom: 36px; }
-  .services { padding: 60px 60px 50px; background: var(--bg-white); }
-  .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-  .service-card { border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 24px; transition: box-shadow .2s, transform .2s; background: #fff; display: flex; justify-content: space-between; align-items: stretch; gap: 16px; overflow: hidden; }
-  .service-card:hover { box-shadow: 0 8px 32px rgba(37,99,235,.10); transform: translateY(-3px); }
-  .card-content { flex: 1.1; display: flex; flex-direction: column; }
-  .card-illustration { flex: 0.9; position: relative; display: flex; align-items: center; justify-content: center; min-width: 90px; overflow: hidden; }
-  .service-icon { width: 46px; height: 46px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 14px; }
-  .si-blue { background: #dbeafe; } .si-purple { background: #ede9fe; } .si-green { background: #d1fae5; }
-  .si-orange { background: #ffedd5; } .si-red { background: #fee2e2; } .si-indigo { background: #e0e7ff; } .si-cyan { background: #cffafe; }
-  .si-teal { background: #ccfbf1; } .si-violet { background: #f3e8ff; } .si-amber { background: #fef3c7; }
-  .service-card h3 { font-size: 15px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; line-height: 1.3; }
-  .service-card ul { list-style: none; padding: 0; }
-  .service-card ul li { font-size: 12.5px; color: var(--text-muted); padding: 3px 0; position: relative; padding-left: 14px; }
-  .service-card ul li::before { content: '•'; position: absolute; left: 0; color: var(--blue-light); font-weight: 700; }
-  .services-grid-2 { display: grid; grid-template-columns: 1fr 1fr 1.3fr; gap: 24px; margin-top: 24px; }
-  .services-grid-3 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 24px; }
-  .cta-card { border-radius: 16px; padding: 24px; background: var(--bg-white); border: 1.5px solid #e2e8f0; display: flex; justify-content: space-between; align-items: stretch; gap: 20px; }
-  .cta-card h3 { font-size: 20px; font-weight: 800; color: var(--text-dark); margin-bottom: 12px; line-height: 1.25; }
-  .cta-card p { font-size: 13px; color: var(--text-muted); margin-bottom: 20px; }
-  .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--blue-bright); color: #fff; border: none; border-radius: 8px; padding: 12px 22px; font-size: 13.5px; font-weight: 600; cursor: pointer; text-decoration: none; transition: background .2s; width: fit-content; }
-  .btn-primary:hover { background: var(--blue-dark); }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-white);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
 
-  /* Mockups */
-  .mockup-app-stack { width: 100%; height: 90px; background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 10px; padding: 8px; display: flex; flex-direction: column; gap: 5px; }
-  .mas-bar { height: 10px; border-radius: 4px; background: #e2e8f0; }
-  .mas-bar.active { background: linear-gradient(90deg, #3b82f6, #06b6d4); width: 80%; }
-  .mas-bar:nth-child(2) { width: 60%; }
-  .mas-bar:nth-child(3) { width: 90%; }
-  .mas-bar:nth-child(4) { width: 45%; }
+    /* ── HERO BANNER ── */
+    .hero-banner {
+      background: linear-gradient(135deg, #f0f6ff 0%, #e2edff 65%, #f4f8fe 100%);
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid #f1f5f9;
+    }
 
-  .mockup-mobile { width: 52px; height: 90px; background: #1e293b; border-radius: 14px; border: 2px solid #334155; padding: 6px 4px; display: flex; flex-direction: column; gap: 4px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
-  .mob-status { height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; width: 30%; margin: 0 auto; }
-  .mob-screen { flex: 1; background: linear-gradient(135deg, #2563eb, #06b6d4); border-radius: 8px; }
-  .mob-home { width: 12px; height: 3px; background: rgba(255,255,255,0.2); border-radius: 2px; margin: 0 auto; }
+    .hero-banner-nav {
+      display: flex;
+      align-items: center;
+      padding: 20px 60px 0;
+      position: relative;
+      z-index: 2;
+    }
 
-  .mockup-browser { width: 100%; height: 90px; background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.04); display: flex; flex-direction: column; }
-  .browser-header { height: 16px; background: #e2e8f0; display: flex; align-items: center; padding: 0 6px; gap: 4px; }
-  .browser-dots { display: flex; gap: 3px; }
-  .browser-dots span { display: inline-block; width: 4px; height: 4px; border-radius: 50%; }
-  .browser-dots span:nth-child(1) { background: #ef4444; }
-  .browser-dots span:nth-child(2) { background: #eab308; }
-  .browser-dots span:nth-child(3) { background: #22c55e; }
-  .browser-bar { flex: 1; height: 8px; background: #ffffff; border-radius: 4px; margin-left: 6px; }
-  .browser-body { flex: 1; padding: 6px; display: flex; flex-direction: column; gap: 6px; }
-  .bb-nav { height: 5px; background: #e2e8f0; border-radius: 2px; width: 40%; }
-  .bb-hero { flex: 1; display: flex; gap: 6px; }
-  .bb-hero-img { width: 35%; height: 100%; background: #dbeafe; border-radius: 4px; }
-  .bb-hero-text { flex: 1; display: flex; flex-direction: column; gap: 4px; justify-content: center; }
-  .bb-hero-text span { height: 4px; background: #e2e8f0; border-radius: 2px; }
-  .bb-hero-text span:nth-child(1) { width: 90%; }
-  .bb-hero-text span:nth-child(2) { width: 60%; }
+    .hero-banner-nav a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
 
-  .mockup-figma { width: 100%; height: 90px; background: #1e1e2e; border-radius: 8px; padding: 6px; display: flex; gap: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-  .figma-layers { width: 18px; background: rgba(255,255,255,0.05); border-radius: 4px; display: flex; flex-direction: column; gap: 4px; padding: 4px 2px; }
-  .figma-layers span { height: 6px; background: rgba(255,255,255,0.15); border-radius: 2px; }
-  .figma-canvas { flex: 1; background: rgba(255,255,255,0.04); border-radius: 4px; display: flex; align-items: center; justify-content: center; gap: 4px; }
-  .figma-frame { width: 24px; height: 32px; background: #ffffff; border-radius: 3px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
-  .figma-frame.sm { width: 16px; height: 22px; background: #f0abfc; }
+    .hero-banner-nav .hbn-logo-text {
+      line-height: 1.15;
+    }
 
-  .mockup-pwa { width: 100%; height: 90px; background: linear-gradient(135deg, #eff6ff, #f0fdf4); border-radius: 8px; display: flex; align-items: center; justify-content: center; gap: 8px; }
-  .pwa-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
+    .hero-banner-nav .hbn-logo-text strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--blue-dark);
+      letter-spacing: .4px;
+    }
 
-  .mockup-cta-app { width: 100%; height: 100px; display: flex; align-items: center; justify-content: center; gap: 10px; background: linear-gradient(135deg, #dbeafe, #eff6ff); border-radius: 12px; }
-  .cta-device { font-size: 36px; }
+    .hero-banner-nav .hbn-logo-text span {
+      font-size: 10.5px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
 
-  /* New Mockups for Other Services */
-  .mockup-dash-dark { width: 100%; height: 90px; background: #0f172a; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.15); display: flex; padding: 6px; gap: 6px; }
-  .mdd-sidebar { width: 14px; background: rgba(255,255,255,0.05); border-radius: 4px; padding: 6px 0; display: flex; flex-direction: column; align-items: center; gap: 6px; }
-  .mdd-sidebar span { width: 4px; height: 4px; border-radius: 50%; background: rgba(255,255,255,0.2); }
-  .mdd-sidebar span:first-child { background: #3b82f6; }
-  .mdd-main { flex: 1; display: flex; flex-direction: column; gap: 6px; }
-  .mdd-header { height: 6px; background: rgba(255,255,255,0.1); border-radius: 2px; width: 50%; }
-  .mdd-chart { flex: 1; display: flex; align-items: flex-end; justify-content: space-around; background: rgba(255,255,255,0.02); border-radius: 4px; padding: 4px; }
-  .mdd-chart .bar { width: 10px; border-radius: 2px 2px 0 0; }
-  .mdd-chart .bar:nth-child(1) { height: 40%; background: #3b82f6; }
-  .mdd-chart .bar:nth-child(2) { height: 75%; background: #06b6d4; }
-  .mdd-chart .bar:nth-child(3) { height: 55%; background: #6366f1; }
+    .hero-banner-body {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      padding: 28px 60px 48px;
+      gap: 32px;
+      position: relative;
+      z-index: 2;
+    }
 
-  .mockup-cloud-infra { position: relative; width: 100%; height: 90px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-  .cloud-shape { width: 50px; height: 24px; background: linear-gradient(135deg, #06b6d4, #3b82f6); border-radius: 50px 50px 6px 6px; position: relative; box-shadow: 0 4px 12px rgba(6,182,212,0.25); z-index: 2; display: flex; align-items: center; justify-content: center; }
-  .cloud-shape::before { content: '☁'; font-size: 10px; color: rgba(255,255,255,0.9); }
-  .infra-nodes { display: flex; gap: 8px; margin-top: 6px; }
-  .infra-node { width: 18px; height: 14px; background: #1e293b; border-radius: 3px; border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
-  .infra-node span { width: 3px; height: 3px; border-radius: 50%; box-shadow: 0 0 4px currentColor; }
-  .infra-node:nth-child(1) span { background: #10b981; color: #10b981; }
-  .infra-node:nth-child(2) span { background: #f59e0b; color: #f59e0b; }
-  .infra-node:nth-child(3) span { background: #06b6d4; color: #06b6d4; }
-  .infra-lines { display: flex; gap: 4px; margin-top: -1px; }
-  .infra-line { width: 1.5px; height: 10px; background: #cbd5e1; }
+    .hero-banner-left {
+      padding-right: 20px;
+    }
 
-  .mockup-data-ai { position: relative; width: 100%; height: 90px; display: flex; align-items: center; justify-content: center; }
-  .ai-brain { position: relative; width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #8b5cf6, #6366f1); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(139,92,246,0.3); z-index: 2; }
-  .ai-brain::before { content: '🧠'; font-size: 16px; }
-  .ai-orbit { position: absolute; border: 1.5px dashed rgba(139,92,246,0.2); border-radius: 50%; animation: aiSpin 8s linear infinite; }
-  .ai-orbit-1 { width: 60px; height: 60px; }
-  .ai-orbit-2 { width: 78px; height: 78px; animation-direction: reverse; animation-duration: 12s; }
-  .ai-particle { position: absolute; width: 5px; height: 5px; border-radius: 50%; box-shadow: 0 0 6px currentColor; }
-  .ai-p1 { top: -2px; left: 50%; transform: translateX(-50%); background: #06b6d4; color: #06b6d4; }
-  .ai-p2 { bottom: -2px; right: 0; background: #f59e0b; color: #f59e0b; }
-  .ai-p3 { top: 50%; left: -2px; background: #10b981; color: #10b981; }
-  @keyframes aiSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    .hero-banner-left h1 {
+      font-size: clamp(26px, 3.2vw, 42px);
+      font-weight: 900;
+      color: var(--text-dark);
+      line-height: 1.18;
+      margin-bottom: 20px;
+      letter-spacing: -.5px;
+    }
 
-  .mockup-digital { position: relative; width: 100%; height: 90px; display: flex; align-items: center; justify-content: center; }
-  .digital-doc { position: absolute; width: 28px; height: 36px; background: #fff; border: 1.5px solid #e2e8f0; border-radius: 4px; left: 10px; display: flex; flex-direction: column; align-items: center; padding-top: 6px; gap: 3px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-  .digital-doc-line { width: 16px; height: 2px; background: #e2e8f0; border-radius: 1px; }
-  .digital-doc-line:nth-child(2) { width: 12px; }
-  .digital-doc-line:nth-child(3) { width: 14px; }
-  .digital-arrow { position: relative; width: 22px; display: flex; align-items: center; justify-content: center; z-index: 2; }
-  .digital-arrow::before { content: ''; width: 16px; height: 1.5px; background: linear-gradient(90deg, #f59e0b, #10b981); }
-  .digital-arrow::after { content: ''; width: 6px; height: 6px; border-right: 1.5px solid #10b981; border-top: 1.5px solid #10b981; transform: rotate(45deg); position: absolute; right: 0; }
-  .digital-screen { position: absolute; right: 10px; width: 32px; height: 36px; background: #0f172a; border-radius: 4px; overflow: hidden; display: flex; flex-direction: column; padding: 4px; gap: 3px; box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
-  .ds-header { height: 3px; width: 60%; background: rgba(255,255,255,0.15); border-radius: 1px; }
-  .ds-chart { flex: 1; display: flex; align-items: flex-end; gap: 2px; }
-  .ds-bar { flex: 1; border-radius: 1px 1px 0 0; }
-  .ds-bar:nth-child(1) { height: 40%; background: #06b6d4; }
-  .ds-bar:nth-child(2) { height: 70%; background: #3b82f6; }
-  .ds-bar:nth-child(3) { height: 50%; background: #8b5cf6; }
-  .ds-bar:nth-child(4) { height: 85%; background: #10b981; }
-  .ds-glow { position: absolute; bottom: -2px; left: 50%; transform: translateX(-50%); width: 20px; height: 6px; background: rgba(59,130,246,0.3); border-radius: 50%; filter: blur(3px); }
+    .hero-banner-left h1 .blue {
+      color: var(--blue-bright);
+    }
 
-  /* ── ADVANTAGE ── */
-  .advantage-section { padding: 100px 8%; background: var(--bg-white); border-top: 1px solid #e2e8f0; }
-  .advantage-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.25fr; gap: 60px; align-items: center; }
-  .advantage-visual { width: 100%; display: flex; justify-content: center; }
-  .advantage-img { max-width: 100%; height: auto; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.06); transition: transform 0.4s cubic-bezier(0.25,1,0.5,1), box-shadow 0.4s ease; }
-  .advantage-img:hover { transform: scale(1.015) translateY(-2px); box-shadow: 0 25px 50px rgba(0,0,0,0.1); }
-  .advantage-content { display: flex; flex-direction: column; gap: 32px; }
-  .advantage-title { font-size: 36px; font-weight: 800; color: var(--text-dark); letter-spacing: -0.02em; margin: 0; }
-  .advantage-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-  .advantage-card { background: var(--bg-white); border-radius: 12px; padding: 20px; display: flex; align-items: center; gap: 20px; border: 1px solid rgba(226,232,240,0.8); box-shadow: 0 4px 15px rgba(0,0,0,0.02); transition: all 0.3s cubic-bezier(0.25,1,0.5,1); }
-  .advantage-card:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.05); border-color: rgba(37,99,235,0.2); }
-  .advantage-icon-wrapper { width: 48px; height: 48px; border-radius: 10px; background: rgba(37,99,235,0.04); border: 1px solid rgba(37,99,235,0.08); display: flex; align-items: center; justify-content: center; color: var(--blue-bright); flex-shrink: 0; transition: all 0.3s ease; }
-  .advantage-card:hover .advantage-icon-wrapper { background: rgba(37,99,235,0.08); border-color: rgba(37,99,235,0.2); box-shadow: 0 4px 12px rgba(37,99,235,0.08); }
-  .advantage-icon { width: 24px; height: 24px; stroke-width: 2; }
-  .advantage-text { font-size: 14px; font-weight: 550; line-height: 1.4; color: var(--text-muted); }
-  .advantage-card:hover .advantage-text { color: var(--text-dark); }
+    .hero-banner-left p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      line-height: 1.7;
+      max-width: 420px;
+    }
 
-  /* ── FOOTER ── */
-  footer { background: #0f172a; padding: 28px 60px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
-  .footer-item { display: flex; align-items: flex-start; gap: 14px; }
-  .footer-icon { width: 38px; height: 38px; min-width: 38px; border-radius: 10px; background: rgba(255,255,255,.08); display: flex; align-items: center; justify-content: center; font-size: 18px; }
-  .footer-item h4 { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 3px; }
-  .footer-item p { font-size: 11.5px; color: #94a3b8; }
+    .hero-banner-left p strong {
+      color: var(--text-dark);
+      font-weight: 700;
+    }
 
-  /* ── RESPONSIVE ── */
-  @media (max-width: 960px) {
-    .hero-banner-body { grid-template-columns: 1fr; padding: 24px 30px 40px; gap: 24px; }
-    .hero-banner-nav { padding: 18px 30px 0; }
-    .hero-banner-left { padding-right: 0; }
-    .advantage-container { grid-template-columns: 1fr; gap: 40px; }
-    .advantage-section { padding: 60px 6%; }
-  }
-  @media (max-width: 768px) {
-    .services { padding: 40px 20px; }
-    .services-grid { grid-template-columns: 1fr 1fr; }
-    .services-grid-2 { grid-template-columns: 1fr; }
-    .services-grid-3 { grid-template-columns: 1fr 1fr; }
-    footer { grid-template-columns: 1fr 1fr; padding: 24px 20px; }
-  }
-  @media (max-width: 600px) {
-    .hero-banner-nav { padding: 14px 20px 0; }
-    .hero-banner-body { padding: 20px 20px 36px; }
-    .hero-banner-left h1 { font-size: 24px; }
-    .services-grid { grid-template-columns: 1fr; }
-    .services-grid-3 { grid-template-columns: 1fr; }
-    footer { grid-template-columns: 1fr; }
-    .advantage-grid { grid-template-columns: 1fr; }
-  }
-</style>
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+    }
+
+    .badge-blue {
+      background: #eff6ff;
+      border-color: #dbeafe;
+      color: #2563eb;
+    }
+
+    .badge-purple {
+      background: #f5f3ff;
+      border-color: #ede9fe;
+      color: #8b5cf6;
+    }
+
+    .badge-green {
+      background: #ecfdf5;
+      border-color: #d1fae5;
+      color: #10b981;
+    }
+
+    .badge-orange {
+      background: #fff7ed;
+      border-color: #ffedd5;
+      color: #f97316;
+    }
+
+    .badge-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .badge-blue .badge-icon {
+      background: rgba(37, 99, 235, 0.1);
+    }
+
+    .badge-purple .badge-icon {
+      background: rgba(139, 92, 246, 0.1);
+    }
+
+    .badge-green .badge-icon {
+      background: rgba(16, 185, 129, 0.1);
+    }
+
+    .badge-orange .badge-icon {
+      background: rgba(249, 115, 22, 0.1);
+    }
+
+    .badge-text {
+      line-height: 1.2;
+      font-size: 12px;
+    }
+
+    .hero-banner-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-illustration {
+      width: 100%;
+      max-width: 420px;
+      height: 280px;
+      background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(37, 99, 235, 0.12);
+      animation: heroFloat 6s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroFloat {
+      from {
+        transform: translateY(0);
+      }
+
+      to {
+        transform: translateY(-10px);
+      }
+    }
+
+    .hero-illus-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 80%;
+    }
+
+    .hi-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 14px 16px;
+      box-shadow: 0 4px 20px rgba(37, 99, 235, 0.08);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hi-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .hi-text {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+    }
+
+    .hi-text span:first-child {
+      height: 8px;
+      background: #0f172a;
+      border-radius: 4px;
+      width: 70%;
+      display: block;
+    }
+
+    .hi-text span:last-child {
+      height: 6px;
+      background: #e2e8f0;
+      border-radius: 3px;
+      width: 50%;
+      display: block;
+    }
+
+    .hi-badge {
+      background: #dcfce7;
+      color: #16a34a;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 100px;
+    }
+
+    /* ── SECTION ── */
+    .section-heading {
+      text-align: center;
+      font-size: clamp(18px, 2.2vw, 24px);
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 36px;
+    }
+
+    .services {
+      padding: 60px 60px 50px;
+      background: var(--bg-white);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      border: 1.5px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 24px;
+      transition: box-shadow .2s, transform .2s;
+      background: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+      gap: 16px;
+      overflow: hidden;
+    }
+
+    .service-card:hover {
+      box-shadow: 0 8px 32px rgba(37, 99, 235, .10);
+      transform: translateY(-3px);
+    }
+
+    .card-content {
+      flex: 1.1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-illustration {
+      flex: 0.9;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 90px;
+      overflow: hidden;
+    }
+
+    .service-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 14px;
+    }
+
+    .si-blue {
+      background: #dbeafe;
+    }
+
+    .si-purple {
+      background: #ede9fe;
+    }
+
+    .si-green {
+      background: #d1fae5;
+    }
+
+    .si-orange {
+      background: #ffedd5;
+    }
+
+    .si-red {
+      background: #fee2e2;
+    }
+
+    .si-indigo {
+      background: #e0e7ff;
+    }
+
+    .si-cyan {
+      background: #cffafe;
+    }
+
+    .si-teal {
+      background: #ccfbf1;
+    }
+
+    .si-violet {
+      background: #f3e8ff;
+    }
+
+    .si-amber {
+      background: #fef3c7;
+    }
+
+    .service-card h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .service-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .service-card ul li {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      padding: 3px 0;
+      position: relative;
+      padding-left: 14px;
+    }
+
+    .service-card ul li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--blue-light);
+      font-weight: 700;
+    }
+
+    .services-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.3fr;
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .services-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .cta-card {
+      border-radius: 16px;
+      padding: 24px;
+      background: var(--bg-white);
+      border: 1.5px solid #e2e8f0;
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+      gap: 20px;
+    }
+
+    .cta-card h3 {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+
+    .cta-card p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue-bright);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 22px;
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background .2s;
+      width: fit-content;
+    }
+
+    .btn-primary:hover {
+      background: var(--blue-dark);
+    }
+
+    /* Mockups */
+    .mockup-app-stack {
+      width: 100%;
+      height: 90px;
+      background: #f8fafc;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .mas-bar {
+      height: 10px;
+      border-radius: 4px;
+      background: #e2e8f0;
+    }
+
+    .mas-bar.active {
+      background: linear-gradient(90deg, #3b82f6, #06b6d4);
+      width: 80%;
+    }
+
+    .mas-bar:nth-child(2) {
+      width: 60%;
+    }
+
+    .mas-bar:nth-child(3) {
+      width: 90%;
+    }
+
+    .mas-bar:nth-child(4) {
+      width: 45%;
+    }
+
+    .mockup-mobile {
+      width: 52px;
+      height: 90px;
+      background: #1e293b;
+      border-radius: 14px;
+      border: 2px solid #334155;
+      padding: 6px 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .mob-status {
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+      width: 30%;
+      margin: 0 auto;
+    }
+
+    .mob-screen {
+      flex: 1;
+      background: linear-gradient(135deg, #2563eb, #06b6d4);
+      border-radius: 8px;
+    }
+
+    .mob-home {
+      width: 12px;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 2px;
+      margin: 0 auto;
+    }
+
+    .mockup-browser {
+      width: 100%;
+      height: 90px;
+      background: #f8fafc;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .browser-header {
+      height: 16px;
+      background: #e2e8f0;
+      display: flex;
+      align-items: center;
+      padding: 0 6px;
+      gap: 4px;
+    }
+
+    .browser-dots {
+      display: flex;
+      gap: 3px;
+    }
+
+    .browser-dots span {
+      display: inline-block;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+    }
+
+    .browser-dots span:nth-child(1) {
+      background: #ef4444;
+    }
+
+    .browser-dots span:nth-child(2) {
+      background: #eab308;
+    }
+
+    .browser-dots span:nth-child(3) {
+      background: #22c55e;
+    }
+
+    .browser-bar {
+      flex: 1;
+      height: 8px;
+      background: #ffffff;
+      border-radius: 4px;
+      margin-left: 6px;
+    }
+
+    .browser-body {
+      flex: 1;
+      padding: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .bb-nav {
+      height: 5px;
+      background: #e2e8f0;
+      border-radius: 2px;
+      width: 40%;
+    }
+
+    .bb-hero {
+      flex: 1;
+      display: flex;
+      gap: 6px;
+    }
+
+    .bb-hero-img {
+      width: 35%;
+      height: 100%;
+      background: #dbeafe;
+      border-radius: 4px;
+    }
+
+    .bb-hero-text {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      justify-content: center;
+    }
+
+    .bb-hero-text span {
+      height: 4px;
+      background: #e2e8f0;
+      border-radius: 2px;
+    }
+
+    .bb-hero-text span:nth-child(1) {
+      width: 90%;
+    }
+
+    .bb-hero-text span:nth-child(2) {
+      width: 60%;
+    }
+
+    .mockup-figma {
+      width: 100%;
+      height: 90px;
+      background: #1e1e2e;
+      border-radius: 8px;
+      padding: 6px;
+      display: flex;
+      gap: 6px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .figma-layers {
+      width: 18px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 4px 2px;
+    }
+
+    .figma-layers span {
+      height: 6px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 2px;
+    }
+
+    .figma-canvas {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .figma-frame {
+      width: 24px;
+      height: 32px;
+      background: #ffffff;
+      border-radius: 3px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .figma-frame.sm {
+      width: 16px;
+      height: 22px;
+      background: #f0abfc;
+    }
+
+    .mockup-pwa {
+      width: 100%;
+      height: 90px;
+      background: linear-gradient(135deg, #eff6ff, #f0fdf4);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .pwa-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .mockup-cta-app {
+      width: 100%;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #dbeafe, #eff6ff);
+      border-radius: 12px;
+    }
+
+    .cta-device {
+      font-size: 36px;
+    }
+
+    /* New Mockups for Other Services */
+    .mockup-dash-dark {
+      width: 100%;
+      height: 90px;
+      background: #0f172a;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      display: flex;
+      padding: 6px;
+      gap: 6px;
+    }
+
+    .mdd-sidebar {
+      width: 14px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 4px;
+      padding: 6px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .mdd-sidebar span {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .mdd-sidebar span:first-child {
+      background: #3b82f6;
+    }
+
+    .mdd-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .mdd-header {
+      height: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+      width: 50%;
+    }
+
+    .mdd-chart {
+      flex: 1;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-around;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 4px;
+      padding: 4px;
+    }
+
+    .mdd-chart .bar {
+      width: 10px;
+      border-radius: 2px 2px 0 0;
+    }
+
+    .mdd-chart .bar:nth-child(1) {
+      height: 40%;
+      background: #3b82f6;
+    }
+
+    .mdd-chart .bar:nth-child(2) {
+      height: 75%;
+      background: #06b6d4;
+    }
+
+    .mdd-chart .bar:nth-child(3) {
+      height: 55%;
+      background: #6366f1;
+    }
+
+    .mockup-cloud-infra {
+      position: relative;
+      width: 100%;
+      height: 90px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cloud-shape {
+      width: 50px;
+      height: 24px;
+      background: linear-gradient(135deg, #06b6d4, #3b82f6);
+      border-radius: 50px 50px 6px 6px;
+      position: relative;
+      box-shadow: 0 4px 12px rgba(6, 182, 212, 0.25);
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cloud-shape::before {
+      content: '☁';
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .infra-nodes {
+      display: flex;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .infra-node {
+      width: 18px;
+      height: 14px;
+      background: #1e293b;
+      border-radius: 3px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    }
+
+    .infra-node span {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      box-shadow: 0 0 4px currentColor;
+    }
+
+    .infra-node:nth-child(1) span {
+      background: #10b981;
+      color: #10b981;
+    }
+
+    .infra-node:nth-child(2) span {
+      background: #f59e0b;
+      color: #f59e0b;
+    }
+
+    .infra-node:nth-child(3) span {
+      background: #06b6d4;
+      color: #06b6d4;
+    }
+
+    .infra-lines {
+      display: flex;
+      gap: 4px;
+      margin-top: -1px;
+    }
+
+    .infra-line {
+      width: 1.5px;
+      height: 10px;
+      background: #cbd5e1;
+    }
+
+    .mockup-data-ai {
+      position: relative;
+      width: 100%;
+      height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ai-brain {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #8b5cf6, #6366f1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(139, 92, 246, 0.3);
+      z-index: 2;
+    }
+
+    .ai-brain::before {
+      content: '🧠';
+      font-size: 16px;
+    }
+
+    .ai-orbit {
+      position: absolute;
+      border: 1.5px dashed rgba(139, 92, 246, 0.2);
+      border-radius: 50%;
+      animation: aiSpin 8s linear infinite;
+    }
+
+    .ai-orbit-1 {
+      width: 60px;
+      height: 60px;
+    }
+
+    .ai-orbit-2 {
+      width: 78px;
+      height: 78px;
+      animation-direction: reverse;
+      animation-duration: 12s;
+    }
+
+    .ai-particle {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      box-shadow: 0 0 6px currentColor;
+    }
+
+    .ai-p1 {
+      top: -2px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #06b6d4;
+      color: #06b6d4;
+    }
+
+    .ai-p2 {
+      bottom: -2px;
+      right: 0;
+      background: #f59e0b;
+      color: #f59e0b;
+    }
+
+    .ai-p3 {
+      top: 50%;
+      left: -2px;
+      background: #10b981;
+      color: #10b981;
+    }
+
+    @keyframes aiSpin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .mockup-digital {
+      position: relative;
+      width: 100%;
+      height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .digital-doc {
+      position: absolute;
+      width: 28px;
+      height: 36px;
+      background: #fff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 4px;
+      left: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 6px;
+      gap: 3px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .digital-doc-line {
+      width: 16px;
+      height: 2px;
+      background: #e2e8f0;
+      border-radius: 1px;
+    }
+
+    .digital-doc-line:nth-child(2) {
+      width: 12px;
+    }
+
+    .digital-doc-line:nth-child(3) {
+      width: 14px;
+    }
+
+    .digital-arrow {
+      position: relative;
+      width: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    .digital-arrow::before {
+      content: '';
+      width: 16px;
+      height: 1.5px;
+      background: linear-gradient(90deg, #f59e0b, #10b981);
+    }
+
+    .digital-arrow::after {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-right: 1.5px solid #10b981;
+      border-top: 1.5px solid #10b981;
+      transform: rotate(45deg);
+      position: absolute;
+      right: 0;
+    }
+
+    .digital-screen {
+      position: absolute;
+      right: 10px;
+      width: 32px;
+      height: 36px;
+      background: #0f172a;
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding: 4px;
+      gap: 3px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    }
+
+    .ds-header {
+      height: 3px;
+      width: 60%;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 1px;
+    }
+
+    .ds-chart {
+      flex: 1;
+      display: flex;
+      align-items: flex-end;
+      gap: 2px;
+    }
+
+    .ds-bar {
+      flex: 1;
+      border-radius: 1px 1px 0 0;
+    }
+
+    .ds-bar:nth-child(1) {
+      height: 40%;
+      background: #06b6d4;
+    }
+
+    .ds-bar:nth-child(2) {
+      height: 70%;
+      background: #3b82f6;
+    }
+
+    .ds-bar:nth-child(3) {
+      height: 50%;
+      background: #8b5cf6;
+    }
+
+    .ds-bar:nth-child(4) {
+      height: 85%;
+      background: #10b981;
+    }
+
+    .ds-glow {
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 6px;
+      background: rgba(59, 130, 246, 0.3);
+      border-radius: 50%;
+      filter: blur(3px);
+    }
+
+    /* ── ADVANTAGE ── */
+    .advantage-section {
+      padding: 100px 8%;
+      background: var(--bg-white);
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .advantage-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .advantage-visual {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .advantage-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+    }
+
+    .advantage-img:hover {
+      transform: scale(1.015) translateY(-2px);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+    }
+
+    .advantage-content {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .advantage-title {
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--text-dark);
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+
+    .advantage-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .advantage-card {
+      background: var(--bg-white);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+      transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .advantage-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      border-color: rgba(37, 99, 235, 0.2);
+    }
+
+    .advantage-icon-wrapper {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: rgba(37, 99, 235, 0.04);
+      border: 1px solid rgba(37, 99, 235, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--blue-bright);
+      flex-shrink: 0;
+      transition: all 0.3s ease;
+    }
+
+    .advantage-card:hover .advantage-icon-wrapper {
+      background: rgba(37, 99, 235, 0.08);
+      border-color: rgba(37, 99, 235, 0.2);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08);
+    }
+
+    .advantage-icon {
+      width: 24px;
+      height: 24px;
+      stroke-width: 2;
+    }
+
+    .advantage-text {
+      font-size: 14px;
+      font-weight: 550;
+      line-height: 1.4;
+      color: var(--text-muted);
+    }
+
+    .advantage-card:hover .advantage-text {
+      color: var(--text-dark);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0f172a;
+      padding: 28px 60px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+
+    .footer-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .footer-icon {
+      width: 38px;
+      height: 38px;
+      min-width: 38px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, .08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .footer-item h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 3px;
+    }
+
+    .footer-item p {
+      font-size: 11.5px;
+      color: #94a3b8;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .hero-banner-body {
+        grid-template-columns: 1fr;
+        padding: 24px 30px 40px;
+        gap: 24px;
+      }
+
+      .hero-banner-nav {
+        padding: 18px 30px 0;
+      }
+
+      .hero-banner-left {
+        padding-right: 0;
+      }
+
+      .advantage-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .advantage-section {
+        padding: 60px 6%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .services {
+        padding: 40px 20px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .services-grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid-3 {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      footer {
+        grid-template-columns: 1fr 1fr;
+        padding: 24px 20px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-banner-nav {
+        padding: 14px 20px 0;
+      }
+
+      .hero-banner-body {
+        padding: 20px 20px 36px;
+      }
+
+      .hero-banner-left h1 {
+        font-size: 24px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        grid-template-columns: 1fr;
+      }
+
+      .advantage-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- ── HERO BANNER ── -->
-<section class="hero-banner">
-  <div class="hero-banner-nav">
-    <a href="index.html">
-      <img src="hyna-logo-new.png" alt="Hyna Studio Logo" style="width:44px;height:44px;object-fit:contain;">
-      <div class="hbn-logo-text">
-        <strong>HYNA STUDIO</strong>
-        <span>Application Services</span>
-      </div>
-    </a>
-  </div>
-  <div class="hero-banner-body">
-    <div class="hero-banner-left">
-      <h1>Build Powerful<br><span class="blue">Applications</span> That<br>Scale With You</h1>
-      <p>At Hyna Studio, we engineer high-performance web and mobile applications — from pixel-perfect consumer apps to complex enterprise platforms — using the latest modern frameworks.</p>
-      <p>Our team delivers scalable, maintainable, and beautifully crafted software from Figma wireframes all the way to production deployment and beyond.</p>
-      <p>Whether you need a cross-platform mobile app, a blazing-fast web app, or a Shopify store, we deliver <strong>applications that drive user engagement and business growth.</strong></p>
-      <div class="badges">
-        <div class="badge badge-blue">
-          <div class="badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" width="16" height="16"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-          <div class="badge-text">Web<br>Apps</div>
+  <!-- ── HERO BANNER ── -->
+  <section class="hero-banner">
+    <div class="hero-banner-nav">
+      <a href="index.html">
+        <img src="hyna-logo-new.png" alt="Hyna Studio Logo" style="width:44px;height:44px;object-fit:contain;">
+        <div class="hbn-logo-text">
+          <strong>HYNA STUDIO</strong>
+          <span>Application Services</span>
         </div>
-        <div class="badge badge-purple">
-          <div class="badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2" width="16" height="16"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
-          <div class="badge-text">Mobile<br>Apps</div>
-        </div>
-        <div class="badge badge-green">
-          <div class="badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" width="16" height="16"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-          <div class="badge-text">Fast<br>Delivery</div>
-        </div>
-        <div class="badge badge-orange">
-          <div class="badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" width="16" height="16"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-          <div class="badge-text">Enterprise<br>Grade</div>
-        </div>
-      </div>
+      </a>
     </div>
-    <div class="hero-banner-right">
-      <div class="hero-illustration">
-        <div class="hero-illus-inner">
-          <div class="hi-card">
-            <div class="hi-icon" style="background:#dbeafe;">🖥️</div>
-            <div class="hi-text"><span></span><span></span></div>
-            <span class="hi-badge">Live</span>
+    <div class="hero-banner-body">
+      <div class="hero-banner-left">
+        <h1>Build Powerful<br><span class="blue">Applications</span> That<br>Scale With You</h1>
+        <p>At Hyna Studio, we engineer high-performance web and mobile applications — from pixel-perfect consumer apps
+          to complex enterprise platforms — using the latest modern frameworks.</p>
+        <p>Our team delivers scalable, maintainable, and beautifully crafted software from Figma wireframes all the way
+          to production deployment and beyond.</p>
+        <p>Whether you need a cross-platform mobile app, a blazing-fast web app, or a Shopify store, we deliver
+          <strong>applications that drive user engagement and business growth.</strong>
+        </p>
+        <div class="badges">
+          <div class="badge badge-blue">
+            <div class="badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" width="16"
+                height="16">
+                <rect x="2" y="3" width="20" height="14" rx="2" />
+                <path d="M8 21h8M12 17v4" />
+              </svg></div>
+            <div class="badge-text">Web<br>Apps</div>
           </div>
-          <div class="hi-card">
-            <div class="hi-icon" style="background:#ede9fe;">📱</div>
-            <div class="hi-text"><span></span><span></span></div>
-            <span class="hi-badge" style="background:#ede9fe;color:#7c3aed;">iOS & Android</span>
+          <div class="badge badge-purple">
+            <div class="badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2" width="16"
+                height="16">
+                <rect x="5" y="2" width="14" height="20" rx="2" />
+                <path d="M12 18h.01" />
+              </svg></div>
+            <div class="badge-text">Mobile<br>Apps</div>
           </div>
-          <div class="hi-card">
-            <div class="hi-icon" style="background:#d1fae5;">⚡</div>
-            <div class="hi-text"><span></span><span></span></div>
-            <span class="hi-badge" style="background:#d1fae5;color:#059669;">PWA</span>
+          <div class="badge badge-green">
+            <div class="badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" width="16"
+                height="16">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+              </svg></div>
+            <div class="badge-text">Fast<br>Delivery</div>
+          </div>
+          <div class="badge badge-orange">
+            <div class="badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" width="16"
+                height="16">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg></div>
+            <div class="badge-text">Enterprise<br>Grade</div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── SERVICES ── -->
-<section class="services">
-  <p class="section-heading">End-to-End Application Development by Hyna Studio</p>
-  <div class="services-grid">
-
-    <div class="service-card">
-      <div class="card-content">
-        <div class="service-icon si-blue">🖥️</div>
-        <h3>Web Application Development</h3>
-        <ul>
-          <li>React & Next.js Apps</li>
-          <li>TypeScript Codebases</li>
-          <li>REST & GraphQL APIs</li>
-          <li>Real-time Applications</li>
-          <li>Admin Dashboards</li>
-          <li>SEO-Optimised Sites</li>
-          <li>Website Maintenance</li>
-        </ul>
+      <div class="hero-banner-right">
       </div>
-      <div class="card-illustration">
-        <div class="mockup-browser">
-          <div class="browser-header"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-bar"></div></div>
-          <div class="browser-body"><div class="bb-nav"></div><div class="bb-hero"><div class="bb-hero-img"></div><div class="bb-hero-text"><span></span><span></span></div></div></div>
+    </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- ── SERVICES ── -->
+  <section class="services">
+    <p class="section-heading">End-to-End Application Development by Hyna Studio</p>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="card-content">
+          <div class="service-icon si-blue">🖥️</div>
+          <h3>Web Application Development</h3>
+          <ul>
+            <li>React & Next.js Apps</li>
+            <li>TypeScript Codebases</li>
+            <li>REST & GraphQL APIs</li>
+            <li>Real-time Applications</li>
+            <li>Admin Dashboards</li>
+            <li>SEO-Optimised Sites</li>
+            <li>Website Maintenance</li>
+          </ul>
         </div>
-      </div>
-    </div>
-
-    <div class="service-card">
-      <div class="card-content">
-        <div class="service-icon si-purple">📱</div>
-        <h3>Mobile App Development</h3>
-        <ul>
-          <li>React Native Apps</li>
-          <li>iOS & Android</li>
-          <li>Cross-Platform</li>
-          <li>App Store Deployment</li>
-          <li>Push Notifications</li>
-          <li>Offline Support</li>
-          <li>Performance Optimisation</li>
-        </ul>
-      </div>
-      <div class="card-illustration">
-        <div style="display:flex;align-items:center;justify-content:center;height:90px;gap:8px;">
-          <div class="mockup-mobile"></div>
-          <div class="mockup-mobile" style="height:75px;width:44px;opacity:0.6;"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="service-card">
-      <div class="card-content">
-        <div class="service-icon si-cyan">🎨</div>
-        <h3>UI/UX Design & Prototyping</h3>
-        <ul>
-          <li>Figma Design Systems</li>
-          <li>Interactive Prototypes</li>
-          <li>User Research</li>
-          <li>Wireframing</li>
-          <li>Accessibility (WCAG)</li>
-          <li>Component Libraries</li>
-        </ul>
-      </div>
-      <div class="card-illustration">
-        <div class="mockup-figma">
-          <div class="figma-layers"><span></span><span></span><span></span></div>
-          <div class="figma-canvas"><div class="figma-frame"></div><div class="figma-frame sm"></div></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="service-card">
-      <div class="card-content">
-        <div class="service-icon si-green">🛒</div>
-        <h3>Shopify & E-Commerce</h3>
-        <ul>
-          <li>Custom Shopify Themes</li>
-          <li>Shopify App Development</li>
-          <li>Payment Integration</li>
-          <li>Inventory Management</li>
-          <li>Multi-currency Stores</li>
-          <li>Conversion Optimization</li>
-        </ul>
-      </div>
-      <div class="card-illustration">
-        <div class="mockup-pwa">
-          <div class="pwa-icon" style="background:#96f;color:#fff;">🛍️</div>
-          <div style="display:flex;flex-direction:column;gap:4px;flex:1;">
-            <div style="height:6px;background:#e2e8f0;border-radius:3px;width:80%;"></div>
-            <div style="height:6px;background:#dbeafe;border-radius:3px;width:55%;"></div>
-            <div style="height:6px;background:#e2e8f0;border-radius:3px;width:70%;"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="services-grid-2">
-
-    <div class="service-card">
-      <div class="card-content">
-        <div class="service-icon si-orange">⚡</div>
-        <h3>Progressive Web Apps (PWA)</h3>
-        <ul>
-          <li>Offline-First Architecture</li>
-          <li>Service Workers</li>
-          <li>App-like Experience</li>
-          <li>Push Notifications</li>
-          <li>Installable on Any Device</li>
-        </ul>
-      </div>
-      <div class="card-illustration">
-        <div class="mockup-app-stack">
-          <div class="mas-bar active"></div>
-          <div class="mas-bar"></div>
-          <div class="mas-bar" style="width:70%"></div>
-          <div class="mas-bar"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="service-card">
-      <div class="card-content">
-        <div class="service-icon si-indigo">🔌</div>
-        <h3>API & Backend Development</h3>
-        <ul>
-          <li>Node.js / Python Backends</li>
-          <li>REST & GraphQL APIs</li>
-          <li>Microservices Architecture</li>
-          <li>Database Design (SQL/NoSQL)</li>
-          <li>Third-Party Integrations</li>
-          <li>Authentication & Auth0</li>
-        </ul>
-      </div>
-      <div class="card-illustration">
-        <div style="width:100%;height:90px;background:#0f172a;border-radius:8px;padding:8px;display:flex;flex-direction:column;gap:4px;">
-          <div style="height:7px;background:rgba(96,165,250,0.4);border-radius:3px;width:70%;"></div>
-          <div style="height:7px;background:rgba(52,211,153,0.4);border-radius:3px;width:50%;"></div>
-          <div style="height:7px;background:rgba(167,139,250,0.4);border-radius:3px;width:85%;"></div>
-          <div style="height:7px;background:rgba(96,165,250,0.3);border-radius:3px;width:40%;"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="cta-card">
-      <div class="card-content">
-        <h3>Launch Your App<br>with Hyna Studio</h3>
-        <p>From idea to App Store — we handle design, development, testing, and deployment so you can focus on growing your user base and business.</p>
-        <a class="btn-primary" href="contact.html">Start Building &nbsp;→</a>
-      </div>
-      <div class="card-illustration">
-        <div class="mockup-cta-app">
-          <span class="cta-device">📱</span>
-          <span class="cta-device">🖥️</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="services-grid-3">
-
-    <!-- SaaS Solutions -->
-    <div class="service-card">
-      <div class="card-content">
-        <div class="service-icon si-purple">☁️</div>
-        <h3>SaaS Solutions</h3>
-        <ul>
-          <li>Custom SaaS Platforms</li>
-          <li>Multi-Tenant Applications</li>
-          <li>Subscription Management</li>
-          <li>Dashboard Development</li>
-          <li>API Integration</li>
-          <li>Cloud Deployment</li>
-          <li>User Authentication</li>
-        </ul>
-      </div>
-      <div class="card-illustration">
-        <div class="mockup-dash-dark">
-          <div class="mdd-sidebar">
-            <span></span><span></span><span></span>
-          </div>
-          <div class="mdd-main">
-            <div class="mdd-header"></div>
-            <div class="mdd-chart">
-              <div class="bar"></div>
-              <div class="bar"></div>
-              <div class="bar"></div>
+        <div class="card-illustration">
+          <div class="mockup-browser">
+            <div class="browser-header">
+              <div class="browser-dots"><span></span><span></span><span></span></div>
+              <div class="browser-bar"></div>
+            </div>
+            <div class="browser-body">
+              <div class="bb-nav"></div>
+              <div class="bb-hero">
+                <div class="bb-hero-img"></div>
+                <div class="bb-hero-text"><span></span><span></span></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Cloud Infrastructure -->
-    <div class="service-card">
-      <div class="card-content">
-        <div class="service-icon si-teal">☁️</div>
-        <h3>Cloud Infrastructure</h3>
-        <ul>
-          <li>Cloud Migration</li>
-          <li>AWS / Azure / GCP Setup</li>
-          <li>Server Management</li>
-          <li>DevOps & CI/CD Pipelines</li>
-          <li>Cloud Security</li>
-          <li>Scalable Architecture</li>
-          <li>Infrastructure Monitoring</li>
-        </ul>
-      </div>
-      <div class="card-illustration">
-        <div class="mockup-cloud-infra">
-          <div class="cloud-shape"></div>
-          <div class="infra-lines">
-            <div class="infra-line"></div>
-            <div class="infra-line"></div>
-            <div class="infra-line"></div>
-          </div>
-          <div class="infra-nodes">
-            <div class="infra-node"><span></span></div>
-            <div class="infra-node"><span></span></div>
-            <div class="infra-node"><span></span></div>
+      <div class="service-card">
+        <div class="card-content">
+          <div class="service-icon si-purple">📱</div>
+          <h3>Mobile App Development</h3>
+          <ul>
+            <li>React Native Apps</li>
+            <li>iOS & Android</li>
+            <li>Cross-Platform</li>
+            <li>App Store Deployment</li>
+            <li>Push Notifications</li>
+            <li>Offline Support</li>
+            <li>Performance Optimisation</li>
+          </ul>
+        </div>
+        <div class="card-illustration">
+          <div style="display:flex;align-items:center;justify-content:center;height:90px;gap:8px;">
+            <div class="mockup-mobile"></div>
+            <div class="mockup-mobile" style="height:75px;width:44px;opacity:0.6;"></div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Data & AI -->
-    <div class="service-card">
-      <div class="card-content">
-        <div class="service-icon si-violet">🤖</div>
-        <h3>Data & AI</h3>
-        <ul>
-          <li>AI/ML Model Development</li>
-          <li>Data Analytics & Visualization</li>
-          <li>Natural Language Processing</li>
-          <li>Predictive Analytics</li>
-          <li>Data Pipeline Engineering</li>
-          <li>AI Chatbots & Assistants</li>
-          <li>Business Intelligence</li>
-        </ul>
-      </div>
-      <div class="card-illustration">
-        <div class="mockup-data-ai">
-          <div class="ai-orbit ai-orbit-2">
-            <div class="ai-particle ai-p3"></div>
-          </div>
-          <div class="ai-orbit ai-orbit-1">
-            <div class="ai-particle ai-p1"></div>
-            <div class="ai-particle ai-p2"></div>
-          </div>
-          <div class="ai-brain"></div>
+      <div class="service-card">
+        <div class="card-content">
+          <div class="service-icon si-cyan">🎨</div>
+          <h3>UI/UX Design & Prototyping</h3>
+          <ul>
+            <li>Figma Design Systems</li>
+            <li>Interactive Prototypes</li>
+            <li>User Research</li>
+            <li>Wireframing</li>
+            <li>Accessibility (WCAG)</li>
+            <li>Component Libraries</li>
+          </ul>
         </div>
-      </div>
-    </div>
-
-    <!-- Digitalization -->
-    <div class="service-card">
-      <div class="card-content">
-        <div class="service-icon si-amber">🔄</div>
-        <h3>Digitalization</h3>
-        <ul>
-          <li>Digital Transformation Strategy</li>
-          <li>Process Digitization</li>
-          <li>Legacy System Modernization</li>
-          <li>Digital Workflow Design</li>
-          <li>Paperless Office Solutions</li>
-          <li>Smart Document Management</li>
-          <li>Digital Customer Experience</li>
-        </ul>
-      </div>
-      <div class="card-illustration">
-        <div class="mockup-digital">
-          <div class="digital-doc">
-            <div class="digital-doc-line"></div>
-            <div class="digital-doc-line"></div>
-            <div class="digital-doc-line"></div>
-          </div>
-          <div class="digital-arrow"></div>
-          <div class="digital-screen">
-            <div class="ds-header"></div>
-            <div class="ds-chart">
-              <div class="ds-bar"></div>
-              <div class="ds-bar"></div>
-              <div class="ds-bar"></div>
-              <div class="ds-bar"></div>
+        <div class="card-illustration">
+          <div class="mockup-figma">
+            <div class="figma-layers"><span></span><span></span><span></span></div>
+            <div class="figma-canvas">
+              <div class="figma-frame"></div>
+              <div class="figma-frame sm"></div>
             </div>
-            <div class="ds-glow"></div>
           </div>
         </div>
       </div>
-    </div>
 
-  </div>
-</section>
-
-<!-- ── ADVANTAGE ── -->
-<section class="advantage-section">
-  <div class="advantage-container">
-    <div class="advantage-visual">
-      <img src="handshake_advantage.png" alt="Hyna Studio Advantage" class="advantage-img">
-    </div>
-    <div class="advantage-content">
-      <h2 class="advantage-title">Hyna Studio Advantage</h2>
-      <div class="advantage-grid">
-        <div class="advantage-card">
-          <div class="advantage-icon-wrapper"><svg class="advantage-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
-          <p class="advantage-text">React, Next.js & React Native expertise for cross-platform excellence</p>
+      <div class="service-card">
+        <div class="card-content">
+          <div class="service-icon si-green">🛒</div>
+          <h3>Shopify & E-Commerce</h3>
+          <ul>
+            <li>Custom Shopify Themes</li>
+            <li>Shopify App Development</li>
+            <li>Payment Integration</li>
+            <li>Inventory Management</li>
+            <li>Multi-currency Stores</li>
+            <li>Conversion Optimization</li>
+          </ul>
         </div>
-        <div class="advantage-card">
-          <div class="advantage-icon-wrapper"><svg class="advantage-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-          <p class="advantage-text">2–4 week MVP delivery with structured agile sprints</p>
-        </div>
-        <div class="advantage-card">
-          <div class="advantage-icon-wrapper"><svg class="advantage-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-          <p class="advantage-text">Security-first architecture — OWASP, HTTPS, token auth by default</p>
-        </div>
-        <div class="advantage-card">
-          <div class="advantage-icon-wrapper"><svg class="advantage-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
-          <p class="advantage-text">Performance-optimised code — Core Web Vitals & Lighthouse 90+ scores</p>
-        </div>
-        <div class="advantage-card">
-          <div class="advantage-icon-wrapper"><svg class="advantage-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-          <p class="advantage-text">Figma-to-production pixel-perfect UI with full design handoff</p>
-        </div>
-        <div class="advantage-card">
-          <div class="advantage-icon-wrapper"><svg class="advantage-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-          <p class="advantage-text">Dedicated project manager + daily communication throughout</p>
-        </div>
-        <div class="advantage-card">
-          <div class="advantage-icon-wrapper"><svg class="advantage-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5"/></svg></div>
-          <p class="advantage-text">Scalable architecture built to handle 10 to 10 million users</p>
-        </div>
-        <div class="advantage-card">
-          <div class="advantage-icon-wrapper"><svg class="advantage-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-          <p class="advantage-text">Full source code ownership — no lock-in, ever</p>
+        <div class="card-illustration">
+          <div class="mockup-pwa">
+            <div class="pwa-icon" style="background:#96f;color:#fff;">🛍️</div>
+            <div style="display:flex;flex-direction:column;gap:4px;flex:1;">
+              <div style="height:6px;background:#e2e8f0;border-radius:3px;width:80%;"></div>
+              <div style="height:6px;background:#dbeafe;border-radius:3px;width:55%;"></div>
+              <div style="height:6px;background:#e2e8f0;border-radius:3px;width:70%;"></div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
 
-<!-- ── FOOTER ── -->
-<footer>
-  <div class="footer-item"><div class="footer-icon">⚡</div><div><h4>Modern Frameworks</h4><p>React, Next.js, React Native</p></div></div>
-  <div class="footer-item"><div class="footer-icon">🎨</div><div><h4>Pixel-Perfect UI</h4><p>Figma to production</p></div></div>
-  <div class="footer-item"><div class="footer-icon">🛡️</div><div><h4>Secure by Default</h4><p>OWASP & best practices</p></div></div>
-  <div class="footer-item"><div class="footer-icon">📐</div><div><h4>Scalable Code</h4><p>Built for growth & performance</p></div></div>
-</footer>
+    </div>
+
+    <div class="services-grid-2">
+
+      <div class="service-card">
+        <div class="card-content">
+          <div class="service-icon si-orange">⚡</div>
+          <h3>Progressive Web Apps (PWA)</h3>
+          <ul>
+            <li>Offline-First Architecture</li>
+            <li>Service Workers</li>
+            <li>App-like Experience</li>
+            <li>Push Notifications</li>
+            <li>Installable on Any Device</li>
+          </ul>
+        </div>
+        <div class="card-illustration">
+          <div class="mockup-app-stack">
+            <div class="mas-bar active"></div>
+            <div class="mas-bar"></div>
+            <div class="mas-bar" style="width:70%"></div>
+            <div class="mas-bar"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="card-content">
+          <div class="service-icon si-indigo">🔌</div>
+          <h3>API & Backend Development</h3>
+          <ul>
+            <li>Node.js / Python Backends</li>
+            <li>REST & GraphQL APIs</li>
+            <li>Microservices Architecture</li>
+            <li>Database Design (SQL/NoSQL)</li>
+            <li>Third-Party Integrations</li>
+            <li>Authentication & Auth0</li>
+          </ul>
+        </div>
+        <div class="card-illustration">
+          <div
+            style="width:100%;height:90px;background:#0f172a;border-radius:8px;padding:8px;display:flex;flex-direction:column;gap:4px;">
+            <div style="height:7px;background:rgba(96,165,250,0.4);border-radius:3px;width:70%;"></div>
+            <div style="height:7px;background:rgba(52,211,153,0.4);border-radius:3px;width:50%;"></div>
+            <div style="height:7px;background:rgba(167,139,250,0.4);border-radius:3px;width:85%;"></div>
+            <div style="height:7px;background:rgba(96,165,250,0.3);border-radius:3px;width:40%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-card">
+        <div class="card-content">
+          <h3>Launch Your App<br>with Hyna Studio</h3>
+          <p>From idea to App Store — we handle design, development, testing, and deployment so you can focus on growing
+            your user base and business.</p>
+          <a class="btn-primary" href="contact.html">Start Building &nbsp;→</a>
+        </div>
+        <div class="card-illustration">
+          <div class="mockup-cta-app">
+            <span class="cta-device">📱</span>
+            <span class="cta-device">🖥️</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+    <!-- ── FOOTER ── -->
+    <footer>
+      <div class="footer-item">
+        <div class="footer-icon">⚡</div>
+        <div>
+          <h4>Modern Frameworks</h4>
+          <p>React, Next.js, React Native</p>
+        </div>
+      </div>
+      <div class="footer-item">
+        <div class="footer-icon">🎨</div>
+        <div>
+          <h4>Pixel-Perfect UI</h4>
+          <p>Figma to production</p>
+        </div>
+      </div>
+      <div class="footer-item">
+        <div class="footer-icon">🛡️</div>
+        <div>
+          <h4>Secure by Default</h4>
+          <p>OWASP & best practices</p>
+        </div>
+      </div>
+      <div class="footer-item">
+        <div class="footer-icon">📐</div>
+        <div>
+          <h4>Scalable Code</h4>
+          <p>Built for growth & performance</p>
+        </div>
+      </div>
+    </footer>
 
 </body>
+
 </html>
