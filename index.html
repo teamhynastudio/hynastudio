@@ -5387,24 +5387,20 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                gap: 120px; /* distance between cards during scroll */
-                padding: 60px 24px 240px;
+                gap: 24px;
+                padding: 40px 24px 80px;
                 background: #ffffff;
                 position: relative;
             }
             .process-card {
-                position: sticky;
-                top: 110px;
                 width: 100%;
                 max-width: 800px;
                 border-radius: 24px;
-                padding: 40px 48px;
+                padding: 36px 44px;
                 overflow: hidden;
-                will-change: transform, opacity, filter;
-                min-height: auto;
                 display: flex;
                 flex-direction: column;
-                gap: 24px;
+                gap: 20px;
                 box-shadow: 0 4px 20px rgba(0,0,0,0.04), 0 16px 48px rgba(0,0,0,0.08);
             }
             .process-card-deco {
@@ -5481,10 +5477,10 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
             .process-card.c6 { background: linear-gradient(140deg, #134e4a, #0d9488); }
 
             @media (max-width: 580px) {
-                .process-card { padding: 28px 24px; border-radius: 20px; top: 90px; }
+                .process-card { padding: 24px 20px; border-radius: 20px; }
                 .process-card-deco { display: none; }
                 .process-items-grid { grid-template-columns: 1fr; }
-                .process-stack-section { gap: 60px; padding-bottom: 120px; }
+                .process-stack-section { gap: 16px; padding: 24px 16px 60px; }
             }
         </style>
 
@@ -5588,57 +5584,7 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
         </section>
     </section>
 
-    <script>
-        function initProcessScroll() {
-            gsap.registerPlugin(ScrollTrigger);
 
-            const cards = gsap.utils.toArray('.process-card');
-            
-            cards.forEach((card, i) => {
-                // Entrance animation
-                gsap.fromTo(card,
-                    { y: 50, opacity: 0, scale: 0.98 },
-                    {
-                        y: 0, opacity: 1, scale: 1,
-                        duration: 0.55,
-                        ease: 'power2.out',
-                        scrollTrigger: {
-                            trigger: card,
-                            start: 'top 88%',
-                            toggleActions: 'play none none reverse',
-                        }
-                    }
-                );
-
-                // Stacking effect (previous card fades/scales as next card approaches sticky position)
-                if (i < cards.length - 1) {
-                    const nextCard = cards[i + 1];
-                    ScrollTrigger.create({
-                        trigger: nextCard,
-                        start: 'top 220px', // start animating when next card is 110px away from sticking
-                        end: 'top 110px',   // complete when it reaches the sticky position
-                        scrub: true,
-                        onUpdate(self) {
-                            const p = self.progress;
-                            gsap.set(card, {
-                                scale: 1 - p * 0.04,
-                                y: -p * 25,
-                                filter: 'blur(' + (p * 3) + 'px)',
-                                opacity: 1 - p * 0.55,
-                            });
-                        }
-                    });
-                }
-            });
-
-        }
-
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initProcessScroll);
-        } else {
-            initProcessScroll();
-        }
-    </script>
 
 
 
