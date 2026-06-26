@@ -267,9 +267,11 @@
             font-weight: 600;
             transition: color 0.3s ease;
         }
+
         .submenu1 {
             position: relative;
         }
+
         .submenu-dropdown1 {
             position: absolute;
             left: 100%;
@@ -283,15 +285,19 @@
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
             z-index: 210;
         }
+
         .submenu1:hover .submenu-dropdown1 {
             display: block;
         }
+
         .submenu-arrow1 {
             font-size: 12px;
         }
+
         .submenu {
             position: relative;
         }
+
         .submenu-dropdown {
             position: absolute;
             left: 100%;
@@ -305,18 +311,22 @@
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
             z-index: 210;
         }
+
         .submenu:hover .submenu-dropdown {
             display: block;
         }
+
         .submenu-arrow {
             font-size: 12px;
         }
+
         .nav-dropdown-divider {
             height: 1px;
             background: rgba(10, 10, 15, 0.07);
             margin: 4px 8px;
             border: none;
         }
+
         .nav-dropdown-group-label {
             font-size: 0.68rem;
             font-weight: 700;
@@ -2172,7 +2182,7 @@
             -webkit-backdrop-filter: blur(30px) saturate(200%);
             border: 1px solid rgba(59, 130, 246, 0.3);
             border-radius: 22px;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(59, 130, 246, 0.12), inset 0 1px 0 rgba(255,255,255,0.05);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(59, 130, 246, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.05);
             display: flex;
             flex-direction: column;
             z-index: 10000;
@@ -2215,8 +2225,15 @@
         }
 
         @keyframes airaFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-6px); }
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
         }
 
         .aira-hero-label {
@@ -2241,7 +2258,7 @@
 
         .aira-hero-sub {
             font-size: 0.7rem;
-            color: rgba(255,255,255,0.45);
+            color: rgba(255, 255, 255, 0.45);
             letter-spacing: 0.18em;
             font-weight: 500;
             text-transform: uppercase;
@@ -2493,12 +2510,27 @@
             animation: typingWave 1.4s infinite ease-in-out;
         }
 
-        .aira-typing-dot:nth-child(2) { animation-delay: 0.2s; }
-        .aira-typing-dot:nth-child(3) { animation-delay: 0.4s; }
+        .aira-typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .aira-typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
 
         @keyframes typingWave {
-            0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
-            30% { transform: translateY(-6px); opacity: 1; }
+
+            0%,
+            60%,
+            100% {
+                transform: translateY(0);
+                opacity: 0.4;
+            }
+
+            30% {
+                transform: translateY(-6px);
+                opacity: 1;
+            }
         }
 
         /* Bottom Input Form */
@@ -2607,7 +2639,7 @@
                 border-radius: 0 !important;
                 border: none !important;
             }
-            
+
             .aira-hero-character {
                 width: 120px;
             }
@@ -2626,7 +2658,7 @@
                 transform: translateX(55px);
                 opacity: 0.6;
             }
-            
+
             .hyna-chat-trigger:hover,
             .hyna-chat-trigger:focus-within {
                 transform: translateX(0);
@@ -2643,346 +2675,448 @@
 
 <body>
 
-<!-- ══════════════════════════════════════════════
+    <!-- ══════════════════════════════════════════════
      HYNA STUDIO — LOADING SCREEN OVERLAY
      (injected; does NOT touch any other markup)
 ══════════════════════════════════════════════ -->
-<style>
-  /* ── LOADING OVERLAY ──────────────────────────────────── */
-  #hyna-loader {
-    position: fixed; inset: 0; z-index: 99999;
-    background: #FFFFFF;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Inter', sans-serif;
-    transition: opacity 0.65s ease, visibility 0.65s ease;
-  }
-  #hyna-loader.loader-hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-  }
+    <style>
+        /* ── LOADING OVERLAY ──────────────────────────────────── */
+        #hyna-loader {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            background: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+            transition: opacity 0.65s ease, visibility 0.65s ease;
+        }
 
-  /* ── LOADER CSS VARS ── */
-  #hyna-loader {
-    --hl-blue-glow:  #0057FF;
-    --hl-cyan-vivid: #00AAFF;
-    --hl-cyan-mid:   #0077DD;
-    --hl-text-dark:  #0A1628;
-    --hl-text-mid:   #4A5568;
-    --hl-text-light: #9BACC4;
-    --hl-border:     rgba(0, 100, 220, 0.12);
-    --hl-track-bg:   rgba(0, 100, 220, 0.08);
-  }
+        #hyna-loader.loader-hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
 
-  /* ── AMBIENT BACKGROUND ── */
-  .hl-bg-grid {
-    position: absolute; inset: 0; z-index: 0;
-    background-image:
-      linear-gradient(rgba(0,100,220,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,100,220,0.04) 1px, transparent 1px);
-    background-size: 52px 52px;
-    mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 10%, transparent 100%);
-    -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 10%, transparent 100%);
-  }
+        /* ── LOADER CSS VARS ── */
+        #hyna-loader {
+            --hl-blue-glow: #0057FF;
+            --hl-cyan-vivid: #00AAFF;
+            --hl-cyan-mid: #0077DD;
+            --hl-text-dark: #0A1628;
+            --hl-text-mid: #4A5568;
+            --hl-text-light: #9BACC4;
+            --hl-border: rgba(0, 100, 220, 0.12);
+            --hl-track-bg: rgba(0, 100, 220, 0.08);
+        }
 
-  .hl-bg-orb {
-    position: absolute; z-index: 0; border-radius: 50%;
-    filter: blur(100px); pointer-events: none;
-  }
-  .hl-bg-orb-1 {
-    width: 500px; height: 500px;
-    top: -180px; left: -150px;
-    background: radial-gradient(circle, rgba(0,170,255,0.10) 0%, transparent 70%);
-    animation: hlOrbDrift1 16s ease-in-out infinite alternate;
-  }
-  .hl-bg-orb-2 {
-    width: 400px; height: 400px;
-    bottom: -120px; right: -100px;
-    background: radial-gradient(circle, rgba(0,87,255,0.08) 0%, transparent 70%);
-    animation: hlOrbDrift2 20s ease-in-out infinite alternate;
-  }
-  @keyframes hlOrbDrift1 {
-    from { transform: translate(0,0); }
-    to   { transform: translate(50px,35px); }
-  }
-  @keyframes hlOrbDrift2 {
-    from { transform: translate(0,0); }
-    to   { transform: translate(-40px,-25px); }
-  }
+        /* ── AMBIENT BACKGROUND ── */
+        .hl-bg-grid {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background-image:
+                linear-gradient(rgba(0, 100, 220, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 100, 220, 0.04) 1px, transparent 1px);
+            background-size: 52px 52px;
+            mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 10%, transparent 100%);
+            -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 10%, transparent 100%);
+        }
 
-  /* ── STAGE ── */
-  .hl-stage {
-    position: relative; z-index: 10;
-    display: flex; flex-direction: column;
-    align-items: center;
-    animation: hlStageFadeIn 0.9s cubic-bezier(0.22,1,0.36,1) both;
-  }
-  @keyframes hlStageFadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
+        .hl-bg-orb {
+            position: absolute;
+            z-index: 0;
+            border-radius: 50%;
+            filter: blur(100px);
+            pointer-events: none;
+        }
 
-  /* ── LOGO WRAP ── */
-  .hl-logo-wrap {
-    position: relative;
-    width: 148px; height: 148px;
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 32px;
-  }
-  .hl-logo-plate {
-    position: absolute; inset: 0; border-radius: 50%;
-    background: linear-gradient(145deg, #F0F6FF, #FFFFFF);
-    border: 1px solid var(--hl-border);
-    box-shadow:
-      0 4px 24px rgba(0,100,220,0.08),
-      0 1px 4px rgba(0,100,220,0.06),
-      inset 0 1px 0 rgba(255,255,255,0.9);
-  }
-  .hl-ring {
-    position: absolute; inset: 0; border-radius: 50%;
-  }
-  .hl-ring-spin {
-    border: 2px solid transparent;
-    background: conic-gradient(
-      from 0deg,
-      transparent 0%, transparent 55%,
-      rgba(0,170,255,0.7) 70%,
-      rgba(0,87,255,0.9) 82%,
-      transparent 95%
-    ) border-box;
-    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: destination-out;
-    mask-composite: exclude;
-    animation: hlSpinRing 1.6s linear infinite;
-  }
-  .hl-ring-spin-2 {
-    inset: 8px;
-    border: 1.5px solid transparent;
-    background: conic-gradient(
-      from 180deg,
-      transparent 0%, transparent 60%,
-      rgba(0,170,255,0.4) 75%,
-      rgba(0,87,255,0.5) 85%,
-      transparent 96%
-    ) border-box;
-    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: destination-out;
-    mask-composite: exclude;
-    animation: hlSpinRing 2.4s linear infinite reverse;
-  }
-  @keyframes hlSpinRing {
-    to { transform: rotate(360deg); }
-  }
-  .hl-logo-glow {
-    position: absolute; width: 80px; height: 80px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(0,170,255,0.18) 0%, transparent 70%);
-    filter: blur(10px);
-    animation: hlGlowPulse 2.6s ease-in-out infinite alternate;
-  }
-  @keyframes hlGlowPulse {
-    from { transform: scale(0.85); opacity: 0.5; }
-    to   { transform: scale(1.2); opacity: 1; }
-  }
-  .hl-logo-img {
-    position: relative; z-index: 2;
-    width: 76px; height: 76px;
-    object-fit: contain;
-    animation: hlLogoBreath 2.6s ease-in-out infinite alternate;
-  }
-  @keyframes hlLogoBreath {
-    from { transform: scale(0.96); filter: drop-shadow(0 4px 12px rgba(0,120,255,0.18)); }
-    to   { transform: scale(1.04); filter: drop-shadow(0 6px 20px rgba(0,170,255,0.32)); }
-  }
+        .hl-bg-orb-1 {
+            width: 500px;
+            height: 500px;
+            top: -180px;
+            left: -150px;
+            background: radial-gradient(circle, rgba(0, 170, 255, 0.10) 0%, transparent 70%);
+            animation: hlOrbDrift1 16s ease-in-out infinite alternate;
+        }
 
-  /* ── WORDMARK ── */
-  .hl-wordmark {
-    font-family: 'Space Grotesk', 'Syne', sans-serif;
-    font-size: 2.5rem;
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    color: var(--hl-text-dark);
-    line-height: 1;
-    margin-bottom: 7px;
-  }
-  .hl-wordmark span {
-    background: linear-gradient(100deg, var(--hl-cyan-vivid) 0%, var(--hl-blue-glow) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .hl-tagline {
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-    color: var(--hl-text-light);
-    margin-bottom: 48px;
-  }
+        .hl-bg-orb-2 {
+            width: 400px;
+            height: 400px;
+            bottom: -120px;
+            right: -100px;
+            background: radial-gradient(circle, rgba(0, 87, 255, 0.08) 0%, transparent 70%);
+            animation: hlOrbDrift2 20s ease-in-out infinite alternate;
+        }
 
-  /* ── PROGRESS ── */
-  .hl-progress-shell {
-    width: 280px;
-    display: flex; flex-direction: column; align-items: center; gap: 12px;
-  }
-  .hl-bar-track {
-    width: 100%; height: 2px;
-    background: var(--hl-track-bg);
-    border-radius: 2px;
-    overflow: visible;
-    position: relative;
-  }
-  .hl-bar-fill {
-    height: 100%; border-radius: 2px;
-    background: linear-gradient(90deg, var(--hl-blue-glow), var(--hl-cyan-vivid));
-    width: 0%;
-    transition: width 0.08s linear;
-    position: relative;
-  }
-  .hl-bar-fill::after {
-    content: '';
-    position: absolute; right: -3px; top: 50%;
-    transform: translateY(-50%);
-    width: 6px; height: 6px; border-radius: 50%;
-    background: var(--hl-cyan-vivid);
-    box-shadow: 0 0 8px 2px rgba(0,170,255,0.55);
-  }
-  .hl-status-row {
-    display: flex; justify-content: space-between; width: 100%;
-  }
-  .hl-status-text {
-    font-size: 0.70rem;
-    letter-spacing: 0.10em;
-    text-transform: uppercase;
-    color: var(--hl-text-light);
-  }
-  .hl-status-pct {
-    font-family: 'Space Grotesk', 'Syne', sans-serif;
-    font-size: 0.70rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    color: var(--hl-cyan-mid);
-  }
+        @keyframes hlOrbDrift1 {
+            from {
+                transform: translate(0, 0);
+            }
 
-  /* ── STEP DOTS ── */
-  .hl-dots {
-    display: flex; gap: 7px;
-    margin-top: 28px;
-  }
-  .hl-dot {
-    width: 5px; height: 5px; border-radius: 50%;
-    background: rgba(0,100,220,0.12);
-    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
-  }
-  .hl-dot.hl-active {
-    background: var(--hl-cyan-vivid);
-    box-shadow: 0 0 6px rgba(0,170,255,0.55);
-    transform: scale(1.4);
-  }
+            to {
+                transform: translate(50px, 35px);
+            }
+        }
+
+        @keyframes hlOrbDrift2 {
+            from {
+                transform: translate(0, 0);
+            }
+
+            to {
+                transform: translate(-40px, -25px);
+            }
+        }
+
+        /* ── STAGE ── */
+        .hl-stage {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: hlStageFadeIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+
+        @keyframes hlStageFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ── LOGO WRAP ── */
+        .hl-logo-wrap {
+            position: relative;
+            width: 148px;
+            height: 148px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 32px;
+        }
+
+        .hl-logo-plate {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #F0F6FF, #FFFFFF);
+            border: 1px solid var(--hl-border);
+            box-shadow:
+                0 4px 24px rgba(0, 100, 220, 0.08),
+                0 1px 4px rgba(0, 100, 220, 0.06),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        }
+
+        .hl-ring {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+        }
+
+        .hl-ring-spin {
+            border: 2px solid transparent;
+            background: conic-gradient(from 0deg,
+                    transparent 0%, transparent 55%,
+                    rgba(0, 170, 255, 0.7) 70%,
+                    rgba(0, 87, 255, 0.9) 82%,
+                    transparent 95%) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: destination-out;
+            mask-composite: exclude;
+            animation: hlSpinRing 1.6s linear infinite;
+        }
+
+        .hl-ring-spin-2 {
+            inset: 8px;
+            border: 1.5px solid transparent;
+            background: conic-gradient(from 180deg,
+                    transparent 0%, transparent 60%,
+                    rgba(0, 170, 255, 0.4) 75%,
+                    rgba(0, 87, 255, 0.5) 85%,
+                    transparent 96%) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: destination-out;
+            mask-composite: exclude;
+            animation: hlSpinRing 2.4s linear infinite reverse;
+        }
+
+        @keyframes hlSpinRing {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .hl-logo-glow {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 170, 255, 0.18) 0%, transparent 70%);
+            filter: blur(10px);
+            animation: hlGlowPulse 2.6s ease-in-out infinite alternate;
+        }
+
+        @keyframes hlGlowPulse {
+            from {
+                transform: scale(0.85);
+                opacity: 0.5;
+            }
+
+            to {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+
+        .hl-logo-img {
+            position: relative;
+            z-index: 2;
+            width: 76px;
+            height: 76px;
+            object-fit: contain;
+            animation: hlLogoBreath 2.6s ease-in-out infinite alternate;
+        }
+
+        @keyframes hlLogoBreath {
+            from {
+                transform: scale(0.96);
+                filter: drop-shadow(0 4px 12px rgba(0, 120, 255, 0.18));
+            }
+
+            to {
+                transform: scale(1.04);
+                filter: drop-shadow(0 6px 20px rgba(0, 170, 255, 0.32));
+            }
+        }
+
+        /* ── WORDMARK ── */
+        .hl-wordmark {
+            font-family: 'Space Grotesk', 'Syne', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: var(--hl-text-dark);
+            line-height: 1;
+            margin-bottom: 7px;
+        }
+
+        .hl-wordmark span {
+            background: linear-gradient(100deg, var(--hl-cyan-vivid) 0%, var(--hl-blue-glow) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hl-tagline {
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: var(--hl-text-light);
+            margin-bottom: 48px;
+        }
+
+        /* ── PROGRESS ── */
+        .hl-progress-shell {
+            width: 280px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hl-bar-track {
+            width: 100%;
+            height: 2px;
+            background: var(--hl-track-bg);
+            border-radius: 2px;
+            overflow: visible;
+            position: relative;
+        }
+
+        .hl-bar-fill {
+            height: 100%;
+            border-radius: 2px;
+            background: linear-gradient(90deg, var(--hl-blue-glow), var(--hl-cyan-vivid));
+            width: 0%;
+            transition: width 0.08s linear;
+            position: relative;
+        }
+
+        .hl-bar-fill::after {
+            content: '';
+            position: absolute;
+            right: -3px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--hl-cyan-vivid);
+            box-shadow: 0 0 8px 2px rgba(0, 170, 255, 0.55);
+        }
+
+        .hl-status-row {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .hl-status-text {
+            font-size: 0.70rem;
+            letter-spacing: 0.10em;
+            text-transform: uppercase;
+            color: var(--hl-text-light);
+        }
+
+        .hl-status-pct {
+            font-family: 'Space Grotesk', 'Syne', sans-serif;
+            font-size: 0.70rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            color: var(--hl-cyan-mid);
+        }
+
+        /* ── STEP DOTS ── */
+        .hl-dots {
+            display: flex;
+            gap: 7px;
+            margin-top: 28px;
+        }
+
+        .hl-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: rgba(0, 100, 220, 0.12);
+            transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+
+        .hl-dot.hl-active {
+            background: var(--hl-cyan-vivid);
+            box-shadow: 0 0 6px rgba(0, 170, 255, 0.55);
+            transform: scale(1.4);
+        }
 
 
 
-  /* ── REDUCED MOTION ── */
-  @media (prefers-reduced-motion: reduce) {
-    .hl-ring-spin, .hl-ring-spin-2, .hl-logo-img, .hl-logo-glow,
-    .hl-bg-orb-1, .hl-bg-orb-2 { animation: none; }
-  }
-</style>
+        /* ── REDUCED MOTION ── */
+        @media (prefers-reduced-motion: reduce) {
 
-<div id="hyna-loader" role="status" aria-label="Loading Hyna Studio">
-  <div class="hl-bg-grid"></div>
-  <div class="hl-bg-orb hl-bg-orb-1"></div>
-  <div class="hl-bg-orb hl-bg-orb-2"></div>
+            .hl-ring-spin,
+            .hl-ring-spin-2,
+            .hl-logo-img,
+            .hl-logo-glow,
+            .hl-bg-orb-1,
+            .hl-bg-orb-2 {
+                animation: none;
+            }
+        }
+    </style>
+
+    <div id="hyna-loader" role="status" aria-label="Loading Hyna Studio">
+        <div class="hl-bg-grid"></div>
+        <div class="hl-bg-orb hl-bg-orb-1"></div>
+        <div class="hl-bg-orb hl-bg-orb-2"></div>
 
 
-  <div class="hl-stage">
-    <div class="hl-logo-wrap">
-      <div class="hl-logo-plate"></div>
-      <div class="hl-ring hl-ring-spin"></div>
-      <div class="hl-ring hl-ring-spin-2"></div>
-      <div class="hl-logo-glow"></div>
-      <img class="hl-logo-img" src="hyna-logo-new.png" alt="Hyna Studio Logo"/>
+        <div class="hl-stage">
+            <div class="hl-logo-wrap">
+                <div class="hl-logo-plate"></div>
+                <div class="hl-ring hl-ring-spin"></div>
+                <div class="hl-ring hl-ring-spin-2"></div>
+                <div class="hl-logo-glow"></div>
+                <img class="hl-logo-img" src="hyna-logo-new.png" alt="Hyna Studio Logo" />
+            </div>
+
+            <div class="hl-wordmark">Hyna <span>Studio</span></div>
+            <div class="hl-tagline">Design &middot; Build &middot; Launch</div>
+
+            <div class="hl-progress-shell">
+                <div class="hl-bar-track">
+                    <div class="hl-bar-fill" id="hlBar"></div>
+                </div>
+                <div class="hl-status-row">
+                    <span class="hl-status-text" id="hlStatusText">Initialising</span>
+                    <span class="hl-status-pct" id="hlStatusPct">0%</span>
+                </div>
+            </div>
+
+            <div class="hl-dots" id="hlDots">
+                <div class="hl-dot hl-active"></div>
+                <div class="hl-dot"></div>
+                <div class="hl-dot"></div>
+                <div class="hl-dot"></div>
+            </div>
+        </div>
     </div>
 
-    <div class="hl-wordmark">Hyna <span>Studio</span></div>
-    <div class="hl-tagline">Design &middot; Build &middot; Launch</div>
+    <script>
+        (function () {
+            var bar = document.getElementById('hlBar');
+            var pct = document.getElementById('hlStatusPct');
+            var label = document.getElementById('hlStatusText');
+            var dots = document.querySelectorAll('.hl-dot');
+            var loader = document.getElementById('hyna-loader');
 
-    <div class="hl-progress-shell">
-      <div class="hl-bar-track">
-        <div class="hl-bar-fill" id="hlBar"></div>
-      </div>
-      <div class="hl-status-row">
-        <span class="hl-status-text" id="hlStatusText">Initialising</span>
-        <span class="hl-status-pct" id="hlStatusPct">0%</span>
-      </div>
-    </div>
+            var phases = [
+                { at: 0, text: 'Initialising', dot: 0 },
+                { at: 25, text: 'Loading assets', dot: 1 },
+                { at: 55, text: 'Configuring env', dot: 2 },
+                { at: 80, text: 'Almost ready', dot: 3 },
+                { at: 100, text: 'Welcome', dot: 3 },
+            ];
 
-    <div class="hl-dots" id="hlDots">
-      <div class="hl-dot hl-active"></div>
-      <div class="hl-dot"></div>
-      <div class="hl-dot"></div>
-      <div class="hl-dot"></div>
-    </div>
-  </div>
-</div>
+            var current = 0;
 
-<script>
-(function () {
-  var bar    = document.getElementById('hlBar');
-  var pct    = document.getElementById('hlStatusPct');
-  var label  = document.getElementById('hlStatusText');
-  var dots   = document.querySelectorAll('.hl-dot');
-  var loader = document.getElementById('hyna-loader');
+            function updateDot(i) {
+                dots.forEach(function (d, idx) {
+                    d.classList.toggle('hl-active', idx === i);
+                });
+            }
 
-  var phases = [
-    { at: 0,   text: 'Initialising',    dot: 0 },
-    { at: 25,  text: 'Loading assets',  dot: 1 },
-    { at: 55,  text: 'Configuring env', dot: 2 },
-    { at: 80,  text: 'Almost ready',    dot: 3 },
-    { at: 100, text: 'Welcome',         dot: 3 },
-  ];
+            function tick() {
+                if (current >= 100) {
+                    bar.style.width = '100%';
+                    pct.textContent = '100%';
+                    label.textContent = 'Welcome';
+                    updateDot(3);
+                    setTimeout(function () {
+                        loader.classList.add('loader-hidden');
+                        setTimeout(function () { loader.remove(); }, 700);
+                    }, 600);
+                    return;
+                }
 
-  var current = 0;
+                var speed = current < 40 ? 0.85 : current < 75 ? 0.65 : current < 92 ? 0.45 : 0.25;
+                current = Math.min(current + speed + Math.random() * 0.6, 100);
 
-  function updateDot(i) {
-    dots.forEach(function (d, idx) {
-      d.classList.toggle('hl-active', idx === i);
-    });
-  }
+                bar.style.width = current.toFixed(1) + '%';
+                pct.textContent = Math.floor(current) + '%';
 
-  function tick() {
-    if (current >= 100) {
-      bar.style.width = '100%';
-      pct.textContent = '100%';
-      label.textContent = 'Welcome';
-      updateDot(3);
-      setTimeout(function () {
-        loader.classList.add('loader-hidden');
-        setTimeout(function () { loader.remove(); }, 700);
-      }, 600);
-      return;
-    }
+                for (var i = phases.length - 1; i >= 0; i--) {
+                    if (current >= phases[i].at) {
+                        label.textContent = phases[i].text;
+                        updateDot(phases[i].dot);
+                        break;
+                    }
+                }
 
-    var speed = current < 40 ? 0.85 : current < 75 ? 0.65 : current < 92 ? 0.45 : 0.25;
-    current = Math.min(current + speed + Math.random() * 0.6, 100);
+                setTimeout(tick, 20 + Math.random() * 12);
+            }
 
-    bar.style.width = current.toFixed(1) + '%';
-    pct.textContent = Math.floor(current) + '%';
-
-    for (var i = phases.length - 1; i >= 0; i--) {
-      if (current >= phases[i].at) {
-        label.textContent = phases[i].text;
-        updateDot(phases[i].dot);
-        break;
-      }
-    }
-
-    setTimeout(tick, 20 + Math.random() * 12);
-  }
-
-  setTimeout(tick, 300);
-}());
-</script>
-<!-- ══════════ END LOADING SCREEN ══════════ -->
+            setTimeout(tick, 300);
+        }());
+    </script>
+    <!-- ══════════ END LOADING SCREEN ══════════ -->
 
     <!-- AIRA AGENTIC CHAT TRIGGER -->
     <div class="hyna-chat-trigger" id="hynaChatTrigger" role="button" aria-label="Ask Hyna AI Assistant" tabindex="0">
@@ -3005,7 +3139,8 @@
         <!-- Slim Action Header -->
         <div class="aira-chat-header">
             <div class="aira-header-actions">
-                <button class="aira-header-btn" id="airaResetBtn" title="Reset Conversation" aria-label="Reset Conversation">
+                <button class="aira-header-btn" id="airaResetBtn" title="Reset Conversation"
+                    aria-label="Reset Conversation">
                     <i class="fas fa-sync-alt"></i>
                 </button>
                 <button class="aira-header-btn" id="airaCloseBtn" title="Close Chat" aria-label="Close Chat">
@@ -3025,13 +3160,19 @@
                     <div class="aira-msg-bubble">
                         Great solutions start with the right conversation. 💡<br><br>
                         I'm Hyna, your intelligent business advisor.<br><br>
-                        At <strong>Hyna Studio</strong>, we provide end-to-end digital expertise to bring your ideas to life. Here is a summary of our services:<br><br>
+                        At <strong>Hyna Studio</strong>, we provide end-to-end digital expertise to bring your ideas to
+                        life. Here is a summary of our services:<br><br>
                         <ul>
-                            <li>🖥️ <strong>Software & SaaS:</strong> Custom software, scalable APIs, SaaS MVPs, CRM/ERP/HRM platforms.</li>
-                            <li>🌐 <strong>Web Development:</strong> Next.js/React web apps, enterprise WordPress, and custom Webflow development.</li>
-                            <li>📱 <strong>Shopify & Mobile:</strong> E-commerce custom Shopify setups, native/hybrid iOS & Android mobile apps.</li>
-                            <li>🎨 <strong>Design & Marketing:</strong> Complete UI/UX designs, brand identity packages, pitch decks, and marketing campaigns.</li>
-                            <li>🤖 <strong>AI & Automation:</strong> Intelligent AI agents, custom workflow automations, and LLM integrations.</li>
+                            <li>🖥️ <strong>Software & SaaS:</strong> Custom software, scalable APIs, SaaS MVPs,
+                                CRM/ERP/HRM platforms.</li>
+                            <li>🌐 <strong>Web Development:</strong> Next.js/React web apps, enterprise WordPress, and
+                                custom Webflow development.</li>
+                            <li>📱 <strong>Shopify & Mobile:</strong> E-commerce custom Shopify setups, native/hybrid
+                                iOS & Android mobile apps.</li>
+                            <li>🎨 <strong>Design & Marketing:</strong> Complete UI/UX designs, brand identity packages,
+                                pitch decks, and marketing campaigns.</li>
+                            <li>🤖 <strong>AI & Automation:</strong> Intelligent AI agents, custom workflow automations,
+                                and LLM integrations.</li>
                         </ul>
                         Select a service category below to see details or discuss your project:
                     </div>
@@ -3057,7 +3198,8 @@
         <!-- Input Area -->
         <form class="aira-chat-input-form" id="airaChatForm">
             <div class="aira-input-wrapper">
-                <input type="text" class="aira-chat-input" id="airaChatInput" placeholder="Or type your goal or challenge..." autocomplete="off" required>
+                <input type="text" class="aira-chat-input" id="airaChatInput"
+                    placeholder="Or type your goal or challenge..." autocomplete="off" required>
             </div>
             <button type="submit" class="aira-send-btn" aria-label="Send Message">
                 <i class="fas fa-paper-plane"></i>
@@ -3105,31 +3247,31 @@
             // Responses for buttons
             const botResponses = {
                 "Software & SaaS": `We engineer robust, scalable software products and multi-tenant SaaS platforms configured for your business. 🖥️🚀<br><br>Our capabilities cover:<br><ul><li>Custom APIs & Backend Logic (Go, Python, Node.js)</li><li>SaaS MVPs & SaaS Accelerators</li><li>Enterprise CRM, ERP, and HRM software</li></ul><br>Want to map out your software architecture?<br><a href="mailto:team.hynastudio@gmail.com?subject=Software%20and%20SaaS%20Inquiry" class="aira-chat-action-btn">Discuss Your Project</a>`,
-                
+
                 "Web Development": `We build high-performance, responsive, and SEO-friendly websites using modern tools and frameworks. 🌐<br><br>Our Web Development services include:<br><ul><li>Custom web apps with React, Next.js, and TypeScript</li><li>Enterprise WordPress and content management architectures</li><li>Pixel-perfect Webflow sites for rapid deployment</li></ul><br>Ready to create a stunning web experience?<br><a href="mailto:team.hynastudio@gmail.com?subject=Web%20Development%20Inquiry" class="aira-chat-action-btn">Start Web Project</a>`,
-                
+
                 "Shopify & Mobile": `Get high-converting custom Shopify storefronts or fully native/hybrid mobile apps for iOS and Android. 📱🛍️<br><br>What we build:<br><ul><li>Custom Shopify storefronts, theme setups, and custom apps</li><li>Native iOS & Android mobile apps (React Native, Flutter)</li><li>Cross-platform product design & API integrations</li></ul><br>Let's scale your mobile or e-commerce presence.<br><a href="mailto:team.hynastudio@gmail.com?subject=Shopify%20and%20Mobile%20Inquiry" class="aira-chat-action-btn">Contact E-commerce Expert</a>`,
-                
+
                 "Design & Marketing": `From immersive UI/UX wireframes to beautiful brand identity systems, we design with your user in mind. 🎨📣<br><br>Our design & marketing services cover:<br><ul><li>Interactive UI/UX prototypes (Figma)</li><li>Branding, logo design, and visual assets</li><li>Pitch deck design & organic growth marketing</li></ul><br>Let's elevate your brand aesthetics.<br><a href="mailto:team.hynastudio@gmail.com?subject=Design%20and%20Marketing%20Inquiry" class="aira-chat-action-btn">Start Designing</a>`,
 
                 "Digital Transformation": `Digital transformation is at the core of what we do. We help traditional enterprises modernize their stacks, automate operations, and transition safely to modern cloud-first architectures. 🚀<br><br>Our team specializes in:<br><ul><li>Legacy codebase modernization</li><li>Cloud migration (AWS/Azure/GCP)</li><li>Custom API integrations</li></ul><br>Would you like to discuss how we can transform your business workflows?<br><a href="mailto:team.hynastudio@gmail.com?subject=Digital%20Transformation%20Inquiry" class="aira-chat-action-btn">Schedule a Consultation</a>`,
-                
+
                 "Enterprise Platforms": `We engineer resilient, scalable platforms designed to handle massive throughput and complex enterprise business logic. 🏢<br><br>We design and build:<br><ul><li>CRM & Custom ERP solutions</li><li>High-performance databases (PostgreSQL, MongoDB)</li><li>Robust backend microservices (Go, Python, Java)</li></ul><br>Let's build a secure foundation for your scaling operations.<br><a href="mailto:team.hynastudio@gmail.com?subject=Enterprise%20Platforms%20Inquiry" class="aira-chat-action-btn">Request Enterprise Call</a>`,
-                
+
                 "Product Engineering": `From concept to market launch, we craft software products with an obsession for speed, design, and user experience. 💻<br><br>Our product engineering covers:<br><ul><li>End-to-end full-stack development</li><li>High-fidelity interactive prototypes</li><li>Agile MVP development for startups</li></ul><br>Have an idea you want to bring to life?<br><a href="mailto:team.hynastudio@gmail.com?subject=Product%20Engineering%20Inquiry" class="aira-chat-action-btn">Discuss Your MVP</a>`,
-                
+
                 "Data, AI & Automation": `Welcome to the age of agentic business. We build custom AI models, intelligent agents, and automated data pipelines that multiply your team's productivity. 🤖<br><br>Our AI capabilities include:<br><ul><li>Custom AI Agents & workflow automations</li><li>Machine Learning pipelines</li><li>LLM integrations & fine-tuning</li></ul><br>Let's automate your repetitive tasks and leverage your data.<br><a href="mailto:team.hynastudio@gmail.com?subject=AI%20and%20Automation%20Inquiry" class="aira-chat-action-btn">Automate Your Workflow</a>`,
-                
+
                 "Cloud & Infrastructure Services": `We design zero-downtime, secure, and auto-scaling cloud infrastructure to keep your systems fast and compliant. ☁️<br><br>Our cloud expertise covers:<br><ul><li>Container orchestration (Docker, Kubernetes)</li><li>CI/CD automated deployment pipelines</li><li>Cloud cost optimization & audits</li></ul><br>Is your infrastructure ready for high traffic?<br><a href="mailto:team.hynastudio@gmail.com?subject=Cloud%20Infrastructure%20Inquiry" class="aira-chat-action-btn">Optimize Cloud Setup</a>`,
-                
+
                 "Strategy & IT Consulting": `Great technology starts with a smart strategy. We provide fractional CTO advisory and IT architecture planning to ensure your technical investments align with business growth. 🎯<br><br>We help you with:<br><ul><li>Tech stack selection & architecture design</li><li>Compliance, security, and security audits</li><li>Scalability mapping</li></ul><br>Let's plan your technical roadmap together.<br><a href="mailto:team.hynastudio@gmail.com?subject=Strategy%20Consulting%20Inquiry" class="aira-chat-action-btn">Book Advisory Session</a>`,
-                
+
                 "Managed Services & Support": `We don't just build and leave. We offer proactive maintenance, security monitoring, and regular updates so you can focus on running your business. 🛠️<br><br>Our support plans include:<br><ul><li>24/7 server & application monitoring</li><li>Security patches and software updates</li><li>Bug fixes and prompt feature requests</li></ul><br>Need a reliable partner to manage your digital assets?<br><a href="mailto:team.hynastudio@gmail.com?subject=Managed%20Services%20Inquiry" class="aira-chat-action-btn">Explore Support Plans</a>`,
-                
+
                 "Hyniva Products & Solutions": `Hyna Studio designs and license out pre-built enterprise modules, SaaS accelerators, and automation toolkits that help speed up development times by up to 60%. ⚡<br><br>Our solutions include:<br><ul><li>Hyniva Admin Dashboards & SaaS boilers</li><li>Dynamic content management toolkits</li><li>Automated customer billing integrations</li></ul><br>Would you like a demo of our accelerators?<br><a href="mailto:team.hynastudio@gmail.com?subject=Hyniva%20Products%20Demo" class="aira-chat-action-btn">Request Product Demo</a>`,
-                
+
                 "Partnership Opportunities": `We love collaborating with design agencies, marketing firms, startup incubators, and individual entrepreneurs. Let's combine forces to deliver outstanding results. 🤝<br><br>How we partner:<br><ul><li>White-label development services</li><li>Referral and commission programs</li><li>Joint venture integrations</li></ul><br>Let's discuss how we can grow together.<br><a href="mailto:team.hynastudio@gmail.com?subject=Partnership%20Opportunity" class="aira-chat-action-btn">Discuss Partnership</a>`,
-                
+
                 "Other": `Tell us what you're looking for! Whether it's a quick fix, an unlisted service, or just a general inquiry, our team is happy to chat. 💡<br><br>Please drop your request in the chat below, or email us directly at:<br><ul><li><strong>team.hynastudio@gmail.com</strong></li></ul><br>We usually reply in under 2 hours!<br><a href="mailto:team.hynastudio@gmail.com?subject=General%20Inquiry" class="aira-chat-action-btn">Send Email</a>`
             };
 
@@ -3259,14 +3401,14 @@
                         </div>
                     `;
                     chatBody.appendChild(botRow);
-                    
+
                     // Always restore services choices at the bottom of the chat after a bot message
                     const choicesContainer = document.getElementById("airaChoicesContainer");
                     if (choicesContainer) {
                         choicesContainer.style.display = "flex";
                         chatBody.appendChild(choicesContainer);
                     }
-                    
+
                     chatBody.scrollTop = chatBody.scrollHeight;
                 }, 1200);
             };
@@ -3324,111 +3466,111 @@
 </ul><br>
 All team members are B.E. Computer Science graduates from <strong>Anna University</strong>.<br><br>Ask me about any specific team member for more details!`;
 
-                // ── ABOUT / COMPANY ──
+                    // ── ABOUT / COMPANY ──
                 } else if (q.includes("about") || q.includes("what is hyna") || q.includes("who is hyna") || q.includes("company") || q.includes("studio") || q.includes("what do you")) {
                     responseHtml = `🏠 <strong>About Hyna Studio</strong><br><br>Hyna Studio is a <strong>student-led, full-spectrum digital studio</strong> that transforms bold ideas into impactful digital experiences.<br><br>We craft websites, apps, SaaS platforms, and brand identities for startups and scale-ups worldwide — from design to deployment.<br><br>📊 <strong>Key Stats:</strong><br><ul><li>🚀 1+ Projects Shipped</li><li>🎯 6 Core Disciplines</li><li>⭐ 98% Client Satisfaction</li><li>📅 6 Months of Studio Experience</li></ul><br>Our motto: <em>"Democratizing Entrepreneurship."</em><br><br>📧 Email: <strong>team.hynastudio@gmail.com</strong><br>💻 GitHub: <strong>github.com/teamhynastudio</strong>`;
 
-                // ── SERVICES ──
+                    // ── SERVICES ──
                 } else if (q.includes("service") || q.includes("offer") || q.includes("provide") || q.includes("help with") || q.includes("what can")) {
                     responseHtml = `🛠️ <strong>Hyna Studio Services</strong><br><br>We are a full-spectrum digital studio offering:<br><ul><li>🖥️ <strong>Software &amp; SaaS</strong> — Custom software, APIs, MVPs, CRM/ERP/HRM</li><li>🌐 <strong>Web Development</strong> — React, Next.js, WordPress, Webflow</li><li>📱 <strong>Shopify &amp; Mobile</strong> — E-commerce &amp; iOS/Android apps</li><li>🎨 <strong>Design &amp; Marketing</strong> — UI/UX, branding, pitch decks, campaigns</li><li>🤖 <strong>AI &amp; Automation</strong> — AI agents, LLM integrations, workflow bots</li><li>☁️ <strong>Cloud &amp; Infrastructure</strong> — Docker, Kubernetes, CI/CD pipelines</li><li>🔄 <strong>Digital Transformation</strong> — Legacy modernisation, cloud migration</li><li>🎯 <strong>Strategy &amp; IT Consulting</strong> — Fractional CTO, architecture planning</li><li>🛠️ <strong>Managed Services &amp; Support</strong> — 24/7 monitoring, security, updates</li></ul><br>Select a category below or ask me about a specific service!`;
 
-                // ── SOFTWARE / SAAS ──
+                    // ── SOFTWARE / SAAS ──
                 } else if (q.includes("software") || q.includes("saas") || q.includes("erp") || q.includes("crm") || q.includes("hrm") || q.includes("api") || q.includes("backend")) {
                     responseHtml = botResponses["Software & SaaS"];
 
-                // ── WEB DEV ──
+                    // ── WEB DEV ──
                 } else if (q.includes("web") || q.includes("website") || q.includes("wordpress") || q.includes("webflow") || q.includes("react") || q.includes("next.js") || q.includes("nextjs")) {
                     responseHtml = botResponses["Web Development"];
 
-                // ── SHOPIFY / MOBILE ──
+                    // ── SHOPIFY / MOBILE ──
                 } else if (q.includes("shopify") || q.includes("ecommerce") || q.includes("e-commerce") || q.includes("mobile") || q.includes("ios") || q.includes("android") || q.includes("flutter") || q.includes("react native")) {
                     responseHtml = botResponses["Shopify & Mobile"];
 
-                // ── DESIGN / MARKETING ──
+                    // ── DESIGN / MARKETING ──
                 } else if (q.includes("design") || q.includes("logo") || q.includes("ui") || q.includes("ux") || q.includes("brand") || q.includes("figma") || q.includes("marketing") || q.includes("pitch deck")) {
                     responseHtml = botResponses["Design & Marketing"];
 
-                // ── AI / AUTOMATION ──
+                    // ── AI / AUTOMATION ──
                 } else if (q.includes("ai") || q.includes("artificial intelligence") || q.includes("machine learning") || q.includes("llm") || q.includes("automate") || q.includes("automation") || q.includes("agent") || q.includes("chatbot") || q.includes("gpt")) {
                     responseHtml = botResponses["Data, AI & Automation"];
 
-                // ── CLOUD / INFRA ──
+                    // ── CLOUD / INFRA ──
                 } else if (q.includes("cloud") || q.includes("server") || q.includes("aws") || q.includes("azure") || q.includes("gcp") || q.includes("kubernetes") || q.includes("docker") || q.includes("devops") || q.includes("ci/cd")) {
                     responseHtml = botResponses["Cloud & Infrastructure Services"];
 
-                // ── DIGITAL TRANSFORMATION ──
+                    // ── DIGITAL TRANSFORMATION ──
                 } else if (q.includes("digital transform") || q.includes("modernize") || q.includes("modernise") || q.includes("legacy") || q.includes("migrate") || q.includes("migration")) {
                     responseHtml = botResponses["Digital Transformation"];
 
-                // ── ENTERPRISE / PLATFORMS ──
+                    // ── ENTERPRISE / PLATFORMS ──
                 } else if (q.includes("enterprise") || q.includes("platform") || q.includes("microservice") || q.includes("scalab")) {
                     responseHtml = botResponses["Enterprise Platforms"];
 
-                // ── STRATEGY / CONSULTING ──
+                    // ── STRATEGY / CONSULTING ──
                 } else if (q.includes("consult") || q.includes("strategy") || q.includes("advisory") || q.includes("cto advisory") || q.includes("roadmap") || q.includes("architecture")) {
                     responseHtml = botResponses["Strategy & IT Consulting"];
 
-                // ── MANAGED SERVICES / SUPPORT ──
+                    // ── MANAGED SERVICES / SUPPORT ──
                 } else if (q.includes("support") || q.includes("maintain") || q.includes("maintenance") || q.includes("managed") || q.includes("monitor") || q.includes("update") || q.includes("security patch")) {
                     responseHtml = botResponses["Managed Services & Support"];
 
-                // ── PARTNERSHIP ──
+                    // ── PARTNERSHIP ──
                 } else if (q.includes("partner") || q.includes("collab") || q.includes("white-label") || q.includes("whitelabel") || q.includes("referral") || q.includes("joint venture")) {
                     responseHtml = botResponses["Partnership Opportunities"];
 
-                // ── HYNIVA PRODUCTS ──
+                    // ── HYNIVA PRODUCTS ──
                 } else if (q.includes("hyniva") || q.includes("product demo") || q.includes("accelerator") || q.includes("boilerplate") || q.includes("saas boiler")) {
                     responseHtml = botResponses["Hyniva Products & Solutions"];
 
-                // ── PROCESS / HOW IT WORKS ──
+                    // ── PROCESS / HOW IT WORKS ──
                 } else if (q.includes("process") || q.includes("how it works") || q.includes("how do you work") || q.includes("step") || q.includes("workflow") || q.includes("methodology")) {
                     responseHtml = `🔄 <strong>Our Project Process</strong><br><br>We follow a structured 6-step approach to deliver high-quality solutions:<br><ol><li>🔍 <strong>Discovery</strong> — We learn about your business goals, users, and challenges.</li><li>📐 <strong>Planning</strong> — We scope the project, define the tech stack, and create a roadmap.</li><li>🎨 <strong>Design</strong> — High-fidelity UI/UX prototypes crafted in Figma.</li><li>💻 <strong>Development</strong> — Engineering your product with clean, scalable code.</li><li>🧪 <strong>Testing</strong> — QA across devices and browsers to ensure quality.</li><li>🚀 <strong>Deployment</strong> — Launch to production with CI/CD pipelines and monitoring.</li></ol><br>After launch, we offer ongoing <strong>Managed Services &amp; Support</strong> so you're never left alone.<br><br><a href="mailto:team.hynastudio@gmail.com?subject=Project%20Process%20Inquiry" class="aira-chat-action-btn">Start the Discovery Call</a>`;
 
-                // ── PRICING / COST ──
+                    // ── PRICING / COST ──
                 } else if (q.includes("price") || q.includes("pricing") || q.includes("cost") || q.includes("budget") || q.includes("estimate") || q.includes("how much") || q.includes("rate") || q.includes("fee")) {
                     responseHtml = `💸 <strong>Pricing at Hyna Studio</strong><br><br>Our services are <strong>custom-tailored</strong> to the scope and scale of your project — so we don't publish fixed prices.<br><br>We offer highly competitive rates for premium-quality execution. Here's how to get a quote:<br><ul><li>📧 Email us: <strong>team.hynastudio@gmail.com</strong></li><li>⏱️ We respond within <strong>24 hours</strong> with a full scope outline and price estimate.</li></ul><br>Ready to get started?<br><a href="mailto:team.hynastudio@gmail.com?subject=Project%20Price%20Estimate%20Request" class="aira-chat-action-btn">Request Free Estimate</a>`;
 
-                // ── CONTACT / EMAIL / REACH ──
+                    // ── CONTACT / EMAIL / REACH ──
                 } else if (q.includes("contact") || q.includes("reach") || q.includes("email") || q.includes("get in touch") || q.includes("talk to") || q.includes("speak") || q.includes("phone") || q.includes("call")) {
                     responseHtml = `📬 <strong>Contact Hyna Studio</strong><br><br>We'd love to hear from you!<br><ul><li>📧 Email: <strong>team.hynastudio@gmail.com</strong></li><li>💻 GitHub: <a href="https://github.com/teamhynastudio" target="_blank">github.com/teamhynastudio</a></li><li>🌐 Website: <strong>hynastudio.com</strong></li></ul><br>You can also use the <strong>Book a Call</strong> button in the top navigation to send us a project inquiry directly!<br><br>We typically reply within <strong>2 hours</strong> during business hours. 🚀`;
 
-                // ── FAQ: WHAT IS HYNA ──
+                    // ── FAQ: WHAT IS HYNA ──
                 } else if (q.includes("faq") || q.includes("frequently asked") || q.includes("question")) {
                     responseHtml = `❓ <strong>Frequently Asked Questions</strong><br><br><strong>Q: What is Hyna Studio?</strong><br>A student-led tech startup designing websites, mobile apps, and digital solutions.<br><br><strong>Q: What services do you offer?</strong><br>Web &amp; app development, UI/UX, branding, SaaS, AI/automation, cloud, and consulting.<br><br><strong>Q: Who can work with you?</strong><br>Startups, small businesses, student orgs, educational institutions, and entrepreneurs.<br><br><strong>Q: How does the process work?</strong><br>Discovery → Planning → Design → Development → Testing → Deployment.<br><br><strong>Q: How do I contact you?</strong><br>Email: <strong>team.hynastudio@gmail.com</strong> or use the contact form on the website.`;
 
-                // ── STARTUP / WHO CAN WORK ──
+                    // ── STARTUP / WHO CAN WORK ──
                 } else if (q.includes("startup") || q.includes("small business") || q.includes("entrepreneur") || q.includes("student") || q.includes("who can")) {
                     responseHtml = `🤝 <strong>Who Can Work with Hyna Studio?</strong><br><br>We collaborate with a wide range of clients:<br><ul><li>🚀 <strong>Startups</strong> — from idea to MVP to scale</li><li>🏢 <strong>Small &amp; medium businesses</strong> — digital transformation &amp; modernization</li><li>🎓 <strong>Student organizations</strong> — affordable tech solutions</li><li>🏫 <strong>Educational institutions</strong> — custom tools &amp; platforms</li><li>💡 <strong>Entrepreneurs</strong> — bring any idea to life</li></ul><br>No project is too small or too large for us! Let's talk.<br><a href="mailto:team.hynastudio@gmail.com?subject=Project%20Inquiry" class="aira-chat-action-btn">Start a Conversation</a>`;
 
-                // ── UNIVERSITY / COLLEGE / EDUCATION ──
+                    // ── UNIVERSITY / COLLEGE / EDUCATION ──
                 } else if (q.includes("university") || q.includes("college") || q.includes("anna university") || q.includes("education") || q.includes("degree") || q.includes("student")) {
                     responseHtml = `🎓 All members of the Hyna Studio team are students at <strong>Anna University</strong>, pursuing <strong>B.E. in Computer Science &amp; Engineering</strong>.<br><br>We are proud to be a <strong>student-led tech startup</strong>, bringing fresh perspectives and cutting-edge knowledge to every project.`;
 
-                // ── STATS / METRICS ──
+                    // ── STATS / METRICS ──
                 } else if (q.includes("stat") || q.includes("project") || q.includes("satisfaction") || q.includes("experience") || q.includes("track record") || q.includes("how many")) {
                     responseHtml = `📊 <strong>Hyna Studio by the Numbers</strong><br><br><ul><li>🚀 <strong>1+</strong> Projects Shipped</li><li>🎯 <strong>6</strong> Core Disciplines</li><li>⭐ <strong>98%</strong> Client Satisfaction</li><li>📅 <strong>6 months</strong> of Studio Experience</li></ul><br>We are a young, fast-moving studio with a strong commitment to quality and client success.`;
 
-                // ── TECHNOLOGIES / TECH STACK ──
+                    // ── TECHNOLOGIES / TECH STACK ──
                 } else if (q.includes("tech") || q.includes("stack") || q.includes("language") || q.includes("framework") || q.includes("tool") || q.includes("typescript") || q.includes("python") || q.includes("go ") || q.includes("node") || q.includes("postgres")) {
                     responseHtml = `💻 <strong>Technologies We Use at Hyna Studio</strong><br><br><ul><li>🌐 <strong>Frontend:</strong> React, Next.js, TypeScript, Webflow, WordPress</li><li>⚙️ <strong>Backend:</strong> Node.js, Python, Go, Java, REST &amp; GraphQL APIs</li><li>📱 <strong>Mobile:</strong> React Native, Flutter (iOS &amp; Android)</li><li>🗄️ <strong>Databases:</strong> PostgreSQL, MongoDB, Supabase</li><li>☁️ <strong>Cloud:</strong> AWS, Azure, GCP, Docker, Kubernetes</li><li>🎨 <strong>Design:</strong> Figma, Adobe Suite</li><li>🤖 <strong>AI/ML:</strong> LLM integrations, custom AI agents, automation workflows</li></ul>`;
 
-                // ── TIMELINE / HOW LONG ──
+                    // ── TIMELINE / HOW LONG ──
                 } else if (q.includes("timeline") || q.includes("how long") || q.includes("duration") || q.includes("deadline") || q.includes("deliver") || q.includes("launch")) {
                     responseHtml = `⏱️ <strong>Project Timelines</strong><br><br>Every project is unique, but here's a general guide:<br><ul><li>🏃 <strong>Landing pages / Small sites:</strong> 1–2 weeks</li><li>🌐 <strong>Full web apps / MVPs:</strong> 4–8 weeks</li><li>📱 <strong>Mobile apps:</strong> 6–12 weeks</li><li>🏢 <strong>Enterprise platforms / SaaS:</strong> 3–6 months</li></ul><br>Our process (Discovery → Design → Development → Testing → Deployment) ensures quality at every stage.<br><br>Contact us for a detailed project timeline estimate!<br><a href="mailto:team.hynastudio@gmail.com?subject=Project%20Timeline%20Inquiry" class="aira-chat-action-btn">Get Timeline Estimate</a>`;
 
-                // ── HOW TO START / GET STARTED ──
+                    // ── HOW TO START / GET STARTED ──
                 } else if (q.includes("start") || q.includes("begin") || q.includes("get started") || q.includes("how do i") || q.includes("next step") || q.includes("onboard")) {
                     responseHtml = `🚀 <strong>Getting Started with Hyna Studio</strong><br><br>It's simple! Here's how:<br><ol><li>📧 <strong>Email us</strong> at team.hynastudio@gmail.com with your project idea</li><li>📞 <strong>Schedule a discovery call</strong> — we'll discuss your goals &amp; requirements</li><li>📐 <strong>Receive a proposal</strong> — scope, timeline &amp; pricing within 24 hours</li><li>✅ <strong>Approve &amp; kick off</strong> — we start building right away!</li></ol><br><a href="mailto:team.hynastudio@gmail.com?subject=Project%20Inquiry%20-%20Hyna%20Studio" class="aira-chat-action-btn">Start Your Project →</a>`;
 
-                // ── SOCIAL / GITHUB / LINKEDIN ──
+                    // ── SOCIAL / GITHUB / LINKEDIN ──
                 } else if (q.includes("github") || q.includes("linkedin") || q.includes("social") || q.includes("portfolio") || q.includes("link")) {
                     responseHtml = `🔗 <strong>Find Us Online</strong><br><br><ul><li>💻 <strong>GitHub:</strong> <a href="https://github.com/teamhynastudio" target="_blank">github.com/teamhynastudio</a></li><li>📧 <strong>Email:</strong> team.hynastudio@gmail.com</li></ul><br>Team member profiles:<br><ul><li>🌐 <a href="https://vigneshvl-dev.github.io/PORTFOLIO/" target="_blank">Vignesh (Portfolio)</a></li><li>🌐 <a href="https://portholio-zeta.vercel.app/" target="_blank">Dharshan (Portfolio)</a></li><li>👔 <a href="https://www.linkedin.com/in/vigneshvl-dev/" target="_blank">Vignesh (LinkedIn)</a></li><li>👔 <a href="https://www.linkedin.com/in/dharshan-jm" target="_blank">Dharshan (LinkedIn)</a></li><li>👔 <a href="https://www.linkedin.com/in/jashwin-j-16b06240a" target="_blank">Jashwin (LinkedIn)</a></li><li>👔 <a href="https://www.linkedin.com/in/tharun-krishna-347b123a0" target="_blank">Tharun Krishna (LinkedIn)</a></li><li>👔 <a href="https://www.linkedin.com/in/muhamed-zarif-80860a37a" target="_blank">Mohammad Zarif (LinkedIn)</a></li></ul>`;
 
-                // ── GREETING / HELLO ──
+                    // ── GREETING / HELLO ──
                 } else if (q.includes("hi") || q.includes("hello") || q.includes("hey") || q.includes("good morning") || q.includes("good afternoon") || q.includes("good evening") || q === "hyna") {
                     responseHtml = `👋 Hello! I'm <strong>Hyna</strong>, your intelligent business advisor at Hyna Studio.<br><br>I can help you with:<br><ul><li>🏠 <strong>About Hyna Studio</strong> — company info, team, stats</li><li>🛠️ <strong>Services</strong> — web, app, AI, cloud, design &amp; more</li><li>👥 <strong>Team</strong> — founders, roles, and profiles</li><li>💰 <strong>Pricing &amp; timelines</strong></li><li>📬 <strong>How to get started</strong></li></ul><br>What would you like to know? 😊`;
 
-                // ── THANK YOU ──
+                    // ── THANK YOU ──
                 } else if (q.includes("thank") || q.includes("thanks") || q.includes("great") || q.includes("awesome") || q.includes("perfect")) {
                     responseHtml = `😊 You're welcome! We're always happy to help.<br><br>Is there anything else you'd like to know about Hyna Studio? Feel free to ask about our team, services, pricing, or how to get started!<br><br>📧 Or reach us anytime at <strong>team.hynastudio@gmail.com</strong>`;
 
@@ -3446,55 +3588,54 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
     <!-- NAV -->
     <nav>
         <a href="index.html" class="nav-logo">
-            <img src="./hyna-logo-new.png"
-                class="logo-img" alt="Hyna Studio Logo">
+            <img src="./hyna-logo-new.png" class="logo-img" alt="Hyna Studio Logo">
             <div class="logo-text">
                 <span class="logo-main">Hyna Studio</span>
                 <span class="logo-sub">Democratizing Entrepreneurship</span>
             </div>
         </a>
-        
+
         <ul class="nav-links">
             <li class="nav-item-dropdown">
                 <a href="#hyna-services" class="nav-link-has-dropdown">Services <span class="nav-arrow">▾</span></a>
-                
-    <div class="nav-dropdown">
-        <span class="nav-dropdown-group-label">Solutions</span>
-        <a href="saas-solutions.html">SaaS Solutions</a>
-        <a href="hyna-services.html#services">Application Services</a>
-        <div class="submenu1">
-            <a href="hyna-services.html#services">
-                Cloud &amp; Infrastructure <span>▸</span>
-            </a>
 
-            <div class="submenu-dropdown1">
-                <a href="hyna-services.html#services">Cloud Modernization</a>
-                <a href="hyna-services.html#services">Application Migration</a>
-                <a href="hyna-services.html#services">Cloud Transformation</a>
-                <a href="hyna-services.html#services">FinOps Services</a>
-            </div>
-        </div>
-        
-        <hr class="nav-dropdown-divider">
-        <span class="nav-dropdown-group-label">Digital &amp; Data</span>
-        <a href="hyna-services.html#services">Data &amp; AI</a>
+                <div class="nav-dropdown">
+                    <span class="nav-dropdown-group-label">Solutions</span>
+                    <a href="saas-solutions.html">SaaS Solutions</a>
+                    <a href="hyna-services.html#services">Application Services</a>
+                    <div class="submenu1">
+                        <a href="hyna-services.html#services">
+                            Cloud &amp; Infrastructure <span>▸</span>
+                        </a>
 
-        <div class="submenu">
-            <a href="hyna-services.html#services">
-                Digitalization <span>▸</span>
-            </a>
+                        <div class="submenu-dropdown1">
+                            <a href="hyna-services.html#services">Cloud Modernization</a>
+                            <a href="hyna-services.html#services">Application Migration</a>
+                            <a href="hyna-services.html#services">Cloud Transformation</a>
+                            <a href="hyna-services.html#services">FinOps Services</a>
+                        </div>
+                    </div>
 
-            <div class="submenu-dropdown">
-                <a href="hyna-services.html#services">AI &amp; Automation</a>
-                <a href="hyna-services.html#services">IoT</a>
-                <a href="hyna-services.html#services">Cloud</a>
-                <a href="hyna-services.html#services">Data Analytics</a>
-            </div>
-        </div>
-        <hr class="nav-dropdown-divider">
-        <a href="hyna-services.html" style="font-weight:700;color:#3b82f6">View All Services →</a>
-    </div>
-              
+                    <hr class="nav-dropdown-divider">
+                    <span class="nav-dropdown-group-label">Digital &amp; Data</span>
+                    <a href="hyna-services.html#services">Data &amp; AI</a>
+
+                    <div class="submenu">
+                        <a href="hyna-services.html#services">
+                            Digitalization <span>▸</span>
+                        </a>
+
+                        <div class="submenu-dropdown">
+                            <a href="hyna-services.html#services">AI &amp; Automation</a>
+                            <a href="hyna-services.html#services">IoT</a>
+                            <a href="hyna-services.html#services">Cloud</a>
+                            <a href="hyna-services.html#services">Data Analytics</a>
+                        </div>
+                    </div>
+                    <hr class="nav-dropdown-divider">
+                    <a href="hyna-services.html" style="font-weight:700;color:#3b82f6">View All Services →</a>
+                </div>
+
                 <!--<div class="nav-dropdown">
                     <a href="work.html?service=software"> Software & SaaS</a>
                     <a href="work.html?service=web">Web Development</a>
@@ -3567,11 +3708,6 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
 
         </div>
     </section>
-
-
-
-
-
     <!-- SERVICES -->
     <style>
         #hyna-services {
@@ -4196,9 +4332,11 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
                 grid-template-columns: 1fr;
                 gap: 3.5rem;
             }
+
             .empowerment-section {
                 padding: 5rem 6%;
             }
+
             .empowerment-visual {
                 max-width: 700px;
                 margin: 0 auto;
@@ -4209,21 +4347,26 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
             .empowerment-section {
                 padding: 4rem 1.5rem;
             }
+
             .empowerment-container {
                 gap: 2.5rem;
             }
+
             .expertise-grid {
                 grid-template-columns: repeat(3, 1fr);
                 gap: 1.2rem 0.8rem;
             }
+
             .expertise-icon-wrapper {
                 width: 58px;
                 height: 58px;
                 border-radius: 14px;
             }
+
             .expertise-label {
                 font-size: 0.8rem;
             }
+
             .empowerment-btn {
                 width: 100%;
             }
@@ -4235,113 +4378,113 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
             }
         }
     </style>
-    
-        <script>
-            document.addEventListener("DOMContentLoaded", () => {
-                const tabs = document.querySelectorAll("#hyna-services .hs-tab-btn");
-                const panels = document.querySelectorAll("#hyna-services .hs-tab-panel");
 
-                // Mapping of incoming URL service params to categories
-                const paramToCategory = {
-                    software: "software",
-                    saas: "software",
-                    erp: "software",
-                    crm: "software",
-                    web: "web",
-                    wordpress: "web",
-                    webflow: "web",
-                    react: "web",
-                    shopify: "shopify",
-                    app: "shopify",
-                    ios: "shopify",
-                    android: "shopify",
-                    ecommerce: "shopify",
-                    design: "design",
-                    uiux: "design",
-                    logo: "design",
-                    seo: "design"
-                };
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const tabs = document.querySelectorAll("#hyna-services .hs-tab-btn");
+            const panels = document.querySelectorAll("#hyna-services .hs-tab-panel");
 
-                function activateTab(categoryName) {
-                    let activeTab = null;
-                    tabs.forEach(tab => {
-                        const isActive = tab.getAttribute("data-category") === categoryName;
-                        tab.classList.toggle("active", isActive);
-                        tab.setAttribute("aria-selected", isActive ? "true" : "false");
-                        if (isActive) activeTab = tab;
-                    });
+            // Mapping of incoming URL service params to categories
+            const paramToCategory = {
+                software: "software",
+                saas: "software",
+                erp: "software",
+                crm: "software",
+                web: "web",
+                wordpress: "web",
+                webflow: "web",
+                react: "web",
+                shopify: "shopify",
+                app: "shopify",
+                ios: "shopify",
+                android: "shopify",
+                ecommerce: "shopify",
+                design: "design",
+                uiux: "design",
+                logo: "design",
+                seo: "design"
+            };
 
-                    panels.forEach(panel => {
-                        const isActive = panel.id === `panel-${categoryName}`;
-                        panel.classList.toggle("active", isActive);
-                    });
-
-                    // Smooth scroll tab button into view on mobile layout
-                    if (activeTab && window.innerWidth <= 1024) {
-                        activeTab.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
-                    }
-                }
-
+            function activateTab(categoryName) {
+                let activeTab = null;
                 tabs.forEach(tab => {
-                    tab.addEventListener("click", () => {
-                        const category = tab.getAttribute("data-category");
-                        activateTab(category);
-                    });
+                    const isActive = tab.getAttribute("data-category") === categoryName;
+                    tab.classList.toggle("active", isActive);
+                    tab.setAttribute("aria-selected", isActive ? "true" : "false");
+                    if (isActive) activeTab = tab;
                 });
 
-                // Check URL params on load
-                const urlParams = new URLSearchParams(window.location.search);
-                const serviceParam = urlParams.get("service");
-                if (serviceParam) {
-                    const targetCategory = paramToCategory[serviceParam.toLowerCase()];
-                    if (targetCategory) {
-                        activateTab(targetCategory);
-                        const servicesSec = document.getElementById("hyna-services");
-                        if (servicesSec) {
-                            setTimeout(() => {
-                                servicesSec.scrollIntoView({ behavior: "smooth", block: "start" });
-                            }, 300);
-                        }
+                panels.forEach(panel => {
+                    const isActive = panel.id === `panel-${categoryName}`;
+                    panel.classList.toggle("active", isActive);
+                });
+
+                // Smooth scroll tab button into view on mobile layout
+                if (activeTab && window.innerWidth <= 1024) {
+                    activeTab.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+                }
+            }
+
+            tabs.forEach(tab => {
+                tab.addEventListener("click", () => {
+                    const category = tab.getAttribute("data-category");
+                    activateTab(category);
+                });
+            });
+
+            // Check URL params on load
+            const urlParams = new URLSearchParams(window.location.search);
+            const serviceParam = urlParams.get("service");
+            if (serviceParam) {
+                const targetCategory = paramToCategory[serviceParam.toLowerCase()];
+                if (targetCategory) {
+                    activateTab(targetCategory);
+                    const servicesSec = document.getElementById("hyna-services");
+                    if (servicesSec) {
+                        setTimeout(() => {
+                            servicesSec.scrollIntoView({ behavior: "smooth", block: "start" });
+                        }, 300);
                     }
                 }
+            }
 
-                // Intercept dropdown/footer navigation clicks if on index.html
-                const isHomePage = window.location.pathname.endsWith("index.html") ||
-                    window.location.pathname === "/" ||
-                    window.location.pathname === "";
+            // Intercept dropdown/footer navigation clicks if on index.html
+            const isHomePage = window.location.pathname.endsWith("index.html") ||
+                window.location.pathname === "/" ||
+                window.location.pathname === "";
 
-                if (isHomePage) {
-                    const localLinks = document.querySelectorAll("nav a, footer a");
-                    localLinks.forEach(link => {
-                        link.addEventListener("click", (e) => {
-                            const href = link.getAttribute("href") || "";
-                            if (href.includes("service=") && href.includes("#hyna-services")) {
-                                try {
-                                    // Parse params manually to handle relative URLs
-                                    const paramsStart = href.indexOf("?");
-                                    if (paramsStart !== -1) {
-                                        const searchStr = href.substring(paramsStart, href.indexOf("#"));
-                                        const linkParams = new URLSearchParams(searchStr);
-                                        const serviceVal = linkParams.get("service");
-                                        const cat = paramToCategory[serviceVal.toLowerCase()];
-                                        if (cat) {
-                                            e.preventDefault();
-                                            activateTab(cat);
-                                            const servicesSec = document.getElementById("hyna-services");
-                                            if (servicesSec) {
-                                                servicesSec.scrollIntoView({ behavior: "smooth", block: "start" });
-                                            }
+            if (isHomePage) {
+                const localLinks = document.querySelectorAll("nav a, footer a");
+                localLinks.forEach(link => {
+                    link.addEventListener("click", (e) => {
+                        const href = link.getAttribute("href") || "";
+                        if (href.includes("service=") && href.includes("#hyna-services")) {
+                            try {
+                                // Parse params manually to handle relative URLs
+                                const paramsStart = href.indexOf("?");
+                                if (paramsStart !== -1) {
+                                    const searchStr = href.substring(paramsStart, href.indexOf("#"));
+                                    const linkParams = new URLSearchParams(searchStr);
+                                    const serviceVal = linkParams.get("service");
+                                    const cat = paramToCategory[serviceVal.toLowerCase()];
+                                    if (cat) {
+                                        e.preventDefault();
+                                        activateTab(cat);
+                                        const servicesSec = document.getElementById("hyna-services");
+                                        if (servicesSec) {
+                                            servicesSec.scrollIntoView({ behavior: "smooth", block: "start" });
                                         }
                                     }
-                                } catch (err) {
-                                    console.error("Error navigating internally: ", err);
                                 }
+                            } catch (err) {
+                                console.error("Error navigating internally: ", err);
                             }
-                        });
+                        }
                     });
-                }
-            });
-        </script>
+                });
+            }
+        });
+    </script>
     </section>
 
     <!-- EMPOWERMENT SECTION -->
@@ -4354,9 +4497,11 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
 
             <!-- Right Column: Content -->
             <div class="empowerment-content">
-                <h2 class="empowerment-title">Empowering Businesses with <span class="highlight-blue">Smart Digital Solutions</span></h2>
+                <h2 class="empowerment-title">Empowering Businesses with <span class="highlight-blue">Smart Digital
+                        Solutions</span></h2>
                 <p class="empowerment-desc">
-                    At <strong>Hyna Studio</strong>, we deliver end-to-end digital solutions that help businesses innovate,
+                    At <strong>Hyna Studio</strong>, we deliver end-to-end digital solutions that help businesses
+                    innovate,
                     scale, and stay ahead in a rapidly evolving world.
                 </p>
                 <p class="empowerment-sub-desc">Our expertise spans across key technology domains:</p>
@@ -4366,7 +4511,8 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
                     <!-- SaaS Solutions -->
                     <div class="expertise-card">
                         <div class="expertise-icon-wrapper">
-                            <svg class="expertise-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="expertise-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M17.5 19H9a7 7 0 1 1 6.71-9h.79a3 3 0 0 1 0 6h-.5" />
                                 <circle cx="11.5" cy="13.5" r="1.5" />
                                 <path d="M11.5 11v1m0 3v1m-2.5-2.5h1m3 0h1" />
@@ -4378,7 +4524,8 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
                     <!-- Application Services -->
                     <div class="expertise-card">
                         <div class="expertise-icon-wrapper">
-                            <svg class="expertise-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="expertise-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
                                 <line x1="8" y1="21" x2="16" y2="21" />
                                 <line x1="12" y1="17" x2="12" y2="21" />
@@ -4392,7 +4539,8 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
                     <!-- Cloud Infrastructure -->
                     <div class="expertise-card">
                         <div class="expertise-icon-wrapper">
-                            <svg class="expertise-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="expertise-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25" />
                                 <rect x="8" y="13" width="8" height="3" rx="1" />
                                 <rect x="8" y="18" width="8" height="3" rx="1" />
@@ -4404,7 +4552,8 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
                     <!-- Digitalization -->
                     <div class="expertise-card">
                         <div class="expertise-icon-wrapper">
-                            <svg class="expertise-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="expertise-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="18" y1="20" x2="18" y2="10" />
                                 <line x1="12" y1="20" x2="12" y2="4" />
                                 <line x1="6" y1="20" x2="6" y2="14" />
@@ -4419,9 +4568,12 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
                     <!-- AI & Intelligence -->
                     <div class="expertise-card">
                         <div class="expertise-icon-wrapper">
-                            <svg class="expertise-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1 0-3.12 3.001 3.001 0 0 1 0-3.88 2.5 2.5 0 0 1 0-3.12A2.5 2.5 0 0 1 9.5 2z" />
-                                <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 0-3.12 3.001 3.001 0 0 0 0-3.88 2.5 2.5 0 0 0 0-3.12A2.5 2.5 0 0 0 14.5 2z" />
+                            <svg class="expertise-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1 0-3.12 3.001 3.001 0 0 1 0-3.88 2.5 2.5 0 0 1 0-3.12A2.5 2.5 0 0 1 9.5 2z" />
+                                <path
+                                    d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 0-3.12 3.001 3.001 0 0 0 0-3.88 2.5 2.5 0 0 0 0-3.12A2.5 2.5 0 0 0 14.5 2z" />
                                 <path d="M12 8h2M12 12h3M12 16h2M12 10H10M12 14H9" />
                             </svg>
                         </div>
@@ -4437,7 +4589,8 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
                 <!-- Explore CTA Button -->
                 <a href="saas-solutions.html" class="empowerment-btn">
                     Explore Our Solutions
-                    <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <line x1="7" y1="17" x2="17" y2="7" />
                         <polyline points="7 7 17 7 17 17" />
                     </svg>
@@ -4471,7 +4624,7 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
                 <h2 class="section-title">A studio built for the age of digital-first business.</h2>
                 <p>Hyna Studio was founded by a team of engineers, designers, and cloud architects who were tired of
                     watching great ideas fail because of bad execution. We built the studio we wished existed.</p>
-                
+
 
             </div>
         </div>
@@ -5715,7 +5868,7 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
                 color: var(--muted);
                 margin-top: 1px;
             }
-            
+
 
             .process-conversion-section .metric-badge {
                 font-size: 11px;
@@ -5788,14 +5941,13 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
                     padding: 70px 16px 90px;
                 }
             }
-
         </style>
 
         <div class="section">
             <div style="text-align:center">
                 <span class="eyebrow" id="process-ey">
-                    <img src="./hyna-logo-new.png"
-                        alt="Logo" style="height:24px; vertical-align:middle; margin-right:8px;">
+                    <img src="./hyna-logo-new.png" alt="Logo"
+                        style="height:24px; vertical-align:middle; margin-right:8px;">
                     Our Process
                 </span>
 
@@ -6257,8 +6409,7 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
         <div class="footer-top">
             <div class="footer-brand">
                 <a href="index.html" class="nav-logo">
-                    <img src="./hyna-logo-new.png"
-                        class="logo-img" alt="Hyna Studio Logo">
+                    <img src="./hyna-logo-new.png" class="logo-img" alt="Hyna Studio Logo">
                     <div class="logo-text">
                         <span class="logo-main" style="color: #76ecf0;">Hyna Studio</span>
                         <span class="logo-sub" style="color: rgba(93, 214, 230, 0.801);">Tech & Experiences</span>

@@ -262,6 +262,10 @@
   .si-orange { background: #ffedd5; }
   .si-red    { background: #fee2e2; }
   .si-indigo { background: #e0e7ff; }
+  .si-cyan   { background: #cffafe; }
+  .si-teal   { background: #ccfbf1; }
+  .si-violet { background: #f3e8ff; }
+  .si-amber  { background: #fef3c7; }
 
   .service-card h3 {
     font-size: 15px; font-weight: 700; color: var(--text-dark);
@@ -286,6 +290,12 @@
   .services-grid-2 {
     display: grid;
     grid-template-columns: 1fr 1fr 1.3fr;
+    gap: 24px;
+    margin-top: 24px;
+  }
+  .services-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 24px;
     margin-top: 24px;
   }
@@ -695,6 +705,280 @@
     background: #ffffff;
   }
 
+  /* ── Application Services Mockup ── */
+  .mockup-app-services {
+    width: 100%;
+    height: 90px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  .app-layer {
+    width: 28px;
+    height: 70px;
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.04);
+    transition: transform 0.3s;
+  }
+  .app-layer:nth-child(1) { transform: translateY(4px); }
+  .app-layer:nth-child(2) { transform: translateY(-6px); }
+  .app-layer:nth-child(3) { transform: translateY(2px); }
+  .app-layer .app-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+  .app-layer:nth-child(1) .app-dot { background: #06b6d4; }
+  .app-layer:nth-child(2) .app-dot { background: #3b82f6; }
+  .app-layer:nth-child(3) .app-dot { background: #8b5cf6; }
+  .app-layer .app-line {
+    width: 14px;
+    height: 2px;
+    background: #e2e8f0;
+    border-radius: 1px;
+  }
+  .app-connector {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 1.5px;
+    background: linear-gradient(90deg, #06b6d4, #3b82f6, #8b5cf6);
+    opacity: 0.4;
+    z-index: 0;
+  }
+
+  /* ── Cloud Infrastructure Mockup ── */
+  .mockup-cloud-infra {
+    position: relative;
+    width: 100%;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .cloud-shape {
+    width: 50px;
+    height: 24px;
+    background: linear-gradient(135deg, #06b6d4, #3b82f6);
+    border-radius: 50px 50px 6px 6px;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(6,182,212,0.25);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cloud-shape::before {
+    content: '☁';
+    font-size: 10px;
+    color: rgba(255,255,255,0.9);
+  }
+  .infra-nodes {
+    display: flex;
+    gap: 8px;
+    margin-top: 6px;
+  }
+  .infra-node {
+    width: 18px;
+    height: 14px;
+    background: #1e293b;
+    border-radius: 3px;
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  }
+  .infra-node span {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    box-shadow: 0 0 4px currentColor;
+  }
+  .infra-node:nth-child(1) span { background: #10b981; color: #10b981; }
+  .infra-node:nth-child(2) span { background: #f59e0b; color: #f59e0b; }
+  .infra-node:nth-child(3) span { background: #06b6d4; color: #06b6d4; }
+  .infra-lines {
+    display: flex;
+    gap: 4px;
+    margin-top: -1px;
+  }
+  .infra-line {
+    width: 1.5px;
+    height: 10px;
+    background: #cbd5e1;
+  }
+
+  /* ── Data & AI Mockup ── */
+  .mockup-data-ai {
+    position: relative;
+    width: 100%;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ai-brain {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #8b5cf6, #6366f1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(139,92,246,0.3);
+    z-index: 2;
+  }
+  .ai-brain::before {
+    content: '🧠';
+    font-size: 16px;
+  }
+  .ai-orbit {
+    position: absolute;
+    border: 1.5px dashed rgba(139,92,246,0.2);
+    border-radius: 50%;
+    animation: aiSpin 8s linear infinite;
+  }
+  .ai-orbit-1 {
+    width: 60px;
+    height: 60px;
+  }
+  .ai-orbit-2 {
+    width: 78px;
+    height: 78px;
+    animation-direction: reverse;
+    animation-duration: 12s;
+  }
+  .ai-particle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    box-shadow: 0 0 6px currentColor;
+  }
+  .ai-p1 { top: -2px; left: 50%; transform: translateX(-50%); background: #06b6d4; color: #06b6d4; }
+  .ai-p2 { bottom: -2px; right: 0; background: #f59e0b; color: #f59e0b; }
+  .ai-p3 { top: 50%; left: -2px; background: #10b981; color: #10b981; }
+  @keyframes aiSpin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  /* ── Digitalization Mockup ── */
+  .mockup-digital {
+    position: relative;
+    width: 100%;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .digital-doc {
+    position: absolute;
+    width: 28px;
+    height: 36px;
+    background: #fff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 4px;
+    left: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 6px;
+    gap: 3px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .digital-doc-line {
+    width: 16px;
+    height: 2px;
+    background: #e2e8f0;
+    border-radius: 1px;
+  }
+  .digital-doc-line:nth-child(2) { width: 12px; }
+  .digital-doc-line:nth-child(3) { width: 14px; }
+  .digital-arrow {
+    position: relative;
+    width: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+  .digital-arrow::before {
+    content: '';
+    width: 16px;
+    height: 1.5px;
+    background: linear-gradient(90deg, #f59e0b, #10b981);
+  }
+  .digital-arrow::after {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-right: 1.5px solid #10b981;
+    border-top: 1.5px solid #10b981;
+    transform: rotate(45deg);
+    position: absolute;
+    right: 0;
+  }
+  .digital-screen {
+    position: absolute;
+    right: 10px;
+    width: 32px;
+    height: 36px;
+    background: #0f172a;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 4px;
+    gap: 3px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  }
+  .ds-header {
+    height: 3px;
+    width: 60%;
+    background: rgba(255,255,255,0.15);
+    border-radius: 1px;
+  }
+  .ds-chart {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+  }
+  .ds-bar {
+    flex: 1;
+    border-radius: 1px 1px 0 0;
+  }
+  .ds-bar:nth-child(1) { height: 40%; background: #06b6d4; }
+  .ds-bar:nth-child(2) { height: 70%; background: #3b82f6; }
+  .ds-bar:nth-child(3) { height: 50%; background: #8b5cf6; }
+  .ds-bar:nth-child(4) { height: 85%; background: #10b981; }
+  .ds-glow {
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 6px;
+    background: rgba(59,130,246,0.3);
+    border-radius: 50%;
+    filter: blur(3px);
+  }
+
   /* Cloud Stack Mockup (CTA Card) */
   .mockup-cloud-servers {
     position: relative;
@@ -837,10 +1121,12 @@
     }
     .services-grid { grid-template-columns: 1fr 1fr; }
     .services-grid-2 { grid-template-columns: 1fr; }
+    .services-grid-3 { grid-template-columns: 1fr 1fr; }
     footer { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 600px) {
     .services-grid { grid-template-columns: 1fr; }
+    .services-grid-3 { grid-template-columns: 1fr; }
     footer { grid-template-columns: 1fr; }
   }
 
@@ -1262,6 +1548,146 @@
     </div>
 
   </div>
+
+  <div class="services-grid-3">
+
+    <!-- Application Services -->
+    <div class="service-card">
+      <div class="card-content">
+        <div class="service-icon si-cyan">💻</div>
+        <h3>Application Services</h3>
+        <ul>
+          <li>Web Application Development</li>
+          <li>Mobile App Development</li>
+          <li>UI/UX Design &amp; Prototyping</li>
+          <li>Shopify &amp; E-Commerce</li>
+          <li>Progressive Web Apps (PWA)</li>
+          <li>API &amp; Backend Development</li>
+          <li>App Maintenance &amp; Support</li>
+        </ul>
+      </div>
+      <div class="card-illustration">
+        <div class="mockup-app-services">
+          <div class="app-connector"></div>
+          <div class="app-layer">
+            <div class="app-dot"></div>
+            <div class="app-line"></div>
+            <div class="app-line"></div>
+          </div>
+          <div class="app-layer">
+            <div class="app-dot"></div>
+            <div class="app-line"></div>
+            <div class="app-line"></div>
+          </div>
+          <div class="app-layer">
+            <div class="app-dot"></div>
+            <div class="app-line"></div>
+            <div class="app-line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cloud Infrastructure -->
+    <div class="service-card">
+      <div class="card-content">
+        <div class="service-icon si-teal">☁️</div>
+        <h3>Cloud Infrastructure</h3>
+        <ul>
+          <li>Cloud Migration</li>
+          <li>AWS / Azure / GCP Setup</li>
+          <li>Server Management</li>
+          <li>DevOps & CI/CD Pipelines</li>
+          <li>Cloud Security</li>
+          <li>Scalable Architecture</li>
+          <li>Infrastructure Monitoring</li>
+        </ul>
+      </div>
+      <div class="card-illustration">
+        <div class="mockup-cloud-infra">
+          <div class="cloud-shape"></div>
+          <div class="infra-lines">
+            <div class="infra-line"></div>
+            <div class="infra-line"></div>
+            <div class="infra-line"></div>
+          </div>
+          <div class="infra-nodes">
+            <div class="infra-node"><span></span></div>
+            <div class="infra-node"><span></span></div>
+            <div class="infra-node"><span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Data & AI -->
+    <div class="service-card">
+      <div class="card-content">
+        <div class="service-icon si-violet">🤖</div>
+        <h3>Data & AI</h3>
+        <ul>
+          <li>AI/ML Model Development</li>
+          <li>Data Analytics & Visualization</li>
+          <li>Natural Language Processing</li>
+          <li>Predictive Analytics</li>
+          <li>Data Pipeline Engineering</li>
+          <li>AI Chatbots & Assistants</li>
+          <li>Business Intelligence</li>
+        </ul>
+      </div>
+      <div class="card-illustration">
+        <div class="mockup-data-ai">
+          <div class="ai-orbit ai-orbit-2">
+            <div class="ai-particle ai-p3"></div>
+          </div>
+          <div class="ai-orbit ai-orbit-1">
+            <div class="ai-particle ai-p1"></div>
+            <div class="ai-particle ai-p2"></div>
+          </div>
+          <div class="ai-brain"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Digitalization -->
+    <div class="service-card">
+      <div class="card-content">
+        <div class="service-icon si-amber">🔄</div>
+        <h3>Digitalization</h3>
+        <ul>
+          <li>Digital Transformation Strategy</li>
+          <li>Process Digitization</li>
+          <li>Legacy System Modernization</li>
+          <li>Digital Workflow Design</li>
+          <li>Paperless Office Solutions</li>
+          <li>Smart Document Management</li>
+          <li>Digital Customer Experience</li>
+        </ul>
+      </div>
+      <div class="card-illustration">
+        <div class="mockup-digital">
+          <div class="digital-doc">
+            <div class="digital-doc-line"></div>
+            <div class="digital-doc-line"></div>
+            <div class="digital-doc-line"></div>
+          </div>
+          <div class="digital-arrow"></div>
+          <div class="digital-screen">
+            <div class="ds-header"></div>
+            <div class="ds-chart">
+              <div class="ds-bar"></div>
+              <div class="ds-bar"></div>
+              <div class="ds-bar"></div>
+              <div class="ds-bar"></div>
+            </div>
+            <div class="ds-glow"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
 </section>
 
 <!-- ── HYNA STUDIO ADVANTAGE ── -->
