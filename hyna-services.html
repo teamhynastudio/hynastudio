@@ -91,23 +91,23 @@
       flex-shrink: 0;
     }
 
-    .nav-logo img {
+    .logo-img {
       width: 56px;
       height: 56px;
       object-fit: contain;
       border-radius: 0;
     }
 
-    .nav-logo-text { display: flex; flex-direction: column; line-height: 1.1; }
-    .nav-logo-main {
+    .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+    .logo-main {
       font-family: var(--font-d);
       font-weight: 800;
       font-size: 1.25rem;
       letter-spacing: -0.02em;
       color: #ffffff;
     }
-    .nav-logo-main .logo-hl { color: #7ef7f7; }
-    .nav-logo-sub {
+    .logo-main .logo-hl { color: #7ef7f7; }
+    .logo-sub {
       font-size: 0.65rem;
       color: rgba(255,255,255,0.7);
       letter-spacing: 0.05em;
@@ -215,23 +215,8 @@
     }
 
     /* Mobile toggle */
-    .nav-hamburger {
+    .nav-mobile-toggle {
       display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 4px;
-      background: none;
-      border: none;
-      margin-left: 0.75rem;
-    }
-    .nav-hamburger span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: #ffffff;
-      border-radius: 2px;
-      transition: all 0.3s;
     }
 
 
@@ -810,23 +795,121 @@
       .footer-top { grid-template-columns: 1fr 1fr; }
     }
 
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .nav-hamburger { display: flex; }
-      .nav-links.mobile-open {
-        display: flex;
-        flex-direction: column;
-        position: fixed;
-        inset: 0;
-        background: rgba(25,27,35,0.97);
-        padding: 6rem 2rem 2rem;
-        gap: 1.5rem;
-        z-index: 99;
-        align-items: center;
-        justify-content: center;
+    @media (max-width: 900px) {
+      nav {
+        top: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 2rem);
+        padding: 0.5rem 0.8rem !important;
+        border-radius: 40px !important;
+        background: rgba(55, 60, 70, 0.78) !important;
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25) !important;
+        backdrop-filter: blur(20px) saturate(160%) !important;
+        -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
       }
-      .nav-links.mobile-open a { font-size: 1.4rem; color: #ffffff; }
-      .nav-dropdown { display: none !important; }
+
+      nav.scrolled {
+        top: 0.75rem !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: calc(100% - 1.5rem) !important;
+        padding: 0.45rem 0.8rem !important;
+        border-radius: 40px !important;
+        background: rgba(55, 60, 70, 0.88) !important;
+        border: 1px solid rgba(255, 255, 255, 0.16) !important;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3) !important;
+        backdrop-filter: blur(28px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+      }
+
+      .nav-logo {
+        gap: 0.4rem !important;
+      }
+
+      .logo-img {
+        width: 32px !important;
+        height: 32px !important;
+      }
+
+      .logo-main {
+        font-size: 1.05rem !important;
+        white-space: nowrap !important;
+      }
+
+      .logo-sub {
+        font-size: 0.52rem !important;
+        letter-spacing: 0.02em !important;
+        white-space: nowrap !important;
+      }
+
+      /* Hamburger Button styling */
+      .nav-mobile-toggle {
+        display: flex !important;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 20px;
+        height: 14px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: 101;
+        margin-left: 1rem;
+      }
+
+      .nav-mobile-toggle span {
+        width: 100%;
+        height: 2px;
+        background-color: #ffffff;
+        border-radius: 2px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+
+      /* Hamburger transform to 'X' when active */
+      .nav-mobile-toggle.active span:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+      }
+
+      .nav-mobile-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .nav-mobile-toggle.active span:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 75px;
+        left: 5%;
+        width: 90%;
+        background: rgba(30, 32, 38, 0.95);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        flex-direction: column;
+        align-items: center;
+        padding: 24px 0;
+        gap: 1.5rem;
+        margin: 0;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        z-index: 99;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-cta.hide-mobile {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 768px) {
       .services-grid { grid-template-columns: 1fr; }
       .service-card.featured { grid-column: span 1; }
       .process-steps { grid-template-columns: 1fr; }
@@ -842,10 +925,10 @@
   <!-- ─── NAV ─── -->
   <nav id="nav">
     <a href="index.html" class="nav-logo">
-      <img src="./hyna-logo-new.png" alt="Hyna Studio Logo" />
-      <div class="nav-logo-text">
-        <span class="nav-logo-main">Hyna<span class="logo-hl">Studio</span></span>
-        <span class="nav-logo-sub">Democratizing Entrepreneurship</span>
+      <img src="./hyna-logo-new.png" class="logo-img" alt="Hyna Studio Logo" />
+      <div class="logo-text">
+        <span class="logo-main">Hyna<span class="logo-hl">Studio</span></span>
+        <span class="logo-sub">Democratizing Entrepreneurship</span>
       </div>
     </a>
 
@@ -887,11 +970,13 @@
       <li><a href="contact.html">Contact</a></li>
     </ul>
 
-    <a href="mailto:team.hynastudio@gmail.com?subject=Project%20Inquiry%20-%20Hyna%20Studio" class="nav-cta">
+    <a href="mailto:team.hynastudio@gmail.com?subject=Project%20Inquiry%20-%20Hyna%20Studio" class="nav-cta hide-mobile">
       Book a Call
     </a>
-    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
+    <button class="nav-mobile-toggle" aria-label="Toggle menu" id="navMobileToggle">
+      <span></span>
+      <span></span>
+      <span></span>
     </button>
   </nav>
 
@@ -1238,19 +1323,33 @@
       nav.classList.toggle('scrolled', window.scrollY > 40);
     }, { passive: true });
 
-    /* ─── Hamburger ─── */
-    const ham  = document.getElementById('hamburger');
-    const navL = document.getElementById('nav-links');
-    ham.addEventListener('click', () => {
-      navL.classList.toggle('mobile-open');
-      const open = navL.classList.contains('mobile-open');
-      ham.querySelectorAll('span')[0].style.transform = open ? 'rotate(45deg) translate(5px,5px)' : '';
-      ham.querySelectorAll('span')[1].style.opacity  = open ? '0' : '1';
-      ham.querySelectorAll('span')[2].style.transform = open ? 'rotate(-45deg) translate(5px,-5px)' : '';
-    });
-    navL.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      navL.classList.remove('mobile-open');
-    }));
+    /* ─── Mobile Menu Toggle ─── */
+    const toggleBtn = document.getElementById('navMobileToggle');
+    const navLinks = document.getElementById('nav-links');
+
+    if (toggleBtn && navLinks) {
+      toggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleBtn.classList.toggle('active');
+        navLinks.classList.toggle('active');
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!navLinks.contains(e.target) && e.target !== toggleBtn) {
+          toggleBtn.classList.remove('active');
+          navLinks.classList.remove('active');
+        }
+      });
+
+      // Close menu when clicking a link
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          toggleBtn.classList.remove('active');
+          navLinks.classList.remove('active');
+        });
+      });
+    }
 
     /* ─── Card mouse-glow ─── */
     document.querySelectorAll('.service-card').forEach(card => {
