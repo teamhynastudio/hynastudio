@@ -21,6 +21,13 @@
     <!-- GSAP & ScrollTrigger CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script>
+        // ── 120 FPS: Raise GSAP ticker as early as possible ──
+        if (typeof gsap !== 'undefined') {
+            gsap.ticker.fps(120);
+            gsap.ticker.lagSmoothing(0); // disable lag-smoothing for crisp high-fps motion
+        }
+    </script>
 
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
@@ -74,7 +81,7 @@
             position: fixed;
             top: 1.5rem;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translateX(-50%) translateZ(0);
             width: calc(100% - 3rem);
             max-width: 1200px;
             z-index: 100;
@@ -89,6 +96,7 @@
             backdrop-filter: blur(20px) saturate(160%);
             -webkit-backdrop-filter: blur(20px) saturate(160%);
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, background, box-shadow;
         }
 
         nav.nav-scrolled {
@@ -118,6 +126,36 @@
 
             .tech-marquee-track {
                 animation: none !important;
+            }
+        }
+
+        /* ── 120 FPS: GPU-composite all animated elements ── */
+        .water-blob-1,
+        .water-blob-2 {
+            will-change: transform, border-radius;
+            transform: translateZ(0);
+        }
+
+        .tech-marquee-track {
+            will-change: transform;
+            transform: translateZ(0);
+        }
+
+        .process-card,
+        .team-card {
+            will-change: transform, opacity;
+            transform: translateZ(0);
+        }
+
+        .hyna-chat-trigger {
+            will-change: transform, opacity, filter;
+        }
+
+        /* ── High-refresh display: allow CSS animations at native fps ── */
+        @media (update: fast) {
+            * {
+                animation-duration: revert;
+                animation-timing-function: revert;
             }
         }
 
@@ -2184,30 +2222,30 @@
             position: fixed;
             bottom: 0;
             right: 0;
-            width: 150px;
-            height: 148px;
+            width: 200px;
+            height: 160px;
             display: flex;
             align-items: flex-end;
-            justify-content: flex-start;
+            justify-content: flex-end;
             cursor: pointer;
             z-index: 9999;
-            /* Default: fully visible (outside) when scroll stops */
+            /* Default: fully visible when scroll stops */
             transform: translateX(0);
-            opacity: 0.9;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 1;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, filter 0.3s ease;
             pointer-events: auto;
         }
 
-        /* Slide half-inside to the right when scrolling */
+        /* Slide partially off-screen to the right while scrolling */
         .hyna-chat-trigger.is-scrolling {
-            transform: translateX(80px);
-            opacity: 0.6;
+            transform: translateX(110px);
+            opacity: 0.55;
         }
 
         .hyna-chat-trigger:hover,
         .hyna-chat-trigger:focus-within {
-            transform: translateX(0);
-            opacity: 1;
+            transform: translateX(0) !important;
+            opacity: 1 !important;
             /* Neon blue glow tracing the character + button */
             filter: drop-shadow(0 0 14px rgba(37, 99, 235, 0.8)) drop-shadow(0 0 35px rgba(59, 130, 246, 0.45));
         }
@@ -2215,15 +2253,15 @@
         /* Trigger Image */
         .trigger-image {
             width: 200px;
-            height: 148px;
+            height: 155px;
             object-fit: contain;
-            object-position: center bottom;
+            object-position: right bottom;
             pointer-events: none;
             transition: transform 0.3s ease;
         }
 
         .hyna-chat-trigger:hover .trigger-image {
-            transform: translateY(-4px);
+            transform: translateY(-6px);
         }
 
         /* Chat Widget Container */
@@ -2705,27 +2743,29 @@
             .hyna-chat-trigger {
                 bottom: 0;
                 right: 0;
-                width: 100px;
-                height: 75px;
-                /* Default: fully visible (outside) when scroll stops */
-                transform: translateX(0);
-            }
-
-            /* Slide half-inside to the right when scrolling */
-            .hyna-chat-trigger.is-scrolling {
-                transform: translateX(55px);
-                opacity: 0.6;
-            }
-
-            .hyna-chat-trigger:hover,
-            .hyna-chat-trigger:focus-within {
+                width: 110px;
+                height: 90px;
+                /* Default: fully visible when scroll stops */
                 transform: translateX(0);
                 opacity: 1;
             }
 
+            /* Slide partially off-screen when scrolling */
+            .hyna-chat-trigger.is-scrolling {
+                transform: translateX(65px);
+                opacity: 0.5;
+            }
+
+            .hyna-chat-trigger:hover,
+            .hyna-chat-trigger:focus-within {
+                transform: translateX(0) !important;
+                opacity: 1 !important;
+            }
+
             .trigger-image {
-                width: 100px;
-                height: 75px;
+                width: 110px;
+                height: 90px;
+                object-position: right bottom;
             }
         }
     </style>
@@ -3285,7 +3325,7 @@
                 clearTimeout(scrollTimeout);
                 scrollTimeout = setTimeout(() => {
                     trigger.classList.remove("is-scrolling");
-                }, 250);
+                }, 180);
             }
 
             // Desktop scroll
@@ -3294,12 +3334,12 @@
             // Mobile: touchmove = user is actively dragging (slide in)
             window.addEventListener("touchmove", onScrolling, { passive: true });
 
-            // Mobile: touchend = finger lifted — start countdown to slide out
+            // Mobile: touchend = finger lifted — snap back to full view
             window.addEventListener("touchend", () => {
                 clearTimeout(scrollTimeout);
                 scrollTimeout = setTimeout(() => {
                     trigger.classList.remove("is-scrolling");
-                }, 250);
+                }, 180);
             }, { passive: true });
 
             // Responses for buttons

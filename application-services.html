@@ -8,8 +8,9 @@
   <meta name="description"
     content="Hyna Studio delivers premium web and mobile application development — React, Next.js, React Native, PWA, and pixel-perfect UI/UX from Figma to production." />
   <link rel="icon" href="favicon.ico" sizes="any" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-    rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <style>
     *,
@@ -21,6 +22,9 @@
     }
 
     :root {
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
       --blue-dark: #0a1f5c;
       --blue-mid: #1a4fd8;
       --blue-bright: #2563eb;
@@ -41,10 +45,14 @@
     }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-body);
       background: var(--bg-white);
       color: var(--text-dark);
       line-height: 1.6;
+    }
+
+    h1, h2, h3, h4, h5, h6, .logo-main, .logo-text, .nav-logo-main {
+      font-family: var(--font-display);
     }
 
     /* ── MAIN NAV ── */
@@ -1533,10 +1541,6 @@
           </div>
         </div>
       </div>
-      <div class="hero-banner-right">
-      </div>
-    </div>
-    </div>
     </div>
   </section>
 
@@ -1714,7 +1718,7 @@
 
     </div>
 
-
+  </section>
 
 
 

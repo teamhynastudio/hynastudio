@@ -5,11 +5,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hyna Studio | Cloud & Infrastructure Services</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
     :root {
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
       --primary: #2563eb;
       --secondary: #1e3a8a;
       --bg-light: #f9fafb;
@@ -19,7 +24,7 @@
     }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-body);
       margin: 0;
       background: var(--bg-light);
       color: var(--text-dark);
@@ -27,11 +32,18 @@
 
     h1,
     h2,
-    h3 {
+    h3,
+    h4,
+    h5,
+    h6,
+    .logo-main,
+    .logo-text,
+    .nav-logo-main {
+      font-family: var(--font-display);
       font-weight: 700;
     }
 
-    section {
+    .page-section {
       padding: 80px 20px;
       max-width: 1200px;
       margin: auto;
@@ -63,97 +75,169 @@
       margin-bottom: 15px;
     }
 
-    /* Hero Section */
+    /* ── HERO BANNER ── */
     .hero {
+      background: linear-gradient(135deg, #e0f2fe 0%, #dbeafe 50%, #f0f9ff 100%);
+      padding-top: 100px;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(37,99,235,0.1);
+    }
+
+    .hero-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 60px 32px 72px;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
-      background: linear-gradient(135deg, #e0f2fe, #f8fafc);
-      padding: 100px 40px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
     }
 
-    .hero-content {
-      flex: 1;
-      max-width: 600px;
-      background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(12px);
-      border-radius: var(--radius);
-      padding: 40px;
-    }
-
-    .hero-content h1 {
-      font-size: 2.8rem;
-      margin-bottom: 20px;
-      color: var(--secondary);
-    }
-
-    .hero-content p {
-      font-size: 1.1rem;
-      margin-bottom: 30px;
-      color: var(--text-dark);
-    }
-
-    .hero-buttons button {
-      margin-right: 15px;
-      padding: 14px 28px;
-      border: none;
-      border-radius: 8px;
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(37,99,235,0.09);
+      color: var(--primary);
+      border: 1px solid rgba(37,99,235,0.18);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 12.5px;
       font-weight: 600;
-      cursor: pointer;
-      transition: .3s;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .hero-eyebrow .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--primary);
+      display: inline-block;
+    }
+
+    .hero h1 {
+      font-size: clamp(28px, 4vw, 54px);
+      font-weight: 900;
+      color: var(--text-dark);
+      line-height: 1.15;
+      margin-bottom: 20px;
+      letter-spacing: -.5px;
+    }
+
+    .hero h1 .accent {
+      color: var(--primary);
+    }
+
+    .hero-sub {
+      font-size: 16px;
+      color: #475569;
+      line-height: 1.75;
+      max-width: 620px;
+      margin-bottom: 36px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     .btn-primary {
       background: var(--primary);
       color: #fff;
+      border: none;
+      padding: 14px 30px;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .2s, transform .2s, box-shadow .2s;
+      box-shadow: 0 4px 14px rgba(37,99,235,0.3);
     }
 
     .btn-primary:hover {
-      background: #1e40af;
+      background: #1d4ed8;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(37,99,235,0.4);
     }
 
     .btn-secondary {
       background: #fff;
       color: var(--secondary);
-      border: 2px solid var(--secondary);
+      border: 2px solid rgba(30,58,138,0.25);
+      padding: 14px 30px;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: border-color .2s, background .2s, transform .2s;
     }
 
     .btn-secondary:hover {
-      background: #e0f2fe;
+      background: #eff6ff;
+      border-color: var(--primary);
+      transform: translateY(-2px);
     }
 
-    .hero-illustration {
-      flex: 1;
+    /* Section headings */
+    .page-section h2 {
+      font-size: clamp(22px, 2.8vw, 34px);
+      font-weight: 800;
+      color: var(--text-dark);
       text-align: center;
-    }
-
-    .hero-illustration img {
-      max-width: 100%;
-      border-radius: var(--radius);
+      margin-bottom: 40px;
     }
 
     /* CTA */
+    .cta-wrap {
+      padding: 80px 20px;
+    }
+
     .cta {
+      max-width: 800px;
+      margin: 0 auto;
       text-align: center;
-      background: linear-gradient(90deg, var(--secondary), var(--primary));
+      background: linear-gradient(135deg, var(--secondary), var(--primary));
       color: #fff;
-      border-radius: var(--radius);
-      padding: 60px 20px;
+      border-radius: 20px;
+      padding: 64px 40px;
+      box-shadow: 0 12px 40px rgba(37,99,235,0.25);
+    }
+
+    .cta h2 {
+      font-size: clamp(22px, 3vw, 34px);
+      font-weight: 800;
+      margin-bottom: 14px;
+      color: #fff !important;
+    }
+
+    .cta p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 32px;
     }
 
     .cta button {
       background: #fff;
       color: var(--secondary);
       border: none;
-      padding: 14px 28px;
-      border-radius: 8px;
-      font-weight: 600;
+      padding: 14px 36px;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 700;
       cursor: pointer;
-      transition: .3s;
+      transition: background .2s, transform .2s;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.12);
     }
 
     .cta button:hover {
       background: #e0f2fe;
+      transform: translateY(-2px);
     }
 
     footer {
@@ -260,22 +344,20 @@
   </nav>
 
   <!-- Hero Banner -->
-  <section class="hero" id="hero" style="padding-top:120px;">
-    <div class="hero-content">
-      <h1>Cloud & Infrastructure Services</h1>
-      <p>Professional solutions for cloud migration, infrastructure optimization, and secure architecture — tailored for
-        modern businesses.</p>
+  <section class="hero" id="hero">
+    <div class="hero-inner">
+      <span class="hero-eyebrow"><span class="dot"></span>Cloud &amp; Infrastructure</span>
+      <h1>Cloud &amp; Infrastructure<br><span class="accent">Services</span></h1>
+      <p class="hero-sub">Professional solutions for cloud migration, infrastructure optimization, and secure architecture — tailored for modern businesses.</p>
       <div class="hero-buttons">
-        <button class="btn-primary">Get Started</button>
+        <button class="btn-primary">Get Started →</button>
         <button class="btn-secondary">Learn More</button>
       </div>
-    </div>
-
     </div>
   </section>
 
   <!-- Our Cloud Services -->
-  <section id="cloud-services">
+  <section id="cloud-services" class="page-section">
     <h2>Our Cloud Services</h2>
     <div class="grid">
       <div class="card"><i class="fa-solid fa-cloud"></i>
@@ -294,7 +376,7 @@
   </section>
 
   <!-- Infrastructure Solutions -->
-  <section id="infrastructure">
+  <section id="infrastructure" class="page-section">
     <h2>Infrastructure Solutions</h2>
     <div class="grid">
       <div class="card"><i class="fa-solid fa-server"></i>
@@ -313,44 +395,6 @@
         <h3>Backup & Disaster Recovery</h3>
       </div>
       <div class="card"><i class="fa-solid fa-globe"></i>
-        <h3>CDN</h3>
-      </div>
-    </div>
-  </section>
-
-  <!-- Security -->
-  <section id="security">
-    <h2>Security</h2>
-    <div class="grid">
-      <div class="card"><i class="fa-solid fa-shield-halved"></i>
-        <h3>Firewall</h3>
-      </div>
-      <div class="card"><i class="fa-solid fa-user-shield"></i>
-        <h3>Identity & Access Management</h3>
-      </div>
-      <div class="card"><i class="fa-solid fa-lock"></i>
-        <h3>Cloud Security</h3>
-      </div>
-      <div class="card"><i class="fa-solid fa-certificate"></i>
-        <h3>SSL</h3>
-      </div>
-      <div class="card"><i class="fa-solid fa-key"></i>
-        <h3>Data Encryption</h3>
-      </div>
-      <div class="card"><i class="fa-solid fa-scale-balanced"></i>
-        <h3>Compliance</h3>
-      </div>
-    </div>
-  </section>
-
-  <!-- Monitoring -->
-  <section id="monitoring">
-    <h2>Monitoring</h2>
-    <div class="grid">
-      <div class="card"><i class="fa-solid fa-eye"></i>
-        <h3>24/7 Monitoring</h3>
-      </div>
-      <div class="card"><i class="fa-solid fa-arrows-spin"></i>
         <h3>Auto Scaling</h3>
       </div>
       <div class="card"><i class="fa-solid fa-gauge-high"></i>
@@ -363,7 +407,7 @@
   </section>
 
   <!-- Why Choose Us -->
-  <section id="why">
+  <section id="why" class="page-section">
     <h2>Why Choose Us</h2>
     <div class="grid">
       <div class="card"><i class="fa-solid fa-network-wired"></i>
@@ -382,11 +426,13 @@
   </section>
 
   <!-- Call To Action -->
-  <section class="cta" id="contact">
-    <h2>Ready to Move Your Business to the Cloud?</h2>
-    <p>Partner with Hyna Studio for seamless cloud and infrastructure solutions.</p>
-    <button>Contact Us</button>
-  </section>
+  <div class="cta-wrap">
+    <div class="cta" id="contact">
+      <h2>Ready to Move Your Business to the Cloud?</h2>
+      <p>Partner with Hyna Studio for seamless cloud and infrastructure solutions.</p>
+      <button>Contact Us</button>
+    </div>
+  </div>
 
 
 
