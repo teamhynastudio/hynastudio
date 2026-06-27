@@ -5408,7 +5408,7 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
     <!-- TEAM -->
     <style>
         .team-section {
-            padding: 100px 8%;
+            padding: 100px 8% 0;
             background:
                 radial-gradient(circle at 50% 0%, rgba(79, 70, 229, 0.12) 0%, transparent 60%),
                 radial-gradient(circle at 20% 40%, rgba(0, 217, 163, 0.05) 0%, transparent 50%),
@@ -5418,13 +5418,12 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
                 #ffffff;
             background-size: 100% 100%, 100% 100%, 100% 100%, 50px 50px, 50px 50px;
             position: relative;
-            overflow: hidden;
         }
 
         .team-section::after {
             content: "";
             position: absolute;
-            top: 50%;
+            top: 30%;
             left: 50%;
             transform: translate(-50%, -50%) rotate(15deg);
             width: 80vw;
@@ -5432,7 +5431,7 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
             height: 80vw;
             max-height: 750px;
             background: url('./hyna-logo.png') no-repeat center center / contain;
-            opacity: 0.06;
+            opacity: 0.04;
             pointer-events: none;
             z-index: 1;
         }
@@ -5479,12 +5478,13 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
             }
         }
 
-        .team-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
+        /* ─── TEAM STACK ─── */
+        .team-stack-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 100px;
+            padding: 20px 12px 80px;
             position: relative;
             z-index: 2;
         }
@@ -5493,35 +5493,27 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
             --x: 50%;
             --y: 50%;
 
-            position: relative;
+            position: sticky;
+            top: 110px;
+            width: 100%;
+            max-width: 860px;
             background: #ffffff;
-            border-radius: 16px;
-            padding: 35px 25px;
-            text-align: center;
+            border-radius: 24px;
+            padding: 36px 40px;
             overflow: hidden;
-
             border: 1px solid rgba(10, 10, 15, 0.08);
-
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04), 0 16px 48px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            gap: 40px;
             cursor: pointer;
-
-            /* Scroll-entrance initial state */
-            opacity: 0;
-            transform: translateY(30px);
-            will-change: opacity, transform;
-        }
-
-        .team-card.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-            will-change: auto;
+            will-change: transform, opacity, filter;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .team-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(79, 63, 240, 0.1);
             border-color: rgba(79, 63, 240, 0.3);
+            box-shadow: 0 20px 50px rgba(79, 63, 240, 0.12);
         }
 
         .team-card::before {
@@ -5530,87 +5522,70 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
             inset: -2px;
             border-radius: inherit;
             padding: 2px;
-
-            background:
-                radial-gradient(circle at var(--x) var(--y),
-                    #c084fc 0%,
-                    #f472b6 30%,
-                    #38bdf8 60%,
-                    transparent 75%);
-
+            background: radial-gradient(circle at var(--x) var(--y),
+                #c084fc 0%, #f472b6 30%, #38bdf8 60%, transparent 75%);
             opacity: 0;
             transition: opacity 0.3s ease;
-
-            -webkit-mask:
-                linear-gradient(#fff 0 0) content-box,
-                linear-gradient(#fff 0 0);
-            mask:
-                linear-gradient(#fff 0 0) content-box,
-                linear-gradient(#fff 0 0);
-
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
             mask-composite: exclude;
-
             pointer-events: none;
         }
 
-        .team-card:hover::before {
-            opacity: 1;
+        .team-card:hover::before { opacity: 1; }
+
+        /* Card number badge */
+        .team-card-num {
+            position: absolute;
+            top: 20px;
+            right: 28px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(10,10,15,0.2);
+        }
+
+        /* Left avatar side */
+        .team-card-avatar-wrap {
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
         }
 
         .team-avatar {
-            width: 150px;
-            height: 150px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid #ffffff;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-            margin-bottom: 24px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .team-card:hover .team-avatar {
-            transform: scale(1.05);
-        }
-
-        .team-card h3 {
-            font-size: 1.7rem;
-            color: var(--ink);
-            margin-bottom: 8px;
-            font-family: var(--font-display);
-        }
-
-        .team-role {
-            display: block;
-            color: var(--accent);
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
-
-        .team-description {
-            color: var(--muted);
-            line-height: 1.7;
-            margin-bottom: 24px;
-            min-height: 110px;
-        }
+        .team-card:hover .team-avatar { transform: scale(1.05); }
 
         .team-social {
             display: flex;
             justify-content: center;
-            gap: 14px;
+            gap: 10px;
         }
 
         .team-social a {
-            width: 44px;
-            height: 44px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
             background: #f5f5f7;
-            border: 1px solid rgba(10, 10, 15, 0.05);
+            border: 1px solid rgba(10, 10, 15, 0.06);
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--ink);
             text-decoration: none;
+            font-size: 13px;
             transition: all 0.3s ease;
         }
 
@@ -5621,14 +5596,71 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
             transform: translateY(-2px);
         }
 
-        @media (max-width: 768px) {
-            .team-section {
-                padding: 80px 5%;
-            }
+        /* Right info side */
+        .team-card-info {
+            flex: 1;
+            text-align: left;
+        }
 
-            .team-description {
-                min-height: auto;
+        .team-card-info h3 {
+            font-size: 2rem;
+            color: var(--ink);
+            margin-bottom: 6px;
+            font-family: var(--font-display);
+            font-weight: 800;
+        }
+
+        .team-role {
+            display: block;
+            color: var(--accent);
+            margin-bottom: 18px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .team-description {
+            color: var(--muted);
+            line-height: 1.75;
+            font-size: 0.95rem;
+            font-style: italic;
+            border-left: 3px solid rgba(79, 63, 240, 0.2);
+            padding-left: 16px;
+            margin: 0;
+        }
+
+        /* Step indicator dots */
+        .team-step-dots {
+            display: flex;
+            gap: 6px;
+            margin-top: 24px;
+        }
+
+        .team-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(10,10,15,0.12);
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .team-dot.active {
+            background: var(--accent);
+            transform: scale(1.4);
+        }
+
+        @media (max-width: 768px) {
+            .team-section { padding: 80px 5% 0; }
+            .team-stack-section { gap: 60px; padding: 16px 8px 60px; }
+            .team-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 28px 22px;
+                top: 80px;
+                gap: 20px;
             }
+            .team-card-info { text-align: center; }
+            .team-description { border-left: none; border-top: 3px solid rgba(79,63,240,0.2); padding-left: 0; padding-top: 12px; }
+            .team-step-dots { justify-content: center; }
         }
     </style>
 
@@ -5643,7 +5675,7 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
                 collaboration</p>
         </div>
 
-        <div class="team-grid">
+        <div class="team-stack-section" id="teamStackSection">
 
             <!-- Vignesh -->
             <div class="team-card" role="button" tabindex="0" data-name="Vignesh" data-role="Founder | CEO"
@@ -5653,27 +5685,23 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
                 data-github="https://github.com/vigneshvl-dev"
                 data-linkedin="https://www.linkedin.com/in/vigneshvl-dev/" data-college="Anna University"
                 data-degree="B.E. Computer Science & Engineering" data-college-logo="">
-                <img src="https://i.postimg.cc/wjtYqBpS/IMG-33081.jpg" alt="Vignesh" class="team-avatar">
-
-                <h3>Vignesh</h3>
-                <span class="team-role">Founder|CEO</span>
-
-                <p class="team-description">
-                    "Leadership is not about control,it is about building people who can lead without you."
-                </p>
-
-                <div class="team-social">
-                    <a href="https://vigneshvl-dev.github.io/PORTFOLIO/" target="_blank" title="Portfolio">
-                        <i class="fas fa-globe"></i>
-                    </a>
-
-                    <a href="https://www.linkedin.com/in/vigneshvl-dev/" target="_blank" title="LinkedIn">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-
-                    <a href="https://github.com/vigneshvl-dev" target="_blank" title="GitHub">
-                        <i class="fab fa-github"></i>
-                    </a>
+                <span class="team-card-num">01 / 06</span>
+                <div class="team-card-avatar-wrap">
+                    <img src="https://i.postimg.cc/wjtYqBpS/IMG-33081.jpg" alt="Vignesh" class="team-avatar">
+                    <div class="team-social">
+                        <a href="https://vigneshvl-dev.github.io/PORTFOLIO/" target="_blank" title="Portfolio"><i class="fas fa-globe"></i></a>
+                        <a href="https://www.linkedin.com/in/vigneshvl-dev/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/vigneshvl-dev" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="team-card-info">
+                    <h3>Vignesh</h3>
+                    <span class="team-role">Founder | CEO</span>
+                    <p class="team-description">"Leadership is not about control, it is about building people who can lead without you."</p>
+                    <div class="team-step-dots">
+                        <span class="team-dot active"></span><span class="team-dot"></span><span class="team-dot"></span>
+                        <span class="team-dot"></span><span class="team-dot"></span><span class="team-dot"></span>
+                    </div>
                 </div>
             </div>
 
@@ -5685,23 +5713,23 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
                 data-github="https://github.com/jashwinj2008"
                 data-linkedin="https://www.linkedin.com/in/jashwin-j-16b06240a?utm_source=share_via&utm_content=profile&utm_medium=member_android"
                 data-college="Anna University" data-degree="B.E. Computer Science & Engineering" data-college-logo="">
-                <img src="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" alt="Jashwin"
-                    class="team-avatar">
-
-                <h3>Jashwin</h3>
-                <span class="team-role">Co-Founder & Project
-                    Management Lead </span>
-
-                <p class="team-description">
-                    "Deadlines don’t fail because of time,
-                    they fail because alignment is missing."
-                </p>
-
-                <div class="team-social">
-                    <a href="#" title="Portfolio"><i class="fas fa-globe"></i></a>
-                    <a href="https://www.linkedin.com/in/jashwin-j-16b06240a?utm_source=share_via&utm_content=profile&utm_medium=member_android"
-                        title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://github.com/jashwinj2008" title="GitHub"><i class="fab fa-github"></i></a>
+                <span class="team-card-num">02 / 06</span>
+                <div class="team-card-avatar-wrap">
+                    <img src="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" alt="Jashwin" class="team-avatar">
+                    <div class="team-social">
+                        <a href="#" title="Portfolio"><i class="fas fa-globe"></i></a>
+                        <a href="https://www.linkedin.com/in/jashwin-j-16b06240a?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/jashwinj2008" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="team-card-info">
+                    <h3>Jashwin</h3>
+                    <span class="team-role">Co-Founder & Project Management Lead</span>
+                    <p class="team-description">"Deadlines don't fail because of time, they fail because alignment is missing."</p>
+                    <div class="team-step-dots">
+                        <span class="team-dot"></span><span class="team-dot active"></span><span class="team-dot"></span>
+                        <span class="team-dot"></span><span class="team-dot"></span><span class="team-dot"></span>
+                    </div>
                 </div>
             </div>
 
@@ -5713,30 +5741,23 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
                 data-portfolio="https://portholio-zeta.vercel.app/" data-github="https://github.com/dharshan00814"
                 data-linkedin="https://www.linkedin.com/in/dharshan-jm" data-college="Anna University"
                 data-degree="B.E. Computer Science & Engineering" data-college-logo="">
-                <img src="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg" alt="Dharshan"
-                    class="team-avatar">
-
-                <h3>Dharshan</h3>
-                <span class="team-role">Co-Founder & Chief
-                    Technology Officer (CTO)</span>
-
-                <p class="team-description">
-                    "A co-founder in tech doesn’t follow trends,
-                    he builds what will become the next standard."
-                </p>
-
-                <div class="team-social">
-                    <a href="https://portholio-zeta.vercel.app/" target="_blank" title="Portfolio">
-                        <i class="fas fa-globe"></i>
-                    </a>
-
-                    <a href="https://www.linkedin.com/in/dharshan-jm" target="_blank" title="LinkedIn">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-
-                    <a href="https://github.com/dharshan00814" target="_blank" title="GitHub">
-                        <i class="fab fa-github"></i>
-                    </a>
+                <span class="team-card-num">03 / 06</span>
+                <div class="team-card-avatar-wrap">
+                    <img src="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg" alt="Dharshan" class="team-avatar">
+                    <div class="team-social">
+                        <a href="https://portholio-zeta.vercel.app/" target="_blank" title="Portfolio"><i class="fas fa-globe"></i></a>
+                        <a href="https://www.linkedin.com/in/dharshan-jm" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/dharshan00814" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="team-card-info">
+                    <h3>Dharshan</h3>
+                    <span class="team-role">Co-Founder & Chief Technology Officer (CTO)</span>
+                    <p class="team-description">"A co-founder in tech doesn't follow trends, he builds what will become the next standard."</p>
+                    <div class="team-step-dots">
+                        <span class="team-dot"></span><span class="team-dot"></span><span class="team-dot active"></span>
+                        <span class="team-dot"></span><span class="team-dot"></span><span class="team-dot"></span>
+                    </div>
                 </div>
             </div>
 
@@ -5747,22 +5768,23 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
                 data-photo="https://i.postimg.cc/Jnwtf3ZZ/Whats-App-Image-2026-02-20-at-7-00-57-PM.jpg"
                 data-portfolio="#" data-github="#" data-linkedin="#" data-college="Anna University"
                 data-degree="B.E. Computer Science & Engineering" data-college-logo="">
-                <img src="https://i.postimg.cc/Jnwtf3ZZ/Whats-App-Image-2026-02-20-at-7-00-57-PM.jpg" alt="Asthamil"
-                    class="team-avatar">
-
-                <h3>Asthamil</h3>
-                <span class="team-role">Chief Product Officer (CPO) &
-                    Director </span>
-
-                <p class="team-description">
-                    "Product thinking is not about features,
-                    it is about solving the right problem in the right way."
-                </p>
-
-                <div class="team-social">
-                    <a href="#" title="Portfolio"><i class="fas fa-globe"></i></a>
-                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                <span class="team-card-num">04 / 06</span>
+                <div class="team-card-avatar-wrap">
+                    <img src="https://i.postimg.cc/Jnwtf3ZZ/Whats-App-Image-2026-02-20-at-7-00-57-PM.jpg" alt="Asthamil" class="team-avatar">
+                    <div class="team-social">
+                        <a href="#" title="Portfolio"><i class="fas fa-globe"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="team-card-info">
+                    <h3>Asthamil</h3>
+                    <span class="team-role">Chief Product Officer (CPO) & Director</span>
+                    <p class="team-description">"Product thinking is not about features, it is about solving the right problem in the right way."</p>
+                    <div class="team-step-dots">
+                        <span class="team-dot"></span><span class="team-dot"></span><span class="team-dot"></span>
+                        <span class="team-dot active"></span><span class="team-dot"></span><span class="team-dot"></span>
+                    </div>
                 </div>
             </div>
 
@@ -5774,23 +5796,23 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
                 data-portfolio="#" data-github="#"
                 data-linkedin="https://www.linkedin.com/in/tharun-krishna-347b123a0?utm_source=share_via&utm_content=profile&utm_medium=member_android"
                 data-college="Anna University" data-degree="B.E. Computer Science & Engineering" data-college-logo="">
-                <img src="https://i.postimg.cc/TP5Jj9Th/Whats-App-Image-2026-06-11-at-11-26-46-AM.jpg"
-                    alt="Tharun Krishna" class="team-avatar">
-
-                <h3>Tharun Krishna</h3>
-                <span class="team-role">Chief Design Officer (CDO) &
-                    Director </span>
-
-                <p class="team-description">
-                    "Good design is invisible,
-                    but its impact is impossible to ignore."
-                </p>
-
-                <div class="team-social">
-                    <a href="#" title="Portfolio"><i class="fas fa-globe"></i></a>
-                    <a href="https://www.linkedin.com/in/tharun-krishna-347b123a0?utm_source=share_via&utm_content=profile&utm_medium=member_android"
-                        title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                <span class="team-card-num">05 / 06</span>
+                <div class="team-card-avatar-wrap">
+                    <img src="https://i.postimg.cc/TP5Jj9Th/Whats-App-Image-2026-06-11-at-11-26-46-AM.jpg" alt="Tharun Krishna" class="team-avatar">
+                    <div class="team-social">
+                        <a href="#" title="Portfolio"><i class="fas fa-globe"></i></a>
+                        <a href="https://www.linkedin.com/in/tharun-krishna-347b123a0" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="team-card-info">
+                    <h3>Tharun Krishna</h3>
+                    <span class="team-role">Chief Design Officer (CDO) & Director</span>
+                    <p class="team-description">"Good design is invisible, but its impact is impossible to ignore."</p>
+                    <div class="team-step-dots">
+                        <span class="team-dot"></span><span class="team-dot"></span><span class="team-dot"></span>
+                        <span class="team-dot"></span><span class="team-dot active"></span><span class="team-dot"></span>
+                    </div>
                 </div>
             </div>
 
@@ -5801,21 +5823,23 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
                 data-photo="https://i.postimg.cc/1zWvJd1C/zarif.jpg" data-portfolio="#" data-github="#"
                 data-linkedin="https://www.linkedin.com/in/muhamed-zarif-80860a37a?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
                 data-college="Anna University" data-degree="B.E. Computer Science & Engineering" data-college-logo="">
-                <img src="https://i.postimg.cc/1zWvJd1C/zarif.jpg" alt="Mohammad Zarif" class="team-avatar">
-
-                <h3>Mohammad Zarif</h3>
-                <span class="team-role">Chief Operating Officer (COO)</span>
-
-                <p class="team-description">
-                    "Execution is not about speed alone,
-                    it is about consistency, structure, and discipline."
-                </p>
-
-                <div class="team-social">
-                    <a href="#" title="Portfolio"><i class="fas fa-globe"></i></a>
-                    <a href="https://www.linkedin.com/in/muhamed-zarif-80860a37a?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
-                        title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://github.com/muhamedzarif" title="GitHub"><i class="fab fa-github"></i></a>
+                <span class="team-card-num">06 / 06</span>
+                <div class="team-card-avatar-wrap">
+                    <img src="https://i.postimg.cc/1zWvJd1C/zarif.jpg" alt="Mohammad Zarif" class="team-avatar">
+                    <div class="team-social">
+                        <a href="#" title="Portfolio"><i class="fas fa-globe"></i></a>
+                        <a href="https://www.linkedin.com/in/muhamed-zarif-80860a37a" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/muhamedzarif" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="team-card-info">
+                    <h3>Mohammad Zarif</h3>
+                    <span class="team-role">Chief Operating Officer (COO)</span>
+                    <p class="team-description">"Execution is not about speed alone, it is about consistency, structure, and discipline."</p>
+                    <div class="team-step-dots">
+                        <span class="team-dot"></span><span class="team-dot"></span><span class="team-dot"></span>
+                        <span class="team-dot"></span><span class="team-dot"></span><span class="team-dot active"></span>
+                    </div>
                 </div>
             </div>
 
@@ -5824,17 +5848,67 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
     </section>
 
     <script>
+        /* ─── Team card mouse-glow ─── */
         document.querySelectorAll('.team-card').forEach(card => {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
-
                 const x = ((e.clientX - rect.left) / rect.width) * 100;
                 const y = ((e.clientY - rect.top) / rect.height) * 100;
-
                 card.style.setProperty('--x', `${x}%`);
                 card.style.setProperty('--y', `${y}%`);
             });
         });
+
+        /* ─── Team stack scroll animation (mirrors process section) ─── */
+        function initTeamScroll() {
+            if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+            gsap.registerPlugin(ScrollTrigger);
+
+            const cards = gsap.utils.toArray('.team-card');
+
+            cards.forEach((card, i) => {
+                // Entrance: slide up on scroll into view
+                gsap.fromTo(card,
+                    { y: 50, opacity: 0 },
+                    {
+                        y: 0, opacity: 1,
+                        duration: 0.55,
+                        ease: 'power2.out',
+                        scrollTrigger: {
+                            trigger: card,
+                            start: 'top 88%',
+                            toggleActions: 'play none none reverse',
+                        }
+                    }
+                );
+
+                // Stacking: previous card fades & scales as next card scrolls over it
+                if (i < cards.length - 1) {
+                    const nextCard = cards[i + 1];
+                    ScrollTrigger.create({
+                        trigger: nextCard,
+                        start: 'top 240px',
+                        end: 'top 120px',
+                        scrub: true,
+                        onUpdate(self) {
+                            const p = self.progress;
+                            gsap.set(card, {
+                                scale: 1 - p * 0.04,
+                                y: -p * 24,
+                                filter: 'blur(' + (p * 3) + 'px)',
+                                opacity: 1 - p * 0.45,
+                            });
+                        }
+                    });
+                }
+            });
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initTeamScroll);
+        } else {
+            initTeamScroll();
+        }
     </script>
     <section id="about">
         <div class="about-inner">
