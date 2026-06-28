@@ -932,112 +932,230 @@
             }
         }
 
-        /* ── ABOUT ── */
-        #about {
+        /* ── JOURNEY BENTO GRID ── */
+        .about-section {
+            padding: 120px 8%;
             background: var(--paper);
-        }
-
-        .about-inner {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6rem;
-            align-items: center;
-        }
-
-        .about-visual {
             position: relative;
-            min-height: 520px;
-            padding: 3rem 1.5rem;
-            border-radius: 20px;
             overflow: hidden;
-            background: linear-gradient(135deg, rgba(79, 63, 240, 0.1), rgba(0, 217, 163, 0.1));
+            border-top: 1px solid var(--border);
+        }
+
+        .journey-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 3.5rem;
+        }
+
+        .journey-card {
+            background: #ffffff;
             border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+        }
+
+        .journey-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(79, 63, 240, 0.25);
+            box-shadow: 0 12px 36px rgba(79, 63, 240, 0.08);
+        }
+
+        .journey-badge {
+            align-self: flex-start;
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 4px 12px;
+            border-radius: 100px;
+            background: rgba(79, 63, 240, 0.07);
+            color: var(--accent);
+            border: 1px solid rgba(79, 63, 240, 0.15);
+            margin-bottom: 20px;
+        }
+
+        .journey-card.col-span-2 {
+            grid-column: span 2;
+        }
+
+        .journey-card.row-span-2 {
+            grid-row: span 2;
+        }
+
+        .journey-card.col-span-3 {
+            grid-column: span 3;
+        }
+
+        .journey-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--ink);
+            margin-bottom: 14px;
+            letter-spacing: -0.01em;
+            line-height: 1.25;
+        }
+
+        .journey-card p {
+            color: var(--muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .kanyakumari-card {
+            background: linear-gradient(135deg, #ffffff 0%, rgba(79, 63, 240, 0.02) 100%);
+            border: 1px solid rgba(79, 63, 240, 0.12);
+        }
+
+        .kanyakumari-visual {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 180px;
+            height: 180px;
+            opacity: 0.08;
+            pointer-events: none;
+            background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(20px);
+        }
+
+        .quote-banner {
+            background: linear-gradient(135deg, var(--ink) 0%, #1e1e2d 100%);
+            color: #ffffff;
+            border: none;
+            padding: 40px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .quote-banner::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 10% 20%, rgba(0, 217, 163, 0.12) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .quote-banner .quote-icon {
+            font-size: 2.2rem;
+            color: var(--accent2);
+            margin-bottom: 16px;
+            opacity: 0.85;
+        }
+
+        .quote-banner blockquote {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 700;
+            line-height: 1.35;
+            letter-spacing: -0.01em;
+            max-width: 800px;
+            margin: 0;
+            background: linear-gradient(135deg, #ffffff 30%, rgba(255, 255, 255, 0.7) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .quote-banner cite {
+            margin-top: 14px;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: rgba(255, 255, 255, 0.5);
+            font-style: normal;
+        }
+
+        .mv-item {
+            border-bottom: 1px solid rgba(10, 10, 15, 0.06);
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        .mv-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        .mv-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .mv-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(0, 217, 163, 0.1);
+            color: var(--accent2);
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 0.85rem;
+        }
+        
+        .mv-item:first-child .mv-icon {
+            background: rgba(79, 63, 240, 0.1);
+            color: var(--accent);
         }
 
-        .about-visual-inner {
-            padding: 2.5rem;
-            text-align: center;
-        }
-
-        .about-manifesto {
+        .mv-header h4 {
             font-family: var(--font-display);
-            font-size: 1.9rem;
-            font-weight: 800;
-            line-height: 1.2;
-            letter-spacing: -0.02em;
-            margin-bottom: 2rem;
-        }
-
-        .about-manifesto em {
-            font-style: normal;
-            color: var(--accent);
-        }
-
-        .about-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            justify-content: center;
-        }
-
-        .badge {
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            padding: 0.35rem 0.8rem;
-            border-radius: 100px;
-            background: rgba(79, 63, 240, 0.08);
-            border: 1px solid rgba(79, 63, 240, 0.2);
-            color: var(--accent);
-            font-weight: 500;
-        }
-
-        .about-text p {
-            color: var(--muted);
-            line-height: 1.8;
-            margin-bottom: 1.2rem;
-            font-size: 1rem;
-        }
-
-        .about-text p strong {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin: 0;
             color: var(--ink);
         }
 
-        .about-values {
-            margin-top: 2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+        @media (max-width: 1024px) {
+            .journey-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .journey-card.col-span-3 {
+                grid-column: span 2;
+            }
         }
 
-        .value-row {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            padding: 1.2rem;
-            border-radius: 10px;
-            background: #fff;
-            border: 1px solid var(--border);
+        @media (max-width: 768px) {
+            .journey-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+            .journey-card.col-span-2,
+            .journey-card.row-span-2,
+            .journey-card.col-span-3 {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+            .quote-banner {
+                padding: 30px 20px;
+            }
+            .quote-banner blockquote {
+                font-size: 1.35rem;
+            }
         }
-
-        .value-icon {
-            width: 36px;
-            height: 36px;
-            flex-shrink: 0;
-            background: rgba(79, 63, 240, 0.08);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-        }
-
-        .value-row h4 {
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 0.2rem;
         }
 
         .value-row p {
@@ -1982,15 +2100,7 @@
                 grid-template-columns: 1fr 1fr;
             }
 
-            .about-inner {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-            }
-
-            .about-visual {
-                aspect-ratio: auto;
-                padding: 3rem 1.5rem;
-            }
+            /* Journey elements cleaned up */
 
             .team-header {
                 flex-direction: column;
@@ -5802,36 +5912,71 @@
             initTeamScroll();
         }
     </script>
-    <section id="about">
-        <div class="about-inner">
-            <div class="about-visual">
-                <div class="about-visual-inner">
-                    <!-- TiltedCard Component from React Bits -->
-                    <figure class="tilted-card-figure">
-                        <div class="tilted-card-inner">
-                            <img src="https://i.postimg.cc/1z3CLZ0S/hyna-final-final-logo.png" alt="Team Hyna Studio"
-                                class="tilted-card-img" style="width: 300px; height: 300px;">
-                            <div class="tilted-card-overlay">
-                                <p class="tilted-card-demo-text">Team Hyna Studio</p>
-                            </div>
+    <section id="about" class="about-section">
+        <div class="section-header" style="text-align: center; margin-bottom: 3.5rem;">
+            <div class="section-label">// Our Journey</div>
+            <h2 class="section-title" style="font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.025em; line-height: 1.1; color: var(--ink);">From Local Ideas to Global Innovation</h2>
+        </div>
+
+        <div class="journey-grid">
+            <!-- Where It All Started -->
+            <div class="journey-card col-span-2 kanyakumari-card">
+                <div>
+                    <span class="journey-badge">Origin</span>
+                    <h3>Where It All Started</h3>
+                    <p style="font-weight: 600; color: var(--ink); margin-bottom: 12px; font-size: 1.05rem;">Kanyakumari, India</p>
+                    <p>Hyna Studio was founded with a simple vision—to make modern technology accessible to every business. Inspired by the hardworking entrepreneurs of Kanyakumari, we saw the need for affordable, high-quality digital solutions that help businesses grow without complexity.</p>
+                </div>
+                <div class="kanyakumari-visual"></div>
+            </div>
+
+            <!-- Mission & Vision -->
+            <div class="journey-card row-span-2" style="background: linear-gradient(135deg, rgba(79, 63, 240, 0.01) 0%, rgba(0, 217, 163, 0.01) 100%);">
+                <div style="height: 100%; display: flex; flex-direction: column; justify-content: center;">
+                    <!-- Mission -->
+                    <div class="mv-item">
+                        <div class="mv-header">
+                            <div class="mv-icon"><i class="fas fa-bullseye"></i></div>
+                            <h4>Our Mission</h4>
                         </div>
-                    </figure>
-                    <div class="about-manifesto">We don't just write code.<br><em>We craft digital experiences.</em>
+                        <p>To empower startups and businesses with innovative digital products that accelerate growth, improve efficiency, and create lasting value.</p>
                     </div>
 
+                    <!-- Vision -->
+                    <div class="mv-item">
+                        <div class="mv-header">
+                            <div class="mv-icon"><i class="fas fa-eye"></i></div>
+                            <h4>Our Vision</h4>
+                        </div>
+                        <p>To become a globally recognized technology studio delivering world-class AI and SaaS solutions from Kanyakumari to businesses around the world.</p>
+                    </div>
                 </div>
             </div>
-            <div class="about-text">
-                <div class="section-label">// About Hyna Studio</div>
-                <h2 class="section-title">A studio built for the age of digital-first business.</h2>
-                <p>Hyna Studio was founded by a team of engineers, designers, and cloud architects who were tired of
-                    watching great ideas fail because of bad execution. We built the studio we wished existed.</p>
 
-
+            <!-- The Opportunity We Saw -->
+            <div class="journey-card">
+                <div>
+                    <span class="journey-badge">The Gap</span>
+                    <h3>The Opportunity We Saw</h3>
+                    <p>Many startups and businesses had ambitious ideas but lacked the technical expertise, budget, or team to bring them to life. Traditional software development was often slow, expensive, and difficult to scale.</p>
+                </div>
             </div>
-        </div>
-        </div>
-        </div>
+
+            <!-- Why Hyna Studio Exists -->
+            <div class="journey-card">
+                <div>
+                    <span class="journey-badge">Purpose</span>
+                    <h3>Why Hyna Studio Exists</h3>
+                    <p>We help businesses transform ideas into digital products through modern technologies, AI automation, SaaS platforms, cloud infrastructure, and custom software development. Our mission is to build solutions that are simple, scalable, and designed for long-term success.</p>
+                </div>
+            </div>
+
+            <!-- Quote Banner -->
+            <div class="journey-card col-span-3 quote-banner">
+                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                <blockquote>"Every successful product begins with a bold idea."</blockquote>
+                <cite>What Inspires Us</cite>
+            </div>
         </div>
     </section>
 
