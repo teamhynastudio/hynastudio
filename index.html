@@ -5508,52 +5508,6 @@
             }
         }
 
-        .team-subheader {
-            font-family: var(--font-display);
-            font-size: clamp(1.5rem, 3.5vw, 2.2rem);
-            font-weight: 800;
-            text-align: center;
-            width: 100%;
-            max-width: 860px;
-            margin: 0 auto;
-            letter-spacing: -0.02em;
-            padding: 28px 40px 24px;
-            background: linear-gradient(135deg, rgba(79, 63, 240, 0.06) 0%, rgba(147, 51, 234, 0.06) 100%);
-            border-radius: 20px;
-            border: 1px solid rgba(79, 63, 240, 0.12);
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 14px;
-        }
-
-        .team-subheader span {
-            background: linear-gradient(135deg, var(--accent), var(--accent2));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-        }
-
-        .team-subheader::before {
-            content: "";
-            width: 40px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent), var(--accent2));
-            border-radius: 2px;
-            flex-shrink: 0;
-        }
-
-        .team-subheader::after {
-            content: "";
-            width: 40px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent2), var(--accent));
-            border-radius: 2px;
-            flex-shrink: 0;
-        }
-
         /* Category badge on cards */
         .team-card-badge {
             position: absolute;
@@ -6464,7 +6418,6 @@
 
             // Nav hide-on-scroll / show-on-stop behavior
             const navElement = document.querySelector('nav');
-            const subheader = document.querySelector('.team-subheader');
             let navScrollTimer = null;
 
             const handleScroll = () => {
@@ -6485,10 +6438,6 @@
                         // Show nav when scrolling stops (after 200ms idle)
                         navElement.classList.remove('nav-hidden');
                     }, 200);
-                }
-                if (subheader) {
-                    subheader.style.opacity = '1';
-                    subheader.style.visibility = 'visible';
                 }
             };
             window.addEventListener('scroll', handleScroll, { passive: true });
