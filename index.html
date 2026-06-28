@@ -5546,7 +5546,7 @@
         <div class="team-stack-section" id="teamStackSection">
 
             <!-- Vignesh -->
-            <div class="team-card non-sticky" role="button" tabindex="0" data-name="Vignesh" data-role="Founder | CEO"
+            <div class="team-card" role="button" tabindex="0" data-name="Vignesh" data-role="Founder | CEO"
                 data-bio="&quot;Leadership is not about control, it is about building people who can lead without you.&quot; Vignesh drives the strategic vision and engineering standards at Hyna Studio."
                 data-photo="https://i.postimg.cc/wjtYqBpS/IMG-33081.jpg"
                 data-portfolio="https://vigneshvl-dev.github.io/PORTFOLIO/"
@@ -5774,8 +5774,8 @@
                     );
                 }
 
-                // Stacking: previous card fades & scales as next card scrolls over it (skip for Vignesh, first card)
-                if (i > 0 && i < cards.length - 1) {
+                // Stacking: previous card fades & scales as next card scrolls over it
+                if (i < cards.length - 1) {
                     const nextCard = cards[i + 1];
                     ScrollTrigger.create({
                         trigger: nextCard,
