@@ -5512,7 +5512,6 @@
             font-family: var(--font-display);
             font-size: clamp(1.5rem, 3.5vw, 2.2rem);
             font-weight: 800;
-            color: var(--ink);
             text-align: center;
             width: 100%;
             max-width: 860px;
@@ -5529,11 +5528,19 @@
             gap: 14px;
         }
 
+        .team-subheader span {
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
         .team-subheader::before {
             content: "";
             width: 40px;
             height: 3px;
-            background: linear-gradient(90deg, var(--accent), #a855f7);
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
             border-radius: 2px;
             flex-shrink: 0;
         }
@@ -5542,7 +5549,7 @@
             content: "";
             width: 40px;
             height: 3px;
-            background: linear-gradient(90deg, #a855f7, var(--accent));
+            background: linear-gradient(90deg, var(--accent2), var(--accent));
             border-radius: 2px;
             flex-shrink: 0;
         }
@@ -5579,9 +5586,12 @@
             <h2>Our Leadership & Innovation Team</h2>
             <p>Passionate experts transforming ideas into impactful solutions through design, technology, and
                 collaboration</p>
+
         </div>
 
         <div class="team-stack-section" id="teamStackSection">
+
+            <h2 class="team-subheader"><span>Founder</span></h2>
 
             <!-- Vignesh -->
             <div class="team-card non-sticky" role="button" tabindex="0" data-name="Vignesh" data-role="Founder | CEO"
@@ -5591,8 +5601,7 @@
                 data-github="https://github.com/vigneshvl-dev"
                 data-linkedin="https://www.linkedin.com/in/vigneshvl-dev/" data-college="Anna University"
                 data-degree="B.E. Computer Science & Engineering" data-college-logo="">
-                <span class="team-card-badge founder-badge">Founder</span>
-                <span class="team-card-num">01 / 06</span>
+
                 <div class="team-card-avatar-wrap">
                     <img src="https://i.postimg.cc/wjtYqBpS/IMG-33081.jpg" alt="Vignesh" class="team-avatar">
                     <div class="team-social">
@@ -5617,7 +5626,7 @@
                 </div>
             </div>
 
-            <h2 class="team-subheader">Heads of Department</h2>
+            <h2 class="team-subheader"><span>Heads of Department</span></h2>
 
             <!-- Jashwin -->
             <div class="team-card" role="button" tabindex="0" data-name="Jashwin"
@@ -5627,8 +5636,6 @@
                 data-github="https://github.com/jashwinj2008"
                 data-linkedin="https://www.linkedin.com/in/jashwin-j-16b06240a?utm_source=share_via&utm_content=profile&utm_medium=member_android"
                 data-college="Anna University" data-degree="B.E. Computer Science & Engineering" data-college-logo="">
-                <span class="team-card-badge">Head of Department</span>
-                <span class="team-card-num">02 / 06</span>
                 <div class="team-card-avatar-wrap">
                     <img src="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" alt="Jashwin"
                         class="team-avatar">
@@ -5661,8 +5668,6 @@
                 data-portfolio="https://portholio-zeta.vercel.app/" data-github="https://github.com/dharshan00814"
                 data-linkedin="https://www.linkedin.com/in/dharshan-jm" data-college="Anna University"
                 data-degree="B.E. Computer Science & Engineering" data-college-logo="">
-                <span class="team-card-badge">Head of Department</span>
-                <span class="team-card-num">03 / 06</span>
                 <div class="team-card-avatar-wrap">
                     <img src="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg"
                         alt="Dharshan" class="team-avatar">
@@ -5695,8 +5700,6 @@
                 data-photo="https://i.postimg.cc/Jnwtf3ZZ/Whats-App-Image-2026-02-20-at-7-00-57-PM.jpg"
                 data-portfolio="#" data-github="#" data-linkedin="#" data-college="Anna University"
                 data-degree="B.E. Computer Science & Engineering" data-college-logo="">
-                <span class="team-card-badge">Head of Department</span>
-                <span class="team-card-num">04 / 06</span>
                 <div class="team-card-avatar-wrap">
                     <img src="https://i.postimg.cc/Jnwtf3ZZ/Whats-App-Image-2026-02-20-at-7-00-57-PM.jpg" alt="Asthamil"
                         class="team-avatar">
@@ -5727,8 +5730,6 @@
                 data-portfolio="#" data-github="#"
                 data-linkedin="https://www.linkedin.com/in/tharun-krishna-347b123a0?utm_source=share_via&utm_content=profile&utm_medium=member_android"
                 data-college="Anna University" data-degree="B.E. Computer Science & Engineering" data-college-logo="">
-                <span class="team-card-badge">Head of Department</span>
-                <span class="team-card-num">05 / 06</span>
                 <div class="team-card-avatar-wrap">
                     <img src="https://i.postimg.cc/TP5Jj9Th/Whats-App-Image-2026-06-11-at-11-26-46-AM.jpg"
                         alt="Tharun Krishna" class="team-avatar">
@@ -5759,8 +5760,6 @@
                 data-photo="https://i.postimg.cc/1zWvJd1C/zarif.jpg" data-portfolio="#" data-github="#"
                 data-linkedin="https://www.linkedin.com/in/muhamed-zarif-80860a37a?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
                 data-college="Anna University" data-degree="B.E. Computer Science & Engineering" data-college-logo="">
-                <span class="team-card-badge">Head of Department</span>
-                <span class="team-card-num">06 / 06</span>
                 <div class="team-card-avatar-wrap">
                     <img src="https://i.postimg.cc/1zWvJd1C/zarif.jpg" alt="Mohammad Zarif" class="team-avatar">
                     <div class="team-social">
