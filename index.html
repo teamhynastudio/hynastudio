@@ -6329,14 +6329,8 @@
                     }, 200);
                 }
                 if (subheader) {
-                    const rect = subheader.getBoundingClientRect();
-                    if (rect.top < 180) {
-                        subheader.style.opacity = '0';
-                        subheader.style.visibility = 'hidden';
-                    } else {
-                        subheader.style.opacity = '1';
-                        subheader.style.visibility = 'visible';
-                    }
+                    subheader.style.opacity = '1';
+                    subheader.style.visibility = 'visible';
                 }
             };
             window.addEventListener('scroll', handleScroll, { passive: true });
