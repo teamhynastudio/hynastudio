@@ -5924,7 +5924,7 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
 
         .solve-cards {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(3, 1fr);
             gap: 24px;
         }
 
@@ -6103,7 +6103,7 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
     <section id="how-we-solve" class="solve-section">
         <div class="solve-inner">
             <h2 class="solve-heading">Built for <em>Modern</em> Businesses</h2>
-            <div class="solve-cards" style="grid-template-columns: repeat(3, 1fr);">
+            <div class="solve-cards">
                 <!-- Card 1 -->
                 <div class="solve-card">
                     <div class="solve-card-icon">
@@ -6292,6 +6292,11 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
             z-index: 10;
         }
 
+        .team-card.non-sticky {
+            position: relative;
+            top: auto;
+        }
+
         .team-card:hover {
             border-color: rgba(79, 63, 240, 0.3);
             box-shadow: 0 20px 50px rgba(79, 63, 240, 0.12);
@@ -6472,7 +6477,7 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
         <div class="team-stack-section" id="teamStackSection">
 
             <!-- Vignesh -->
-            <div class="team-card" role="button" tabindex="0" data-name="Vignesh" data-role="Founder | CEO"
+            <div class="team-card non-sticky" role="button" tabindex="0" data-name="Vignesh" data-role="Founder | CEO"
                 data-bio="&quot;Leadership is not about control, it is about building people who can lead without you.&quot; Vignesh drives the strategic vision and engineering standards at Hyna Studio."
                 data-photo="https://i.postimg.cc/wjtYqBpS/IMG-33081.jpg"
                 data-portfolio="https://vigneshvl-dev.github.io/PORTFOLIO/"
@@ -6663,23 +6668,25 @@ All team members are B.E. Computer Science graduates from <strong>Anna Universit
             const cards = gsap.utils.toArray('.team-card');
 
             cards.forEach((card, i) => {
-                // Entrance: slide up on scroll into view
-                gsap.fromTo(card,
-                    { y: 50, opacity: 0 },
-                    {
-                        y: 0, opacity: 1,
-                        duration: 0.55,
-                        ease: 'power2.out',
-                        scrollTrigger: {
-                            trigger: card,
-                            start: 'top 88%',
-                            toggleActions: 'play none none reverse',
+                // Entrance: slide up on scroll into view (skip for Vignesh, first card)
+                if (i > 0) {
+                    gsap.fromTo(card,
+                        { y: 50, opacity: 0 },
+                        {
+                            y: 0, opacity: 1,
+                            duration: 0.55,
+                            ease: 'power2.out',
+                            scrollTrigger: {
+                                trigger: card,
+                                start: 'top 88%',
+                                toggleActions: 'play none none reverse',
+                            }
                         }
-                    }
-                );
+                    );
+                }
 
-                // Stacking: previous card fades & scales as next card scrolls over it
-                if (i < cards.length - 1) {
+                // Stacking: previous card fades & scales as next card scrolls over it (skip for Vignesh, first card)
+                if (i > 0 && i < cards.length - 1) {
                     const nextCard = cards[i + 1];
                     ScrollTrigger.create({
                         trigger: nextCard,
