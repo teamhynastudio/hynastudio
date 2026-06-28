@@ -1787,6 +1787,34 @@
             padding-bottom: 4rem;
         }
 
+        .footer-brand {
+            grid-column: span 2;
+        }
+
+        .footer-brand .nav-logo {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-brand .logo-text .logo-main {
+            color: #ffffff !important;
+        }
+
+        .footer-brand .logo-text .logo-sub {
+            color: rgba(255, 255, 255, 0.6) !important;
+        }
+
+        .footer-brand p {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 0.8rem;
+            max-width: 28ch;
+            line-height: 1.5;
+        }
+
         .footer-links h5 {
             font-size: 0.78rem;
             font-weight: 700;
@@ -6275,115 +6303,73 @@
     <!-- FOOTER -->
     <footer>
         <div class="footer-top">
-            <!-- COMPANY -->
+            <div class="footer-brand">
+                <a href="index.html" class="nav-logo">
+                    <img src="./hyna-logo-new.png" class="logo-img" alt="Hyna Studio Logo">
+                    <div class="logo-text">
+                        <span class="logo-main" style="color: #76ecf0;">Hyna Studio</span>
+                        <span class="logo-sub" style="color: rgba(93, 214, 230, 0.801);">Tech & Experiences</span>
+                    </div>
+                </a>
+                <p>A full-spectrum digital studio building products that matter.</p>
+            </div>
             <div class="footer-links">
-                <h5>Company</h5>
+                <h5>Services</h5>
                 <ul>
-                    <li><a href="#our-mission">About us</a></li>
-                    <li><a href="#philosophy">Philosophy</a></li>
+                    <li><a href="index.html?service=software#hyna-services">Software & SaaS</a></li>
+                    <li><a href="index.html?service=web#hyna-services">Web Development</a></li>
+                    <li><a href="index.html?service=shopify#hyna-services">Shopify & Mobile</a></li>
+                    <li><a href="index.html?service=design#hyna-services">Design & Marketing</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h5>SHOP</h5>
+                <ul>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="shipping-policy.html">Shipping Policy</a></li>
+                    <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+                    <li><a href="refund-policy.html">Refund Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h5>Studio</h5>
+                <ul>
+                    <li><a href="#about">About</a></li>
                     <li><a href="#team">Team</a></li>
-                    <li><a href="#team">Founder</a></li>
-                    <li><a href="#why-we-exist">Why we exist</a></li>
+                    <li><a href="#faq">FAQ</a></li>
                 </ul>
             </div>
-
-            <!-- PRODUCTS -->
             <div class="footer-links">
-                <h5>Products</h5>
+                <h5>Contact</h5>
                 <ul>
-                    <li><a href="#how-we-solve">All products</a></li>
-                    <li><a href="#">HynaAssist AI</a></li>
-                    <li><a href="#">HynaPOS</a></li>
-                    <li><a href="#">HynaCRM</a></li>
-                    <li><a href="#">HynaInventory</a></li>
+                    <li><a href="mailto:team.hynastudio@gmail.com">team.hynastudio@gmail.com</a></li>
+                    <li><a href="https://github.com/teamhynastudio">GitHub</a></li>
+                    <li><a href="https://www.linkedin.com/in/hyna-studio-089b33416/">LinkedIn</a></li>
+                    <li><a href="https://x.com/HynaStudio">Twitter / X</a></li>
                 </ul>
-            </div>
-
-            <!-- SOLUTIONS -->
-            <div class="footer-links">
-                <h5>Solutions</h5>
-                <ul>
-                    <li><a href="#">Healthcare</a></li>
-                    <li><a href="#">Retail</a></li>
-                    <li><a href="#">F&B</a></li>
-                    <li><a href="#">Construction</a></li>
-                    <li><a href="#">Salons</a></li>
-                    <li><a href="#">Education</a></li>
-                </ul>
-            </div>
-
-            <!-- PORTFOLIO -->
-            <div class="footer-links">
-                <h5>Portfolio</h5>
-                <ul>
-                    <li><a href="work.html">Featured cases</a></li>
-                    <li><a href="work.html">Case studies</a></li>
-                    <li><a href="work.html">Clients</a></li>
-                    <li><a href="#">Blogs</a></li>
-                </ul>
-            </div>
-
-            <!-- RESOURCES -->
-            <div class="footer-links">
-                <h5>Resources</h5>
-                <ul>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="#contact">Get quote</a></li>
-                    <li><a href="#contact">Report issue</a></li>
-                    <li><a href="#">How we think</a></li>
-                </ul>
-            </div>
-
-            <!-- LEGAL -->
-            <div class="footer-links">
-                <h5>Legal</h5>
-                <ul>
-                    <li><a href="privacy-policy.html">Privacy policy</a></li>
-                    <li><a href="terms-conditions.html">Terms of service</a></li>
-                    <li><a href="#">Sitemap</a></li>
-                </ul>
+                <div class="footer-location" style="margin-top: 25px;">
+                    <h5 style="margin-bottom: 12px; font-size: 0.9rem; letter-spacing: 1px;">Location</h5>
+                    <div style="display: flex; align-items: center; gap: 14px;">
+                        <!-- Thiruvalluvar Statue Image -->
+                        <div
+                            style="width: 44px; height: 44px; border-radius: 8px; overflow: hidden; background: #ffffff; border: 1.5px solid rgba(255, 255, 255, 0.15); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 12px rgba(0, 231, 179, 0.25); flex-shrink: 0;">
+                            <img src="thiruvalluvar.png" alt="Thiruvalluvar Statue"
+                                style="width: 100%; height: 100%; object-fit: cover; object-position: center 30%;">
+                        </div>
+                        <div style="font-size: 0.82rem; color: #9ea4b5; line-height: 1.4;">
+                            <strong
+                                style="color: #ffffff; display: block; margin-bottom: 2px; font-size: 0.88rem;">Nagercoil</strong>
+                            Kanniyakumari, Tamil Nadu,<br>India
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="footer-divider" style="border-top: 1px solid rgba(255, 255, 255, 0.08); margin: 3rem 0 2rem;"></div>
-
-        <div class="footer-bottom"
-            style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 2rem;">
-            <!-- Brand & Socials -->
-            <div class="footer-brand-bottom"
-                style="display: flex; flex-direction: column; gap: 14px; text-align: left;">
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <img src="./hyna-logo-new.png" class="logo-img" alt="Hyna Studio Logo"
-                        style="height: 28px; width: auto;">
-                    <span
-                        style="font-family: var(--font-display); font-size: 1.2rem; font-weight: 800; color: #ffffff; letter-spacing: -0.02em;">Hyna
-                        Studio</span>
-                </div>
-                <div
-                    style="font-family: var(--font-mono), monospace; font-size: 10px; color: rgba(255, 255, 255, 0.35); letter-spacing: 0.1em; text-transform: uppercase;">
-                    BY HYNA STUDIO — BUILT IN TAMIL NADU
-                </div>
-                <div class="footer-social-icons" style="display: flex; gap: 16px; margin-top: 4px;">
-                    <a href="https://www.linkedin.com/in/hyna-studio-089b33416/" target="_blank"
-                        style="color: rgba(255, 255, 255, 0.45); font-size: 16px; transition: color 0.2s;"><i
-                            class="fab fa-linkedin-in"></i></a>
-                    <a href="#" style="color: rgba(255, 255, 255, 0.45); font-size: 16px; transition: color 0.2s;"><i
-                            class="fab fa-whatsapp"></i></a>
-                    <a href="#" style="color: rgba(255, 255, 255, 0.45); font-size: 16px; transition: color 0.2s;"><i
-                            class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-
-            <!-- Quick Legal / Contact Links -->
-            <div class="footer-legal-links" style="display: flex; gap: 24px;">
-                <a href="privacy-policy.html"
-                    style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.45); text-decoration: none; transition: color 0.2s;">Privacy
-                    policy</a>
-                <a href="terms-conditions.html"
-                    style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.45); text-decoration: none; transition: color 0.2s;">Terms
-                    of service</a>
-                <a href="mailto:team.hynastudio@gmail.com"
-                    style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.45); text-decoration: none; transition: color 0.2s;">Contact</a>
+        <div class="footer-bottom">
+            <p>© 2026 Hyna Studio. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-conditions.html">Terms & Conditions</a>
             </div>
         </div>
     </footer>
