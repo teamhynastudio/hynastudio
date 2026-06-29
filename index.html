@@ -1778,10 +1778,13 @@
 
         /* ── FOOTER ── */
         footer {
-            background: #000000;
-            color: var(--paper);
+            background:
+                radial-gradient(ellipse 90% 50% at 50% 105%, rgba(220, 235, 245, 0.5) 0%, transparent 65%),
+                linear-gradient(170deg, #081c29 0%, #0c2638 35%, #0f2f45 65%, #163a54 100%);
+            color: #e8edf2;
             padding: 6rem 8% 4rem;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
         }
 
         .footer-top {
@@ -5914,6 +5917,493 @@
         </div>
 
     </section>
+
+    <!-- ── API DEVELOPER SECTION ── -->
+    <section id="api-section" class="api-dev-section">
+        <!-- LEFT: Info Card -->
+        <div class="api-info-card">
+            <div class="api-card-inner">
+                <span class="api-card-label">// Developer Platform</span>
+                <h2 class="api-card-title">Build and scale faster with <em>developer-friendly APIs</em></h2>
+                <p class="api-card-desc">Accelerate development with 480+ pre-built workflows and API endpoints. Give your engineering team complete control over customer management, invoicing, and subscription plans — all with comprehensive documentation and predictable response times.</p>
+                <div class="api-card-links">
+                    <a href="#" class="api-link-tag">API Explorer ↗</a>
+                    <a href="#" class="api-link-tag">Help Docs ↗</a>
+                    <a href="#" class="api-link-tag">API Docs ↗</a>
+                </div>
+                <div class="api-card-badge">
+                    <span class="api-badge-dot"></span>
+                    <span>Built inside <strong>Hyna Studio</strong></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CENTER: Code Window -->
+        <div class="api-code-panel">
+            <div class="api-code-header">
+                <span class="api-code-dot red"></span>
+                <span class="api-code-dot yellow"></span>
+                <span class="api-code-dot green"></span>
+                <span class="api-code-lang-label" id="apiLangLabel">cURL</span>
+            </div>
+            <div class="api-code-body">
+                <pre class="api-code-pre" id="apiCodeDisplay"></pre>
+                <span class="api-cursor" id="apiCursor">|</span>
+            </div>
+        </div>
+
+        <!-- RIGHT: Language Selector -->
+        <div class="api-lang-list">
+            <button class="api-lang-btn active" data-lang="cURL">cURL</button>
+            <button class="api-lang-btn" data-lang="TypeScript">TypeScript</button>
+            <button class="api-lang-btn" data-lang="Python">Python</button>
+            <button class="api-lang-btn" data-lang="PHP">PHP</button>
+            <button class="api-lang-btn" data-lang="Java">Java</button>
+            <button class="api-lang-btn" data-lang="Ruby">Ruby</button>
+            <button class="api-lang-btn" data-lang=".NET">.NET</button>
+            <button class="api-lang-btn" data-lang="Go">Go</button>
+        </div>
+    </section>
+
+    <style>
+        /* ── API DEV SECTION ── */
+        .api-dev-section {
+            display: grid;
+            grid-template-columns: 410px 1fr 140px;
+            gap: 0;
+            min-height: 480px;
+            background: #0b1e2d;
+            position: relative;
+            overflow: visible;
+            padding: 0;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            margin-left: 4rem; /* move from screen left edge */
+            border-radius: 80px 0 0 80px; /* actual rounded left corner shape */
+        }
+
+        /* Subtle ambient glow */
+        .api-dev-section::before {
+            content: '';
+            position: absolute;
+            top: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 300px;
+            background: radial-gradient(ellipse, rgba(0,217,163,0.07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        /* LEFT CARD — clean floating card shape */
+        .api-info-card {
+            background: linear-gradient(160deg, #eef4f7 0%, #d8e8ef 100%);
+            padding: 3rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            z-index: 10;
+            border-radius: 12px; /* clean standard rounded rectangle */
+            /* Float the card upward out of the section */
+            margin-top: -2.5rem;
+            margin-bottom: -2.5rem;
+            margin-left: 4rem; /* space from the left corner of dark container */
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            align-self: stretch;
+        }
+
+        .api-card-label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: #4F8FF0;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .api-card-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 800;
+            line-height: 1.25;
+            color: #0d1f2d;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .api-card-title em {
+            font-style: normal;
+            background: linear-gradient(135deg, #00b37e, #4F8FF0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .api-card-desc {
+            font-size: 0.82rem;
+            color: #3a5068;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .api-card-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .api-link-tag {
+            display: inline-block;
+            width: fit-content;
+            padding: 0.3rem 0.75rem;
+            background: rgba(79,143,240,0.15);
+            border: 1px solid rgba(79,143,240,0.35);
+            border-radius: 6px;
+            color: #2a5fa8;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-family: var(--font-mono);
+        }
+
+        .api-link-tag:hover {
+            background: rgba(79,143,240,0.28);
+            color: #1a3f78;
+        }
+
+        .api-card-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.78rem;
+            color: #4a6880;
+            font-weight: 500;
+        }
+
+        .api-card-badge strong {
+            color: #0d1f2d;
+        }
+
+        .api-badge-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #00d9a3;
+            box-shadow: 0 0 8px rgba(0,217,163,0.6);
+            animation: api-pulse 2s infinite;
+        }
+
+        @keyframes api-pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.3); }
+        }
+
+        /* CENTER CODE PANEL */
+        .api-code-panel {
+            background: #0d1f2d;
+            display: flex;
+            flex-direction: column;
+            padding: 2.5rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .api-code-header {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            margin-bottom: 2rem;
+        }
+
+        .api-code-dot {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+        }
+        .api-code-dot.red    { background: #ff5f57; }
+        .api-code-dot.yellow { background: #febc2e; }
+        .api-code-dot.green  { background: #28c840; }
+
+        .api-code-lang-label {
+            margin-left: 0.75rem;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.4);
+            letter-spacing: 0.08em;
+        }
+
+        .api-code-body {
+            flex: 1;
+            position: relative;
+        }
+
+        .api-code-pre {
+            font-family: var(--font-mono);
+            font-size: 0.88rem;
+            line-height: 1.9;
+            color: #a8d0e6;
+            white-space: pre-wrap;
+            word-break: break-all;
+            min-height: 280px;
+        }
+
+        .api-cursor {
+            display: inline-block;
+            color: #00d9a3;
+            font-weight: 700;
+            font-size: 1rem;
+            animation: blink-cursor 0.75s step-end infinite;
+            vertical-align: text-bottom;
+            margin-left: 1px;
+        }
+
+        @keyframes blink-cursor {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Code syntax colors */
+        .api-code-pre .kw   { color: #c792ea; }  /* keyword */
+        .api-code-pre .fn   { color: #82aaff; }  /* function */
+        .api-code-pre .str  { color: #c3e88d; }  /* string */
+        .api-code-pre .num  { color: #f78c6c; }  /* number */
+        .api-code-pre .cm   { color: #546e7a; font-style: italic; } /* comment */
+        .api-code-pre .key  { color: #80cbc4; }  /* key */
+
+        /* RIGHT LANG SELECTOR */
+        .api-lang-list {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 0.2rem;
+            padding: 2rem 1rem;
+            background: #091828;
+            border-left: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .api-lang-btn {
+            background: transparent;
+            border: none;
+            color: rgba(255,255,255,0.35);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            font-weight: 500;
+            padding: 0.55rem 1rem;
+            text-align: right;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            letter-spacing: 0.03em;
+        }
+
+        .api-lang-btn:hover {
+            color: rgba(255,255,255,0.75);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .api-lang-btn.active {
+            color: #0d1f2d;
+            background: #00d9a3;
+            font-weight: 700;
+            box-shadow: 0 0 16px rgba(0,217,163,0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .api-dev-section {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto;
+            }
+            .api-info-card {
+                border-radius: 0;
+                margin: 0;
+            }
+            .api-lang-list {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                border-left: none;
+                border-top: 1px solid rgba(255,255,255,0.05);
+            }
+            .api-lang-btn {
+                text-align: center;
+            }
+        }
+    </style>
+
+    <script>
+        (function () {
+            const snippets = {
+                cURL: [
+                    '<span class="cm"># Initialize Hyna Studio API</span>',
+                    '<span class="kw">curl</span> -X POST https://api.hynastudio.com/v1/init \\',
+                    '  -H <span class="str">"Authorization: Bearer hyna_sk_live_xxxx"</span> \\',
+                    '  -H <span class="str">"Content-Type: application/json"</span> \\',
+                    '  -d <span class="str">\'{"site": "my-site", "apiKey": "my-api-key"}\'</span>',
+                    '',
+                    '<span class="cm"># Create a subscription</span>',
+                    '<span class="kw">curl</span> -X POST https://api.hynastudio.com/v1/subscriptions \\',
+                    '  -d <span class="str">\'{"customerId": "cust_001", "planId": "pro"}\'</span>',
+                ],
+                TypeScript: [
+                    '<span class="kw">import</span> { HynaStudio } <span class="kw">from</span> <span class="str">"@hynastudio/sdk"</span>;',
+                    '',
+                    '<span class="kw">const</span> client = <span class="kw">new</span> <span class="fn">HynaStudio</span>({',
+                    '  <span class="key">site</span>: <span class="str">"my-site"</span>,',
+                    '  <span class="key">apiKey</span>: <span class="str">"my-api-key"</span>,',
+                    '});',
+                    '',
+                    '<span class="kw">const</span> result = <span class="kw">await</span> client.subscriptions',
+                    '  .<span class="fn">createWithItems</span>({ <span class="key">customerId</span>: <span class="str">"cust_001"</span> });',
+                ],
+                Python: [
+                    '<span class="kw">import</span> hynastudio',
+                    '',
+                    'hynastudio.<span class="fn">configure</span>(',
+                    '  site=<span class="str">"my-site"</span>,',
+                    '  api_key=<span class="str">"my-api-key"</span>',
+                    ')',
+                    '',
+                    'result = hynastudio.Subscription.<span class="fn">create_with_items</span>(',
+                    '  customer_id=<span class="str">"cust_001"</span>',
+                    ')',
+                ],
+                PHP: [
+                    '<span class="cm">// Hyna Studio PHP SDK</span>',
+                    '<span class="fn">HynaStudio</span>::<span class="fn">configure</span>([',
+                    '  <span class="str">"site"</span>    => <span class="str">"my-site"</span>,',
+                    '  <span class="str">"apiKey"</span> => <span class="str">"my-api-key"</span>,',
+                    ']);',
+                    '',
+                    '<span class="kw">$result</span> = HynaStudio\\Subscription',
+                    '  ::<span class="fn">createWithItems</span>([',
+                    '    <span class="str">"customerId"</span> => <span class="str">"cust_001"</span>',
+                    '  ]);',
+                ],
+                Java: [
+                    '<span class="cm">// Initialize Hyna Studio Java SDK</span>',
+                    '<span class="fn">Environment</span>.<span class="fn">configure</span>(',
+                    '  <span class="str">"my-site"</span>, <span class="str">"my-api-key"</span>',
+                    ');',
+                    '',
+                    'Result result = Subscription',
+                    '  .<span class="fn">createWithItems</span>(<span class="str">"customerId"</span>)',
+                    '  .<span class="fn">request</span>();',
+                ],
+                Ruby: [
+                    '<span class="kw">require</span> <span class="str">"hyna_studio"</span>',
+                    '',
+                    'HynaStudio.<span class="fn">configure</span> <span class="kw">do</span> |config|',
+                    '  config.site    = <span class="str">"my-site"</span>',
+                    '  config.api_key = <span class="str">"my-api-key"</span>',
+                    '<span class="kw">end</span>',
+                    '',
+                    'result = HynaStudio::Subscription',
+                    '  .<span class="fn">create_with_items</span>(<span class="str">"cust_001"</span>)',
+                ],
+                '.NET': [
+                    '<span class="kw">using</span> HynaStudio.SDK;',
+                    '',
+                    '<span class="kw">var</span> client = <span class="kw">new</span> <span class="fn">HynaClient</span>(',
+                    '  site:   <span class="str">"my-site"</span>,',
+                    '  apiKey: <span class="str">"my-api-key"</span>',
+                    ');',
+                    '',
+                    '<span class="kw">var</span> result = <span class="kw">await</span> client.Subscriptions',
+                    '  .<span class="fn">CreateWithItemsAsync</span>(<span class="str">"cust_001"</span>);',
+                ],
+                Go: [
+                    '<span class="kw">import</span> hyna <span class="str">"github.com/hynastudio/sdk-go"</span>',
+                    '',
+                    'client := hyna.<span class="fn">NewClient</span>(',
+                    '  hyna.<span class="fn">WithSite</span>(<span class="str">"my-site"</span>),',
+                    '  hyna.<span class="fn">WithAPIKey</span>(<span class="str">"my-api-key"</span>),',
+                    ')',
+                    '',
+                    'result, err := client.Subscriptions.',
+                    '  <span class="fn">CreateWithItems</span>(<span class="str">"cust_001"</span>)',
+                ],
+            };
+
+            let currentLang = 'cURL';
+            let typeTimer = null;
+            let autoRotate = null;
+            const langs = Object.keys(snippets);
+            let langIndex = 0;
+
+            const display = document.getElementById('apiCodeDisplay');
+            const cursor  = document.getElementById('apiCursor');
+            const label   = document.getElementById('apiLangLabel');
+            const buttons = document.querySelectorAll('.api-lang-btn');
+
+            function setActive(lang) {
+                currentLang = lang;
+                label.textContent = lang;
+                buttons.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+                animateCode(lang);
+            }
+
+            function animateCode(lang) {
+                if (typeTimer) clearTimeout(typeTimer);
+                const lines = snippets[lang];
+                const fullHTML = lines.join('\n');
+                display.innerHTML = '';
+                cursor.style.display = 'inline';
+
+                let charIdx = 0;
+                const plainText = fullHTML.replace(/<[^>]+>/g, '');
+                const totalLen  = plainText.length;
+
+                // Build char-by-char in rendered HTML
+                let rendered = '';
+                let htmlIdx  = 0;
+
+                function typeNext() {
+                    if (charIdx >= totalLen) {
+                        cursor.style.display = 'inline';
+                        return;
+                    }
+                    // Skip HTML tags in fullHTML
+                    while (htmlIdx < fullHTML.length && fullHTML[htmlIdx] === '<') {
+                        const closeIdx = fullHTML.indexOf('>', htmlIdx);
+                        rendered += fullHTML.substring(htmlIdx, closeIdx + 1);
+                        htmlIdx = closeIdx + 1;
+                    }
+                    if (htmlIdx < fullHTML.length) {
+                        rendered += fullHTML[htmlIdx];
+                        htmlIdx++;
+                        charIdx++;
+                    }
+                    display.innerHTML = rendered;
+                    typeTimer = setTimeout(typeNext, 18);
+                }
+                typeNext();
+            }
+
+            buttons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    clearInterval(autoRotate);
+                    setActive(btn.dataset.lang);
+                    // Resume auto-rotate after 8 s of inactivity
+                    autoRotate = setInterval(rotateLang, 4000);
+                });
+            });
+
+            function rotateLang() {
+                langIndex = (langIndex + 1) % langs.length;
+                setActive(langs[langIndex]);
+            }
+
+            // Start
+            animateCode('cURL');
+            autoRotate = setInterval(rotateLang, 4000);
+        })();
+    </script>
 
     <script>
         /* ─── Team card mouse-glow ─── */
