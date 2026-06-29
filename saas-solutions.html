@@ -1819,6 +1819,101 @@
       }
     }
 
+    /* ── MOBILE ALIGNMENT FIXES ── */
+    @media (max-width: 900px) {
+      /* Services section side padding */
+      .services {
+        padding: 40px 20px 36px;
+      }
+
+      /* Footer side padding */
+      footer {
+        padding: 28px 20px;
+      }
+
+      /* Service cards: stack content above illustration */
+      .service-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .card-illustration {
+        width: 100%;
+        min-width: unset;
+        min-height: 90px;
+      }
+
+      /* CTA card: stack content above illustration */
+      .cta-card {
+        flex-direction: column;
+      }
+
+      /* services-grid-2: single column */
+      .services-grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      /* Hero banner padding */
+      .hero-banner-body {
+        padding: 16px 16px 32px;
+      }
+
+      /* Tighten section heading */
+      .section-heading {
+        font-size: 16px;
+        margin-bottom: 24px;
+      }
+
+      /* Service cards fully stacked */
+      .service-card {
+        flex-direction: column;
+      }
+
+      .card-illustration {
+        width: 100%;
+        min-width: unset;
+      }
+
+      /* CTA card stacked */
+      .cta-card {
+        flex-direction: column;
+      }
+
+      /* CTA illustration height */
+      .cta-illustration {
+        height: 80px;
+        font-size: 36px;
+      }
+
+      /* Advantage section */
+      .advantage-title {
+        font-size: 26px;
+      }
+
+      .advantage-card {
+        padding: 16px;
+        gap: 14px;
+      }
+
+      /* Footer items */
+      footer {
+        padding: 24px 16px;
+        gap: 20px;
+      }
+
+      /* Badges wrap better */
+      .badges {
+        gap: 8px;
+      }
+
+      .badge {
+        font-size: 12px;
+        padding: 6px 10px;
+      }
+    }
+
     /* ── HYNA STUDIO ADVANTAGE SECTION ── */
     .advantage-section {
       padding: 100px 8%;
