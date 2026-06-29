@@ -6218,10 +6218,21 @@
             .api-dev-section {
                 grid-template-columns: 1fr;
                 grid-template-rows: auto auto auto;
+                margin-left: 0;
+                border-radius: 0;
             }
             .api-info-card {
                 border-radius: 0;
                 margin: 0;
+                padding: 2.5rem 1.5rem;
+            }
+            .api-card-links {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 0.75rem;
+            }
+            .api-code-panel {
+                padding: 2rem 1.5rem;
             }
             .api-lang-list {
                 flex-direction: row;
@@ -6229,6 +6240,8 @@
                 justify-content: center;
                 border-left: none;
                 border-top: 1px solid rgba(255,255,255,0.05);
+                padding: 1.5rem 1rem;
+                gap: 0.5rem;
             }
             .api-lang-btn {
                 text-align: center;
