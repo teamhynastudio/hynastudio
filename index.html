@@ -1,15 +1,15 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-1B1FN1XNL0"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-      gtag('config', 'G-1B1FN1XNL0');
+        gtag('config', 'G-1B1FN1XNL0');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1124,7 +1124,7 @@
             justify-content: center;
             font-size: 0.85rem;
         }
-        
+
         .mv-item:first-child .mv-icon {
             background: rgba(79, 63, 240, 0.1);
             color: var(--accent);
@@ -1142,6 +1142,7 @@
             .journey-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
             .journey-card.col-span-3 {
                 grid-column: span 2;
             }
@@ -1152,15 +1153,18 @@
                 grid-template-columns: 1fr;
                 gap: 18px;
             }
+
             .journey-card.col-span-2,
             .journey-card.row-span-2,
             .journey-card.col-span-3 {
                 grid-column: span 1;
                 grid-row: span 1;
             }
+
             .quote-banner {
                 padding: 30px 20px;
             }
+
             .quote-banner blockquote {
                 font-size: 1.35rem;
             }
@@ -2899,7 +2903,16 @@
                     <a href="contact.html" class="btn-primary"
                         style="background: linear-gradient(135deg, var(--accent), #7C3AED); box-shadow: 0 4px 20px rgba(79, 63, 240, 0.45); border: none;">Start
                         your project →</a>
-                    <a href="work.html" class="btn-ghost">Explore Our Work</a>
+                    <a href="#team" class="btn-ghost" style="display:inline-flex;align-items:center;gap:0.5rem;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                        </svg>
+                        Meet Our Team
+                    </a>
                 </div>
                 <div class="hero-stats">
                     <div>
@@ -5983,7 +5996,9 @@
     <section id="about" class="about-section">
         <div class="section-header" style="text-align: center; margin-bottom: 3.5rem;">
             <div class="section-label">// Our Journey</div>
-            <h2 class="section-title" style="font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.025em; line-height: 1.1; color: var(--ink);">From Local Ideas to Global Innovation</h2>
+            <h2 class="section-title"
+                style="font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.025em; line-height: 1.1; color: var(--ink);">
+                From Local Ideas to Global Innovation</h2>
         </div>
 
         <div class="journey-grid">
@@ -5992,14 +6007,18 @@
                 <div>
                     <span class="journey-badge">Origin</span>
                     <h3>Where It All Started</h3>
-                    <p style="font-weight: 600; color: var(--ink); margin-bottom: 12px; font-size: 1.05rem;">Kanyakumari, India</p>
-                    <p>Hyna Studio was founded with a simple vision—to make modern technology accessible to every business. Inspired by the hardworking entrepreneurs of Kanyakumari, we saw the need for affordable, high-quality digital solutions that help businesses grow without complexity.</p>
+                    <p style="font-weight: 600; color: var(--ink); margin-bottom: 12px; font-size: 1.05rem;">
+                        Kanyakumari, India</p>
+                    <p>Hyna Studio was founded with a simple vision—to make modern technology accessible to every
+                        business. Inspired by the hardworking entrepreneurs of Kanyakumari, we saw the need for
+                        affordable, high-quality digital solutions that help businesses grow without complexity.</p>
                 </div>
                 <div class="kanyakumari-visual"></div>
             </div>
 
             <!-- Mission & Vision -->
-            <div class="journey-card row-span-2" style="background: linear-gradient(135deg, rgba(79, 63, 240, 0.01) 0%, rgba(0, 217, 163, 0.01) 100%);">
+            <div class="journey-card row-span-2"
+                style="background: linear-gradient(135deg, rgba(79, 63, 240, 0.01) 0%, rgba(0, 217, 163, 0.01) 100%);">
                 <div style="height: 100%; display: flex; flex-direction: column; justify-content: center;">
                     <!-- Mission -->
                     <div class="mv-item">
@@ -6007,7 +6026,8 @@
                             <div class="mv-icon"><i class="fas fa-bullseye"></i></div>
                             <h4>Our Mission</h4>
                         </div>
-                        <p>To empower startups and businesses with innovative digital products that accelerate growth, improve efficiency, and create lasting value.</p>
+                        <p>To empower startups and businesses with innovative digital products that accelerate growth,
+                            improve efficiency, and create lasting value.</p>
                     </div>
 
                     <!-- Vision -->
@@ -6016,7 +6036,8 @@
                             <div class="mv-icon"><i class="fas fa-eye"></i></div>
                             <h4>Our Vision</h4>
                         </div>
-                        <p>To become a globally recognized technology studio delivering world-class AI and SaaS solutions from Kanyakumari to businesses around the world.</p>
+                        <p>To become a globally recognized technology studio delivering world-class AI and SaaS
+                            solutions from Kanyakumari to businesses around the world.</p>
                     </div>
                 </div>
             </div>
@@ -6026,7 +6047,9 @@
                 <div>
                     <span class="journey-badge">The Gap</span>
                     <h3>The Opportunity We Saw</h3>
-                    <p>Many startups and businesses had ambitious ideas but lacked the technical expertise, budget, or team to bring them to life. Traditional software development was often slow, expensive, and difficult to scale.</p>
+                    <p>Many startups and businesses had ambitious ideas but lacked the technical expertise, budget, or
+                        team to bring them to life. Traditional software development was often slow, expensive, and
+                        difficult to scale.</p>
                 </div>
             </div>
 
@@ -6035,7 +6058,9 @@
                 <div>
                     <span class="journey-badge">Purpose</span>
                     <h3>Why Hyna Studio Exists</h3>
-                    <p>We help businesses transform ideas into digital products through modern technologies, AI automation, SaaS platforms, cloud infrastructure, and custom software development. Our mission is to build solutions that are simple, scalable, and designed for long-term success.</p>
+                    <p>We help businesses transform ideas into digital products through modern technologies, AI
+                        automation, SaaS platforms, cloud infrastructure, and custom software development. Our mission
+                        is to build solutions that are simple, scalable, and designed for long-term success.</p>
                 </div>
             </div>
 
@@ -6049,9 +6074,9 @@
     </section>
 
 
-    <!-- ==============================================
-         OUR PROCESS SECTION (STACKING CARDS)
-    ============================================== -->
+
+
+
     <section id="faq" class="faq-section">
         <style>
             .faq-section {
