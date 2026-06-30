@@ -722,23 +722,6 @@
             margin-top: 0.3rem;
         }
 
-        /* ── HERO DARK BG: override stat colors ── */
-        .hero .stat-num {
-            color: #ffffff;
-        }
-
-        .hero .stat-num span {
-            color: var(--accent2);
-        }
-
-        .hero .stat-label {
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        .hero .hero-stats {
-            border-top-color: rgba(255, 255, 255, 0.12);
-        }
-
         /* ── SECTION COMMON ── */
         section {
             padding: 6rem 4rem;
@@ -2356,8 +2339,17 @@
                 text-align: center;
             }
 
+            .hero-stats > div {
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
             .hero-stats > div:last-child:nth-child(odd) {
                 grid-column: 1 / -1;
+                justify-self: center;
+                width: 50%;
             }
 
             .services-grid {
