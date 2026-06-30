@@ -722,6 +722,23 @@
             margin-top: 0.3rem;
         }
 
+        /* ── HERO DARK BG: override stat colors ── */
+        .hero .stat-num {
+            color: #ffffff;
+        }
+
+        .hero .stat-num span {
+            color: var(--accent2);
+        }
+
+        .hero .stat-label {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .hero .hero-stats {
+            border-top-color: rgba(255, 255, 255, 0.12);
+        }
+
         /* ── SECTION COMMON ── */
         section {
             padding: 6rem 4rem;
@@ -2127,21 +2144,73 @@
             .nav-links {
                 display: none;
                 position: absolute;
-                top: 75px;
-                left: 5%;
-                width: 90%;
-                background: rgba(30, 32, 38, 0.95);
-                backdrop-filter: blur(24px);
-                -webkit-backdrop-filter: blur(24px);
-                border: 1px solid rgba(255, 255, 255, 0.1);
+                top: calc(100% + 12px);
+                left: 50%;
+                transform: translateX(-50%);
+                width: 92%;
+                background: rgba(22, 24, 30, 0.97);
+                backdrop-filter: blur(28px) saturate(180%);
+                -webkit-backdrop-filter: blur(28px) saturate(180%);
+                border: 1px solid rgba(255, 255, 255, 0.12);
                 border-radius: 20px;
                 flex-direction: column;
                 align-items: center;
-                padding: 24px 0;
-                gap: 1.5rem;
+                padding: 20px 0;
+                gap: 0;
                 margin: 0;
-                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+                box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
                 z-index: 99;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links li a {
+                display: block;
+                padding: 0.85rem 1.5rem;
+                font-size: 1rem !important;
+                font-weight: 600 !important;
+                color: rgba(255,255,255,0.85) !important;
+                border-bottom: 1px solid rgba(255,255,255,0.06);
+                transition: color 0.2s, background 0.2s;
+            }
+
+            .nav-links li:last-child a {
+                border-bottom: none;
+            }
+
+            .nav-links li a:hover {
+                color: #ffffff !important;
+                background: rgba(255,255,255,0.05);
+            }
+
+            /* Mobile CTA inside dropdown */
+            .nav-links li.mobile-cta-item {
+                padding: 14px 20px 4px;
+                border-bottom: none;
+            }
+
+            .nav-links li.mobile-cta-item a {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+                background: linear-gradient(135deg, var(--accent), #7C3AED);
+                color: #ffffff !important;
+                padding: 0.7rem 1.8rem;
+                border-radius: 100px;
+                font-size: 0.9rem !important;
+                font-weight: 700 !important;
+                box-shadow: 0 4px 16px rgba(79, 63, 240, 0.45);
+                border-bottom: none;
+                width: auto;
+            }
+
+            .nav-links li.mobile-cta-item a:hover {
+                background: linear-gradient(135deg, #3d2fd0, #6d28d9);
+                transform: translateY(-1px);
             }
 
             .nav-links.active {
@@ -2281,9 +2350,14 @@
             .hero-stats {
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-                margin-top: 3rem;
-                padding-top: 2rem;
+                gap: 1.2rem 1.5rem;
+                margin-top: 2.5rem;
+                padding-top: 1.8rem;
+                text-align: center;
+            }
+
+            .hero-stats > div:last-child:nth-child(odd) {
+                grid-column: 1 / -1;
             }
 
             .services-grid {
@@ -2832,7 +2906,7 @@
         </a>
 
         <ul class="nav-links">
-            <li class="nav-item-dropdown">
+            <li class="nav-item-dropdown nav-hide-mobile">
                 <a href="#solutions-overview" class="nav-link-has-dropdown">Services <span
                         class="nav-arrow">▾</span></a>
 
@@ -2919,7 +2993,7 @@
                         <div class="stat-label">Client Satisfaction</div>
                     </div>
                     <div>
-                        <div class="stat-num">6<span>month</span></div>
+                        <div class="stat-num">6<span>+ mo</span></div>
                         <div class="stat-label">Studio Experience</div>
                     </div>
                 </div>
