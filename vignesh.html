@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vignesh V L — Hyna Studio</title>
+<style>
+  :root{
+    --bg:#07090d;
+    --panel:#0d1117;
+    --line:#1c2531;
+    --blue:#2fb6ff;
+    --text:#e8edf3;
+    --muted:#8493a6;
+    --chip:#1a2230;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    min-height:100vh;
+    background:
+      radial-gradient(circle at 30% 0%, rgba(47,182,255,0.12), transparent 55%),
+      radial-gradient(circle at 80% 80%, rgba(120,40,160,0.12), transparent 55%),
+      #04050a;
+    color:var(--text);
+    font-family:'Segoe UI', Roboto, Arial, sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    padding:50px 18px;
+  }
+  .profile{
+    width:100%;
+    max-width:380px;
+    background:var(--bg);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:32px 26px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.5);
+  }
+  .avatar{
+    width:90px;height:90px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:2px solid var(--blue);
+    margin:0 auto 18px;
+    background:linear-gradient(135deg, var(--blue), #6a3df0);
+    font-size:30px;
+    font-weight:800;
+    color:#04050a;
+  }
+  h1{
+    text-align:center;
+    font-size:22px;
+    margin:0 0 4px;
+  }
+  .role{
+    text-align:center;
+    font-size:12px;
+    color:var(--blue);
+    letter-spacing:1px;
+    font-weight:700;
+    margin-bottom:26px;
+  }
+  .section{margin-bottom:22px;}
+  .section h3{
+    font-size:11px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin:0 0 10px;
+    border-bottom:1px solid var(--line);
+    padding-bottom:8px;
+  }
+  .edu-item .deg{font-weight:700;font-size:13px;}
+  .edu-item .meta{color:var(--muted);font-size:12px;margin-top:2px;}
+  .link-btn{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:12px 14px;
+    margin-bottom:10px;
+    text-decoration:none;
+    color:var(--text);
+    font-size:13px;
+    font-weight:600;
+    transition:border-color .15s;
+  }
+  .link-btn:hover{border-color:var(--blue);}
+  .link-btn .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--blue);
+    flex-shrink:0;
+  }
+  .bio-text{
+    font-size:13px;
+    color:var(--muted);
+    line-height:1.7;
+  }
+</style>
+</head>
+<body>
+  <div class="profile">
+    <div class="avatar">VL</div>
+    <h1>Vignesh V L</h1>
+    <div class="role">CEO / FOUNDER — HYNA STUDIO</div>
+
+    <div class="section">
+      <h3>About</h3>
+      <div class="bio-text">
+        Vignesh V L is the Founder and CEO of Hyna Studio, focusing on democratizing entrepreneurship through high-quality custom software, SaaS products, and digital experiences.
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Education</h3>
+      <div class="edu-item">
+        <div class="deg">B.E. — Computer Science &amp; Engineering</div>
+        <div class="meta">LBS Institute of Technology for Women, Trivandrum — Batch of 2026</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Connect</h3>
+      <a class="link-btn" href="https://www.linkedin.com/in/vigneshvl-dev/" target="_blank">
+        <span class="dot"></span> LinkedIn — vigneshvl-dev
+      </a>
+      <a class="link-btn" href="#" target="_blank">
+        <span class="dot"></span> Instagram — vigneshvl_dev
+      </a>
+      <a class="link-btn" href="mailto:vigneshvelappan73051@gmail.com">
+        <span class="dot"></span> Email — vigneshvelappan73051@gmail.com
+      </a>
+      <a class="link-btn" href="tel:+917305104191">
+        <span class="dot"></span> Phone — +91 7305104191
+      </a>
+    </div>
+
+    <!-- QR Code Section -->
+    <div class="section" style="margin-top: 26px; text-align: center;">
+      <button class="link-btn" id="qrToggle" style="width: 100%; justify-content: center; cursor: pointer; background: var(--chip); border-color: rgba(47,182,255,0.25);">
+        <span class="dot" style="background: var(--blue);"></span> Share Profile (QR Code)
+      </button>
+      <div id="qrContainer" style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <div style="background: #ffffff; padding: 12px; border-radius: 12px; margin-top: 15px; display: inline-block; box-shadow: 0 8px 24px rgba(0,0,0,0.15);">
+          <img src="./vignesh-qr.png" alt="Vignesh Profile QR Code" style="width: 160px; height: 160px; display: block;" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=200x200&color=07090d&data='+encodeURIComponent(window.location.href)">
+        </div>
+        <p style="font-size: 11px; color: var(--muted); margin-top: 8px;">Scan to open this digital card</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const qrToggle = document.getElementById('qrToggle');
+      const qrContainer = document.getElementById('qrContainer');
+      if (qrToggle && qrContainer) {
+        qrToggle.addEventListener('click', () => {
+          const isOpen = qrContainer.style.maxHeight && qrContainer.style.maxHeight !== '0px';
+          if (isOpen) {
+            qrContainer.style.maxHeight = '0px';
+            qrContainer.style.padding = '0';
+          } else {
+            qrContainer.style.maxHeight = '230px';
+            qrContainer.style.padding = '10px 0';
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
