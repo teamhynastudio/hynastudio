@@ -1,4 +1,4 @@
-﻿/* Hyna Studio Careers & Projects Portal stylesheet */
+/* Hyna Studio Careers & Projects Portal stylesheet */
 
 :root {
   --bg-dark: #07070d;
@@ -29,6 +29,9 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: var(--bg-dark);
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -36,6 +39,7 @@ body {
   background-color: var(--bg-dark);
   color: var(--text-primary);
   overflow-x: hidden;
+  width: 100%;
   line-height: 1.6;
   min-height: 100vh;
   position: relative;
