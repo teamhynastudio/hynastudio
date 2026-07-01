@@ -5285,7 +5285,7 @@
             display: grid;
             grid-template-columns: auto 1fr auto;
             align-items: center;
-            gap: 28px;
+            gap: 20px;
         }
 
         .glassmorphic-roots-section .badge {
@@ -5336,29 +5336,19 @@
             text-transform: uppercase;
         }
 
-        @media (max-width: 820px) {
-            .glassmorphic-roots-section .section {
-                padding: 0 20px;
-            }
+        @media (max-width:900px) {
 
             .glassmorphic-roots-section .panel {
-                padding: 48px 28px 40px;
-                border-radius: 20px;
+                padding: 48px 32px;
             }
 
             .glassmorphic-roots-section .grid {
                 grid-template-columns: 1fr;
-                gap: 32px;
+                gap: 40px;
             }
 
-            .glassmorphic-roots-section .lower {
-                grid-template-columns: auto 1fr;
-            }
-
-            .glassmorphic-roots-section .stat {
-                grid-column: 1 / -1;
-                text-align: left;
-                margin-top: 8px;
+            .glassmorphic-roots-section h1 {
+                font-size: clamp(34px, 7vw, 52px);
             }
         }
     </style>
