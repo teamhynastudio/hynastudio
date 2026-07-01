@@ -51,7 +51,10 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Sora:wght@700;800&display=swap"
         rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,900;1,9..144,500&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
     <style>
         *,
         *::before,
@@ -5137,126 +5140,277 @@
 
     <!-- OUR MISSION SECTION -->
     <style>
-        .mission-section {
-            background: #0a0a0f;
-            padding: 120px 8%;
+        .glassmorphic-roots-section {
+            --black-gr: #050505;
+            --glass-fill-gr: rgba(255, 255, 255, 0.045);
+            --glass-fill-strong-gr: rgba(255, 255, 255, 0.07);
+            --glass-border-gr: rgba(255, 255, 255, 0.10);
+            --glass-border-strong-gr: rgba(255, 255, 255, 0.18);
+            --text-sand-gr: #f4f1ea;
+            --text-slate-gr: #a8a49a;
+            --text-slate-dim-gr: #726e66;
+            --silver-gr: #d6d9dd;
+            --amber-glow-gr: rgba(120, 130, 150, 0.22);
+            --blue-glow-gr: rgba(90, 110, 150, 0.18);
+
+            background: var(--black-gr);
+            font-family: 'Inter', sans-serif;
             position: relative;
             overflow: hidden;
-            font-family: var(--font-body), sans-serif;
         }
 
-        /* Subtle noise texture overlay */
-        .mission-section::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background-image:
-                radial-gradient(circle at 20% 50%, rgba(79, 63, 240, 0.06) 0%, transparent 55%),
-                radial-gradient(circle at 80% 20%, rgba(0, 217, 163, 0.04) 0%, transparent 45%);
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .mission-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: start;
+        .glassmorphic-roots-section .stage {
             position: relative;
-            z-index: 2;
+            min-height: auto;
+            overflow: hidden;
+            padding: 100px 0;
         }
 
-        .mission-left {
-            display: flex;
-            flex-direction: column;
-            gap: 28px;
+        .glassmorphic-roots-section .glow-a {
+            position: absolute;
+            top: -260px;
+            left: -160px;
+            width: 640px;
+            height: 640px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--amber-glow-gr), transparent 70%);
+            filter: blur(10px);
+            pointer-events: none;
         }
 
-        .mission-badge {
-            font-family: var(--font-mono), monospace;
+        .glassmorphic-roots-section .glow-b {
+            position: absolute;
+            bottom: -300px;
+            right: -220px;
+            width: 700px;
+            height: 700px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--blue-glow-gr), transparent 70%);
+            pointer-events: none;
+        }
+
+        .glassmorphic-roots-section .section {
+            position: relative;
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .glassmorphic-roots-section .panel {
+            position: relative;
+            background: var(--glass-fill-gr);
+            border: 0.5px solid var(--glass-border-gr);
+            border-radius: 28px;
+            backdrop-filter: blur(28px) saturate(140%);
+            -webkit-backdrop-filter: blur(28px) saturate(140%);
+            padding: 72px 64px 56px;
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.06),
+                0 30px 80px rgba(0, 0, 0, 0.55);
+        }
+
+        .glassmorphic-roots-section .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Space Mono', monospace;
             font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.18em;
+            letter-spacing: 0.22em;
+            color: var(--silver-gr);
             text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.45);
+            padding: 8px 16px;
+            border: 0.5px solid var(--glass-border-strong-gr);
+            border-radius: 100px;
+            background: var(--glass-fill-strong-gr);
+            margin-bottom: 32px;
         }
 
-        .mission-headline {
-            font-family: var(--font-display), sans-serif;
-            font-size: clamp(2.4rem, 5vw, 3.8rem);
-            font-weight: 800;
-            color: #ffffff;
-            line-height: 1.1;
-            letter-spacing: -0.03em;
-            margin: 0;
+        .glassmorphic-roots-section .eyebrow .dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--silver-gr);
         }
 
-        .mission-right {
+        .glassmorphic-roots-section .grid {
+            display: grid;
+            grid-template-columns: 1.15fr 1fr;
+            gap: 64px;
+            align-items: start;
+        }
+
+        .glassmorphic-roots-section h1 {
+            font-family: 'Fraunces', serif;
+            font-weight: 500;
+            font-style: italic;
+            font-size: clamp(36px, 4vw, 54px);
+            line-height: 1.12;
+            color: var(--text-sand-gr);
+            letter-spacing: -0.01em;
+        }
+
+        .glassmorphic-roots-section h1 em {
+            font-style: italic;
+            background: linear-gradient(120deg, var(--text-sand-gr), var(--silver-gr));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .glassmorphic-roots-section .body-copy {
             display: flex;
             flex-direction: column;
-            gap: 28px;
-            padding-top: 52px;
+            gap: 20px;
+            padding-top: 8px;
         }
 
-        .mission-para {
+        .glassmorphic-roots-section .body-copy p {
             font-size: 15.5px;
-            color: rgba(255, 255, 255, 0.58);
             line-height: 1.75;
-            margin: 0;
+            color: var(--text-slate-gr);
         }
 
-        @media (max-width: 1024px) {
-            .mission-section {
-                padding: 90px 6%;
-            }
-
-            .mission-container {
-                gap: 60px;
-            }
+        .glassmorphic-roots-section .body-copy p strong {
+            color: var(--text-sand-gr);
+            font-weight: 500;
         }
 
-        @media (max-width: 768px) {
-            .mission-section {
-                padding: 80px 24px;
+        .glassmorphic-roots-section .divider {
+            margin-top: 64px;
+            border-top: 0.5px solid var(--glass-border-gr);
+        }
+
+        .glassmorphic-roots-section .lower {
+            margin-top: 44px;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .glassmorphic-roots-section .badge {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            background: var(--glass-fill-strong-gr);
+            border: 0.5px solid var(--glass-border-strong-gr);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 0 40px var(--amber-glow-gr);
+            flex-shrink: 0;
+        }
+
+        .glassmorphic-roots-section .badge svg {
+            width: 44px;
+            height: 52px;
+        }
+
+        .glassmorphic-roots-section .lower-text {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .glassmorphic-roots-section .lower-text .place {
+            font-size: 14px;
+            color: var(--text-sand-gr);
+            font-weight: 500;
+        }
+
+        .glassmorphic-roots-section .lower-text .sub {
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            color: var(--text-slate-dim-gr);
+            text-transform: uppercase;
+        }
+
+        .glassmorphic-roots-section .stat {
+            text-align: right;
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            color: var(--silver-gr);
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 820px) {
+            .glassmorphic-roots-section .section {
+                padding: 0 20px;
             }
 
-            .mission-container {
+            .glassmorphic-roots-section .panel {
+                padding: 48px 28px 40px;
+                border-radius: 20px;
+            }
+
+            .glassmorphic-roots-section .grid {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 32px;
             }
 
-            .mission-right {
-                padding-top: 0;
+            .glassmorphic-roots-section .lower {
+                grid-template-columns: auto 1fr;
             }
 
-            .mission-headline {
-                letter-spacing: -0.025em;
+            .glassmorphic-roots-section .stat {
+                grid-column: 1 / -1;
+                text-align: left;
+                margin-top: 8px;
             }
         }
     </style>
 
-    <section id="our-mission" class="mission-section">
-        <div class="mission-container">
-            <!-- Left: Badge + Headline -->
-            <div class="mission-left">
-                <span class="mission-badge">Our Mission</span>
-                <h2 class="mission-headline">We believe great businesses can be built from anywhere.</h2>
-            </div>
+    <section id="our-mission" class="glassmorphic-roots-section">
+        <div class="stage">
+            <div class="glow-a"></div>
+            <div class="glow-b"></div>
+            <div class="section">
+                <div class="panel">
+                    <div class="eyebrow"><span class="dot"></span>Our roots</div>
+                    <div class="grid">
+                        <h1>We believe bold ideas can rise from the <em>edge of a map.</em></h1>
+                        <div class="body-copy">
+                            <p><strong>Built in Kanniyakumari. Built for the World.</strong>,Hyna Studio is a
+                                student-led technology startup founded in Kanniyakumari, the southernmost district of
+                                mainland India. Started by a passionate team of students, we believe innovation can
+                                emerge from anywhere—not just major technology hubs.
 
-            <!-- Right: Paragraphs -->
-            <div class="mission-right">
-                <p class="mission-para">Hyna Studio was founded on a simple idea: access to great software shouldn't
-                    depend on location. While many businesses were still relying on manual processes, they needed
-                    technology that was powerful, affordable, and easy to use.</p>
-                <p class="mission-para">Our mission is to build software that helps businesses operate smarter, grow
-                    faster, and compete with confidence—whether they're in a small town or a major city.</p>
-                <p class="mission-para">Based in Nagercoil, Tamil Nadu, we build products with global standards and
-                    local understanding. Every feature we create is designed to solve real problems, simplify everyday
-                    work, and help businesses focus on what matters most.</p>
-                <p class="mission-para">We're not just building applications. We're building the foundation that enables
-                    businesses to grow, adapt, and succeed in a digital world.</p>
+                                Our mission is to design and develop software that helps businesses streamline
+                                operations, embrace digital transformation, and achieve sustainable growth. Whether
+                                serving a local business or an international client, we deliver the same level of
+                                quality, creativity, and commitment.
+
+                                At Hyna Studio, we're building more than software—we're building a technology company
+                                that represents the innovation and talent of Kanniyakumari on a global stage.</p>
+                        </div>
+                    </div>
+
+                    <div class="divider"></div>
+                    <div class="lower">
+                        <div class="badge">
+                            <svg viewBox="0 0 100 120" fill="none">
+                                <g fill="#d6d9dd">
+                                    <rect x="30" y="98" width="40" height="8" rx="1.5" />
+                                    <rect x="35" y="82" width="8" height="18" rx="1" />
+                                    <rect x="57" y="82" width="8" height="18" rx="1" />
+                                    <rect x="24" y="68" width="52" height="16" rx="1.5" />
+                                    <path d="M38 22 C38 8 46 -2 50 -10 C54 -2 62 8 62 22 L62 66 L38 66 Z"
+                                        transform="translate(0,10)" />
+                                    <circle cx="50" cy="14" r="8" />
+                                    <path d="M50 30 C64 30 74 42 74 56 L74 70 L64 70 L64 56 C64 46 58 38 50 38 Z" />
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="lower-text">
+                            <div class="place">Kanniyakumari, Tamil Nadu</div>
+                            <div class="sub">Where three seas meet</div>
+                        </div>
+                        <div class="stat">Est. by students · Est. 2026</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
