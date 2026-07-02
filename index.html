@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -77,16 +77,9 @@
             --font-mono: 'JetBrains Mono', monospace;
         }
 
-        html,
-        body {
-            background: #ffffff;
-            overflow-x: hidden;
-        }
-
         html {
             scroll-behavior: smooth;
-            background-color: #081c29;
-
+            background: #081c29; /* Match footer color to hide scaling side gaps */
         }
 
         body {
@@ -94,6 +87,7 @@
             background: var(--paper);
             color: var(--ink);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         /* ── NAV ── */
@@ -5684,7 +5678,7 @@
                 --y: 50%;
 
                 position: sticky;
-                top: 110px;
+                top: 100px;
                 width: 100%;
                 max-width: 860px;
                 background: #ffffff;
@@ -5698,8 +5692,29 @@
                 gap: 40px;
                 cursor: pointer;
                 will-change: transform, opacity, filter;
-                transition: border-color 0.3s ease, box-shadow 0.3s ease;
+                /* Entrance: hidden below */
+                opacity: 0;
+                transform: translateY(56px) scale(0.97);
+                transition:
+                    opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                    transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                    border-color 0.3s ease,
+                    box-shadow 0.3s ease;
                 z-index: 10;
+            }
+
+            /* Entrance revealed — JS also removes inline transform after reveal */
+            .team-card.is-visible {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+
+            /* While being stacked — disable transition so JS drives transform every frame */
+            .team-card.tc-stacking {
+                transition:
+                    opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                    border-color 0.3s ease,
+                    box-shadow 0.3s ease;
             }
 
             .team-card.non-sticky {
@@ -5710,6 +5725,43 @@
             .team-card:hover {
                 border-color: rgba(79, 63, 240, 0.3);
                 box-shadow: 0 20px 50px rgba(79, 63, 240, 0.12);
+            }
+
+            /* Progress bar strip */
+            .team-stack-progress {
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 3px;
+                width: 0%;
+                background: linear-gradient(90deg, #4f3ff0, #a855f7, #06b6d4);
+                z-index: 9999;
+                border-radius: 0 3px 3px 0;
+                box-shadow: 0 0 10px rgba(79, 63, 240, 0.5);
+                transition: width 0.08s linear;
+                pointer-events: none;
+            }
+
+            /* Active card counter */
+            .team-stack-counter {
+                position: fixed;
+                bottom: 32px;
+                right: 36px;
+                font-family: var(--font-mono, monospace);
+                font-size: 11px;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                color: rgba(10, 10, 15, 0.3);
+                opacity: 0;
+                transform: translateY(6px);
+                transition: opacity 0.4s, transform 0.4s;
+                pointer-events: none;
+                z-index: 9998;
+            }
+
+            .team-stack-counter.visible {
+                opacity: 1;
+                transform: translateY(0);
             }
 
             .team-card::before {
@@ -5854,15 +5906,15 @@
                 }
 
                 .team-stack-section {
-                    gap: 60px;
-                    padding: 16px 8px 60px;
+                    gap: 40px;
+                    padding: 12px 4px 60px;
                 }
 
                 .team-card {
                     flex-direction: column;
                     text-align: center;
                     padding: 28px 22px;
-                    top: 80px;
+                    top: 20px;
                     gap: 20px;
                 }
 
@@ -8224,27 +8276,130 @@
                 }
             });
 
-            // Scroll entrance animations for team cards
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
+            // ─── TEAM SCROLL STACK ANIMATION ───
+            (function initTeamScrollStack() {
+                const teamSection = document.getElementById('team');
+                const teamCards = Array.from(document.querySelectorAll('#team .team-card[role="button"]'));
+                if (!teamCards.length) return;
 
-            const teamObserver = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        const cardIndex = cards.indexOf(entry.target);
-                        setTimeout(() => {
-                            entry.target.classList.add('is-visible');
-                        }, cardIndex >= 0 ? (cardIndex % 3) * 150 : 0);
-                        teamObserver.unobserve(entry.target);
+                const TOTAL = teamCards.length;
+
+                // Inject progress bar + counter into DOM
+                const progressBar = document.createElement('div');
+                progressBar.className = 'team-stack-progress';
+                document.body.appendChild(progressBar);
+
+                const counter = document.createElement('div');
+                counter.className = 'team-stack-counter';
+                document.body.appendChild(counter);
+
+                // Track which cards have had their entrance played
+                const revealed = new Set();
+
+                // ── 1. Entrance: reveal cards as they enter viewport ──
+                const entranceObs = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting && !revealed.has(entry.target)) {
+                            revealed.add(entry.target);
+                            const idx = teamCards.indexOf(entry.target);
+                            const delay = Math.max(0, idx) * 60;
+                            setTimeout(() => {
+                                entry.target.classList.add('is-visible');
+                                // After entrance anim completes, let JS control transform
+                                setTimeout(() => {
+                                    entry.target.classList.add('tc-stacking');
+                                }, 700);
+                            }, delay);
+                            entranceObs.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.08 });
+
+                teamCards.forEach(c => entranceObs.observe(c));
+
+                // ── 2. Scroll: drive stack-back transforms directly ──
+                let rafId = null;
+                let activeIdx = 0;
+
+                function applyStackFrame() {
+                    rafId = null;
+
+                    const sectionRect = teamSection ? teamSection.getBoundingClientRect() : null;
+                    const inSection = sectionRect &&
+                        sectionRect.top < window.innerHeight && sectionRect.bottom > 0;
+
+                    counter.classList.toggle('visible', !!inSection);
+
+                    // Progress bar
+                    if (sectionRect) {
+                        const scrollable = sectionRect.height - window.innerHeight * 0.5;
+                        const raw = -sectionRect.top / scrollable;
+                        progressBar.style.width = (Math.max(0, Math.min(1, raw)) * 100) + '%';
                     }
-                });
-            }, observerOptions);
 
-            cards.forEach(card => {
-                teamObserver.observe(card);
-            });
+                    let bestIdx = 0;
+                    let bestDist = Infinity;
+
+                    teamCards.forEach((card, i) => {
+                        if (!revealed.has(card)) return;
+
+                        const cardRect = card.getBoundingClientRect();
+                        const nextCard = teamCards[i + 1];
+
+                        // Active card tracking (closest to viewport center)
+                        const mid = cardRect.top + cardRect.height / 2;
+                        const dist = Math.abs(mid - window.innerHeight / 2);
+                        if (dist < bestDist) { bestDist = dist; bestIdx = i; }
+
+                        if (!card.classList.contains('tc-stacking')) return;
+
+                        if (nextCard && revealed.has(nextCard)) {
+                            const nextRect = nextCard.getBoundingClientRect();
+                            // 0 = not overlapping, 1 = fully stacked under next card
+                            const overlapPx = Math.max(0, cardRect.bottom - nextRect.top);
+                            const p = Math.min(1, overlapPx / (cardRect.height * 0.6));
+
+                            if (p > 0) {
+                                const sc = 1 - p * 0.055;
+                                const ty = -p * 10;
+                                const br = 1 - p * 0.20;
+                                card.style.transform = `translateY(${ty.toFixed(2)}px) scale(${sc.toFixed(4)})`;
+                                card.style.filter = `brightness(${br.toFixed(4)})`;
+                                card.style.boxShadow = `0 2px 8px rgba(0,0,0,0.04), 0 ${Math.round(p * 8)}px 20px rgba(0,0,0,0.06)`;
+                            } else {
+                                card.style.transform = '';
+                                card.style.filter = '';
+                                card.style.boxShadow = '';
+                            }
+                        } else {
+                            // Last card — reset
+                            card.style.transform = '';
+                            card.style.filter = '';
+                            card.style.boxShadow = '';
+                        }
+                    });
+
+                    // Update counter + dots
+                    activeIdx = bestIdx;
+                    const pad = n => String(n + 1).padStart(2, '0');
+                    counter.textContent = `${pad(activeIdx)} / ${pad(TOTAL - 1)}`;
+
+                    teamCards.forEach((card, i) => {
+                        card.querySelectorAll('.team-dot').forEach((dot, di) => {
+                            dot.classList.toggle('active', di === activeIdx);
+                        });
+                    });
+                }
+
+                function onScroll() {
+                    if (!rafId) rafId = requestAnimationFrame(applyStackFrame);
+                }
+
+                window.addEventListener('scroll', onScroll, { passive: true });
+                // Initial run
+                requestAnimationFrame(applyStackFrame);
+
+            })();
 
             // Nav hide-on-scroll / show-on-stop behavior
             const navElement = document.querySelector('nav');
