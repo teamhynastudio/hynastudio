@@ -2482,6 +2482,45 @@ nav.nav-scrolled {
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
             letter-spacing: 0.05em;
         }
+
+        /* ── STICKY FOOTER REVEAL ── */
+        :root {
+            --footer-height: 0px;
+        }
+
+        /* The wrapper that sits on top of the sticky footer */
+        .main-content-wrapper {
+            position: relative;
+            z-index: 2;
+            background: var(--paper);
+            /* Push content down so footer is fully hidden under the wrapper by default */
+            margin-bottom: var(--footer-height);
+        }
+
+        /* Make footer sticky at bottom, peeking behind content */
+        @media (min-width: 901px) {
+            footer {
+                position: fixed !important;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                z-index: 1;
+                will-change: transform, opacity;
+                /* Subtle entrance state: scaled slightly up and slightly transparent */
+                transform-origin: center bottom;
+            }
+        }
+
+        /* Mobile: revert to normal layout, no sticky footer */
+        @media (max-width: 900px) {
+            .main-content-wrapper {
+                margin-bottom: 0 !important;
+            }
+            footer {
+                position: relative !important;
+                z-index: auto;
+            }
+        }
     </style>
 </head>
 
@@ -2989,6 +3028,9 @@ nav.nav-scrolled {
 
 
     </nav>
+
+    <!-- MAIN CONTENT WRAPPER (sits above sticky footer) -->
+    <div class="main-content-wrapper">
 
     <!-- HERO -->
     <section class="hero">
@@ -7233,6 +7275,8 @@ nav.nav-scrolled {
         </a>
     </div>
 
+    </div><!-- /.main-content-wrapper -->
+
     <!-- FOOTER -->
     <footer>
         <div class="footer-top">
@@ -7634,6 +7678,133 @@ nav.nav-scrolled {
             }
         });
     </script>
+
+    <!-- ── STICKY FOOTER REVEAL ANIMATION ── -->
+    <script>
+        (function () {
+            'use strict';
+
+            var footer = document.querySelector('footer');
+            var wrapper = document.querySelector('.main-content-wrapper');
+
+            if (!footer || !wrapper) return;
+
+            /* ─── Desktop-only media query ─── */
+            var mq = window.matchMedia('(min-width: 901px)');
+
+            var triggerA = null;
+            var triggerB = null;
+
+            /* Only set footer height on desktop */
+            function setFooterHeight() {
+                if (!mq.matches) {
+                    document.documentElement.style.setProperty('--footer-height', '0px');
+                    return;
+                }
+                var h = footer.getBoundingClientRect().height;
+                document.documentElement.style.setProperty('--footer-height', h + 'px');
+            }
+
+            function killTriggers() {
+                if (triggerA) { triggerA.kill(); triggerA = null; }
+                if (triggerB) { triggerB.kill(); triggerB = null; }
+            }
+
+            function resetFooter() {
+                if (typeof gsap !== 'undefined') {
+                    gsap.set(footer, { clearProps: 'transform,opacity' });
+                }
+                document.documentElement.style.setProperty('--footer-height', '0px');
+            }
+
+            function initReveal() {
+                killTriggers();
+
+                /* ── MOBILE: completely disable ── */
+                if (!mq.matches) {
+                    resetFooter();
+                    return;
+                }
+
+                if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+                gsap.registerPlugin(ScrollTrigger);
+
+                setFooterHeight();
+
+                /* Initial hidden state */
+                gsap.set(footer, { scale: 0.96, opacity: 0, y: 18 });
+
+                /* Trigger A: snap animation on enter / leave-back */
+                triggerA = ScrollTrigger.create({
+                    trigger: wrapper,
+                    start: 'bottom bottom',
+                    end: 'bottom+=1 bottom',
+                    onEnter: function () {
+                        gsap.to(footer, { scale: 1, opacity: 1, y: 0, duration: 0.75, ease: 'power3.out' });
+                    },
+                    onLeaveBack: function () {
+                        gsap.to(footer, { scale: 0.96, opacity: 0, y: 18, duration: 0.45, ease: 'power2.in' });
+                    }
+                });
+
+                /* Trigger B: scrub-parallax as the wrapper scrolls out */
+                triggerB = ScrollTrigger.create({
+                    trigger: wrapper,
+                    start: 'bottom 120%',
+                    end: 'bottom top',
+                    scrub: 1.2,
+                    onUpdate: function (self) {
+                        if (!mq.matches) return;
+                        var p = Math.max(0, Math.min(1, (self.progress - 0.7) / 0.3));
+                        gsap.set(footer, {
+                            scale: 0.96 + p * 0.04,
+                            opacity: p,
+                            y: 18 - p * 18
+                        });
+                    }
+                });
+            }
+
+            /* ─── Keep footer height accurate on resize ─── */
+            if (typeof ResizeObserver !== 'undefined') {
+                var ro = new ResizeObserver(function () {
+                    /* IMPORTANT: use initReveal(), NOT setFooterHeight(), so
+                       mobile always gets --footer-height: 0px correctly */
+                    initReveal();
+                    if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+                });
+                ro.observe(footer);
+                ro.observe(document.body);
+            } else {
+                window.addEventListener('resize', function () {
+                    initReveal();
+                    if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+                });
+            }
+
+            /* ─── Re-init on breakpoint change ─── */
+            mq.addEventListener('change', function () {
+                initReveal();
+                if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+            });
+
+            /* ─── Boot ─── */
+            function boot() {
+                initReveal();
+                setTimeout(function () {
+                    if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+                }, 150);
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', boot);
+            } else {
+                boot();
+            }
+        })();
+    </script>
+
 </body>
 
 </html>
