@@ -7744,8 +7744,7 @@
                         <!-- Center logo card -->
                         <div class="op-logo-card">
                             <!-- SVG H mark: two vertical rounded bars + diagonal parallelogram -->
-                            <svg class="op-logo-svg" width="64" height="72" viewBox="0 0 64 72" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
+                            <svg class="" width="64" height="72" viewBox="0 0 64 72" fill="none" xmlns="">
                                 <defs>
                                     <linearGradient id="opHGrad" x1="0" y1="0" x2="64" y2="72"
                                         gradientUnits="userSpaceOnUse">
@@ -7925,40 +7924,40 @@
                 ──────────────────────────────────────────────── */
                 function initFixedPanel() {
                     var section = document.getElementById('our-process');
-                    var panel   = document.getElementById('op-left-panel');
+                    var panel = document.getElementById('op-left-panel');
                     if (!section || !panel) return;
 
                     var grid = section.querySelector('.op-grid');
                     if (!grid) return;
 
                     function updatePanel() {
-                        var sr      = section.getBoundingClientRect();
-                        var gr      = grid.getBoundingClientRect();
-                        var winH    = window.innerHeight;
-                        var panelW  = gr.width * 0.5;
+                        var sr = section.getBoundingClientRect();
+                        var gr = grid.getBoundingClientRect();
+                        var winH = window.innerHeight;
+                        var panelW = gr.width * 0.5;
 
                         if (sr.bottom < 0 || sr.top > winH) {
                             /* Section is completely off-screen — hide the panel */
                             panel.classList.remove('op-fixed-active', 'op-fixed-top', 'op-fixed-bottom');
-                            panel.style.left  = '';
+                            panel.style.left = '';
                             panel.style.width = '';
                         } else if (sr.top > 0) {
                             /* Section top is below viewport top: pin to top of section */
                             panel.classList.remove('op-fixed-active', 'op-fixed-bottom');
                             panel.classList.add('op-fixed-top');
-                            panel.style.left  = '0'; /* align absolute to parent grid */
+                            panel.style.left = '0'; /* align absolute to parent grid */
                             panel.style.width = '50%';
                         } else if (sr.bottom < winH) {
                             /* Section bottom is above viewport bottom: pin to bottom of section */
                             panel.classList.remove('op-fixed-active', 'op-fixed-top');
                             panel.classList.add('op-fixed-bottom');
-                            panel.style.left  = '0'; /* align absolute to parent grid */
+                            panel.style.left = '0'; /* align absolute to parent grid */
                             panel.style.width = '50%';
                         } else {
                             /* Section is in full view: fix to viewport */
                             panel.classList.remove('op-fixed-top', 'op-fixed-bottom');
                             panel.classList.add('op-fixed-active');
-                            panel.style.left  = gr.left + 'px';
+                            panel.style.left = gr.left + 'px';
                             panel.style.width = panelW + 'px';
                         }
                     }
@@ -7983,7 +7982,7 @@
                     var observer = new IntersectionObserver(function (entries) {
                         entries.forEach(function (entry) {
                             if (entry.isIntersecting) {
-                                var card  = entry.target;
+                                var card = entry.target;
                                 var delay = (parseInt(card.getAttribute('data-step'), 10) - 1) * 60;
                                 setTimeout(function () {
                                     card.classList.add('op-visible');
@@ -8014,332 +8013,331 @@
         <!-- ══════════════ END OUR PROCESS ══════════════ -->
 
         <!-- CTA -->
-                <div class="cta-banner" id="contact">
-                    <h2>Ready to build something great?</h2>
-                    <p>Tell us about your project — we'll get back within 24 hours.</p>
-                    <a href="mailto:team.hynastudio@gmail.com?subject=Project%20Inquiry%20-%20Hyna%20Studio&body=Hello%20Hyna%20Studio,%0D%0A%0D%0AI%20would%20like%20to%20discuss%20a%20project.%0D%0A%0D%0AName:%20%0D%0ACompany:%20%0D%0APhone:%20%0D%0AProject%20Details:%20"
-                        class="btn-white">
-                        Start a Conversation →
-                    </a>
-                </div>
+        <div class="cta-banner" id="contact">
+            <h2>Ready to build something great?</h2>
+            <p>Tell us about your project — we'll get back within 24 hours.</p>
+            <a href="mailto:team.hynastudio@gmail.com?subject=Project%20Inquiry%20-%20Hyna%20Studio&body=Hello%20Hyna%20Studio,%0D%0A%0D%0AI%20would%20like%20to%20discuss%20a%20project.%0D%0A%0D%0AName:%20%0D%0ACompany:%20%0D%0APhone:%20%0D%0AProject%20Details:%20"
+                class="btn-white">
+                Start a Conversation →
+            </a>
+        </div>
 
-            </div><!-- /.main-content-wrapper -->
+    </div><!-- /.main-content-wrapper -->
 
-            <!-- FOOTER -->
-            <footer>
-                <div class="footer-top">
-                    <div class="footer-brand">
-                        <a href="index.html" class="nav-logo">
-                            <img src="./hyna-logo-new.png" class="logo-img" alt="Hyna Studio Logo">
-                            <div class="logo-text">
-                                <span class="logo-main" style="color: #76ecf0;">Hyna Studio</span>
-                                <span class="logo-sub" style="color: rgba(93, 214, 230, 0.801);">Tech &
-                                    Experiences</span>
-                            </div>
-                        </a>
-                        <p>A full-spectrum digital studio building products that matter.</p>
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-top">
+            <div class="footer-brand">
+                <a href="index.html" class="nav-logo">
+                    <img src="./hyna-logo-new.png" class="logo-img" alt="Hyna Studio Logo">
+                    <div class="logo-text">
+                        <span class="logo-main" style="color: #76ecf0;">Hyna Studio</span>
+                        <span class="logo-sub" style="color: rgba(93, 214, 230, 0.801);">Tech &
+                            Experiences</span>
                     </div>
-                    <div class="footer-links">
-                        <h5>Services</h5>
-                        <ul>
-                            <li><a href="index.html?service=software#hyna-services">Software & SaaS</a></li>
-                            <li><a href="index.html?service=web#hyna-services">Web Development</a></li>
-                            <li><a href="index.html?service=shopify#hyna-services">Shopify & Mobile</a></li>
-                            <li><a href="index.html?service=design#hyna-services">Design & Marketing</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-links">
-                        <h5>SHOP</h5>
-                        <ul>
-                            <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                            <li><a href="shipping-policy.html">Shipping Policy</a></li>
-                            <li><a href="terms-conditions.html">Terms & Conditions</a></li>
-                            <li><a href="refund-policy.html">Refund Policy</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-links">
-                        <h5>Studio</h5>
-                        <ul>
-                            <li><a href="#about">About</a></li>
-                            <li><a href="#team">Team</a></li>
-                            <li><a href="#faq">FAQ</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-links">
-                        <h5>Contact</h5>
-                        <ul>
-                            <li><a href="mailto:team.hynastudio@gmail.com">team.hynastudio@gmail.com</a></li>
-                            <li><a href="https://github.com/teamhynastudio">GitHub</a></li>
-                            <li><a href="https://www.linkedin.com/in/hyna-studio-089b33416/">LinkedIn</a></li>
-                            <li><a href="https://x.com/HynaStudio">Twitter / X</a></li>
-                        </ul>
-                        <div class="footer-location">
-                            <h5>Location</h5>
-                            <div class="footer-location-row">
-                                <div class="footer-location-image">
-                                    <img src="thiruvalluvar.png" alt="Thiruvalluvar Statue">
-                                </div>
-                                <div class="footer-location-text">
-                                    <strong>Nagercoil</strong>
-                                    Kanniyakumari, Tamil Nadu,<br>India
-                                </div>
-                            </div>
+                </a>
+                <p>A full-spectrum digital studio building products that matter.</p>
+            </div>
+            <div class="footer-links">
+                <h5>Services</h5>
+                <ul>
+                    <li><a href="index.html?service=software#hyna-services">Software & SaaS</a></li>
+                    <li><a href="index.html?service=web#hyna-services">Web Development</a></li>
+                    <li><a href="index.html?service=shopify#hyna-services">Shopify & Mobile</a></li>
+                    <li><a href="index.html?service=design#hyna-services">Design & Marketing</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h5>SHOP</h5>
+                <ul>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="shipping-policy.html">Shipping Policy</a></li>
+                    <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+                    <li><a href="refund-policy.html">Refund Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h5>Studio</h5>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h5>Contact</h5>
+                <ul>
+                    <li><a href="mailto:team.hynastudio@gmail.com">team.hynastudio@gmail.com</a></li>
+                    <li><a href="https://github.com/teamhynastudio">GitHub</a></li>
+                    <li><a href="https://www.linkedin.com/in/hyna-studio-089b33416/">LinkedIn</a></li>
+                    <li><a href="https://x.com/HynaStudio">Twitter / X</a></li>
+                </ul>
+                <div class="footer-location">
+                    <h5>Location</h5>
+                    <div class="footer-location-row">
+                        <div class="footer-location-image">
+                            <img src="thiruvalluvar.png" alt="Thiruvalluvar Statue">
                         </div>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <p> © 2026 Hyna Studio. All rights reserved.</p>
-                    <div class="footer-bottom-links">
-                        <a href="privacy-policy.html">Privacy Policy</a>
-                        <a href="terms-conditions.html">Terms & Conditions</a>
-                    </div>
-                </div>
-            </footer>
-
-            <!-- Team Modal -->
-
-            <div class="modal-overlay" id="teamModalOverlay" aria-hidden="true">
-                <div class="modal" role="dialog" aria-modal="true" aria-labelledby="teamModalName">
-                    <div class="modal-header">
-                        <div class="modal-title">
-                            <div class="modal-name" id="teamModalName">—</div>
-                            <div class="modal-role" id="teamModalRole">—</div>
-                        </div>
-                        <button class="modal-close" type="button" id="teamModalClose"
-                            aria-label="Close modal">✕</button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="modal-grid">
-                            <div class="modal-photo" aria-hidden="true">
-                                <img id="teamModalPhoto" alt="" src=""
-                                    onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend', '<div class=\'member-photo-placeholder\'>👤</div>')">
-                            </div>
-                            <div>
-                                <div class="modal-bio" id="teamModalBio">—</div>
-                                <div class="modal-links" id="teamModalLinks"></div>
-                                <div class="modal-education" id="teamModalEducation"></div>
-                            </div>
+                        <div class="footer-location-text">
+                            <strong>Nagercoil</strong>
+                            Kanniyakumari, Tamil Nadu,<br>India
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="footer-bottom">
+            <p> © 2026 Hyna Studio. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-conditions.html">Terms & Conditions</a>
+            </div>
+        </div>
+    </footer>
 
-            <script>
-                (function () {
-                    const overlay = document.getElementById('teamModalOverlay');
-                    const closeBtn = document.getElementById('teamModalClose');
+    <!-- Team Modal -->
 
-                    const nameEl = document.getElementById('teamModalName');
-                    const roleEl = document.getElementById('teamModalRole');
-                    const photoEl = document.getElementById('teamModalPhoto');
-                    const bioEl = document.getElementById('teamModalBio');
-                    const linksEl = document.getElementById('teamModalLinks');
-                    const educationEl = document.getElementById('teamModalEducation');
+    <div class="modal-overlay" id="teamModalOverlay" aria-hidden="true">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="teamModalName">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <div class="modal-name" id="teamModalName">—</div>
+                    <div class="modal-role" id="teamModalRole">—</div>
+                </div>
+                <button class="modal-close" type="button" id="teamModalClose" aria-label="Close modal">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-grid">
+                    <div class="modal-photo" aria-hidden="true">
+                        <img id="teamModalPhoto" alt="" src=""
+                            onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend', '<div class=\'member-photo-placeholder\'>👤</div>')">
+                    </div>
+                    <div>
+                        <div class="modal-bio" id="teamModalBio">—</div>
+                        <div class="modal-links" id="teamModalLinks"></div>
+                        <div class="modal-education" id="teamModalEducation"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                    const cards = Array.from(document.querySelectorAll('#team .team-card[role="button"]'));
+    <script>
+        (function () {
+            const overlay = document.getElementById('teamModalOverlay');
+            const closeBtn = document.getElementById('teamModalClose');
 
-                    let lastFocused = null;
+            const nameEl = document.getElementById('teamModalName');
+            const roleEl = document.getElementById('teamModalRole');
+            const photoEl = document.getElementById('teamModalPhoto');
+            const bioEl = document.getElementById('teamModalBio');
+            const linksEl = document.getElementById('teamModalLinks');
+            const educationEl = document.getElementById('teamModalEducation');
 
-                    function escapeHtml(str) {
-                        return String(str)
-                            .replaceAll('&', '&amp;')
-                            .replaceAll('<', '&lt;')
-                            .replaceAll('>', '&gt;')
-                            .replaceAll('"', '&quot;')
-                            .replaceAll("'", '&#039;');
-                    }
+            const cards = Array.from(document.querySelectorAll('#team .team-card[role="button"]'));
 
-                    function buildLink(label, href) {
-                        const safeLabel = escapeHtml(label);
-                        const safeHref = escapeHtml(href);
-                        return `
+            let lastFocused = null;
+
+            function escapeHtml(str) {
+                return String(str)
+                    .replaceAll('&', '&amp;')
+                    .replaceAll('<', '&lt;')
+                    .replaceAll('>', '&gt;')
+                    .replaceAll('"', '&quot;')
+                    .replaceAll("'", '&#039;');
+            }
+
+            function buildLink(label, href) {
+                const safeLabel = escapeHtml(label);
+                const safeHref = escapeHtml(href);
+                return `
                     <a class="modal-link" href="${safeHref}" target="_blank" rel="noopener noreferrer">
                         ${safeLabel} →
                     </a>
                 `;
-                    }
+            }
 
-                    function openModal(card) {
-                        lastFocused = document.activeElement;
+            function openModal(card) {
+                lastFocused = document.activeElement;
 
-                        const name = card.getAttribute('data-name') || '';
-                        const role = card.getAttribute('data-role') || '';
-                        const bio = card.getAttribute('data-bio') || '';
-                        const photo = card.getAttribute('data-photo') || '';
-                        const portfolio = card.getAttribute('data-portfolio') || '#';
-                        const github = card.getAttribute('data-github') || '#';
-                        const linkedin = card.getAttribute('data-linkedin') || '#';
-                        const college = card.getAttribute('data-college') || '';
-                        const degree = card.getAttribute('data-degree') || '';
-                        const collegeLogo = card.getAttribute('data-college-logo') || '';
+                const name = card.getAttribute('data-name') || '';
+                const role = card.getAttribute('data-role') || '';
+                const bio = card.getAttribute('data-bio') || '';
+                const photo = card.getAttribute('data-photo') || '';
+                const portfolio = card.getAttribute('data-portfolio') || '#';
+                const github = card.getAttribute('data-github') || '#';
+                const linkedin = card.getAttribute('data-linkedin') || '#';
+                const college = card.getAttribute('data-college') || '';
+                const degree = card.getAttribute('data-degree') || '';
+                const collegeLogo = card.getAttribute('data-college-logo') || '';
 
-                        nameEl.textContent = name;
-                        roleEl.textContent = role;
-                        bioEl.textContent = bio;
+                nameEl.textContent = name;
+                roleEl.textContent = role;
+                bioEl.textContent = bio;
 
-                        // Reset photo
-                        photoEl.style.display = '';
-                        photoEl.src = photo;
-                        photoEl.alt = name;
+                // Reset photo
+                photoEl.style.display = '';
+                photoEl.src = photo;
+                photoEl.alt = name;
 
-                        // Reset placeholder if previous error inserted it
-                        const photoContainer = photoEl.parentElement;
-                        Array.from(photoContainer.querySelectorAll('.member-photo-placeholder')).forEach(n => n.remove());
+                // Reset placeholder if previous error inserted it
+                const photoContainer = photoEl.parentElement;
+                Array.from(photoContainer.querySelectorAll('.member-photo-placeholder')).forEach(n => n.remove());
 
-                        // Links
-                        const items = [];
-                        if (portfolio && portfolio !== '#') items.push(buildLink('Portfolio', portfolio));
-                        if (github && github !== '#') items.push(buildLink('GitHub', github));
-                        if (linkedin && linkedin !== '#') items.push(buildLink('LinkedIn', linkedin));
+                // Links
+                const items = [];
+                if (portfolio && portfolio !== '#') items.push(buildLink('Portfolio', portfolio));
+                if (github && github !== '#') items.push(buildLink('GitHub', github));
+                if (linkedin && linkedin !== '#') items.push(buildLink('LinkedIn', linkedin));
 
-                        linksEl.innerHTML = items.join('');
+                linksEl.innerHTML = items.join('');
 
-                        // Render Education Details
-                        if (college) {
-                            educationEl.style.display = 'flex';
-                            educationEl.innerHTML = `
+                // Render Education Details
+                if (college) {
+                    educationEl.style.display = 'flex';
+                    educationEl.innerHTML = `
                         ${collegeLogo ? `<img class="modal-education-logo" src="${escapeHtml(collegeLogo)}" alt="${escapeHtml(college)} Logo">` : ''}
                         <div class="modal-education-info">
                             <div class="modal-education-college">${escapeHtml(college)}</div>
                             <div class="modal-education-degree">${escapeHtml(degree)}</div>
                         </div>
                     `;
-                        } else {
-                            educationEl.style.display = 'none';
-                            educationEl.innerHTML = '';
-                        }
+                } else {
+                    educationEl.style.display = 'none';
+                    educationEl.innerHTML = '';
+                }
 
-                        overlay.classList.add('is-open');
-                        overlay.setAttribute('aria-hidden', 'false');
-                        document.body.style.overflow = 'hidden';
+                overlay.classList.add('is-open');
+                overlay.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
 
-                        // Focus close button for accessibility
-                        closeBtn.focus();
+                // Focus close button for accessibility
+                closeBtn.focus();
+            }
+
+            function closeModal() {
+                overlay.classList.remove('is-open');
+                overlay.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+
+                if (lastFocused && typeof lastFocused.focus === 'function') {
+                    lastFocused.focus();
+                }
+            }
+
+            // Open handlers
+            cards.forEach(card => {
+                card.addEventListener('click', (e) => {
+                    // Prevent modal opening when clicking social links/icons
+                    if (e.target.closest('.team-social') || e.target.closest('a')) {
+                        return;
+                    }
+                    openModal(card);
+                });
+                card.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        openModal(card);
+                    }
+                });
+            });
+
+            // Close handlers
+            closeBtn.addEventListener('click', closeModal);
+
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) closeModal();
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && overlay.classList.contains('is-open')) {
+                    closeModal();
+                }
+            });
+
+            // Scroll entrance animations for team cards
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const teamObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const cardIndex = cards.indexOf(entry.target);
+                        setTimeout(() => {
+                            entry.target.classList.add('is-visible');
+                        }, cardIndex >= 0 ? (cardIndex % 3) * 150 : 0);
+                        teamObserver.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            cards.forEach(card => {
+                teamObserver.observe(card);
+            });
+
+            // Nav hide-on-scroll / show-on-stop behavior
+            const navElement = document.querySelector('nav');
+            let navScrollTimer = null;
+
+            const handleScroll = () => {
+                if (navElement) {
+                    // Add nav-scrolled class for styling adjustments
+                    if (window.scrollY > 50) {
+                        navElement.classList.add('nav-scrolled');
+                    } else {
+                        navElement.classList.remove('nav-scrolled');
                     }
 
-                    function closeModal() {
-                        overlay.classList.remove('is-open');
-                        overlay.setAttribute('aria-hidden', 'true');
-                        document.body.style.overflow = '';
+                    // Hide nav while scrolling
+                    navElement.classList.add('nav-hidden');
 
-                        if (lastFocused && typeof lastFocused.focus === 'function') {
-                            lastFocused.focus();
-                        }
-                    }
+                    // Clear previous timer and start a new one
+                    clearTimeout(navScrollTimer);
+                    navScrollTimer = setTimeout(() => {
+                        // Show nav when scrolling stops (after 200ms idle)
+                        navElement.classList.remove('nav-hidden');
+                    }, 200);
+                }
+            };
+            window.addEventListener('scroll', handleScroll, { passive: true });
+            handleScroll();
 
-                    // Open handlers
-                    cards.forEach(card => {
-                        card.addEventListener('click', (e) => {
-                            // Prevent modal opening when clicking social links/icons
-                            if (e.target.closest('.team-social') || e.target.closest('a')) {
-                                return;
-                            }
-                            openModal(card);
-                        });
-                        card.addEventListener('keydown', (e) => {
-                            if (e.key === 'Enter' || e.key === ' ') {
-                                e.preventDefault();
-                                openModal(card);
-                            }
-                        });
-                    });
+            // TiltedCard interactive mouse movement
+            document.querySelectorAll('.tilted-card-figure').forEach(card => {
+                const inner = card.querySelector('.tilted-card-inner');
+                const rotateAmplitude = 20;
+                const scaleOnHover = 1.0;
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const offsetX = e.clientX - rect.left - rect.width / 2;
+                    const offsetY = e.clientY - rect.top - rect.height / 2;
 
-                    // Close handlers
-                    closeBtn.addEventListener('click', closeModal);
+                    const rotationX = (offsetY / (rect.height / 2)) * -rotateAmplitude;
+                    const rotationY = (offsetX / (rect.width / 2)) * rotateAmplitude;
 
-                    overlay.addEventListener('click', (e) => {
-                        if (e.target === overlay) closeModal();
-                    });
+                    inner.style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg) scale(${scaleOnHover})`;
+                });
 
-                    document.addEventListener('keydown', (e) => {
-                        if (e.key === 'Escape' && overlay.classList.contains('is-open')) {
-                            closeModal();
-                        }
-                    });
+                card.addEventListener('mouseenter', () => {
+                    inner.style.transform = `scale(${scaleOnHover})`;
+                });
 
-                    // Scroll entrance animations for team cards
-                    const observerOptions = {
-                        threshold: 0.1,
-                        rootMargin: '0px 0px -50px 0px'
-                    };
+                card.addEventListener('mouseleave', () => {
+                    inner.style.transform = `rotateX(0deg) rotateY(0deg) scale(1)`;
+                });
+            });
+            // Initialize Lucide Icons
+            if (window.lucide) {
+                lucide.createIcons();
+            }
 
-                    const teamObserver = new IntersectionObserver((entries) => {
-                        entries.forEach((entry) => {
-                            if (entry.isIntersecting) {
-                                const cardIndex = cards.indexOf(entry.target);
-                                setTimeout(() => {
-                                    entry.target.classList.add('is-visible');
-                                }, cardIndex >= 0 ? (cardIndex % 3) * 150 : 0);
-                                teamObserver.unobserve(entry.target);
-                            }
-                        });
-                    }, observerOptions);
-
-                    cards.forEach(card => {
-                        teamObserver.observe(card);
-                    });
-
-                    // Nav hide-on-scroll / show-on-stop behavior
-                    const navElement = document.querySelector('nav');
-                    let navScrollTimer = null;
-
-                    const handleScroll = () => {
-                        if (navElement) {
-                            // Add nav-scrolled class for styling adjustments
-                            if (window.scrollY > 50) {
-                                navElement.classList.add('nav-scrolled');
-                            } else {
-                                navElement.classList.remove('nav-scrolled');
-                            }
-
-                            // Hide nav while scrolling
-                            navElement.classList.add('nav-hidden');
-
-                            // Clear previous timer and start a new one
-                            clearTimeout(navScrollTimer);
-                            navScrollTimer = setTimeout(() => {
-                                // Show nav when scrolling stops (after 200ms idle)
-                                navElement.classList.remove('nav-hidden');
-                            }, 200);
-                        }
-                    };
-                    window.addEventListener('scroll', handleScroll, { passive: true });
-                    handleScroll();
-
-                    // TiltedCard interactive mouse movement
-                    document.querySelectorAll('.tilted-card-figure').forEach(card => {
-                        const inner = card.querySelector('.tilted-card-inner');
-                        const rotateAmplitude = 20;
-                        const scaleOnHover = 1.0;
-                        card.addEventListener('mousemove', (e) => {
-                            const rect = card.getBoundingClientRect();
-                            const offsetX = e.clientX - rect.left - rect.width / 2;
-                            const offsetY = e.clientY - rect.top - rect.height / 2;
-
-                            const rotationX = (offsetY / (rect.height / 2)) * -rotateAmplitude;
-                            const rotationY = (offsetX / (rect.width / 2)) * rotateAmplitude;
-
-                            inner.style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg) scale(${scaleOnHover})`;
-                        });
-
-                        card.addEventListener('mouseenter', () => {
-                            inner.style.transform = `scale(${scaleOnHover})`;
-                        });
-
-                        card.addEventListener('mouseleave', () => {
-                            inner.style.transform = `rotateX(0deg) rotateY(0deg) scale(1)`;
-                        });
-                    });
-                    // Initialize Lucide Icons
-                    if (window.lucide) {
-                        lucide.createIcons();
-                    }
-
-                    // Animations toggle (removed from navbar)
-                })();
-            </script>
-            <script src="cookie-consent.js" defer></script>
-            <script type="application/ld+json">
+            // Animations toggle (removed from navbar)
+        })();
+    </script>
+    <script src="cookie-consent.js" defer></script>
+    <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -8359,7 +8357,7 @@
 }
 </script>
 
-            <script type="application/ld+json">
+    <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -8371,7 +8369,7 @@
   }
 }
 </script>
-            <script type="application/ld+json">
+    <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -8383,7 +8381,7 @@
   }
 }
 </script>
-            <script type="application/ld+json">
+    <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Service",
@@ -8394,126 +8392,126 @@
   }
 }
 </script>
-            <script>
-                document.addEventListener('DOMContentLoaded', () => {
-                    const toggleBtn = document.getElementById('navMobileToggle');
-                    const navLinks = document.querySelector('.nav-links');
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleBtn = document.getElementById('navMobileToggle');
+            const navLinks = document.querySelector('.nav-links');
 
-                    if (toggleBtn && navLinks) {
-                        toggleBtn.addEventListener('click', (e) => {
-                            e.stopPropagation();
-                            toggleBtn.classList.toggle('active');
-                            navLinks.classList.toggle('active');
-                        });
+            if (toggleBtn && navLinks) {
+                toggleBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    toggleBtn.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                });
 
-                        // Close menu when clicking outside
-                        document.addEventListener('click', (e) => {
-                            if (!navLinks.contains(e.target) && e.target !== toggleBtn) {
-                                toggleBtn.classList.remove('active');
-                                navLinks.classList.remove('active');
-                            }
-                        });
-
-                        // Close menu when clicking a link
-                        navLinks.querySelectorAll('a').forEach(link => {
-                            link.addEventListener('click', () => {
-                                toggleBtn.classList.remove('active');
-                                navLinks.classList.remove('active');
-                            });
-                        });
+                // Close menu when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!navLinks.contains(e.target) && e.target !== toggleBtn) {
+                        toggleBtn.classList.remove('active');
+                        navLinks.classList.remove('active');
                     }
                 });
-            </script>
 
-            <!-- ── STICKY FOOTER REVEAL ANIMATION ── -->
-            <script>
-                (function () {
-                    'use strict';
+                // Close menu when clicking a link
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        toggleBtn.classList.remove('active');
+                        navLinks.classList.remove('active');
+                    });
+                });
+            }
+        });
+    </script>
 
-                    var footer = document.querySelector('footer');
-                    var wrapper = document.querySelector('.main-content-wrapper');
+    <!-- ── STICKY FOOTER REVEAL ANIMATION ── -->
+    <script>
+        (function () {
+            'use strict';
 
-                    if (!footer || !wrapper) return;
+            var footer = document.querySelector('footer');
+            var wrapper = document.querySelector('.main-content-wrapper');
 
-                    var mq = window.matchMedia('(min-width: 901px)');
-                    var footerTween = null;
-                    var resizeTimer = null;
+            if (!footer || !wrapper) return;
 
-                    function setFooterHeight() {
-                        var height = mq.matches ? Math.ceil(footer.getBoundingClientRect().height) : 0;
-                        document.documentElement.style.setProperty('--footer-height', height + 'px');
-                    }
+            var mq = window.matchMedia('(min-width: 901px)');
+            var footerTween = null;
+            var resizeTimer = null;
 
-                    function destroyReveal() {
-                        if (footerTween && footerTween.scrollTrigger) footerTween.scrollTrigger.kill();
-                        if (footerTween) footerTween.kill();
-                        footerTween = null;
+            function setFooterHeight() {
+                var height = mq.matches ? Math.ceil(footer.getBoundingClientRect().height) : 0;
+                document.documentElement.style.setProperty('--footer-height', height + 'px');
+            }
 
-                        if (typeof gsap !== 'undefined') {
-                            gsap.set(footer, { clearProps: 'transform' });
+            function destroyReveal() {
+                if (footerTween && footerTween.scrollTrigger) footerTween.scrollTrigger.kill();
+                if (footerTween) footerTween.kill();
+                footerTween = null;
+
+                if (typeof gsap !== 'undefined') {
+                    gsap.set(footer, { clearProps: 'transform' });
+                }
+            }
+
+            function initReveal() {
+                destroyReveal();
+                setFooterHeight();
+
+                if (!mq.matches) return;
+                if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+                gsap.registerPlugin(ScrollTrigger);
+
+                var startY = 24;
+                var startScale = 0.98;
+                var scrubSpeed = 0.8;
+
+                footerTween = gsap.fromTo(footer,
+                    { scale: startScale, y: startY },
+                    {
+                        scale: 1,
+                        y: 0,
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: wrapper,
+                            start: 'bottom bottom',
+                            end: 'bottom top',
+                            scrub: scrubSpeed,
+                            invalidateOnRefresh: true
                         }
                     }
+                );
 
-                    function initReveal() {
-                        destroyReveal();
-                        setFooterHeight();
+                ScrollTrigger.refresh();
+            }
 
-                        if (!mq.matches) return;
-                        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+            function refreshReveal() {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(function () {
+                    setFooterHeight();
+                    if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+                }, 120);
+            }
 
-                        gsap.registerPlugin(ScrollTrigger);
+            if (typeof ResizeObserver !== 'undefined') {
+                var ro = new ResizeObserver(refreshReveal);
+                ro.observe(footer);
+            }
 
-                        var startY = 24;
-                        var startScale = 0.98;
-                        var scrubSpeed = 0.8;
+            window.addEventListener('resize', refreshReveal, { passive: true });
 
-                        footerTween = gsap.fromTo(footer,
-                            { scale: startScale, y: startY },
-                            {
-                                scale: 1,
-                                y: 0,
-                                ease: 'none',
-                                scrollTrigger: {
-                                    trigger: wrapper,
-                                    start: 'bottom bottom',
-                                    end: 'bottom top',
-                                    scrub: scrubSpeed,
-                                    invalidateOnRefresh: true
-                                }
-                            }
-                        );
+            if (mq.addEventListener) {
+                mq.addEventListener('change', initReveal);
+            } else if (mq.addListener) {
+                mq.addListener(initReveal);
+            }
 
-                        ScrollTrigger.refresh();
-                    }
-
-                    function refreshReveal() {
-                        clearTimeout(resizeTimer);
-                        resizeTimer = setTimeout(function () {
-                            setFooterHeight();
-                            if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
-                        }, 120);
-                    }
-
-                    if (typeof ResizeObserver !== 'undefined') {
-                        var ro = new ResizeObserver(refreshReveal);
-                        ro.observe(footer);
-                    }
-
-                    window.addEventListener('resize', refreshReveal, { passive: true });
-
-                    if (mq.addEventListener) {
-                        mq.addEventListener('change', initReveal);
-                    } else if (mq.addListener) {
-                        mq.addListener(initReveal);
-                    }
-
-                    if (document.readyState === 'loading') {
-                        document.addEventListener('DOMContentLoaded', initReveal);
-                    } else {
-                        initReveal();
-                    }
-                })();
-            </script>
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initReveal);
+            } else {
+                initReveal();
+            }
+        })();
+    </script>
 
 </body>
 
