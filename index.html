@@ -66,7 +66,7 @@
 
         :root {
             --ink: #13131a;
-            --paper: #F7F6F2;
+            --paper: #081c29;
             --accent: #4F3FF0;
             --accent2: #00D9A3;
             --muted: #6B6B7B;
@@ -80,6 +80,8 @@
         html {
             scroll-behavior: smooth;
             background: #081c29; /* Match footer color to hide scaling side gaps */
+            scrollbar-gutter: stable;
+            overflow-y: scroll;
         }
 
         body {
@@ -492,7 +494,7 @@
             padding: 8rem 4rem 2rem;
             position: relative;
             overflow: hidden;
-            background-color: #ffff;
+            background-color: #ffffff;
         }
 
         .hero-grid-bg {
@@ -971,7 +973,7 @@
         /* ── JOURNEY BENTO GRID ── */
         .about-section {
             padding: 120px 8%;
-            background: var(--paper);
+            background: #ffffff;
             position: relative;
             overflow: hidden;
             border-top: 1px solid var(--border);
@@ -2694,15 +2696,12 @@
 
         @media (max-width: 900px) {
             .main-content-wrapper {
-                margin-bottom: 0 !important;
+                margin-bottom: var(--footer-height);
             }
 
             footer {
-                position: relative !important;
-                z-index: 2;
-                max-height: none;
-                overflow: visible;
-                transform: none !important;
+                position: fixed !important;
+                z-index: 1;
             }
         }
     </style>
@@ -3701,7 +3700,7 @@
             /* Empowerment Section Base */
             .empowerment-section {
                 padding: 0px 10%;
-                background: linear-gradient(to right, #ffffff, #f8fbff);
+                background: #ffffff;
                 font-family: 'Inter', sans-serif;
                 display: flex;
                 justify-content: center;
@@ -5907,13 +5906,14 @@
 
                 .team-stack-section {
                     gap: 40px;
-                    padding: 12px 4px 60px;
+                    padding: 12px 0 60px;
+                    overflow-x: hidden;
                 }
 
                 .team-card {
                     flex-direction: column;
                     text-align: center;
-                    padding: 28px 22px;
+                    padding: 20px 16px;
                     top: 20px;
                     gap: 20px;
                 }
@@ -5931,6 +5931,11 @@
 
                 .team-step-dots {
                     justify-content: center;
+                }
+
+                .team-avatar {
+                    width: 100px;
+                    height: 100px;
                 }
             }
 
@@ -6226,7 +6231,7 @@
                 grid-template-columns: 410px 1fr 140px;
                 gap: 0;
                 min-height: 480px;
-                background: #0b1e2d;
+                background: #ffffff;
                 position: relative;
                 overflow: visible;
                 padding: 0;
@@ -6887,7 +6892,7 @@
             <style>
                 .faq-section {
                     padding: 120px 8%;
-                    background: var(--paper);
+                    background: #ffffff;
                     border-top: 1px solid var(--border);
                     position: relative;
                     overflow: hidden;
@@ -8557,12 +8562,12 @@
 
             if (!footer || !wrapper) return;
 
-            var mq = window.matchMedia('(min-width: 901px)');
+            var mq = window.matchMedia('(min-width: 0px)');
             var footerTween = null;
             var resizeTimer = null;
 
             function setFooterHeight() {
-                var height = mq.matches ? Math.ceil(footer.getBoundingClientRect().height) : 0;
+                var height = Math.ceil(footer.getBoundingClientRect().height);
                 document.documentElement.style.setProperty('--footer-height', height + 'px');
             }
 
@@ -8580,13 +8585,13 @@
                 destroyReveal();
                 setFooterHeight();
 
-                if (!mq.matches) return;
                 if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
                 gsap.registerPlugin(ScrollTrigger);
 
-                var startY = 24;
-                var startScale = 0.98;
+                var isMobile = window.innerWidth < 768;
+                var startY = isMobile ? 16 : 24;
+                var startScale = isMobile ? 0.95 : 0.98;
                 var scrubSpeed = 0.8;
 
                 footerTween = gsap.fromTo(footer,
@@ -8623,6 +8628,9 @@
 
             window.addEventListener('resize', refreshReveal, { passive: true });
 
+            // Initialize immediately
+            setFooterHeight();
+            
             if (mq.addEventListener) {
                 mq.addEventListener('change', initReveal);
             } else if (mq.addListener) {
@@ -8632,7 +8640,8 @@
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', initReveal);
             } else {
-                initReveal();
+                setFooterHeight();
+                setTimeout(initReveal, 50);
             }
         })();
     </script>
