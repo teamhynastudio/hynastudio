@@ -4644,10 +4644,890 @@
 
             </div>
         </section>
+          <!-- ══════════════════════════════════════════════
+             OUR PROCESS — SPLIT-SCREEN SECTION
+        ══════════════════════════════════════════════ -->
+        <style>
+            /* ── PROCESS SECTION WRAPPER ── */
+            .op-section {
+                width: 100%;
+                background: #000;
+                font-family: 'Inter', sans-serif;
+                position: relative;
+            }
+
+            /* ── GRID: right column only occupies right half ── */
+            .op-grid {
+                position: relative;
+                max-width: 1400px;
+                margin: 0 auto;
+                display: flex;
+            }
+
+            /* ── LEFT: placeholder that reserves space ── */
+            .op-left-spacer {
+                flex: 0 0 50%;
+                min-height: 100vh;
+                /* at least one screen tall */
+            }
+
+            /* ── LEFT: fixed panel — JS positions it ── */
+            .op-left {
+                position: fixed;
+                top: 0;
+                width: 50%;
+                height: 100vh;
+                background: #000;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 40px 32px;
+                z-index: 10;
+                /* hidden until JS activates it */
+                visibility: hidden;
+                pointer-events: none;
+                transition: visibility 0s;
+            }
+
+            /* Active: panel is position:fixed, locked to viewport left half */
+            .op-left.op-fixed-active {
+                visibility: visible;
+                pointer-events: auto;
+                position: fixed;
+                top: 0;
+                /* left + width set by JS to match the section's left edge */
+            }
+
+            /* Absolute pin to the top of the section (when section top is below viewport top) */
+            .op-left.op-fixed-top {
+                visibility: visible;
+                pointer-events: auto;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 50%;
+                bottom: auto;
+            }
+
+            /* Absolute pin to the bottom of the section (when section bottom has scrolled past viewport bottom) */
+            .op-left.op-fixed-bottom {
+                visibility: visible;
+                pointer-events: auto;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 50%;
+                top: auto;
+            }
+
+
+            .op-brand-card {
+                position: relative;
+                width: 100%;
+                max-width: 460px;
+                aspect-ratio: 1 / 1;
+                background: rgba(10, 16, 36, 0.55);
+                border: 1px solid rgba(120, 170, 255, 0.25);
+                border-radius: 26px;
+                backdrop-filter: blur(28px) saturate(160%);
+                -webkit-backdrop-filter: blur(28px) saturate(160%);
+                box-shadow:
+                    0 0 60px rgba(56, 132, 255, 0.14),
+                    0 0 120px rgba(56, 132, 255, 0.07),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+            }
+
+            /* Ambient glow orbs inside brand card */
+            .op-brand-card::before {
+                content: '';
+                position: absolute;
+                width: 300px;
+                height: 300px;
+                border-radius: 50%;
+                background: radial-gradient(circle, rgba(34, 211, 238, 0.08) 0%, transparent 70%);
+                top: -100px;
+                left: -100px;
+                pointer-events: none;
+            }
+
+            .op-brand-card::after {
+                content: '';
+                position: absolute;
+                width: 280px;
+                height: 280px;
+                border-radius: 50%;
+                background: radial-gradient(circle, rgba(29, 78, 216, 0.1) 0%, transparent 70%);
+                bottom: -80px;
+                right: -80px;
+                pointer-events: none;
+            }
+
+            /* Corner taglines */
+            .op-corner {
+                position: absolute;
+                font-size: 9.5px;
+                font-weight: 600;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                color: rgba(140, 180, 255, 0.65);
+                line-height: 1.4;
+                z-index: 2;
+                max-width: 140px;
+            }
+
+            .op-corner::after {
+                content: '';
+                display: block;
+                width: 28px;
+                height: 1.5px;
+                background: rgba(120, 170, 255, 0.45);
+                margin-top: 6px;
+            }
+
+            .op-corner.tl {
+                top: 28px;
+                left: 28px;
+                text-align: left;
+            }
+
+            .op-corner.tl::after {
+                margin-left: 0;
+            }
+
+            .op-corner.tr {
+                top: 28px;
+                right: 28px;
+                text-align: right;
+            }
+
+            .op-corner.tr::after {
+                margin-left: auto;
+            }
+
+            .op-corner.bl {
+                bottom: 28px;
+                left: 28px;
+                text-align: left;
+            }
+
+            .op-corner.bl::after {
+                margin-left: 0;
+            }
+
+            .op-corner.br {
+                bottom: 28px;
+                right: 28px;
+                text-align: right;
+            }
+
+            .op-corner.br::after {
+                margin-left: auto;
+            }
+
+            /* Center logo card */
+            .op-logo-card {
+                position: relative;
+                z-index: 3;
+                width: 200px;
+                height: 200px;
+                background: rgba(5, 10, 25, 0.85);
+                border: 1.5px solid rgba(34, 211, 238, 0.35);
+                border-radius: 22px;
+                box-shadow:
+                    0 0 30px rgba(34, 211, 238, 0.18),
+                    0 0 60px rgba(29, 78, 216, 0.12),
+                    inset 0 1px 0 rgba(34, 211, 238, 0.1);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 14px;
+                animation: op-logo-float 4s ease-in-out infinite alternate;
+            }
+
+            @keyframes op-logo-float {
+                from {
+                    transform: translateY(0px);
+                }
+
+                to {
+                    transform: translateY(-8px);
+                }
+            }
+
+            .op-logo-svg {
+                display: block;
+            }
+
+            .op-logo-name {
+                text-align: center;
+                line-height: 1.2;
+            }
+
+            .op-logo-name .op-hyna {
+                display: block;
+                font-size: 16px;
+                font-weight: 800;
+                letter-spacing: 0.25em;
+                color: #ffffff;
+                text-transform: uppercase;
+            }
+
+            .op-logo-name .op-studio {
+                display: block;
+                font-size: 10px;
+                font-weight: 600;
+                letter-spacing: 0.35em;
+                color: #38bdf8;
+                text-transform: uppercase;
+                margin-top: 2px;
+            }
+
+            /* ── RIGHT: SCROLLABLE CARDS COLUMN ── */
+            .op-right {
+                background: #000;
+                padding: 80px 48px 100px 48px;
+                display: flex;
+                flex-direction: column;
+                gap: 0;
+            }
+
+            /* Intro block */
+            .op-intro {
+                margin-bottom: 56px;
+            }
+
+            .op-eyebrow {
+                display: inline-block;
+                font-size: 10.5px;
+                font-weight: 700;
+                letter-spacing: 0.28em;
+                text-transform: uppercase;
+                color: #38bdf8;
+                margin-bottom: 16px;
+            }
+
+            .op-heading {
+                font-size: clamp(2rem, 3.5vw, 3rem);
+                font-weight: 800;
+                letter-spacing: -0.025em;
+                line-height: 1.1;
+                color: #fff;
+                margin: 0 0 14px;
+                font-family: 'Syne', sans-serif;
+            }
+
+            .op-subtext {
+                font-size: 15px;
+                color: rgba(180, 200, 255, 0.55);
+                font-weight: 400;
+                margin: 0;
+            }
+
+            /* Step cards */
+            .op-cards {
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+            }
+
+            .op-card {
+                background: rgba(255, 255, 255, 0.04);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                border-radius: 24px;
+                padding: 32px 32px 28px;
+                position: relative;
+                backdrop-filter: blur(20px) saturate(140%);
+                -webkit-backdrop-filter: blur(20px) saturate(140%);
+                box-shadow:
+                    0 8px 32px rgba(0, 0, 0, 0.4),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+                overflow: hidden;
+                cursor: default;
+
+                /* Initial hidden state for IntersectionObserver */
+                opacity: 0;
+                transform: translateY(40px);
+                transition:
+                    opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+                    transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+                    border-color 0.3s ease,
+                    box-shadow 0.3s ease;
+            }
+
+            .op-card.op-visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .op-card:hover {
+                transform: translateY(-6px) !important;
+                border-color: rgba(255, 255, 255, 0.18);
+                box-shadow:
+                    0 20px 60px rgba(0, 0, 0, 0.5),
+                    0 0 40px rgba(56, 132, 255, 0.08),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            }
+
+            /* Card inner shimmer line */
+            .op-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 1px;
+                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+                border-radius: 24px 24px 0 0;
+            }
+
+            .op-card-top {
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+                margin-bottom: 18px;
+            }
+
+            .op-card-meta {
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+            }
+
+            .op-step-num {
+                font-size: 10px;
+                font-weight: 700;
+                letter-spacing: 0.22em;
+                text-transform: uppercase;
+            }
+
+            .op-card-title {
+                font-size: 20px;
+                font-weight: 800;
+                color: #fff;
+                letter-spacing: -0.02em;
+                margin: 0;
+                font-family: 'Syne', sans-serif;
+            }
+
+            .op-card-subtitle {
+                font-size: 13px;
+                color: rgba(180, 200, 255, 0.5);
+                margin: 0;
+                font-weight: 400;
+            }
+
+            /* Icon badge */
+            .op-icon-badge {
+                width: 52px;
+                height: 52px;
+                border-radius: 14px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 22px;
+                flex-shrink: 0;
+                transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+
+            .op-card:hover .op-icon-badge {
+                transform: scale(1.12) rotate(6deg);
+            }
+
+            /* Pill items */
+            .op-pills {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+                margin-top: 4px;
+            }
+
+            .op-pill {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 100px;
+                padding: 5px 13px;
+                font-size: 12px;
+                font-weight: 500;
+                color: rgba(220, 235, 255, 0.7);
+                transition: all 0.25s ease;
+                cursor: default;
+            }
+
+            .op-pill::before {
+                content: '';
+                width: 5px;
+                height: 5px;
+                border-radius: 50%;
+                background: currentColor;
+                opacity: 0.6;
+                flex-shrink: 0;
+            }
+
+            .op-card:hover .op-pill {
+                background: rgba(255, 255, 255, 0.08);
+                border-color: rgba(255, 255, 255, 0.16);
+                color: rgba(220, 235, 255, 0.9);
+                transform: translateX(2px);
+            }
+
+            /* ── STEP ACCENT COLORS ── */
+            /* Discovery — Purple */
+            .op-card[data-step="1"] .op-step-num {
+                color: #a78bfa;
+            }
+
+            .op-card[data-step="1"] .op-icon-badge {
+                background: linear-gradient(135deg, #7c3aed, #a855f7);
+                box-shadow: 0 4px 20px rgba(168, 85, 247, 0.35);
+            }
+
+            .op-card[data-step="1"]:hover {
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(168, 85, 247, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            }
+
+            /* Strategy — Pink */
+            .op-card[data-step="2"] .op-step-num {
+                color: #f472b6;
+            }
+
+            .op-card[data-step="2"] .op-icon-badge {
+                background: linear-gradient(135deg, #be185d, #ec4899);
+                box-shadow: 0 4px 20px rgba(236, 72, 153, 0.35);
+            }
+
+            .op-card[data-step="2"]:hover {
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(236, 72, 153, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            }
+
+            /* UI/UX Design — Green */
+            .op-card[data-step="3"] .op-step-num {
+                color: #34d399;
+            }
+
+            .op-card[data-step="3"] .op-icon-badge {
+                background: linear-gradient(135deg, #059669, #10b981);
+                box-shadow: 0 4px 20px rgba(16, 185, 129, 0.35);
+            }
+
+            .op-card[data-step="3"]:hover {
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(16, 185, 129, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            }
+
+            /* Development — Orange */
+            .op-card[data-step="4"] .op-step-num {
+                color: #fb923c;
+            }
+
+            .op-card[data-step="4"] .op-icon-badge {
+                background: linear-gradient(135deg, #c2410c, #f97316);
+                box-shadow: 0 4px 20px rgba(249, 115, 22, 0.35);
+            }
+
+            .op-card[data-step="4"]:hover {
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(249, 115, 22, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            }
+
+            /* Testing — Red */
+            .op-card[data-step="5"] .op-step-num {
+                color: #f87171;
+            }
+
+            .op-card[data-step="5"] .op-icon-badge {
+                background: linear-gradient(135deg, #b91c1c, #ef4444);
+                box-shadow: 0 4px 20px rgba(239, 68, 68, 0.35);
+            }
+
+            .op-card[data-step="5"]:hover {
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(239, 68, 68, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            }
+
+            /* Deployment — Blue */
+            .op-card[data-step="6"] .op-step-num {
+                color: #60a5fa;
+            }
+
+            .op-card[data-step="6"] .op-icon-badge {
+                background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+                box-shadow: 0 4px 20px rgba(59, 130, 246, 0.35);
+            }
+
+            .op-card[data-step="6"]:hover {
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(59, 130, 246, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            }
+
+            /* Growth — Teal */
+            .op-card[data-step="7"] .op-step-num {
+                color: #2dd4bf;
+            }
+
+            .op-card[data-step="7"] .op-icon-badge {
+                background: linear-gradient(135deg, #0f766e, #14b8a6);
+                box-shadow: 0 4px 20px rgba(20, 184, 166, 0.35);
+            }
+
+            .op-card[data-step="7"]:hover {
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(20, 184, 166, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            }
+
+            /* ── RESPONSIVE: stack on narrow screens ── */
+            @media (max-width: 980px) {
+
+                /* Stack: flex becomes column */
+                .op-grid {
+                    flex-direction: column;
+                }
+
+                /* Hide the spacer — left panel flows normally */
+                .op-left-spacer {
+                    display: none;
+                }
+
+                /* Override JS fixed positioning on mobile — revert to normal flow */
+                .op-left,
+                .op-left.op-fixed-active,
+                .op-left.op-fixed-top,
+                .op-left.op-fixed-bottom {
+                    position: relative !important;
+                    visibility: visible !important;
+                    pointer-events: auto !important;
+                    width: 100% !important;
+                    height: auto;
+                    min-height: 360px;
+                    padding: 48px 24px;
+                    left: auto !important;
+                    top: auto !important;
+                    bottom: auto !important;
+                }
+
+                .op-brand-card {
+                    max-width: 340px;
+                    aspect-ratio: unset;
+                    height: 280px;
+                }
+
+                .op-corner {
+                    font-size: 8px;
+                    max-width: 110px;
+                }
+
+                .op-right {
+                    padding: 48px 24px 64px;
+                    width: 100%;
+                }
+
+                .op-card {
+                    padding: 24px 22px 20px;
+                }
+            }
+
+            @media (max-width: 480px) {
+
+                .op-left,
+                .op-left.op-fixed-active,
+                .op-left.op-fixed-top,
+                .op-left.op-fixed-bottom {
+                    min-height: 300px !important;
+                    padding: 32px 16px !important;
+                }
+
+                .op-brand-card {
+                    max-width: 280px;
+                    height: 240px;
+                }
+
+                .op-corner.tr,
+                .op-corner.br {
+                    display: none;
+                }
+
+                .op-logo-card {
+                    width: 160px;
+                    height: 160px;
+                }
+
+                .op-right {
+                    padding: 36px 16px 56px;
+                }
+
+                .op-heading {
+                    font-size: 1.9rem;
+                }
+            }
+        </style>
+
+        <div class="op-section" id="our-process">
+            <div class="op-grid">
+
+                <!-- ══ LEFT: FIXED BRAND PANEL (JS-driven) ══ -->
+                <div class="op-left-spacer"></div>
+
+                <div class="op-left" id="op-left-panel">
+                    <div class="op-brand-card">
+
+                        <div class="op-logo-card">
+                            <img src="./Screenshot 2026-07-02 202244.png" alt="Hyna Studio Logo" class="op-logo" />
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- ══ RIGHT: SCROLLABLE PROCESS CARDS ══ -->
+                <div class="op-right">
+                    <!-- Intro block -->
+                    <div class="op-intro">
+                        <span class="op-eyebrow">HOW WE WORK</span>
+                        <h2 class="op-heading">Our Process</h2>
+                        <p class="op-subtext">From first conversation to final launch — a clear, proven path.</p>
+                    </div>
+
+                    <!-- Cards -->
+                    <div class="op-cards">
+
+                        <!-- Step 1: Discovery -->
+                        <div class="op-card" data-step="1">
+                            <div class="op-card-top">
+                                <div class="op-card-meta">
+                                    <span class="op-step-num">01 — Discovery</span>
+                                    <h3 class="op-card-title">Discovery</h3>
+                                    <p class="op-card-subtitle">Understand your business</p>
+                                </div>
+                                <div class="op-icon-badge">🔍</div>
+                            </div>
+                            <div class="op-pills">
+                                <span class="op-pill">Requirement Gathering</span>
+                                <span class="op-pill">Business Analysis</span>
+                                <span class="op-pill">Competitor Research</span>
+                                <span class="op-pill">Goal Definition</span>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Strategy -->
+                        <div class="op-card" data-step="2">
+                            <div class="op-card-top">
+                                <div class="op-card-meta">
+                                    <span class="op-step-num">02 — Strategy</span>
+                                    <h3 class="op-card-title">Strategy</h3>
+                                    <p class="op-card-subtitle">Plan the solution</p>
+                                </div>
+                                <div class="op-icon-badge">🗺️</div>
+                            </div>
+                            <div class="op-pills">
+                                <span class="op-pill">Technical Architecture</span>
+                                <span class="op-pill">AI Integration Planning</span>
+                                <span class="op-pill">Database Design</span>
+                                <span class="op-pill">Cloud Infrastructure</span>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: UI/UX Design -->
+                        <div class="op-card" data-step="3">
+                            <div class="op-card-top">
+                                <div class="op-card-meta">
+                                    <span class="op-step-num">03 — UI / UX Design</span>
+                                    <h3 class="op-card-title">UI / UX Design</h3>
+                                    <p class="op-card-subtitle">Design beautiful experiences</p>
+                                </div>
+                                <div class="op-icon-badge">🎨</div>
+                            </div>
+                            <div class="op-pills">
+                                <span class="op-pill">Wireframes</span>
+                                <span class="op-pill">High Fidelity UI</span>
+                                <span class="op-pill">Responsive Layout</span>
+                                <span class="op-pill">Interactive Prototype</span>
+                            </div>
+                        </div>
+
+                        <!-- Step 4: Development -->
+                        <div class="op-card" data-step="4">
+                            <div class="op-card-top">
+                                <div class="op-card-meta">
+                                    <span class="op-step-num">04 — Development</span>
+                                    <h3 class="op-card-title">Development</h3>
+                                    <p class="op-card-subtitle">Build modern software</p>
+                                </div>
+                                <div class="op-icon-badge">⚙️</div>
+                            </div>
+                            <div class="op-pills">
+                                <span class="op-pill">Frontend Development</span>
+                                <span class="op-pill">Backend APIs</span>
+                                <span class="op-pill">AI Features</span>
+                                <span class="op-pill">Security Implementation</span>
+                            </div>
+                        </div>
+
+                        <!-- Step 5: Testing -->
+                        <div class="op-card" data-step="5">
+                            <div class="op-card-top">
+                                <div class="op-card-meta">
+                                    <span class="op-step-num">05 — Testing</span>
+                                    <h3 class="op-card-title">Testing</h3>
+                                    <p class="op-card-subtitle">Ensure quality</p>
+                                </div>
+                                <div class="op-icon-badge">🧪</div>
+                            </div>
+                            <div class="op-pills">
+                                <span class="op-pill">Performance Testing</span>
+                                <span class="op-pill">Security Testing</span>
+                                <span class="op-pill">Bug Fixing</span>
+                                <span class="op-pill">Cross-device Testing</span>
+                            </div>
+                        </div>
+
+                        <!-- Step 6: Deployment -->
+                        <div class="op-card" data-step="6">
+                            <div class="op-card-top">
+                                <div class="op-card-meta">
+                                    <span class="op-step-num">06 — Deployment</span>
+                                    <h3 class="op-card-title">Deployment</h3>
+                                    <p class="op-card-subtitle">Launch with confidence</p>
+                                </div>
+                                <div class="op-icon-badge">🚀</div>
+                            </div>
+                            <div class="op-pills">
+                                <span class="op-pill">Cloud Deployment</span>
+                                <span class="op-pill">Domain Configuration</span>
+                                <span class="op-pill">SSL &amp; Security</span>
+                                <span class="op-pill">Production Monitoring</span>
+                            </div>
+                        </div>
+
+                        <!-- Step 7: Growth -->
+                        <div class="op-card" data-step="7">
+                            <div class="op-card-top">
+                                <div class="op-card-meta">
+                                    <span class="op-step-num">07 — Growth</span>
+                                    <h3 class="op-card-title">Growth</h3>
+                                    <p class="op-card-subtitle">Scale your business</p>
+                                </div>
+                                <div class="op-icon-badge">📈</div>
+                            </div>
+                            <div class="op-pills">
+                                <span class="op-pill">Analytics</span>
+                                <span class="op-pill">SEO Optimization</span>
+                                <span class="op-pill">Automation</span>
+                                <span class="op-pill">Continuous Improvement</span>
+                            </div>
+                        </div>
+
+                    </div><!-- /.op-cards -->
+                </div><!-- /.op-right -->
+
+            </div><!-- /.op-grid -->
+        </div><!-- /.op-section -->
+
+        <script>
+            (function () {
+                'use strict';
+
+                /* ────────────────────────────────────────────────
+                   FIXED LEFT PANEL — works despite overflow-x:hidden on body
+                   Strategy:
+                     • While section is fully in view: position:fixed, top:0
+                     • Before section: absolute, top:0
+                     • After section: absolute, bottom:0
+                ──────────────────────────────────────────────── */
+                function initFixedPanel() {
+                    var section = document.getElementById('our-process');
+                    var panel = document.getElementById('op-left-panel');
+                    if (!section || !panel) return;
+
+                    var grid = section.querySelector('.op-grid');
+                    if (!grid) return;
+
+                    function updatePanel() {
+                        var sr = section.getBoundingClientRect();
+                        var gr = grid.getBoundingClientRect();
+                        var winH = window.innerHeight;
+                        var panelW = gr.width * 0.5;
+
+                        if (sr.bottom < 0 || sr.top > winH) {
+                            /* Section is completely off-screen — hide the panel */
+                            panel.classList.remove('op-fixed-active', 'op-fixed-top', 'op-fixed-bottom');
+                            panel.style.left = '';
+                            panel.style.width = '';
+                        } else if (sr.top > 0) {
+                            /* Section top is below viewport top: pin to top of section */
+                            panel.classList.remove('op-fixed-active', 'op-fixed-bottom');
+                            panel.classList.add('op-fixed-top');
+                            panel.style.left = '0'; /* align absolute to parent grid */
+                            panel.style.width = '50%';
+                        } else if (sr.bottom < winH) {
+                            /* Section bottom is above viewport bottom: pin to bottom of section */
+                            panel.classList.remove('op-fixed-active', 'op-fixed-top');
+                            panel.classList.add('op-fixed-bottom');
+                            panel.style.left = '0'; /* align absolute to parent grid */
+                            panel.style.width = '50%';
+                        } else {
+                            /* Section is in full view: fix to viewport */
+                            panel.classList.remove('op-fixed-top', 'op-fixed-bottom');
+                            panel.classList.add('op-fixed-active');
+                            panel.style.left = gr.left + 'px';
+                            panel.style.width = panelW + 'px';
+                        }
+                    }
+
+                    window.addEventListener('scroll', updatePanel, { passive: true });
+                    window.addEventListener('resize', updatePanel, { passive: true });
+                    updatePanel(); /* Run once on load */
+                }
+
+                /* ────────────────────────────────────────────────
+                   CARD REVEAL — IntersectionObserver fade-in
+                ──────────────────────────────────────────────── */
+                function initProcessObserver() {
+                    var cards = document.querySelectorAll('.op-card');
+                    if (!cards.length) return;
+
+                    if (!('IntersectionObserver' in window)) {
+                        cards.forEach(function (c) { c.classList.add('op-visible'); });
+                        return;
+                    }
+
+                    var observer = new IntersectionObserver(function (entries) {
+                        entries.forEach(function (entry) {
+                            if (entry.isIntersecting) {
+                                var card = entry.target;
+                                var delay = (parseInt(card.getAttribute('data-step'), 10) - 1) * 60;
+                                setTimeout(function () {
+                                    card.classList.add('op-visible');
+                                }, delay);
+                                observer.unobserve(card);
+                            }
+                        });
+                    }, {
+                        threshold: 0.18,
+                        rootMargin: '0px 0px -40px 0px'
+                    });
+
+                    cards.forEach(function (card) { observer.observe(card); });
+                }
+
+                function init() {
+                    initFixedPanel();
+                    initProcessObserver();
+                }
+
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', init);
+                } else {
+                    init();
+                }
+            }());
+        </script>
+        <!-- ══════════════ END OUR PROCESS ══════════════ -->
+
 
         <!-- ABOUT -->
         <section id="technologies">
-            < <h2 class="section-title">Technologies We Focus On</h2>
+              <h2 class="section-title">Technologies We Focus On</h2>
                 <p class="section-sub">Stay ahead with the latest technologies and tools in the industry.</p>
                 <div class="tech-marquee-container">
                     <!-- Row 1: Frontend & Design (Left) -->
@@ -7195,886 +8075,7 @@
             </script>
         </section>
 
-        <!-- ══════════════════════════════════════════════
-             OUR PROCESS — SPLIT-SCREEN SECTION
-        ══════════════════════════════════════════════ -->
-        <style>
-            /* ── PROCESS SECTION WRAPPER ── */
-            .op-section {
-                width: 100%;
-                background: #000;
-                font-family: 'Inter', sans-serif;
-                position: relative;
-            }
-
-            /* ── GRID: right column only occupies right half ── */
-            .op-grid {
-                position: relative;
-                max-width: 1400px;
-                margin: 0 auto;
-                display: flex;
-            }
-
-            /* ── LEFT: placeholder that reserves space ── */
-            .op-left-spacer {
-                flex: 0 0 50%;
-                min-height: 100vh;
-                /* at least one screen tall */
-            }
-
-            /* ── LEFT: fixed panel — JS positions it ── */
-            .op-left {
-                position: fixed;
-                top: 0;
-                width: 50%;
-                height: 100vh;
-                background: #000;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                padding: 40px 32px;
-                z-index: 10;
-                /* hidden until JS activates it */
-                visibility: hidden;
-                pointer-events: none;
-                transition: visibility 0s;
-            }
-
-            /* Active: panel is position:fixed, locked to viewport left half */
-            .op-left.op-fixed-active {
-                visibility: visible;
-                pointer-events: auto;
-                position: fixed;
-                top: 0;
-                /* left + width set by JS to match the section's left edge */
-            }
-
-            /* Absolute pin to the top of the section (when section top is below viewport top) */
-            .op-left.op-fixed-top {
-                visibility: visible;
-                pointer-events: auto;
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 50%;
-                bottom: auto;
-            }
-
-            /* Absolute pin to the bottom of the section (when section bottom has scrolled past viewport bottom) */
-            .op-left.op-fixed-bottom {
-                visibility: visible;
-                pointer-events: auto;
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 50%;
-                top: auto;
-            }
-
-
-            .op-brand-card {
-                position: relative;
-                width: 100%;
-                max-width: 460px;
-                aspect-ratio: 1 / 1;
-                background: rgba(10, 16, 36, 0.55);
-                border: 1px solid rgba(120, 170, 255, 0.25);
-                border-radius: 26px;
-                backdrop-filter: blur(28px) saturate(160%);
-                -webkit-backdrop-filter: blur(28px) saturate(160%);
-                box-shadow:
-                    0 0 60px rgba(56, 132, 255, 0.14),
-                    0 0 120px rgba(56, 132, 255, 0.07),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.06);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                overflow: hidden;
-            }
-
-            /* Ambient glow orbs inside brand card */
-            .op-brand-card::before {
-                content: '';
-                position: absolute;
-                width: 300px;
-                height: 300px;
-                border-radius: 50%;
-                background: radial-gradient(circle, rgba(34, 211, 238, 0.08) 0%, transparent 70%);
-                top: -100px;
-                left: -100px;
-                pointer-events: none;
-            }
-
-            .op-brand-card::after {
-                content: '';
-                position: absolute;
-                width: 280px;
-                height: 280px;
-                border-radius: 50%;
-                background: radial-gradient(circle, rgba(29, 78, 216, 0.1) 0%, transparent 70%);
-                bottom: -80px;
-                right: -80px;
-                pointer-events: none;
-            }
-
-            /* Corner taglines */
-            .op-corner {
-                position: absolute;
-                font-size: 9.5px;
-                font-weight: 600;
-                letter-spacing: 0.2em;
-                text-transform: uppercase;
-                color: rgba(140, 180, 255, 0.65);
-                line-height: 1.4;
-                z-index: 2;
-                max-width: 140px;
-            }
-
-            .op-corner::after {
-                content: '';
-                display: block;
-                width: 28px;
-                height: 1.5px;
-                background: rgba(120, 170, 255, 0.45);
-                margin-top: 6px;
-            }
-
-            .op-corner.tl {
-                top: 28px;
-                left: 28px;
-                text-align: left;
-            }
-
-            .op-corner.tl::after {
-                margin-left: 0;
-            }
-
-            .op-corner.tr {
-                top: 28px;
-                right: 28px;
-                text-align: right;
-            }
-
-            .op-corner.tr::after {
-                margin-left: auto;
-            }
-
-            .op-corner.bl {
-                bottom: 28px;
-                left: 28px;
-                text-align: left;
-            }
-
-            .op-corner.bl::after {
-                margin-left: 0;
-            }
-
-            .op-corner.br {
-                bottom: 28px;
-                right: 28px;
-                text-align: right;
-            }
-
-            .op-corner.br::after {
-                margin-left: auto;
-            }
-
-            /* Center logo card */
-            .op-logo-card {
-                position: relative;
-                z-index: 3;
-                width: 200px;
-                height: 200px;
-                background: rgba(5, 10, 25, 0.85);
-                border: 1.5px solid rgba(34, 211, 238, 0.35);
-                border-radius: 22px;
-                box-shadow:
-                    0 0 30px rgba(34, 211, 238, 0.18),
-                    0 0 60px rgba(29, 78, 216, 0.12),
-                    inset 0 1px 0 rgba(34, 211, 238, 0.1);
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                gap: 14px;
-                animation: op-logo-float 4s ease-in-out infinite alternate;
-            }
-
-            @keyframes op-logo-float {
-                from {
-                    transform: translateY(0px);
-                }
-
-                to {
-                    transform: translateY(-8px);
-                }
-            }
-
-            .op-logo-svg {
-                display: block;
-            }
-
-            .op-logo-name {
-                text-align: center;
-                line-height: 1.2;
-            }
-
-            .op-logo-name .op-hyna {
-                display: block;
-                font-size: 16px;
-                font-weight: 800;
-                letter-spacing: 0.25em;
-                color: #ffffff;
-                text-transform: uppercase;
-            }
-
-            .op-logo-name .op-studio {
-                display: block;
-                font-size: 10px;
-                font-weight: 600;
-                letter-spacing: 0.35em;
-                color: #38bdf8;
-                text-transform: uppercase;
-                margin-top: 2px;
-            }
-
-            /* ── RIGHT: SCROLLABLE CARDS COLUMN ── */
-            .op-right {
-                background: #000;
-                padding: 80px 48px 100px 48px;
-                display: flex;
-                flex-direction: column;
-                gap: 0;
-            }
-
-            /* Intro block */
-            .op-intro {
-                margin-bottom: 56px;
-            }
-
-            .op-eyebrow {
-                display: inline-block;
-                font-size: 10.5px;
-                font-weight: 700;
-                letter-spacing: 0.28em;
-                text-transform: uppercase;
-                color: #38bdf8;
-                margin-bottom: 16px;
-            }
-
-            .op-heading {
-                font-size: clamp(2rem, 3.5vw, 3rem);
-                font-weight: 800;
-                letter-spacing: -0.025em;
-                line-height: 1.1;
-                color: #fff;
-                margin: 0 0 14px;
-                font-family: 'Syne', sans-serif;
-            }
-
-            .op-subtext {
-                font-size: 15px;
-                color: rgba(180, 200, 255, 0.55);
-                font-weight: 400;
-                margin: 0;
-            }
-
-            /* Step cards */
-            .op-cards {
-                display: flex;
-                flex-direction: column;
-                gap: 24px;
-            }
-
-            .op-card {
-                background: rgba(255, 255, 255, 0.04);
-                border: 1px solid rgba(255, 255, 255, 0.08);
-                border-radius: 24px;
-                padding: 32px 32px 28px;
-                position: relative;
-                backdrop-filter: blur(20px) saturate(140%);
-                -webkit-backdrop-filter: blur(20px) saturate(140%);
-                box-shadow:
-                    0 8px 32px rgba(0, 0, 0, 0.4),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.06);
-                overflow: hidden;
-                cursor: default;
-
-                /* Initial hidden state for IntersectionObserver */
-                opacity: 0;
-                transform: translateY(40px);
-                transition:
-                    opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
-                    transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
-                    border-color 0.3s ease,
-                    box-shadow 0.3s ease;
-            }
-
-            .op-card.op-visible {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            .op-card:hover {
-                transform: translateY(-6px) !important;
-                border-color: rgba(255, 255, 255, 0.18);
-                box-shadow:
-                    0 20px 60px rgba(0, 0, 0, 0.5),
-                    0 0 40px rgba(56, 132, 255, 0.08),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            }
-
-            /* Card inner shimmer line */
-            .op-card::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                height: 1px;
-                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
-                border-radius: 24px 24px 0 0;
-            }
-
-            .op-card-top {
-                display: flex;
-                align-items: flex-start;
-                justify-content: space-between;
-                margin-bottom: 18px;
-            }
-
-            .op-card-meta {
-                display: flex;
-                flex-direction: column;
-                gap: 6px;
-            }
-
-            .op-step-num {
-                font-size: 10px;
-                font-weight: 700;
-                letter-spacing: 0.22em;
-                text-transform: uppercase;
-            }
-
-            .op-card-title {
-                font-size: 20px;
-                font-weight: 800;
-                color: #fff;
-                letter-spacing: -0.02em;
-                margin: 0;
-                font-family: 'Syne', sans-serif;
-            }
-
-            .op-card-subtitle {
-                font-size: 13px;
-                color: rgba(180, 200, 255, 0.5);
-                margin: 0;
-                font-weight: 400;
-            }
-
-            /* Icon badge */
-            .op-icon-badge {
-                width: 52px;
-                height: 52px;
-                border-radius: 14px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 22px;
-                flex-shrink: 0;
-                transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            }
-
-            .op-card:hover .op-icon-badge {
-                transform: scale(1.12) rotate(6deg);
-            }
-
-            /* Pill items */
-            .op-pills {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 8px;
-                margin-top: 4px;
-            }
-
-            .op-pill {
-                display: inline-flex;
-                align-items: center;
-                gap: 6px;
-                background: rgba(255, 255, 255, 0.05);
-                border: 1px solid rgba(255, 255, 255, 0.1);
-                border-radius: 100px;
-                padding: 5px 13px;
-                font-size: 12px;
-                font-weight: 500;
-                color: rgba(220, 235, 255, 0.7);
-                transition: all 0.25s ease;
-                cursor: default;
-            }
-
-            .op-pill::before {
-                content: '';
-                width: 5px;
-                height: 5px;
-                border-radius: 50%;
-                background: currentColor;
-                opacity: 0.6;
-                flex-shrink: 0;
-            }
-
-            .op-card:hover .op-pill {
-                background: rgba(255, 255, 255, 0.08);
-                border-color: rgba(255, 255, 255, 0.16);
-                color: rgba(220, 235, 255, 0.9);
-                transform: translateX(2px);
-            }
-
-            /* ── STEP ACCENT COLORS ── */
-            /* Discovery — Purple */
-            .op-card[data-step="1"] .op-step-num {
-                color: #a78bfa;
-            }
-
-            .op-card[data-step="1"] .op-icon-badge {
-                background: linear-gradient(135deg, #7c3aed, #a855f7);
-                box-shadow: 0 4px 20px rgba(168, 85, 247, 0.35);
-            }
-
-            .op-card[data-step="1"]:hover {
-                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(168, 85, 247, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            }
-
-            /* Strategy — Pink */
-            .op-card[data-step="2"] .op-step-num {
-                color: #f472b6;
-            }
-
-            .op-card[data-step="2"] .op-icon-badge {
-                background: linear-gradient(135deg, #be185d, #ec4899);
-                box-shadow: 0 4px 20px rgba(236, 72, 153, 0.35);
-            }
-
-            .op-card[data-step="2"]:hover {
-                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(236, 72, 153, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            }
-
-            /* UI/UX Design — Green */
-            .op-card[data-step="3"] .op-step-num {
-                color: #34d399;
-            }
-
-            .op-card[data-step="3"] .op-icon-badge {
-                background: linear-gradient(135deg, #059669, #10b981);
-                box-shadow: 0 4px 20px rgba(16, 185, 129, 0.35);
-            }
-
-            .op-card[data-step="3"]:hover {
-                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(16, 185, 129, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            }
-
-            /* Development — Orange */
-            .op-card[data-step="4"] .op-step-num {
-                color: #fb923c;
-            }
-
-            .op-card[data-step="4"] .op-icon-badge {
-                background: linear-gradient(135deg, #c2410c, #f97316);
-                box-shadow: 0 4px 20px rgba(249, 115, 22, 0.35);
-            }
-
-            .op-card[data-step="4"]:hover {
-                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(249, 115, 22, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            }
-
-            /* Testing — Red */
-            .op-card[data-step="5"] .op-step-num {
-                color: #f87171;
-            }
-
-            .op-card[data-step="5"] .op-icon-badge {
-                background: linear-gradient(135deg, #b91c1c, #ef4444);
-                box-shadow: 0 4px 20px rgba(239, 68, 68, 0.35);
-            }
-
-            .op-card[data-step="5"]:hover {
-                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(239, 68, 68, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            }
-
-            /* Deployment — Blue */
-            .op-card[data-step="6"] .op-step-num {
-                color: #60a5fa;
-            }
-
-            .op-card[data-step="6"] .op-icon-badge {
-                background: linear-gradient(135deg, #1d4ed8, #3b82f6);
-                box-shadow: 0 4px 20px rgba(59, 130, 246, 0.35);
-            }
-
-            .op-card[data-step="6"]:hover {
-                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(59, 130, 246, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            }
-
-            /* Growth — Teal */
-            .op-card[data-step="7"] .op-step-num {
-                color: #2dd4bf;
-            }
-
-            .op-card[data-step="7"] .op-icon-badge {
-                background: linear-gradient(135deg, #0f766e, #14b8a6);
-                box-shadow: 0 4px 20px rgba(20, 184, 166, 0.35);
-            }
-
-            .op-card[data-step="7"]:hover {
-                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(20, 184, 166, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            }
-
-            /* ── RESPONSIVE: stack on narrow screens ── */
-            @media (max-width: 980px) {
-
-                /* Stack: flex becomes column */
-                .op-grid {
-                    flex-direction: column;
-                }
-
-                /* Hide the spacer — left panel flows normally */
-                .op-left-spacer {
-                    display: none;
-                }
-
-                /* Override JS fixed positioning on mobile — revert to normal flow */
-                .op-left,
-                .op-left.op-fixed-active,
-                .op-left.op-fixed-top,
-                .op-left.op-fixed-bottom {
-                    position: relative !important;
-                    visibility: visible !important;
-                    pointer-events: auto !important;
-                    width: 100% !important;
-                    height: auto;
-                    min-height: 360px;
-                    padding: 48px 24px;
-                    left: auto !important;
-                    top: auto !important;
-                    bottom: auto !important;
-                }
-
-                .op-brand-card {
-                    max-width: 340px;
-                    aspect-ratio: unset;
-                    height: 280px;
-                }
-
-                .op-corner {
-                    font-size: 8px;
-                    max-width: 110px;
-                }
-
-                .op-right {
-                    padding: 48px 24px 64px;
-                    width: 100%;
-                }
-
-                .op-card {
-                    padding: 24px 22px 20px;
-                }
-            }
-
-            @media (max-width: 480px) {
-
-                .op-left,
-                .op-left.op-fixed-active,
-                .op-left.op-fixed-top,
-                .op-left.op-fixed-bottom {
-                    min-height: 300px !important;
-                    padding: 32px 16px !important;
-                }
-
-                .op-brand-card {
-                    max-width: 280px;
-                    height: 240px;
-                }
-
-                .op-corner.tr,
-                .op-corner.br {
-                    display: none;
-                }
-
-                .op-logo-card {
-                    width: 160px;
-                    height: 160px;
-                }
-
-                .op-right {
-                    padding: 36px 16px 56px;
-                }
-
-                .op-heading {
-                    font-size: 1.9rem;
-                }
-            }
-        </style>
-
-        <div class="op-section" id="our-process">
-            <div class="op-grid">
-
-                <!-- ══ LEFT: FIXED BRAND PANEL (JS-driven) ══ -->
-                <div class="op-left-spacer"></div>
-
-                <div class="op-left" id="op-left-panel">
-                    <div class="op-brand-card">
-
-                        <div class="op-logo-card">
-                            <img src="./Screenshot 2026-07-02 202244.png" alt="Hyna Studio Logo" class="op-logo" />
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- ══ RIGHT: SCROLLABLE PROCESS CARDS ══ -->
-                <div class="op-right">
-                    <!-- Intro block -->
-                    <div class="op-intro">
-                        <span class="op-eyebrow">HOW WE WORK</span>
-                        <h2 class="op-heading">Our Process</h2>
-                        <p class="op-subtext">From first conversation to final launch — a clear, proven path.</p>
-                    </div>
-
-                    <!-- Cards -->
-                    <div class="op-cards">
-
-                        <!-- Step 1: Discovery -->
-                        <div class="op-card" data-step="1">
-                            <div class="op-card-top">
-                                <div class="op-card-meta">
-                                    <span class="op-step-num">01 — Discovery</span>
-                                    <h3 class="op-card-title">Discovery</h3>
-                                    <p class="op-card-subtitle">Understand your business</p>
-                                </div>
-                                <div class="op-icon-badge">🔍</div>
-                            </div>
-                            <div class="op-pills">
-                                <span class="op-pill">Requirement Gathering</span>
-                                <span class="op-pill">Business Analysis</span>
-                                <span class="op-pill">Competitor Research</span>
-                                <span class="op-pill">Goal Definition</span>
-                            </div>
-                        </div>
-
-                        <!-- Step 2: Strategy -->
-                        <div class="op-card" data-step="2">
-                            <div class="op-card-top">
-                                <div class="op-card-meta">
-                                    <span class="op-step-num">02 — Strategy</span>
-                                    <h3 class="op-card-title">Strategy</h3>
-                                    <p class="op-card-subtitle">Plan the solution</p>
-                                </div>
-                                <div class="op-icon-badge">🗺️</div>
-                            </div>
-                            <div class="op-pills">
-                                <span class="op-pill">Technical Architecture</span>
-                                <span class="op-pill">AI Integration Planning</span>
-                                <span class="op-pill">Database Design</span>
-                                <span class="op-pill">Cloud Infrastructure</span>
-                            </div>
-                        </div>
-
-                        <!-- Step 3: UI/UX Design -->
-                        <div class="op-card" data-step="3">
-                            <div class="op-card-top">
-                                <div class="op-card-meta">
-                                    <span class="op-step-num">03 — UI / UX Design</span>
-                                    <h3 class="op-card-title">UI / UX Design</h3>
-                                    <p class="op-card-subtitle">Design beautiful experiences</p>
-                                </div>
-                                <div class="op-icon-badge">🎨</div>
-                            </div>
-                            <div class="op-pills">
-                                <span class="op-pill">Wireframes</span>
-                                <span class="op-pill">High Fidelity UI</span>
-                                <span class="op-pill">Responsive Layout</span>
-                                <span class="op-pill">Interactive Prototype</span>
-                            </div>
-                        </div>
-
-                        <!-- Step 4: Development -->
-                        <div class="op-card" data-step="4">
-                            <div class="op-card-top">
-                                <div class="op-card-meta">
-                                    <span class="op-step-num">04 — Development</span>
-                                    <h3 class="op-card-title">Development</h3>
-                                    <p class="op-card-subtitle">Build modern software</p>
-                                </div>
-                                <div class="op-icon-badge">⚙️</div>
-                            </div>
-                            <div class="op-pills">
-                                <span class="op-pill">Frontend Development</span>
-                                <span class="op-pill">Backend APIs</span>
-                                <span class="op-pill">AI Features</span>
-                                <span class="op-pill">Security Implementation</span>
-                            </div>
-                        </div>
-
-                        <!-- Step 5: Testing -->
-                        <div class="op-card" data-step="5">
-                            <div class="op-card-top">
-                                <div class="op-card-meta">
-                                    <span class="op-step-num">05 — Testing</span>
-                                    <h3 class="op-card-title">Testing</h3>
-                                    <p class="op-card-subtitle">Ensure quality</p>
-                                </div>
-                                <div class="op-icon-badge">🧪</div>
-                            </div>
-                            <div class="op-pills">
-                                <span class="op-pill">Performance Testing</span>
-                                <span class="op-pill">Security Testing</span>
-                                <span class="op-pill">Bug Fixing</span>
-                                <span class="op-pill">Cross-device Testing</span>
-                            </div>
-                        </div>
-
-                        <!-- Step 6: Deployment -->
-                        <div class="op-card" data-step="6">
-                            <div class="op-card-top">
-                                <div class="op-card-meta">
-                                    <span class="op-step-num">06 — Deployment</span>
-                                    <h3 class="op-card-title">Deployment</h3>
-                                    <p class="op-card-subtitle">Launch with confidence</p>
-                                </div>
-                                <div class="op-icon-badge">🚀</div>
-                            </div>
-                            <div class="op-pills">
-                                <span class="op-pill">Cloud Deployment</span>
-                                <span class="op-pill">Domain Configuration</span>
-                                <span class="op-pill">SSL &amp; Security</span>
-                                <span class="op-pill">Production Monitoring</span>
-                            </div>
-                        </div>
-
-                        <!-- Step 7: Growth -->
-                        <div class="op-card" data-step="7">
-                            <div class="op-card-top">
-                                <div class="op-card-meta">
-                                    <span class="op-step-num">07 — Growth</span>
-                                    <h3 class="op-card-title">Growth</h3>
-                                    <p class="op-card-subtitle">Scale your business</p>
-                                </div>
-                                <div class="op-icon-badge">📈</div>
-                            </div>
-                            <div class="op-pills">
-                                <span class="op-pill">Analytics</span>
-                                <span class="op-pill">SEO Optimization</span>
-                                <span class="op-pill">Automation</span>
-                                <span class="op-pill">Continuous Improvement</span>
-                            </div>
-                        </div>
-
-                    </div><!-- /.op-cards -->
-                </div><!-- /.op-right -->
-
-            </div><!-- /.op-grid -->
-        </div><!-- /.op-section -->
-
-        <script>
-            (function () {
-                'use strict';
-
-                /* ────────────────────────────────────────────────
-                   FIXED LEFT PANEL — works despite overflow-x:hidden on body
-                   Strategy:
-                     • While section is fully in view: position:fixed, top:0
-                     • Before section: absolute, top:0
-                     • After section: absolute, bottom:0
-                ──────────────────────────────────────────────── */
-                function initFixedPanel() {
-                    var section = document.getElementById('our-process');
-                    var panel = document.getElementById('op-left-panel');
-                    if (!section || !panel) return;
-
-                    var grid = section.querySelector('.op-grid');
-                    if (!grid) return;
-
-                    function updatePanel() {
-                        var sr = section.getBoundingClientRect();
-                        var gr = grid.getBoundingClientRect();
-                        var winH = window.innerHeight;
-                        var panelW = gr.width * 0.5;
-
-                        if (sr.bottom < 0 || sr.top > winH) {
-                            /* Section is completely off-screen — hide the panel */
-                            panel.classList.remove('op-fixed-active', 'op-fixed-top', 'op-fixed-bottom');
-                            panel.style.left = '';
-                            panel.style.width = '';
-                        } else if (sr.top > 0) {
-                            /* Section top is below viewport top: pin to top of section */
-                            panel.classList.remove('op-fixed-active', 'op-fixed-bottom');
-                            panel.classList.add('op-fixed-top');
-                            panel.style.left = '0'; /* align absolute to parent grid */
-                            panel.style.width = '50%';
-                        } else if (sr.bottom < winH) {
-                            /* Section bottom is above viewport bottom: pin to bottom of section */
-                            panel.classList.remove('op-fixed-active', 'op-fixed-top');
-                            panel.classList.add('op-fixed-bottom');
-                            panel.style.left = '0'; /* align absolute to parent grid */
-                            panel.style.width = '50%';
-                        } else {
-                            /* Section is in full view: fix to viewport */
-                            panel.classList.remove('op-fixed-top', 'op-fixed-bottom');
-                            panel.classList.add('op-fixed-active');
-                            panel.style.left = gr.left + 'px';
-                            panel.style.width = panelW + 'px';
-                        }
-                    }
-
-                    window.addEventListener('scroll', updatePanel, { passive: true });
-                    window.addEventListener('resize', updatePanel, { passive: true });
-                    updatePanel(); /* Run once on load */
-                }
-
-                /* ────────────────────────────────────────────────
-                   CARD REVEAL — IntersectionObserver fade-in
-                ──────────────────────────────────────────────── */
-                function initProcessObserver() {
-                    var cards = document.querySelectorAll('.op-card');
-                    if (!cards.length) return;
-
-                    if (!('IntersectionObserver' in window)) {
-                        cards.forEach(function (c) { c.classList.add('op-visible'); });
-                        return;
-                    }
-
-                    var observer = new IntersectionObserver(function (entries) {
-                        entries.forEach(function (entry) {
-                            if (entry.isIntersecting) {
-                                var card = entry.target;
-                                var delay = (parseInt(card.getAttribute('data-step'), 10) - 1) * 60;
-                                setTimeout(function () {
-                                    card.classList.add('op-visible');
-                                }, delay);
-                                observer.unobserve(card);
-                            }
-                        });
-                    }, {
-                        threshold: 0.18,
-                        rootMargin: '0px 0px -40px 0px'
-                    });
-
-                    cards.forEach(function (card) { observer.observe(card); });
-                }
-
-                function init() {
-                    initFixedPanel();
-                    initProcessObserver();
-                }
-
-                if (document.readyState === 'loading') {
-                    document.addEventListener('DOMContentLoaded', init);
-                } else {
-                    init();
-                }
-            }());
-        </script>
-        <!-- ══════════════ END OUR PROCESS ══════════════ -->
-
+       
         <!-- CTA -->
         <div class="cta-banner" id="contact">
             <h2>Ready to build something great?</h2>
