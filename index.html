@@ -81,7 +81,7 @@
             scroll-behavior: smooth;
             background: #081c29; /* Match footer color to hide scaling side gaps */
             scrollbar-gutter: stable;
-            overflow-y: scroll;
+            
         }
 
         body {
@@ -91,6 +91,43 @@
             line-height: 1.6;
             overflow-x: hidden;
         }
+        
+        /* Mobile nav — scoped only to nav area, non-destructive to team stacking */
+@media (max-width: 768px) {
+  nav { position: relative; z-index: 10010; } /* keep nav above page, but below team-stack controls if needed */
+
+  .nav-links {
+    position: fixed;
+    top: 64px;               /* adjust to header height */
+    left: 12px;
+    right: 12px;
+    background: var(--card, #fff);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+    padding: 14px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(10,10,15,0.06);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 160ms ease;
+    /* DO NOT set transform or will-change here — preserves JS/GSAP control on other elements */
+  }
+
+  .nav-links.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-links a { width: 100%; text-align: center; padding: 10px 6px; }
+
+  /* Keep hamburger clickable and on top */
+  #navMobileToggle { position: relative; z-index: 10011; background: transparent; border: none; }
+
+  /* Prevent horizontal scroll only (no changes to vertical overflow used by sticky team cards) */
+  html, body { overflow-x: hidden; }
+}
 
         /* ── NAV ── */
         nav {
