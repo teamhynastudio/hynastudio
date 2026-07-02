@@ -81,13 +81,13 @@
         html {
             scroll-behavior: smooth;
             background-color: var(--paper);
+
         }
 
         body {
             font-family: var(--font-body);
             background: var(--paper);
             color: var(--ink);
-            overflow-x: hidden;
             line-height: 1.6;
         }
 
@@ -2052,7 +2052,7 @@
                 top: 1rem;
                 left: 50%;
                 transform: translateX(-50%);
-                width: calc(100% - 2rem);
+                width: calc(120% 2rem);
                 padding: 0.5rem 0.8rem !important;
                 border-radius: 40px !important;
                 background: rgba(55, 60, 70, 0.78) !important;
@@ -2066,7 +2066,7 @@
                 top: 0.75rem !important;
                 left: 50% !important;
                 transform: translateX(-50%) !important;
-                width: calc(100% - 1.5rem) !important;
+                width: calc(100% - 1.5 rem) !important;
                 padding: 0.45rem 0.8rem !important;
                 border-radius: 40px !important;
                 background: rgba(55, 60, 70, 0.88) !important;
@@ -2472,7 +2472,7 @@
      HYNA STUDIO — LOADING SCREEN OVERLAY
      (injected; does NOT touch any other markup)
 ══════════════════════════════════════════════ -->
-    <style>
+    //<style>
         /* ── LOADING OVERLAY ──────────────────────────────────── */
         #hyna-loader {
             position: fixed;
