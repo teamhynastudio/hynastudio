@@ -93,34 +93,56 @@
 
         /* ── NAV ── */
         nav {
-            position: fixed;
-            top: 1.5rem;
-            left: 50%;
-            transform: translateX(-50%) translateZ(0);
-            width: calc(100% - 3rem);
-            max-width: 1200px;
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0.7rem 2.5rem;
-            background: rgba(55, 60, 70, 0.78);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 60px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(20px) saturate(160%);
-            -webkit-backdrop-filter: blur(20px) saturate(160%);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: transform, background, box-shadow;
-        }
+    position: fixed;
+    top: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%) translateZ(0);
+    width: calc(100% - 3rem);
+    max-width: 1200px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.7rem 2.5rem;
 
-        nav.nav-scrolled {
-            background: rgba(55, 60, 70, 0.88);
-            border-color: rgba(255, 255, 255, 0.16);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(28px) saturate(180%);
-            -webkit-backdrop-filter: blur(28px) saturate(180%);
-        }
+    /* Liquid Glassmorphism core */
+    background: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.05));
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 60px;
+    backdrop-filter: blur(50px) saturate(220%);
+    -webkit-backdrop-filter: blur(50px) saturate(220%);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.25),
+        inset 0 1px 4px rgba(255, 255, 255, 0.4),
+        inset 0 -2px 6px rgba(255, 255, 255, 0.15);
+
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, background, box-shadow;
+}
+
+/* Scrolled state: deeper liquid look */
+nav.nav-scrolled {
+    background: linear-gradient(135deg, rgba(255,255,255,0.3), rgba(255,255,255,0.1));
+    border-color: rgba(255, 255, 255, 0.35);
+    box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.35),
+        inset 0 2px 6px rgba(255, 255, 255, 0.3),
+        inset 0 -3px 8px rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(50px) saturate(240%);
+    -webkit-backdrop-filter: blur(50px) saturate(240%);
+}
+
+/* Logo styling */
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: rgba(255,255,255,0.9);
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.25);
+}
+
 
         /* Hide nav while user is actively scrolling */
         nav.nav-hidden {
@@ -196,12 +218,7 @@
             -webkit-backdrop-filter: none !important;
         }
 
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            text-decoration: none;
-        }
+        
 
         .logo-img {
             width: 56px;
@@ -222,7 +239,7 @@
             font-weight: 800;
             font-size: 1.25rem;
             letter-spacing: -0.02em;
-            color: #ffffff;
+            color: #030659;
             transition: color 0.3s ease;
         }
 
@@ -232,7 +249,7 @@
 
         .logo-sub {
             font-size: 0.65rem;
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(5, 5, 5, 0.7);
             letter-spacing: 0.05em;
             margin-top: 0.15rem;
             font-weight: 500;
@@ -256,7 +273,7 @@
             font-size: 0.7rem;
             transition: transform 0.2s ease, color 0.3s ease;
             display: inline-block;
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(0, 0, 0, 0.8);
         }
 
         .nav-item-dropdown:hover .nav-arrow {
@@ -327,7 +344,7 @@
 
         .nav-links a {
             text-decoration: none;
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(0, 0, 0, 0.9);
             font-size: 0.9rem;
             font-weight: 600;
             transition: color 0.3s ease;
@@ -476,6 +493,7 @@
             padding: 8rem 4rem 2rem;
             position: relative;
             overflow: hidden;
+            background-color: #ffff;
         }
 
         .hero-grid-bg {
@@ -486,6 +504,7 @@
                 linear-gradient(90deg, var(--border) 1px, transparent 1px);
             background-size: 60px 60px;
             opacity: 0.5;
+           
         }
 
         body.animation-disabled .water-blob-1 {
@@ -3760,7 +3779,7 @@
             --pink-lg: #FBD3E9;
             --blue-lg: #CFE0FF;
             --amber-lg: #FFE3B0;
-
+            
             position: relative;
             background: var(--paper-lg);
             color: var(--ink-lg);
@@ -3770,7 +3789,7 @@
 
         .liquid-glass-expertise-section .stage {
             position: relative;
-            padding: 120px 32px 140px;
+            padding: 0px 32px 0px;
             max-width: 1220px;
             margin: 0 auto;
             isolation: isolate;
@@ -5163,15 +5182,15 @@
             position: relative;
             min-height: auto;
             overflow: hidden;
-            padding: 100px 0;
+            padding: 20px 0 ;
         }
 
         .glassmorphic-roots-section .glow-a {
             position: absolute;
             top: -260px;
             left: -160px;
-            width: 640px;
-            height: 640px;
+            width: 540px;
+            height: 440px;
             border-radius: 50%;
             background: radial-gradient(circle, var(--amber-glow-gr), transparent 70%);
             filter: blur(10px);
@@ -5203,7 +5222,7 @@
             border-radius: 28px;
             backdrop-filter: blur(28px) saturate(140%);
             -webkit-backdrop-filter: blur(28px) saturate(140%);
-            padding: 72px 64px 56px;
+            padding: 72px 64px 32px;
             box-shadow:
                 inset 0 1px 0 rgba(255, 255, 255, 0.06),
                 0 30px 80px rgba(0, 0, 0, 0.55);
@@ -5302,27 +5321,27 @@
             flex-shrink: 0;
         }
 
-        .glassmorphic-roots-section .badge svg {
-            width: 44px;
-            height: 52px;
+        .glassmorphic-roots-section .badge img {
+            width: 290px;
+            height: 220px;
         }
 
         .glassmorphic-roots-section .lower-text {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 10px;
         }
 
         .glassmorphic-roots-section .lower-text .place {
-            font-size: 14px;
+            font-size: 11px;
             color: var(--text-sand-gr);
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .glassmorphic-roots-section .lower-text .sub {
             font-family: 'Space Mono', monospace;
             font-size: 11px;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.10em;
             color: var(--text-slate-dim-gr);
             text-transform: uppercase;
         }
@@ -5339,7 +5358,7 @@
         @media (max-width:900px) {
 
             .glassmorphic-roots-section .panel {
-                padding: 48px 32px;
+                padding: 48px 3px;
             }
 
             .glassmorphic-roots-section .grid {
@@ -5355,8 +5374,7 @@
 
     <section id="our-mission" class="glassmorphic-roots-section">
         <div class="stage">
-            <div class="glow-a"></div>
-            <div class="glow-b"></div>
+           
             <div class="section">
                 <div class="panel">
                     <div class="eyebrow"><span class="dot"></span>Our roots</div>
@@ -5381,18 +5399,7 @@
                     <div class="divider"></div>
                     <div class="lower">
                         <div class="badge">
-                            <svg viewBox="0 0 100 120" fill="none">
-                                <g fill="#d6d9dd">
-                                    <rect x="30" y="98" width="40" height="8" rx="1.5" />
-                                    <rect x="35" y="82" width="8" height="18" rx="1" />
-                                    <rect x="57" y="82" width="8" height="18" rx="1" />
-                                    <rect x="24" y="68" width="52" height="16" rx="1.5" />
-                                    <path d="M38 22 C38 8 46 -2 50 -10 C54 -2 62 8 62 22 L62 66 L38 66 Z"
-                                        transform="translate(0,10)" />
-                                    <circle cx="50" cy="14" r="8" />
-                                    <path d="M50 30 C64 30 74 42 74 56 L74 70 L64 70 L64 56 C64 46 58 38 50 38 Z" />
-                                </g>
-                            </svg>
+                            <img src="./thiruvalluvar.png" alt="Thiruvalluvar Statue">
                         </div>
                         <div class="lower-text">
                             <div class="place">Kanniyakumari, Tamil Nadu</div>
