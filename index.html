@@ -2798,36 +2798,30 @@
             letter-spacing: 0.05em;
         }
 
-        /* ── STICKY FOOTER REVEAL ── */
+        /* ── STICKY FOOTER REVEAL (fixed behind, no scale animation) ── */
         :root {
             --footer-height: 0px;
         }
 
-        /* The wrapper that sits on top of the sticky footer */
         .main-content-wrapper {
             position: relative;
             z-index: 2;
             background: var(--paper);
-            /* Push content down so footer is fully hidden under the wrapper by default */
             margin-bottom: var(--footer-height);
         }
 
-        /* Make footer sticky at bottom, peeking behind content */
         footer {
             position: fixed !important;
             bottom: 0;
             left: 0;
             width: 100%;
             z-index: 1;
-            will-change: transform;
-            transform-origin: center bottom;
         }
 
         @media (max-width: 900px) {
             .main-content-wrapper {
                 margin-bottom: var(--footer-height);
             }
-
             footer {
                 position: fixed !important;
                 z-index: 1;
@@ -8622,66 +8616,7 @@
                 lucide.createIcons();
             }
 
-            // Animations toggle (removed from navbar)
-        })();
-    </script>
-    <script src="cookie-consent.js" defer></script>
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Hyna Studio",
-  "url": "https://www.hynastudio.com",
-  "logo": "https://i.postimg.cc/Pfwp9w25/Whats-App-Image-2026-06-11-at-2-05-50-PM-removebg-preview-(1).png",
-  "sameAs": [
-    "https://www.linkedin.com/company/hynastudio",
-    "https://twitter.com/hynastudio",
-    "https://github.com/hynastudio"
-  ],
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "email": "team.hynastudio@gmail.com",
-    "contactType": "customer support"
-  }
-}
-</script>
-
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Dharshan",
-  "jobTitle": "Co-Founder & CTO",
-  "worksFor": {
-    "@type": "Organization",
-    "name": "Hyna Studio"
-  }
-}
-</script>
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Dharshan",
-  "jobTitle": "Co-Founder & CTO",
-  "worksFor": {
-    "@type": "Organization",
-    "name": "Hyna Studio"
-  }
-}
-</script>
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "serviceType": "Web Development",
-  "provider": {
-    "@type": "Organization",
-    "name": "Hyna Studio"
-  }
-}
-</script>
-    <script>
+            <script>
         document.addEventListener('DOMContentLoaded', () => {
             const toggleBtn = document.getElementById('navMobileToggle');
             const navLinks = document.querySelector('.nav-links');
@@ -8730,97 +8665,35 @@
         });
     </script>
 
-    <!-- ── STICKY FOOTER REVEAL ANIMATION ── -->
+    <!-- ── STICKY FOOTER REVEAL HEIGHT CALCULATION ── -->
     <script>
         (function () {
             'use strict';
-
             var footer = document.querySelector('footer');
-            var wrapper = document.querySelector('.main-content-wrapper');
-
-            if (!footer || !wrapper) return;
-
-            var mq = window.matchMedia('(min-width: 0px)');
-            var footerTween = null;
-            var resizeTimer = null;
+            if (!footer) return;
 
             function setFooterHeight() {
                 var height = Math.ceil(footer.getBoundingClientRect().height);
                 document.documentElement.style.setProperty('--footer-height', height + 'px');
             }
 
-            function destroyReveal() {
-                if (footerTween && footerTween.scrollTrigger) footerTween.scrollTrigger.kill();
-                if (footerTween) footerTween.kill();
-                footerTween = null;
-
-                if (typeof gsap !== 'undefined') {
-                    gsap.set(footer, { clearProps: 'transform' });
-                }
-            }
-
-            function initReveal() {
-                destroyReveal();
-                setFooterHeight();
-
-                if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
-
-                gsap.registerPlugin(ScrollTrigger);
-
-                var isMobile = window.innerWidth < 768;
-                var startY = isMobile ? 16 : 24;
-                var startScale = isMobile ? 0.95 : 0.98;
-                var scrubSpeed = 0.8;
-
-                footerTween = gsap.fromTo(footer,
-                    { scale: startScale, y: startY },
-                    {
-                        scale: 1,
-                        y: 0,
-                        ease: 'none',
-                        scrollTrigger: {
-                            trigger: wrapper,
-                            start: 'bottom bottom',
-                            end: 'bottom top',
-                            scrub: scrubSpeed,
-                            invalidateOnRefresh: true
-                        }
-                    }
-                );
-
-                ScrollTrigger.refresh();
-            }
-
-            function refreshReveal() {
-                clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(function () {
-                    setFooterHeight();
-                    if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
-                }, 120);
-            }
-
             if (typeof ResizeObserver !== 'undefined') {
-                var ro = new ResizeObserver(refreshReveal);
+                var ro = new ResizeObserver(setFooterHeight);
                 ro.observe(footer);
             }
 
-            window.addEventListener('resize', refreshReveal, { passive: true });
-
+            window.addEventListener('resize', setFooterHeight, { passive: true });
+            
             // Initialize immediately
             setFooterHeight();
 
-            if (mq.addEventListener) {
-                mq.addEventListener('change', initReveal);
-            } else if (mq.addListener) {
-                mq.addListener(initReveal);
-            }
-
             if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', initReveal);
+                document.addEventListener('DOMContentLoaded', setFooterHeight);
             } else {
                 setFooterHeight();
-                setTimeout(initReveal, 50);
+                setTimeout(setFooterHeight, 50);
             }
+            window.addEventListener('load', setFooterHeight);
         })();
     </script>
 
