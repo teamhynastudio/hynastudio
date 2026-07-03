@@ -6713,29 +6713,7 @@
                 gap: 40px;
                 cursor: pointer;
                 will-change: transform, opacity, filter;
-                /* Entrance: hidden below */
-                opacity: 0;
-                transform: translateY(56px) scale(0.97);
-                transition:
-                    opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
-                    transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
-                    border-color 0.3s ease,
-                    box-shadow 0.3s ease;
                 z-index: 10;
-            }
-
-            /* Entrance revealed — JS also removes inline transform after reveal */
-            .team-card.is-visible {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-
-            /* While being stacked — disable transition so JS drives transform every frame */
-            .team-card.tc-stacking {
-                transition:
-                    opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
-                    border-color 0.3s ease,
-                    box-shadow 0.3s ease;
             }
 
             .team-card.non-sticky {
@@ -7814,59 +7792,6 @@
                 });
             });
 
-            /* ─── Team stack scroll animation (mirrors process section) ─── */
-            function initTeamScroll() {
-                if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
-                gsap.registerPlugin(ScrollTrigger);
-
-                const cards = gsap.utils.toArray('.team-card');
-
-                cards.forEach((card, i) => {
-                    // Entrance: slide up on scroll into view (skip for Vignesh, first card)
-                    if (i > 0) {
-                        gsap.fromTo(card,
-                            { y: 50, opacity: 0 },
-                            {
-                                y: 0, opacity: 1,
-                                duration: 0.55,
-                                ease: 'power2.out',
-                                scrollTrigger: {
-                                    trigger: card,
-                                    start: 'top 88%',
-                                    toggleActions: 'play none none reverse',
-                                }
-                            }
-                        );
-                    }
-
-                    // Stacking: previous card fades & scales as next card scrolls over it
-                    if (i < cards.length - 1) {
-                        const nextCard = cards[i + 1];
-                        ScrollTrigger.create({
-                            trigger: nextCard,
-                            start: 'top 240px',
-                            end: 'top 120px',
-                            scrub: true,
-                            onUpdate(self) {
-                                const p = self.progress;
-                                gsap.set(card, {
-                                    scale: 1 - p * 0.04,
-                                    y: -p * 24,
-                                    filter: 'blur(' + (p * 3) + 'px)',
-                                    opacity: 1 - p * 0.45,
-                                });
-                            }
-                        });
-                    }
-                });
-            }
-
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', initTeamScroll);
-            } else {
-                initTeamScroll();
-            }
-
         </script>
         <section id="about" class="about-section">
             <div class="section-header" style="text-align: center; margin-bottom: 3.5rem;">
@@ -8506,6 +8431,10 @@
                 let rafId = null;
                 let activeIdx = 0;
 
+                function easeOutCubic(t) {
+                    return 1 - Math.pow(1 - t, 3);
+                }
+
                 function applyStackFrame() {
                     rafId = null;
 
@@ -8518,7 +8447,6 @@
                         const cardRect = card.getBoundingClientRect();
                         const nextCard = teamCards[i + 1];
 
-                        // Active card tracking (closest to viewport center)
                         const mid = cardRect.top + cardRect.height / 2;
                         const dist = Math.abs(mid - window.innerHeight / 2);
                         if (dist < bestDist) { bestDist = dist; bestIdx = i; }
@@ -8527,31 +8455,30 @@
 
                         if (nextCard && revealed.has(nextCard)) {
                             const nextRect = nextCard.getBoundingClientRect();
-                            // 0 = not overlapping, 1 = fully stacked under next card
                             const overlapPx = Math.max(0, cardRect.bottom - nextRect.top);
-                            const p = Math.min(1, overlapPx / (cardRect.height * 0.6));
+                            const rawP = Math.min(1, overlapPx / (cardRect.height * 0.7));
+                            const p = easeOutCubic(rawP);
 
-                            if (p > 0) {
-                                const sc = 1 - p * 0.055;
-                                const ty = -p * 10;
-                                const br = 1 - p * 0.20;
-                                card.style.transform = `translateY(${ty.toFixed(2)}px) scale(${sc.toFixed(4)})`;
+                            if (p > 0.001) {
+                                const sc = 1 - p * 0.045;
+                                const ty = -p * 12;
+                                const br = 1 - p * 0.12;
+                                const rot = -p * 0.4;
+                                card.style.transform = `translateY(${ty.toFixed(2)}px) scale(${sc.toFixed(4)}) rotate(${rot.toFixed(3)}deg)`;
                                 card.style.filter = `brightness(${br.toFixed(4)})`;
-                                card.style.boxShadow = `0 2px 8px rgba(0,0,0,0.04), 0 ${Math.round(p * 8)}px 20px rgba(0,0,0,0.06)`;
+                                card.style.boxShadow = `0 2px 8px rgba(0,0,0,0.04), 0 ${(p * 12).toFixed(1)}px 24px rgba(0,0,0,${(0.06 + p * 0.08).toFixed(3)})`;
                             } else {
                                 card.style.transform = '';
                                 card.style.filter = '';
                                 card.style.boxShadow = '';
                             }
                         } else {
-                            // Last card — reset
                             card.style.transform = '';
                             card.style.filter = '';
                             card.style.boxShadow = '';
                         }
                     });
 
-                    // Update dots
                     activeIdx = bestIdx;
 
                     teamCards.forEach((card, i) => {
@@ -8570,6 +8497,13 @@
                 requestAnimationFrame(applyStackFrame);
 
             })();
+
+            setTimeout(() => {
+                document.querySelectorAll('#team .team-card:not(.is-visible)').forEach(c => {
+                    c.classList.add('is-visible');
+                    setTimeout(() => c.classList.add('tc-stacking'), 700);
+                });
+            }, 1500);
 
             // Nav hide-on-scroll / show-on-stop behavior
             const navElement = document.querySelector('nav');
@@ -8627,8 +8561,10 @@
                 lucide.createIcons();
             }
 
-            <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        </script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
             const toggleBtn = document.getElementById('navMobileToggle');
                 const navLinks = document.querySelector('.nav-links');
 
