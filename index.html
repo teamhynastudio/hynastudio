@@ -79,7 +79,7 @@
 
         html {
             scroll-behavior: smooth;
-            background: #031650;
+            background: #fcfcfc;
             /* Match footer color to hide scaling side gaps */
             scrollbar-gutter: stable;
 
@@ -390,14 +390,14 @@
             border: 1px solid rgba(0, 0, 0, 0.07);
             border-radius: 16px;
             padding: 0.5rem;
-            box-shadow: 
+            box-shadow:
                 0 4px 6px rgba(0, 0, 0, 0.04),
                 0 20px 40px rgba(0, 0, 0, 0.1);
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.28s cubic-bezier(0.19, 1, 0.22, 1), 
-                        transform 0.28s cubic-bezier(0.19, 1, 0.22, 1), 
-                        visibility 0.28s;
+            transition: opacity 0.28s cubic-bezier(0.19, 1, 0.22, 1),
+                transform 0.28s cubic-bezier(0.19, 1, 0.22, 1),
+                visibility 0.28s;
             z-index: 200;
         }
 
@@ -2822,6 +2822,7 @@
             .main-content-wrapper {
                 margin-bottom: var(--footer-height);
             }
+
             footer {
                 position: fixed !important;
                 z-index: 1;
@@ -3368,7 +3369,8 @@
                         brand identities for startups and scale-ups worldwide.</p>
                     <div class="hero-actions">
                         <a href="#contact" class="btn-primary"
-                            style="background: linear-gradient(135deg, var(--accent), #7C3AED); box-shadow: 0 4px 20px rgba(79, 63, 240, 0.45); border: none;">Join Us →</a>
+                            style="background: linear-gradient(135deg, var(--accent), #7C3AED); box-shadow: 0 4px 20px rgba(79, 63, 240, 0.45); border: none;">Join
+                            Us →</a>
                         <a href="#team" class="btn-ghost" style="display:inline-flex;align-items:center;gap:0.5rem;">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
@@ -7240,94 +7242,98 @@
 
         <style>
             /* ── API DEV SECTION ── */
-            .api-dev-section{
-    display:grid;
-    grid-template-columns:410px 1fr 140px;
-    gap:0;
-    min-height:480px;
-    position:relative;
-    overflow:visible;
-    padding:0;
+            .api-dev-section {
+                display: grid;
+                grid-template-columns: 410px 1fr 140px;
+                gap: 0;
+                min-height: 480px;
+                position: relative;
+                overflow: visible;
+                padding: 0;
 
-    /* White background */
-    background:#ffffff;
+                /* White background */
+                background: #ffffff;
 
-    border-top:1px solid rgba(0,0,0,.06);
-    border-bottom:1px solid rgba(0,0,0,.06);
+                border-top: 1px solid rgba(0, 0, 0, .06);
+                border-bottom: 1px solid rgba(0, 0, 0, .06);
 
-    margin-left:3%;
-}
+                margin-left: 3%;
+            }
 
-@media (max-width: 768px) {
-    .api-dev-section {
-        grid-template-columns: 1fr;
-        margin-left: 0;
-        min-height: auto;
-    }
-}
+            @media (max-width: 768px) {
+                .api-dev-section {
+                    grid-template-columns: 1fr;
+                    margin-left: 0;
+                    min-height: auto;
+                }
+            }
 
 
             /* Subtle ambient glow */
-.api-dev-section::before{
-    content:"";
-    position:absolute;
-    top: -1px;;
-    left:-120px;
-    width:120px;
-    height:105%;
-    background:#fff;
-    z-index:0;
-    
-}
-.api-dev-section::after{
-    content:"";
-    position:absolute;
-    top:0;
-    left:-30px;
-    width:95px;
-    height:100%;
-    background:#091828;
-    border-radius:80px 0 0 80px;
-    z-index:1;
-}
+            .api-dev-section::before {
+                content: "";
+                position: absolute;
+                top: -1px;
+                ;
+                left: -120px;
+                width: 120px;
+                height: 105%;
+                background: #fff;
+                z-index: 0;
 
-@media (max-width: 768px) {
-    .api-dev-section::before,
-    .api-dev-section::after {
-        display: none;
-    }
-}
+            }
+
+            .api-dev-section::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: -30px;
+                width: 95px;
+                height: 100%;
+                background: #091828;
+                border-radius: 80px 0 0 80px;
+                z-index: 1;
+            }
+
+            @media (max-width: 768px) {
+
+                .api-dev-section::before,
+                .api-dev-section::after {
+                    display: none;
+                }
+            }
+
             /* LEFT CARD — clean floating card shape */
-            .api-info-card{
-    background:#fff;
-    border:1px solid rgba(0,0,0,.06);
-    padding:5% 2.5rem;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
+            .api-info-card {
+                background: #fff;
+                border: 1px solid rgba(0, 0, 0, .06);
+                padding: 5% 2.5rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
 
-    position:relative;
-    z-index:5;
+                position: relative;
+                z-index: 5;
 
-    border-radius:18px;
+                border-radius: 18px;
 
-    margin-top:-2.5rem;
-    margin-bottom:-2.5rem;
-    margin-left:60px;
+                margin-top: -2.5rem;
+                margin-bottom: -2.5rem;
+                margin-left: 60px;
 
-    box-shadow:0 20px 45px rgba(0,0,0,.18);
-    align-self:stretch;
-}
+                box-shadow: 0 20px 45px rgba(0, 0, 0, .18);
+                align-self: stretch;
+            }
 
-@media (max-width: 768px) {
-    .api-info-card {
-        padding: 2rem 1.5rem;
-        margin-top: 0;
-        margin-bottom: 2rem;
-        margin-left: 0;
-        box-shadow: 0 10px 20px rgba(0,0,0,.1);
-    }
-}
+            @media (max-width: 768px) {
+                .api-info-card {
+                    padding: 2rem 1.5rem;
+                    margin-top: 0;
+                    margin-bottom: 2rem;
+                    margin-left: 0;
+                    box-shadow: 0 10px 20px rgba(0, 0, 0, .1);
+                }
+            }
 
             .api-card-label {
                 font-family: var(--font-mono);
@@ -7427,7 +7433,7 @@
                     transform: scale(1.3);
                 }
             }
-            
+
 
             /* CENTER CODE PANEL */
             .api-code-panel {
@@ -7620,7 +7626,7 @@
                 }
             }
         </style>
-        
+
 
         <script>
             (function () {
@@ -7855,7 +7861,7 @@
             } else {
                 initTeamScroll();
             }
-            
+
         </script>
         <section id="about" class="about-section">
             <div class="section-header" style="text-align: center; margin-bottom: 3.5rem;">
@@ -8619,20 +8625,20 @@
             <script>
         document.addEventListener('DOMContentLoaded', () => {
             const toggleBtn = document.getElementById('navMobileToggle');
-            const navLinks = document.querySelector('.nav-links');
+                const navLinks = document.querySelector('.nav-links');
 
-            if (toggleBtn && navLinks) {
-                toggleBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    toggleBtn.classList.toggle('active');
-                    navLinks.classList.toggle('active');
-                });
+                if (toggleBtn && navLinks) {
+                    toggleBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        toggleBtn.classList.toggle('active');
+                        navLinks.classList.toggle('active');
+                    });
 
                 // Close menu when clicking outside
                 document.addEventListener('click', (e) => {
                     if (!navLinks.contains(e.target) && e.target !== toggleBtn) {
-                        toggleBtn.classList.remove('active');
-                        navLinks.classList.remove('active');
+                    toggleBtn.classList.remove('active');
+                navLinks.classList.remove('active');
                     }
                 });
 
@@ -8667,33 +8673,33 @@
 
     <!-- ── STICKY FOOTER REVEAL HEIGHT CALCULATION ── -->
     <script>
-        (function () {
-            'use strict';
-            var footer = document.querySelector('footer');
-            if (!footer) return;
+                (function () {
+                    'use strict';
+                var footer = document.querySelector('footer');
+                if (!footer) return;
 
-            function setFooterHeight() {
+                function setFooterHeight() {
                 var height = Math.ceil(footer.getBoundingClientRect().height);
                 document.documentElement.style.setProperty('--footer-height', height + 'px');
             }
 
-            if (typeof ResizeObserver !== 'undefined') {
+                if (typeof ResizeObserver !== 'undefined') {
                 var ro = new ResizeObserver(setFooterHeight);
                 ro.observe(footer);
             }
 
-            window.addEventListener('resize', setFooterHeight, { passive: true });
-            
-            // Initialize immediately
-            setFooterHeight();
+                window.addEventListener('resize', setFooterHeight, {passive: true });
 
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', setFooterHeight);
-            } else {
+                // Initialize immediately
                 setFooterHeight();
+
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', setFooterHeight);
+            } else {
+                    setFooterHeight();
                 setTimeout(setFooterHeight, 50);
             }
-            window.addEventListener('load', setFooterHeight);
+                window.addEventListener('load', setFooterHeight);
         })();
     </script>
 
