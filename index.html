@@ -2798,24 +2798,29 @@
             letter-spacing: 0.05em;
         }
 
-        /* ── STICKY FOOTER REVEAL (fixed behind, no scale animation) ── */
+        /* ── STICKY FOOTER REVEAL ── */
         :root {
             --footer-height: 0px;
         }
 
+        /* The wrapper that sits on top of the sticky footer */
         .main-content-wrapper {
             position: relative;
             z-index: 2;
             background: var(--paper);
+            /* Push content down so footer is fully hidden under the wrapper by default */
             margin-bottom: var(--footer-height);
         }
 
+        /* Make footer sticky at bottom, peeking behind content */
         footer {
             position: fixed !important;
             bottom: 0;
             left: 0;
             width: 100%;
             z-index: 1;
+            will-change: transform;
+            transform-origin: center bottom;
         }
 
         @media (max-width: 900px) {
@@ -8670,6 +8675,7 @@
             }
         });
     </script>
+
 
     <!-- ── STICKY FOOTER REVEAL HEIGHT CALCULATION ── -->
     <script>
