@@ -79,55 +79,74 @@
 
         html {
             scroll-behavior: smooth;
-            background: #081c29; /* Match footer color to hide scaling side gaps */
+            background: #ffffff;
+            /* Match footer color to hide scaling side gaps */
             scrollbar-gutter: stable;
-            
+
         }
 
         body {
             font-family: var(--font-body);
-            background: var(--paper);
+            background: #ffffff;
             color: var(--ink);
             line-height: 1.6;
             overflow-x: hidden;
         }
-        
+
         /* Mobile nav — scoped only to nav area, non-destructive to team stacking */
-@media (max-width: 768px) {
-  nav { position: relative; z-index: 10010; } /* keep nav above page, but below team-stack controls if needed */
+        @media (max-width: 768px) {
+            nav {
+                position: relative;
+                z-index: 10010;
+            }
 
-  .nav-links {
-    position: fixed;
-    top: 64px;               /* adjust to header height */
-    left: 12px;
-    right: 12px;
-    background: var(--card, #fff);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: stretch;
-    padding: 14px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(10,10,15,0.06);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 160ms ease;
-    /* DO NOT set transform or will-change here — preserves JS/GSAP control on other elements */
-  }
+            /* keep nav above page, but below team-stack controls if needed */
 
-  .nav-links.active {
-    opacity: 1;
-    pointer-events: auto;
-  }
+            .nav-links {
+                position: fixed;
+                top: 64px;
+                /* adjust to header height */
+                left: 12px;
+                right: 12px;
+                background: var(--card, #fff);
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                align-items: stretch;
+                padding: 14px;
+                border-radius: 12px;
+                box-shadow: 0 10px 30px rgba(10, 10, 15, 0.06);
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 160ms ease;
+                /* DO NOT set transform or will-change here — preserves JS/GSAP control on other elements */
+            }
 
-  .nav-links a { width: 100%; text-align: center; padding: 10px 6px; }
+            .nav-links.active {
+                opacity: 1;
+                pointer-events: auto;
+            }
 
-  /* Keep hamburger clickable and on top */
-  #navMobileToggle { position: relative; z-index: 10011; background: transparent; border: none; }
+            .nav-links a {
+                width: 100%;
+                text-align: center;
+                padding: 10px 6px;
+            }
 
-  /* Prevent horizontal scroll only (no changes to vertical overflow used by sticky team cards) */
-  html, body { overflow-x: hidden; }
-}
+            /* Keep hamburger clickable and on top */
+            #navMobileToggle {
+                position: relative;
+                z-index: 10011;
+                background: transparent;
+                border: none;
+            }
+
+            /* Prevent horizontal scroll only (no changes to vertical overflow used by sticky team cards) */
+            html,
+            body {
+                overflow-x: hidden;
+            }
+        }
 
         /* ── NAV ── */
         nav {
@@ -4644,7 +4663,7 @@
 
             </div>
         </section>
-          <!-- ══════════════════════════════════════════════
+        <!-- ══════════════════════════════════════════════
              OUR PROCESS — SPLIT-SCREEN SECTION
         ══════════════════════════════════════════════ -->
         <style>
@@ -5527,214 +5546,214 @@
 
         <!-- ABOUT -->
         <section id="technologies">
-              <h2 class="section-title">Technologies We Focus On</h2>
-                <p class="section-sub">Stay ahead with the latest technologies and tools in the industry.</p>
-                <div class="tech-marquee-container">
-                    <!-- Row 1: Frontend & Design (Left) -->
-                    <div class="tech-marquee-track scroll-left">
-                        <!-- Set 1 -->
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-react-original colored"></i></span>
-                            <h3>React</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-nextjs-plain"></i></span>
-                            <h3>Next.js</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-typescript-plain colored"></i></span>
-                            <h3>TypeScript</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-javascript-plain colored"></i></span>
-                            <h3>JavaScript</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-tailwindcss-original colored"></i></span>
-                            <h3>Tailwind CSS</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-figma-plain colored"></i></span>
-                            <h3>Figma</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-html5-plain colored"></i></span>
-                            <h3>HTML5</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-css3-plain colored"></i></span>
-                            <h3>CSS3</h3>
-                        </div>
-
-                        <!-- Set 2 (Duplicate for seamless loop) -->
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-react-original colored"></i></span>
-                            <h3>React</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-nextjs-plain"></i></span>
-                            <h3>Next.js</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-typescript-plain colored"></i></span>
-                            <h3>TypeScript</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-javascript-plain colored"></i></span>
-                            <h3>JavaScript</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-tailwindcss-original colored"></i></span>
-                            <h3>Tailwind CSS</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-figma-plain colored"></i></span>
-                            <h3>Figma</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-html5-plain colored"></i></span>
-                            <h3>HTML5</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-css3-plain colored"></i></span>
-                            <h3>CSS3</h3>
-                        </div>
+            <h2 class="section-title">Technologies We Focus On</h2>
+            <p class="section-sub">Stay ahead with the latest technologies and tools in the industry.</p>
+            <div class="tech-marquee-container">
+                <!-- Row 1: Frontend & Design (Left) -->
+                <div class="tech-marquee-track scroll-left">
+                    <!-- Set 1 -->
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-react-original colored"></i></span>
+                        <h3>React</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-nextjs-plain"></i></span>
+                        <h3>Next.js</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-typescript-plain colored"></i></span>
+                        <h3>TypeScript</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-javascript-plain colored"></i></span>
+                        <h3>JavaScript</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-tailwindcss-original colored"></i></span>
+                        <h3>Tailwind CSS</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-figma-plain colored"></i></span>
+                        <h3>Figma</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-html5-plain colored"></i></span>
+                        <h3>HTML5</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-css3-plain colored"></i></span>
+                        <h3>CSS3</h3>
                     </div>
 
-                    <!-- Row 2: Backend & Database (Right) -->
-                    <div class="tech-marquee-track scroll-right">
-                        <!-- Set 1 -->
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-nodejs-plain colored"></i></span>
-                            <h3>Node.js</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-python-plain colored"></i></span>
-                            <h3>Python</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-java-plain colored"></i></span>
-                            <h3>Java</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-postgresql-plain colored"></i></span>
-                            <h3>PostgreSQL</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-mongodb-plain colored"></i></span>
-                            <h3>MongoDB</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-redis-plain colored"></i></span>
-                            <h3>Redis</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-supabase-plain colored"></i></span>
-                            <h3>Supabase</h3>
-                        </div>
-
-                        <!-- Set 2 (Duplicate for seamless loop) -->
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-nodejs-plain colored"></i></span>
-                            <h3>Node.js</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-python-plain colored"></i></span>
-                            <h3>Python</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-java-plain colored"></i></span>
-                            <h3>Java</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-postgresql-plain colored"></i></span>
-                            <h3>PostgreSQL</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-mongodb-plain colored"></i></span>
-                            <h3>MongoDB</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-redis-plain colored"></i></span>
-                            <h3>Redis</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-supabase-plain colored"></i></span>
-                            <h3>Supabase</h3>
-                        </div>
+                    <!-- Set 2 (Duplicate for seamless loop) -->
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-react-original colored"></i></span>
+                        <h3>React</h3>
                     </div>
-
-                    <!-- Row 3: AI & Tools (Left) -->
-                    <div class="tech-marquee-track scroll-left">
-                        <!-- Set 1 -->
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-docker-plain colored"></i></span>
-                            <h3>Docker</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-kubernetes-plain colored"></i></span>
-                            <h3>Kubernetes</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="fa-brands fa-aws" style="color:#FF9900;"></i></span>
-                            <h3>AWS</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-azure-plain colored"></i></span>
-                            <h3>Azure</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-googlecloud-plain colored"></i></span>
-                            <h3>GCP</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-git-plain colored"></i></span>
-                            <h3>Git</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="fa-solid fa-brain" style="color:#8b5cf6;"></i></span>
-                            <h3>Machine Learning</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="fa-solid fa-robot" style="color:#10b981;"></i></span>
-                            <h3>AI Agents</h3>
-                        </div>
-
-                        <!-- Set 2 (Duplicate for seamless loop) -->
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-docker-plain colored"></i></span>
-                            <h3>Docker</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-kubernetes-plain colored"></i></span>
-                            <h3>Kubernetes</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="fa-brands fa-aws" style="color:#FF9900;"></i></span>
-                            <h3>AWS</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-azure-plain colored"></i></span>
-                            <h3>Azure</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-googlecloud-plain colored"></i></span>
-                            <h3>GCP</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="devicon-git-plain colored"></i></span>
-                            <h3>Git</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="fa-solid fa-brain" style="color:#8b5cf6;"></i></span>
-                            <h3>Machine Learning</h3>
-                        </div>
-                        <div class="tech-card">
-                            <span class="tech-icon"><i class="fa-solid fa-robot" style="color:#10b981;"></i></span>
-                            <h3>AI Agents</h3>
-                        </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-nextjs-plain"></i></span>
+                        <h3>Next.js</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-typescript-plain colored"></i></span>
+                        <h3>TypeScript</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-javascript-plain colored"></i></span>
+                        <h3>JavaScript</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-tailwindcss-original colored"></i></span>
+                        <h3>Tailwind CSS</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-figma-plain colored"></i></span>
+                        <h3>Figma</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-html5-plain colored"></i></span>
+                        <h3>HTML5</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-css3-plain colored"></i></span>
+                        <h3>CSS3</h3>
                     </div>
                 </div>
+
+                <!-- Row 2: Backend & Database (Right) -->
+                <div class="tech-marquee-track scroll-right">
+                    <!-- Set 1 -->
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-nodejs-plain colored"></i></span>
+                        <h3>Node.js</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-python-plain colored"></i></span>
+                        <h3>Python</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-java-plain colored"></i></span>
+                        <h3>Java</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-postgresql-plain colored"></i></span>
+                        <h3>PostgreSQL</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-mongodb-plain colored"></i></span>
+                        <h3>MongoDB</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-redis-plain colored"></i></span>
+                        <h3>Redis</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-supabase-plain colored"></i></span>
+                        <h3>Supabase</h3>
+                    </div>
+
+                    <!-- Set 2 (Duplicate for seamless loop) -->
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-nodejs-plain colored"></i></span>
+                        <h3>Node.js</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-python-plain colored"></i></span>
+                        <h3>Python</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-java-plain colored"></i></span>
+                        <h3>Java</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-postgresql-plain colored"></i></span>
+                        <h3>PostgreSQL</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-mongodb-plain colored"></i></span>
+                        <h3>MongoDB</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-redis-plain colored"></i></span>
+                        <h3>Redis</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-supabase-plain colored"></i></span>
+                        <h3>Supabase</h3>
+                    </div>
+                </div>
+
+                <!-- Row 3: AI & Tools (Left) -->
+                <div class="tech-marquee-track scroll-left">
+                    <!-- Set 1 -->
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-docker-plain colored"></i></span>
+                        <h3>Docker</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-kubernetes-plain colored"></i></span>
+                        <h3>Kubernetes</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="fa-brands fa-aws" style="color:#FF9900;"></i></span>
+                        <h3>AWS</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-azure-plain colored"></i></span>
+                        <h3>Azure</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-googlecloud-plain colored"></i></span>
+                        <h3>GCP</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-git-plain colored"></i></span>
+                        <h3>Git</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="fa-solid fa-brain" style="color:#8b5cf6;"></i></span>
+                        <h3>Machine Learning</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="fa-solid fa-robot" style="color:#10b981;"></i></span>
+                        <h3>AI Agents</h3>
+                    </div>
+
+                    <!-- Set 2 (Duplicate for seamless loop) -->
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-docker-plain colored"></i></span>
+                        <h3>Docker</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-kubernetes-plain colored"></i></span>
+                        <h3>Kubernetes</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="fa-brands fa-aws" style="color:#FF9900;"></i></span>
+                        <h3>AWS</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-azure-plain colored"></i></span>
+                        <h3>Azure</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-googlecloud-plain colored"></i></span>
+                        <h3>GCP</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="devicon-git-plain colored"></i></span>
+                        <h3>Git</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="fa-solid fa-brain" style="color:#8b5cf6;"></i></span>
+                        <h3>Machine Learning</h3>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon"><i class="fa-solid fa-robot" style="color:#10b981;"></i></span>
+                        <h3>AI Agents</h3>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- PHILOSOPHY / VALUES SECTION -->
@@ -7095,7 +7114,6 @@
             <!-- LEFT: Info Card -->
             <div class="api-info-card">
                 <div class="api-card-inner">
-                    <span class="api-card-label">// Developer Platform</span>
                     <h2 class="api-card-title">Build and scale faster with <em>developer-friendly APIs</em></h2>
                     <p class="api-card-desc">Accelerate development with 480+ pre-built workflows and API endpoints.
                         Give
@@ -7148,7 +7166,7 @@
                 grid-template-columns: 410px 1fr 140px;
                 gap: 0;
                 min-height: 480px;
-                background: #ffffff;
+                background: white;
                 position: relative;
                 overflow: visible;
                 padding: 0;
@@ -7175,8 +7193,9 @@
 
             /* LEFT CARD — clean floating card shape */
             .api-info-card {
-                background: linear-gradient(160deg, #eef4f7 0%, #d8e8ef 100%);
-                padding: 3rem 2.5rem;
+                background: white;
+                border: 1px solid rgba(0, 0, 0, 0.06);
+                padding: 5% 2.5rem;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -7294,7 +7313,7 @@
 
             /* CENTER CODE PANEL */
             .api-code-panel {
-                background: #0d1f2d;
+                background: #13131a;
                 display: flex;
                 flex-direction: column;
                 padding: 2.5rem 2rem;
@@ -7720,7 +7739,6 @@
         </script>
         <section id="about" class="about-section">
             <div class="section-header" style="text-align: center; margin-bottom: 3.5rem;">
-                <div class="section-label">// Our Journey</div>
                 <h2 class="section-title"
                     style="font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.025em; line-height: 1.1; color: var(--ink);">
                     From Local Ideas to Global Innovation</h2>
@@ -8075,7 +8093,7 @@
             </script>
         </section>
 
-       
+
         <!-- CTA -->
         <div class="cta-banner" id="contact">
             <h2>Ready to build something great?</h2>
@@ -8668,7 +8686,7 @@
 
             // Initialize immediately
             setFooterHeight();
-            
+
             if (mq.addEventListener) {
                 mq.addEventListener('change', initReveal);
             } else if (mq.addListener) {
