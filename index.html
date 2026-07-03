@@ -146,6 +146,44 @@
             body {
                 overflow-x: hidden;
             }
+
+            .nav-item-dropdown {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+
+            .nav-dropdown {
+                position: static;
+                transform: none;
+                opacity: 0;
+                visibility: hidden;
+                display: none;
+                width: 100%;
+                box-shadow: none;
+                border: none;
+                background: rgba(10, 10, 15, 0.03);
+                padding: 0.5rem 0;
+                margin-top: 0.5rem;
+                border-radius: 10px;
+                text-align: center;
+                transition: none;
+            }
+
+            .nav-item-dropdown.open .nav-dropdown {
+                opacity: 1;
+                visibility: visible;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-dropdown a {
+                justify-content: center;
+                width: 100%;
+                box-sizing: border-box;
+            }
         }
 
         /* ── NAV ── */
@@ -3221,37 +3259,50 @@
         </a>
 
         <ul class="nav-links">
-            <li class="nav-item-dropdown nav-hide-mobile">
-                <a href="#solutions-overview" class="nav-link-has-dropdown">Services <span
-                        class="nav-arrow">▾</span></a>
-
+            <li><a href="index.html">Home</a></li>
+            
+            <li class="nav-item-dropdown">
+                <a href="#" class="nav-link-has-dropdown">Why Us <span class="nav-arrow">▾</span></a>
                 <div class="nav-dropdown">
-                    <span class="nav-dropdown-group-label">Solutions</span>
-                    <a href="saas-solutions.html">SaaS Solutions</a>
-                    <a href="./application-services.html">Application Services</a>
-
-                    <hr class="nav-dropdown-divider">
-                    <span class="nav-dropdown-group-label">Digital &amp; Data</span>
-                    <a href="./data-ai.html">Data &amp; AI</a>
-                    <a href="./digitalization.html">Digitalization</a>
-
-                    <!--</div>
-                    <hr class="nav-dropdown-divider">
-                    <a href="hyna-services.html" style="font-weight:700;color:#3b82f6">View All Services →</a>-->
+                    <a href="#why-we-exist">Why Choose Us</a>
+                    <a href="#team">Meet the Founder</a>
+                    <a href="#problems-solving-expertise">Our Advantages</a>
+                    <a href="#how-we-solve">What Makes Us Different</a>
+                    <a href="#our-process">Our Process</a>
+                    <a href="#solutions-overview">Customer Success</a>
+                    <a href="#testimonials">Testimonials</a>
+                    <a href="privacy-policy.html">Security &amp; Privacy</a>
+                    <a href="#faq">FAQs</a>
                 </div>
-
-                <!--<div class="nav-dropdown">
-                    <a href="work.html?service=software"> Software & SaaS</a>
-                    <a href="work.html?service=web">Web Development</a>
-                    <a href="work.html?service=shopify"> Shopify & MobilAP e</a>
-                    <a href="work.html?service=design">Design & Marketing</a>
-                </div>-->
             </li>
-            <li><a href="#process">Process</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#technologies">Stack</a></li>
-            <li><a href="#team">Team</a></li>
-            <li><a href="#faq">FAQ</a></li>
+
+            <li class="nav-item-dropdown">
+                <a href="#" class="nav-link-has-dropdown">Forge <span class="nav-arrow">▾</span></a>
+                <div class="nav-dropdown">
+                    <a href="saas-solutions.html">MVP Studio</a>
+                    <a href="data-ai.html">AI Products</a>
+                    <a href="saas-solutions.html">SaaS Engineering</a>
+                    <a href="application-services.html">Mobile Experiences</a>
+                    <a href="application-services.html">Web Experiences</a>
+                    <a href="digitalization.html">Automation Workflows</a>
+                    <a href="digitalization.html">Growth Technology</a>
+                    <a href="application-services.html">Scale &amp; Support</a>
+                </div>
+            </li>
+
+            <li class="nav-item-dropdown">
+                <a href="#" class="nav-link-has-dropdown">Insights <span class="nav-arrow">▾</span></a>
+                <div class="nav-dropdown">
+                    <a href="#">Articles</a>
+                    <a href="#">Guides</a>
+                    <a href="#">Tutorials</a>
+                    <a href="#">Case Studies</a>
+                    <a href="#">Product Updates</a>
+                    <a href="#">Release Notes</a>
+                    <a href="#">Engineering</a>
+                    <a href="#">Industry Trends</a>
+                </div>
+            </li>
         </ul>
 
         <!-- Desktop Book a Call CTA -->
@@ -8575,9 +8626,27 @@
                     }
                 });
 
-                // Close menu when clicking a link
+                // Mobile dropdown toggle
+                document.querySelectorAll('.nav-link-has-dropdown').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        if (window.innerWidth <= 768) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            const parent = link.parentElement;
+                            document.querySelectorAll('.nav-item-dropdown').forEach(item => {
+                                if (item !== parent) item.classList.remove('open');
+                            });
+                            parent.classList.toggle('open');
+                        }
+                    });
+                });
+
+                // Close menu when clicking a link (unless it's a dropdown toggle)
                 navLinks.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', () => {
+                    link.addEventListener('click', (e) => {
+                        if (link.classList.contains('nav-link-has-dropdown') && window.innerWidth <= 768) {
+                            return;
+                        }
                         toggleBtn.classList.remove('active');
                         navLinks.classList.remove('active');
                     });
