@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -8345,14 +8345,7 @@
 
                 const TOTAL = teamCards.length;
 
-                // Inject progress bar + counter into DOM
-                const progressBar = document.createElement('div');
-                progressBar.className = 'team-stack-progress';
-                document.body.appendChild(progressBar);
-
-                const counter = document.createElement('div');
-                counter.className = 'team-stack-counter';
-                document.body.appendChild(counter);
+                // Progress bar and counter elements removed
 
                 // Track which cards have had their entrance played
                 const revealed = new Set();
@@ -8384,19 +8377,6 @@
 
                 function applyStackFrame() {
                     rafId = null;
-
-                    const sectionRect = teamSection ? teamSection.getBoundingClientRect() : null;
-                    const inSection = sectionRect &&
-                        sectionRect.top < window.innerHeight && sectionRect.bottom > 0;
-
-                    counter.classList.toggle('visible', !!inSection);
-
-                    // Progress bar
-                    if (sectionRect) {
-                        const scrollable = sectionRect.height - window.innerHeight * 0.5;
-                        const raw = -sectionRect.top / scrollable;
-                        progressBar.style.width = (Math.max(0, Math.min(1, raw)) * 100) + '%';
-                    }
 
                     let bestIdx = 0;
                     let bestDist = Infinity;
@@ -8440,10 +8420,8 @@
                         }
                     });
 
-                    // Update counter + dots
+                    // Update dots
                     activeIdx = bestIdx;
-                    const pad = n => String(n + 1).padStart(2, '0');
-                    counter.textContent = `${pad(activeIdx)} / ${pad(TOTAL - 1)}`;
 
                     teamCards.forEach((card, i) => {
                         card.querySelectorAll('.team-dot').forEach((dot, di) => {
