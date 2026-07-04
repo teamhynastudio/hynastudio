@@ -206,9 +206,17 @@
                 0 20px 40px rgba(0, 0, 0, 0.65),
                 inset 0 1px 1px rgba(255, 255, 255, 0.18),
                 inset 0 -1px 0 rgba(0, 0, 0, 0.4);
-            transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-            will-change: transform, box-shadow;
+            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), max-width 0.4s cubic-bezier(0.19, 1, 0.22, 1), background 0.4s cubic-bezier(0.19, 1, 0.22, 1), border-top 0.4s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+            will-change: transform, opacity, box-shadow;
         }
+
+        /* Initial state before page loader finishes */
+        body:not(.hero-animate) nav {
+            transform: translateX(-50%) translateY(-28px) translateZ(0);
+            opacity: 0;
+            pointer-events: none;
+        }
+
 
         /* Scrolled state */
         nav.nav-scrolled {
@@ -630,6 +638,42 @@
             overflow: hidden;
             background-color: #ffffff;
         }
+
+        /* ── HERO FADE-UP ENTRANCE ANIMATION ── */
+        .hero h1,
+        .hero-sub,
+        .hero-actions,
+        .hero-stats {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, opacity;
+        }
+
+        .hero-animate .hero h1 {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.1s;
+        }
+
+        .hero-animate .hero-sub {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.25s;
+        }
+
+        .hero-animate .hero-actions {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.4s;
+        }
+
+        .hero-animate .hero-stats {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.55s;
+        }
+
 
         .hero-grid-bg {
             position: absolute;
@@ -3265,6 +3309,7 @@
                     updateDot(3);
                     setTimeout(function () {
                         loader.classList.add('loader-hidden');
+                        document.body.classList.add('hero-animate');
                         setTimeout(function () { loader.remove(); }, 700);
                     }, 600);
                     return;
@@ -3383,7 +3428,7 @@
                         <a href="#contact" class="btn-primary"
                             style="background: linear-gradient(135deg, var(--accent), #ed3ad5); box-shadow: 0 4px 20px rgba(79, 63, 240, 0.45); border: none;">Launchpad
                             →</a>
-                        <a href="#team" class="btn-ghost" style="display:inline-flex;align-items:center;gap:0.5rem;">
+                        <a href="team.html" class="btn-ghost" style="display:inline-flex;align-items:center;gap:0.5rem;">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
                                 style="flex-shrink:0;">
@@ -8020,28 +8065,6 @@
                 overflow-x: hidden;
             }
 
-            .team-card {
-                flex-direction: column;
-                text-align: center;
-                padding: 20px 16px;
-                top: 20px;
-                gap: 20px;
-            }
-
-            .team-card-info {
-                text-align: center;
-            }
-
-            .team-description {
-                border-left: none;
-                border-top: 3px solid rgba(79, 63, 240, 0.2);
-                padding-left: 0;
-                padding-top: 12px;
-            }
-
-            .team-step-dots {
-                justify-content: center;
-            }
 
             .team-avatar {
                 width: 100px;

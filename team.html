@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet Our Team — Hyna Studio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg: #000000;
+            --bg-soft: #0c0f1d;
+            --ink: #fcfcfd;
+            --ink-dim: rgba(252, 252, 253, 0.64);
+            --ink-dimmer: rgba(252, 252, 253, 0.42);
+            --blue: #2f6bff;
+            --blue-light: #5b8bff;
+            --accent: #00e7b3;
+            --violet: #7c5cff;
+            --surface: rgba(12, 15, 29, 0.7);
+            --border: rgba(252, 252, 253, 0.08);
+            --border-soft: rgba(252, 252, 253, 0.04);
+            --font-display: 'Sora', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'Space Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--ink);
+            font-family: var(--font-body);
+            line-height: 1.55;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 1.5px 1.5px, rgba(252, 252, 253, 0.05) 1.4px, transparent 0) 0 0/26px 26px;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        h2, h3, h4 {
+            font-family: var(--font-display);
+            letter-spacing: -0.015em;
+        }
+
+        /* ─── NAVIGATION BAR (Glassmorphic Pill) ─── */
+        nav {
+            position: fixed;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(1080px, 92%);
+            height: 66px;
+            background: rgba(10, 10, 12, 0.72);
+            backdrop-filter: blur(20px) saturate(170%);
+            -webkit-backdrop-filter: blur(20px) saturate(170%);
+            border-radius: 100px;
+            border: 1.5px solid rgba(255, 255, 255, 0.07);
+            border-top: 1.5px solid rgba(255, 255, 255, 0.38); /* Liquid glass highlight */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            z-index: 1000;
+            box-shadow: 
+                0 0 0 1px rgba(0, 0, 0, 0.3),
+                0 12px 40px rgba(0, 0, 0, 0.45);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 1001;
+        }
+
+        .logo-img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-main {
+            font-family: var(--font-display);
+            font-size: 15px;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            color: var(--ink);
+            line-height: 1.1;
+        }
+
+        .logo-sub {
+            font-size: 9px;
+            color: var(--ink-dimmer);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-top: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 4px;
+            border-radius: 100px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .nav-links li a {
+            font-size: 13px;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 100px;
+            color: var(--ink-dim);
+            transition: color 0.25s ease, background 0.25s ease;
+        }
+
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            color: var(--ink);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .nav-cta {
+            background: var(--ink);
+            color: var(--bg);
+            font-size: 13px;
+            font-weight: 700;
+            padding: 10px 20px;
+            border-radius: 100px;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-1px);
+            opacity: 0.95;
+        }
+
+        .nav-mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--ink);
+            font-size: 20px;
+        }
+
+        @media (max-width: 900px) {
+            nav {
+                height: 58px;
+                padding: 0 16px;
+            }
+            .nav-links, .nav-cta {
+                display: none;
+            }
+            .nav-mobile-toggle {
+                display: block;
+            }
+        }
+
+        /* ─── TEAM SECTION MAIN ─── */
+        .team-container-section {
+            padding: 180px 0 120px;
+            position: relative;
+            z-index: 2;
+            max-width: 1220px;
+            margin: 0 auto;
+        }
+
+        .team-head-wrapper {
+            padding: 0 28px;
+            margin-bottom: 80px;
+            text-align: center;
+        }
+
+        .team-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--blue-light);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .team-eyebrow::before {
+            content: "";
+            width: 16px;
+            height: 2px;
+            background: var(--blue-light);
+        }
+
+        .team-head-wrapper h1 {
+            font-family: var(--font-display);
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+        }
+
+        .team-head-wrapper p {
+            max-width: 680px;
+            margin: 0 auto;
+            color: var(--ink-dim);
+            font-size: clamp(16px, 2.5vw, 18px);
+        }
+
+        /* ─── SCROLL STACK EFFECT (Same Animation as Launchpad) ─── */
+        .team-stack-pin {
+            position: relative;
+            height: 520vh; /* 6 cards × ~85vh space */
+        }
+
+        .team-stack-sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .team-stack-cards {
+            position: relative;
+            width: min(720px, 92%);
+            height: min(480px, 62vh);
+        }
+
+        /* Card styles matching Launchpad */
+        .team-stack-card {
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            padding: 44px;
+            display: flex;
+            align-items: center;
+            gap: 36px;
+            border: 1px solid var(--border);
+            will-change: transform, opacity;
+            transform: translateX(110%) scale(1);
+            opacity: 0;
+            cursor: pointer;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .team-stack-card:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 25px 60px rgba(79, 63, 240, 0.15);
+        }
+
+        .team-card-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 3px solid rgba(255, 255, 255, 0.05);
+            flex-shrink: 0;
+            background: #0f111a;
+        }
+
+        .team-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-card-detail {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .team-stack-card .lp-slide-num {
+            position: absolute;
+            top: 24px;
+            right: 32px;
+            font-family: var(--font-display);
+            font-size: 80px;
+            font-weight: 800;
+            opacity: .05;
+        }
+
+        .team-stack-card h3 {
+            font-size: clamp(22px, 3.2vw, 30px);
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--ink);
+        }
+
+        .team-card-role {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--blue-light);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 18px;
+            font-weight: 700;
+        }
+
+        .team-stack-card p {
+            color: var(--ink-dim);
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            border-left: 2px solid rgba(255,255,255,0.06);
+            padding-left: 14px;
+        }
+
+        .team-social-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .team-social-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.02);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: background 0.25s, border-color 0.25s, color 0.25s;
+        }
+
+        .team-social-icon:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: var(--blue-light);
+            color: var(--blue-light);
+        }
+
+        /* Card themes */
+        .team-stack-card.lp-s1 { background: linear-gradient(135deg, #0e101f 0%, #06070c 100%); }
+        .team-stack-card.lp-s2 { background: linear-gradient(135deg, #0a171f 0%, #04080c 100%); }
+        .team-stack-card.lp-s3 { background: linear-gradient(135deg, #120e24 0%, #06050d 100%); }
+        .team-stack-card.lp-s4 { background: linear-gradient(135deg, #0f1816 0%, #050807 100%); }
+        .team-stack-card.lp-s5 { background: linear-gradient(135deg, #170d1e 0%, #08040a 100%); }
+        .team-stack-card.lp-s6 { background: linear-gradient(135deg, #0f111a 0%, #07080d 100%); }
+
+        /* hint */
+        .team-stack-hint {
+            margin-top: 32px;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--ink-dimmer);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .team-stack-hint .lp-arrow {
+            display: inline-block;
+            animation: lp-nudge 1.6s ease-in-out infinite;
+        }
+
+        /* dots */
+        .team-slider-dots {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 24px;
+        }
+
+        .team-slider-dots button {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            border: none;
+            background: var(--border);
+            transition: background .3s, width .3s;
+        }
+
+        .team-slider-dots button.lp-active {
+            background: var(--blue-light);
+            width: 24px;
+            border-radius: 6px;
+        }
+
+        /* ─── MOBILE overrides (≤ 760px) ─── */
+        @media (max-width: 760px) {
+            .team-container-section {
+                padding: 130px 16px 80px;
+            }
+
+            .team-head-wrapper {
+                margin-bottom: 40px;
+            }
+
+            .team-stack-pin {
+                height: 600vh; /* space for 6 cards scroll stack on mobile */
+            }
+
+            .team-stack-cards {
+                width: 92vw;
+                height: auto;
+                min-height: 480px;
+            }
+
+            .team-stack-card {
+                padding: 32px 24px;
+                flex-direction: column;
+                gap: 20px;
+                height: auto;
+                min-height: 480px;
+                text-align: center;
+            }
+
+            .team-card-image {
+                width: 120px;
+                height: 120px;
+                border-radius: 50%;
+            }
+
+            .team-stack-card p {
+                border-left: none;
+                padding-left: 0;
+                font-size: 14px;
+                margin-bottom: 16px;
+            }
+
+            .team-social-links {
+                justify-content: center;
+            }
+
+            .team-stack-card .lp-slide-num {
+                font-size: 48px;
+                top: 12px;
+                right: 18px;
+            }
+        }
+
+        /* ─── TEAM MODAL DRAWER ─── */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(5, 5, 8, 0.85);
+            backdrop-filter: blur(12px) saturate(160%);
+            -webkit-backdrop-filter: blur(12px) saturate(160%);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1.25rem;
+        }
+
+        .modal-overlay.is-open {
+            display: flex;
+        }
+
+        .modal {
+            width: 100%;
+            max-width: 920px;
+            border-radius: 18px;
+            overflow: hidden;
+            background: rgba(12, 15, 29, 0.96);
+            border: 1px solid var(--border);
+            box-shadow: 0 40px 90px rgba(0, 0, 0, 0.8);
+            transform: translateY(10px);
+            opacity: 0;
+            transition: transform 0.22s ease, opacity 0.22s ease;
+        }
+
+        .modal-overlay.is-open .modal {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1.5rem 1.5rem 0.75rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            background: linear-gradient(135deg, rgba(79, 63, 240, 0.15) 0%, rgba(0, 217, 163, 0.08) 100%);
+        }
+
+        .modal-title-box {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .modal-name {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--ink);
+        }
+
+        .modal-role {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--blue-light);
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+
+        .modal-close {
+            appearance: none;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--ink);
+            border-radius: 12px;
+            width: 40px;
+            height: 40px;
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+            flex-shrink: 0;
+        }
+
+        .modal-close:hover {
+            transform: translateY(-1px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--blue-light);
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        .modal-grid {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        .modal-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid rgba(79, 63, 240, 0.3);
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, rgba(79, 63, 240, 0.15), rgba(0, 217, 163, 0.15));
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .modal-bio {
+            color: var(--ink-dim);
+            line-height: 1.8;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        .modal-link {
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.7rem 1.2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.02);
+            color: var(--ink);
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+        }
+
+        .modal-link:hover {
+            transform: translateY(-1px);
+            border-color: var(--blue-light);
+            background: rgba(79, 63, 240, 0.15);
+            box-shadow: 0 10px 22px rgba(79, 63, 240, 0.15);
+        }
+
+        .modal-education {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding: 0.85rem 1rem;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            backdrop-filter: blur(8px);
+        }
+
+        .modal-education-logo {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            flex-shrink: 0;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .modal-education-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+        }
+
+        .modal-education-college {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--ink);
+            line-height: 1.25;
+        }
+
+        .modal-education-degree {
+            font-size: 0.75rem;
+            color: var(--ink-dimmer);
+            font-family: var(--font-mono);
+            font-weight: 500;
+        }
+
+        @media(max-width:900px) {
+            .modal-grid {
+                grid-template-columns: 200px 1fr;
+            }
+        }
+
+        @media(max-width:540px) {
+            .modal {
+                max-width: 100%;
+            }
+            .modal-header {
+                padding: 1rem 1rem 0.75rem;
+            }
+            .modal-body {
+                padding: 1rem;
+            }
+            .modal-grid {
+                grid-template-columns: 1fr;
+            }
+            .modal-photo {
+                width: 160px;
+                height: 160px;
+            }
+            .modal-close {
+                width: 38px;
+                height: 38px;
+            }
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            background-color: #04050a;
+            border-top: 1px solid var(--border);
+            padding: 80px 8% 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-width: 320px;
+        }
+
+        .footer-logo-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-logo-title span {
+            font-family: var(--font-display);
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--ink);
+        }
+
+        .footer-desc {
+            font-size: 14px;
+            color: var(--ink-dim);
+            line-height: 1.6;
+        }
+
+        .footer-links-group {
+            display: flex;
+            gap: 60px;
+        }
+
+        .footer-column {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .footer-column h4 {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--blue-light);
+        }
+
+        .footer-column a {
+            font-size: 14px;
+            color: var(--ink-dim);
+            transition: color 0.25s;
+        }
+
+        .footer-column a:hover {
+            color: var(--ink);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 60px auto 0;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 13px;
+            color: var(--ink-dimmer);
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--ink);
+        }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+            }
+            .footer-links-group {
+                gap: 40px;
+                justify-content: space-between;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a href="index.html" class="nav-logo">
+            <img src="./hyna-logo-new.png" class="logo-img" alt="Hyna Studio Logo">
+            <div class="logo-text">
+                <span class="logo-main">Hyna Studio</span>
+                <span class="logo-sub">Democratizing Entrepreneurship</span>
+            </div>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#why-we-exist">Why Us</a></li>
+            <li><a href="index.html#hyna-services">Forge</a></li>
+            <li><a href="team.html" class="active">Team</a></li>
+        </ul>
+
+        <a href="mailto:team.hynastudio@gmail.com?subject=Project%20Inquiry%20-%20Hyna%20Studio" class="nav-cta">
+            Schedule
+        </a>
+
+        <button class="nav-mobile-toggle" aria-label="Toggle menu" id="navMobileToggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <div class="team-container-section">
+        <div class="team-head-wrapper lp-fade-up">
+            <div class="team-eyebrow">Our Innovators</div>
+            <h1>Meet the Hyna team</h1>
+            <p>A senior group of designers, engineers, and product builders crafting next-generation digital products directly with founders. Keep scrolling to cycle through.</p>
+        </div>
+
+        <div class="team-stack-pin" id="teamStackPin">
+            <div class="team-stack-sticky">
+                <div class="team-stack-cards" id="teamStackCards">
+                    
+                    <!-- Vignesh -->
+                    <div class="team-stack-card lp-s1" data-index="0"
+                         data-name="Vignesh" data-role="Founder | CEO"
+                         data-bio="&quot;Leadership is not about control, it is about building people who can lead without you.&quot; Vignesh drives the strategic vision and engineering standards at Hyna Studio."
+                         data-photo="https://i.postimg.cc/wjtYqBpS/IMG-33081.jpg"
+                         data-portfolio="https://vigneshvl-dev.github.io/PORTFOLIO/"
+                         data-github="https://github.com/vigneshvl-dev"
+                         data-linkedin="https://www.linkedin.com/in/vigneshvl-dev/"
+                         data-college="Anna University"
+                         data-degree="B.E. Computer Science & Engineering">
+                        <span class="lp-slide-num">01</span>
+                        <div class="team-card-image">
+                            <img src="https://i.postimg.cc/wjtYqBpS/IMG-33081.jpg" alt="Vignesh">
+                        </div>
+                        <div class="team-card-detail">
+                            <h3>Vignesh</h3>
+                            <div class="team-card-role">Founder | CEO</div>
+                            <p>"Leadership is not about control, it is about building people who can lead without you."</p>
+                            <div class="team-social-links">
+                                <a href="https://vigneshvl-dev.github.io/PORTFOLIO/" target="_blank" class="team-social-icon"><i class="fa-solid fa-globe"></i></a>
+                                <a href="https://www.linkedin.com/in/vigneshvl-dev/" target="_blank" class="team-social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                                <a href="https://github.com/vigneshvl-dev" target="_blank" class="team-social-icon"><i class="fa-brands fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Jashwin -->
+                    <div class="team-stack-card lp-s2" data-index="1"
+                         data-name="Jashwin" data-role="Co-Founder & Project Management Lead"
+                         data-bio="&quot;Deadlines don’t fail because of time, they fail because alignment is missing.&quot; Jashwin ensures that every project at Hyna Studio is aligned with stakeholder goals and delivered seamlessly."
+                         data-photo="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png"
+                         data-portfolio="#"
+                         data-github="https://github.com/jashwinj2008"
+                         data-linkedin="https://www.linkedin.com/in/jashwin-j-16b06240a"
+                         data-college="Anna University"
+                         data-degree="B.E. Computer Science & Engineering">
+                        <span class="lp-slide-num">02</span>
+                        <div class="team-card-image">
+                            <img src="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" alt="Jashwin">
+                        </div>
+                        <div class="team-card-detail">
+                            <h3>Jashwin</h3>
+                            <div class="team-card-role">Co-Founder & PM Lead</div>
+                            <p>"Deadlines don't fail because of time, they fail because alignment is missing."</p>
+                            <div class="team-social-links">
+                                <a href="https://www.linkedin.com/in/jashwin-j-16b06240a" target="_blank" class="team-social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                                <a href="https://github.com/jashwinj2008" target="_blank" class="team-social-icon"><i class="fa-brands fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dharshan -->
+                    <div class="team-stack-card lp-s3" data-index="2"
+                         data-name="Dharshan" data-role="Co-Founder & Chief Technology Officer (CTO)"
+                         data-bio="&quot;A co-founder in tech doesn’t follow trends, he builds what will become the next standard.&quot; Dharshan leads our systems architecture, cloud infrastructure, and technical execution."
+                         data-photo="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg"
+                         data-portfolio="https://portholio-zeta.vercel.app/"
+                         data-github="https://github.com/dharshan00814"
+                         data-linkedin="https://www.linkedin.com/in/dharshan-jm"
+                         data-college="Anna University"
+                         data-degree="B.E. Computer Science & Engineering">
+                        <span class="lp-slide-num">03</span>
+                        <div class="team-card-image">
+                            <img src="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg" alt="Dharshan">
+                        </div>
+                        <div class="team-card-detail">
+                            <h3>Dharshan</h3>
+                            <div class="team-card-role">Co-Founder & CTO</div>
+                            <p>"A co-founder in tech doesn't follow trends, he builds what will become the next standard."</p>
+                            <div class="team-social-links">
+                                <a href="https://portholio-zeta.vercel.app/" target="_blank" class="team-social-icon"><i class="fa-solid fa-globe"></i></a>
+                                <a href="https://www.linkedin.com/in/dharshan-jm" target="_blank" class="team-social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                                <a href="https://github.com/dharshan00814" target="_blank" class="team-social-icon"><i class="fa-brands fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Asthamil -->
+                    <div class="team-stack-card lp-s4" data-index="3"
+                         data-name="Asthamil" data-role="Chief Product Officer (CPO) & Director"
+                         data-bio="&quot;Product thinking is not about features, it is about solving the right problem in the right way.&quot; Asthamil directs product roadmap strategy, user research, and functional design."
+                         data-photo="https://i.postimg.cc/Jnwtf3ZZ/Whats-App-Image-2026-02-20-at-7-00-57-PM.jpg"
+                         data-portfolio="#"
+                         data-github="#"
+                         data-linkedin="#"
+                         data-college="Anna University"
+                         data-degree="B.E. Computer Science & Engineering">
+                        <span class="lp-slide-num">04</span>
+                        <div class="team-card-image">
+                            <img src="https://i.postimg.cc/Jnwtf3ZZ/Whats-App-Image-2026-02-20-at-7-00-57-PM.jpg" alt="Asthamil">
+                        </div>
+                        <div class="team-card-detail">
+                            <h3>Asthamil</h3>
+                            <div class="team-card-role">Chief Product Officer</div>
+                            <p>"Product thinking is not about features, it is about solving the right problem in the right way."</p>
+                            <div class="team-social-links">
+                                <span class="team-social-icon" style="opacity:0.3;"><i class="fa-brands fa-linkedin-in"></i></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tharun Krishna -->
+                    <div class="team-stack-card lp-s5" data-index="4"
+                         data-name="Tharun Krishna" data-role="Chief Design Officer (CDO)"
+                         data-bio="&quot;Good design is invisible, but its impact is impossible to ignore.&quot; Tharun translates brand visions into premium user interfaces, styling guidelines, and interactive experiences."
+                         data-photo="https://i.postimg.cc/TP5Jj9Th/Whats-App-Image-2026-06-11-at-11-26-46-AM.jpg"
+                         data-portfolio="#"
+                         data-github="#"
+                         data-linkedin="https://www.linkedin.com/in/tharun-krishna-347b123a0"
+                         data-college="Anna University"
+                         data-degree="B.E. Computer Science & Engineering">
+                        <span class="lp-slide-num">05</span>
+                        <div class="team-card-image">
+                            <img src="https://i.postimg.cc/TP5Jj9Th/Whats-App-Image-2026-06-11-at-11-26-46-AM.jpg" alt="Tharun Krishna">
+                        </div>
+                        <div class="team-card-detail">
+                            <h3>Tharun Krishna</h3>
+                            <div class="team-card-role">Chief Design Officer</div>
+                            <p>"Good design is invisible, but its impact is impossible to ignore."</p>
+                            <div class="team-social-links">
+                                <a href="https://www.linkedin.com/in/tharun-krishna-347b123a0" target="_blank" class="team-social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mohammad Zarif -->
+                    <div class="team-stack-card lp-s6" data-index="5"
+                         data-name="Mohammad Zarif" data-role="Chief Operating Officer (COO)"
+                         data-bio="&quot;Execution is not about speed alone, it is about consistency, structure, and discipline.&quot; Mohammad oversees business operations, client partnerships, and project scaling."
+                         data-photo="https://i.postimg.cc/1zWvJd1C/zarif.jpg"
+                         data-portfolio="#"
+                         data-github="https://github.com/muhamedzarif"
+                         data-linkedin="https://www.linkedin.com/in/muhamed-zarif-80860a37a"
+                         data-college="Anna University"
+                         data-degree="B.E. Computer Science & Engineering">
+                        <span class="lp-slide-num">06</span>
+                        <div class="team-card-image">
+                            <img src="https://i.postimg.cc/1zWvJd1C/zarif.jpg" alt="Mohammad Zarif">
+                        </div>
+                        <div class="team-card-detail">
+                            <h3>Mohammad Zarif</h3>
+                            <div class="team-card-role">Chief Operating Officer</div>
+                            <p>"Execution is not about speed alone, it is about consistency, structure, and discipline."</p>
+                            <div class="team-social-links">
+                                <a href="https://www.linkedin.com/in/muhamed-zarif-80860a37a" target="_blank" class="team-social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                                <a href="https://github.com/muhamedzarif" target="_blank" class="team-social-icon"><i class="fa-brands fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="team-stack-hint" id="teamStackHint">
+                    <span>keep scrolling</span><span class="lp-arrow">→</span>
+                </div>
+                <div class="team-slider-dots" id="teamSliderDots">
+                    <button class="lp-active" data-slide="0"></button>
+                    <button data-slide="1"></button>
+                    <button data-slide="2"></button>
+                    <button data-slide="3"></button>
+                    <button data-slide="4"></button>
+                    <button data-slide="5"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <div class="footer-logo-title">
+                    <img src="./hyna-logo-new.png" alt="Logo" class="logo-img">
+                    <span>Hyna Studio</span>
+                </div>
+                <p class="footer-desc">Building robust, highly performant software products and brands that scale globally, made with passion in Tamil Nadu.</p>
+            </div>
+            <div class="footer-links-group">
+                <div class="footer-column">
+                    <h4>Forge</h4>
+                    <a href="saas-solutions.html">MVP Studio</a>
+                    <a href="data-ai.html">AI Products</a>
+                    <a href="application-services.html">Mobile Apps</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <a href="index.html#why-we-exist">Why Us</a>
+                    <a href="team.html">Team</a>
+                    <a href="careers.html">Careers</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p> &copy; 2026 Hyna Studio. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-conditions.html">Terms & Conditions</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Team Modal -->
+    <div class="modal-overlay" id="teamModalOverlay" aria-hidden="true">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="teamModalName">
+            <div class="modal-header">
+                <div class="modal-title-box">
+                    <div class="modal-name" id="teamModalName">—</div>
+                    <div class="modal-role" id="teamModalRole">—</div>
+                </div>
+                <button class="modal-close" type="button" id="teamModalClose" aria-label="Close modal">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-grid">
+                    <div class="modal-photo" aria-hidden="true">
+                        <img id="teamModalPhoto" alt="" src="">
+                    </div>
+                    <div>
+                        <div class="modal-bio" id="teamModalBio">—</div>
+                        <div class="modal-links" id="teamModalLinks"></div>
+                        <div class="modal-education" id="teamModalEducation"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS SCRIPTS -->
+    <script>
+        (function () {
+            // Fade up animations
+            const revealEls = document.querySelectorAll('.lp-fade-up');
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('lp-in'); });
+            }, { threshold: 0.14 });
+            revealEls.forEach(el => io.observe(el));
+
+            const isMobile = () => window.innerWidth <= 760;
+
+            /* ════════════════════════════════════════
+               SCROLL-PINNED TEAM CARDS STACK
+            ════════════════════════════════════════ */
+            const pin   = document.getElementById('teamStackPin');
+            const cards = Array.from(document.querySelectorAll('#teamStackCards .team-stack-card'));
+            const numSlides = cards.length;
+            const dots  = document.querySelectorAll('#teamSliderDots button');
+            const hint  = document.getElementById('teamStackHint');
+
+            function setProgress(p) {
+                p = Math.max(0, Math.min(numSlides - 1, p));
+                const mobile = isMobile();
+
+                cards.forEach((card, i) => {
+                    const diff = p - i;
+                    let x, y, scale, opacity;
+
+                    if (mobile) {
+                        // Mobile Horizontal slide mode
+                        if (diff <= -1) {
+                            x = 110; y = 0; scale = 1; opacity = 0;
+                        } else if (diff < 0) {
+                            const t = diff + 1; // 0->1
+                            x = (1 - t) * 110; y = 0; scale = 1; opacity = t;
+                        } else if (diff < 1) {
+                            x = -diff * 110; y = 0; scale = 1; opacity = 1 - diff * 0.6;
+                        } else {
+                            x = -110; y = 0; scale = 1; opacity = 0;
+                        }
+                    } else {
+                        // Desktop Stacking Card mode
+                        if (diff <= -1) {
+                            x = 120; scale = 1; y = 0; opacity = 0;
+                        } else if (diff < 0) {
+                            const t = diff + 1;
+                            x = (1 - t) * 120; scale = 1; y = 0; opacity = t;
+                        } else {
+                            const t = Math.min(diff, 1);
+                            x = -t * 9; scale = 1 - t * 0.08; y = -t * 16; opacity = 1;
+                        }
+                    }
+
+                    card.style.transform = `translateX(${x}%) translateY(${y}px) scale(${scale})`;
+                    card.style.opacity = opacity;
+                    card.style.zIndex  = 10 + i;
+                });
+
+                const active = Math.round(p);
+                dots.forEach((d, i) => d.classList.toggle('lp-active', i === active));
+                if (hint) hint.style.opacity = active === numSlides - 1 ? 0 : 1;
+            }
+
+            function scrollToProgress(target) {
+                const rect  = pin.getBoundingClientRect();
+                const total = pin.offsetHeight - window.innerHeight;
+                const pinTop = window.scrollY + rect.top;
+                window.scrollTo({ top: pinTop + (target / (numSlides - 1)) * total, behavior: 'smooth' });
+            }
+
+            let ticking = false;
+            function onScroll() {
+                if (ticking) return;
+                ticking = true;
+                requestAnimationFrame(() => {
+                    const rect   = pin.getBoundingClientRect();
+                    const total  = pin.offsetHeight - window.innerHeight;
+                    const scrolled = Math.max(0, Math.min(total, -rect.top));
+                    const p = total > 0 ? (scrolled / total) * (numSlides - 1) : 0;
+                    setProgress(p);
+                    ticking = false;
+                });
+            }
+
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('resize', onScroll);
+            onScroll();
+
+            dots.forEach(d => d.addEventListener('click', () => {
+                scrollToProgress(parseInt(d.getAttribute('data-slide')));
+            }));
+
+            /* ════════════════════════════════════════
+               MODAL DRAWER JS
+            ════════════════════════════════════════ */
+            const overlay = document.getElementById('teamModalOverlay');
+            const closeBtn = document.getElementById('teamModalClose');
+
+            const nameEl = document.getElementById('teamModalName');
+            const roleEl = document.getElementById('teamModalRole');
+            const photoEl = document.getElementById('teamModalPhoto');
+            const bioEl = document.getElementById('teamModalBio');
+            const linksEl = document.getElementById('teamModalLinks');
+            const educationEl = document.getElementById('teamModalEducation');
+
+            let lastFocused = null;
+
+            function escapeHtml(str) {
+                return String(str)
+                    .replaceAll('&', '&amp;')
+                    .replaceAll('<', '&lt;')
+                    .replaceAll('>', '&gt;')
+                    .replaceAll('"', '&quot;')
+                    .replaceAll("'", '&#039;');
+            }
+
+            function buildLink(label, href) {
+                return `<a class="modal-link" href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)} →</a>`;
+            }
+
+            function openModal(card) {
+                lastFocused = document.activeElement;
+
+                const name = card.getAttribute('data-name') || '';
+                const role = card.getAttribute('data-role') || '';
+                const bio = card.getAttribute('data-bio') || '';
+                const photo = card.getAttribute('data-photo') || '';
+                const portfolio = card.getAttribute('data-portfolio') || '#';
+                const github = card.getAttribute('data-github') || '#';
+                const linkedin = card.getAttribute('data-linkedin') || '#';
+                const college = card.getAttribute('data-college') || '';
+                const degree = card.getAttribute('data-degree') || '';
+
+                nameEl.textContent = name;
+                roleEl.textContent = role;
+                bioEl.textContent = bio;
+
+                photoEl.style.display = '';
+                photoEl.src = photo;
+                photoEl.alt = name;
+
+                const items = [];
+                if (portfolio && portfolio !== '#') items.push(buildLink('Portfolio', portfolio));
+                if (github && github !== '#') items.push(buildLink('GitHub', github));
+                if (linkedin && linkedin !== '#') items.push(buildLink('LinkedIn', linkedin));
+
+                linksEl.innerHTML = items.join('');
+
+                if (college) {
+                    educationEl.style.display = 'flex';
+                    educationEl.innerHTML = `
+                        <div class="modal-education-info">
+                            <div class="modal-education-college">${escapeHtml(college)}</div>
+                            <div class="modal-education-degree">${escapeHtml(degree)}</div>
+                        </div>
+                    `;
+                } else {
+                    educationEl.style.display = 'none';
+                    educationEl.innerHTML = '';
+                }
+
+                overlay.classList.add('is-open');
+                overlay.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+                closeBtn.focus();
+            }
+
+            function closeModal() {
+                overlay.classList.remove('is-open');
+                overlay.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+                if (lastFocused && typeof lastFocused.focus === 'function') {
+                    lastFocused.focus();
+                }
+            }
+
+            cards.forEach(card => {
+                card.addEventListener('click', (e) => {
+                    if (e.target.closest('.team-social-links') || e.target.closest('a')) {
+                        return;
+                    }
+                    openModal(card);
+                });
+            });
+
+            closeBtn.addEventListener('click', closeModal);
+            overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeModal();
+            });
+        })();
+    </script>
+</body>
+</html>
