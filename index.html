@@ -3702,190 +3702,77 @@
             })();
         </script>
         <!-- ══════════ END BUILD HEADLINE ══════════ -->
-
         <!-- ══════════ LAUNCHPAD SECTION ══════════ -->
         <style>
+            /* ─── variables & base ─── */
             #hyna-launchpad {
                 --lp-bg: #fcfcfd;
                 --lp-bg-soft: #f4f5fa;
                 --lp-ink: #0b1120;
-                --lp-ink-dim: rgba(11, 17, 32, 0.64);
-                --lp-ink-dimmer: rgba(11, 17, 32, 0.42);
+                --lp-ink-dim: rgba(11,17,32,.64);
+                --lp-ink-dimmer: rgba(11,17,32,.42);
                 --lp-blue: #2f6bff;
-                --lp-blue-light: #5b8bff;
-                --lp-violet: #7c5cff;
-                --lp-cyan: #22d3ee;
                 --lp-surface: #ffffff;
-                --lp-border: rgba(11, 17, 32, 0.09);
-                --lp-border-soft: rgba(11, 17, 32, 0.06);
+                --lp-border: rgba(11,17,32,.09);
+                --lp-border-soft: rgba(11,17,32,.06);
                 --lp-font-display: 'Sora', sans-serif;
                 --lp-font-body: 'Inter', sans-serif;
                 --lp-font-mono: 'Space Mono', monospace;
-
                 font-family: var(--lp-font-body);
                 background:
-                    radial-gradient(circle at 1.5px 1.5px, rgba(11, 17, 32, 0.07) 1.4px, transparent 0) 0 0/26px 26px,
+                    radial-gradient(circle at 1.5px 1.5px,rgba(11,17,32,.07) 1.4px,transparent 0) 0 0/26px 26px,
                     var(--lp-bg);
                 color: var(--lp-ink);
                 line-height: 1.55;
                 position: relative;
                 width: 100%;
             }
-
-            #hyna-launchpad a {
-                color: inherit;
-                text-decoration: none;
-            }
-
-            #hyna-launchpad button {
-                font-family: inherit;
-                cursor: pointer;
-            }
-
+            #hyna-launchpad a  { color:inherit; text-decoration:none; }
+            #hyna-launchpad button { font-family:inherit; cursor:pointer; }
             #hyna-launchpad h2,
-            #hyna-launchpad h3,
-            #hyna-launchpad h4 {
-                font-family: var(--lp-font-display);
-                letter-spacing: -0.015em;
-            }
+            #hyna-launchpad h3 { font-family:var(--lp-font-display); letter-spacing:-.015em; }
 
+            /* wrapper */
             #hyna-launchpad .lp-wrap {
                 max-width: 1220px;
                 margin: 0 auto;
                 padding: 100px 28px;
             }
 
-            #hyna-launchpad .lp-mono {
-                font-family: var(--lp-font-mono);
-            }
-
+            /* eyebrow */
             #hyna-launchpad .lp-eyebrow {
                 font-family: var(--lp-font-mono);
-                font-size: 12px;
-                letter-spacing: .14em;
-                text-transform: uppercase;
+                font-size: 12px; letter-spacing:.14em; text-transform:uppercase;
                 color: var(--lp-blue);
-                display: inline-flex;
-                align-items: center;
-                gap: 8px;
-                margin-bottom: 16px;
-                font-weight: 700;
+                display: inline-flex; align-items:center; gap:8px;
+                margin-bottom: 16px; font-weight:700;
             }
-
             #hyna-launchpad .lp-eyebrow::before {
-                content: "";
-                width: 16px;
-                height: 2px;
-                background: var(--lp-blue);
+                content:""; width:16px; height:2px; background:var(--lp-blue);
             }
 
+            /* section head */
             #hyna-launchpad .lp-section-head {
-                max-width: 640px;
-                margin-bottom: 56px;
-                text-align: left;
+                max-width: 640px; margin-bottom:56px; text-align:left;
             }
-
             #hyna-launchpad .lp-section-head h2 {
-                font-size: clamp(28px, 4vw, 44px);
-                font-weight: 700;
-                margin-bottom: 16px;
-                color: var(--lp-ink);
-                line-height: 1.2;
+                font-size: clamp(28px,4vw,44px); font-weight:700;
+                margin-bottom:16px; color:var(--lp-ink); line-height:1.2;
             }
+            #hyna-launchpad .lp-section-head p { color:var(--lp-ink-dim); font-size:17px; }
 
-            #hyna-launchpad .lp-section-head p {
-                color: var(--lp-ink-dim);
-                font-size: 17px;
-            }
-
-            /* Animations */
+            /* fade-up */
             #hyna-launchpad .lp-fade-up {
-                opacity: 0;
-                transform: translateY(34px);
-                transition: opacity .8s cubic-bezier(.16, .84, .44, 1), transform .8s cubic-bezier(.16, .84, .44, 1);
+                opacity:0; transform:translateY(34px);
+                transition:opacity .8s cubic-bezier(.16,.84,.44,1),transform .8s cubic-bezier(.16,.84,.44,1);
             }
+            #hyna-launchpad .lp-fade-up.lp-in { opacity:1; transform:translateY(0); }
 
-            #hyna-launchpad .lp-fade-up.lp-in {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            /* Scroll Stack */
-            #hyna-launchpad .lp-launch-shell {
-                display: grid;
-                grid-template-columns: 90px 1fr;
-                gap: 26px;
-            }
-
-            @media(max-width: 760px) {
-                #hyna-launchpad .lp-launch-shell {
-                    grid-template-columns: 1fr;
-                }
-            }
-
-            #hyna-launchpad .lp-rail {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 18px;
-                position: sticky;
-                top: calc(50vh - 90px);
-                height: fit-content;
-            }
-
-            #hyna-launchpad .lp-rail-num {
-                font-family: var(--lp-font-mono);
-                font-size: 13px;
-                color: var(--lp-ink-dimmer);
-                padding: 8px 0;
-                transition: color .3s, transform .3s;
-                cursor: pointer;
-            }
-
-            #hyna-launchpad .lp-rail-num.lp-active {
-                color: var(--lp-blue);
-                font-weight: 700;
-                transform: scale(1.25);
-            }
-
-            #hyna-launchpad .lp-rail-line {
-                width: 2px;
-                flex: 1;
-                background: var(--lp-border);
-                position: relative;
-                min-height: 40px;
-                overflow: hidden;
-            }
-
-            #hyna-launchpad .lp-rail-line::after {
-                content: "";
-                position: absolute;
-                inset: 0;
-                background: var(--lp-blue);
-                transform: scaleY(var(--fill, 0));
-                transform-origin: top;
-                transition: transform .25s linear;
-            }
-
-            @media(max-width: 760px) {
-                #hyna-launchpad .lp-rail {
-                    flex-direction: row;
-                    justify-content: center;
-                    position: static;
-                }
-
-                #hyna-launchpad .lp-rail-line {
-                    width: 32px;
-                    height: 2px;
-                    flex: none;
-                }
-            }
-
+            /* ── scroll-pin shell (shared desktop + mobile) ── */
             #hyna-launchpad .lp-stack-pin {
                 position: relative;
-                height: 340vh;
+                height: 340vh;         /* 4 slides × ~85vh each */
             }
-
             #hyna-launchpad .lp-stack-sticky {
                 position: sticky;
                 top: 0;
@@ -3897,12 +3784,14 @@
                 overflow: hidden;
             }
 
+            /* card container */
             #hyna-launchpad .lp-stack-cards {
                 position: relative;
                 width: min(620px, 92%);
                 height: min(420px, 58vh);
             }
 
+            /* ── card base ── */
             #hyna-launchpad .lp-stack-card {
                 position: absolute;
                 inset: 0;
@@ -3913,164 +3802,110 @@
                 justify-content: center;
                 border: 1px solid var(--lp-border);
                 will-change: transform, opacity;
-                transform: translateX(120%) scale(1);
+                /* start off-screen right */
+                transform: translateX(110%) scale(1);
+                opacity: 0;
             }
-
             #hyna-launchpad .lp-stack-card .lp-slide-num {
-                position: absolute;
-                top: 24px;
-                right: 32px;
-                font-family: var(--lp-font-display);
-                font-size: 80px;
-                font-weight: 800;
-                opacity: .07;
+                position:absolute; top:24px; right:32px;
+                font-family:var(--lp-font-display); font-size:80px; font-weight:800; opacity:.07;
             }
-
             #hyna-launchpad .lp-stack-card h3 {
-                font-size: 28px;
-                font-weight: 700;
-                margin-bottom: 14px;
-                max-width: 460px;
-                color: var(--lp-ink);
+                font-size:28px; font-weight:700; margin-bottom:14px; max-width:460px; color:var(--lp-ink);
             }
-
             #hyna-launchpad .lp-stack-card p {
-                color: var(--lp-ink-dim);
-                font-size: 15px;
-                max-width: 480px;
-                margin-bottom: 18px;
+                color:var(--lp-ink-dim); font-size:15px; max-width:480px; margin-bottom:18px;
             }
-
-            #hyna-launchpad .lp-slide-tags {
-                display: flex;
-                gap: 8px;
-                flex-wrap: wrap;
-            }
-
+            #hyna-launchpad .lp-slide-tags { display:flex; gap:8px; flex-wrap:wrap; }
             #hyna-launchpad .lp-tag {
-                font-family: var(--lp-font-mono);
-                font-size: 11px;
-                padding: 5px 10px;
-                border-radius: 8px;
-                background: var(--lp-bg-soft);
-                color: var(--lp-ink-dim);
-                border: 1px solid var(--lp-border-soft);
+                font-family:var(--lp-font-mono); font-size:11px; padding:5px 10px;
+                border-radius:8px; background:var(--lp-bg-soft); color:var(--lp-ink-dim);
+                border:1px solid var(--lp-border-soft);
             }
 
-            #hyna-launchpad .lp-stack-card.lp-s1 {
-                background: linear-gradient(135deg, #eef2ff, #f8fafc);
-            }
-
-            #hyna-launchpad .lp-stack-card.lp-s2 {
-                background: linear-gradient(135deg, #eafcff, #f4f5fa);
-            }
-
-            #hyna-launchpad .lp-stack-card.lp-s3 {
-                background: linear-gradient(135deg, #f3edff, #f8fafc);
-            }
-
+            /* card themes */
+            #hyna-launchpad .lp-stack-card.lp-s1 { background:linear-gradient(135deg,#eef2ff,#f8fafc); }
+            #hyna-launchpad .lp-stack-card.lp-s2 { background:linear-gradient(135deg,#eafcff,#f4f5fa); }
+            #hyna-launchpad .lp-stack-card.lp-s3 { background:linear-gradient(135deg,#f3edff,#f8fafc); }
             #hyna-launchpad .lp-stack-card.lp-s4 {
-                background: linear-gradient(135deg, #0b1120, #131b30);
-                color: #fff;
-                border-color: rgba(255, 255, 255, 0.08);
+                background:linear-gradient(135deg,#0b1120,#131b30);
+                color:#fff; border-color:rgba(255,255,255,.08);
             }
-
-            #hyna-launchpad .lp-stack-card.lp-s4 h3 {
-                color: #fff;
-            }
-
-            #hyna-launchpad .lp-stack-card.lp-s4 p {
-                color: rgba(255, 255, 255, 0.7);
-            }
-
+            #hyna-launchpad .lp-stack-card.lp-s4 h3   { color:#fff; }
+            #hyna-launchpad .lp-stack-card.lp-s4 p    { color:rgba(255,255,255,.7); }
             #hyna-launchpad .lp-stack-card.lp-s4 .lp-tag {
-                background: rgba(255, 255, 255, 0.08);
-                color: rgba(255, 255, 255, 0.75);
-                border-color: rgba(255, 255, 255, 0.12);
+                background:rgba(255,255,255,.08); color:rgba(255,255,255,.75);
+                border-color:rgba(255,255,255,.12);
             }
 
+            /* hint */
             #hyna-launchpad .lp-stack-hint {
-                margin-top: 22px;
-                font-family: var(--lp-font-mono);
-                font-size: 12px;
-                color: var(--lp-ink-dimmer);
-                display: flex;
-                align-items: center;
-                gap: 8px;
+                margin-top:22px; font-family:var(--lp-font-mono); font-size:12px;
+                color:var(--lp-ink-dimmer); display:flex; align-items:center; gap:8px;
             }
-
             #hyna-launchpad .lp-stack-hint .lp-arrow {
-                display: inline-block;
-                animation: lp-nudge 1.6s ease-in-out infinite;
+                display:inline-block; animation:lp-nudge 1.6s ease-in-out infinite;
             }
-
             @keyframes lp-nudge {
-
-                0%,
-                100% {
-                    transform: translateX(0);
-                }
-
-                50% {
-                    transform: translateX(6px);
-                }
+                0%,100% { transform:translateX(0); }
+                50%      { transform:translateX(6px); }
             }
 
-            #hyna-launchpad .lp-slider-dots {
-                display: flex;
-                gap: 8px;
-                justify-content: center;
-                margin-top: 18px;
-            }
-
+            /* dots */
+            #hyna-launchpad .lp-slider-dots { display:flex; gap:8px; justify-content:center; margin-top:18px; }
             #hyna-launchpad .lp-slider-dots button {
-                width: 9px;
-                height: 9px;
-                border-radius: 50%;
-                border: none;
-                background: var(--lp-border);
-                transition: background .3s, width .3s;
+                width:9px; height:9px; border-radius:50%; border:none;
+                background:var(--lp-border); transition:background .3s,width .3s;
             }
-
             #hyna-launchpad .lp-slider-dots button.lp-active {
-                background: var(--lp-blue);
-                width: 24px;
-                border-radius: 6px;
+                background:var(--lp-blue); width:24px; border-radius:6px;
             }
 
-            /* Fallbacks / prefers reduced motion */
-            #hyna-launchpad.lp-reduced-motion .lp-stack-pin {
-                height: auto;
-            }
+            /* ── MOBILE overrides (≤ 760px) ── */
+            @media (max-width:760px) {
+                /* Hide the entire Launchpad section on mobile */
+                #hyna-launchpad { display: none !important; }
 
-            #hyna-launchpad.lp-reduced-motion .lp-stack-sticky {
-                position: static;
-                height: auto;
-                display: block;
-            }
+                #hyna-launchpad .lp-wrap { padding:72px 16px 80px; }
+                #hyna-launchpad .lp-section-head { margin-bottom:32px; text-align:center; }
+                #hyna-launchpad .lp-section-head p { font-size:15px; }
 
-            #hyna-launchpad.lp-reduced-motion .lp-stack-cards {
-                height: auto;
-                width: 100%;
-            }
+                /* taller pin so 4 cards have enough scroll room */
+                #hyna-launchpad .lp-stack-pin { height:400vh; }
 
-            #hyna-launchpad.lp-reduced-motion .lp-stack-card {
-                position: relative;
-                inset: auto;
-                transform: none !important;
-                margin-bottom: 20px;
-            }
-
-            #hyna-launchpad.lp-reduced-motion .lp-stack-hint {
-                display: none;
-            }
-
-            @media (prefers-reduced-motion: reduce) {
-                #hyna-launchpad * {
-                    animation-duration: .001ms !important;
-                    transition-duration: .001ms !important;
-                    scroll-behavior: auto !important;
+                /* full-width cards, auto height */
+                #hyna-launchpad .lp-stack-cards {
+                    width: 92vw;
+                    height: auto;
+                    min-height: 300px;
                 }
+                #hyna-launchpad .lp-stack-card {
+                    position: absolute;
+                    inset: 0;
+                    border-radius: 20px;
+                    padding: 32px 24px;
+                    height: auto;
+                    min-height: 300px;
+                }
+                #hyna-launchpad .lp-stack-card .lp-slide-num { font-size:56px; top:16px; right:18px; }
+                #hyna-launchpad .lp-stack-card h3 { font-size:22px; max-width:100%; }
+                #hyna-launchpad .lp-stack-card p  { font-size:14px; max-width:100%; }
+
+                /* keep hint text */
+                #hyna-launchpad .lp-stack-hint { margin-top:20px; }
+            }
+
+            /* reduced-motion fallbacks */
+            #hyna-launchpad.lp-reduced-motion .lp-stack-pin    { height:auto; }
+            #hyna-launchpad.lp-reduced-motion .lp-stack-sticky { position:static; height:auto; display:flex; flex-direction:column; }
+            #hyna-launchpad.lp-reduced-motion .lp-stack-cards  { position:static; height:auto; width:100%; }
+            #hyna-launchpad.lp-reduced-motion .lp-stack-card {
+                position:relative; inset:auto; transform:none !important; opacity:1 !important;
+                margin-bottom:20px;
+            }
+            #hyna-launchpad.lp-reduced-motion .lp-stack-hint { display:none; }
+            @media (prefers-reduced-motion:reduce) {
+                #hyna-launchpad * { animation-duration:.001ms !important; transition-duration:.001ms !important; }
             }
         </style>
 
@@ -4079,11 +3914,8 @@
                 <div class="lp-section-head lp-fade-up">
                     <div class="lp-eyebrow">The Launchpad</div>
                     <h2>The Hyna launch sequence</h2>
-                    <p>Every product we touch moves through the same four stages — a countdown from raw idea to a
-                        startup that scales. Keep scrolling to move through it.</p>
+                    <p>Every product we touch moves through the same four stages — a countdown from raw idea to a startup that scales. Keep scrolling to move through it.</p>
                 </div>
-
-
 
                 <div class="lp-stack-pin" id="lp-stackPin">
                     <div class="lp-stack-sticky">
@@ -4091,39 +3923,43 @@
                             <div class="lp-stack-card lp-s1" data-index="0">
                                 <span class="lp-slide-num">01</span>
                                 <h3>Ideate — find the real problem</h3>
-                                <p>We embed with you to dig past the pitch-deck version of the idea and find the problem
-                                    worth solving, validated with real people first.</p>
-                                <div class="lp-slide-tags"><span class="lp-tag">Discovery sprints</span><span
-                                        class="lp-tag">User interviews</span></div>
+                                <p>We embed with you to dig past the pitch-deck version of the idea and find the problem worth solving, validated with real people first.</p>
+                                <div class="lp-slide-tags">
+                                    <span class="lp-tag">Discovery sprints</span>
+                                    <span class="lp-tag">User interviews</span>
+                                </div>
                             </div>
                             <div class="lp-stack-card lp-s2" data-index="1">
                                 <span class="lp-slide-num">02</span>
                                 <h3>Build — ship a real product</h3>
-                                <p>Our Forge team designs and engineers a working SaaS product, not a throwaway
-                                    prototype — built to survive contact with real users.</p>
-                                <div class="lp-slide-tags"><span class="lp-tag">MVP engineering</span><span
-                                        class="lp-tag">Design systems</span></div>
+                                <p>Our Forge team designs and engineers a working SaaS product, not a throwaway prototype — built to survive contact with real users.</p>
+                                <div class="lp-slide-tags">
+                                    <span class="lp-tag">MVP engineering</span>
+                                    <span class="lp-tag">Design systems</span>
+                                </div>
                             </div>
                             <div class="lp-stack-card lp-s3" data-index="2">
                                 <span class="lp-slide-num">03</span>
                                 <h3>Launch — get it in front of people</h3>
-                                <p>We help you launch with a story, a landing page, and a growth plan — so day one has
-                                    more than just a working link.</p>
-                                <div class="lp-slide-tags"><span class="lp-tag">Go-to-market</span><span
-                                        class="lp-tag">Positioning</span></div>
+                                <p>We help you launch with a story, a landing page, and a growth plan — so day one has more than just a working link.</p>
+                                <div class="lp-slide-tags">
+                                    <span class="lp-tag">Go-to-market</span>
+                                    <span class="lp-tag">Positioning</span>
+                                </div>
                             </div>
                             <div class="lp-stack-card lp-s4" data-index="3">
                                 <span class="lp-slide-num">04</span>
                                 <h3>Scale — become the big thing</h3>
-                                <p>From one town to the whole country: we help you find the next 10x, whether that's new
-                                    markets, new features, or new funding.</p>
-                                <div class="lp-slide-tags"><span class="lp-tag">Growth engineering</span><span
-                                        class="lp-tag">Fundraise support</span></div>
+                                <p>From one town to the whole country: we help you find the next 10x, whether that's new markets, new features, or new funding.</p>
+                                <div class="lp-slide-tags">
+                                    <span class="lp-tag">Growth engineering</span>
+                                    <span class="lp-tag">Fundraise support</span>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="lp-stack-hint" id="lp-stackHint"><span>keep scrolling</span><span
-                                class="lp-arrow">→</span></div>
+                        <div class="lp-stack-hint" id="lp-stackHint">
+                            <span>keep scrolling</span><span class="lp-arrow">→</span>
+                        </div>
                         <div class="lp-slider-dots" id="lp-sliderDots">
                             <button class="lp-active" data-slide="0"></button>
                             <button data-slide="1"></button>
@@ -4136,96 +3972,118 @@
         </section>
 
     <script>
-        (function () {
-            const launchpad = document.getElementById('hyna-launchpad');
-            if (!launchpad) return;
+    (function () {
+        const launchpad = document.getElementById('hyna-launchpad');
+        if (!launchpad) return;
 
-            const revealEls = launchpad.querySelectorAll('.lp-fade-up');
-            const io = new IntersectionObserver((entries) => {
-                entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('lp-in'); });
-            }, { threshold: 0.14 });
-            revealEls.forEach(el => io.observe(el));
+        /* fade-up reveals */
+        const revealEls = launchpad.querySelectorAll('.lp-fade-up');
+        const io = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('lp-in'); });
+        }, { threshold: 0.14 });
+        revealEls.forEach(el => io.observe(el));
 
-            const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            const pin = document.getElementById('lp-stackPin');
-            const cards = Array.from(launchpad.querySelectorAll('.lp-stack-card'));
-            const numSlides = cards.length;
-            const railNums = launchpad.querySelectorAll('.lp-rail-num');
-            const railLines = launchpad.querySelectorAll('.lp-rail-line > div');
-            const dots = launchpad.querySelectorAll('#lp-sliderDots button');
-            const hint = document.getElementById('lp-stackHint');
+        /* Reduced-motion fallback */
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+        if (prefersReduced) {
+            launchpad.classList.add('lp-reduced-motion');
+            return;
+        }
 
-            if (prefersReduced) {
-                launchpad.classList.add('lp-reduced-motion');
-                railNums.forEach(r => r.classList.add('lp-active'));
-            } else {
-                function setProgress(p) {
-                    p = Math.max(0, Math.min(numSlides - 1, p));
+        const pin      = document.getElementById('lp-stackPin');
+        const cards    = Array.from(launchpad.querySelectorAll('#lp-stackCards .lp-stack-card'));
+        const numSlides = cards.length;
+        const dots     = launchpad.querySelectorAll('#lp-sliderDots button');
+        const hint     = document.getElementById('lp-stackHint');
 
-                    cards.forEach((card, i) => {
-                        const diff = p - i;
-                        let x, scale, y, opacity;
+        const isMobile = () => window.innerWidth <= 760;
 
-                        if (diff <= -1) {
-                            x = 120; scale = 1; y = 0; opacity = 0;
-                        } else if (diff < 0) {
-                            const t = diff + 1; // 0 -> 1, entering from the right
-                            x = (1 - t) * 120;
-                            scale = 1;
-                            y = 0;
-                            opacity = t;
-                        } else {
-                            const t = Math.min(diff, 1); // 0 -> 1, settling back into stack
-                            x = -t * 9;
-                            scale = 1 - t * 0.08;
-                            y = -t * 16;
-                            opacity = 1;
-                        }
-                        card.style.transform = `translateX(${x}%) translateY(${y}px) scale(${scale})`;
-                        card.style.opacity = opacity;
-                        card.style.zIndex = 10 + i;
-                    });
+        /* ─────────────────────────────────────────────────
+           setProgress(p)   p: 0 → numSlides-1 (continuous)
+           DESKTOP  → stacking / scaling effect
+           MOBILE   → pure horizontal slide (translateX)
+        ───────────────────────────────────────────────── */
+        function setProgress(p) {
+            p = Math.max(0, Math.min(numSlides - 1, p));
+            const mobile = isMobile();
 
-                    const active = Math.round(p);
-                    railNums.forEach((r, i) => r.classList.toggle('lp-active', i === active));
-                    railLines.forEach((line, i) => {
-                        const fill = Math.max(0, Math.min(1, p - i));
-                        line.style.setProperty('--fill', fill);
-                    });
-                    dots.forEach((d, i) => d.classList.toggle('lp-active', i === active));
-                    if (hint) hint.style.opacity = active === numSlides - 1 ? 0 : 1;
+            cards.forEach((card, i) => {
+                const diff = p - i;          // negative = upcoming, positive = past
+                let x, y, scale, opacity;
+
+                if (mobile) {
+                    /* ── MOBILE: horizontal slide ──
+                       active card: centred (x=0)
+                       upcoming:   off-screen right  (x= +110%)
+                       past:       off-screen left   (x= -110%)
+                       transition zone ±1 unit       */
+                    if (diff <= -1) {
+                        /* fully upcoming */
+                        x = 110; y = 0; scale = 1; opacity = 0;
+                    } else if (diff < 0) {
+                        /* entering from right */
+                        const t = diff + 1;           // 0→1
+                        x = (1 - t) * 110;
+                        y = 0; scale = 1; opacity = t;
+                    } else if (diff < 1) {
+                        /* active → leaving left */
+                        x = -diff * 110;
+                        y = 0; scale = 1; opacity = 1 - diff * 0.6;
+                    } else {
+                        /* fully past */
+                        x = -110; y = 0; scale = 1; opacity = 0;
+                    }
+                } else {
+                    /* ── DESKTOP: stacking scale effect ── */
+                    if (diff <= -1) {
+                        x = 120; scale = 1; y = 0; opacity = 0;
+                    } else if (diff < 0) {
+                        const t = diff + 1;
+                        x = (1 - t) * 120; scale = 1; y = 0; opacity = t;
+                    } else {
+                        const t = Math.min(diff, 1);
+                        x = -t * 9; scale = 1 - t * 0.08; y = -t * 16; opacity = 1;
+                    }
                 }
 
-                function scrollToProgress(target) {
-                    const rect = pin.getBoundingClientRect();
-                    const total = pin.offsetHeight - window.innerHeight;
-                    const pinTop = window.scrollY + rect.top;
-                    const y = pinTop + (target / (numSlides - 1)) * total;
-                    window.scrollTo({ top: y, behavior: 'smooth' });
-                }
+                card.style.transform = `translateX(${x}%) translateY(${y}px) scale(${scale})`;
+                card.style.opacity   = opacity;
+                card.style.zIndex    = 10 + i;
+            });
 
-                let ticking = false;
-                function onScroll() {
-                    if (ticking) return;
-                    ticking = true;
-                    requestAnimationFrame(() => {
-                        const rect = pin.getBoundingClientRect();
-                        const total = pin.offsetHeight - window.innerHeight;
-                        const scrolled = Math.max(0, Math.min(total, -rect.top));
-                        const p = total > 0 ? (scrolled / total) * (numSlides - 1) : 0;
-                        setProgress(p);
-                        ticking = false;
-                    });
-                }
+            const active = Math.round(p);
+            dots.forEach((d, i) => d.classList.toggle('lp-active', i === active));
+            if (hint) hint.style.opacity = active === numSlides - 1 ? 0 : 1;
+        }
 
-                window.addEventListener('scroll', onScroll, { passive: true });
-                window.addEventListener('resize', onScroll);
-                onScroll();
+        /* ── scroll → progress ── */
+        let ticking = false;
+        function onScroll() {
+            if (ticking) return;
+            ticking = true;
+            requestAnimationFrame(() => {
+                const rect    = pin.getBoundingClientRect();
+                const total   = pin.offsetHeight - window.innerHeight;
+                const scrolled = Math.max(0, Math.min(total, -rect.top));
+                const p = total > 0 ? (scrolled / total) * (numSlides - 1) : 0;
+                setProgress(p);
+                ticking = false;
+            });
+        }
 
-                dots.forEach(d => d.addEventListener('click', () => scrollToProgress(parseInt(d.getAttribute('data-slide')))));
-                railNums.forEach(r => r.addEventListener('click', () => scrollToProgress(parseInt(r.getAttribute('data-rail')))));
-            }
-        })();
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll);
+        onScroll();
+
+        /* dot click → scroll to that slide */
+        function scrollToProgress(target) {
+            const rect   = pin.getBoundingClientRect();
+            const total  = pin.offsetHeight - window.innerHeight;
+            const pinTop = window.scrollY + rect.top;
+            window.scrollTo({ top: pinTop + (target / (numSlides - 1)) * total, behavior: 'smooth' });
+        }
+        dots.forEach(d => d.addEventListener('click', () => scrollToProgress(+d.dataset.slide)));
+    })();
     </script>
     <!-- ══════════ END LAUNCHPAD SECTION ══════════ -->
 
