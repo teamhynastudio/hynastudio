@@ -3796,7 +3796,7 @@
             #hyna-launchpad .lp-wrap {
                 max-width: 1220px;
                 margin: 0 auto;
-                padding: 100px 28px;
+                padding: 60px 28px 20px;
             }
 
             /* eyebrow */
@@ -3823,7 +3823,7 @@
             /* section head */
             #hyna-launchpad .lp-section-head {
                 max-width: 640px;
-                margin-bottom: 56px;
+                margin-bottom: 28px;
                 text-align: left;
             }
 
@@ -3861,8 +3861,8 @@
 
             #hyna-launchpad .lp-stack-sticky {
                 position: sticky;
-                top: 0;
-                height: 100vh;
+                top: 17vh;
+                height: 66vh;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -3886,7 +3886,9 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-                border: 1px solid var(--lp-border);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                background: linear-gradient(135deg, #0b1120, #131b30);
+                color: #ffffff;
                 will-change: transform, opacity;
                 /* start off-screen right */
                 transform: translateX(110%) scale(1);
@@ -3908,11 +3910,11 @@
                 font-weight: 700;
                 margin-bottom: 14px;
                 max-width: 460px;
-                color: var(--lp-ink);
+                color: #ffffff;
             }
 
             #hyna-launchpad .lp-stack-card p {
-                color: var(--lp-ink-dim);
+                color: rgba(255, 255, 255, 0.7);
                 font-size: 15px;
                 max-width: 480px;
                 margin-bottom: 18px;
@@ -3929,42 +3931,9 @@
                 font-size: 11px;
                 padding: 5px 10px;
                 border-radius: 8px;
-                background: var(--lp-bg-soft);
-                color: var(--lp-ink-dim);
-                border: 1px solid var(--lp-border-soft);
-            }
-
-            /* card themes */
-            #hyna-launchpad .lp-stack-card.lp-s1 {
-                background: linear-gradient(135deg, #eef2ff, #f8fafc);
-            }
-
-            #hyna-launchpad .lp-stack-card.lp-s2 {
-                background: linear-gradient(135deg, #eafcff, #f4f5fa);
-            }
-
-            #hyna-launchpad .lp-stack-card.lp-s3 {
-                background: linear-gradient(135deg, #f3edff, #f8fafc);
-            }
-
-            #hyna-launchpad .lp-stack-card.lp-s4 {
-                background: linear-gradient(135deg, #0b1120, #131b30);
-                color: #fff;
-                border-color: rgba(255, 255, 255, .08);
-            }
-
-            #hyna-launchpad .lp-stack-card.lp-s4 h3 {
-                color: #fff;
-            }
-
-            #hyna-launchpad .lp-stack-card.lp-s4 p {
-                color: rgba(255, 255, 255, .7);
-            }
-
-            #hyna-launchpad .lp-stack-card.lp-s4 .lp-tag {
-                background: rgba(255, 255, 255, .08);
-                color: rgba(255, 255, 255, .75);
-                border-color: rgba(255, 255, 255, .12);
+                background: rgba(255, 255, 255, 0.08);
+                color: rgba(255, 255, 255, 0.75);
+                border: 1px solid rgba(255, 255, 255, 0.12);
             }
 
             /* hint */
