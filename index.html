@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -7824,16 +7824,21 @@
 
                 #hyna-start-project .hyna-connect-col {
                     min-height: 220px;
-                    order: -1;
+                    order: 1;
                 }
             }
 
             @media (max-width: 720px) {
                 #hyna-start-project .hyna-body-row {
                     grid-template-columns: 1fr;
-                    align-items: start;
+                    align-items: center;
                     gap: 28px;
                 }
+                #hyna-start-project .hyna-line {
+        text-align: center; /* centers the heading text */
+        margin: 0 auto;     /* ensures balanced spacing */
+        display: block;
+    }
 
                 #hyna-start-project .hyna-rule {
                     display: none;
