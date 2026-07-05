@@ -3641,6 +3641,20 @@
                     inset 0px 35px 30px #000;
                 margin-top: 3px;
             }
+            @media (max-width: 768px) {
+  .outer-cont {
+    display: flex;
+    justify-content: center;   /* centers horizontally */
+    align-items: center;       /* centers vertically */
+    margin: 0 auto;            /* keeps it centered in mobile layout */
+    width: fit-content;        /* prevents stretching */
+  }
+
+  .flex {
+    justify-content: center;   /* centers icon + text */
+  }
+}
+
 
             #what-is-hyna {
                 background: #000000;
