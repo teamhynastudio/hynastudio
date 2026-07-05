@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -128,6 +128,15 @@
                 padding: 10px 6px;
                 color: rgba(255, 255, 255, 0.7) !important;
             }
+            /* Navbar subtitle styling for mobile */
+            .logo-sub {
+                font-size: 0.55rem;
+                color: rgba(255, 255, 255, 0.8);
+                margin-top: 0.05rem;
+                text-align: center;
+                transition: color 0.3s ease;
+            }
+
 
             /* Keep hamburger clickable and on top */
             #navMobileToggle {
@@ -2558,11 +2567,15 @@
                 display: none !important;
             }
 
-            /* Hide logo subtitle on very narrow screens */
-            @media (max-width: 480px) {
-                .logo-sub {
-                    display: none !important;
-                }
+            /* Logo subtitle visible on mobile */
+            .logo-sub {
+                display: block;
+                font-size: 0.5rem;
+                letter-spacing: 0.05em;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 120px;
             }
 
             section {
