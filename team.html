@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -42,7 +45,7 @@
             line-height: 1.55;
             min-height: 100vh;
             overflow-x: hidden;
-            background-image: 
+            background-image:
                 radial-gradient(circle at 1.5px 1.5px, rgba(252, 252, 253, 0.05) 1.4px, transparent 0) 0 0/26px 26px;
         }
 
@@ -56,7 +59,9 @@
             cursor: pointer;
         }
 
-        h2, h3, h4 {
+        h2,
+        h3,
+        h4 {
             font-family: var(--font-display);
             letter-spacing: -0.015em;
         }
@@ -74,13 +79,14 @@
             -webkit-backdrop-filter: blur(20px) saturate(170%);
             border-radius: 100px;
             border: 1.5px solid rgba(255, 255, 255, 0.07);
-            border-top: 1.5px solid rgba(255, 255, 255, 0.38); /* Liquid glass highlight */
+            border-top: 1.5px solid rgba(255, 255, 255, 0.38);
+            /* Liquid glass highlight */
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 0 24px;
             z-index: 1000;
-            box-shadow: 
+            box-shadow:
                 0 0 0 1px rgba(0, 0, 0, 0.3),
                 0 12px 40px rgba(0, 0, 0, 0.45);
         }
@@ -208,7 +214,7 @@
                 height: 58px;
                 padding: 0 16px;
             }
-            
+
             .nav-mobile-toggle {
                 display: flex;
             }
@@ -363,7 +369,8 @@
         /* ─── SCROLL STACK EFFECT (Same Animation as Launchpad) ─── */
         .team-stack-pin {
             position: relative;
-            height: 520vh; /* 6 cards × ~85vh space */
+            height: 520vh;
+            /* 6 cards × ~85vh space */
         }
 
         .team-stack-sticky {
@@ -462,7 +469,7 @@
             font-size: 15px;
             line-height: 1.6;
             margin-bottom: 24px;
-            border-left: 2px solid rgba(255,255,255,0.06);
+            border-left: 2px solid rgba(255, 255, 255, 0.06);
             padding-left: 14px;
         }
 
@@ -491,12 +498,29 @@
         }
 
         /* Card themes */
-        .team-stack-card.lp-s1 { background: linear-gradient(135deg, #0e101f 0%, #06070c 100%); }
-        .team-stack-card.lp-s2 { background: linear-gradient(135deg, #0a171f 0%, #04080c 100%); }
-        .team-stack-card.lp-s3 { background: linear-gradient(135deg, #120e24 0%, #06050d 100%); }
-        .team-stack-card.lp-s4 { background: linear-gradient(135deg, #0f1816 0%, #050807 100%); }
-        .team-stack-card.lp-s5 { background: linear-gradient(135deg, #170d1e 0%, #08040a 100%); }
-        .team-stack-card.lp-s6 { background: linear-gradient(135deg, #0f111a 0%, #07080d 100%); }
+        .team-stack-card.lp-s1 {
+            background: linear-gradient(135deg, #0e101f 0%, #06070c 100%);
+        }
+
+        .team-stack-card.lp-s2 {
+            background: linear-gradient(135deg, #0a171f 0%, #04080c 100%);
+        }
+
+        .team-stack-card.lp-s3 {
+            background: linear-gradient(135deg, #120e24 0%, #06050d 100%);
+        }
+
+        .team-stack-card.lp-s4 {
+            background: linear-gradient(135deg, #0f1816 0%, #050807 100%);
+        }
+
+        .team-stack-card.lp-s5 {
+            background: linear-gradient(135deg, #170d1e 0%, #08040a 100%);
+        }
+
+        .team-stack-card.lp-s6 {
+            background: linear-gradient(135deg, #0f111a 0%, #07080d 100%);
+        }
 
         /* hint */
         .team-stack-hint {
@@ -833,19 +857,24 @@
             .modal {
                 max-width: 100%;
             }
+
             .modal-header {
                 padding: 1rem 1rem 0.75rem;
             }
+
             .modal-body {
                 padding: 1rem;
             }
+
             .modal-grid {
                 grid-template-columns: 1fr;
             }
+
             .modal-photo {
                 width: 160px;
                 height: 160px;
             }
+
             .modal-close {
                 width: 38px;
                 height: 38px;
@@ -951,6 +980,7 @@
             .footer-container {
                 flex-direction: column;
             }
+
             .footer-links-group {
                 gap: 40px;
                 justify-content: space-between;
@@ -959,6 +989,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <!-- NAV -->
@@ -976,10 +1007,11 @@
             <li><a href="index.html#why-we-exist">Why Us</a></li>
             <li><a href="index.html#hyna-services">Forge</a></li>
             <li><a href="team.html" class="active">Team</a></li>
-            
+
             <!-- Mobile-only CTA items at bottom of dropdown -->
             <li class="mobile-cta-item start-proj-mobile">
-                <a href="mailto:team.hynastudio@gmail.com?subject=Project%20Inquiry%20-%20Hyna%20Studio&body=Hello%20Hyna%20Studio,%0D%0A%0D%0AI%20would%20like%20to%20discuss%20a%20project.%0D%0A%0D%0AName:%20%0D%0ACompany:%20%0D%0APhone:%20%0D%0AProject%20Details:%20">
+                <a
+                    href="mailto:team.hynastudio@gmail.com?subject=Project%20Inquiry%20-%20Hyna%20Studio&body=Hello%20Hyna%20Studio,%0D%0A%0D%0AI%20would%20like%20to%20discuss%20a%20project.%0D%0A%0D%0AName:%20%0D%0ACompany:%20%0D%0APhone:%20%0D%0AProject%20Details:%20">
                     Start your project →
                 </a>
             </li>
@@ -1006,23 +1038,22 @@
         <div class="team-head-wrapper lp-fade-up">
             <div class="team-eyebrow">Our Innovators</div>
             <h1>Meet the Hyna team</h1>
-            <p>A senior group of designers, engineers, and product builders crafting next-generation digital products directly with founders. Keep scrolling to cycle through.</p>
+            <p>Young innovators crafting bold digital products, modern websites, and intelligent solutions that help
+                businesses grow. Keep scrolling to discover more.</p>
         </div>
 
         <div class="team-stack-pin" id="teamStackPin">
             <div class="team-stack-sticky">
                 <div class="team-stack-cards" id="teamStackCards">
-                    
+
                     <!-- Vignesh -->
-                    <div class="team-stack-card lp-s1" data-index="0"
-                         data-name="Vignesh" data-role="Founder | CEO"
-                         data-bio="&quot;Leadership is not about control, it is about building people who can lead without you.&quot; Vignesh drives the strategic vision and engineering standards at Hyna Studio."
-                         data-photo="https://i.postimg.cc/wjtYqBpS/IMG-33081.jpg"
-                         data-portfolio="https://vigneshvl-dev.github.io/PORTFOLIO/"
-                         data-github="https://github.com/vigneshvl-dev"
-                         data-linkedin="https://www.linkedin.com/in/vigneshvl-dev/"
-                         data-college="Anna University"
-                         data-degree="B.E. Computer Science & Engineering">
+                    <div class="team-stack-card lp-s1" data-index="0" data-name="Vignesh" data-role="Founder | CEO"
+                        data-bio="&quot;Leadership is not about control, it is about building people who can lead without you.&quot; Vignesh drives the strategic vision and engineering standards at Hyna Studio."
+                        data-photo="https://i.postimg.cc/wjtYqBpS/IMG-33081.jpg"
+                        data-portfolio="https://vigneshvl-dev.github.io/PORTFOLIO/"
+                        data-github="https://github.com/vigneshvl-dev"
+                        data-linkedin="https://www.linkedin.com/in/vigneshvl-dev/" data-college="Anna University"
+                        data-degree="B.E. Computer Science & Engineering">
                         <span class="lp-slide-num">01</span>
                         <div class="team-card-image">
                             <img src="https://i.postimg.cc/wjtYqBpS/IMG-33081.jpg" alt="Vignesh">
@@ -1030,25 +1061,27 @@
                         <div class="team-card-detail">
                             <h3>Vignesh</h3>
                             <div class="team-card-role">Founder | CEO</div>
-                            <p>"Leadership is not about control, it is about building people who can lead without you."</p>
+                            <p>"Leadership is not about control, it is about building people who can lead without you."
+                            </p>
                             <div class="team-social-links">
-                                <a href="https://vigneshvl-dev.github.io/PORTFOLIO/" target="_blank" class="team-social-icon"><i class="fa-solid fa-globe"></i></a>
-                                <a href="https://www.linkedin.com/in/vigneshvl-dev/" target="_blank" class="team-social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
-                                <a href="https://github.com/vigneshvl-dev" target="_blank" class="team-social-icon"><i class="fa-brands fa-github"></i></a>
+                                <a href="https://vigneshvl-dev.github.io/PORTFOLIO/" target="_blank"
+                                    class="team-social-icon"><i class="fa-solid fa-globe"></i></a>
+                                <a href="https://www.linkedin.com/in/vigneshvl-dev/" target="_blank"
+                                    class="team-social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                                <a href="https://github.com/vigneshvl-dev" target="_blank" class="team-social-icon"><i
+                                        class="fa-brands fa-github"></i></a>
                             </div>
                         </div>
                     </div>
 
                     <!-- Jashwin -->
-                    <div class="team-stack-card lp-s2" data-index="1"
-                         data-name="Jashwin" data-role="Co-Founder & Project Management Lead"
-                         data-bio="&quot;Deadlines don’t fail because of time, they fail because alignment is missing.&quot; Jashwin ensures that every project at Hyna Studio is aligned with stakeholder goals and delivered seamlessly."
-                         data-photo="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png"
-                         data-portfolio="#"
-                         data-github="https://github.com/jashwinj2008"
-                         data-linkedin="https://www.linkedin.com/in/jashwin-j-16b06240a"
-                         data-college="Anna University"
-                         data-degree="B.E. Computer Science & Engineering">
+                    <div class="team-stack-card lp-s2" data-index="1" data-name="Jashwin"
+                        data-role="Co-Founder & Project Management Lead"
+                        data-bio="&quot;Deadlines don’t fail because of time, they fail because alignment is missing.&quot; Jashwin ensures that every project at Hyna Studio is aligned with stakeholder goals and delivered seamlessly."
+                        data-photo="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" data-portfolio="#"
+                        data-github="https://github.com/jashwinj2008"
+                        data-linkedin="https://www.linkedin.com/in/jashwin-j-16b06240a" data-college="Anna University"
+                        data-degree="B.E. Computer Science & Engineering">
                         <span class="lp-slide-num">02</span>
                         <div class="team-card-image">
                             <img src="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" alt="Jashwin">
@@ -1058,96 +1091,100 @@
                             <div class="team-card-role">Co-Founder & PM Lead</div>
                             <p>"Deadlines don't fail because of time, they fail because alignment is missing."</p>
                             <div class="team-social-links">
-                                <a href="https://www.linkedin.com/in/jashwin-j-16b06240a" target="_blank" class="team-social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
-                                <a href="https://github.com/jashwinj2008" target="_blank" class="team-social-icon"><i class="fa-brands fa-github"></i></a>
+                                <a href="https://www.linkedin.com/in/jashwin-j-16b06240a" target="_blank"
+                                    class="team-social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                                <a href="https://github.com/jashwinj2008" target="_blank" class="team-social-icon"><i
+                                        class="fa-brands fa-github"></i></a>
                             </div>
                         </div>
                     </div>
 
                     <!-- Dharshan -->
-                    <div class="team-stack-card lp-s3" data-index="2"
-                         data-name="Dharshan" data-role="Co-Founder & Chief Technology Officer (CTO)"
-                         data-bio="&quot;A co-founder in tech doesn’t follow trends, he builds what will become the next standard.&quot; Dharshan leads our systems architecture, cloud infrastructure, and technical execution."
-                         data-photo="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg"
-                         data-portfolio="https://portholio-zeta.vercel.app/"
-                         data-github="https://github.com/dharshan00814"
-                         data-linkedin="https://www.linkedin.com/in/dharshan-jm"
-                         data-college="Anna University"
-                         data-degree="B.E. Computer Science & Engineering">
+                    <div class="team-stack-card lp-s3" data-index="2" data-name="Dharshan"
+                        data-role="Co-Founder & Chief Technology Officer (CTO)"
+                        data-bio="&quot;A co-founder in tech doesn’t follow trends, he builds what will become the next standard.&quot; Dharshan leads our systems architecture, cloud infrastructure, and technical execution."
+                        data-photo="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg"
+                        data-portfolio="https://portholio-zeta.vercel.app/"
+                        data-github="https://github.com/dharshan00814"
+                        data-linkedin="https://www.linkedin.com/in/dharshan-jm" data-college="Anna University"
+                        data-degree="B.E. Computer Science & Engineering">
                         <span class="lp-slide-num">03</span>
                         <div class="team-card-image">
-                            <img src="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg" alt="Dharshan">
+                            <img src="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg"
+                                alt="Dharshan">
                         </div>
                         <div class="team-card-detail">
                             <h3>Dharshan</h3>
                             <div class="team-card-role">Co-Founder & CTO</div>
-                            <p>"A co-founder in tech doesn't follow trends, he builds what will become the next standard."</p>
+                            <p>"A co-founder in tech doesn't follow trends, he builds what will become the next
+                                standard."</p>
                             <div class="team-social-links">
-                                <a href="https://portholio-zeta.vercel.app/" target="_blank" class="team-social-icon"><i class="fa-solid fa-globe"></i></a>
-                                <a href="https://www.linkedin.com/in/dharshan-jm" target="_blank" class="team-social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
-                                <a href="https://github.com/dharshan00814" target="_blank" class="team-social-icon"><i class="fa-brands fa-github"></i></a>
+                                <a href="https://portholio-zeta.vercel.app/" target="_blank" class="team-social-icon"><i
+                                        class="fa-solid fa-globe"></i></a>
+                                <a href="https://www.linkedin.com/in/dharshan-jm" target="_blank"
+                                    class="team-social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                                <a href="https://github.com/dharshan00814" target="_blank" class="team-social-icon"><i
+                                        class="fa-brands fa-github"></i></a>
                             </div>
                         </div>
                     </div>
 
                     <!-- Asthamil -->
-                    <div class="team-stack-card lp-s4" data-index="3"
-                         data-name="Asthamil" data-role="Chief Product Officer (CPO) & Director"
-                         data-bio="&quot;Product thinking is not about features, it is about solving the right problem in the right way.&quot; Asthamil directs product roadmap strategy, user research, and functional design."
-                         data-photo="https://i.postimg.cc/Jnwtf3ZZ/Whats-App-Image-2026-02-20-at-7-00-57-PM.jpg"
-                         data-portfolio="#"
-                         data-github="#"
-                         data-linkedin="#"
-                         data-college="Anna University"
-                         data-degree="B.E. Computer Science & Engineering">
+                    <div class="team-stack-card lp-s4" data-index="3" data-name="Asthamil"
+                        data-role="Chief Product Officer (CPO) & Director"
+                        data-bio="&quot;Product thinking is not about features, it is about solving the right problem in the right way.&quot; Asthamil directs product roadmap strategy, user research, and functional design."
+                        data-photo="https://i.postimg.cc/Jnwtf3ZZ/Whats-App-Image-2026-02-20-at-7-00-57-PM.jpg"
+                        data-portfolio="#" data-github="#" data-linkedin="#" data-college="Anna University"
+                        data-degree="B.E. Computer Science & Engineering">
                         <span class="lp-slide-num">04</span>
                         <div class="team-card-image">
-                            <img src="https://i.postimg.cc/Jnwtf3ZZ/Whats-App-Image-2026-02-20-at-7-00-57-PM.jpg" alt="Asthamil">
+                            <img src="https://i.postimg.cc/Jnwtf3ZZ/Whats-App-Image-2026-02-20-at-7-00-57-PM.jpg"
+                                alt="Asthamil">
                         </div>
                         <div class="team-card-detail">
                             <h3>Asthamil</h3>
                             <div class="team-card-role">Chief Product Officer</div>
-                            <p>"Product thinking is not about features, it is about solving the right problem in the right way."</p>
+                            <p>"Product thinking is not about features, it is about solving the right problem in the
+                                right way."</p>
                             <div class="team-social-links">
-                                <span class="team-social-icon" style="opacity:0.3;"><i class="fa-brands fa-linkedin-in"></i></span>
+                                <span class="team-social-icon" style="opacity:0.3;"><i
+                                        class="fa-brands fa-linkedin-in"></i></span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Tharun Krishna -->
-                    <div class="team-stack-card lp-s5" data-index="4"
-                         data-name="Tharun Krishna" data-role="Chief Design Officer (CDO)"
-                         data-bio="&quot;Good design is invisible, but its impact is impossible to ignore.&quot; Tharun translates brand visions into premium user interfaces, styling guidelines, and interactive experiences."
-                         data-photo="https://i.postimg.cc/TP5Jj9Th/Whats-App-Image-2026-06-11-at-11-26-46-AM.jpg"
-                         data-portfolio="#"
-                         data-github="#"
-                         data-linkedin="https://www.linkedin.com/in/tharun-krishna-347b123a0"
-                         data-college="Anna University"
-                         data-degree="B.E. Computer Science & Engineering">
+                    <div class="team-stack-card lp-s5" data-index="4" data-name="Tharun Krishna"
+                        data-role="Chief Design Officer (CDO)"
+                        data-bio="&quot;Good design is invisible, but its impact is impossible to ignore.&quot; Tharun translates brand visions into premium user interfaces, styling guidelines, and interactive experiences."
+                        data-photo="https://i.postimg.cc/TP5Jj9Th/Whats-App-Image-2026-06-11-at-11-26-46-AM.jpg"
+                        data-portfolio="#" data-github="#"
+                        data-linkedin="https://www.linkedin.com/in/tharun-krishna-347b123a0"
+                        data-college="Anna University" data-degree="B.E. Computer Science & Engineering">
                         <span class="lp-slide-num">05</span>
                         <div class="team-card-image">
-                            <img src="https://i.postimg.cc/TP5Jj9Th/Whats-App-Image-2026-06-11-at-11-26-46-AM.jpg" alt="Tharun Krishna">
+                            <img src="https://i.postimg.cc/TP5Jj9Th/Whats-App-Image-2026-06-11-at-11-26-46-AM.jpg"
+                                alt="Tharun Krishna">
                         </div>
                         <div class="team-card-detail">
                             <h3>Tharun Krishna</h3>
                             <div class="team-card-role">Chief Design Officer</div>
                             <p>"Good design is invisible, but its impact is impossible to ignore."</p>
                             <div class="team-social-links">
-                                <a href="https://www.linkedin.com/in/tharun-krishna-347b123a0" target="_blank" class="team-social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                                <a href="https://www.linkedin.com/in/tharun-krishna-347b123a0" target="_blank"
+                                    class="team-social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
                             </div>
                         </div>
                     </div>
 
                     <!-- Mohammad Zarif -->
-                    <div class="team-stack-card lp-s6" data-index="5"
-                         data-name="Mohammad Zarif" data-role="Chief Operating Officer (COO)"
-                         data-bio="&quot;Execution is not about speed alone, it is about consistency, structure, and discipline.&quot; Mohammad oversees business operations, client partnerships, and project scaling."
-                         data-photo="https://i.postimg.cc/1zWvJd1C/zarif.jpg"
-                         data-portfolio="#"
-                         data-github="https://github.com/muhamedzarif"
-                         data-linkedin="https://www.linkedin.com/in/muhamed-zarif-80860a37a"
-                         data-college="Anna University"
-                         data-degree="B.E. Computer Science & Engineering">
+                    <div class="team-stack-card lp-s6" data-index="5" data-name="Mohammad Zarif"
+                        data-role="Chief Operating Officer (COO)"
+                        data-bio="&quot;Execution is not about speed alone, it is about consistency, structure, and discipline.&quot; Mohammad oversees business operations, client partnerships, and project scaling."
+                        data-photo="https://i.postimg.cc/1zWvJd1C/zarif.jpg" data-portfolio="#"
+                        data-github="https://github.com/muhamedzarif"
+                        data-linkedin="https://www.linkedin.com/in/muhamed-zarif-80860a37a"
+                        data-college="Anna University" data-degree="B.E. Computer Science & Engineering">
                         <span class="lp-slide-num">06</span>
                         <div class="team-card-image">
                             <img src="https://i.postimg.cc/1zWvJd1C/zarif.jpg" alt="Mohammad Zarif">
@@ -1155,27 +1192,20 @@
                         <div class="team-card-detail">
                             <h3>Mohammad Zarif</h3>
                             <div class="team-card-role">Chief Operating Officer</div>
-                            <p>"Execution is not about speed alone, it is about consistency, structure, and discipline."</p>
+                            <p>"Execution is not about speed alone, it is about consistency, structure, and discipline."
+                            </p>
                             <div class="team-social-links">
-                                <a href="https://www.linkedin.com/in/muhamed-zarif-80860a37a" target="_blank" class="team-social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
-                                <a href="https://github.com/muhamedzarif" target="_blank" class="team-social-icon"><i class="fa-brands fa-github"></i></a>
+                                <a href="https://www.linkedin.com/in/muhamed-zarif-80860a37a" target="_blank"
+                                    class="team-social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                                <a href="https://github.com/muhamedzarif" target="_blank" class="team-social-icon"><i
+                                        class="fa-brands fa-github"></i></a>
                             </div>
                         </div>
                     </div>
 
                 </div>
 
-                <div class="team-stack-hint" id="teamStackHint">
-                    <span>keep scrolling</span><span class="lp-arrow">→</span>
-                </div>
-                <div class="team-slider-dots" id="teamSliderDots">
-                    <button class="lp-active" data-slide="0"></button>
-                    <button data-slide="1"></button>
-                    <button data-slide="2"></button>
-                    <button data-slide="3"></button>
-                    <button data-slide="4"></button>
-                    <button data-slide="5"></button>
-                </div>
+
             </div>
         </div>
     </div>
@@ -1188,7 +1218,8 @@
                     <img src="./hyna-logo-new.png" alt="Logo" class="logo-img">
                     <span>Hyna Studio</span>
                 </div>
-                <p class="footer-desc">Building robust, highly performant software products and brands that scale globally, made with passion in Tamil Nadu.</p>
+                <p class="footer-desc">Designing and building exceptional digital experiences that empower businesses to
+                    scale, proudly crafted in Tamil Nadu.</p>
             </div>
             <div class="footer-links-group">
                 <div class="footer-column">
@@ -1254,11 +1285,11 @@
             /* ════════════════════════════════════════
                SCROLL-PINNED TEAM CARDS STACK
             ════════════════════════════════════════ */
-            const pin   = document.getElementById('teamStackPin');
+            const pin = document.getElementById('teamStackPin');
             const cards = Array.from(document.querySelectorAll('#teamStackCards .team-stack-card'));
             const numSlides = cards.length;
-            const dots  = document.querySelectorAll('#teamSliderDots button');
-            const hint  = document.getElementById('teamStackHint');
+            const dots = document.querySelectorAll('#teamSliderDots button');
+            const hint = document.getElementById('teamStackHint');
 
             function setProgress(p) {
                 p = Math.max(0, Math.min(numSlides - 1, p));
@@ -1295,7 +1326,7 @@
 
                     card.style.transform = `translateX(${x}%) translateY(${y}px) scale(${scale})`;
                     card.style.opacity = opacity;
-                    card.style.zIndex  = 10 + i;
+                    card.style.zIndex = 10 + i;
                 });
 
                 const active = Math.round(p);
@@ -1304,7 +1335,7 @@
             }
 
             function scrollToProgress(target) {
-                const rect  = pin.getBoundingClientRect();
+                const rect = pin.getBoundingClientRect();
                 const total = pin.offsetHeight - window.innerHeight;
                 const pinTop = window.scrollY + rect.top;
                 window.scrollTo({ top: pinTop + (target / (numSlides - 1)) * total, behavior: 'smooth' });
@@ -1315,8 +1346,8 @@
                 if (ticking) return;
                 ticking = true;
                 requestAnimationFrame(() => {
-                    const rect   = pin.getBoundingClientRect();
-                    const total  = pin.offsetHeight - window.innerHeight;
+                    const rect = pin.getBoundingClientRect();
+                    const total = pin.offsetHeight - window.innerHeight;
                     const scrolled = Math.max(0, Math.min(total, -rect.top));
                     const p = total > 0 ? (scrolled / total) * (numSlides - 1) : 0;
                     setProgress(p);
@@ -1450,4 +1481,5 @@
         })();
     </script>
 </body>
+
 </html>
