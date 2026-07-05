@@ -2299,6 +2299,8 @@
         }
 
         @media(max-width:900px) {
+
+            /* ── MOBILE NAV — Dark Pill + Hamburger Toggle ── */
             nav {
                 top: 0.75rem !important;
                 left: 50% !important;
@@ -2306,45 +2308,38 @@
                 width: calc(100% - 1.5rem) !important;
                 max-width: none !important;
                 min-height: 56px;
-                padding: 0.45rem 0.8rem !important;
+                padding: 0.45rem 0.8rem 0.45rem 1rem !important;
                 border-radius: 40px !important;
-                background: linear-gradient(135deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.18)) !important;
-                border: 1px solid rgba(255, 255, 255, 0.45) !important;
+                background: rgba(18, 18, 22, 0.92) !important;
+                border: 1px solid rgba(255, 255, 255, 0.18) !important;
+                border-top: 1.5px solid rgba(255, 255, 255, 0.45) !important;
                 box-shadow:
-                    0 15px 30px rgba(0, 0, 0, 0.08),
-                    inset 0 1px 2px rgba(255, 255, 255, 0.6),
-                    inset 0 -1px 2px rgba(0, 0, 0, 0.02) !important;
-                backdrop-filter: blur(20px) saturate(200%) !important;
-                -webkit-backdrop-filter: blur(20px) saturate(200%) !important;
+                    0 20px 40px rgba(0, 0, 0, 0.6),
+                    inset 0 1px 1px rgba(255, 255, 255, 0.2),
+                    inset 0 -1px 0 rgba(0, 0, 0, 0.4) !important;
+                backdrop-filter: blur(25px) saturate(220%) !important;
+                -webkit-backdrop-filter: blur(25px) saturate(220%) !important;
                 display: flex !important;
                 align-items: center !important;
                 justify-content: space-between !important;
+                flex-wrap: nowrap !important;
             }
 
             nav.nav-scrolled {
-                top: 0.75rem !important;
-                left: 50% !important;
-                transform: translateX(-50%) !important;
-                width: calc(100% - 1.5rem) !important;
-                max-width: none !important;
-                padding: 0.45rem 0.8rem !important;
-                border-radius: 40px !important;
-                background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.25)) !important;
-                border: 1px solid rgba(255, 255, 255, 0.55) !important;
+                background: rgba(20, 20, 24, 0.96) !important;
+                border: 1px solid rgba(255, 255, 255, 0.22) !important;
+                border-top: 1.5px solid rgba(255, 255, 255, 0.55) !important;
                 box-shadow:
-                    0 18px 36px rgba(0, 0, 0, 0.1),
-                    inset 0 1px 2px rgba(255, 255, 255, 0.7),
-                    inset 0 -1px 2px rgba(0, 0, 0, 0.02) !important;
-                backdrop-filter: blur(25px) saturate(220%) !important;
-                -webkit-backdrop-filter: blur(25px) saturate(220%) !important;
+                    0 24px 48px rgba(0, 0, 0, 0.7),
+                    inset 0 1px 1px rgba(255, 255, 255, 0.25),
+                    inset 0 -1px 0 rgba(0, 0, 0, 0.5) !important;
             }
 
+            /* Keep logo consistent */
             .nav-logo {
-                gap: 0.4rem !important;
+                gap: 0.45rem !important;
                 min-width: 0;
                 flex: 0 1 auto !important;
-                color: rgba(255, 255, 255, 0.9) !important;
-                text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
             }
 
             .logo-text {
@@ -2352,102 +2347,223 @@
             }
 
             .logo-img {
-                width: 30px !important;
-                height: 30px !important;
+                width: 32px !important;
+                height: 32px !important;
             }
 
             .logo-main {
                 font-size: 0.95rem !important;
                 white-space: nowrap !important;
+                color: #ffffff !important;
             }
 
             .logo-sub {
                 font-size: 0.5rem !important;
                 letter-spacing: 0.02em !important;
                 white-space: nowrap !important;
+                color: rgba(255, 255, 255, 0.6) !important;
             }
 
-            /* Hamburger Button - Hidden since desktop nav layout is shown */
+            /* ── HAMBURGER TOGGLE BUTTON ── */
             .nav-mobile-toggle {
-                display: none !important;
+                display: flex !important;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+                width: 40px;
+                height: 40px;
+                background: rgba(255, 255, 255, 0.08) !important;
+                border: 1px solid rgba(255, 255, 255, 0.12) !important;
+                border-radius: 12px;
+                cursor: pointer;
+                flex-shrink: 0;
+                position: relative;
+                z-index: 10011;
+                transition: background 0.25s ease;
             }
 
+            .nav-mobile-toggle:hover {
+                background: rgba(255, 255, 255, 0.14) !important;
+            }
+
+            .nav-mobile-toggle span {
+                display: block;
+                width: 18px;
+                height: 2px;
+                background: rgba(255, 255, 255, 0.85);
+                border-radius: 2px;
+                transition: transform 0.3s cubic-bezier(0.77, 0, 0.175, 1),
+                            opacity 0.25s ease,
+                            width 0.25s ease;
+                transform-origin: center;
+            }
+
+            /* Hamburger → X animation */
+            .nav-mobile-toggle.active span:nth-child(1) {
+                transform: translateY(7px) rotate(45deg);
+            }
+
+            .nav-mobile-toggle.active span:nth-child(2) {
+                opacity: 0;
+                width: 0;
+            }
+
+            .nav-mobile-toggle.active span:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+
+            /* ── MOBILE NAV LINKS DROPDOWN ── */
             .nav-links {
-                display: flex !important;
-                position: static !important;
-                flex-direction: row !important;
-                background: rgba(255, 255, 255, 0.08) !important;
-                border: 1px solid rgba(255, 255, 255, 0.16) !important;
-                border-radius: 100px !important;
-                padding: 0.2rem 0.35rem !important;
-                gap: 0.15rem !important;
-                box-shadow: none !important;
+                position: fixed !important;
+                top: 68px !important;
+                left: 12px !important;
+                right: 12px !important;
                 width: auto !important;
-                margin: 0 auto !important;
-                transform: none !important;
-                align-items: center !important;
+                flex-direction: column !important;
+                align-items: stretch !important;
+                background: rgba(15, 15, 20, 0.96) !important;
+                border: 1px solid rgba(255, 255, 255, 0.12) !important;
+                border-radius: 20px !important;
+                padding: 12px !important;
+                gap: 2px !important;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6),
+                            0 0 0 1px rgba(255, 255, 255, 0.05) !important;
+                backdrop-filter: blur(30px) saturate(180%) !important;
+                -webkit-backdrop-filter: blur(30px) saturate(180%) !important;
+                opacity: 0 !important;
+                pointer-events: none !important;
+                transform: translateY(-10px) !important;
+                transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                            transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+                z-index: 10010 !important;
+                margin: 0 !important;
+            }
+
+            .nav-links.active {
+                opacity: 1 !important;
+                pointer-events: auto !important;
+                transform: translateY(0) !important;
             }
 
             .nav-links li {
-                width: auto !important;
+                width: 100% !important;
             }
 
             .nav-links li a {
-                display: inline-flex !important;
-                padding: 0.35rem 0.65rem !important;
-                font-size: 0.72rem !important;
-                font-weight: 600 !important;
-                color: rgba(255, 255, 255, 0.85) !important;
-                border-bottom: none !important;
+                display: flex !important;
+                width: 100% !important;
+                padding: 12px 16px !important;
+                font-size: 0.88rem !important;
+                font-weight: 500 !important;
+                color: rgba(255, 255, 255, 0.75) !important;
+                border-radius: 12px !important;
                 background: transparent !important;
-                transition: color 0.2s, background 0.2s;
+                transition: color 0.2s, background 0.2s !important;
+                text-align: left !important;
+                border-bottom: none !important;
             }
 
             .nav-links li a:hover {
                 color: #ffffff !important;
-                background: rgba(255, 255, 255, 0.09) !important;
+                background: rgba(255, 255, 255, 0.08) !important;
             }
 
-            .nav-cta.hide-mobile {
-                display: block !important;
-                padding: 0.35rem 1rem !important;
-                font-size: 0.72rem !important;
-                margin-left: 0 !important;
+            /* Mobile dropdown adjustments */
+            .nav-item-dropdown {
+                display: flex !important;
+                flex-direction: column !important;
+                width: 100% !important;
             }
 
-            /* Hide mobile CTA inside dropdown since they are in main flow on desktop */
-            .nav-links li.mobile-cta-item {
+            .nav-dropdown {
+                position: static !important;
+                transform: none !important;
+                width: 100% !important;
+                background: rgba(255, 255, 255, 0.04) !important;
+                border: none !important;
+                border-radius: 12px !important;
+                padding: 4px 0 !important;
+                margin-top: 4px !important;
+                box-shadow: none !important;
+                opacity: 0 !important;
+                visibility: hidden !important;
+                display: none !important;
+                transition: none !important;
+            }
+
+            .nav-dropdown::before {
                 display: none !important;
             }
 
-            /* Hide mobile Book a Call completely */
+            .nav-item-dropdown.open .nav-dropdown {
+                opacity: 1 !important;
+                visibility: visible !important;
+                display: flex !important;
+                flex-direction: column !important;
+            }
+
+            .nav-dropdown a {
+                color: rgba(255, 255, 255, 0.6) !important;
+                padding: 10px 24px !important;
+                font-size: 0.82rem !important;
+                border-radius: 8px !important;
+                justify-content: flex-start !important;
+                background: transparent !important;
+            }
+
+            .nav-dropdown a:hover {
+                color: #ffffff !important;
+                background: rgba(255, 255, 255, 0.06) !important;
+            }
+
+            /* Arrow rotation in mobile */
+            .nav-item-dropdown.open .nav-arrow {
+                transform: rotate(180deg);
+            }
+
+            /* Hide desktop CTA, show mobile CTA items */
+            .nav-cta.hide-mobile {
+                display: none !important;
+            }
+
+            .nav-links li.mobile-cta-item {
+                display: block !important;
+                margin-top: 4px;
+            }
+
+            .nav-links li.mobile-cta-item a {
+                text-align: center !important;
+                justify-content: center !important;
+                font-weight: 700 !important;
+                border-radius: 14px !important;
+                padding: 14px 16px !important;
+                font-size: 0.88rem !important;
+            }
+
+            .nav-links li.start-proj-mobile a {
+                background: linear-gradient(135deg, var(--accent), #7C3AED) !important;
+                color: #ffffff !important;
+                box-shadow: 0 4px 16px rgba(79, 63, 240, 0.35) !important;
+            }
+
+            .nav-links li.connect-mobile a {
+                background: rgba(255, 255, 255, 0.08) !important;
+                color: rgba(255, 255, 255, 0.85) !important;
+                border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            }
+
+            /* Hide mobile Book a Call button */
             .nav-book-call {
                 display: none !important;
             }
 
-            /* Responsive optimization for extra narrow screens */
-            @media (max-width: 580px) {
+            /* Hide logo subtitle on very narrow screens */
+            @media (max-width: 480px) {
                 .logo-sub {
                     display: none !important;
                 }
             }
-
-            @media (max-width: 480px) {
-                .logo-main {
-                    font-size: 0.85rem !important;
-                }
-
-                .nav-links li a {
-                    padding: 0.3rem 0.45rem !important;
-                    font-size: 0.65rem !important;
-                }
-
-                .nav-cta.hide-mobile {
-                    padding: 0.3rem 0.75rem !important;
-                    font-size: 0.65rem !important;
-                }
-            }
-
 
             section {
                 padding: 4rem 1.5rem;
