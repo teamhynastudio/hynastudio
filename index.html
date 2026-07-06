@@ -3641,19 +3641,25 @@
                     inset 0px 35px 30px #000;
                 margin-top: 3px;
             }
-            @media (max-width: 768px) {
-  .outer-cont {
-    display: flex;
-    justify-content: center;   /* centers horizontally */
-    align-items: center;       /* centers vertically */
-    margin: 0 auto;            /* keeps it centered in mobile layout */
-    width: fit-content;        /* prevents stretching */
-  }
 
-  .flex {
-    justify-content: center;   /* centers icon + text */
-  }
-}
+            @media (max-width: 768px) {
+                .outer-cont {
+                    display: flex;
+                    justify-content: center;
+                    /* centers horizontally */
+                    align-items: center;
+                    /* centers vertically */
+                    margin: 0 auto;
+                    /* keeps it centered in mobile layout */
+                    width: fit-content;
+                    /* prevents stretching */
+                }
+
+                .flex {
+                    justify-content: center;
+                    /* centers icon + text */
+                }
+            }
 
 
             #what-is-hyna {
@@ -4282,179 +4288,6 @@
                 }
             }
         </style>
-
-        <section id="hyna-launchpad">
-            <div class="lp-wrap">
-                <div class="lp-section-head lp-fade-up">
-                    <div class="lp-eyebrow">The Momentum</div>
-                    <h2>The Hyna launch sequence</h2>
-                    <p>Every product we touch moves through the same four stages — a countdown from raw idea to a
-                        startup that scales. Keep scrolling to move through it.</p>
-                </div>
-
-                <div class="lp-stack-pin" id="lp-stackPin">
-                    <div class="lp-stack-sticky">
-                        <div class="lp-stack-cards" id="lp-stackCards">
-                            <div class="lp-stack-card lp-s1" data-index="0">
-
-                                <h3>Ideate — find the real problem</h3>
-                                <p>We embed with you to dig past the pitch-deck version of the idea and find the problem
-                                    worth solving, validated with real people first.</p>
-                                <div class="lp-slide-tags">
-                                    <span class="lp-tag">Discovery sprints</span>
-                                    <span class="lp-tag">User interviews</span>
-                                </div>
-                            </div>
-                            <div class="lp-stack-card lp-s2" data-index="1">
-
-                                <h3>Build — ship a real product</h3>
-                                <p>Our Forge team designs and engineers a working SaaS product, not a throwaway
-                                    prototype — built to survive contact with real users.</p>
-                                <div class="lp-slide-tags">
-                                    <span class="lp-tag">MVP engineering</span>
-                                    <span class="lp-tag">Design systems</span>
-                                </div>
-                            </div>
-                            <div class="lp-stack-card lp-s3" data-index="2">
-
-                                <h3>Launch — get it in front of people</h3>
-                                <p>We help you launch with a story, a landing page, and a growth plan — so day one has
-                                    more than just a working link.</p>
-                                <div class="lp-slide-tags">
-                                    <span class="lp-tag">Go-to-market</span>
-                                    <span class="lp-tag">Positioning</span>
-                                </div>
-                            </div>
-                            <div class="lp-stack-card lp-s4" data-index="3">
-
-                                <h3>Scale — become the big thing</h3>
-                                <p>From one town to the whole country: we help you find the next 10x, whether that's new
-                                    markets, new features, or new funding.</p>
-                                <div class="lp-slide-tags">
-                                    <span class="lp-tag">Growth engineering</span>
-                                    <span class="lp-tag">Fundraise support</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        </section>
-
-        <script>
-            (function () {
-                const launchpad = document.getElementById('hyna-launchpad');
-                if (!launchpad) return;
-
-                /* fade-up reveals */
-                const revealEls = launchpad.querySelectorAll('.lp-fade-up');
-                const io = new IntersectionObserver(entries => {
-                    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('lp-in'); });
-                }, { threshold: 0.14 });
-                revealEls.forEach(el => io.observe(el));
-
-                /* Reduced-motion fallback */
-                const prefersReduced = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-                if (prefersReduced) {
-                    launchpad.classList.add('lp-reduced-motion');
-                    return;
-                }
-
-                const pin = document.getElementById('lp-stackPin');
-                const cards = Array.from(launchpad.querySelectorAll('#lp-stackCards .lp-stack-card'));
-                const numSlides = cards.length;
-                const dots = launchpad.querySelectorAll('#lp-sliderDots button');
-                const hint = document.getElementById('lp-stackHint');
-
-                const isMobile = () => window.innerWidth <= 760;
-
-                /* ─────────────────────────────────────────────────
-                   setProgress(p)   p: 0 → numSlides-1 (continuous)
-                   DESKTOP  → stacking / scaling effect
-                   MOBILE   → pure horizontal slide (translateX)
-                ───────────────────────────────────────────────── */
-                function setProgress(p) {
-                    p = Math.max(0, Math.min(numSlides - 1, p));
-                    const mobile = isMobile();
-
-                    cards.forEach((card, i) => {
-                        const diff = p - i;          // negative = upcoming, positive = past
-                        let x, y, scale, opacity;
-
-                        if (mobile) {
-                            /* ── MOBILE: horizontal slide ──
-                               active card: centred (x=0)
-                               upcoming:   off-screen right  (x= +110%)
-                               past:       off-screen left   (x= -110%)
-                               transition zone ±1 unit       */
-                            if (diff <= -1) {
-                                /* fully upcoming */
-                                x = 110; y = 0; scale = 1; opacity = 0;
-                            } else if (diff < 0) {
-                                /* entering from right */
-                                const t = diff + 1;           // 0→1
-                                x = (1 - t) * 110;
-                                y = 0; scale = 1; opacity = t;
-                            } else if (diff < 1) {
-                                /* active → leaving left */
-                                x = -diff * 110;
-                                y = 0; scale = 1; opacity = 1 - diff * 0.6;
-                            } else {
-                                /* fully past */
-                                x = -110; y = 0; scale = 1; opacity = 0;
-                            }
-                        } else {
-                            /* ── DESKTOP: stacking scale effect ── */
-                            if (diff <= -1) {
-                                x = 120; scale = 1; y = 0; opacity = 0;
-                            } else if (diff < 0) {
-                                const t = diff + 1;
-                                x = (1 - t) * 120; scale = 1; y = 0; opacity = t;
-                            } else {
-                                const t = Math.min(diff, 1);
-                                x = -t * 9; scale = 1 - t * 0.08; y = -t * 16; opacity = 1;
-                            }
-                        }
-
-                        card.style.transform = `translateX(${x}%) translateY(${y}px) scale(${scale})`;
-                        card.style.opacity = opacity;
-                        card.style.zIndex = 10 + i;
-                    });
-
-                    const active = Math.round(p);
-                    dots.forEach((d, i) => d.classList.toggle('lp-active', i === active));
-                    if (hint) hint.style.opacity = active === numSlides - 1 ? 0 : 1;
-                }
-
-                /* ── scroll → progress ── */
-                let ticking = false;
-                function onScroll() {
-                    if (ticking) return;
-                    ticking = true;
-                    requestAnimationFrame(() => {
-                        const rect = pin.getBoundingClientRect();
-                        const total = pin.offsetHeight - window.innerHeight;
-                        const scrolled = Math.max(0, Math.min(total, -rect.top));
-                        const p = total > 0 ? (scrolled / total) * (numSlides - 1) : 0;
-                        setProgress(p);
-                        ticking = false;
-                    });
-                }
-
-                window.addEventListener('scroll', onScroll, { passive: true });
-                window.addEventListener('resize', onScroll);
-                onScroll();
-
-                /* dot click → scroll to that slide */
-                function scrollToProgress(target) {
-                    const rect = pin.getBoundingClientRect();
-                    const total = pin.offsetHeight - window.innerHeight;
-                    const pinTop = window.scrollY + rect.top;
-                    window.scrollTo({ top: pinTop + (target / (numSlides - 1)) * total, behavior: 'smooth' });
-                }
-                dots.forEach(d => d.addEventListener('click', () => scrollToProgress(+d.dataset.slide)));
-            })();
-        </script>
-        <!-- ══════════ END LAUNCHPAD SECTION ══════════ -->
 
         <!-- SERVICES -->
         <style>
