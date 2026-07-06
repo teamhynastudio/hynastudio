@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -641,116 +641,80 @@
             flex-shrink: 0;
         }
 
-        /* ── HERO ── */
+        /* ── HERO (Dark Dot-Grid — Mercury style) ── */
+
+        :root {
+            --hero-bg: #0a0a0a;
+            --hero-ink: #f5f4f0;
+            --hero-ink-dim: rgba(245,244,240,0.6);
+            --hero-ink-faint: rgba(245,244,240,0.4);
+        }
+
         .hero {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 8rem 4rem 2rem;
+            padding: 8rem 4rem 4rem;
             position: relative;
             overflow: hidden;
-            background-color: #ffffff;
+            background-color: var(--hero-bg);
+            color: var(--hero-ink);
         }
 
-        /* ── HERO FADE-UP ENTRANCE ANIMATION ── */
-        .hero h1,
-        .hero-sub,
-        .hero-actions,
-        .hero-stats {
-            opacity: 0;
-            transform: translateY(28px);
-            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: transform, opacity;
-        }
-
-        .hero-animate .hero h1 {
-            opacity: 1;
-            transform: translateY(0);
-            transition-delay: 0.1s;
-        }
-
-        .hero-animate .hero-sub {
-            opacity: 1;
-            transform: translateY(0);
-            transition-delay: 0.25s;
-        }
-
-        .hero-animate .hero-actions {
-            opacity: 1;
-            transform: translateY(0);
-            transition-delay: 0.4s;
-        }
-
-        .hero-animate .hero-stats {
-            opacity: 1;
-            transform: translateY(0);
-            transition-delay: 0.55s;
-        }
-
-
-        .hero-grid-bg {
+        /* ── DOT GRID BACKGROUND ── */
+        .hero-dots-wrap {
             position: absolute;
             inset: 0;
-            background-image:
-                linear-gradient(var(--border) 1px, transparent 1px),
-                linear-gradient(90deg, var(--border) 1px, transparent 1px);
-            background-size: 60px 60px;
-            opacity: 0.5;
-
+            z-index: 0;
+            overflow: hidden;
+            -webkit-mask-image: radial-gradient(ellipse 80% 90% at 50% 40%, black 40%, transparent 92%);
+            mask-image: radial-gradient(ellipse 80% 90% at 50% 40%, black 40%, transparent 92%);
         }
 
-        body.animation-disabled .water-blob-1 {
-            animation: none;
-        }
-
-        body.animation-disabled .water-blob-2 {
-            animation: none;
-        }
-
-        .water-blob-1 {
+        .hero-dot-grid {
             position: absolute;
-            left: 10%;
-            top: 20%;
-            width: 350px;
-            height: 350px;
-            background: linear-gradient(135deg, rgba(209, 209, 241, 0.459) 0%, rgba(0, 217, 163, 0.18) 100%);
-            border-radius: 43% 57% 70% 30% / 45% 45% 55% 55%;
-            filter: blur(40px);
-            animation: morph-water 14s ease-in-out infinite alternate;
-            z-index: 1;
+            inset: 0;
+            background-image: radial-gradient(#ffffff 1.4px, transparent 1.4px);
+            background-size: 34px 34px;
+            background-position: 10px 10px;
+            opacity: 0.32;
+            animation: heroDotDrift 16s linear infinite;
         }
 
-        .water-blob-2 {
+        @keyframes heroDotDrift {
+            0%  { background-position: 10px 10px; }
+            100%{ background-position: 44px 44px; }
+        }
+
+        .hero-dot-flow {
             position: absolute;
-            right: 5%;
-            bottom: 15%;
-            width: 450px;
-            height: 450px;
-            background: linear-gradient(135deg, rgba(0, 217, 163, 0.15) 0%, rgba(79, 63, 240, 0.15) 100%);
-            border-radius: 50% 50% 30% 70% / 50% 60% 40% 60%;
-            filter: blur(50px);
-            animation: morph-water 20s ease-in-out infinite alternate-reverse;
+            inset: -30%;
+            background-image: radial-gradient(#ffffff 1.4px, transparent 1.4px);
+            background-size: 34px 34px;
+            background-position: 10px 10px;
+            -webkit-mask-image: linear-gradient(115deg, transparent 38%, rgba(255,255,255,0.95) 50%, transparent 62%);
+            mask-image: linear-gradient(115deg, transparent 38%, rgba(255,255,255,0.95) 50%, transparent 62%);
+            -webkit-mask-size: 260% 260%;
+            mask-size: 260% 260%;
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+            animation: heroDotFlowSweep 8s linear infinite, heroDotDrift 16s linear infinite;
+        }
+
+        @keyframes heroDotFlowSweep {
+            0%  { -webkit-mask-position: -60% -60%; mask-position: -60% -60%; }
+            100%{ -webkit-mask-position: 60% 60%;  mask-position: 60% 60%; }
+        }
+
+        .hero-grid-fade {
+            position: absolute;
+            inset: 0;
             z-index: 1;
+            background: linear-gradient(180deg, var(--hero-bg) 0%, rgba(10,10,10,0) 14%, rgba(10,10,10,0) 78%, var(--hero-bg) 100%);
         }
 
-        @keyframes morph-water {
-            0% {
-                border-radius: 43% 57% 70% 30% / 45% 45% 55% 55%;
-                transform: translate(0, 0) scale(1) rotate(0deg);
-            }
-
-            50% {
-                border-radius: 70% 30% 50% 50% / 30% 60% 40% 70%;
-                transform: translate(30px, -40px) scale(1.15) rotate(90deg);
-            }
-
-            100% {
-                border-radius: 50% 50% 70% 30% / 60% 40% 60% 40%;
-                transform: translate(-15px, 40px) scale(0.85) rotate(180deg);
-            }
-        }
-
+        /* ── HERO CONTENT ── */
         .hero-container {
             display: flex;
             flex-direction: column;
@@ -761,92 +725,149 @@
             width: 100%;
         }
 
-        .hero-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: var(--accent);
-            background: rgba(79, 63, 240, 0.08);
-            border: 1px solid rgba(79, 63, 240, 0.2);
-            padding: 0.4rem 0.9rem;
-            border-radius: 100px;
-            margin-bottom: 2rem;
-            width: fit-content;
+        /* ── HERO ENTRANCE ANIMATIONS ── */
+        .hero h1,
+        .hero-sub,
+        .hero-actions,
+        .hero-stats {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, opacity;
         }
 
-        .hero-tag::before {
-            content: '●';
-            font-size: 0.5rem;
-            animation: pulse 2s infinite;
-        }
+        .hero-animate .hero h1     { opacity: 1; transform: translateY(0); transition-delay: 0.1s; }
+        .hero-animate .hero-sub    { opacity: 1; transform: translateY(0); transition-delay: 0.25s; }
+        .hero-animate .hero-actions{ opacity: 1; transform: translateY(0); transition-delay: 0.4s; }
+        .hero-animate .hero-stats  { opacity: 1; transform: translateY(0); transition-delay: 0.55s; }
 
-        @keyframes pulse {
-
-            0%,
-            100% {
-                opacity: 1
-            }
-
-            50% {
-                opacity: 0.3
-            }
-        }
-
-        /* Slide-in animation for water glass card */
-        @keyframes slideIn {
-            from {
-                transform: translateX(-100%);
-            }
-
-            to {
-                transform: translateX(0);
-            }
-        }
-
+        /* ── HERO HEADING ── */
         .hero h1 {
-            font-family: var(--font-display);
-            font-size: clamp(2rem, 4vw, 3.2rem);
-            font-weight: 800;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-            max-width: 45ch;
-            margin-bottom: 1.8rem;
-            position: relative;
+            font-family: 'Instrument Serif', 'Syne', serif;
+            font-weight: 400;
+            font-size: clamp(2.4rem, 5.6vw, 4rem);
+            line-height: 1.18;
+            letter-spacing: 0.2px;
+            margin: 0 0 1.8rem;
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            color: var(--hero-ink);
         }
 
         .hero h1 em {
-            font-style: normal;
-            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            font-style: italic;
+            background: linear-gradient(180deg, #fff 0%, #8a8a86 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
+            color: transparent;
         }
 
+        .hero h1 .hero-dim-line {
+            color: var(--hero-ink-faint);
+            -webkit-text-fill-color: var(--hero-ink-faint);
+        }
+
+        /* ── HERO SUBTEXT ── */
         .hero-sub {
-            font-size: 1.15rem;
-            color: var(--muted);
-            max-width: 60ch;
-            line-height: 1.7;
-            margin-bottom: 2.5rem;
-            position: relative;
+            max-width: 500px;
+            color: var(--hero-ink-dim);
+            font-size: 15.5px;
+            line-height: 1.65;
+            margin: 0 0 2.5rem;
             margin-left: auto;
             margin-right: auto;
         }
 
+        /* ── HERO ACTIONS ── */
         .hero-actions {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 1.8rem;
             align-items: center;
             justify-content: center;
-            position: relative;
         }
 
+        .hero-btn-solid {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 24px;
+            border-radius: 8px;
+            font-size: 14.5px;
+            font-weight: 600;
+            text-decoration: none;
+            background: var(--hero-ink);
+            color: #0a0a0a;
+            transition: transform 0.15s ease, background 0.2s ease;
+        }
+        .hero-btn-solid:hover { background: #d9d8d2; transform: translateY(-1px); }
+        .hero-btn-solid svg { width: 15px; height: 15px; transition: transform 0.15s ease; }
+        .hero-btn-solid:hover svg { transform: translateX(2px); }
+
+        .hero-btn-text {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            color: var(--hero-ink-dim);
+            text-decoration: none;
+            font-size: 14.5px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        .hero-btn-text:hover { color: var(--hero-ink); }
+        .hero-btn-text svg { width: 14px; height: 14px; transition: transform 0.15s ease; }
+        .hero-btn-text:hover svg { transform: translateX(2px); }
+
+        /* ── HERO STATS ── */
+        .hero-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            justify-content: center;
+            margin-top: 5rem;
+            margin-left: auto;
+            margin-right: auto;
+            padding-top: 2.5rem;
+            border-top: 1px solid rgba(255,255,255,0.12);
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .stat-num {
+            font-family: var(--font-body);
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--hero-ink);
+            line-height: 1;
+        }
+
+        .stat-num span {
+            color: rgba(245,244,240,0.5);
+            font-size: 1.1rem;
+            font-weight: 600;
+            vertical-align: middle;
+        }
+
+        .stat-label {
+            font-size: 0.82rem;
+            color: var(--hero-ink-dim);
+            margin-top: 0.3rem;
+        }
+
+        /* ── HERO RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .hero { padding: 8rem 1.5rem 4rem; }
+            .hero h1 { font-size: clamp(2rem, 8vw, 2.8rem); }
+            .hero-stats { gap: 2rem; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .hero-dot-flow, .hero-dot-grid { animation: none; }
+        }
+
+        /* ── KEEP btn-ghost & btn-primary for other sections ── */
         .btn-primary {
             background: var(--accent);
             color: #fff;
@@ -858,11 +879,7 @@
             transition: transform 0.2s, box-shadow 0.2s;
             box-shadow: 0 4px 20px rgba(79, 63, 240, 0.3);
         }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 28px rgba(79, 63, 240, 0.4);
-        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(79, 63, 240, 0.4); }
 
         .btn-ghost {
             color: #000000;
@@ -881,66 +898,18 @@
             z-index: 1;
             overflow: hidden;
         }
-
         .btn-ghost::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background: #000000;
             z-index: -1;
             transform: translateX(-100%);
             transition: transform 0.3s ease;
         }
-
-        .btn-ghost:hover {
-            color: #ffffff;
-            gap: 0.8rem;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-        }
-
-        .btn-ghost:hover::before {
-            transform: translateX(0);
-        }
-
-        .hero-stats {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 3rem;
-            justify-content: center;
-            margin-top: 5rem;
-            margin-left: auto;
-            margin-right: auto;
-            padding-top: 2.5rem;
-            border-top: 1px solid var(--border);
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-        }
-
-        .stat-num {
-            font-family: var(--font-body);
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: var(--ink);
-            line-height: 1;
-        }
-
-        .stat-num span {
-            color: var(--accent);
-            font-size: 1.1rem;
-            font-weight: 600;
-            vertical-align: middle;
-        }
-
-        .stat-label {
-            font-size: 0.82rem;
-            color: var(--muted);
-            margin-top: 0.3rem;
-        }
+        .btn-ghost:hover { color: #ffffff; gap: 0.8rem; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
+        .btn-ghost:hover::before { transform: translateX(0); }
 
         /* ── SECTION COMMON ── */
         section {
@@ -3523,63 +3492,43 @@
 
         <!-- HERO -->
         <section class="hero">
-            <div class="hero-grid-bg"></div>
-            <div class="water-blob-1"></div>
-            <div class="water-blob-2"></div>
+            <!-- Animated dot grid -->
+            <div class="hero-dots-wrap">
+                <div class="hero-dot-grid"></div>
+                <div class="hero-dot-flow"></div>
+            </div>
+            <div class="hero-grid-fade"></div>
 
             <div class="hero-container">
-                <div class="hero-content">
-                    <h1>Hyna Studio — <em>We transform bold ideas</em> into impactful digital experiences.</h1>
-                    <p class="hero-sub">Hyna Studio is a full-spectrum digital studio crafting websites, apps, SaaS
-                        platforms,
-                        and
-                        brand identities for startups and scale-ups worldwide.</p>
-                    <div class="hero-actions">
-                        <!-- From Uiverse.io by Spacious74 -->
-                        <div class="outer-cont flex">
-                            <a href="./404.html"></a>
-                            <svg viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg">
-                                <g fill="none">
-                                    <path
-                                        d="m12.594 23.258l-.012.002l-.071.035l-.02.004l-.014-.004l-.071-.036q-.016-.004-.024.006l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.016-.018m.264-.113l-.014.002l-.184.093l-.01.01l-.003.011l.018.43l.005.012l.008.008l.201.092q.019.005.029-.008l.004-.014l-.034-.614q-.005-.019-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.003-.011l.018-.43l-.003-.012l-.01-.01z">
-                                    </path>
-                                    <path
-                                        d="M9.107 5.448c.598-1.75 3.016-1.803 3.725-.159l.06.16l.807 2.36a4 4 0 0 0 2.276 2.411l.217.081l2.36.806c1.75.598 1.803 3.016.16 3.725l-.16.06l-2.36.807a4 4 0 0 0-2.412 2.276l-.081.216l-.806 2.361c-.598 1.75-3.016 1.803-3.724.16l-.062-.16l-.806-2.36a4 4 0 0 0-2.276-2.412l-.216-.081l-2.36-.806c-1.751-.598-1.804-3.016-.16-3.724l.16-.062l2.36-.806A4 4 0 0 0 8.22 8.025l.081-.216zM11 6.094l-.806 2.36a6 6 0 0 1-3.49 3.649l-.25.091l-2.36.806l2.36.806a6 6 0 0 1 3.649 3.49l.091.25l.806 2.36l.806-2.36a6 6 0 0 1 3.49-3.649l.25-.09l2.36-.807l-2.36-.806a6 6 0 0 1-3.649-3.49l-.09-.25zM19 2a1 1 0 0 1 .898.56l.048.117l.35 1.026l1.027.35a1 1 0 0 1 .118 1.845l-.118.048l-1.026.35l-.35 1.027a1 1 0 0 1-1.845.117l-.048-.117l-.35-1.026l-1.027-.35a1 1 0 0 1-.118-1.845l.118-.048l1.026-.35l.35-1.027A1 1 0 0 1 19 2"
-                                        fill="currentColor"></path>
-                                </g>
-                            </svg>
-                            Launchpad
-                        </div>
-                        <a href="team.html" class="btn-ghost"
-                            style="display:inline-flex;align-items:center;gap:0.5rem;">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-                                style="flex-shrink:0;">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                                <circle cx="9" cy="7" r="4" />
-                                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                            </svg>
-                            Studio Team
-                        </a>
+                <h1>
+                    <em>We transform bold ideas</em><br>
+                    <span class="hero-dim-line">into digital experiences.</span>
+                </h1>
+                <p class="hero-sub">Hyna Studio is a full-spectrum digital studio crafting websites, apps, SaaS platforms, and brand identities for startups and scale-ups worldwide.</p>
+                <div class="hero-actions">
+                    <a href="mailto:team.hynastudio@gmail.com?subject=Project%20Inquiry%20-%20Hyna%20Studio&body=Hello%20Hyna%20Studio,%0D%0A%0D%0AI%20would%20like%20to%20discuss%20a%20project.%0D%0A%0D%0AName:%20%0D%0ACompany:%20%0D%0APhone:%20%0D%0AProject%20Details:%20" class="hero-btn-solid">
+                        Start a Project
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    </a>
+                    <a href="team.html" class="hero-btn-text">
+                        Meet the Team
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div>
+                        <div class="stat-num">5<span>+</span></div>
+                        <div class="stat-label">Projects Shipped</div>
                     </div>
-                    <div class="hero-stats">
-                        <div>
-                            <div class="stat-num">5<span>+</span></div>
-                            <div class="stat-label">Projects Shipped</div>
-                        </div>
-                        <div>
-                            <div class="stat-num">99<span>%</span></div>
-                            <div class="stat-label">Client Satisfaction</div>
-                        </div>
-                        <div>
-                            <div class="stat-num">7<span>+ mo</span></div>
-                            <div class="stat-label">Studio Experience</div>
-                        </div>
+                    <div>
+                        <div class="stat-num">99<span>%</span></div>
+                        <div class="stat-label">Client Satisfaction</div>
+                    </div>
+                    <div>
+                        <div class="stat-num">7<span>+ mo</span></div>
+                        <div class="stat-label">Studio Experience</div>
                     </div>
                 </div>
-
-
             </div>
         </section>
 
