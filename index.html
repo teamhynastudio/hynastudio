@@ -6182,8 +6182,8 @@
                 height: 82vh;
                 min-height: 480px;
                 box-sizing: border-box;
-                transition: grid-template-rows 0.45s cubic-bezier(0.4,0,0.2,1),
-                            grid-template-columns 0.45s cubic-bezier(0.4,0,0.2,1);
+                transition: grid-template-rows 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+                    grid-template-columns 0.45s cubic-bezier(0.4, 0, 0.2, 1);
             }
 
             .dfl-cell {
@@ -6204,28 +6204,63 @@
                 content: '';
                 position: absolute;
                 inset: 0;
-                background: rgba(0,0,0,0.45);
+                background: rgba(0, 0, 0, 0.45);
                 z-index: 1;
                 transition: background 0.3s ease;
             }
+
             .dfl-cell:hover::before {
-                background: rgba(0,0,0,0.15);
+                background: rgba(0, 0, 0, 0.15);
             }
 
             /* Neon glow per cell */
-            .dfl-cell[data-col="0"] { background: radial-gradient(ellipse at 30% 60%, #0d0622 0%, #000 70%); }
-            .dfl-cell[data-col="1"] { background: radial-gradient(ellipse at 50% 40%, #06101e 0%, #000 70%); }
-            .dfl-cell[data-col="2"] { background: radial-gradient(ellipse at 70% 60%, #0e0614 0%, #000 70%); }
+            .dfl-cell[data-col="0"] {
+                background: radial-gradient(ellipse at 30% 60%, #0d0622 0%, #000 70%);
+            }
 
-            .dfl-cell[data-row="0"][data-col="0"] { background: radial-gradient(ellipse at 25% 55%, #120836 0%, #000 65%); }
-            .dfl-cell[data-row="0"][data-col="1"] { background: radial-gradient(ellipse at 50% 45%, #062030 0%, #000 65%); }
-            .dfl-cell[data-row="0"][data-col="2"] { background: radial-gradient(ellipse at 75% 55%, #181020 0%, #000 65%); }
-            .dfl-cell[data-row="1"][data-col="0"] { background: radial-gradient(ellipse at 30% 50%, #0a1a3a 0%, #000 65%); }
-            .dfl-cell[data-row="1"][data-col="1"] { background: radial-gradient(ellipse at 50% 50%, #1a0830 0%, #000 65%); }
-            .dfl-cell[data-row="1"][data-col="2"] { background: radial-gradient(ellipse at 70% 50%, #061a28 0%, #000 65%); }
-            .dfl-cell[data-row="2"][data-col="0"] { background: radial-gradient(ellipse at 25% 55%, #0e1830 0%, #000 65%); }
-            .dfl-cell[data-row="2"][data-col="1"] { background: radial-gradient(ellipse at 50% 45%, #16082a 0%, #000 65%); }
-            .dfl-cell[data-row="2"][data-col="2"] { background: radial-gradient(ellipse at 75% 55%, #081820 0%, #000 65%); }
+            .dfl-cell[data-col="1"] {
+                background: radial-gradient(ellipse at 50% 40%, #06101e 0%, #000 70%);
+            }
+
+            .dfl-cell[data-col="2"] {
+                background: radial-gradient(ellipse at 70% 60%, #0e0614 0%, #000 70%);
+            }
+
+            .dfl-cell[data-row="0"][data-col="0"] {
+                background: radial-gradient(ellipse at 25% 55%, #120836 0%, #000 65%);
+            }
+
+            .dfl-cell[data-row="0"][data-col="1"] {
+                background: radial-gradient(ellipse at 50% 45%, #062030 0%, #000 65%);
+            }
+
+            .dfl-cell[data-row="0"][data-col="2"] {
+                background: radial-gradient(ellipse at 75% 55%, #181020 0%, #000 65%);
+            }
+
+            .dfl-cell[data-row="1"][data-col="0"] {
+                background: radial-gradient(ellipse at 30% 50%, #0a1a3a 0%, #000 65%);
+            }
+
+            .dfl-cell[data-row="1"][data-col="1"] {
+                background: radial-gradient(ellipse at 50% 50%, #1a0830 0%, #000 65%);
+            }
+
+            .dfl-cell[data-row="1"][data-col="2"] {
+                background: radial-gradient(ellipse at 70% 50%, #061a28 0%, #000 65%);
+            }
+
+            .dfl-cell[data-row="2"][data-col="0"] {
+                background: radial-gradient(ellipse at 25% 55%, #0e1830 0%, #000 65%);
+            }
+
+            .dfl-cell[data-row="2"][data-col="1"] {
+                background: radial-gradient(ellipse at 50% 45%, #16082a 0%, #000 65%);
+            }
+
+            .dfl-cell[data-row="2"][data-col="2"] {
+                background: radial-gradient(ellipse at 75% 55%, #081820 0%, #000 65%);
+            }
 
             .dfl-cell video {
                 position: absolute;
@@ -6243,6 +6278,7 @@
                 z-index: 1;
                 pointer-events: none;
             }
+
             .dfl-cell:hover video,
             .dfl-cell.active-touch video {
                 transform: scale(1.03);
@@ -6265,6 +6301,7 @@
                 z-index: 0;
                 pointer-events: none;
             }
+
             .dfl-cell:hover img,
             .dfl-cell.active-touch img {
                 transform: scale(1.03);
@@ -6285,7 +6322,7 @@
                 font-style: italic;
                 font-weight: 400;
                 font-size: clamp(1rem, 2.2vw, 2rem);
-                color: rgba(255,255,255,0.85);
+                color: rgba(255, 255, 255, 0.85);
                 letter-spacing: 0.01em;
                 text-align: center;
                 padding: 1rem;
@@ -6293,6 +6330,7 @@
                 transition: color 0.3s ease, transform 0.3s ease;
                 user-select: none;
             }
+
             .dfl-cell:hover .dfl-label,
             .dfl-cell.active-touch .dfl-label {
                 color: #fff;
@@ -6312,134 +6350,23 @@
                 z-index: 4;
                 transition: opacity 0.3s ease;
             }
-            .dfl-cell:hover::after { opacity: 1; }
+
+            .dfl-cell:hover::after {
+                opacity: 1;
+            }
 
             @media (max-width: 768px) {
                 .dfl-grid {
                     height: 60vw;
                     min-height: 280px;
                 }
+
                 .dfl-label {
                     font-size: clamp(0.6rem, 2.8vw, 1rem);
                 }
             }
         </style>
 
-        <section class="dfl-section">
-            <div class="dfl-grid" id="dflGrid2">
-                <!-- Row 0 -->
-                <div class="dfl-cell" data-row="0" data-col="0">
-                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80" alt="Startup">
-                    <span class="dfl-label">Startup</span>
-                </div>
-                <div class="dfl-cell" data-row="0" data-col="1">
-                    <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=800&q=80" alt="Web Building">
-                    <span class="dfl-label">Web Building</span>
-                </div>
-                <div class="dfl-cell" data-row="0" data-col="2">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="SEO">
-                    <span class="dfl-label">SEO</span>
-                </div>
-                <!-- Row 1 -->
-                <div class="dfl-cell" data-row="1" data-col="0">
-                    <img src="./saas_hero_mockup.png" alt="SaaS">
-                    <span class="dfl-label">SaaS</span>
-                </div>
-                <!-- LLM -->
-                <div class="dfl-cell" data-row="1" data-col="1">
-                    <img src="https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=800&q=80" alt="LLM">
-                    <span class="dfl-label">LLM</span>
-                </div>
-                <div class="dfl-cell" data-row="1" data-col="2">
-                    <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80" alt="AI Solutions">
-                    <span class="dfl-label">AI Solutions</span>
-                </div>
-                <!-- Row 2 -->
-                <div class="dfl-cell" data-row="2" data-col="0">
-                    <img src="./hyna-logo-new.png" alt="Brand Identity">
-                    <span class="dfl-label">Brand Identity</span>
-                </div>
-                <div class="dfl-cell" data-row="2" data-col="1">
-                    <img src="./hyna prism1.png" alt="UX / UI">
-                    <span class="dfl-label">UX / UI</span>
-                </div>
-                <div class="dfl-cell" data-row="2" data-col="2">
-                    <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80" alt="Growth">
-                    <span class="dfl-label">Growth</span>
-                </div>
-            </div>
-
-        </section>
-
-
-        <script>
-            (function () {
-                var grid2 = document.getElementById('dflGrid2');
-                if (!grid2) return;
-                var HOVER_SIZE = 6, TOTAL = 12;
-                var NORMAL = (TOTAL - HOVER_SIZE) / 2;
-                function getTpl(i) {
-                    return [0, 1, 2].map(function (j) {
-                        return j === i ? HOVER_SIZE + 'fr' : NORMAL + 'fr';
-                    }).join(' ');
-                }
-
-                var cells = grid2.querySelectorAll('.dfl-cell');
-                var activeCell = null;
-
-                function activate(cell) {
-                    if (activeCell === cell) return;
-                    deactivateAll();
-                    activeCell = cell;
-                    cell.classList.add('active-touch');
-                    var row = +cell.dataset.row;
-                    var col = +cell.dataset.col;
-                    grid2.style.gridTemplateRows = getTpl(row);
-                    grid2.style.gridTemplateColumns = getTpl(col);
-                    
-                    var video = cell.querySelector('video');
-                    if (video) {
-                        video.play().catch(function() {});
-                    }
-                }
-
-                function deactivateAll() {
-                    cells.forEach(function (c) {
-                        c.classList.remove('active-touch');
-                        var v = c.querySelector('video');
-                        if (v) {
-                            v.pause();
-                            v.currentTime = 0;
-                        }
-                    });
-                    grid2.style.gridTemplateRows = '4fr 4fr 4fr';
-                    grid2.style.gridTemplateColumns = '4fr 4fr 4fr';
-                    activeCell = null;
-                }
-
-                cells.forEach(function (cell) {
-                    cell.addEventListener('mouseenter', function () {
-                        activate(cell);
-                    });
-                    cell.addEventListener('mouseleave', function () {
-                        deactivateAll();
-                    });
-
-                    // Mobile touch interactions
-                    cell.addEventListener('touchstart', function (e) {
-                        activate(cell);
-                        e.stopPropagation();
-                    }, { passive: true });
-                });
-
-                // Reset grid on touch outside
-                document.addEventListener('touchstart', function () {
-                    deactivateAll();
-                }, { passive: true });
-            })();
-        </script>
-
-        <!-- ══════════ END DYNAMIC FRAME LAYOUT — Hyna Studio ══════════ -->
 
 
 
@@ -7216,7 +7143,7 @@
                         <div class="op-card" data-step="1">
                             <div class="op-card-top">
                                 <div class="op-card-meta">
-                                    <span class="op-step-num">01 — Discovery</span>
+
                                     <h3 class="op-card-title">Discovery</h3>
                                     <p class="op-card-subtitle">Understand your business</p>
                                 </div>
@@ -7233,7 +7160,7 @@
                         <div class="op-card" data-step="2">
                             <div class="op-card-top">
                                 <div class="op-card-meta">
-                                    <span class="op-step-num">02 — Strategy</span>
+
                                     <h3 class="op-card-title">Strategy</h3>
                                     <p class="op-card-subtitle">Plan the solution</p>
                                 </div>
@@ -7250,7 +7177,7 @@
                         <div class="op-card" data-step="3">
                             <div class="op-card-top">
                                 <div class="op-card-meta">
-                                    <span class="op-step-num">03 — UI / UX Design</span>
+
                                     <h3 class="op-card-title">UI / UX Design</h3>
                                     <p class="op-card-subtitle">Design beautiful experiences</p>
                                 </div>
@@ -7267,7 +7194,7 @@
                         <div class="op-card" data-step="4">
                             <div class="op-card-top">
                                 <div class="op-card-meta">
-                                    <span class="op-step-num">04 — Development</span>
+
                                     <h3 class="op-card-title">Development</h3>
                                     <p class="op-card-subtitle">Build modern software</p>
                                 </div>
@@ -7284,7 +7211,7 @@
                         <div class="op-card" data-step="5">
                             <div class="op-card-top">
                                 <div class="op-card-meta">
-                                    <span class="op-step-num">05 — Testing</span>
+
                                     <h3 class="op-card-title">Testing</h3>
                                     <p class="op-card-subtitle">Ensure quality</p>
                                 </div>
@@ -7301,7 +7228,7 @@
                         <div class="op-card" data-step="6">
                             <div class="op-card-top">
                                 <div class="op-card-meta">
-                                    <span class="op-step-num">06 — Deployment</span>
+
                                     <h3 class="op-card-title">Deployment</h3>
                                     <p class="op-card-subtitle">Launch with confidence</p>
                                 </div>
