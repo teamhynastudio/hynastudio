@@ -5594,6 +5594,14 @@
                         scrub   : 0.4
                     };
 
+                    /* Tighter trigger for line drawing to make them draw faster */
+                    var lineTrigger = {
+                        trigger : bhSection,
+                        start   : 'top 70%',      /* Starts drawing sooner */
+                        end     : 'top 45%',      /* Completes drawing quickly */
+                        scrub   : 0.3
+                    };
+
                     gsap.fromTo(bhSection,
                         { backgroundColor: '#000000' },
                         { backgroundColor: '#ffffff', ease: 'none', scrollTrigger: bhTrigger }
@@ -5606,11 +5614,11 @@
                         );
                     }
 
-                    /* Underline under the word BUILD: draws slowly on scroll */
+                    /* Underline under the word BUILD: draws slowly on scroll (speed up range) */
                     if (bhPath) {
                         gsap.fromTo(bhPath,
                             { stroke: '#ffffff', strokeDashoffset: 340 },
-                            { stroke: '#13141A', strokeDashoffset: 0, ease: 'none', scrollTrigger: bhTrigger }
+                            { stroke: '#13141A', strokeDashoffset: 0, ease: 'none', scrollTrigger: lineTrigger }
                         );
                     }
 
@@ -5628,11 +5636,11 @@
                         );
                     }
 
-                    /* Full-width line below paragraph: draws slowly on scroll */
+                    /* Full-width line below paragraph: draws slowly on scroll (speed up range) */
                     if (bhLine) {
                         gsap.fromTo(bhLine,
                             { strokeDashoffset: 1000 },
-                            { strokeDashoffset: 0, ease: 'none', scrollTrigger: bhTrigger }
+                            { strokeDashoffset: 0, ease: 'none', scrollTrigger: lineTrigger }
                         );
                     }
                 }
