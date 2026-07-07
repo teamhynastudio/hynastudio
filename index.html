@@ -6164,6 +6164,208 @@
         </section>
 
 
+        <!-- ══════════ CONTAINER SCROLL ANIMATION — Hyna Studio ══════════ -->
+        <style>
+            .csa-wrapper {
+                width: 100%;
+                background: #000;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 80px 20px 160px;
+                box-sizing: border-box;
+                overflow: hidden;
+            }
+
+            .csa-inner {
+                width: 100%;
+                max-width: 1100px;
+                position: relative;
+                perspective: 1000px;
+            }
+
+            .csa-header {
+                text-align: center;
+                max-width: 860px;
+                margin: 0 auto 0;
+                will-change: transform;
+            }
+
+            .csa-eyebrow {
+                display: inline-block;
+                font-size: 0.85rem;
+                font-weight: 600;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                color: #76ecf0;
+                margin-bottom: 20px;
+            }
+
+            .csa-title {
+                font-size: clamp(2rem, 4vw, 3.5rem);
+                font-weight: 700;
+                color: #fff;
+                line-height: 1.15;
+                letter-spacing: -0.025em;
+                margin: 0 0 14px;
+            }
+
+            .csa-title span {
+                font-size: clamp(2.8rem, 6vw, 5.5rem);
+                font-weight: 800;
+                display: block;
+                background: linear-gradient(135deg, #fff 30%, #7c5cfc 70%, #76ecf0 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                line-height: 1.05;
+            }
+
+            .csa-subtitle {
+                font-size: clamp(1rem, 1.3vw, 1.15rem);
+                color: rgba(255,255,255,0.55);
+                margin: 0 auto;
+                max-width: 580px;
+                line-height: 1.65;
+            }
+
+            .csa-card {
+                margin-top: 40px;
+                width: 100%;
+                max-width: 1000px;
+                margin-left: auto;
+                margin-right: auto;
+                height: clamp(320px, 50vw, 580px);
+                background: #222;
+                border-radius: 30px;
+                border: 4px solid #6C6C6C;
+                box-shadow:
+                    0 0 #0000004d,
+                    0 9px 20px #0000004a,
+                    0 37px 37px #00000042,
+                    0 84px 50px #00000026,
+                    0 149px 60px #0000000a,
+                    0 233px 65px #00000003;
+                padding: 10px;
+                transform-origin: top center;
+                will-change: transform;
+                overflow: hidden;
+            }
+
+            .csa-card-inner {
+                width: 100%;
+                height: 100%;
+                border-radius: 20px;
+                overflow: hidden;
+                background: #111;
+                position: relative;
+            }
+
+            .csa-card-inner img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: left top;
+                border-radius: 18px;
+                display: block;
+            }
+
+            .csa-card-overlay {
+                position: absolute;
+                inset: 0;
+                border-radius: 18px;
+                background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.45) 100%);
+                pointer-events: none;
+            }
+
+            @media (max-width: 768px) {
+                .csa-wrapper { padding: 60px 16px 100px; }
+                .csa-card {
+                    height: clamp(200px, 55vw, 360px);
+                    border-radius: 20px;
+                    border-width: 3px;
+                }
+            }
+        </style>
+
+        <div class="csa-wrapper" id="csa-section">
+            <div class="csa-inner">
+                <div class="csa-header" id="csa-header">
+                    <span class="csa-eyebrow">✦ Product Engineering</span>
+                    <h2 class="csa-title">
+                        We build things that<br>
+                        <span>actually ship.</span>
+                    </h2>
+                    <p class="csa-subtitle">From SaaS platforms to AI agents — Hyna Studio engineers products end-to-end, on time, and at scale.</p>
+                </div>
+
+                <div class="csa-card" id="csa-card">
+                    <div class="csa-card-inner">
+                        <img
+                            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=85"
+                            alt="Hyna Studio SaaS Product Dashboard"
+                        >
+                        <div class="csa-card-overlay"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            (function () {
+                'use strict';
+                function initCSA() {
+                    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+                        setTimeout(initCSA, 100);
+                        return;
+                    }
+                    gsap.registerPlugin(ScrollTrigger);
+
+                    var wrapper = document.getElementById('csa-section');
+                    var card    = document.getElementById('csa-card');
+                    var header  = document.getElementById('csa-header');
+                    if (!wrapper || !card || !header) return;
+
+                    var isMobile = window.innerWidth <= 768;
+
+                    gsap.fromTo(card,
+                        { rotateX: 20, scale: isMobile ? 0.7 : 1.05 },
+                        {
+                            rotateX: 0, scale: 1, ease: 'none',
+                            scrollTrigger: {
+                                trigger: wrapper,
+                                start: 'top 80%', end: 'bottom 20%',
+                                scrub: true
+                            }
+                        }
+                    );
+
+                    gsap.fromTo(header,
+                        { y: 0 },
+                        {
+                            y: -100, ease: 'none',
+                            scrollTrigger: {
+                                trigger: wrapper,
+                                start: 'top 80%', end: 'bottom 20%',
+                                scrub: true
+                            }
+                        }
+                    );
+
+                    window.addEventListener('resize', function () {
+                        var m = window.innerWidth <= 768;
+                        if (m !== isMobile) { isMobile = m; ScrollTrigger.refresh(); }
+                    });
+                }
+
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', initCSA);
+                } else { initCSA(); }
+            })();
+        </script>
+        <!-- ══════════ END CONTAINER SCROLL ANIMATION ══════════ -->
+
+
         <script>
             /* ── Innovation in Action — Scroll Fade-In ── */
             (function () {
@@ -7120,7 +7322,306 @@
             </div>
         </section>
 
-        <!-- PHILOSOPHY / VALUES SECTION -->
+        <!-- ══════════ STORY SCROLL (FlowArt) — Hyna Studio ══════════ -->
+        <style>
+            /* FlowArt base */
+            .flow-art-root {
+                width: 100%;
+                overflow-x: hidden;
+            }
+
+            .flow-section {
+                position: relative;
+                height: 100vh;
+                width: 100%;
+                overflow: hidden;
+            }
+
+            .flow-inner {
+                position: relative;
+                display: flex;
+                height: 100vh;
+                width: 100%;
+                flex-direction: column;
+                justify-content: center;
+                gap: clamp(1rem, 2.5vh, 2rem);
+                padding: 100px 6vw 60px;
+                box-sizing: border-box;
+                transform-origin: bottom left;
+                will-change: transform;
+            }
+
+            /* Section-specific colours */
+            .flow-s1 { background: #7c5cfc; color: #fff; }
+            .flow-s2 { background: #000;    color: #fff; }
+            .flow-s3 { background: #0f0f0f; color: #fff; }
+            .flow-s4 { background: #111827; color: #fff; }
+            .flow-s5 { background: #000;    color: #fff; }
+
+            /* Typography */
+            .flow-eyebrow {
+                font-size: 0.75rem;
+                font-weight: 700;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                opacity: 0.75;
+                margin: 0;
+            }
+
+            .flow-hr {
+                border: none;
+                border-top: 1px solid rgba(255,255,255,0.15);
+                margin: 0;
+            }
+
+            .flow-headline {
+                font-size: clamp(2rem, 5vw, 4.8rem);
+                font-weight: 800;
+                line-height: 0.95;
+                letter-spacing: -0.03em;
+                text-transform: uppercase;
+                margin: 0;
+            }
+
+            .flow-body {
+                font-size: clamp(0.95rem, 1.4vw, 1.25rem);
+                font-weight: 400;
+                line-height: 1.6;
+                max-width: 60ch;
+                margin: 0;
+                opacity: 0.9;
+            }
+
+            /* Stat / feature grid */
+            .flow-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 3vw;
+                width: 100%;
+            }
+
+            .flow-grid-item {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .flow-grid-label {
+                font-size: 0.8rem;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                margin: 0;
+            }
+
+            .flow-grid-desc {
+                font-size: clamp(0.8rem, 1.1vw, 0.95rem);
+                line-height: 1.55;
+                opacity: 0.7;
+                margin: 0;
+            }
+
+            /* Accent overrides */
+            .flow-s1 .flow-hr { border-top-color: rgba(255,255,255,0.3); }
+            .flow-s4 .flow-hr { border-top-color: rgba(118,236,240,0.2); }
+            .flow-s4 .flow-grid-label { color: #76ecf0; }
+
+            @media (max-width: 768px) {
+                .flow-inner {
+                    padding: 85px 20px 40px;
+                    gap: 1rem;
+                }
+                .flow-headline { font-size: clamp(1.8rem, 7vw, 2.8rem); }
+                .flow-grid {
+                    grid-template-columns: 1fr;
+                    gap: 1.2rem;
+                }
+                .flow-body {
+                    font-size: 0.95rem;
+                }
+            }
+        </style>
+
+        <main class="flow-art-root" id="flow-art-root" aria-label="Hyna Studio Story Scroll">
+
+            <!-- 01 Who We Are -->
+            <section class="flow-section" data-flow-section aria-label="Who we are">
+                <div class="flow-inner flow-s1">
+                    <p class="flow-eyebrow">01 — Who we are</p>
+                    <hr class="flow-hr">
+                    <h2 class="flow-headline">Build<br>Without<br>Limits</h2>
+                    <hr class="flow-hr">
+                    <p class="flow-body">
+                        Hyna Studio is a product engineering partner for startups and scale-ups. We design, develop, and deploy SaaS platforms, AI agents, and mobile apps — end-to-end, on time, at scale.
+                    </p>
+                </div>
+            </section>
+
+            <!-- 02 The Mission -->
+            <section class="flow-section" data-flow-section aria-label="The mission">
+                <div class="flow-inner flow-s2">
+                    <p class="flow-eyebrow">02 — The mission</p>
+                    <hr class="flow-hr">
+                    <h2 class="flow-headline">Ship Real Products</h2>
+                    <hr class="flow-hr">
+                    <p class="flow-body">A global engineering studio built for founders, by builders. We rewrite the rules of how software gets crafted, launched, and scaled.</p>
+                    <hr class="flow-hr">
+                    <div class="flow-grid">
+                        <div class="flow-grid-item">
+                            <p class="flow-grid-label">SaaS Platforms</p>
+                            <p class="flow-grid-desc">Full-stack cloud systems — subscriptions, billing, dashboards, and APIs built production-ready from day one.</p>
+                        </div>
+                        <div class="flow-grid-item">
+                            <p class="flow-grid-label">AI Agents</p>
+                            <p class="flow-grid-desc">Custom LLM workflows, autonomous agents, and RAG pipelines that actually solve your business problem.</p>
+                        </div>
+                        <div class="flow-grid-item">
+                            <p class="flow-grid-label">Web & Apps</p>
+                            <p class="flow-grid-desc">Performant frontends, native mobile apps, and SEO-optimised web experiences that convert.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 03 How It Works -->
+            <section class="flow-section" data-flow-section aria-label="How it works">
+                <div class="flow-inner flow-s3">
+                    <p class="flow-eyebrow">03 — How it works</p>
+                    <hr class="flow-hr">
+                    <h2 class="flow-headline">Scope. Build. Launch.</h2>
+                    <hr class="flow-hr">
+                    <p class="flow-body">Three clear phases. Zero ambiguity. Your product starts moving the moment we align.</p>
+                    <hr class="flow-hr">
+                    <div class="flow-grid">
+                        <div class="flow-grid-item">
+                            <p class="flow-grid-label">01 — Discover</p>
+                            <p class="flow-grid-desc">We audit your idea, map user journeys, and define a tight technical spec before writing code.</p>
+                        </div>
+                        <div class="flow-grid-item">
+                            <p class="flow-grid-label">02 — Strategy</p>
+                            <p class="flow-grid-desc">Database schemas, AI prompt design, system architecture, and Figma prototypes aligned before dev.</p>
+                        </div>
+                        <div class="flow-grid-item">
+                            <p class="flow-grid-label">03 — Scale</p>
+                            <p class="flow-grid-desc">Automated builds, cloud deployment, analytics, and SEO optimization to grow post-launch.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 04 The Vision -->
+            <section class="flow-section" data-flow-section aria-label="The vision">
+                <div class="flow-inner flow-s4">
+                    <p class="flow-eyebrow">04 — The vision</p>
+                    <hr class="flow-hr">
+                    <h2 class="flow-headline">Future Of Software</h2>
+                    <hr class="flow-hr">
+                    <p class="flow-body">We're not just building products. We're building the infrastructure that powers the next generation of founders.</p>
+                    <hr class="flow-hr">
+                    <div class="flow-grid">
+                        <div class="flow-grid-item">
+                            <p class="flow-grid-label">50+ Projects</p>
+                            <p class="flow-grid-desc">SaaS apps, AI tools, and platforms shipped for founders across 12 countries.</p>
+                        </div>
+                        <div class="flow-grid-item">
+                            <p class="flow-grid-label">AI-Native</p>
+                            <p class="flow-grid-desc">Every product we build considers how AI can reduce friction and multiply value.</p>
+                        </div>
+                        <div class="flow-grid-item">
+                            <p class="flow-grid-label">Founder-First</p>
+                            <p class="flow-grid-desc">Transparent pricing. No vendor lock-in. You own every asset and every line of code.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 05 Let's Build -->
+            <section class="flow-section" data-flow-section aria-label="Let's build">
+                <div class="flow-inner flow-s5">
+                    <p class="flow-eyebrow">05 — Let's build</p>
+                    <hr class="flow-hr">
+                    <h2 class="flow-headline">Ready To Launch?</h2>
+                    <hr class="flow-hr">
+                    <p class="flow-body">
+                        Take your product from idea to production. Partner with Hyna Studio and let's build something the world will actually use.
+                    </p>
+                </div>
+            </section>
+
+        </main>
+
+
+        <script>
+            (function () {
+                'use strict';
+                function initFlowArt() {
+                    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+                        setTimeout(initFlowArt, 100);
+                        return;
+                    }
+                    gsap.registerPlugin(ScrollTrigger);
+
+                    var root = document.getElementById('flow-art-root');
+                    if (!root) return;
+
+                    /* Check reduced-motion preference */
+                    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                    if (reducedMotion) return;
+
+                    var sections = Array.from(root.querySelectorAll('[data-flow-section]'));
+                    if (!sections.length) return;
+
+                    var triggers = [];
+
+                    sections.forEach(function (section, i) {
+                        gsap.set(section, { zIndex: i + 1 });
+
+                        var inner = section.querySelector('.flow-inner');
+                        if (!inner) return;
+
+                        /* All sections except first rotate in from 30deg */
+                        if (i > 0) {
+                            gsap.set(inner, { rotation: 30, transformOrigin: 'bottom left' });
+                            var tween = gsap.to(inner, {
+                                rotation: 0,
+                                ease: 'none',
+                                scrollTrigger: {
+                                    trigger: section,
+                                    start: 'top bottom',
+                                    end: 'top 25%',
+                                    scrub: true
+                                }
+                            });
+                            if (tween.scrollTrigger) triggers.push(tween.scrollTrigger);
+                        }
+
+                        /* All sections except last are pinned */
+                        if (i < sections.length - 1) {
+                            triggers.push(
+                                ScrollTrigger.create({
+                                    trigger: section,
+                                    start: 'bottom bottom',
+                                    end: 'bottom top',
+                                    pin: true,
+                                    pinSpacing: false
+                                })
+                            );
+                        }
+                    });
+
+                    ScrollTrigger.refresh();
+                }
+
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', initFlowArt);
+                } else {
+                    initFlowArt();
+                }
+            })();
+        </script>
+        <!-- ══════════ END STORY SCROLL ══════════ -->
+
+
         <style>
             .philosophy-section {
                 background-color: #ffffff;
