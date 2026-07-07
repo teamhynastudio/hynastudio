@@ -2953,456 +2953,154 @@
                 z-index: 1;
             }
         }
-    </style>
-</head>
-
-<body>
-
-    <!-- ══════════════════════════════════════════════
-     HYNA STUDIO — LOADING SCREEN OVERLAY
-     (injected; does NOT touch any other markup)
-══════════════════════════════════════════════ -->
-    <style>
-        /* ── LOADING OVERLAY ──────────────────────────────────── */
-        #hyna-loader {
+        /* ── NEW LOADING SCREEN OVERLAY (Uiverse.io by dexter-st) ── */
+        #hyna-new-loader {
             position: fixed;
             inset: 0;
-            z-index: 99999;
-            background: #FFFFFF;
+            z-index: 999999;
+            background-color: #0b0c10;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Inter', sans-serif;
-            transition: opacity 0.65s ease, visibility 0.65s ease;
+            transition: opacity 0.8s cubic-bezier(0.77, 0, 0.175, 1), visibility 0.8s cubic-bezier(0.77, 0, 0.175, 1);
         }
 
-        #hyna-loader.loader-hidden {
+        #hyna-new-loader.loader-hidden {
             opacity: 0;
             visibility: hidden;
             pointer-events: none;
         }
 
-        /* ── LOADER CSS VARS ── */
-        #hyna-loader {
-            --hl-blue-glow: #0057FF;
-            --hl-cyan-vivid: #00AAFF;
-            --hl-cyan-mid: #0077DD;
-            --hl-text-dark: #0A1628;
-            --hl-text-mid: #4A5568;
-            --hl-text-light: #9BACC4;
-            --hl-border: rgba(0, 100, 220, 0.12);
-            --hl-track-bg: rgba(0, 100, 220, 0.08);
-        }
-
-        /* ── AMBIENT BACKGROUND ── */
-        .hl-bg-grid {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-            background-image:
-                linear-gradient(rgba(0, 100, 220, 0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 100, 220, 0.04) 1px, transparent 1px);
-            background-size: 52px 52px;
-            mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 10%, transparent 100%);
-            -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 10%, transparent 100%);
-        }
-
-        .hl-bg-orb {
-            position: absolute;
-            z-index: 0;
-            border-radius: 50%;
-            filter: blur(100px);
-            pointer-events: none;
-        }
-
-        .hl-bg-orb-1 {
-            width: 500px;
-            height: 500px;
-            top: -180px;
-            left: -150px;
-            background: radial-gradient(circle, rgba(0, 170, 255, 0.10) 0%, transparent 70%);
-            animation: hlOrbDrift1 16s ease-in-out infinite alternate;
-        }
-
-        .hl-bg-orb-2 {
-            width: 400px;
-            height: 400px;
-            bottom: -120px;
-            right: -100px;
-            background: radial-gradient(circle, rgba(0, 87, 255, 0.08) 0%, transparent 70%);
-            animation: hlOrbDrift2 20s ease-in-out infinite alternate;
-        }
-
-        @keyframes hlOrbDrift1 {
-            from {
-                transform: translate(0, 0);
-            }
-
-            to {
-                transform: translate(50px, 35px);
-            }
-        }
-
-        @keyframes hlOrbDrift2 {
-            from {
-                transform: translate(0, 0);
-            }
-
-            to {
-                transform: translate(-40px, -25px);
-            }
-        }
-
-        /* ── STAGE ── */
-        .hl-stage {
+        .loader-wrapper {
             position: relative;
-            z-index: 10;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            animation: hlStageFadeIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
-        }
-
-        @keyframes hlStageFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* ── LOGO WRAP ── */
-        .hl-logo-wrap {
-            position: relative;
-            width: 148px;
-            height: 148px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 32px;
-        }
-
-        .hl-logo-plate {
-            position: absolute;
-            inset: 0;
+            width: 180px;
+            height: 180px;
+            font-family: "Inter", sans-serif;
+            font-size: 1.2em;
+            font-weight: 300;
+            color: white;
             border-radius: 50%;
-            background: linear-gradient(145deg, #F0F6FF, #FFFFFF);
-            border: 1px solid var(--hl-border);
-            box-shadow:
-                0 4px 24px rgba(0, 100, 220, 0.08),
-                0 1px 4px rgba(0, 100, 220, 0.06),
-                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            background-color: transparent;
+            user-select: none;
         }
 
-        .hl-ring {
+        .loader {
             position: absolute;
-            inset: 0;
+            top: 0;
+            left: 0;
+            width: 100%;
+            aspect-ratio: 1 / 1;
             border-radius: 50%;
+            background-color: transparent;
+            animation: loader-rotate 2s linear infinite;
+            z-index: 0;
         }
 
-        .hl-ring-spin {
-            border: 2px solid transparent;
-            background: conic-gradient(from 0deg,
-                    transparent 0%, transparent 55%,
-                    rgba(0, 170, 255, 0.7) 70%,
-                    rgba(0, 87, 255, 0.9) 82%,
-                    transparent 95%) border-box;
-            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: destination-out;
-            mask-composite: exclude;
-            animation: hlSpinRing 1.6s linear infinite;
-        }
-
-        .hl-ring-spin-2 {
-            inset: 8px;
-            border: 1.5px solid transparent;
-            background: conic-gradient(from 180deg,
-                    transparent 0%, transparent 60%,
-                    rgba(0, 170, 255, 0.4) 75%,
-                    rgba(0, 87, 255, 0.5) 85%,
-                    transparent 96%) border-box;
-            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: destination-out;
-            mask-composite: exclude;
-            animation: hlSpinRing 2.4s linear infinite reverse;
-        }
-
-        @keyframes hlSpinRing {
-            to {
-                transform: rotate(360deg);
+        @keyframes loader-rotate {
+            0% {
+                transform: rotate(90deg);
+                box-shadow:
+                    0 10px 20px 0 #fff inset,
+                    0 20px 30px 0 #ad5fff inset,
+                    0 60px 60px 0 #471eec inset;
+            }
+            50% {
+                transform: rotate(270deg);
+                box-shadow:
+                    0 10px 20px 0 #fff inset,
+                    0 20px 10px 0 #d60a47 inset,
+                    0 40px 60px 0 #311e80 inset;
+            }
+            100% {
+                transform: rotate(450deg);
+                box-shadow:
+                    0 10px 20px 0 #fff inset,
+                    0 20px 30px 0 #ad5fff inset,
+                    0 60px 60px 0 #471eec inset;
             }
         }
 
-        .hl-logo-glow {
-            position: absolute;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(0, 170, 255, 0.18) 0%, transparent 70%);
-            filter: blur(10px);
-            animation: hlGlowPulse 2.6s ease-in-out infinite alternate;
+        .loader-letter {
+            display: inline-block;
+            opacity: 0.4;
+            transform: translateY(0);
+            animation: loader-letter-anim 2s infinite;
+            z-index: 1;
+            border-radius: 50ch;
+            border: none;
         }
 
-        @keyframes hlGlowPulse {
-            from {
-                transform: scale(0.85);
-                opacity: 0.5;
-            }
+        .loader-letter:nth-child(1) { animation-delay: 0s; }
+        .loader-letter:nth-child(2) { animation-delay: 0.1s; }
+        .loader-letter:nth-child(3) { animation-delay: 0.2s; }
+        .loader-letter:nth-child(4) { animation-delay: 0.3s; }
+        .loader-letter:nth-child(5) { animation-delay: 0.35s; }
+        .loader-letter:nth-child(6) { animation-delay: 0.4s; }
+        .loader-letter:nth-child(7) { animation-delay: 0.5s; }
+        .loader-letter:nth-child(8) { animation-delay: 0.6s; }
+        .loader-letter:nth-child(9) { animation-delay: 0.7s; }
+        .loader-letter:nth-child(10) { animation-delay: 0.8s; }
+        .loader-letter:nth-child(11) { animation-delay: 0.9s; }
 
-            to {
-                transform: scale(1.2);
+        @keyframes loader-letter-anim {
+            0%, 100% {
+                opacity: 0.4;
+                transform: translateY(0);
+            }
+            20% {
                 opacity: 1;
+                transform: scale(1.15);
             }
-        }
-
-        .hl-logo-img {
-            position: relative;
-            z-index: 2;
-            width: 76px;
-            height: 76px;
-            object-fit: contain;
-            animation: hlLogoBreath 2.6s ease-in-out infinite alternate;
-        }
-
-        @keyframes hlLogoBreath {
-            from {
-                transform: scale(0.96);
-                filter: drop-shadow(0 4px 12px rgba(0, 120, 255, 0.18));
-            }
-
-            to {
-                transform: scale(1.04);
-                filter: drop-shadow(0 6px 20px rgba(0, 170, 255, 0.32));
-            }
-        }
-
-        /* ── WORDMARK ── */
-        .hl-wordmark {
-            font-family: 'Space Grotesk', 'Syne', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            color: var(--hl-text-dark);
-            line-height: 1;
-            margin-bottom: 7px;
-        }
-
-        .hl-wordmark span {
-            background: linear-gradient(100deg, var(--hl-cyan-vivid) 0%, var(--hl-blue-glow) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hl-tagline {
-            font-size: 0.72rem;
-            font-weight: 500;
-            letter-spacing: 0.24em;
-            text-transform: uppercase;
-            color: var(--hl-text-light);
-            margin-bottom: 48px;
-        }
-
-        /* ── PROGRESS ── */
-        .hl-progress-shell {
-            width: 280px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .hl-bar-track {
-            width: 100%;
-            height: 2px;
-            background: var(--hl-track-bg);
-            border-radius: 2px;
-            overflow: visible;
-            position: relative;
-        }
-
-        .hl-bar-fill {
-            height: 100%;
-            border-radius: 2px;
-            background: linear-gradient(90deg, var(--hl-blue-glow), var(--hl-cyan-vivid));
-            width: 0%;
-            transition: width 0.08s linear;
-            position: relative;
-        }
-
-        .hl-bar-fill::after {
-            content: '';
-            position: absolute;
-            right: -3px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--hl-cyan-vivid);
-            box-shadow: 0 0 8px 2px rgba(0, 170, 255, 0.55);
-        }
-
-        .hl-status-row {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-        }
-
-        .hl-status-text {
-            font-size: 0.70rem;
-            letter-spacing: 0.10em;
-            text-transform: uppercase;
-            color: var(--hl-text-light);
-        }
-
-        .hl-status-pct {
-            font-family: 'Space Grotesk', 'Syne', sans-serif;
-            font-size: 0.70rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            color: var(--hl-cyan-mid);
-        }
-
-        /* ── STEP DOTS ── */
-        .hl-dots {
-            display: flex;
-            gap: 7px;
-            margin-top: 28px;
-        }
-
-        .hl-dot {
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            background: rgba(0, 100, 220, 0.12);
-            transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
-        }
-
-        .hl-dot.hl-active {
-            background: var(--hl-cyan-vivid);
-            box-shadow: 0 0 6px rgba(0, 170, 255, 0.55);
-            transform: scale(1.4);
-        }
-
-
-
-        /* ── REDUCED MOTION ── */
-        @media (prefers-reduced-motion: reduce) {
-
-            .hl-ring-spin,
-            .hl-ring-spin-2,
-            .hl-logo-img,
-            .hl-logo-glow,
-            .hl-bg-orb-1,
-            .hl-bg-orb-2 {
-                animation: none;
+            40% {
+                opacity: 0.7;
+                transform: translateY(0);
             }
         }
     </style>
+</head>
 
-    <div id="hyna-loader" role="status" aria-label="Loading Hyna Studio">
-        <div class="hl-bg-grid"></div>
-        <div class="hl-bg-orb hl-bg-orb-1"></div>
-        <div class="hl-bg-orb hl-bg-orb-2"></div>
+<body>
 
+    <!-- From Uiverse.io by dexter-st (Hyna Studio Custom Preloader) --> 
+    <div id="hyna-new-loader">
+        <div class="loader-wrapper">
+            <span class="loader-letter">H</span>
+            <span class="loader-letter">y</span>
+            <span class="loader-letter">n</span>
+            <span class="loader-letter">a</span>
+            <span class="loader-letter">&nbsp;</span>
+            <span class="loader-letter">S</span>
+            <span class="loader-letter">t</span>
+            <span class="loader-letter">u</span>
+            <span class="loader-letter">d</span>
+            <span class="loader-letter">i</span>
+            <span class="loader-letter">o™</span>
 
-        <div class="hl-stage">
-            <div class="hl-logo-wrap">
-                <div class="hl-logo-plate"></div>
-                <div class="hl-ring hl-ring-spin"></div>
-                <div class="hl-ring hl-ring-spin-2"></div>
-                <div class="hl-logo-glow"></div>
-                <img class="hl-logo-img" src="hyna-logo-new.png" alt="Hyna Studio Logo" />
-            </div>
-
-            <div class="hl-wordmark">Hyna <span>Studio ™</span></div>
-            <div class="hl-tagline">Design &middot; Build &middot; Launch</div>
-
-            <div class="hl-progress-shell">
-                <div class="hl-bar-track">
-                    <div class="hl-bar-fill" id="hlBar"></div>
-                </div>
-                <div class="hl-status-row">
-                    <span class="hl-status-text" id="hlStatusText">Initialising</span>
-                    <span class="hl-status-pct" id="hlStatusPct">0%</span>
-                </div>
-            </div>
-
-            <div class="hl-dots" id="hlDots">
-                <div class="hl-dot hl-active"></div>
-                <div class="hl-dot"></div>
-                <div class="hl-dot"></div>
-                <div class="hl-dot"></div>
-            </div>
+            <div class="loader"></div>
         </div>
     </div>
 
     <script>
-        (function () {
-            var bar = document.getElementById('hlBar');
-            var pct = document.getElementById('hlStatusPct');
-            var label = document.getElementById('hlStatusText');
-            var dots = document.querySelectorAll('.hl-dot');
-            var loader = document.getElementById('hyna-loader');
-
-            var phases = [
-                { at: 0, text: 'Initialising', dot: 0 },
-                { at: 25, text: 'Loading assets', dot: 1 },
-                { at: 55, text: 'Configuring env', dot: 2 },
-                { at: 80, text: 'Almost ready', dot: 3 },
-                { at: 100, text: 'Welcome', dot: 3 },
-            ];
-
-            var current = 0;
-
-            function updateDot(i) {
-                dots.forEach(function (d, idx) {
-                    d.classList.toggle('hl-active', idx === i);
-                });
-            }
-
-            function tick() {
-                if (current >= 100) {
-                    bar.style.width = '100%';
-                    pct.textContent = '100%';
-                    label.textContent = 'Welcome';
-                    updateDot(3);
-                    setTimeout(function () {
-                        loader.classList.add('loader-hidden');
+        (function() {
+            window.addEventListener('load', function() {
+                setTimeout(function() {
+                    var newLoader = document.getElementById('hyna-new-loader');
+                    if (newLoader) {
+                        newLoader.classList.add('loader-hidden');
                         document.body.classList.add('hero-animate');
-                        setTimeout(function () { loader.remove(); }, 700);
-                    }, 600);
-                    return;
-                }
-
-                var speed = current < 40 ? 0.85 : current < 75 ? 0.65 : current < 92 ? 0.45 : 0.25;
-                current = Math.min(current + speed + Math.random() * 0.6, 100);
-
-                bar.style.width = current.toFixed(1) + '%';
-                pct.textContent = Math.floor(current) + '%';
-
-                for (var i = phases.length - 1; i >= 0; i--) {
-                    if (current >= phases[i].at) {
-                        label.textContent = phases[i].text;
-                        updateDot(phases[i].dot);
-                        break;
+                        setTimeout(function() {
+                            newLoader.remove();
+                        }, 800);
                     }
-                }
-
-                setTimeout(tick, 20 + Math.random() * 12);
-            }
-
-            setTimeout(tick, 300);
-        }());
+                }, 1500);
+            });
+        })();
     </script>
-    <!-- ══════════ END LOADING SCREEN ══════════ -->
+
+
     <!-- NAV -->
     <nav>
 
