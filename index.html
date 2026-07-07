@@ -6164,188 +6164,445 @@
         </section>
 
 
+        <!-- ══════════ METHODOLOGY TIMELINE — Hyna Studio ══════════ -->
 
         <style>
-            .dfl-section {
+            .timeline-section {
                 width: 100%;
                 background: #000;
-                padding: 0;
-                overflow: hidden;
-            }
-
-            .dfl-grid {
-                display: grid;
-                grid-template-rows: 4fr 4fr 4fr;
-                grid-template-columns: 4fr 4fr 4fr;
-                gap: 3px;
-                width: 100%;
-                height: 82vh;
-                min-height: 480px;
-                box-sizing: border-box;
-                transition: grid-template-rows 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-                    grid-template-columns 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-            }
-
-            .dfl-cell {
+                padding: 100px 8%;
                 position: relative;
                 overflow: hidden;
-                background: #0a0a0a;
-                cursor: pointer;
-                /* Prevent grid blowout from content */
-                min-width: 0;
-                min-height: 0;
-                width: 100%;
-                height: 100%;
                 box-sizing: border-box;
             }
 
-            /* Dark overlay so label is always readable */
-            .dfl-cell::before {
-                content: '';
+            .timeline-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                position: relative;
+            }
+
+            .timeline-header {
+                max-width: 800px;
+                margin-bottom: 80px;
+            }
+
+            .timeline-heading {
+                font-size: clamp(2rem, 3.5vw, 3rem);
+                font-weight: 700;
+                letter-spacing: -0.02em;
+                color: #fff;
+                margin-bottom: 20px;
+                line-height: 1.15;
+            }
+
+            .timeline-subheading {
+                font-size: clamp(1rem, 1.3vw, 1.2rem);
+                color: rgba(255, 255, 255, 0.6);
+                line-height: 1.6;
+                margin: 0;
+            }
+
+            .timeline-inner {
+                position: relative;
+                padding-left: 60px; /* Space for progress line */
+            }
+
+            /* The vertical progress axis container */
+            .timeline-line-container {
                 position: absolute;
-                inset: 0;
-                background: rgba(0, 0, 0, 0.45);
-                z-index: 1;
-                transition: background 0.3s ease;
+                left: 10px;
+                top: 0;
+                bottom: 0;
+                width: 2px;
+                z-index: 5;
             }
 
-            .dfl-cell:hover::before {
-                background: rgba(0, 0, 0, 0.15);
+            /* Base grey line */
+            .timeline-line {
+                width: 100%;
+                height: 100%;
+                background: rgba(255, 255, 255, 0.08);
+                position: relative;
+                border-radius: 4px;
             }
 
-            /* Neon glow per cell */
-            .dfl-cell[data-col="0"] {
-                background: radial-gradient(ellipse at 30% 60%, #0d0622 0%, #000 70%);
-            }
-
-            .dfl-cell[data-col="1"] {
-                background: radial-gradient(ellipse at 50% 40%, #06101e 0%, #000 70%);
-            }
-
-            .dfl-cell[data-col="2"] {
-                background: radial-gradient(ellipse at 70% 60%, #0e0614 0%, #000 70%);
-            }
-
-            .dfl-cell[data-row="0"][data-col="0"] {
-                background: radial-gradient(ellipse at 25% 55%, #120836 0%, #000 65%);
-            }
-
-            .dfl-cell[data-row="0"][data-col="1"] {
-                background: radial-gradient(ellipse at 50% 45%, #062030 0%, #000 65%);
-            }
-
-            .dfl-cell[data-row="0"][data-col="2"] {
-                background: radial-gradient(ellipse at 75% 55%, #181020 0%, #000 65%);
-            }
-
-            .dfl-cell[data-row="1"][data-col="0"] {
-                background: radial-gradient(ellipse at 30% 50%, #0a1a3a 0%, #000 65%);
-            }
-
-            .dfl-cell[data-row="1"][data-col="1"] {
-                background: radial-gradient(ellipse at 50% 50%, #1a0830 0%, #000 65%);
-            }
-
-            .dfl-cell[data-row="1"][data-col="2"] {
-                background: radial-gradient(ellipse at 70% 50%, #061a28 0%, #000 65%);
-            }
-
-            .dfl-cell[data-row="2"][data-col="0"] {
-                background: radial-gradient(ellipse at 25% 55%, #0e1830 0%, #000 65%);
-            }
-
-            .dfl-cell[data-row="2"][data-col="1"] {
-                background: radial-gradient(ellipse at 50% 45%, #16082a 0%, #000 65%);
-            }
-
-            .dfl-cell[data-row="2"][data-col="2"] {
-                background: radial-gradient(ellipse at 75% 55%, #081820 0%, #000 65%);
-            }
-
-            .dfl-cell video {
+            /* Active progress line */
+            .timeline-line-progress {
                 position: absolute;
-                top: 5%;
-                left: 5%;
-                width: 90%;
-                height: 90%;
-                max-width: 90%;
-                max-height: 90%;
-                object-fit: contain;
-                object-position: center;
-                display: block;
-                opacity: 0;
-                transition: transform 0.4s ease, opacity 0.4s ease;
-                z-index: 1;
-                pointer-events: none;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 0%;
+                background: linear-gradient(to bottom, transparent, #7c5cfc 15%, #76ecf0 85%, transparent);
+                border-radius: 4px;
+                box-shadow: 0 0 8px rgba(118, 236, 240, 0.3);
             }
 
-            .dfl-cell:hover video,
-            .dfl-cell.active-touch video {
-                transform: scale(1.03);
-                opacity: 0.6;
+            .timeline-item {
+                display: flex;
+                flex-direction: row;
+                gap: 40px;
+                margin-bottom: 120px;
+                position: relative;
             }
 
-            .dfl-cell img {
+            .timeline-item:last-child {
+                margin-bottom: 0;
+            }
+
+            /* Left column step title */
+            .timeline-item-left {
+                width: 25%;
+                flex-shrink: 0;
+                position: sticky;
+                top: 150px;
+                height: fit-content;
+                z-index: 10;
+            }
+
+            .timeline-step-title {
+                font-size: clamp(1.2rem, 2.5vw, 2.2rem);
+                font-weight: 700;
+                color: #fff;
+                margin: 0;
+                line-height: 1.2;
+                letter-spacing: -0.01em;
+            }
+
+            /* Right column card content */
+            .timeline-item-right {
+                width: 75%;
+                flex-grow: 1;
+            }
+
+            /* Node circle centered on timeline line */
+            .timeline-node {
+                width: 22px;
+                height: 22px;
+                border-radius: 50%;
+                background: #000;
+                border: 2px solid rgba(255, 255, 255, 0.15);
                 position: absolute;
-                top: 5%;
-                left: 5%;
-                width: 90%;
-                height: 90%;
-                max-width: 90%;
-                max-height: 90%;
-                object-fit: contain;
-                object-position: center;
-                display: block;
-                opacity: 0;
-                transition: transform 0.4s ease, opacity 0.4s ease;
-                z-index: 0;
-                pointer-events: none;
-            }
-
-            .dfl-cell:hover img,
-            .dfl-cell.active-touch img {
-                transform: scale(1.03);
-                opacity: 0.45;
-            }
-
-
-
-            /* Label */
-            .dfl-label {
-                position: absolute;
-                inset: 0;
-                z-index: 3;
+                left: -60px; /* offset relative to right content */
+                top: 8px;
+                z-index: 20;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                font-family: 'Georgia', 'Times New Roman', serif;
-                font-style: italic;
-                font-weight: 400;
-                font-size: clamp(1rem, 2.2vw, 2rem);
-                color: rgba(255, 255, 255, 0.85);
-                letter-spacing: 0.01em;
-                text-align: center;
-                padding: 1rem;
-                pointer-events: none;
-                transition: color 0.3s ease, transform 0.3s ease;
-                user-select: none;
+                box-shadow: 0 0 0 4px #000;
             }
 
-            .dfl-cell:hover .dfl-label,
-            .dfl-cell.active-touch .dfl-label {
-                color: #fff;
+            .timeline-dot {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.25);
+                transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+            }
+
+            .timeline-desc {
+                font-size: clamp(1rem, 1.2vw, 1.15rem);
+                color: rgba(255, 255, 255, 0.7);
+                line-height: 1.7;
+                margin-top: 0;
+                margin-bottom: 24px;
+            }
+
+            /* Step items list */
+            .timeline-list {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                margin-bottom: 30px;
+            }
+
+            .timeline-list-item {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-size: 0.95rem;
+                color: rgba(255, 255, 255, 0.85);
+            }
+
+            /* Image grid mockups */
+            .timeline-img-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .timeline-img-card {
+                position: relative;
+                border-radius: 12px;
+                overflow: hidden;
+                aspect-ratio: 16/10;
+                background: rgba(255, 255, 255, 0.02);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                transition: border-color 0.3s ease, transform 0.3s ease;
+            }
+
+            .timeline-img-card img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.4s ease;
+            }
+
+            .timeline-img-card:hover {
+                border-color: rgba(118, 236, 240, 0.35);
+                transform: translateY(-4px);
+            }
+
+            .timeline-img-card:hover img {
                 transform: scale(1.04);
             }
 
-            /* Subtle neon line at bottom on hover */
-            .dfl-cell::after {
-                content: '';
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                height: 2px;
-                background: linear-gradient(90deg, transparent, #7c5cfc, transparent);
+            @media (max-width: 900px) {
+                .timeline-item {
+                    flex-direction: column;
+                    gap: 20px;
+                    margin-bottom: 80px;
+                }
+
+                .timeline-item-left {
+                    width: 100%;
+                    position: relative;
+                    top: 0;
+                    margin-bottom: 10px;
+                }
+
+                .timeline-item-right {
+                    width: 100%;
+                }
+
+                .timeline-node {
+                    left: -60px;
+                    top: 4px;
+                }
+            }
+
+            @media (max-width: 600px) {
+                .timeline-section {
+                    padding: 60px 5%;
+                }
+
+                .timeline-inner {
+                    padding-left: 36px;
+                }
+
+                .timeline-line-container {
+                    left: 4px;
+                }
+
+                .timeline-node {
+                    left: -36px;
+                    width: 18px;
+                    height: 18px;
+                }
+
+                .timeline-dot {
+                    width: 6px;
+                    height: 6px;
+                }
+
+                .timeline-img-grid {
+                    grid-template-columns: 1fr;
+                    gap: 15px;
+                }
+            }
+        </style>
+
+        <section class="timeline-section" id="journey-timeline">
+            <div class="timeline-container">
+                <div class="timeline-header">
+                    <h2 class="timeline-heading">Our Product Methodology</h2>
+                    <p class="timeline-subheading">We follow a structured, modern framework to conceptualize, design, and deploy digital systems. Here is a timeline of how we build.</p>
+                </div>
+
+                <div class="timeline-inner">
+                    <!-- Progress Axis -->
+                    <div class="timeline-line-container">
+                        <div class="timeline-line">
+                            <div class="timeline-line-progress"></div>
+                        </div>
+                    </div>
+
+                    <!-- Item 1: Discovery -->
+                    <div class="timeline-item">
+                        <div class="timeline-item-left">
+                            <h3 class="timeline-step-title">01 / Discovery</h3>
+                        </div>
+                        <div class="timeline-item-right">
+                            <div class="timeline-node">
+                                <div class="timeline-dot"></div>
+                            </div>
+                            <p class="timeline-desc">
+                                Every building block starts with thorough alignment. We map out business models, research user requirements, and define clear architecture goals.
+                            </p>
+                            <div class="timeline-list">
+                                <div class="timeline-list-item">
+                                    <svg class="timeline-check" viewBox="0 0 24 24" fill="none" stroke="#76ecf0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px; flex-shrink: 0;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    <span>Define project requirements and user flow maps.</span>
+                                </div>
+                                <div class="timeline-list-item">
+                                    <svg class="timeline-check" viewBox="0 0 24 24" fill="none" stroke="#76ecf0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px; flex-shrink: 0;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    <span>Scope modern SaaS features and AI agent parameters.</span>
+                                </div>
+                                <div class="timeline-list-item">
+                                    <svg class="timeline-check" viewBox="0 0 24 24" fill="none" stroke="#76ecf0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px; flex-shrink: 0;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    <span>Determine the best full-stack technology roadmap.</span>
+                                </div>
+                            </div>
+                            <div class="timeline-img-grid">
+                                <div class="timeline-img-card">
+                                    <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=600&q=80" alt="Requirements mapping">
+                                </div>
+                                <div class="timeline-img-card">
+                                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" alt="Scoping and architecture">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 2: Strategy -->
+                    <div class="timeline-item">
+                        <div class="timeline-item-left">
+                            <h3 class="timeline-step-title">02 / Strategy</h3>
+                        </div>
+                        <div class="timeline-item-right">
+                            <div class="timeline-node">
+                                <div class="timeline-dot"></div>
+                            </div>
+                            <p class="timeline-desc">
+                                Creating the system blueprint. We design database models, formulate custom AI prompt flows, and architect server topologies for high scalability.
+                            </p>
+                            <div class="timeline-list">
+                                <div class="timeline-list-item">
+                                    <svg class="timeline-check" viewBox="0 0 24 24" fill="none" stroke="#76ecf0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px; flex-shrink: 0;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    <span>Structure database schemas and object mappings.</span>
+                                </div>
+                                <div class="timeline-list-item">
+                                    <svg class="timeline-check" viewBox="0 0 24 24" fill="none" stroke="#76ecf0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px; flex-shrink: 0;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    <span>Design agent logic flows and custom LLM interfaces.</span>
+                                </div>
+                                <div class="timeline-list-item">
+                                    <svg class="timeline-check" viewBox="0 0 24 24" fill="none" stroke="#76ecf0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px; flex-shrink: 0;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    <span>Prepare Figma mockups and responsive interactive designs.</span>
+                                </div>
+                            </div>
+                            <div class="timeline-img-grid">
+                                <div class="timeline-img-card">
+                                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80" alt="Architecture blueprints">
+                                </div>
+                                <div class="timeline-img-card">
+                                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80" alt="Database modeling">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 3: Launch -->
+                    <div class="timeline-item">
+                        <div class="timeline-item-left">
+                            <h3 class="timeline-step-title">03 / Launch</h3>
+                        </div>
+                        <div class="timeline-item-right">
+                            <div class="timeline-node">
+                                <div class="timeline-dot"></div>
+                            </div>
+                            <p class="timeline-desc">
+                                Bringing custom systems to life. We deploy scalable SaaS platforms, publish application assets, and coordinate serverless cloud handoffs.
+                            </p>
+                            <div class="timeline-list">
+                                <div class="timeline-list-item">
+                                    <svg class="timeline-check" viewBox="0 0 24 24" fill="none" stroke="#76ecf0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px; flex-shrink: 0;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    <span>Deliver optimized product builds with clean structures.</span>
+                                </div>
+                                <div class="timeline-list-item">
+                                    <svg class="timeline-check" viewBox="0 0 24 24" fill="none" stroke="#76ecf0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px; flex-shrink: 0;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    <span>Launch automated deployment streams and CI/CD pipelines.</span>
+                                </div>
+                                <div class="timeline-list-item">
+                                    <svg class="timeline-check" viewBox="0 0 24 24" fill="none" stroke="#76ecf0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px; flex-shrink: 0;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    <span>Continuous cloud health checks and monitoring setup.</span>
+                                </div>
+                            </div>
+                            <div class="timeline-img-grid">
+                                <div class="timeline-img-card">
+                                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="SaaS dashboard deployment">
+                                </div>
+                                <div class="timeline-img-card">
+                                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="Active monitoring metrics">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════ TIMELINE SCROLL TRIGGER SCRIPT ══════════ -->
+        <script>
+            (function () {
+                'use strict';
+                function initTimelineAnimation() {
+                    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+                        setTimeout(initTimelineAnimation, 100);
+                        return;
+                    }
+                    gsap.registerPlugin(ScrollTrigger);
+
+                    var section = document.getElementById('journey-timeline');
+                    var progressLine = document.querySelector('.timeline-line-progress');
+                    var items = document.querySelectorAll('.timeline-item');
+
+                    if (!section || !progressLine) return;
+
+                    // Scroll progress for vertical axis line
+                    gsap.fromTo(progressLine, 
+                        { height: "0%" },
+                        { 
+                            height: "100%",
+                            ease: "none",
+                            scrollTrigger: {
+                                trigger: section,
+                                start: "top 35%",
+                                end: "bottom 65%",
+                                scrub: true
+                            }
+                        }
+                    );
+
+                    // Animate node indicators and trigger subtle glowing shadows
+                    items.forEach(function (item) {
+                        var dot = item.querySelector('.timeline-dot');
+                        if (!dot) return;
+
+                        ScrollTrigger.create({
+                            trigger: item,
+                            start: "top 45%",
+                            end: "bottom 45%",
+                            onEnter: function () {
+                                gsap.to(dot, { background: "#76ecf0", boxShadow: "0 0 10px #76ecf0", scale: 1.25, duration: 0.3 });
+                            },
+                            onLeaveBack: function () {
+                                gsap.to(dot, { background: "rgba(255, 255, 255, 0.25)", boxShadow: "none", scale: 1.0, duration: 0.3 });
+                            }
+                        });
+                    });
+                }
+
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', initTimelineAnimation);
+                } else {
+                    initTimelineAnimation();
+                }
+            })();
+        </script>
+        <!-- ══════════ END METHODOLOGY TIMELINE ══════════ -->
+           background: linear-gradient(90deg, transparent, #7c5cfc, transparent);
                 opacity: 0;
                 z-index: 4;
                 transition: opacity 0.3s ease;
