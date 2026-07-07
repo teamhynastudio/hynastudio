@@ -614,7 +614,8 @@
             flex-shrink: 0;
         }
 
-        .nav-mobile-toggle {
+        .nav-mobile-toggle,
+        .switch {
             display: none;
         }
 
@@ -2435,7 +2436,7 @@
 
             .switch {
                 position: relative;
-                display: inline-flex;
+                display: inline-flex !important;
                 align-items: center;
                 justify-content: center;
                 width: 20vmin;
@@ -2452,7 +2453,7 @@
             }
 
             .switch input {
-                display: none;
+                display: none !important;
             }
 
             .thumb {
@@ -10418,8 +10419,84 @@
                     <blockquote>"Every successful product begins with a bold idea."</blockquote>
                     <cite>What Inspires Us</cite>
                 </div>
-            </div>
         </section>
+
+        <!-- SplitText Animation for About Section Title (React Bits Variant) -->
+        <style>
+            .about-section .section-title {
+                opacity: 1;
+            }
+            .about-section .section-title .split-word {
+                display: inline-block;
+                white-space: nowrap;
+            }
+            .about-section .section-title .split-char {
+                display: inline-block;
+                will-change: transform, opacity;
+            }
+            .about-section .section-title .split-space {
+                display: inline-block;
+                white-space: pre;
+            }
+        </style>
+        <script>
+            (function() {
+                document.addEventListener('DOMContentLoaded', function() {
+                    var titleEl = document.querySelector('#about .section-title');
+                    if (!titleEl) return;
+
+                    var text = titleEl.textContent.trim();
+                    titleEl.textContent = ''; // Clear original text
+
+                    var words = text.split(/\s+/);
+                    words.forEach(function(word, wordIdx) {
+                        var wordSpan = document.createElement('span');
+                        wordSpan.className = 'split-word';
+                        
+                        for (var i = 0; i < word.length; i++) {
+                            var charSpan = document.createElement('span');
+                            charSpan.className = 'split-char';
+                            charSpan.textContent = word[i];
+                            wordSpan.appendChild(charSpan);
+                        }
+                        
+                        titleEl.appendChild(wordSpan);
+                        
+                        // Add spaces between words
+                        if (wordIdx < words.length - 1) {
+                            var spaceSpan = document.createElement('span');
+                            spaceSpan.className = 'split-space';
+                            spaceSpan.textContent = ' ';
+                            titleEl.appendChild(spaceSpan);
+                        }
+                    });
+
+                    // Trigger the animation using GSAP & ScrollTrigger
+                    var chars = titleEl.querySelectorAll('.split-char');
+                    gsap.fromTo(chars, 
+                        { 
+                            opacity: 0, 
+                            y: 40 
+                        },
+                        {
+                            opacity: 1,
+                            y: 0,
+                            duration: 1.25,
+                            ease: 'power3.out',
+                            stagger: 0.05, // 50ms delay
+                            scrollTrigger: {
+                                trigger: titleEl,
+                                start: 'top 90%-=100px', // threshold: 0.1, rootMargin: -100px
+                                once: true,
+                                fastScrollEnd: true
+                            }
+                        }
+                    );
+                });
+            })();
+        </script>
+
+
 
 
         <section id="faq" class="faq-section">
