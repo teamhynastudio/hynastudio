@@ -663,61 +663,15 @@
             color: var(--hero-ink);
         }
 
-        /* ── DOT GRID BACKGROUND ── */
-        .hero-dots-wrap {
+        /* ── PARTICLE CANVAS BACKGROUND ── */
+        #hero-particle-canvas {
             position: absolute;
             inset: 0;
             z-index: 0;
-            overflow: hidden;
-            -webkit-mask-image: radial-gradient(ellipse 80% 90% at 50% 40%, black 40%, transparent 92%);
-            mask-image: radial-gradient(ellipse 80% 90% at 50% 40%, black 40%, transparent 92%);
-        }
-
-        .hero-dot-grid {
-            position: absolute;
-            inset: 0;
-            background-image: radial-gradient(#ffffff 1.4px, transparent 1.4px);
-            background-size: 34px 34px;
-            background-position: 10px 10px;
-            opacity: 0.32;
-            animation: heroDotDrift 16s linear infinite;
-        }
-
-        @keyframes heroDotDrift {
-            0% {
-                background-position: 10px 10px;
-            }
-
-            100% {
-                background-position: 44px 44px;
-            }
-        }
-
-        .hero-dot-flow {
-            position: absolute;
-            inset: -30%;
-            background-image: radial-gradient(#ffffff 1.4px, transparent 1.4px);
-            background-size: 34px 34px;
-            background-position: 10px 10px;
-            -webkit-mask-image: linear-gradient(115deg, transparent 38%, rgba(255, 255, 255, 0.95) 50%, transparent 62%);
-            mask-image: linear-gradient(115deg, transparent 38%, rgba(255, 255, 255, 0.95) 50%, transparent 62%);
-            -webkit-mask-size: 260% 260%;
-            mask-size: 260% 260%;
-            -webkit-mask-repeat: no-repeat;
-            mask-repeat: no-repeat;
-            animation: heroDotFlowSweep 8s linear infinite, heroDotDrift 16s linear infinite;
-        }
-
-        @keyframes heroDotFlowSweep {
-            0% {
-                -webkit-mask-position: -60% -60%;
-                mask-position: -60% -60%;
-            }
-
-            100% {
-                -webkit-mask-position: 60% 60%;
-                mask-position: 60% 60%;
-            }
+            width: 100%;
+            height: 100%;
+            display: block;
+            cursor: crosshair;
         }
 
         .hero-grid-fade {
@@ -927,10 +881,8 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
-
-            .hero-dot-flow,
-            .hero-dot-grid {
-                animation: none;
+            #hero-particle-canvas {
+                display: none;
             }
         }
 
@@ -3633,16 +3585,194 @@
 
     </nav>
 
+    <!-- ── HERO PARTICLE ANIMATION ── -->
+    <script>
+    (function () {
+        // ── Config ──
+        var PARTICLE_DENSITY   = 0.00014;  // particles per px²
+        var BG_DENSITY         = 0.000045; // ambient star density
+        var MOUSE_RADIUS       = 175;      // repulsion influence radius
+        var RETURN_SPEED       = 0.075;    // spring constant
+        var DAMPING            = 0.88;     // velocity decay
+        var REPULSION          = 6.0;      // push strength multiplier
+
+        var canvas   = null;
+        var ctx      = null;
+        var rafId    = 0;
+        var particles   = [];
+        var bgParticles = [];
+        var mouse    = { x: -2000, y: -2000, active: false };
+        var dpr      = 1;
+        var W = 0, H = 0; // CSS dimensions
+
+        // ── Helpers ──
+        function rnd(a, b) { return Math.random() * (b - a) + a; }
+
+        // ── Init particles for given CSS dimensions ──
+        function initParticles(w, h) {
+            particles   = [];
+            bgParticles = [];
+
+            var count = Math.floor(w * h * PARTICLE_DENSITY);
+            for (var i = 0; i < count; i++) {
+                var x = Math.random() * w;
+                var y = Math.random() * h;
+                particles.push({
+                    x: x, y: y,
+                    ox: x, oy: y,
+                    vx: 0, vy: 0,
+                    size: rnd(1.0, 2.4),
+                    blue: Math.random() > 0.88 // ~12% accent-coloured
+                });
+            }
+
+            var bgCount = Math.floor(w * h * BG_DENSITY);
+            for (var j = 0; j < bgCount; j++) {
+                bgParticles.push({
+                    x: Math.random() * w,
+                    y: Math.random() * h,
+                    vx: (Math.random() - 0.5) * 0.18,
+                    vy: (Math.random() - 0.5) * 0.18,
+                    size: rnd(0.4, 1.3),
+                    alpha: rnd(0.1, 0.38),
+                    phase: Math.random() * Math.PI * 2
+                });
+            }
+        }
+
+        // ── Resize ──
+        function resize() {
+            if (!canvas) return;
+            dpr = window.devicePixelRatio || 1;
+            var rect = canvas.parentElement
+                ? canvas.parentElement.getBoundingClientRect()
+                : { width: window.innerWidth, height: window.innerHeight };
+            W = rect.width;
+            H = rect.height;
+            canvas.width  = W * dpr;
+            canvas.height = H * dpr;
+            canvas.style.width  = W + 'px';
+            canvas.style.height = H + 'px';
+            ctx = canvas.getContext('2d');
+            ctx.scale(dpr, dpr);
+            initParticles(W, H);
+        }
+
+        // ── Animation loop ──
+        function animate(time) {
+            rafId = requestAnimationFrame(animate);
+            if (!ctx) return;
+
+            ctx.clearRect(0, 0, W, H);
+
+            // — Ambient stars —
+            ctx.fillStyle = '#fff';
+            for (var b = 0; b < bgParticles.length; b++) {
+                var bp = bgParticles[b];
+                bp.x += bp.vx;
+                bp.y += bp.vy;
+                if (bp.x < 0) bp.x = W;
+                if (bp.x > W) bp.x = 0;
+                if (bp.y < 0) bp.y = H;
+                if (bp.y > H) bp.y = 0;
+                var twinkle = Math.sin(time * 0.0018 + bp.phase) * 0.5 + 0.5;
+                ctx.globalAlpha = bp.alpha * (0.25 + 0.75 * twinkle);
+                ctx.beginPath();
+                ctx.arc(bp.x, bp.y, bp.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            ctx.globalAlpha = 1;
+
+            // — Main particle physics (forces + integration) —
+            for (var i = 0; i < particles.length; i++) {
+                var p = particles[i];
+
+                // Mouse repulsion
+                if (mouse.active) {
+                    var dx = p.x - mouse.x;
+                    var dy = p.y - mouse.y;
+                    var distSq = dx * dx + dy * dy;
+                    var rSq    = MOUSE_RADIUS * MOUSE_RADIUS;
+                    if (distSq < rSq && distSq > 0.01) {
+                        var dist  = Math.sqrt(distSq);
+                        var force = (MOUSE_RADIUS - dist) / MOUSE_RADIUS;
+                        p.vx += (dx / dist) * force * REPULSION;
+                        p.vy += (dy / dist) * force * REPULSION;
+                    }
+                }
+
+                // Spring back to origin
+                p.vx += (p.ox - p.x) * RETURN_SPEED;
+                p.vy += (p.oy - p.y) * RETURN_SPEED;
+
+                // Integrate
+                p.vx *= DAMPING;
+                p.vy *= DAMPING;
+                p.x  += p.vx;
+                p.y  += p.vy;
+
+                // Draw
+                var speed   = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
+                var opacity = Math.min(0.25 + speed * 0.12, 1);
+                ctx.globalAlpha = opacity;
+                ctx.fillStyle   = p.blue ? '#4F3FF0' : '#ffffff';
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            ctx.globalAlpha = 1;
+        }
+
+        // ── Bootstrap ──
+        function boot() {
+            canvas = document.getElementById('hero-particle-canvas');
+            if (!canvas) return;
+
+            resize();
+            window.addEventListener('resize', resize);
+
+            var hero = canvas.closest ? canvas.closest('.hero') : canvas.parentElement;
+            if (hero) {
+                hero.addEventListener('mousemove', function (e) {
+                    var r = hero.getBoundingClientRect();
+                    mouse.x = e.clientX - r.left;
+                    mouse.y = e.clientY - r.top;
+                    mouse.active = true;
+                });
+                hero.addEventListener('mouseleave', function () {
+                    mouse.active = false;
+                });
+                hero.addEventListener('touchmove', function (e) {
+                    if (e.touches.length) {
+                        var r = hero.getBoundingClientRect();
+                        mouse.x = e.touches[0].clientX - r.left;
+                        mouse.y = e.touches[0].clientY - r.top;
+                        mouse.active = true;
+                    }
+                }, { passive: true });
+                hero.addEventListener('touchend', function () {
+                    mouse.active = false;
+                });
+            }
+
+            rafId = requestAnimationFrame(animate);
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', boot);
+        } else {
+            boot();
+        }
+    })();
+    </script>
+
     <!-- MAIN CONTENT WRAPPER (sits above sticky footer) -->
     <div class="main-content-wrapper">
 
         <!-- HERO -->
         <section class="hero">
-            <!-- Animated dot grid -->
-            <div class="hero-dots-wrap">
-                <div class="hero-dot-grid"></div>
-                <div class="hero-dot-flow"></div>
-            </div>
+            <!-- Interactive particle canvas background -->
+            <canvas id="hero-particle-canvas"></canvas>
             <div class="hero-grid-fade"></div>
 
             <div class="hero-container">
