@@ -6223,7 +6223,7 @@
 
             .csa-subtitle {
                 font-size: clamp(1rem, 1.3vw, 1.15rem);
-                color: rgba(255,255,255,0.55);
+                color: rgba(255, 255, 255, 0.55);
                 margin: 0 auto;
                 max-width: 580px;
                 line-height: 1.65;
@@ -6274,12 +6274,15 @@
                 position: absolute;
                 inset: 0;
                 border-radius: 18px;
-                background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.45) 100%);
+                background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.45) 100%);
                 pointer-events: none;
             }
 
             @media (max-width: 768px) {
-                .csa-wrapper { padding: 60px 16px 100px; }
+                .csa-wrapper {
+                    padding: 60px 16px 100px;
+                }
+
                 .csa-card {
                     height: clamp(200px, 55vw, 360px);
                     border-radius: 20px;
@@ -6296,15 +6299,14 @@
                         We build things that<br>
                         <span>actually ship.</span>
                     </h2>
-                    <p class="csa-subtitle">From SaaS platforms to AI agents — Hyna Studio engineers products end-to-end, on time, and at scale.</p>
+                    <p class="csa-subtitle">From SaaS platforms to AI agents — Hyna Studio engineers products
+                        end-to-end, on time, and at scale.</p>
                 </div>
 
                 <div class="csa-card" id="csa-card">
                     <div class="csa-card-inner">
-                        <img
-                            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=85"
-                            alt="Hyna Studio SaaS Product Dashboard"
-                        >
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=85"
+                            alt="Hyna Studio SaaS Product Dashboard">
                         <div class="csa-card-overlay"></div>
                     </div>
                 </div>
@@ -6322,8 +6324,8 @@
                     gsap.registerPlugin(ScrollTrigger);
 
                     var wrapper = document.getElementById('csa-section');
-                    var card    = document.getElementById('csa-card');
-                    var header  = document.getElementById('csa-header');
+                    var card = document.getElementById('csa-card');
+                    var header = document.getElementById('csa-header');
                     if (!wrapper || !card || !header) return;
 
                     var isMobile = window.innerWidth <= 768;
@@ -7352,11 +7354,30 @@
             }
 
             /* Section-specific colours */
-            .flow-s1 { background: #7c5cfc; color: #fff; }
-            .flow-s2 { background: #000;    color: #fff; }
-            .flow-s3 { background: #0f0f0f; color: #fff; }
-            .flow-s4 { background: #111827; color: #fff; }
-            .flow-s5 { background: #000;    color: #fff; }
+            .flow-s1 {
+                background: #7c5cfc;
+                color: #fff;
+            }
+
+            .flow-s2 {
+                background: #000;
+                color: #fff;
+            }
+
+            .flow-s3 {
+                background: #0f0f0f;
+                color: #fff;
+            }
+
+            .flow-s4 {
+                background: #111827;
+                color: #fff;
+            }
+
+            .flow-s5 {
+                background: #000;
+                color: #fff;
+            }
 
             /* Typography */
             .flow-eyebrow {
@@ -7370,7 +7391,7 @@
 
             .flow-hr {
                 border: none;
-                border-top: 1px solid rgba(255,255,255,0.15);
+                border-top: 1px solid rgba(255, 255, 255, 0.15);
                 margin: 0;
             }
 
@@ -7422,20 +7443,33 @@
             }
 
             /* Accent overrides */
-            .flow-s1 .flow-hr { border-top-color: rgba(255,255,255,0.3); }
-            .flow-s4 .flow-hr { border-top-color: rgba(118,236,240,0.2); }
-            .flow-s4 .flow-grid-label { color: #76ecf0; }
+            .flow-s1 .flow-hr {
+                border-top-color: rgba(255, 255, 255, 0.3);
+            }
+
+            .flow-s4 .flow-hr {
+                border-top-color: rgba(118, 236, 240, 0.2);
+            }
+
+            .flow-s4 .flow-grid-label {
+                color: #76ecf0;
+            }
 
             @media (max-width: 768px) {
                 .flow-inner {
                     padding: 85px 20px 40px;
                     gap: 1rem;
                 }
-                .flow-headline { font-size: clamp(1.8rem, 7vw, 2.8rem); }
+
+                .flow-headline {
+                    font-size: clamp(1.8rem, 7vw, 2.8rem);
+                }
+
                 .flow-grid {
                     grid-template-columns: 1fr;
                     gap: 1.2rem;
                 }
+
                 .flow-body {
                     font-size: 0.95rem;
                 }
@@ -7452,7 +7486,8 @@
                     <h2 class="flow-headline">Build<br>Without<br>Limits</h2>
                     <hr class="flow-hr">
                     <p class="flow-body">
-                        Hyna Studio is a product engineering partner for startups and scale-ups. We design, develop, and deploy SaaS platforms, AI agents, and mobile apps — end-to-end, on time, at scale.
+                        Hyna Studio is a product engineering partner for startups and scale-ups. We design, develop, and
+                        deploy SaaS platforms, AI agents, and mobile apps — end-to-end, on time, at scale.
                     </p>
                 </div>
             </section>
@@ -7464,20 +7499,24 @@
                     <hr class="flow-hr">
                     <h2 class="flow-headline">Ship Real Products</h2>
                     <hr class="flow-hr">
-                    <p class="flow-body">A global engineering studio built for founders, by builders. We rewrite the rules of how software gets crafted, launched, and scaled.</p>
+                    <p class="flow-body">A global engineering studio built for founders, by builders. We rewrite the
+                        rules of how software gets crafted, launched, and scaled.</p>
                     <hr class="flow-hr">
                     <div class="flow-grid">
                         <div class="flow-grid-item">
                             <p class="flow-grid-label">SaaS Platforms</p>
-                            <p class="flow-grid-desc">Full-stack cloud systems — subscriptions, billing, dashboards, and APIs built production-ready from day one.</p>
+                            <p class="flow-grid-desc">Full-stack cloud systems — subscriptions, billing, dashboards, and
+                                APIs built production-ready from day one.</p>
                         </div>
                         <div class="flow-grid-item">
                             <p class="flow-grid-label">AI Agents</p>
-                            <p class="flow-grid-desc">Custom LLM workflows, autonomous agents, and RAG pipelines that actually solve your business problem.</p>
+                            <p class="flow-grid-desc">Custom LLM workflows, autonomous agents, and RAG pipelines that
+                                actually solve your business problem.</p>
                         </div>
                         <div class="flow-grid-item">
                             <p class="flow-grid-label">Web & Apps</p>
-                            <p class="flow-grid-desc">Performant frontends, native mobile apps, and SEO-optimised web experiences that convert.</p>
+                            <p class="flow-grid-desc">Performant frontends, native mobile apps, and SEO-optimised web
+                                experiences that convert.</p>
                         </div>
                     </div>
                 </div>
@@ -7490,20 +7529,24 @@
                     <hr class="flow-hr">
                     <h2 class="flow-headline">Scope. Build. Launch.</h2>
                     <hr class="flow-hr">
-                    <p class="flow-body">Three clear phases. Zero ambiguity. Your product starts moving the moment we align.</p>
+                    <p class="flow-body">Three clear phases. Zero ambiguity. Your product starts moving the moment we
+                        align.</p>
                     <hr class="flow-hr">
                     <div class="flow-grid">
                         <div class="flow-grid-item">
                             <p class="flow-grid-label">01 — Discover</p>
-                            <p class="flow-grid-desc">We audit your idea, map user journeys, and define a tight technical spec before writing code.</p>
+                            <p class="flow-grid-desc">We audit your idea, map user journeys, and define a tight
+                                technical spec before writing code.</p>
                         </div>
                         <div class="flow-grid-item">
                             <p class="flow-grid-label">02 — Strategy</p>
-                            <p class="flow-grid-desc">Database schemas, AI prompt design, system architecture, and Figma prototypes aligned before dev.</p>
+                            <p class="flow-grid-desc">Database schemas, AI prompt design, system architecture, and Figma
+                                prototypes aligned before dev.</p>
                         </div>
                         <div class="flow-grid-item">
                             <p class="flow-grid-label">03 — Scale</p>
-                            <p class="flow-grid-desc">Automated builds, cloud deployment, analytics, and SEO optimization to grow post-launch.</p>
+                            <p class="flow-grid-desc">Automated builds, cloud deployment, analytics, and SEO
+                                optimization to grow post-launch.</p>
                         </div>
                     </div>
                 </div>
@@ -7516,20 +7559,24 @@
                     <hr class="flow-hr">
                     <h2 class="flow-headline">Future Of Software</h2>
                     <hr class="flow-hr">
-                    <p class="flow-body">We're not just building products. We're building the infrastructure that powers the next generation of founders.</p>
+                    <p class="flow-body">We're not just building products. We're building the infrastructure that powers
+                        the next generation of founders.</p>
                     <hr class="flow-hr">
                     <div class="flow-grid">
                         <div class="flow-grid-item">
                             <p class="flow-grid-label">50+ Projects</p>
-                            <p class="flow-grid-desc">SaaS apps, AI tools, and platforms shipped for founders across 12 countries.</p>
+                            <p class="flow-grid-desc">SaaS apps, AI tools, and platforms shipped for founders across 12
+                                countries.</p>
                         </div>
                         <div class="flow-grid-item">
                             <p class="flow-grid-label">AI-Native</p>
-                            <p class="flow-grid-desc">Every product we build considers how AI can reduce friction and multiply value.</p>
+                            <p class="flow-grid-desc">Every product we build considers how AI can reduce friction and
+                                multiply value.</p>
                         </div>
                         <div class="flow-grid-item">
                             <p class="flow-grid-label">Founder-First</p>
-                            <p class="flow-grid-desc">Transparent pricing. No vendor lock-in. You own every asset and every line of code.</p>
+                            <p class="flow-grid-desc">Transparent pricing. No vendor lock-in. You own every asset and
+                                every line of code.</p>
                         </div>
                     </div>
                 </div>
@@ -7543,7 +7590,8 @@
                     <h2 class="flow-headline">Ready To Launch?</h2>
                     <hr class="flow-hr">
                     <p class="flow-body">
-                        Take your product from idea to production. Partner with Hyna Studio and let's build something the world will actually use.
+                        Take your product from idea to production. Partner with Hyna Studio and let's build something
+                        the world will actually use.
                     </p>
                 </div>
             </section>
@@ -8882,57 +8930,7 @@
             </div>
         </section>
 
-        <!-- OUR PURPOSE + CHALLENGES + WHAT WE DELIVER -->
-        <section id="why-we-exist" class="exist-section">
-            <div class="exist-inner">
-                <h2 class="exist-heading">Our <span>Purpose</span></h2>
 
-                <div class="exist-highlight-box">
-                    <h3>Great businesses deserve great technology.</h3>
-                    <p>Hyna Studio exists to make powerful software accessible to every business—regardless of size or
-                        location. We build products that simplify operations, reduce complexity, and unlock new
-                        opportunities for growth.</p>
-                </div>
-
-                <h3 class="problem-heading"><em>What</em> Businesses Face</h3>
-
-                <div class="problem-cards">
-                    <div class="problem-card">
-                        <h4>Time Lost to Repetition</h4>
-                        <p>Teams spend valuable hours managing spreadsheets, preparing documents, updating records, and
-                            completing repetitive administrative tasks instead of creating value.</p>
-                    </div>
-                    <div class="problem-card">
-                        <h4>Tools That Slow You Down</h4>
-                        <p>Many businesses struggle with disconnected applications, outdated processes, or software that
-                            wasn't designed around their workflow.</p>
-                    </div>
-                    <div class="problem-card">
-                        <h4>Growth Without the Right Systems</h4>
-                        <p>Expansion becomes difficult when operations rely on manual effort. Sustainable growth starts
-                            with
-                            software that supports efficiency, collaboration, and better decision-making.</p>
-                    </div>
-                </div>
-
-                <!-- WHAT WE DELIVER -->
-                <h3 class="problem-heading" style="margin-top: 64px;"><em>What</em> We Deliver</h3>
-                <div class="problem-cards">
-                    <div class="problem-card">
-                        <h4>Save Time</h4>
-                        <p>Automate repetitive work and reclaim hours every week.</p>
-                    </div>
-                    <div class="problem-card">
-                        <h4>Improve Accuracy</h4>
-                        <p>Reduce human error with reliable, intelligent workflows.</p>
-                    </div>
-                    <div class="problem-card">
-                        <h4>Grow Confidently</h4>
-                        <p>Build systems that support your business today and scale for tomorrow.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- TEAM -->
 
