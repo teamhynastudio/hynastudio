@@ -5152,10 +5152,24 @@
                 --amber-lg: #FFE3B0;
 
                 position: relative;
-                background: var(--paper-lg);
-                color: var(--ink-lg);
+                /* Initial dark state — GSAP transitions to white as section scrolls into view */
+                background: #000000;
+                color: #ffffff;
                 overflow: hidden;
                 font-family: 'Inter', sans-serif;
+            }
+
+            /* Dark-mode overrides for text inside the section — GSAP will animate these to light values */
+            body .liquid-glass-expertise-section h1 {
+                color: #ffffff;
+            }
+            body .liquid-glass-expertise-section .lede {
+                color: rgba(255,255,255,0.72);
+            }
+            body .liquid-glass-expertise-section .eyebrow {
+                color: #ffffff;
+                background: rgba(255,255,255,0.12);
+                border-color: rgba(255,255,255,0.25);
             }
 
             .liquid-glass-expertise-section .stage {
@@ -5361,13 +5375,13 @@
                 font-weight: 600;
                 margin: 0 0 10px;
                 letter-spacing: -0.01em;
-                color: var(--ink-lg);
+                color: #ffffff; /* Starts white, animated by GSAP */
             }
 
             .liquid-glass-expertise-section p.desc {
                 font-size: 14px;
                 line-height: 1.6;
-                color: var(--slate-lg);
+                color: rgba(255, 255, 255, 0.7); /* Starts light-grey, animated by GSAP */
                 margin: 0 0 20px;
             }
 
@@ -5546,6 +5560,85 @@
                 }, { threshold: 0.14 });
                 els.forEach(function (el) { io.observe(el); });
             })();
+        </script>
+
+        <script>
+        /* ── Innovation in Action: Black (dark) → White (light) scroll transition ──
+           Starts fully black with white text when entering viewport from below.
+           Transitions to pure white with dark text by the time section top
+           reaches the top of the viewport (scrubbed to scroll position). */
+        (function () {
+            function initColorTransition() {
+                if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+                    setTimeout(initColorTransition, 80);
+                    return;
+                }
+                gsap.registerPlugin(ScrollTrigger);
+
+                var section  = document.getElementById('problems-solving-expertise');
+                if (!section) return;
+
+                var heading  = section.querySelector('h1');
+                var lede     = section.querySelector('.lede');
+                var eyebrow  = section.querySelector('.eyebrow');
+                var cardTitles = section.querySelectorAll('.card h3');
+                var cardDescs  = section.querySelectorAll('.card p.desc');
+
+                var commonTrigger = {
+                    trigger : section,
+                    start   : 'top 85%',   /* Transition starts as soon as top enters viewport bottom area */
+                    end     : 'top 30%',   /* Reaches full white when top of section is 30% from the viewport top */
+                    scrub   : 1.2
+                };
+
+                /* 1. Background: black → white */
+                gsap.fromTo(section,
+                    { backgroundColor: '#000000' },
+                    { backgroundColor: '#ffffff', ease: 'none', scrollTrigger: commonTrigger }
+                );
+
+                /* 2. Heading: white → dark */
+                if (heading) {
+                    gsap.fromTo(heading,
+                        { color: '#ffffff' },
+                        { color: '#13141A', ease: 'none', scrollTrigger: commonTrigger }
+                    );
+                }
+
+                /* 3. Lede: semi-white → slate */
+                if (lede) {
+                    gsap.fromTo(lede,
+                        { color: 'rgba(255,255,255,0.72)' },
+                        { color: '#5B6270', ease: 'none', scrollTrigger: commonTrigger }
+                    );
+                }
+
+                /* 4. Eyebrow pill: white-tinted → dark ink */
+                if (eyebrow) {
+                    gsap.fromTo(eyebrow,
+                        { color: '#ffffff', backgroundColor: 'rgba(255,255,255,0.12)', borderColor: 'rgba(255,255,255,0.25)' },
+                        { color: '#13141A', backgroundColor: 'rgba(255,255,255,0.55)', borderColor: 'rgba(255,255,255,0.75)', ease: 'none', scrollTrigger: commonTrigger }
+                    );
+                }
+
+                /* 5. Card Titles: white → dark */
+                if (cardTitles.length) {
+                    gsap.fromTo(cardTitles,
+                        { color: '#ffffff' },
+                        { color: '#13141A', ease: 'none', scrollTrigger: commonTrigger }
+                    );
+                }
+
+                /* 6. Card Descriptions: semi-white → slate */
+                if (cardDescs.length) {
+                    gsap.fromTo(cardDescs,
+                        { color: 'rgba(255,255,255,0.7)' },
+                        { color: '#5B6270', ease: 'none', scrollTrigger: commonTrigger }
+                    );
+                }
+            }
+            initColorTransition();
+        })();
         </script>
 
         <!-- EMPOWERMENT SECTION -->
