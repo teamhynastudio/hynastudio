@@ -5563,10 +5563,10 @@
         </script>
 
         <script>
-        /* ── Innovation in Action: Black (dark) → White (light) scroll transition ──
+        /* ── Innovation in Action & Build Headline: Scroll Transition & Line Draw ──
            Starts fully black with white text when entering viewport from below.
-           Transitions to pure white with dark text by the time section top
-           reaches the top of the viewport (scrubbed to scroll position). */
+           Transitions to pure white with dark text as the user scrolls,
+           with the line animations drawing slowly based on the scroll position. */
         (function () {
             function initColorTransition() {
                 if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
@@ -5578,6 +5578,67 @@
                 var section  = document.getElementById('problems-solving-expertise');
                 if (!section) return;
 
+                /* ─── 1. Build Headline Section & Line Drawing Transition ─── */
+                var bhSection = document.getElementById('build-headline');
+                if (bhSection) {
+                    var bhHighlight = bhSection.querySelector('.bh-highlight');
+                    var bhPath      = bhSection.querySelector('.bh-highlight svg path');
+                    var bhRest      = bhSection.querySelector('.bh-rest');
+                    var bhSub       = bhSection.querySelector('.bh-sub');
+                    var bhLine      = bhSection.querySelector('.bh-line-path');
+
+                    var bhTrigger = {
+                        trigger : section,        /* Triggered by the innovation section! */
+                        start   : 'top 40%',      /* Stays black until the innovation section scrolls up into the viewport */
+                        end     : 'top 10%',      /* Becomes white as the innovation section is fully scrolled in */
+                        scrub   : 0.4
+                    };
+
+                    gsap.fromTo(bhSection,
+                        { backgroundColor: '#000000' },
+                        { backgroundColor: '#ffffff', ease: 'none', scrollTrigger: bhTrigger }
+                    );
+
+                    if (bhHighlight) {
+                        gsap.fromTo(bhHighlight,
+                            { color: '#ffffff' },
+                            { color: '#13141A', ease: 'none', scrollTrigger: bhTrigger }
+                        );
+                    }
+
+                    /* Underline under the word BUILD: draws slowly on scroll */
+                    if (bhPath) {
+                        gsap.fromTo(bhPath,
+                            { stroke: '#ffffff', strokeDashoffset: 340 },
+                            { stroke: '#13141A', strokeDashoffset: 0, ease: 'none', scrollTrigger: bhTrigger }
+                        );
+                    }
+
+                    if (bhRest) {
+                        gsap.fromTo(bhRest,
+                            { color: '#ffffff' },
+                            { color: '#13141A', ease: 'none', scrollTrigger: bhTrigger }
+                        );
+                    }
+
+                    if (bhSub) {
+                        gsap.fromTo(bhSub,
+                            { color: '#ffffff', webkitTextFillColor: '#ffffff' },
+                            { color: '#5B6270', webkitTextFillColor: '#5B6270', ease: 'none', scrollTrigger: bhTrigger }
+                        );
+                    }
+
+                    /* Full-width line below paragraph: draws slowly on scroll */
+                    if (bhLine) {
+                        gsap.fromTo(bhLine,
+                            { strokeDashoffset: 1000 },
+                            { strokeDashoffset: 0, ease: 'none', scrollTrigger: bhTrigger }
+                        );
+                    }
+                }
+
+
+
                 var heading  = section.querySelector('h1');
                 var lede     = section.querySelector('.lede');
                 var eyebrow  = section.querySelector('.eyebrow');
@@ -5586,18 +5647,18 @@
 
                 var commonTrigger = {
                     trigger : section,
-                    start   : 'top 50%',   /* Stays fully black until top reaches the middle of the screen */
-                    end     : 'top 20%',   /* Transitions to fully white once the section is centered on screen */
-                    scrub   : 1.2
+                    start   : 'top 50%',
+                    end     : 'top 20%',
+                    scrub   : 0.4
                 };
 
-                /* 1. Background: black → white */
+                /* Background: black → white */
                 gsap.fromTo(section,
                     { backgroundColor: '#000000' },
                     { backgroundColor: '#ffffff', ease: 'none', scrollTrigger: commonTrigger }
                 );
 
-                /* 2. Heading: white → dark */
+                /* Heading: white → dark */
                 if (heading) {
                     gsap.fromTo(heading,
                         { color: '#ffffff' },
@@ -5605,7 +5666,7 @@
                     );
                 }
 
-                /* 3. Lede: semi-white → slate */
+                /* Lede: semi-white → slate */
                 if (lede) {
                     gsap.fromTo(lede,
                         { color: 'rgba(255,255,255,0.72)' },
@@ -5613,7 +5674,7 @@
                     );
                 }
 
-                /* 4. Eyebrow pill: white-tinted → dark ink */
+                /* Eyebrow pill: white-tinted → dark ink */
                 if (eyebrow) {
                     gsap.fromTo(eyebrow,
                         { color: '#ffffff', backgroundColor: 'rgba(255,255,255,0.12)', borderColor: 'rgba(255,255,255,0.25)' },
@@ -5621,7 +5682,7 @@
                     );
                 }
 
-                /* 5. Card Titles: white → dark */
+                /* Card Titles: white → dark */
                 if (cardTitles.length) {
                     gsap.fromTo(cardTitles,
                         { color: '#ffffff' },
@@ -5629,7 +5690,7 @@
                     );
                 }
 
-                /* 6. Card Descriptions: semi-white → slate */
+                /* Card Descriptions: semi-white → slate */
                 if (cardDescs.length) {
                     gsap.fromTo(cardDescs,
                         { color: 'rgba(255,255,255,0.7)' },
