@@ -2469,39 +2469,65 @@
                 animation: move-skull-left 0.5s ease-in-out 0.5s forwards;
             }
 
-            .switch input:checked ~ .thumb {
+            .switch input:checked~.thumb {
                 left: 0.6vmin;
                 animation: move-skull-right 0.5s ease-in-out 0.5s forwards;
             }
 
             @keyframes move-skull-right {
-                0% { left: 0.6vmin; }
-                100% { left: calc(100% - 9.333vmin); }
+                0% {
+                    left: 0.6vmin;
+                }
+
+                100% {
+                    left: calc(100% - 9.333vmin);
+                }
             }
 
             @keyframes move-skull-left {
-                0% { left: calc(100% - 9.333vmin); }
-                100% { left: 0.6vmin; }
+                0% {
+                    left: calc(100% - 9.333vmin);
+                }
+
+                100% {
+                    left: 0.6vmin;
+                }
             }
 
-            .thumb > * {
+            .thumb>* {
                 position: absolute;
                 filter: drop-shadow(0px 1px 1px #000);
                 animation: unselected 1.5s ease-in-out 0s reverse forwards;
             }
 
-            .switch input:checked ~ .thumb * {
+            .switch input:checked~.thumb * {
                 animation: selected 1.5s ease-in-out 0s forwards;
             }
 
             @keyframes selected {
-                0%, 50% { filter: drop-shadow(0px 1px 1px #000) brightness(1); }
-                50.01%, 100% { filter: drop-shadow(0px 1px 1px #000) brightness(1.875); }
+
+                0%,
+                50% {
+                    filter: drop-shadow(0px 1px 1px #000) brightness(1);
+                }
+
+                50.01%,
+                100% {
+                    filter: drop-shadow(0px 1px 1px #000) brightness(1.875);
+                }
             }
 
             @keyframes unselected {
-                0%, 50% { filter: drop-shadow(0px 1px 1px #000) brightness(1); }
-                50.01%, 100% { filter: drop-shadow(0px 1px 1px #000) brightness(1.875); }
+
+                0%,
+                50% {
+                    filter: drop-shadow(0px 1px 1px #000) brightness(1);
+                }
+
+                50.01%,
+                100% {
+                    filter: drop-shadow(0px 1px 1px #000) brightness(1.875);
+                }
             }
 
             .cranium {
@@ -2554,7 +2580,8 @@
                 border-radius: 100%;
             }
 
-            .mouth:before, .mouth:after {
+            .mouth:before,
+            .mouth:after {
                 content: "";
                 position: absolute;
                 border-radius: 100%;
@@ -2565,20 +2592,48 @@
                 bottom: 0.125vmin;
             }
 
-            .mouth:after { left: 4.525vmin; }
+            .mouth:after {
+                left: 4.525vmin;
+            }
 
             @keyframes check-on {
-                0% { right: -65%; }
-                25%, 33% { right: 0%; }
-                66%, 80% { right: -50%; }
-                100% { right: -65%; }
+                0% {
+                    right: -65%;
+                }
+
+                25%,
+                33% {
+                    right: 0%;
+                }
+
+                66%,
+                80% {
+                    right: -50%;
+                }
+
+                100% {
+                    right: -65%;
+                }
             }
 
             @keyframes check-off {
-                0% { right: -65%; }
-                25%, 33% { right: 0%; }
-                66%, 80% { right: -50%; }
-                100% { right: -65%; }
+                0% {
+                    right: -65%;
+                }
+
+                25%,
+                33% {
+                    right: 0%;
+                }
+
+                66%,
+                80% {
+                    right: -50%;
+                }
+
+                100% {
+                    right: -65%;
+                }
             }
 
             .arm-wrapper {
@@ -2591,7 +2646,7 @@
                 animation: check-off 1.5s ease-in-out 0s reverse forwards;
             }
 
-            .switch input:checked ~ .arm-wrapper {
+            .switch input:checked~.arm-wrapper {
                 animation: check-on 1.5s ease-in-out 0s forwards;
             }
 
@@ -2614,7 +2669,10 @@
                 right: -2vmin;
             }
 
-            .bone:before, .bone:after, .big:before, .big:after {
+            .bone:before,
+            .bone:after,
+            .big:before,
+            .big:after {
                 content: "";
                 background: #fff;
                 width: 0.75vmin;
@@ -2626,9 +2684,11 @@
                 box-shadow: 4vmin 0 0 0 #fff;
             }
 
-            .bone:after { top: calc(100% - 0.5vmin); }
+            .bone:after {
+                top: calc(100% - 0.5vmin);
+            }
 
-            .arm > .bone + .bone {
+            .arm>.bone+.bone {
                 top: 0.75vmin;
                 left: 0.25vmin;
                 height: 0.425vmin;
@@ -2636,11 +2696,14 @@
                 box-shadow: 0 0.575vmin 0 0 #fff;
             }
 
-            .arm > .bone + .bone:before, .arm > .bone + .bone:after {
+            .arm>.bone+.bone:before,
+            .arm>.bone+.bone:after {
                 box-shadow: 5.075vmin 0 0 0 #fff;
             }
 
-            .arm > .bone + .bone:after { top: 100%; }
+            .arm>.bone+.bone:after {
+                top: 100%;
+            }
 
             .hand {
                 position: absolute;
@@ -2657,14 +2720,18 @@
                 z-index: 0;
             }
 
-            .hand .bone, .big {
+            .hand .bone,
+            .big {
                 width: 1.5vmin;
                 left: 0.675vmin;
                 height: 0.375vmin;
                 border-radius: 0.25vmin 0 0 0.25vmin;
             }
 
-            .hand .bone:before, .hand .bone:after, .big:before, .big:after {
+            .hand .bone:before,
+            .hand .bone:after,
+            .big:before,
+            .big:after {
                 width: 0.4vmin;
                 height: 0.4vmin;
                 top: -0.125vmin;
@@ -2672,7 +2739,10 @@
                 box-shadow: none;
             }
 
-            .hand .bone:after, .big:after { top: 0.0625vmin; }
+            .hand .bone:after,
+            .big:after {
+                top: 0.0625vmin;
+            }
 
             .hand .bone:nth-child(1) {
                 transform: rotate(5deg) translateY(-0.5vmin) translateX(0.075vmin);
