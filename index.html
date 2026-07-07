@@ -3628,6 +3628,43 @@
     drop-shadow(0 -4px 6px #0009);
   animation: none;
 }
+/* Mobile view adjustments */
+@media (max-width: 720px) {
+  .btn-wrapper {
+    display: flex;
+    justify-content: center;   /* Center the button horizontally */
+    align-items: center;       /* Center vertically if needed */
+    width: 100%;               /* Full width for balance */
+    margin: 1rem 0;            /* Add spacing around */
+  }
+
+  .btn {
+    width: 100%;                /* Make button wider on mobile */
+    padding: 0.3em 4.5em;       /* Increase padding for touch comfort */
+    font-size: 1.1em;           /* Slightly larger text */
+    justify-content: center;    /* Center text and icon */
+  }
+
+  .btn-svg {
+    margin-right: 0.3rem;       /* Reduce spacing for compact look */
+    height: 30.5px;               /* Slightly smaller icon */
+  }
+
+  .txt-wrapper {
+    flex-direction: column;     /* Stack text vertically if needed */
+    align-items: center;
+    min-width: auto;
+    top: 10px;                      /* Adjust vertical alignment */
+  }
+
+  .txt-1,
+  .txt-2 {
+    position: relative;         /* Prevent overlap issues */
+    word-spacing: normal;
+    text-align: center;
+  }
+}
+
 
 /* From Uiverse.io by barisdogansutcu */ 
 .btn-uiverse-dogansutcu {
