@@ -831,7 +831,6 @@
             margin-left: auto;
             margin-right: auto;
             padding-top: 2.5rem;
-            border-top: 1px solid rgba(255,255,255,0.12);
             width: 100%;
             max-width: 800px;
         }
@@ -2283,7 +2282,7 @@
 
             /* ── MOBILE NAV — Dark Pill + Hamburger Toggle ── */
             nav {
-                top: 0.75rem !important;
+                top: 1.25rem !important;
                 left: 50% !important;
                 transform: translateX(-50%) !important;
                 width: calc(100% - 1.5rem) !important;
@@ -2747,19 +2746,25 @@
                 font-size: 0.58rem;
             }
 
+            .hero {
+                padding: 10.5rem 1.5rem 4rem !important;
+            }
+
             .hero h1 {
-                font-size: clamp(1.2rem, 4vw, 1.6rem);
+                font-size: clamp(2.2rem, 7vw, 2.8rem);
+                line-height: 1.15;
                 margin-bottom: 1.2rem;
             }
 
             .hero-sub {
-                font-size: 1rem;
+                font-size: clamp(0.9rem, 3.5vw, 1rem);
+                line-height: 1.5;
                 margin-bottom: 1.8rem;
             }
 
             .hero-actions {
                 flex-direction: column;
-                align-items: stretch;
+                align-items: center;
                 width: 100%;
                 gap: 2.2rem;
             }
