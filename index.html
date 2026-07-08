@@ -6176,51 +6176,60 @@
         </section>
 
         <!-- ══════════ MDW SCROLL EFFECT 141 SECTION (SEPARATE SLIDE) ══════════ -->
-        <section class="mdw-scroll-effect-141" style="background: #000000; padding: 120px 0; overflow: hidden; position: relative;">
-            <div class="mdw-scroll-effect-141-content" style="max-width: 800px; margin: 0 auto 80px; text-align: center; color: #ffffff;">
-                <div class="elementor-element mdw-scroll-effect-141-text" style="padding: 0 20px;">
-                    <p style="font-size: clamp(2rem, 5vw, 4rem); font-weight: 800; font-family: 'Space Grotesk', sans-serif; line-height: 1.1; margin: 0 0 20px; color: #ffffff;">
-                        Pioneering the Next Wave of Digital Strategy.
-                    </p>
-                    <p style="font-size: clamp(1rem, 1.5vw, 1.25rem); color: rgba(255,255,255,0.6); max-width: 600px; margin: 0 auto; line-height: 1.6;">
-                        Scroll down to see the floating interface cards assemble and reveal details of our flagship architecture.
-                    </p>
-                </div>
+        <section class="mdw-scroll-effect-141" style="background: #000000; overflow: hidden; position: relative; min-height: 100vh; height: 100vh; display: flex; align-items: center; justify-content: center; width: 100%;">
+            
+            <!-- Headline Title at the top (aligned lower to avoid header overlap) -->
+            <div class="hww-title-wrapper" style="position: absolute; top: 14%; left: 50%; transform: translateX(-50%); text-align: center; width: 100%; max-width: 800px; padding: 0 20px; z-index: 5;">
+                <p style="font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800; font-family: 'Space Grotesk', sans-serif; line-height: 1.1; margin: 0 0 10px; color: #ffffff;">
+                    Pioneering the Next Wave of Digital Strategy.
+                </p>
+                <p style="font-size: clamp(0.9rem, 1.2vw, 1.1rem); color: rgba(255,255,255,0.6); max-width: 580px; margin: 0 auto; line-height: 1.5;">
+                    Scroll down to see our process unfold and zoom into how we work.
+                </p>
             </div>
 
-            <!-- Parallax images/cards section -->
-            <div class="mdw-scroll-effect-141-images" style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 80px; padding: 0 20px; position: relative;">
+            <!-- Pinned Container for Cards & Centered Content -->
+            <div class="hww-animation-container" style="position: relative; width: 100%; max-width: 1200px; height: 75vh; display: flex; align-items: center; justify-content: center; z-index: 2;">
                 
-                <!-- Card Container 1 -->
-                <div class="e-con" style="display: flex; justify-content: space-between; align-items: center; min-height: 300px; position: relative; width: 100%;">
-                    <!-- Left Card -->
-                    <div class="elementor-widget-image" style="width: 45%; max-width: 400px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 24px; padding: 30px; box-shadow: 0 30px 60px rgba(0,0,0,0.4); backdrop-filter: blur(10px); transition: transform 0.1s ease-out;">
-                        <span style="font-size: 0.85rem; color: #76ecf0; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;">01 / RESEARCH</span>
-                        <h3 style="font-size: 1.8rem; color: #ffffff; margin: 15px 0 10px; font-family: 'Space Grotesk', sans-serif;">Deep Market Discovery</h3>
-                        <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.5; margin: 0;">We analyze market gaps, target audience behavior, and architectural requirements to set a robust foundation.</p>
+                <!-- The Zooming Center Content (Image + Text) -->
+                <div class="hww-center-wrapper" style="position: absolute; z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; pointer-events: none; opacity: 0; transform: scale(0.3); transform-origin: center center;">
+                    <!-- High-quality Glassmorphic Floating Image -->
+                    <div class="hww-center-image" style="width: min(320px, 70vw); aspect-ratio: 16/10; border-radius: 20px; border: 1px solid rgba(255,255,255,0.18); overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.15); margin-bottom: 24px; background: rgba(255,255,255,0.03); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
+                        <img src="hww_bg_mockup.png" style="width: 100%; height: 100%; object-fit: cover;" alt="How We Work Preview">
                     </div>
-                    <!-- Right Card -->
-                    <div class="elementor-widget-image" style="width: 45%; max-width: 400px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 24px; padding: 30px; box-shadow: 0 30px 60px rgba(0,0,0,0.4); backdrop-filter: blur(10px); transition: transform 0.1s ease-out;">
-                        <span style="font-size: 0.85rem; color: #7c5cfc; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;">02 / BLUEPRINT</span>
-                        <h3 style="font-size: 1.8rem; color: #ffffff; margin: 15px 0 10px; font-family: 'Space Grotesk', sans-serif;">UX & Engineering Flows</h3>
-                        <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.5; margin: 0;">Translating complex processes into visual user journeys and highly scalable system designs.</p>
+                    <!-- Zooming Text -->
+                    <div class="hww-center-text" style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 900; text-transform: uppercase; color: #ffffff; text-shadow: 0 0 40px rgba(124,92,252,0.9); text-align: center; white-space: nowrap;">
+                        How We Work
                     </div>
                 </div>
 
-                <!-- Card Container 2 -->
-                <div class="e-con" style="display: flex; justify-content: space-between; align-items: center; min-height: 300px; position: relative; width: 100%;">
-                    <!-- Left Card -->
-                    <div class="elementor-widget-image" style="width: 45%; max-width: 400px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 24px; padding: 30px; box-shadow: 0 30px 60px rgba(0,0,0,0.4); backdrop-filter: blur(10px); transition: transform 0.1s ease-out;">
-                        <span style="font-size: 0.85rem; color: #76ecf0; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;">03 / VELOCITY</span>
-                        <h3 style="font-size: 1.8rem; color: #ffffff; margin: 15px 0 10px; font-family: 'Space Grotesk', sans-serif;">High-Performance Code</h3>
-                        <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.5; margin: 0;">Writing clean, modular component systems optimized for loading speed, SEO, and robust reliability.</p>
-                    </div>
-                    <!-- Right Card -->
-                    <div class="elementor-widget-image" style="width: 45%; max-width: 400px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 24px; padding: 30px; box-shadow: 0 30px 60px rgba(0,0,0,0.4); backdrop-filter: blur(10px); transition: transform 0.1s ease-out;">
-                        <span style="font-size: 0.85rem; color: #7c5cfc; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;">04 / SCALE</span>
-                        <h3 style="font-size: 1.8rem; color: #ffffff; margin: 15px 0 10px; font-family: 'Space Grotesk', sans-serif;">Cloud Infrastructure</h3>
-                        <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.5; margin: 0;">Deploying on resilient serverless structures designed for auto-scaling and global performance.</p>
-                    </div>
+                <!-- 4 Floating Interface Cards (spatially adjusted to clear title block) -->
+                <!-- Card 1 (Top Left) -->
+                <div class="hww-card hww-card-tl elementor-widget-image" style="position: absolute; top: 22%; left: 4%; width: 38%; max-width: 380px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 25px; box-shadow: 0 30px 60px rgba(0,0,0,0.5); backdrop-filter: blur(12px); transform-origin: top left;">
+                    <span style="font-size: 0.8rem; color: #76ecf0; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;">01 / RESEARCH</span>
+                    <h3 style="font-size: 1.5rem; color: #ffffff; margin: 12px 0 8px; font-family: 'Space Grotesk', sans-serif;">Deep Market Discovery</h3>
+                    <p style="color: rgba(255,255,255,0.65); font-size: 0.9rem; line-height: 1.45; margin: 0;">We analyze market gaps, target audience behavior, and architectural requirements to set a robust foundation.</p>
+                </div>
+
+                <!-- Card 2 (Top Right) -->
+                <div class="hww-card hww-card-tr elementor-widget-image" style="position: absolute; top: 22%; right: 4%; width: 38%; max-width: 380px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 25px; box-shadow: 0 30px 60px rgba(0,0,0,0.5); backdrop-filter: blur(12px); transform-origin: top right;">
+                    <span style="font-size: 0.8rem; color: #7c5cfc; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;">02 / BLUEPRINT</span>
+                    <h3 style="font-size: 1.5rem; color: #ffffff; margin: 12px 0 8px; font-family: 'Space Grotesk', sans-serif;">UX & Engineering Flows</h3>
+                    <p style="color: rgba(255,255,255,0.65); font-size: 0.9rem; line-height: 1.45; margin: 0;">Translating complex processes into visual user journeys and highly scalable system designs.</p>
+                </div>
+
+                <!-- Card 3 (Bottom Left) -->
+                <div class="hww-card hww-card-bl elementor-widget-image" style="position: absolute; bottom: 8%; left: 4%; width: 38%; max-width: 380px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 25px; box-shadow: 0 30px 60px rgba(0,0,0,0.5); backdrop-filter: blur(12px); transform-origin: bottom left;">
+                    <span style="font-size: 0.8rem; color: #76ecf0; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;">03 / VELOCITY</span>
+                    <h3 style="font-size: 1.5rem; color: #ffffff; margin: 12px 0 8px; font-family: 'Space Grotesk', sans-serif;">High-Performance Code</h3>
+                    <p style="color: rgba(255,255,255,0.65); font-size: 0.9rem; line-height: 1.45; margin: 0;">Writing clean, modular component systems optimized for loading speed, SEO, and robust reliability.</p>
+                </div>
+
+                <!-- Card 4 (Bottom Right) -->
+                <div class="hww-card hww-card-br elementor-widget-image" style="position: absolute; bottom: 8%; right: 4%; width: 38%; max-width: 380px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 25px; box-shadow: 0 30px 60px rgba(0,0,0,0.5); backdrop-filter: blur(12px); transform-origin: bottom right;">
+                    <span style="font-size: 0.8rem; color: #7c5cfc; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;">04 / SCALE</span>
+                    <h3 style="font-size: 1.5rem; color: #ffffff; margin: 12px 0 8px; font-family: 'Space Grotesk', sans-serif;">Cloud Infrastructure</h3>
+                    <p style="color: rgba(255,255,255,0.65); font-size: 0.9rem; line-height: 1.45; margin: 0;">Deploying on resilient serverless structures designed for auto-scaling and global performance.</p>
                 </div>
 
             </div>
@@ -6235,165 +6244,107 @@
         [data-elementor-type="wp-page"] {
             overflow-x: hidden;
         }
-        .mdw-scroll-effect-141-images .elementor-widget-image,
-        .mdw-scroll-effect-141-images img {
-            max-width: unset !important;
-        }
-        html.elementor-html .mdw-scroll-effect-141-content {
-            z-index: 100;
-        }
-        .mdw-scroll-effect-141-content > .elementor-element:not(.mdw-scroll-effect-141-text) > * {
-            opacity: 0;
-            transform: translateY(50%);
-            transition: 1s;
-        }
-        .mdw-scroll-effect-141-text p:last-child {
-            margin: 0;
-        }
-        .mdw-scroll-effect-141-content .mdw-scroll-effect-141-text .word {
-            display: inline-block;
-            overflow: hidden;
-        }
-        .mdw-scroll-effect-141-content .mdw-scroll-effect-141-text .inner-word {
-            display: inline-block;
-            transform: translateY(100%);
-            transition: all 1s ease-in-out calc(var(--delay) * 0.1s);
-        }
-        html.elementor-html .mdw-scroll-effect-141-content > .elementor-element > *,
-        .mdw-scroll-effect-141-content > .elementor-element.reveal > *,
-        .mdw-scroll-effect-141-content .mdw-scroll-effect-141-text.reveal .inner-word {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        @media (max-width: 767px) {
-            .mdw-scroll-effect-141-images .elementor-widget-image {
-                transition: 1.2s;
+        /* Mobile layout styling for the cards and section */
+        @media (max-width: 900px) {
+            .mdw-scroll-effect-141 {
+                height: auto !important;
+                min-height: auto !important;
+                padding: 100px 0 !important;
             }
-            .mdw-scroll-effect-141-images > .e-con.moved > .e-con:nth-child(1) .elementor-widget-image,
-            .mdw-scroll-effect-141-images > .e-container.moved > .e-container:nth-child(1) .elementor-widget-image {
-                transform: translateX(-180px);
+            .hww-animation-container {
+                flex-direction: column !important;
+                height: auto !important;
+                gap: 30px !important;
+                padding: 0 20px !important;
             }
-            .mdw-scroll-effect-141-images > .e-con.moved > .e-con:nth-child(2) .elementor-widget-image,
-            .mdw-scroll-effect-141-images > .e-container.moved > .e-container:nth-child(2) .elementor-widget-image {
-                transform: translateX(180px);
+            .hww-card {
+                position: relative !important;
+                top: auto !important;
+                left: auto !important;
+                right: auto !important;
+                bottom: auto !important;
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            .hww-center-wrapper {
+                position: relative !important;
+                margin: 40px 0 !important;
+                opacity: 1 !important;
+                transform: scale(1) !important;
+                white-space: normal !important;
+                order: -1;
+            }
+            .hww-title-wrapper {
+                position: relative !important;
+                top: auto !important;
+                left: auto !important;
+                transform: none !important;
+                margin-bottom: 40px !important;
             }
         }
         </style>
 
-        <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <script>
-        if (!window.MDWNonce141) {
-            window.MDWNonce141 = true;
+        (function () {
+            function initHwwScrollTransition() {
+                if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+                    setTimeout(initHwwScrollTransition, 80);
+                    return;
+                }
+                gsap.registerPlugin(ScrollTrigger);
 
-            var mdwSelector = '.mdw-scroll-effect-141',
-                mdwContents = [],
-                mdwWindowHeight,
-                mdwWindowHalfHeight,
-                mdwWindowWidth;
+                var hwwSection = document.querySelector('.mdw-scroll-effect-141');
+                if (!hwwSection) return;
 
-            function mdwInit() {
-                $(mdwSelector).each(function (i) {
-                    mdwContents[i] = $(this).find('.mdw-scroll-effect-141-content').children();
-                });
-            }
-
-            function mdwUpdateCardsPosition() {
-                var windowTop = $(window).scrollTop();
-                $(mdwSelector).each(function () {
-                    $(this).find('.mdw-scroll-effect-141-images').each(function (i) {
-                        var container = $(this),
-                            containerTop = container.offset().top,
-                            containerHeight = container.outerHeight(),
-                            startPoint = (i === 0) ? containerTop - mdwWindowHalfHeight : containerTop - mdwWindowHeight,
-                            endPoint = containerTop + containerHeight - mdwWindowHalfHeight,
-                            progress = (windowTop - startPoint) / (endPoint - startPoint);
-
-                        progress = Math.max(0, Math.min(1, progress));
-
-                        if (mdwWindowWidth > 767) {
-                            var initVals = {
-                                leftX:       [-800, -900, -400],
-                                rightX:      [800,   900,  400],
-                                leftRotate:  [-30,   -20,  -35],
-                                rightRotate: [30,     20,   35],
-                                y:           [100,  -150, -400]
-                            };
-                            container.children('.e-con, .e-container').each(function (index) {
-                                var ai        = index % initVals.leftX.length,
-                                    leftCard  = $(this).find('.elementor-widget-image').eq(0),
-                                    rightCard = $(this).find('.elementor-widget-image').eq(1);
-                                leftCard.css('transform',
-                                    'translate(' + (progress * initVals.leftX[ai]) + 'px, ' +
-                                    (progress * initVals.y[ai]) + 'px) rotate(' +
-                                    (progress * initVals.leftRotate[ai]) + 'deg)');
-                                rightCard.css('transform',
-                                    'translate(' + (progress * initVals.rightX[ai]) + 'px, ' +
-                                    (progress * initVals.y[ai]) + 'px) rotate(' +
-                                    (progress * initVals.rightRotate[ai]) + 'deg)');
-                            });
-                        } else {
-                            container.children('.e-con, .e-container').each(function () {
-                                var c = $(this),
-                                    image = c.find('.elementor-widget-image'),
-                                    cardOffsetTop = c[0].getBoundingClientRect().top;
-                                image.removeAttr('style');
-                                c.toggleClass('moved', cardOffsetTop < mdwWindowHalfHeight);
-                            });
+                // Only apply pinning and zoom transition on desktop screens
+                if (window.innerWidth > 900) {
+                    var pinTimeline = gsap.timeline({
+                        scrollTrigger: {
+                            trigger: hwwSection,
+                            start: "top top",
+                            end: "+=180%",
+                            pin: true,
+                            scrub: 1.2,
+                            anticipatePin: 1
                         }
                     });
-                });
+
+                    // 1. Initial State: cards fly outwards slightly and fade out, title fades out
+                    pinTimeline.to(".hww-title-wrapper", { opacity: 0, y: -80, duration: 0.6 }, 0);
+                    pinTimeline.to(".hww-card-tl", { x: -380, y: -280, rotation: -20, opacity: 0, scale: 0.75, duration: 1 }, 0);
+                    pinTimeline.to(".hww-card-tr", { x: 380, y: -280, rotation: 20, opacity: 0, scale: 0.75, duration: 1 }, 0);
+                    pinTimeline.to(".hww-card-bl", { x: -380, y: 280, rotation: 20, opacity: 0, scale: 0.75, duration: 1 }, 0);
+                    pinTimeline.to(".hww-card-br", { x: 380, y: 280, rotation: -20, opacity: 0, scale: 0.75, duration: 1 }, 0);
+
+                    // 2. Fade in "How We Work" content in the center and scale up to 1
+                    pinTimeline.fromTo(".hww-center-wrapper", 
+                        { scale: 0.4, opacity: 0 },
+                        { scale: 1.0, opacity: 1, duration: 0.6, ease: "power1.out" }, 
+                        0.1
+                    );
+
+                    // 3. Zoom into the center content (scale up massively to go inside it) and fade out
+                    pinTimeline.to(".hww-center-wrapper", {
+                        scale: 35,
+                        opacity: 0,
+                        filter: "blur(8px)",
+                        duration: 1.3,
+                        ease: "power2.in"
+                    }, 0.7);
+                }
             }
 
-            function mdwWrapWords() {
-                $('.mdw-scroll-effect-141-text p').each(function () {
-                    var el = $(this),
-                        text = el.text(),
-                        chunks = text.match(/\S+|\s+/g) || [],
-                        html = '';
-                    for (var i = 0; i < chunks.length; i++) {
-                        if (/\s+/.test(chunks[i])) {
-                            html += chunks[i];
-                        } else {
-                            html += '<span class="word"><span class="inner-word">' + chunks[i] + '</span></span>';
-                        }
-                    }
-                    el.html(html);
-                    var spans = el.find('.word'), prevTop = null, delay = 0;
-                    spans.each(function () {
-                        var top = $(this).offset().top;
-                        delay = prevTop === null ? 0 : (top > prevTop ? delay + 1 : delay);
-                        $(this)[0].style.setProperty('--delay', delay);
-                        prevTop = top;
-                    });
-                });
+            // Run on load and resize
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initHwwScrollTransition);
+            } else {
+                initHwwScrollTransition();
             }
-
-            function mdwRevealContent() {
-                $(mdwSelector).each(function (i) {
-                    mdwContents[i].each(function () {
-                        var content = $(this),
-                            contentTop = content[0].getBoundingClientRect().top,
-                            startPoint = mdwWindowWidth > 767 ? 0.8 : 0.6;
-                        content.toggleClass('reveal', contentTop < mdwWindowHeight * startPoint);
-                    });
-                });
-            }
-
-            $(document).ready(function () {
-                mdwInit();
-                mdwWrapWords();
+            window.addEventListener('resize', function() {
+                // Refresh ScrollTrigger to recalculate values on resize
+                ScrollTrigger.refresh();
             });
-            $(window).on('load scroll resize', function () {
-                mdwWindowHeight     = $(window).height();
-                mdwWindowHalfHeight = mdwWindowHeight / 2;
-                mdwWindowWidth      = $(window).width();
-                mdwUpdateCardsPosition();
-                mdwRevealContent();
-            });
-            $(window).on('load resize', function () {
-                mdwWrapWords();
-            });
-        }
+        })();
         </script>
 
         <!-- Lenis Smooth Scroll -->
