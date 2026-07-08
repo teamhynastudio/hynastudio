@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -3793,7 +3793,7 @@
 
 
                     <!-- From Uiverse.io by barisdogansutcu -->
-                    <button class="btn-uiverse-dogansutcu" onclick="window.location.href='contact.html'">
+                    <button class="btn-uiverse-dogansutcu" onclick="window.location.href='launchpad.html'">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" width="36px" height="36px">
                             <rect width="36" height="36" x="0" y="0" fill="#fdd835"></rect>
                             <path fill="#e53935"
@@ -4687,346 +4687,6 @@
         </script>
         <!-- ══════════ END BUILD HEADLINE ══════════ -->
 
-        <!-- ══════════ LAUNCHPAD SECTION ══════════ -->
-
-
-        <style>
-            /* ─── variables & base ─── */
-            #hyna-launchpad {
-                --lp-bg: #fcfcfd;
-                --lp-bg-soft: #f4f5fa;
-                --lp-ink: #0b1120;
-                --lp-ink-dim: rgba(11, 17, 32, .64);
-                --lp-ink-dimmer: rgba(11, 17, 32, .42);
-                --lp-blue: #2f6bff;
-                --lp-surface: #ffffff;
-                --lp-border: rgba(11, 17, 32, .09);
-                --lp-border-soft: rgba(11, 17, 32, .06);
-                --lp-font-display: 'Sora', sans-serif;
-                --lp-font-body: 'Inter', sans-serif;
-                --lp-font-mono: 'Space Mono', monospace;
-                font-family: var(--lp-font-body);
-                background:
-                    radial-gradient(circle at 1.5px 1.5px, rgba(11, 17, 32, .07) 1.4px, transparent 0) 0 0/26px 26px,
-                    var(--lp-bg);
-                color: var(--lp-ink);
-                line-height: 1.55;
-                position: relative;
-                width: 100%;
-            }
-
-            #hyna-launchpad a {
-                color: inherit;
-                text-decoration: none;
-            }
-
-            #hyna-launchpad button {
-                font-family: inherit;
-                cursor: pointer;
-            }
-
-            #hyna-launchpad h2,
-            #hyna-launchpad h3 {
-                font-family: var(--lp-font-display);
-                letter-spacing: -.015em;
-            }
-
-            /* wrapper */
-            #hyna-launchpad .lp-wrap {
-                max-width: 1220px;
-                margin: 0 auto;
-                padding: 60px 28px 20px;
-            }
-
-            /* eyebrow */
-            #hyna-launchpad .lp-eyebrow {
-                font-family: var(--lp-font-mono);
-                font-size: 12px;
-                letter-spacing: .14em;
-                text-transform: uppercase;
-                color: var(--lp-blue);
-                display: inline-flex;
-                align-items: center;
-                gap: 8px;
-                margin-bottom: 16px;
-                font-weight: 700;
-            }
-
-            #hyna-launchpad .lp-eyebrow::before {
-                content: "";
-                width: 16px;
-                height: 2px;
-                background: var(--lp-blue);
-            }
-
-            /* section head */
-            #hyna-launchpad .lp-section-head {
-                max-width: 640px;
-                margin-bottom: 28px;
-                text-align: left;
-            }
-
-            #hyna-launchpad .lp-section-head h2 {
-                font-size: clamp(28px, 4vw, 44px);
-                font-weight: 700;
-                margin-bottom: 16px;
-                color: var(--lp-ink);
-                line-height: 1.2;
-            }
-
-            #hyna-launchpad .lp-section-head p {
-                color: var(--lp-ink-dim);
-                font-size: 17px;
-            }
-
-            /* fade-up */
-            #hyna-launchpad .lp-fade-up {
-                opacity: 0;
-                transform: translateY(34px);
-                transition: opacity .8s cubic-bezier(.16, .84, .44, 1), transform .8s cubic-bezier(.16, .84, .44, 1);
-            }
-
-            #hyna-launchpad .lp-fade-up.lp-in {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            /* ── scroll-pin shell (shared desktop + mobile) ── */
-            #hyna-launchpad .lp-stack-pin {
-                position: relative;
-                height: 340vh;
-                /* 4 slides × ~85vh each */
-            }
-
-            #hyna-launchpad .lp-stack-sticky {
-                position: sticky;
-                top: 17vh;
-                height: 66vh;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                overflow: hidden;
-            }
-
-            /* card container */
-            #hyna-launchpad .lp-stack-cards {
-                position: relative;
-                width: min(620px, 92%);
-                height: min(420px, 58vh);
-            }
-
-            /* ── card base ── */
-            #hyna-launchpad .lp-stack-card {
-                position: absolute;
-                inset: 0;
-                border-radius: 24px;
-                padding: 44px;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                border: 1px solid rgba(255, 255, 255, 0.08);
-                background: linear-gradient(135deg, #0b1120, #131b30);
-                color: #ffffff;
-                will-change: transform, opacity;
-                /* start off-screen right */
-                transform: translateX(110%) scale(1);
-                opacity: 0;
-            }
-
-            #hyna-launchpad .lp-stack-card .lp-slide-num {
-                position: absolute;
-                top: 24px;
-                right: 32px;
-                font-family: var(--lp-font-display);
-                font-size: 80px;
-                font-weight: 800;
-                opacity: .07;
-            }
-
-            #hyna-launchpad .lp-stack-card h3 {
-                font-size: 28px;
-                font-weight: 700;
-                margin-bottom: 14px;
-                max-width: 460px;
-                color: #ffffff;
-            }
-
-            #hyna-launchpad .lp-stack-card p {
-                color: rgba(255, 255, 255, 0.7);
-                font-size: 15px;
-                max-width: 480px;
-                margin-bottom: 18px;
-            }
-
-            #hyna-launchpad .lp-slide-tags {
-                display: flex;
-                gap: 8px;
-                flex-wrap: wrap;
-            }
-
-            #hyna-launchpad .lp-tag {
-                font-family: var(--lp-font-mono);
-                font-size: 11px;
-                padding: 5px 10px;
-                border-radius: 8px;
-                background: rgba(255, 255, 255, 0.08);
-                color: rgba(255, 255, 255, 0.75);
-                border: 1px solid rgba(255, 255, 255, 0.12);
-            }
-
-            /* hint */
-            #hyna-launchpad .lp-stack-hint {
-                margin-top: 22px;
-                font-family: var(--lp-font-mono);
-                font-size: 12px;
-                color: var(--lp-ink-dimmer);
-                display: flex;
-                align-items: center;
-                gap: 8px;
-            }
-
-            #hyna-launchpad .lp-stack-hint .lp-arrow {
-                display: inline-block;
-                animation: lp-nudge 1.6s ease-in-out infinite;
-            }
-
-            @keyframes lp-nudge {
-
-                0%,
-                100% {
-                    transform: translateX(0);
-                }
-
-                50% {
-                    transform: translateX(6px);
-                }
-            }
-
-            /* dots */
-            #hyna-launchpad .lp-slider-dots {
-                display: flex;
-                gap: 8px;
-                justify-content: center;
-                margin-top: 18px;
-            }
-
-            #hyna-launchpad .lp-slider-dots button {
-                width: 9px;
-                height: 9px;
-                border-radius: 50%;
-                border: none;
-                background: var(--lp-border);
-                transition: background .3s, width .3s;
-            }
-
-            #hyna-launchpad .lp-slider-dots button.lp-active {
-                background: var(--lp-blue);
-                width: 24px;
-                border-radius: 6px;
-            }
-
-            /* ── MOBILE overrides (≤ 760px) ── */
-            @media (max-width:760px) {
-
-                /* Hide the entire Launchpad section on mobile */
-                #hyna-launchpad {
-                    display: none !important;
-                }
-
-                #hyna-launchpad .lp-wrap {
-                    padding: 72px 16px 80px;
-                }
-
-                #hyna-launchpad .lp-section-head {
-                    margin-bottom: 32px;
-                    text-align: center;
-                }
-
-                #hyna-launchpad .lp-section-head p {
-                    font-size: 15px;
-                }
-
-                /* taller pin so 4 cards have enough scroll room */
-                #hyna-launchpad .lp-stack-pin {
-                    height: 400vh;
-                }
-
-                /* full-width cards, auto height */
-                #hyna-launchpad .lp-stack-cards {
-                    width: 92vw;
-                    height: auto;
-                    min-height: 300px;
-                }
-
-                #hyna-launchpad .lp-stack-card {
-                    position: absolute;
-                    inset: 0;
-                    border-radius: 20px;
-                    padding: 32px 24px;
-                    height: auto;
-                    min-height: 300px;
-                }
-
-                #hyna-launchpad .lp-stack-card .lp-slide-num {
-                    font-size: 56px;
-                    top: 16px;
-                    right: 18px;
-                }
-
-                #hyna-launchpad .lp-stack-card h3 {
-                    font-size: 22px;
-                    max-width: 100%;
-                }
-
-                #hyna-launchpad .lp-stack-card p {
-                    font-size: 14px;
-                    max-width: 100%;
-                }
-
-                /* keep hint text */
-                #hyna-launchpad .lp-stack-hint {
-                    margin-top: 20px;
-                }
-            }
-
-            /* reduced-motion fallbacks */
-            #hyna-launchpad.lp-reduced-motion .lp-stack-pin {
-                height: auto;
-            }
-
-            #hyna-launchpad.lp-reduced-motion .lp-stack-sticky {
-                position: static;
-                height: auto;
-                display: flex;
-                flex-direction: column;
-            }
-
-            #hyna-launchpad.lp-reduced-motion .lp-stack-cards {
-                position: static;
-                height: auto;
-                width: 100%;
-            }
-
-            #hyna-launchpad.lp-reduced-motion .lp-stack-card {
-                position: relative;
-                inset: auto;
-                transform: none !important;
-                opacity: 1 !important;
-                margin-bottom: 20px;
-            }
-
-            #hyna-launchpad.lp-reduced-motion .lp-stack-hint {
-                display: none;
-            }
-
-            @media (prefers-reduced-motion:reduce) {
-                #hyna-launchpad * {
-                    animation-duration: .001ms !important;
-                    transition-duration: .001ms !important;
-                }
-            }
-        </style>
 
         <!-- SERVICES -->
         <style>
@@ -6379,7 +6039,7 @@
                         scrollTrigger: {
                             trigger: section,
                             start: 'top top',
-                            end: '+=200%',
+                            end: '+=300%',
                             pin: true,
                             scrub: 1.2,
                             anticipatePin: 1
@@ -6424,20 +6084,24 @@
 
                     var startProject = document.getElementById('hyna-start-project');
 
-                    /* Zoom in and fade in the Start Your Project slide */
+                    /* Start Your Project fades in ONLY after zoom fully fills viewport (phase 3 ends at 1.0) */
+                    /* First, ensure it starts completely invisible & untransformed */
+                    gsap.set(startProject, { opacity: 0, y: 40, pointerEvents: 'none' });
+
                     tl.to(startProject, {
                         opacity: 1,
-                        scale: 1,
+                        y: 0,
                         pointerEvents: 'auto',
                         ease: 'power2.out',
-                        duration: 0.45,
+                        duration: 0.30,
                         onStart: function() {
                             startProject.classList.add('hyna-in-view');
                         },
                         onReverseComplete: function() {
                             startProject.classList.remove('hyna-in-view');
+                            gsap.set(startProject, { pointerEvents: 'none' });
                         }
-                    }, 0.55);
+                    }, 0.88);
                 }
 
                 if (document.readyState === 'loading') {
@@ -7708,9 +7372,9 @@
                 height: 100%;
                 z-index: 20;
                 opacity: 0;
-                transform: scale(0.05);
+                transform: translateY(30px);
                 pointer-events: none;
-                transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+                /* No CSS transition — GSAP controls this entirely */
 
                 background: var(--hyna-paper);
                 color: var(--hyna-ink);
