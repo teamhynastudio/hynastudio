@@ -6297,7 +6297,7 @@
                         scrollTrigger: {
                             trigger: section,
                             start: 'top top',
-                            end: '+=280%',
+                            end: '+=200%',
                             pin: true,
                             scrub: 1.2,
                             anticipatePin: 1
@@ -6319,26 +6319,33 @@
                         duration: 0.25
                     }, 0.35);
 
-                    /* Phase 3 (0.58 → 1.00): ZOOM INTO the oval – whole stage scales to ~30× */
+                    /* Phase 3 (0.55 → 1.00): ZOOM INTO the oval – whole stage scales to ~30× */
                     tl.to(stage, {
                         scale: 30,
                         ease: 'power2.in',
-                        duration: 0.42
-                    }, 0.58);
+                        duration: 0.45
+                    }, 0.55);
 
-                    /* Simultaneously fade the oval stroke so we just fly through black */
+                    /* Simultaneously fade the section background from black to white */
+                    tl.to(section, {
+                        backgroundColor: '#ffffff',
+                        ease: 'power1.inOut',
+                        duration: 0.40
+                    }, 0.60);
+
+                    /* Fade the oval stroke out as the background becomes white */
                     tl.to(path, {
                         opacity: 0,
                         ease: 'power1.in',
                         duration: 0.30
-                    }, 0.70);
+                    }, 0.60);
 
-                    /* Text also fades as we zoom deep */
+                    /* Text also fades out as the zoom goes deep and background turns white */
                     tl.to(textWrap, {
                         opacity: 0,
                         ease: 'power1.in',
                         duration: 0.25
-                    }, 0.72);
+                    }, 0.58);
                 }
 
                 if (document.readyState === 'loading') {
