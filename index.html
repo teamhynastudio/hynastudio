@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6283,6 +6283,75 @@
                     <h2 id="hwt-title">The Hyna Method</h2>
                 </div>
             </div>
+
+            <!-- Start Your Project Slide (revealed during zoom) -->
+            <div class="hyna-start" id="hyna-start-project">
+                <div class="hyna-grain"></div>
+
+                <div class="hyna-inner">
+                    <div class="hyna-content">
+                        <div class="hyna-top-row">
+                            <p class="hyna-eyebrow" data-hyna-reveal></p>
+                            <div class="hyna-icon" data-hyna-reveal aria-hidden="true">
+                                <svg class="hyna-icon-ring" width="100%" height="100%" viewBox="0 0 120 120">
+                                    <circle cx="60" cy="60" r="58" fill="none" stroke="currentColor" stroke-width="1"
+                                        stroke-dasharray="2 6" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                        </div>
+
+                        <h2 class="hyna-headline" aria-label="Start Your Project">
+                            <span class="hyna-line-wrap"><span class="hyna-line" data-hyna-line style="--d:0">Start</span></span>
+                            <span class="hyna-line-wrap"><span class="hyna-line" data-hyna-line style="--d:1">Your</span></span>
+                            <span class="hyna-line-wrap"><span class="hyna-line hyna-italic" data-hyna-line style="--d:2">Project</span></span>
+                        </h2>
+
+                        <div class="hyna-body-row">
+                            <p class="hyna-desc" data-hyna-reveal>
+                                We partner with founders and brands to design and build work that
+                                earns attention on its own — from first sketch to final ship.
+                                Tell us where you're headed, and let's map the fastest way there.
+                            </p>
+                        </div>
+
+                        <div class="hyna-meta-row" data-hyna-reveal>
+                            <div class="hyna-meta">
+                                <span class="hyna-meta-num">01</span>
+                                <span class="hyna-meta-label">Discovery call</span>
+                            </div>
+                            <div class="hyna-meta">
+                                <span class="hyna-meta-num">02</span>
+                                <span class="hyna-meta-label">Scope &amp; proposal</span>
+                            </div>
+                            <div class="hyna-meta">
+                                <span class="hyna-meta-num">03</span>
+                                <span class="hyna-meta-label">Work begins</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right-side Connect panel, centered in the column -->
+                    <div class="hyna-connect-col" data-hyna-reveal>
+                        <a class="hyna-connect-panel" href="./contact.html">
+                            <span class="hyna-connect-ring" aria-hidden="true">
+                                <svg width="100%" height="100%" viewBox="0 0 200 200">
+                                    <circle cx="100" cy="100" r="98" fill="none" stroke="currentColor" stroke-width="1"
+                                        stroke-dasharray="2 7" stroke-linecap="round" />
+                                </svg>
+                            </span>
+                            <span class="hyna-connect-core">
+                                <span class="hyna-connect-label">Connect</span>
+                                <span class="hyna-connect-circle" aria-hidden="true">
+                                    <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
+                                        <path d="M3 13L13 3M13 3H5M13 3V11" stroke="currentColor" stroke-width="1.4"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <script>
@@ -6339,26 +6408,36 @@
                         duration: 0.45
                     }, 0.55);
 
-                    /* Simultaneously fade the section background from black to white */
-                    tl.to(section, {
-                        backgroundColor: '#ffffff',
-                        ease: 'power1.inOut',
-                        duration: 0.40
-                    }, 0.60);
-
-                    /* Fade the oval stroke out as the background becomes white */
+                    /* Fade the oval stroke out */
                     tl.to(path, {
                         opacity: 0,
                         ease: 'power1.in',
                         duration: 0.30
                     }, 0.60);
 
-                    /* Text also fades out as the zoom goes deep and background turns white */
+                    /* Text also fades out as the zoom goes deep */
                     tl.to(textWrap, {
                         opacity: 0,
                         ease: 'power1.in',
                         duration: 0.25
                     }, 0.58);
+
+                    var startProject = document.getElementById('hyna-start-project');
+
+                    /* Zoom in and fade in the Start Your Project slide */
+                    tl.to(startProject, {
+                        opacity: 1,
+                        scale: 1,
+                        pointerEvents: 'auto',
+                        ease: 'power2.out',
+                        duration: 0.45,
+                        onStart: function() {
+                            startProject.classList.add('hyna-in-view');
+                        },
+                        onReverseComplete: function() {
+                            startProject.classList.remove('hyna-in-view');
+                        }
+                    }, 0.55);
                 }
 
                 if (document.readyState === 'loading') {
@@ -7607,86 +7686,7 @@
                 }
             }
         </style>
-        <!-- ============================================================
-  HYNA STUDIO — "Start Your Project" Section
-  Drop this whole block (including the <style> and <script>)
-  anywhere inside your page's <body>.
-  White, professional background with a cinematic scroll reveal.
-============================================================= -->
 
-        <section class="hyna-start" id="hyna-start-project">
-            <div class="hyna-grain"></div>
-
-            <div class="hyna-inner">
-                <div class="hyna-content">
-                    <div class="hyna-top-row">
-                        <p class="hyna-eyebrow" data-hyna-reveal>
-                        </p>
-
-                        <div class="hyna-icon" data-hyna-reveal aria-hidden="true">
-                            <svg class="hyna-icon-ring" width="100%" height="100%" viewBox="0 0 120 120">
-                                <circle cx="60" cy="60" r="58" fill="none" stroke="currentColor" stroke-width="1"
-                                    stroke-dasharray="2 6" stroke-linecap="round" />
-                            </svg>
-                        </div>
-                    </div>
-
-                    <h2 class="hyna-headline" aria-label="Start Your Project">
-                        <span class="hyna-line-wrap"><span class="hyna-line" data-hyna-line
-                                style="--d:0">Start</span></span>
-                        <span class="hyna-line-wrap"><span class="hyna-line" data-hyna-line
-                                style="--d:1">Your</span></span>
-                        <span class="hyna-line-wrap"><span class="hyna-line hyna-italic" data-hyna-line
-                                style="--d:2">Project</span></span>
-                    </h2>
-
-                    <div class="hyna-body-row">
-                        <p class="hyna-desc" data-hyna-reveal>
-                            We partner with founders and brands to design and build work that
-                            earns attention on its own — from first sketch to final ship.
-                            Tell us where you're headed, and let's map the fastest way there.
-                        </p>
-                    </div>
-
-                    <div class="hyna-meta-row" data-hyna-reveal>
-                        <div class="hyna-meta">
-                            <span class="hyna-meta-num">01</span>
-                            <span class="hyna-meta-label">Discovery call</span>
-                        </div>
-                        <div class="hyna-meta">
-                            <span class="hyna-meta-num">02</span>
-                            <span class="hyna-meta-label">Scope &amp; proposal</span>
-                        </div>
-                        <div class="hyna-meta">
-                            <span class="hyna-meta-num">03</span>
-                            <span class="hyna-meta-label">Work begins</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right-side Connect panel, centered in the column -->
-                <div class="hyna-connect-col" data-hyna-reveal>
-                    <a class="hyna-connect-panel" href="./contact.html">
-                        <span class="hyna-connect-ring" aria-hidden="true">
-                            <svg width="100%" height="100%" viewBox="0 0 200 200">
-                                <circle cx="100" cy="100" r="98" fill="none" stroke="currentColor" stroke-width="1"
-                                    stroke-dasharray="2 7" stroke-linecap="round" />
-                            </svg>
-                        </span>
-                        <span class="hyna-connect-core">
-                            <span class="hyna-connect-label">Connect</span>
-                            <span class="hyna-connect-circle" aria-hidden="true">
-                                <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
-                                    <path d="M3 13L13 3M13 3H5M13 3V11" stroke="currentColor" stroke-width="1.4"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </span>
-                        </span>
-                    </a>
-                </div>
-            </div>
-
-        </section>
 
         <style>
             #hyna-start-project,
@@ -7702,10 +7702,18 @@
                 --hyna-accent: #8a6a3f;
                 --hyna-accent-soft: #f4efe4;
 
-                position: relative;
+                position: absolute;
+                inset: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 20;
+                opacity: 0;
+                transform: scale(0.05);
+                pointer-events: none;
+                transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+
                 background: var(--hyna-paper);
                 color: var(--hyna-ink);
-                min-height: 100vh;
                 display: flex;
                 align-items: center;
                 padding: clamp(32px, 8vw, 120px) clamp(24px, 7vw, 96px);
@@ -8136,23 +8144,7 @@
             }
         </style>
 
-        <script>
-            (function () {
-                var hynaSection = document.getElementById('hyna-start-project');
-                if (!hynaSection) return;
 
-                var hynaObserver = new IntersectionObserver(function (entries) {
-                    entries.forEach(function (entry) {
-                        if (entry.isIntersecting) {
-                            hynaSection.classList.add('hyna-in-view');
-                            hynaObserver.unobserve(hynaSection);
-                        }
-                    });
-                }, { threshold: 0.3 });
-
-                hynaObserver.observe(hynaSection);
-            })();
-        </script>
 
 
 
