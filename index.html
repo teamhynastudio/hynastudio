@@ -754,6 +754,13 @@
         .hero h1 .hero-dim-line {
             color: var(--hero-ink-faint);
             -webkit-text-fill-color: var(--hero-ink-faint);
+            transition: opacity 0.4s ease-in-out;
+            opacity: 1;
+            display: inline-block;
+        }
+
+        .hero h1 .hero-dim-line.fade-out {
+            opacity: 0;
         }
 
         /* ── HERO SUBTEXT ── */
@@ -3778,7 +3785,7 @@
             <div class="hero-container">
                 <h1>
                     <em>We transform bold ideas</em><br>
-                    <span class="hero-dim-line">into digital experiences.</span>
+                    <span class="hero-dim-line" id="hero-changing-text">...into software with impact.</span>
                 </h1>
                 <p class="hero-sub">Hyna Studio is a full-spectrum digital studio crafting websites, apps, SaaS
                     platforms, and brand identities for startups and scale-ups worldwide.</p>
@@ -6093,10 +6100,10 @@
 
                 <div class="center lge-reveal" data-lge-d="5">
                     <span class="eyebrow">✦Innovation in Action</span>
-                    <h1>Turning complex problems into simple software.</h1>
-                    <p class="lede">With expertise across four disciplines, we build digital solutions that help
-                        businesses
-                        operate smarter every day.</p>
+                    <h1>Technology That Creates Real Impact.</h1>
+                    <p class="lede">We design intelligent software products that solve everyday challenges, empower
+                        communities, and help organizations grow through innovation, automation, and scalable digital
+                        experiences.</p>
                 </div>
 
                 <div class="grid">
@@ -6111,10 +6118,11 @@
                                 <path d="M12 8V5M9 5h6" />
                             </svg>
                         </div>
-                        <h3>Intelligent Automation</h3>
-                        <p class="desc">Vision AI and smart workflows that take repetitive work off your team's plate
-                            and
-                            catch what manual checks miss.</p>
+                        <h3>LearnSphere</h3>
+                        <p class="desc">LearnSphere is an AI-powered education ecosystem that brings learning,
+                            attendance, study resources, and academic management into one intelligent platform. Built to
+                            make education more accessible, personalized, and engaging for students and institutions..
+                        </p>
 
                     </div>
 
@@ -6126,9 +6134,10 @@
                                 <path d="M3 10h18M7 14h4" />
                             </svg>
                         </div>
-                        <h3>Point-of-Sale &amp; Billing</h3>
-                        <p class="desc">Checkout software built for the speed of a real shift — shops, supermarkets, and
-                            restaurants running without a hitch.</p>
+                        <h3>FlowCore</h3>
+                        <p class="desc">FlowCore transforms repetitive tasks into intelligent workflows, helping
+                            startups and businesses operate faster with less manual effort. From operations to customer
+                            management, every process becomes simpler, smarter, and more efficient.</p>
 
                     </div>
 
@@ -6139,9 +6148,10 @@
                                 <path d="M7 17a4 4 0 010-8 5 5 0 019.6-1.5A4 4 0 0117 17H7z" />
                             </svg>
                         </div>
-                        <h3>Business Management Cloud</h3>
-                        <p class="desc">One connected system for scheduling, stock, and staff — nothing running on
-                            spreadsheets and sticky notes anymore.</p>
+                        <h3>CivicOS</h3>
+                        <p class="desc">CivicOS empowers schools, NGOs, local organizations, and public initiatives with
+                            modern digital solutions. Our platform simplifies administration, improves collaboration,
+                            and helps communities create a greater social impact.</p>
 
                     </div>
 
@@ -6152,10 +6162,10 @@
                                 <path d="M4 19l6-13 2 5 2-3 6 11H4z" />
                             </svg>
                         </div>
-                        <h3>Purpose-Built Platforms</h3>
-                        <p class="desc">Software designed around how a specific industry actually runs, not a generic
-                            tool
-                            bent to fit.</p>
+                        <h3>CloudFoundry</h3>
+                        <p class="desc">CloudFoundry delivers secure, cloud-native software products designed for modern
+                            organizations. From powerful SaaS applications to enterprise platforms, every solution is
+                            built to scale, perform, and evolve with your business.</p>
 
                     </div>
 
@@ -6291,81 +6301,6 @@
             }
         </style>
 
-        <div class="csa-wrapper" id="csa-section">
-            <div class="csa-inner">
-                <div class="csa-header" id="csa-header">
-                    <span class="csa-eyebrow">✦ Product Engineering</span>
-                    <h2 class="csa-title">
-                        We build things that<br>
-                        <span>actually ship.</span>
-                    </h2>
-                    <p class="csa-subtitle">From SaaS platforms to AI agents — Hyna Studio engineers products
-                        end-to-end, on time, and at scale.</p>
-                </div>
-
-                <div class="csa-card" id="csa-card">
-                    <div class="csa-card-inner">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=85"
-                            alt="Hyna Studio SaaS Product Dashboard">
-                        <div class="csa-card-overlay"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <script>
-            (function () {
-                'use strict';
-                function initCSA() {
-                    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-                        setTimeout(initCSA, 100);
-                        return;
-                    }
-                    gsap.registerPlugin(ScrollTrigger);
-
-                    var wrapper = document.getElementById('csa-section');
-                    var card = document.getElementById('csa-card');
-                    var header = document.getElementById('csa-header');
-                    if (!wrapper || !card || !header) return;
-
-                    var isMobile = window.innerWidth <= 768;
-
-                    gsap.fromTo(card,
-                        { rotateX: 20, scale: isMobile ? 0.7 : 1.05 },
-                        {
-                            rotateX: 0, scale: 1, ease: 'none',
-                            scrollTrigger: {
-                                trigger: wrapper,
-                                start: 'top 80%', end: 'bottom 20%',
-                                scrub: true
-                            }
-                        }
-                    );
-
-                    gsap.fromTo(header,
-                        { y: 0 },
-                        {
-                            y: -100, ease: 'none',
-                            scrollTrigger: {
-                                trigger: wrapper,
-                                start: 'top 80%', end: 'bottom 20%',
-                                scrub: true
-                            }
-                        }
-                    );
-
-                    window.addEventListener('resize', function () {
-                        var m = window.innerWidth <= 768;
-                        if (m !== isMobile) { isMobile = m; ScrollTrigger.refresh(); }
-                    });
-                }
-
-                if (document.readyState === 'loading') {
-                    document.addEventListener('DOMContentLoaded', initCSA);
-                } else { initCSA(); }
-            })();
-        </script>
-        <!-- ══════════ END CONTAINER SCROLL ANIMATION ══════════ -->
 
 
         <script>
@@ -7462,6 +7397,7 @@
             }
 
             @media (max-width: 768px) {
+
                 /* Keep full-bleed on mobile too */
                 .flow-section {
                     margin: 0 !important;
@@ -7780,38 +7716,7 @@
             }
         </style>
 
-        <section id="philosophy" class="philosophy-section">
-            <div class="phil-container">
-                <div class="phil-grid">
-                    <!-- Card 01 -->
-                    <div class="phil-card">
-                        <span class="phil-num">01</span>
-                        <h3 class="phil-title">Iterate Fast</h3>
-                        <p class="phil-desc">We turn ideas into products quickly. Every week, real improvements reach
-                            real
-                            users.</p>
-                    </div>
 
-                    <!-- Card 02 -->
-                    <div class="phil-card">
-                        <span class="phil-num">02</span>
-                        <h3 class="phil-title">Always Available</h3>
-                        <p class="phil-desc">Great software shouldn't depend on perfect internet. Our products keep
-                            working
-                            wherever our users are.</p>
-                    </div>
-
-                    <!-- Card 03 -->
-                    <div class="phil-card">
-                        <span class="phil-num">03</span>
-                        <h3 class="phil-title">Born Local. Built Global.</h3>
-                        <p class="phil-desc">Created in Tamil Nadu with a vision to build products used around the
-                            world.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- OUR MISSION SECTION -->
         <style>
@@ -8896,51 +8801,6 @@
             })();
         </script>
 
-        <!-- BUILT FOR MODERN BUSINESSES -->
-        <section id="how-we-solve" class="solve-section">
-            <div class="solve-inner">
-                <h2 class="solve-heading">Built for <em>Modern</em> Businesses</h2>
-                <div class="solve-cards">
-                    <!-- Card 1 -->
-                    <div class="solve-card">
-                        <div class="solve-card-icon">
-                            <i class="fas fa-bolt"></i>
-                        </div>
-                        <div class="solve-card-body">
-                            <h4>Intelligent Automation</h4>
-                            <p>Routine work shouldn't consume your day. Our AI-powered systems automate operations,
-                                generate
-                                documents, organize information, and streamline workflows so your team can focus on
-                                meaningful work.</p>
-                        </div>
-                    </div>
-                    <!-- Card 2 -->
-                    <div class="solve-card">
-                        <div class="solve-card-icon">
-                            <i class="fas fa-sliders-h"></i>
-                        </div>
-                        <div class="solve-card-body">
-                            <h4>Software That Fits Your Business</h4>
-                            <p>Every company operates differently. Instead of one-size-fits-all software, we create
-                                platforms tailored to your processes—from CRM and ERP solutions to internal dashboards
-                                and
-                                business applications.</p>
-                        </div>
-                    </div>
-                    <!-- Card 3 -->
-                    <div class="solve-card">
-                        <div class="solve-card-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <div class="solve-card-body">
-                            <h4>Ready for Tomorrow</h4>
-                            <p>As your business grows, your software should grow with it. We build scalable, secure, and
-                                future-ready systems that evolve alongside your organization.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
 
 
@@ -10542,86 +10402,7 @@
             });
 
         </script>
-        <section id="about" class="about-section">
-            <div class="section-header" style="text-align: center; margin-bottom: 3.5rem;">
-                <h2 class="section-title"
-                    style="font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.025em; line-height: 1.1; color: var(--ink);">
-                    From Local Ideas to Global Innovation</h2>
-            </div>
 
-            <div class="journey-grid">
-                <!-- Where It All Started -->
-                <div class="journey-card col-span-2 kanyakumari-card">
-                    <div>
-                        <span class="journey-badge">Origin</span>
-                        <h3>Where It All Started</h3>
-                        <p style="font-weight: 600; color: var(--ink); margin-bottom: 12px; font-size: 1.05rem;">
-                            Kanyakumari, India</p>
-                        <p>Hyna Studio was founded with a simple vision—to make modern technology accessible to every
-                            business. Inspired by the hardworking entrepreneurs of Kanyakumari, we saw the need for
-                            affordable, high-quality digital solutions that help businesses grow without complexity.</p>
-                    </div>
-                    <div class="kanyakumari-visual"></div>
-                </div>
-
-                <!-- Mission & Vision -->
-                <div class="journey-card row-span-2"
-                    style="background: linear-gradient(135deg, rgba(79, 63, 240, 0.01) 0%, rgba(0, 217, 163, 0.01) 100%);">
-                    <div style="height: 100%; display: flex; flex-direction: column; justify-content: center;">
-                        <!-- Mission -->
-                        <div class="mv-item">
-                            <div class="mv-header">
-                                <div class="mv-icon"><i class="fas fa-bullseye"></i></div>
-                                <h4>Our Mission</h4>
-                            </div>
-                            <p>To empower startups and businesses with innovative digital products that accelerate
-                                growth,
-                                improve efficiency, and create lasting value.</p>
-                        </div>
-
-                        <!-- Vision -->
-                        <div class="mv-item">
-                            <div class="mv-header">
-                                <div class="mv-icon"><i class="fas fa-eye"></i></div>
-                                <h4>Our Vision</h4>
-                            </div>
-                            <p>To become a globally recognized technology studio delivering world-class AI and SaaS
-                                solutions from Kanyakumari to businesses around the world.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- The Opportunity We Saw -->
-                <div class="journey-card">
-                    <div>
-                        <span class="journey-badge">The Gap</span>
-                        <h3>The Opportunity We Saw</h3>
-                        <p>Many startups and businesses had ambitious ideas but lacked the technical expertise, budget,
-                            or
-                            team to bring them to life. Traditional software development was often slow, expensive, and
-                            difficult to scale.</p>
-                    </div>
-                </div>
-
-                <!-- Why Hyna Studio Exists -->
-                <div class="journey-card">
-                    <div>
-                        <span class="journey-badge">Purpose</span>
-                        <h3>Why Hyna Studio Exists</h3>
-                        <p>We help businesses transform ideas into digital products through modern technologies, AI
-                            automation, SaaS platforms, cloud infrastructure, and custom software development. Our
-                            mission
-                            is to build solutions that are simple, scalable, and designed for long-term success.</p>
-                    </div>
-                </div>
-
-                <!-- Quote Banner -->
-                <div class="journey-card col-span-3 quote-banner">
-                    <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-                    <blockquote>"Every successful product begins with a bold idea."</blockquote>
-                    <cite>What Inspires Us</cite>
-                </div>
-        </section>
 
         <!-- SplitText Animation for About Section Title (React Bits Variant) -->
         <style>
@@ -11471,6 +11252,32 @@
                     setTimeout(setFooterHeight, 50);
                 }
                 window.addEventListener('load', setFooterHeight);
+            })();
+    </script>
+
+    <!-- ── HERO TEXT ROTATOR ── -->
+    <script>
+            (function () {
+                var textElement = document.getElementById("hero-changing-text");
+                if (!textElement) return;
+
+                var phrases = [
+                    "software with impact.",
+                    "the future of software.",
+                    "the next gen of products.",
+
+                ];
+
+                var currentIndex = 0;
+
+                setInterval(function () {
+                    textElement.classList.add("fade-out");
+                    setTimeout(function () {
+                        currentIndex = (currentIndex + 1) % phrases.length;
+                        textElement.textContent = phrases[currentIndex];
+                        textElement.classList.remove("fade-out");
+                    }, 400); // 400ms match transition time
+                }, 2000);
             })();
     </script>
 
