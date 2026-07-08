@@ -5768,6 +5768,8 @@
                 --pink-lg: #FBD3E9;
                 --blue-lg: #CFE0FF;
                 --amber-lg: #FFE3B0;
+                 background:#000;
+    will-change:background-color;
 
                 position: relative;
                 /* Initial dark state — GSAP transitions to white as section scrolls into view */
@@ -6344,8 +6346,8 @@
 
                         var bhTrigger = {
                             trigger: section,        /* Triggered by the innovation section! */
-                            start: 'top 40%',      /* Stays black until the innovation section scrolls up into the viewport */
-                            end: 'top 10%',      /* Becomes white as the innovation section is fully scrolled in */
+                            start: 'top 50%',      /* Stays black until the innovation section scrolls up into the viewport */
+                            end: 'top 55%',      /* Becomes white as the innovation section is fully scrolled in */
                             scrub: 0.4
                         };
 
@@ -6415,7 +6417,7 @@
                     var commonTrigger = {
                         trigger: section,
                         start: 'top 50%',
-                        end: 'top 20%',
+                        end: 'top 55%',
                         scrub: 0.4
                     };
 
