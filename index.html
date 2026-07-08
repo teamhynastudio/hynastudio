@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6177,71 +6177,100 @@
             </div>
         </section>
 
-        <!-- ══════════ MDW SCROLL EFFECT 141 SECTION (SEPARATE SLIDE) ══════════ -->
+        <!-- ══════════ THE HYNA METHOD – ZOOM-THROUGH SECTION ══════════ -->
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
 
-        <section id="hwt-section"
-            style="background:#000;overflow:hidden;position:relative;min-height:100vh;height:100vh;display:flex;align-items:center;justify-content:center;width:100%;">
-            <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap"
-                rel="stylesheet">
-            <div class="hwt-inner"
-                style="position:relative;width:100%;max-width:900px;margin:0 auto;padding:60px 20px;display:flex;align-items:center;justify-content:center;">
-                <!-- Pinned Container for Cards & Centered Content -->
-                <div class="hww-animation-container"
-                    style="position: relative; width: 100%; max-width: 1200px; height: 75vh; display: flex; align-items: center; justify-content: center; z-index: 2;">
-                    <!-- SVG loop path (draws itself on scroll) -->
-                    <svg id="hwt-svg" width="100%" height="100%" viewBox="0 0 1200 600"
-                        style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;">
-                        <title>Hyna Studio</title>
-                        <path id="hwt-path" d="M 950 90
-                           C 1250 300, 1050 480, 600 520
-                           C 250 520, 150 480, 150 300
-                           C 150 120, 350 80, 600 80
-                           C 850 80, 950 180, 950 180" fill="none" stroke="white" stroke-width="10"
-                            stroke-linecap="round" stroke-linejoin="round" style="opacity:0.85;" />
-                    </svg>
-                    <!-- Title & subtitle (fade in after path draws) -->
-                    <div id="hwt-text"
-                        style="position:relative;z-index:10;text-align:center;opacity:0;transform:translateY(24px);">
-                        <h2 id="hwt-title"
-                            style="font-family:'Cinzel Decorative',serif;font-size:clamp(2.2rem,5.5vw,5rem);font-weight:700;color:red;letter-spacing:0.04em;line-height:1.1;margin:0 0 18px;text-shadow:0 0 40px rgba(255,255,255,0.3);">
-                            The Hyna Method
-
-                    </div>
-
-        </section>
-
-        <!-- ══════════ MDW SCROLL EFFECT 141 + LENIS SMOOTH SCROLL ══════════ -->
         <style>
-            body {
-                --smooth-scroll: true;
-            }
-
-            body,
-            [data-elementor-type="wp-page"] {
-                overflow-x: hidden;
-            }
+            body { --smooth-scroll: true; }
+            body, [data-elementor-type="wp-page"] { overflow-x: hidden; }
 
             #hwt-section {
+                background: #000;
                 overflow: hidden;
+                position: relative;
+                min-height: 100vh;
+                height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
             }
 
-            /* SVG path draw animation via dashoffset */
+            /* The single zoom stage – everything inside scales together */
+            #hwt-stage {
+                position: relative;
+                width: min(900px, 90vw);
+                aspect-ratio: 1200 / 600;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transform-origin: center center;
+                will-change: transform;
+            }
+
+            #hwt-svg {
+                position: absolute;
+                inset: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+            }
+
             #hwt-path {
-                stroke-dasharray: var(--hwt-len, 9999);
-                stroke-dashoffset: var(--hwt-len, 9999);
+                fill: none;
+                stroke: white;
+                stroke-width: 10;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                opacity: 0.9;
+            }
+
+            #hwt-text {
+                position: relative;
+                z-index: 10;
+                text-align: center;
+                opacity: 0;
+                transform: translateY(20px);
+                pointer-events: none;
+            }
+
+            #hwt-title {
+                font-family: 'Cinzel Decorative', serif;
+                font-size: clamp(1.8rem, 5vw, 4.2rem);
+                font-weight: 700;
+                color: #e8001a;
+                letter-spacing: 0.04em;
+                line-height: 1.15;
+                margin: 0;
+                text-shadow: 0 0 60px rgba(232,0,26,0.6), 0 0 120px rgba(232,0,26,0.3);
+                white-space: nowrap;
             }
 
             @media (max-width: 768px) {
-                #hwt-section {
-                    height: auto !important;
-                    min-height: 100svh;
-                }
-
-                #hwt-title {
-                    white-space: normal !important;
-                }
+                #hwt-title { white-space: normal !important; font-size: clamp(1.4rem, 6vw, 2.5rem); }
+                #hwt-section { height: auto !important; min-height: 100svh; }
             }
         </style>
+
+        <section id="hwt-section">
+            <div id="hwt-stage">
+                <!-- Oval SVG path -->
+                <svg id="hwt-svg" viewBox="0 0 1200 600">
+                    <title>The Hyna Method</title>
+                    <path id="hwt-path" d="
+                        M 950 90
+                        C 1250 300, 1050 490, 600 510
+                        C 200 510, 60 430, 60 300
+                        C 60 170, 220 80, 600 80
+                        C 870 80, 950 180, 950 180
+                    " />
+                </svg>
+                <!-- Centered text -->
+                <div id="hwt-text">
+                    <h2 id="hwt-title">The Hyna Method</h2>
+                </div>
+            </div>
+        </section>
 
         <script>
             (function () {
@@ -6251,58 +6280,67 @@
                         return;
                     }
                     gsap.registerPlugin(ScrollTrigger);
-                    var section = document.getElementById('hwt-section');
-                    var path = document.getElementById('hwt-path');
-                    var textWrap = document.getElementById('hwt-text');
-                    var subtitle = document.getElementById('hwt-subtitle');
-                    if (!section || !path) return;
 
-                    /* ── measure path length and set CSS var ── */
+                    var section  = document.getElementById('hwt-section');
+                    var stage    = document.getElementById('hwt-stage');
+                    var path     = document.getElementById('hwt-path');
+                    var textWrap = document.getElementById('hwt-text');
+                    if (!section || !stage || !path) return;
+
+                    /* ── measure & set stroke-dash ── */
                     var len = path.getTotalLength();
-                    path.style.setProperty('--hwt-len', len);
-                    path.style.strokeDasharray = len;
+                    path.style.strokeDasharray  = len;
                     path.style.strokeDashoffset = len;
 
-
-                    /* ── master pinned timeline ── */
+                    /* ── pinned timeline ── */
                     var tl = gsap.timeline({
                         scrollTrigger: {
                             trigger: section,
                             start: 'top top',
-                            end: '+=220%',
+                            end: '+=280%',
                             pin: true,
-                            scrub: 1.4,
+                            scrub: 1.2,
                             anticipatePin: 1
                         }
                     });
 
-                    /* Phase 1 (0 → 0.55): draw the SVG loop */
+                    /* Phase 1 (0 → 0.40): draw the oval */
                     tl.to(path, {
                         strokeDashoffset: 0,
                         ease: 'none',
-                        duration: 0.55
+                        duration: 0.40
                     }, 0);
-                    /* Phase 2 (0.45 → 0.85): fade-up the title + subtitle */
+
+                    /* Phase 2 (0.35 → 0.60): fade-up title */
                     tl.to(textWrap, {
                         opacity: 1,
                         y: 0,
-                        duration: 0.3,
-                        ease: 'power2.out'
-                    }, 0.45);
-                    tl.to(subtitle, {
-                        opacity: 1,
-                        duration: 0.2,
-                        ease: 'power2.out'
-                    }, 0.65);
-                    /* Phase 3 (0.85 → 1): fade everything out to exit */
-                    tl.to([path, textWrap], {
+                        ease: 'power2.out',
+                        duration: 0.25
+                    }, 0.35);
+
+                    /* Phase 3 (0.58 → 1.00): ZOOM INTO the oval – whole stage scales to ~30× */
+                    tl.to(stage, {
+                        scale: 30,
+                        ease: 'power2.in',
+                        duration: 0.42
+                    }, 0.58);
+
+                    /* Simultaneously fade the oval stroke so we just fly through black */
+                    tl.to(path, {
                         opacity: 0,
-                        duration: 0.15,
-                        ease: 'power1.in'
-                    }, 0.85);
+                        ease: 'power1.in',
+                        duration: 0.30
+                    }, 0.70);
+
+                    /* Text also fades as we zoom deep */
+                    tl.to(textWrap, {
+                        opacity: 0,
+                        ease: 'power1.in',
+                        duration: 0.25
+                    }, 0.72);
                 }
 
-                // Run on load and resize
                 if (document.readyState === 'loading') {
                     document.addEventListener('DOMContentLoaded', initHWT);
                 } else {
