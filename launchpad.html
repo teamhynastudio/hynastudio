@@ -1488,9 +1488,14 @@
     }
 
     @media (max-width:820px) {
+      .bio {
+        padding: 110px 6vw 80px;
+      }
+
       .bio-grid {
         grid-template-columns: 1fr;
-        gap: 36px;
+        gap: 28px;
+        text-align: left;
       }
 
       .bio-label {
@@ -1498,10 +1503,159 @@
         display: flex;
         align-items: baseline;
         gap: 16px;
+        text-align: left;
+      }
+
+      .bio-label .num {
+        font-size: 48px;
+      }
+
+      .bio-copy h2 {
+        font-size: clamp(28px, 8vw, 40px);
+        max-width: 100%;
+      }
+
+      .bio-copy p {
+        font-size: 16px;
+        max-width: 100%;
+      }
+
+      .pullquote {
+        font-size: clamp(18px, 5vw, 22px);
+        max-width: 100%;
       }
 
       .facts {
         grid-template-columns: 1fr;
+        gap: 18px;
+        margin-top: 48px;
+      }
+
+      .launchpad {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        margin-top: 64px;
+        justify-items: stretch;
+        align-items: start;
+      }
+
+      .launchpad-img {
+        max-width: 100%;
+        margin: 0 auto;
+      }
+
+      .launchpad-copy {
+        max-width: 100%;
+      }
+
+      .launchpad-copy h3 {
+        font-size: clamp(22px, 6vw, 28px);
+      }
+    }
+
+    @media (max-width:640px) {
+      .bio {
+        padding: 104px 22px 64px;
+      }
+
+      .bio-label {
+        flex-wrap: wrap;
+        gap: 6px 14px;
+      }
+
+      .bio-copy h2 {
+        font-size: clamp(26px, 9vw, 34px);
+      }
+
+      .bio-copy p {
+        font-size: 15px;
+      }
+
+      .launchpad {
+        margin-top: 48px;
+        gap: 22px;
+      }
+
+      .launchpad-copy p {
+        font-size: 15px;
+      }
+
+      .facts {
+        margin-top: 40px;
+      }
+    }
+
+    @media (max-width:480px) {
+      .bio {
+        padding: 100px 16px 56px;
+      }
+
+      .bio-label .num {
+        font-size: 40px;
+      }
+
+      .launchpad-img {
+        border-radius: 14px;
+      }
+    }
+
+    /* ── Reduce excess blank space on mobile ── */
+    @media (max-width:768px) {
+      /* Collapse the tall sticky zoom section into normal flow (no long empty scroll) */
+      .pin-wrap {
+        height: auto;
+      }
+
+      .pin-sticky {
+        position: static;
+        height: auto;
+        min-height: 0;
+        overflow: visible;
+        padding: 24px 0;
+      }
+
+      /* Fit the hero video to content instead of a huge fixed frame */
+      .hero-img-wrap {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none !important;
+        filter: none !important;
+        width: 92vw;
+        height: auto;
+        aspect-ratio: 16 / 11;
+        margin: 0 auto;
+      }
+
+      /* Keep buttons anchored inside the smaller video frame */
+      .banner-overlay-actions {
+        top: auto;
+        bottom: 18px;
+      }
+
+      /* Tighten spacing around the engine section */
+      #engine.bio {
+        padding-top: 32px !important;
+        padding-bottom: 48px;
+      }
+
+      /* Trim the oversized footer padding */
+      .close {
+        padding: 56px 6vw 40px;
+      }
+
+      .close .foot-note {
+        margin-top: 32px;
+      }
+    }
+
+    @media (max-width:480px) {
+      .hero-img-wrap {
+        aspect-ratio: 4 / 3;
+      }
+
+      .pin-sticky {
+        padding: 16px 0;
       }
     }
 
@@ -1765,11 +1919,15 @@
      <div class="hero-img-wrap" id="heroImg">
 
     <video
+        id="heroVideo"
         class="hero-video"
         autoplay
         muted
         loop
-        playsinline>
+        playsinline
+        webkit-playsinline
+        preload="auto"
+        poster="./channels4_profile.jpg">
         <source src="./Startup_SaaS_product_building_and_scaling_202607100010.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
@@ -1964,6 +2122,58 @@
       // Hero animation class
       requestAnimationFrame(() => {
         document.body.classList.add("hero-animate");
+      });
+    });
+  </script>
+
+  <!-- Robust hero video autoplay -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const video = document.getElementById("heroVideo");
+      if (!video) return;
+
+      // Autoplay policies require the muted PROPERTY (not just the attribute)
+      video.muted = true;
+      video.defaultMuted = true;
+      video.setAttribute("muted", "");
+      video.playsInline = true;
+
+      const tryPlay = () => {
+        const p = video.play();
+        if (p && typeof p.catch === "function") {
+          p.catch(() => {
+            // Autoplay was blocked — retry on the first user interaction
+            const resume = () => {
+              video.play().catch(() => {});
+              window.removeEventListener("touchstart", resume);
+              window.removeEventListener("click", resume);
+              window.removeEventListener("scroll", resume);
+            };
+            window.addEventListener("touchstart", resume, { once: true, passive: true });
+            window.addEventListener("click", resume, { once: true });
+            window.addEventListener("scroll", resume, { once: true, passive: true });
+          });
+        }
+      };
+
+      // Log source errors so failures are visible in the console
+      video.addEventListener("error", () => {
+        console.error("Hero video failed to load:", video.error);
+      });
+
+      if (video.readyState >= 2) {
+        tryPlay();
+      } else {
+        video.addEventListener("loadeddata", tryPlay, { once: true });
+        video.addEventListener("canplay", tryPlay, { once: true });
+      }
+
+      // Kick the loader in case the browser is waiting
+      video.load();
+
+      // Resume playback when returning to the tab
+      document.addEventListener("visibilitychange", () => {
+        if (!document.hidden && video.paused) tryPlay();
       });
     });
   </script>
