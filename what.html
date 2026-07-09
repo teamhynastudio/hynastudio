@@ -1,0 +1,165 @@
+what makes us different 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>What Makes Us Different</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.44.0/iconfont/tabler-icons.min.css">
+<style>
+  :root{
+    --bg:#000000;
+    --wordmark:#232323;
+    --accent:#4D6BFF;
+    --white:#F5F5F5;
+    --gray:#9A9A9A;
+    --card:#0B0B0B;
+    --border:#1E1E1E;
+    --dim:#4A4A4A;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg);
+    font-family:'Inter', sans-serif;
+    color:var(--white);
+    padding:100px 40px 120px;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:960px; margin:0 auto; text-align:center; position:relative;}
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    font-weight:500;
+    letter-spacing:4px;
+    color:var(--accent);
+    text-transform:uppercase;
+  }
+  .wordmark{
+    font-size:150px;
+    font-weight:800;
+    letter-spacing:2px;
+    color:var(--wordmark);
+    line-height:1;
+    margin-top:20px;
+    user-select:none;
+  }
+  .heading{
+    font-size:44px;
+    font-weight:700;
+    margin-top:-70px;
+    letter-spacing:-0.5px;
+  }
+  .heading .accent-dot{color:var(--accent);}
+  .sub{
+    max-width:600px;
+    margin:24px auto 0;
+    font-size:17px;
+    line-height:1.7;
+    color:var(--gray);
+  }
+
+  .compare{
+    margin-top:64px;
+    border:1px solid var(--border);
+    background:var(--card);
+    text-align:left;
+  }
+  .compare-head{
+    display:grid;
+    grid-template-columns:1fr 200px 200px;
+    border-bottom:1px solid var(--border);
+  }
+  .compare-head div{
+    padding:20px 24px;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:0.5px;
+  }
+  .compare-head .col-label{color:var(--gray); font-weight:500;}
+  .compare-head .col-them{color:var(--dim);}
+  .compare-head .col-us{
+    color:var(--accent);
+    background:rgba(77,107,255,0.06);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+
+  .compare-row{
+    display:grid;
+    grid-template-columns:1fr 200px 200px;
+    border-bottom:1px solid var(--border);
+  }
+  .compare-row:last-child{border-bottom:none;}
+  .compare-row .cell{
+    padding:22px 24px;
+    font-size:14.5px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .compare-row .label{color:var(--white); font-weight:500;}
+  .compare-row .them{color:var(--dim);}
+  .compare-row .us{
+    color:#C7D2FF;
+    background:rgba(77,107,255,0.06);
+  }
+  .cell i{font-size:16px; flex-shrink:0;}
+  .them i{color:var(--dim);}
+  .us i{color:var(--accent);}
+
+  @media (max-width:640px){
+    .compare-head, .compare-row{grid-template-columns:1fr 90px 90px;}
+    .compare-head div, .compare-row .cell{padding:16px 12px; font-size:12.5px;}
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="eyebrow">What Makes Us Different</div>
+    <div class="wordmark">HYNA</div>
+    <h1 class="heading">Not Your Typical<br>Product Shop<span class="accent-dot">.</span></h1>
+    <p class="sub">Most agencies and freelancers optimize for handing something off. We optimize for what happens after — because that's when a SaaS product actually earns its users.</p>
+
+    <div class="compare">
+      <div class="compare-head">
+        <div class="col-label">&nbsp;</div>
+        <div class="col-them">Typical agency</div>
+        <div class="col-us"><i class="ti ti-bolt"></i>Hyna Studio</div>
+      </div>
+
+      <div class="compare-row">
+        <div class="cell label">Engagement model</div>
+        <div class="cell them"><i class="ti ti-x"></i>Fixed-scope project</div>
+        <div class="cell us"><i class="ti ti-check"></i>Embedded product partner</div>
+      </div>
+
+      <div class="compare-row">
+        <div class="cell label">After launch</div>
+        <div class="cell them"><i class="ti ti-x"></i>Contract ends</div>
+        <div class="cell us"><i class="ti ti-check"></i>Stays on for growth</div>
+      </div>
+
+      <div class="compare-row">
+        <div class="cell label">Who you talk to</div>
+        <div class="cell them"><i class="ti ti-x"></i>Account manager</div>
+        <div class="cell us"><i class="ti ti-check"></i>The founder, directly</div>
+      </div>
+
+      <div class="compare-row">
+        <div class="cell label">SaaS architecture</div>
+        <div class="cell them"><i class="ti ti-x"></i>Bolted on later</div>
+        <div class="cell us"><i class="ti ti-check"></i>Built in from day one</div>
+      </div>
+
+      <div class="compare-row">
+        <div class="cell label">Success measured by</div>
+        <div class="cell them"><i class="ti ti-x"></i>Deliverables shipped</div>
+        <div class="cell us"><i class="ti ti-check"></i>Users and revenue gained</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

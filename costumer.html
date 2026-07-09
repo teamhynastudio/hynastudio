@@ -1,0 +1,240 @@
+customer sucess 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Customer Success</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.44.0/iconfont/tabler-icons.min.css">
+<style>
+  :root{
+    --bg:#000000;
+    --wordmark:#232323;
+    --accent:#4D6BFF;
+    --white:#F5F5F5;
+    --gray:#9A9A9A;
+    --card:#0B0B0B;
+    --border:#1E1E1E;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg);
+    font-family:'Inter', sans-serif;
+    color:var(--white);
+    padding:100px 40px 120px;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:1040px; margin:0 auto; text-align:center; position:relative;}
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    font-weight:500;
+    letter-spacing:4px;
+    color:var(--accent);
+    text-transform:uppercase;
+  }
+  .wordmark{
+    font-size:150px;
+    font-weight:800;
+    letter-spacing:2px;
+    color:var(--wordmark);
+    line-height:1;
+    margin-top:20px;
+    user-select:none;
+  }
+  .heading{
+    font-size:44px;
+    font-weight:700;
+    margin-top:-70px;
+    letter-spacing:-0.5px;
+  }
+  .heading .accent-dot{color:var(--accent);}
+  .sub{
+    max-width:600px;
+    margin:24px auto 0;
+    font-size:17px;
+    line-height:1.7;
+    color:var(--gray);
+  }
+
+  .stats-bar{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:1px;
+    background:var(--border);
+    border:1px solid var(--border);
+    margin-top:60px;
+  }
+  .stats-bar .stat{
+    background:var(--card);
+    padding:26px 12px;
+  }
+  .stats-bar .val{
+    font-size:28px;
+    font-weight:700;
+    color:var(--accent);
+  }
+  .stats-bar .label{
+    font-size:12.5px;
+    color:var(--gray);
+    margin-top:6px;
+  }
+
+  .testimonials{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:1px;
+    background:var(--border);
+    border:1px solid var(--border);
+    border-top:none;
+    text-align:left;
+  }
+  .t-card{
+    background:var(--card);
+    padding:36px;
+    display:flex;
+    flex-direction:column;
+  }
+  .t-card i.quote-icon{
+    font-size:22px;
+    color:var(--accent);
+  }
+  .t-card .quote{
+    font-size:15.5px;
+    line-height:1.75;
+    color:var(--white);
+    margin-top:16px;
+    flex-grow:1;
+  }
+  .t-card .result{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-top:20px;
+    font-size:13px;
+    color:var(--accent);
+    border:1px solid var(--border);
+    padding:6px 14px;
+    border-radius:100px;
+    width:fit-content;
+  }
+  .t-card .person{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-top:22px;
+    padding-top:20px;
+    border-top:1px solid var(--border);
+  }
+  .t-card .avatar{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    background:#151515;
+    border:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--accent);
+  }
+  .t-card .person-name{
+    font-size:13.5px;
+    font-weight:600;
+  }
+  .t-card .person-role{
+    font-size:12px;
+    color:var(--gray);
+  }
+
+  @media (max-width:640px){
+    .stats-bar{grid-template-columns:repeat(2, 1fr);}
+    .testimonials{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="eyebrow">Customer Success</div>
+    <div class="wordmark">HYNA</div>
+    <h1 class="heading">Results, Not Just<br>Deliverables<span class="accent-dot">.</span></h1>
+    <p class="sub">We measure our work by what happens after launch — users onboarded, revenue unlocked, and founders who kept us on as their product team.</p>
+
+    <div class="stats-bar">
+      <div class="stat">
+        <div class="val">30+</div>
+        <div class="label">SaaS products launched</div>
+      </div>
+      <div class="stat">
+        <div class="val">90%</div>
+        <div class="label">clients retained post-launch</div>
+      </div>
+      <div class="stat">
+        <div class="val">$4.2M</div>
+        <div class="label">raised by studio clients</div>
+      </div>
+      <div class="stat">
+        <div class="val">4.9/5</div>
+        <div class="label">average client rating</div>
+      </div>
+    </div>
+
+    <div class="testimonials">
+      <div class="t-card">
+        <i class="ti ti-quote quote-icon"></i>
+        <p class="quote">Hyna didn't just build what we asked for — they pushed back on features that would've slowed our launch and kept us focused on what users actually needed.</p>
+        <div class="result"><i class="ti ti-trending-up"></i>2,000 users in 60 days</div>
+        <div class="person">
+          <div class="avatar">SP</div>
+          <div>
+            <div class="person-name">Sara Patel</div>
+            <div class="person-role">Founder, Loopline</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-card">
+        <i class="ti ti-quote quote-icon"></i>
+        <p class="quote">We came in with a rough idea and a whiteboard sketch. Six weeks later we had a working product with billing and onboarding already built in.</p>
+        <div class="result"><i class="ti ti-trending-up"></i>Live in 6 weeks</div>
+        <div class="person">
+          <div class="avatar">DM</div>
+          <div>
+            <div class="person-name">David Moreno</div>
+            <div class="person-role">Co-founder, Fieldnote</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-card">
+        <i class="ti ti-quote quote-icon"></i>
+        <p class="quote">What stood out was that the same team who built the MVP was still around a year later helping us prioritize the roadmap for our Series A.</p>
+        <div class="result"><i class="ti ti-trending-up"></i>Raised seed round post-launch</div>
+        <div class="person">
+          <div class="avatar">RK</div>
+          <div>
+            <div class="person-name">Riya Kulkarni</div>
+            <div class="person-role">CEO, Northbound</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-card">
+        <i class="ti ti-quote quote-icon"></i>
+        <p class="quote">No account managers, no game of telephone. When something needed to change, I was talking directly to the engineer who'd fix it that day.</p>
+        <div class="result"><i class="ti ti-trending-up"></i>3x faster iteration cycle</div>
+        <div class="person">
+          <div class="avatar">TC</div>
+          <div>
+            <div class="person-name">Tom Chen</div>
+            <div class="person-role">Founder, Ledgerly</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

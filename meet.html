@@ -1,0 +1,188 @@
+meet the founder-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Meet Our Founder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.44.0/iconfont/tabler-icons.min.css">
+<style>
+  :root{
+    --bg:#000000;
+    --wordmark:#232323;
+    --accent:#4D6BFF;
+    --white:#F5F5F5;
+    --gray:#9A9A9A;
+    --card:#0B0B0B;
+    --border:#1E1E1E;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg);
+    font-family:'Inter', sans-serif;
+    color:var(--white);
+    padding:100px 40px 120px;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:1000px; margin:0 auto; text-align:center; position:relative;}
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    font-weight:500;
+    letter-spacing:4px;
+    color:var(--accent);
+    text-transform:uppercase;
+  }
+  .wordmark{
+    font-size:150px;
+    font-weight:800;
+    letter-spacing:2px;
+    color:var(--wordmark);
+    line-height:1;
+    margin-top:20px;
+    user-select:none;
+  }
+  .heading{
+    font-size:44px;
+    font-weight:700;
+    margin-top:-70px;
+    letter-spacing:-0.5px;
+  }
+  .heading .accent-dot{color:var(--accent);}
+
+  .profile{
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:48px;
+    align-items:center;
+    text-align:left;
+    margin-top:64px;
+    border:1px solid var(--border);
+    background:var(--card);
+    padding:44px;
+  }
+  .avatar{
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    background:linear-gradient(160deg, #151515, #0a0a0a);
+    border:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'JetBrains Mono', monospace;
+    font-size:56px;
+    font-weight:600;
+    color:var(--accent);
+  }
+  .name{
+    font-size:28px;
+    font-weight:700;
+  }
+  .role{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-top:8px;
+  }
+  .bio{
+    font-size:15.5px;
+    line-height:1.75;
+    color:var(--gray);
+    margin-top:20px;
+  }
+  .links{
+    display:flex;
+    gap:14px;
+    margin-top:26px;
+  }
+  .links a{
+    width:38px;
+    height:38px;
+    border:1px solid var(--border);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--gray);
+    text-decoration:none;
+    font-size:17px;
+  }
+  .links a:hover{
+    color:var(--accent);
+    border-color:var(--accent);
+  }
+
+  .stats{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--border);
+    border:1px solid var(--border);
+    border-top:none;
+  }
+  .stat{
+    background:var(--card);
+    padding:26px 44px;
+    text-align:left;
+  }
+  .stat .val{
+    font-size:26px;
+    font-weight:700;
+  }
+  .stat .label{
+    font-size:13px;
+    color:var(--gray);
+    margin-top:6px;
+  }
+
+  @media (max-width:640px){
+    .profile{grid-template-columns:1fr; text-align:center;}
+    .avatar{margin:0 auto;}
+    .links{justify-content:center;}
+    .stats{grid-template-columns:1fr;}
+    .stat{text-align:center;}
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="eyebrow">Meet the Founder</div>
+    <div class="wordmark">HYNA</div>
+    <h1 class="heading">The Person Behind Hyna<span class="accent-dot">.</span></h1>
+
+    <div class="profile">
+      <div class="avatar">AK</div>
+      <div>
+        <div class="name">VIGNESG V.L</div>
+        <div class="role">Founder &amp; CEO, Hyna Studio</div>
+        <p class="bio">VIGNESH spent years building and scaling SaaS products before starting Hyna Studio to help early-stage founders skip the trial and error. He leads every engagement hands-on, from the first whiteboard session through launch and growth — believing the best product partners think like co-founders, not vendors.</p>
+        <div class="links">
+          <a href="#" aria-label="LinkedIn"><i class="ti ti-brand-linkedin"></i></a>
+          <a href="#" aria-label="Twitter"><i class="ti ti-brand-x"></i></a>
+          <a href="#" aria-label="Email"><i class="ti ti-mail"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="val">30+</div>
+        <div class="label">Products shipped</div>
+      </div>
+      <div class="stat">
+        <div class="val">8 yrs</div>
+        <div class="label">Building SaaS</div>
+      </div>
+      <div class="stat">
+        <div class="val">12</div>
+        <div class="label">Founders backed to scale</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,214 @@
+our process 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Our Process</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.44.0/iconfont/tabler-icons.min.css">
+<style>
+  :root{
+    --bg:#000000;
+    --wordmark:#232323;
+    --accent:#4D6BFF;
+    --white:#F5F5F5;
+    --gray:#9A9A9A;
+    --card:#0B0B0B;
+    --border:#1E1E1E;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg);
+    font-family:'Inter', sans-serif;
+    color:var(--white);
+    padding:100px 40px 120px;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:900px; margin:0 auto; text-align:center; position:relative;}
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    font-weight:500;
+    letter-spacing:4px;
+    color:var(--accent);
+    text-transform:uppercase;
+  }
+  .wordmark{
+    font-size:150px;
+    font-weight:800;
+    letter-spacing:2px;
+    color:var(--wordmark);
+    line-height:1;
+    margin-top:20px;
+    user-select:none;
+  }
+  .heading{
+    font-size:44px;
+    font-weight:700;
+    margin-top:-70px;
+    letter-spacing:-0.5px;
+  }
+  .heading .accent-dot{color:var(--accent);}
+  .sub{
+    max-width:600px;
+    margin:24px auto 0;
+    font-size:17px;
+    line-height:1.7;
+    color:var(--gray);
+  }
+
+  .timeline{
+    margin-top:70px;
+    text-align:left;
+    position:relative;
+  }
+  .step{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:28px;
+    position:relative;
+    padding-bottom:56px;
+  }
+  .step:last-child{padding-bottom:0;}
+  .marker-col{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  .marker{
+    width:64px;
+    height:64px;
+    border-radius:50%;
+    background:var(--card);
+    border:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    font-weight:600;
+    color:var(--accent);
+    flex-shrink:0;
+    z-index:1;
+  }
+  .thread{
+    width:1px;
+    flex:1;
+    background:var(--border);
+    margin-top:8px;
+  }
+  .step-body{
+    padding-top:10px;
+  }
+  .step-body .phase{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--gray);
+  }
+  .step-body h3{
+    font-size:21px;
+    font-weight:600;
+    margin-top:8px;
+  }
+  .step-body p{
+    font-size:14.5px;
+    color:var(--gray);
+    line-height:1.7;
+    margin-top:10px;
+    max-width:560px;
+  }
+  .step-body .duration{
+    display:inline-block;
+    margin-top:14px;
+    font-size:12px;
+    color:var(--accent);
+    border:1px solid var(--border);
+    padding:5px 12px;
+    border-radius:100px;
+  }
+
+  @media (max-width:640px){
+    .step{grid-template-columns:44px 1fr; gap:16px;}
+    .marker{width:44px; height:44px; font-size:11px;}
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="eyebrow">Our Process</div>
+    <div class="wordmark">HYNA</div>
+    <h1 class="heading">How We Build<span class="accent-dot">.</span></h1>
+    <p class="sub">A straight line from raw idea to a scaling product, with no black boxes along the way — you know exactly what's happening at every stage.</p>
+
+    <div class="timeline">
+      <div class="step">
+        <div class="marker-col">
+          <div class="marker">01</div>
+          <div class="thread"></div>
+        </div>
+        <div class="step-body">
+          <div class="phase">Discovery</div>
+          <h3>Get clear on the problem</h3>
+          <p>We dig into your market, users, and constraints before writing a single spec — so the product is built around a real problem, not an assumption.</p>
+          <span class="duration">1–2 weeks</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="marker-col">
+          <div class="marker">02</div>
+          <div class="thread"></div>
+        </div>
+        <div class="step-body">
+          <div class="phase">Design</div>
+          <h3>Map the experience</h3>
+          <p>Wireframes and flows come first, then high-fidelity design — validated with you at every checkpoint, not delivered as a surprise.</p>
+          <span class="duration">2–3 weeks</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="marker-col">
+          <div class="marker">03</div>
+          <div class="thread"></div>
+        </div>
+        <div class="step-body">
+          <div class="phase">Build</div>
+          <h3>Ship a working product</h3>
+          <p>Engineering happens in the open with weekly demos, built on SaaS-ready infrastructure — auth, billing, and multi-tenancy from day one.</p>
+          <span class="duration">4–8 weeks</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="marker-col">
+          <div class="marker">04</div>
+          <div class="thread"></div>
+        </div>
+        <div class="step-body">
+          <div class="phase">Launch</div>
+          <h3>Get it into real hands</h3>
+          <p>We handle the technical launch and support your go-to-market push, watching closely for what real users do differently than expected.</p>
+          <span class="duration">1 week</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="marker-col">
+          <div class="marker">05</div>
+        </div>
+        <div class="step-body">
+          <div class="phase">Grow</div>
+          <h3>Stay and scale it</h3>
+          <p>We remain as a hands-on growth and product partner — iterating on what the data shows, well past the point most studios walk away.</p>
+          <span class="duration">Ongoing</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
