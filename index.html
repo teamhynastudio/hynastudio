@@ -3794,7 +3794,7 @@
 
 
                     <!-- From Uiverse.io by barisdogansutcu -->
-                    <button class="btn-uiverse-dogansutcu" onclick="window.location.href='launchpad.html'">
+                    <button class="btn-uiverse-dogansutcu" onclick="window.location.href='#'">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" width="36px" height="36px">
                             <rect width="36" height="36" x="0" y="0" fill="#fdd835"></rect>
                             <path fill="#e53935"
@@ -5896,169 +5896,76 @@
                 overflow-x: hidden;
             }
 
-            #hwt-section {
-                background: #000;
-                overflow: hidden;
-                position: relative;
-                min-height: 100vh;
-                height: 100vh;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: 100%;
-            }
-
-            /* The single zoom stage – everything inside scales together */
-            #hwt-stage {
-                position: relative;
-                width: min(900px, 90vw);
-                aspect-ratio: 1200 / 600;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                transform-origin: center center;
-                will-change: transform;
-            }
-
-            #hwt-svg {
-                position: absolute;
-                inset: 0;
-                width: 100%;
-                height: 100%;
-                pointer-events: none;
-            }
-
-            #hwt-path {
-                fill: none;
-                stroke: white;
-                stroke-width: 10;
-                stroke-linecap: round;
-                stroke-linejoin: round;
-                opacity: 0.9;
-            }
-
-            #hwt-text {
-                position: relative;
-                z-index: 10;
-                text-align: center;
-                opacity: 0;
-                transform: translateY(20px);
-                pointer-events: none;
-            }
-
-            #hwt-title {
-                font-family: 'Cinzel Decorative', serif;
-                font-size: clamp(1.8rem, 5vw, 4.2rem);
-                font-weight: 700;
-                color: #e8001a;
-                letter-spacing: 0.04em;
-                line-height: 1.15;
-                margin: 0;
-                text-shadow: 0 0 60px rgba(232, 0, 26, 0.6), 0 0 120px rgba(232, 0, 26, 0.3);
-                white-space: nowrap;
-            }
-
-            @media (max-width: 768px) {
-                #hwt-title {
-                    white-space: normal !important;
-                    font-size: clamp(1.4rem, 6vw, 2.5rem);
-                }
-
-                #hwt-section {
-                    height: auto !important;
-                    min-height: 100svh;
-                }
-            }
         </style>
 
-        <section id="hwt-section">
-            <div id="hwt-stage">
-                <!-- Oval SVG path -->
-                <svg id="hwt-svg" viewBox="0 0 1200 600">
-                    <title>The Hyna Method</title>
-                    <path id="hwt-path" d="
-                        M 950 90
-                        C 1250 300, 1050 490, 600 510
-                        C 200 510, 60 430, 60 300
-                        C 60 170, 220 80, 600 80
-                        C 870 80, 950 180, 950 180
-                    " />
-                </svg>
-                <!-- Centered text -->
-                <div id="hwt-text">
-                    <h2 id="hwt-title">The Hyna Method</h2>
+        <!-- Start Your Project Section -->
+        <section id="hyna-start-project" class="hyna-start">
+            <div class="hyna-grain"></div>
+
+            <div class="hyna-inner">
+                <div class="hyna-content">
+                    <div class="hyna-top-row">
+                        <p class="hyna-eyebrow" data-hyna-reveal></p>
+                        <div class="hyna-icon" data-hyna-reveal aria-hidden="true">
+                            <svg class="hyna-icon-ring" width="100%" height="100%" viewBox="0 0 120 120">
+                                <circle cx="60" cy="60" r="58" fill="none" stroke="currentColor" stroke-width="1"
+                                    stroke-dasharray="2 6" stroke-linecap="round" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <h2 class="hyna-headline" aria-label="Start Your Project">
+                        <span class="hyna-line-wrap"><span class="hyna-line" data-hyna-line
+                                style="--d:0">Start</span></span>
+                        <span class="hyna-line-wrap"><span class="hyna-line" data-hyna-line
+                                style="--d:1">Your</span></span>
+                        <span class="hyna-line-wrap"><span class="hyna-line hyna-italic" data-hyna-line
+                                style="--d:2">Project</span></span>
+                    </h2>
+
+                    <div class="hyna-body-row">
+                        <p class="hyna-desc" data-hyna-reveal>
+                            We partner with founders and brands to design and build work that
+                            earns attention on its own — from first sketch to final ship.
+                            Tell us where you're headed, and let's map the fastest way there.
+                        </p>
+                    </div>
+
+                    <div class="hyna-meta-row" data-hyna-reveal>
+                        <div class="hyna-meta">
+                            <span class="hyna-meta-num">01</span>
+                            <span class="hyna-meta-label">Discovery call</span>
+                        </div>
+                        <div class="hyna-meta">
+                            <span class="hyna-meta-num">02</span>
+                            <span class="hyna-meta-label">Scope &amp; proposal</span>
+                        </div>
+                        <div class="hyna-meta">
+                            <span class="hyna-meta-num">03</span>
+                            <span class="hyna-meta-label">Work begins</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Start Your Project Slide (revealed during zoom) -->
-            <div class="hyna-start" id="hyna-start-project">
-                <div class="hyna-grain"></div>
-
-                <div class="hyna-inner">
-                    <div class="hyna-content">
-                        <div class="hyna-top-row">
-                            <p class="hyna-eyebrow" data-hyna-reveal></p>
-                            <div class="hyna-icon" data-hyna-reveal aria-hidden="true">
-                                <svg class="hyna-icon-ring" width="100%" height="100%" viewBox="0 0 120 120">
-                                    <circle cx="60" cy="60" r="58" fill="none" stroke="currentColor" stroke-width="1"
-                                        stroke-dasharray="2 6" stroke-linecap="round" />
-                                </svg>
-                            </div>
-                        </div>
-
-                        <h2 class="hyna-headline" aria-label="Start Your Project">
-                            <span class="hyna-line-wrap"><span class="hyna-line" data-hyna-line
-                                    style="--d:0">Start</span></span>
-                            <span class="hyna-line-wrap"><span class="hyna-line" data-hyna-line
-                                    style="--d:1">Your</span></span>
-                            <span class="hyna-line-wrap"><span class="hyna-line hyna-italic" data-hyna-line
-                                    style="--d:2">Project</span></span>
-                        </h2>
-
-                        <div class="hyna-body-row">
-                            <p class="hyna-desc" data-hyna-reveal>
-                                We partner with founders and brands to design and build work that
-                                earns attention on its own — from first sketch to final ship.
-                                Tell us where you're headed, and let's map the fastest way there.
-                            </p>
-                        </div>
-
-                        <div class="hyna-meta-row" data-hyna-reveal>
-                            <div class="hyna-meta">
-                                <span class="hyna-meta-num">01</span>
-                                <span class="hyna-meta-label">Discovery call</span>
-                            </div>
-                            <div class="hyna-meta">
-                                <span class="hyna-meta-num">02</span>
-                                <span class="hyna-meta-label">Scope &amp; proposal</span>
-                            </div>
-                            <div class="hyna-meta">
-                                <span class="hyna-meta-num">03</span>
-                                <span class="hyna-meta-label">Work begins</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Right-side Connect panel, centered in the column -->
-                    <div class="hyna-connect-col" data-hyna-reveal>
-                        <a class="hyna-connect-panel" href="./contact.html">
-                            <span class="hyna-connect-ring" aria-hidden="true">
-                                <svg width="100%" height="100%" viewBox="0 0 200 200">
-                                    <circle cx="100" cy="100" r="98" fill="none" stroke="currentColor" stroke-width="1"
-                                        stroke-dasharray="2 7" stroke-linecap="round" />
+                <!-- Right-side Connect panel, centered in the column -->
+                <div class="hyna-connect-col" data-hyna-reveal>
+                    <a class="hyna-connect-panel" href="./contact.html">
+                        <span class="hyna-connect-ring" aria-hidden="true">
+                            <svg width="100%" height="100%" viewBox="0 0 200 200">
+                                <circle cx="100" cy="100" r="98" fill="none" stroke="currentColor" stroke-width="1"
+                                    stroke-dasharray="2 7" stroke-linecap="round" />
+                            </svg>
+                        </span>
+                        <span class="hyna-connect-core">
+                            <span class="hyna-connect-label">Connect</span>
+                            <span class="hyna-connect-circle" aria-hidden="true">
+                                <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
+                                    <path d="M3 13L13 3M13 3H5M13 3V11" stroke="currentColor" stroke-width="1.4"
+                                        stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
                             </span>
-                            <span class="hyna-connect-core">
-                                <span class="hyna-connect-label">Connect</span>
-                                <span class="hyna-connect-circle" aria-hidden="true">
-                                    <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
-                                        <path d="M3 13L13 3M13 3H5M13 3V11" stroke="currentColor" stroke-width="1.4"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                </span>
-                            </span>
-                        </a>
-                    </div>
+                        </span>
+                    </a>
                 </div>
             </div>
         </section>
@@ -6072,85 +5979,19 @@
                     }
                     gsap.registerPlugin(ScrollTrigger);
 
-                    var section = document.getElementById('hwt-section');
-                    var stage = document.getElementById('hwt-stage');
-                    var path = document.getElementById('hwt-path');
-                    var textWrap = document.getElementById('hwt-text');
-                    if (!section || !stage || !path) return;
-
-                    /* ── measure & set stroke-dash ── */
-                    var len = path.getTotalLength();
-                    path.style.strokeDasharray = len;
-                    path.style.strokeDashoffset = len;
-
-                    /* ── pinned timeline ── */
-                    var tl = gsap.timeline({
-                        scrollTrigger: {
-                            trigger: section,
-                            start: 'top top',
-                            end: '+=300%',
-                            pin: true,
-                            scrub: 1.2,
-                            anticipatePin: 1
-                        }
-                    });
-
-                    /* Phase 1 (0 → 0.40): draw the oval */
-                    tl.to(path, {
-                        strokeDashoffset: 0,
-                        ease: 'none',
-                        duration: 0.40
-                    }, 0);
-
-                    /* Phase 2 (0.35 → 0.60): fade-up title */
-                    tl.to(textWrap, {
-                        opacity: 1,
-                        y: 0,
-                        ease: 'power2.out',
-                        duration: 0.25
-                    }, 0.35);
-
-                    /* Phase 3 (0.55 → 1.00): ZOOM INTO the oval – whole stage scales to ~30× */
-                    tl.to(stage, {
-                        scale: 30,
-                        ease: 'power2.in',
-                        duration: 0.45
-                    }, 0.55);
-
-                    /* Fade the oval stroke out */
-                    tl.to(path, {
-                        opacity: 0,
-                        ease: 'power1.in',
-                        duration: 0.30
-                    }, 0.60);
-
-                    /* Text also fades out as the zoom goes deep */
-                    tl.to(textWrap, {
-                        opacity: 0,
-                        ease: 'power1.in',
-                        duration: 0.25
-                    }, 0.58);
-
                     var startProject = document.getElementById('hyna-start-project');
+                    if (!startProject) return;
 
-                    /* Start Your Project fades in ONLY after zoom fully fills viewport (phase 3 ends at 1.0) */
-                    /* First, ensure it starts completely invisible & untransformed */
-                    gsap.set(startProject, { opacity: 0, y: 40, pointerEvents: 'none' });
-
-                    tl.to(startProject, {
-                        opacity: 1,
-                        y: 0,
-                        pointerEvents: 'auto',
-                        ease: 'power2.out',
-                        duration: 0.30,
-                        onStart: function () {
+                    ScrollTrigger.create({
+                        trigger: startProject,
+                        start: 'top 75%',
+                        onEnter: function () {
                             startProject.classList.add('hyna-in-view');
                         },
-                        onReverseComplete: function () {
+                        onLeaveBack: function () {
                             startProject.classList.remove('hyna-in-view');
-                            gsap.set(startProject, { pointerEvents: 'none' });
                         }
-                    }, 0.88);
+                    });
                 }
 
                 if (document.readyState === 'loading') {
@@ -7415,21 +7256,16 @@
                 --hyna-accent: #8a6a3f;
                 --hyna-accent-soft: #f4efe4;
 
-                position: absolute;
-                inset: 0;
+                position: relative;
                 width: 100%;
-                height: 100%;
+                min-height: 100vh;
                 z-index: 20;
-                opacity: 0;
-                transform: translateY(30px);
-                pointer-events: none;
-                /* No CSS transition — GSAP controls this entirely */
 
                 background: var(--hyna-paper);
                 color: var(--hyna-ink);
                 display: flex;
                 align-items: center;
-                padding: clamp(32px, 8vw, 120px) clamp(24px, 7vw, 96px);
+                padding: clamp(60px, 8vw, 120px) clamp(24px, 7vw, 96px);
                 overflow: hidden;
                 font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
                 isolation: isolate;
