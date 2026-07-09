@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -4551,6 +4551,23 @@
                 font-style: italic;
             }
 
+            #bhHighlightText {
+                display: inline-block;
+                transition: opacity 0.35s ease, transform 0.35s ease;
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            #bhHighlightText.bh-fade-out {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+
+            #bhHighlightText.bh-fade-in {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
             #build-headline .bh-highlight svg {
                 position: absolute;
                 left: 2%;
@@ -4634,7 +4651,7 @@
         <section id="build-headline">
             <div class="bh-inner">
                 <h2>
-                    <span class="bh-highlight" id="bhHighlight">Namaste World!
+                    <span class="bh-highlight" id="bhHighlight"><span id="bhHighlightText">Namaste World!</span>
                         <svg viewBox="0 0 220 20" preserveAspectRatio="none">
                             <path d="M4 12 C 50 4, 90 4, 130 8 C 160 11, 190 13, 216 8" />
                         </svg>
@@ -4683,6 +4700,34 @@
                         });
                     }, { threshold: 0.6 });
                     io2.observe(lineWrap);
+                }
+
+                /* Dynamic Text Rotator with Smooth Fade In/Out for Namaste World! */
+                var textEl = document.getElementById('bhHighlightText');
+                if (textEl) {
+                    var phrases = [
+                        "Namaste World!",
+                        "नमस्ते, दुनिया !",
+                        "வணக்கம் !",
+                        "നമസ്കാരം, ലോകമേ!",
+                        "నమస్తే, ప్రపంచం!",
+                        "ನಮಸ್ಕಾರ, ಲೋಕವೇ!"
+                    ];
+                    var idx = 0;
+                    setInterval(function () {
+                        textEl.classList.add('bh-fade-out');
+                        setTimeout(function () {
+                            idx = (idx + 1) % phrases.length;
+                            textEl.textContent = phrases[idx];
+                            textEl.classList.remove('bh-fade-out');
+                            textEl.classList.add('bh-fade-in');
+                            
+                            // trigger browser reflow
+                            void textEl.offsetWidth;
+                            
+                            textEl.classList.remove('bh-fade-in');
+                        }, 350);
+                    }, 3000);
                 }
             })();
         </script>
