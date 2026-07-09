@@ -3874,7 +3874,7 @@
                 color: #a78bfa;
             }
 
-            /* ── LOGO DISPLAY (Centered & Static) ── */
+            /* ── LOGO DISPLAY (Centered & Static on Desktop) ── */
             .trusted-slider-wrap {
                 position: relative;
                 margin-top: 2rem;
@@ -3911,6 +3911,10 @@
                 transition: transform 0.3s ease;
             }
 
+            .trusted-logo-item.duplicate {
+                display: none;
+            }
+
             .trusted-logo-item:hover {
                 transform: scale(1.05);
             }
@@ -3930,24 +3934,71 @@
                 opacity: 1;
             }
 
-            /* ── PROGRESSIVE BLUR EDGES (Hidden when not sliding) ── */
+            /* ── PROGRESSIVE BLUR EDGES (Hidden on Desktop) ── */
             .trusted-blur-left,
             .trusted-blur-right {
                 display: none;
+                position: absolute;
+                top: 0;
+                height: 100%;
+                width: 80px;
+                pointer-events: none;
+                z-index: 10;
+            }
+
+            .trusted-blur-left {
+                left: 0;
+                background: linear-gradient(to right, #000000 0%, transparent 100%);
+            }
+
+            .trusted-blur-right {
+                right: 0;
+                background: linear-gradient(to left, #000000 0%, transparent 100%);
             }
 
             @media (max-width: 768px) {
+                .trusted-blur-left,
+                .trusted-blur-right {
+                    display: block;
+                }
+
+                .trusted-slider-wrap {
+                    overflow: hidden;
+                    width: 100%;
+                }
+
                 .trusted-slider-track {
-                    gap: 24px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    flex-wrap: nowrap;
+                    width: max-content;
+                    gap: 0;
+                    animation: mobileInfiniteSlide 15s linear infinite;
+                    padding: 0;
                 }
 
                 .trusted-logo-item {
                     min-width: 100px;
                     max-width: 130px;
+                    margin-right: 32px;
+                }
+
+                .trusted-logo-item.duplicate {
+                    display: flex;
                 }
 
                 .trusted-logo-item img {
                     max-height: 35px;
+                }
+            }
+
+            @keyframes mobileInfiniteSlide {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(-50%);
                 }
             }
 
