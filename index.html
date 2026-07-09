@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -7753,13 +7753,34 @@
             }
 
             @media (max-width: 900px) {
+                #hyna-start-project {
+                    align-items: flex-start;
+                    padding-top: clamp(100px, 15vh, 140px);
+                    overflow-y: auto;
+                }
+
                 #hyna-start-project .hyna-inner {
                     grid-template-columns: 1fr;
+                    gap: clamp(20px, 4vh, 40px);
                 }
 
                 #hyna-start-project .hyna-connect-col {
-                    min-height: 220px;
+                    min-height: 180px;
                     order: 1;
+                }
+
+                #hyna-start-project .hyna-headline {
+                    font-size: clamp(32px, 8vw, 48px);
+                    margin-bottom: 20px;
+                }
+
+                #hyna-start-project .hyna-meta-row {
+                    margin-top: 24px;
+                    gap: 16px 24px;
+                }
+
+                #hyna-start-project .hyna-desc {
+                    font-size: 14.5px;
                 }
             }
 
@@ -7767,7 +7788,7 @@
                 #hyna-start-project .hyna-body-row {
                     grid-template-columns: 1fr;
                     align-items: center;
-                    gap: 28px;
+                    gap: 20px;
                 }
 
                 #hyna-start-project .hyna-line {
