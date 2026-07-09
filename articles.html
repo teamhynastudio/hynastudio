@@ -1,0 +1,172 @@
+articles
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Articles</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.44.0/iconfont/tabler-icons.min.css">
+<style>
+  :root{
+    --bg:#000000;
+    --wordmark:#232323;
+    --accent:#4D6BFF;
+    --white:#F5F5F5;
+    --gray:#9A9A9A;
+    --card:#0B0B0B;
+    --border:#1E1E1E;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg);
+    font-family:'Inter', sans-serif;
+    color:var(--white);
+    padding:100px 40px 120px;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:900px; margin:0 auto; text-align:center; position:relative;}
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    font-weight:500;
+    letter-spacing:4px;
+    color:var(--accent);
+    text-transform:uppercase;
+  }
+  .wordmark{
+    font-size:150px;
+    font-weight:800;
+    letter-spacing:2px;
+    color:var(--wordmark);
+    line-height:1;
+    margin-top:20px;
+    user-select:none;
+  }
+  .heading{
+    font-size:44px;
+    font-weight:700;
+    margin-top:-70px;
+    letter-spacing:-0.5px;
+  }
+  .heading .accent-dot{color:var(--accent);}
+  .sub{
+    max-width:600px;
+    margin:24px auto 0;
+    font-size:17px;
+    line-height:1.7;
+    color:var(--gray);
+  }
+
+  .list{
+    margin-top:64px;
+    text-align:left;
+    display:flex;
+    flex-direction:column;
+    gap:1px;
+    background:var(--border);
+    border:1px solid var(--border);
+  }
+  .entry{
+    background:var(--card);
+    display:grid;
+    grid-template-columns:100px 1fr;
+    gap:26px;
+    padding:26px;
+    text-decoration:none;
+    color:inherit;
+    align-items:center;
+  }
+  .cover{
+    width:100px;
+    height:140px;
+    flex-shrink:0;
+  }
+  .entry-body .tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--accent);
+  }
+  .entry-body h3{
+    font-size:18.5px;
+    font-weight:600;
+    margin-top:8px;
+  }
+  .entry-body p{
+    font-size:13.5px;
+    color:var(--gray);
+    line-height:1.6;
+    margin-top:8px;
+  }
+  .entry-body .meta{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-top:14px;
+    font-size:12px;
+    color:#666;
+  }
+
+  @media (max-width:600px){
+    .entry{grid-template-columns:70px 1fr; gap:16px; padding:18px;}
+    .cover{width:70px; height:98px;}
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="eyebrow">Resources</div>
+    <div class="wordmark">READ</div>
+    <h1 class="heading">Articles<span class="accent-dot">.</span></h1>
+    <p class="sub">Notes on product, engineering, and building SaaS from the team at Hyna Studio.</p>
+
+    <div class="list">
+      <a class="entry" href="https://www.hynastudio.com/#">
+        <svg class="cover" viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="0" width="100" height="140" rx="3" fill="#12183A"/>
+        <rect x="0" y="0" width="10" height="140" fill="#3350C7"/>
+        <path d="M35 30 C35 26 39 24 44 24 L56 24 C61 24 65 26 65 30 L65 78 C65 74 61 72 56 72 L44 72 C39 72 35 74 35 78 Z" fill="none" stroke="#F5F5F5" stroke-width="2.4" opacity="0.9"/><line x1="50" y1="26" x2="50" y2="76" stroke="#F5F5F5" stroke-width="2" opacity="0.6"/>
+        <rect x="18" y="106" width="40" height="3.5" rx="1.5" fill="#F5F5F5" opacity="0.45"/><rect x="18" y="116" width="30" height="3.5" rx="1.5" fill="#F5F5F5" opacity="0.45"/>
+      </svg>
+        <div class="entry-body">
+          <div class="tag">Guides</div>
+          <h3>Why most MVPs fail before they launch</h3>
+          <p>The scoping mistakes that quietly kill early-stage products, and how to avoid them.</p>
+          <div class="meta"><i class="ti ti-calendar" style="font-size:13px"></i>Jun 12, 2026<span>&middot;</span><i class="ti ti-clock" style="font-size:13px"></i>5 min read</div>
+        </div>
+      </a>
+      <a class="entry" href="https://www.hynastudio.com/#">
+        <svg class="cover" viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="0" width="100" height="140" rx="3" fill="#12183A"/>
+        <rect x="0" y="0" width="10" height="140" fill="#3350C7"/>
+        <path d="M35 30 C35 26 39 24 44 24 L56 24 C61 24 65 26 65 30 L65 78 C65 74 61 72 56 72 L44 72 C39 72 35 74 35 78 Z" fill="none" stroke="#F5F5F5" stroke-width="2.4" opacity="0.9"/><line x1="50" y1="26" x2="50" y2="76" stroke="#F5F5F5" stroke-width="2" opacity="0.6"/>
+        <rect x="18" y="106" width="40" height="3.5" rx="1.5" fill="#F5F5F5" opacity="0.45"/><rect x="18" y="116" width="30" height="3.5" rx="1.5" fill="#F5F5F5" opacity="0.45"/>
+      </svg>
+        <div class="entry-body">
+          <div class="tag">Engineering</div>
+          <h3>Picking your first tech stack as a founder</h3>
+          <p>A practical framework for choosing tools that won't box you in six months from now.</p>
+          <div class="meta"><i class="ti ti-calendar" style="font-size:13px"></i>May 28, 2026<span>&middot;</span><i class="ti ti-clock" style="font-size:13px"></i>7 min read</div>
+        </div>
+      </a>
+      <a class="entry" href="https://www.hynastudio.com/#">
+        <svg class="cover" viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="0" width="100" height="140" rx="3" fill="#12183A"/>
+        <rect x="0" y="0" width="10" height="140" fill="#3350C7"/>
+        <path d="M35 30 C35 26 39 24 44 24 L56 24 C61 24 65 26 65 30 L65 78 C65 74 61 72 56 72 L44 72 C39 72 35 74 35 78 Z" fill="none" stroke="#F5F5F5" stroke-width="2.4" opacity="0.9"/><line x1="50" y1="26" x2="50" y2="76" stroke="#F5F5F5" stroke-width="2" opacity="0.6"/>
+        <rect x="18" y="106" width="40" height="3.5" rx="1.5" fill="#F5F5F5" opacity="0.45"/><rect x="18" y="116" width="30" height="3.5" rx="1.5" fill="#F5F5F5" opacity="0.45"/>
+      </svg>
+        <div class="entry-body">
+          <div class="tag">Design</div>
+          <h3>Designing onboarding people actually finish</h3>
+          <p>What separates onboarding flows users complete from ones they abandon.</p>
+          <div class="meta"><i class="ti ti-calendar" style="font-size:13px"></i>May 09, 2026<span>&middot;</span><i class="ti ti-clock" style="font-size:13px"></i>4 min read</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</body>
+</html>

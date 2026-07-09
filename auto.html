@@ -1,0 +1,229 @@
+Automayion workflow
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Automation Workflows</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.44.0/iconfont/tabler-icons.min.css">
+<style>
+  :root{
+    --bg:#000000;
+    --wordmark:#232323;
+    --accent:#4D6BFF;
+    --white:#F5F5F5;
+    --gray:#9A9A9A;
+    --card:#0B0B0B;
+    --border:#1E1E1E;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg);
+    font-family:'Inter', sans-serif;
+    color:var(--white);
+    padding:100px 40px 120px;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:1000px; margin:0 auto; text-align:center; position:relative;}
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    font-weight:500;
+    letter-spacing:4px;
+    color:var(--accent);
+    text-transform:uppercase;
+  }
+  .wordmark{
+    font-size:150px;
+    font-weight:800;
+    letter-spacing:2px;
+    color:var(--wordmark);
+    line-height:1;
+    margin-top:20px;
+    user-select:none;
+  }
+  .heading{
+    font-size:44px;
+    font-weight:700;
+    margin-top:-70px;
+    letter-spacing:-0.5px;
+  }
+  .heading .accent-dot{color:var(--accent);}
+  .sub{
+    max-width:640px;
+    margin:24px auto 0;
+    font-size:17px;
+    line-height:1.7;
+    color:var(--gray);
+  }
+
+  .cta-row{
+    display:flex;
+    justify-content:center;
+    gap:14px;
+    margin-top:32px;
+  }
+  .btn{
+    font-size:14px;
+    font-weight:600;
+    padding:13px 26px;
+    border-radius:6px;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .btn-primary{
+    background:var(--accent);
+    color:#fff;
+  }
+  .btn-secondary{
+    background:transparent;
+    color:var(--white);
+    border:1px solid var(--border);
+  }
+
+  .included{
+    margin-top:70px;
+    text-align:left;
+  }
+  .included .label{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:var(--gray);
+    text-align:center;
+  }
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--border);
+    border:1px solid var(--border);
+    margin-top:24px;
+  }
+  .card{
+    background:var(--card);
+    padding:32px 28px;
+  }
+  .card i{
+    font-size:20px;
+    color:var(--accent);
+  }
+  .card h3{
+    font-size:16.5px;
+    font-weight:600;
+    margin-top:16px;
+  }
+  .card p{
+    font-size:13.5px;
+    color:var(--gray);
+    line-height:1.6;
+    margin-top:10px;
+  }
+
+  .strip{
+    margin-top:70px;
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+    padding:30px 0;
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    text-align:left;
+  }
+  .strip .sitem{
+    padding:0 20px;
+    border-left:1px solid var(--border);
+  }
+  .strip .sitem:first-child{border-left:none;}
+  .strip .sitem .val{
+    font-size:22px;
+    font-weight:700;
+    color:var(--accent);
+  }
+  .strip .sitem .label{
+    font-size:12px;
+    color:var(--gray);
+    margin-top:6px;
+  }
+
+  @media (max-width:640px){
+    .grid{grid-template-columns:1fr;}
+    .strip{grid-template-columns:1fr;}
+    .strip .sitem{border-left:none; border-top:1px solid var(--border); padding:14px 0;}
+    .strip .sitem:first-child{border-top:none;}
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="eyebrow">Service</div>
+    <div class="wordmark">AUTO</div>
+    <h1 class="heading">Automation Workflows<span class="accent-dot">.</span></h1>
+    <p class="sub">Internal tools and workflow automation that remove manual work, so your team spends time on what actually needs a human.</p>
+
+    <div class="cta-row">
+      <a href="https://www.hynastudio.com/digitalization.html" class="btn btn-primary">Start a project <i class="ti ti-arrow-right"></i></a>
+      <a href="https://www.hynastudio.com/digitalization.html" class="btn btn-secondary">View on hynastudio.com</a>
+    </div>
+
+    <div class="included">
+      <div class="label">What's included</div>
+      <div class="grid">
+        <div class="card">
+          <i class="ti ti-tool"></i>
+          <h3>Internal tools</h3>
+          <p>Admin panels and ops dashboards built around how your team actually works, not a generic template.</p>
+        </div>
+        <div class="card">
+          <i class="ti ti-git-merge"></i>
+          <h3>Process automation</h3>
+          <p>Repetitive multi-step tasks turned into a single click or a background job.</p>
+        </div>
+        <div class="card">
+          <i class="ti ti-plug"></i>
+          <h3>Third-party integrations</h3>
+          <p>Your automations connected to the tools you already use — CRM, support, spreadsheets, and more.</p>
+        </div>
+        <div class="card">
+          <i class="ti ti-clock-hour-4"></i>
+          <h3>Scheduled workflows</h3>
+          <p>Recurring jobs and reports that run on their own, on the schedule your business needs.</p>
+        </div>
+        <div class="card">
+          <i class="ti ti-alert-triangle"></i>
+          <h3>Error handling & alerts</h3>
+          <p>Failures get caught and flagged automatically, instead of silently breaking a process.</p>
+        </div>
+        <div class="card">
+          <i class="ti ti-adjustments"></i>
+          <h3>Built to evolve</h3>
+          <p>Workflows structured so they're easy to extend as your operations change.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="strip">
+      <div class="sitem">
+        <div class="val">Ops</div>
+        <div class="label">Time saved</div>
+      </div>
+      <div class="sitem">
+        <div class="val">API</div>
+        <div class="label">Connected tools</div>
+      </div>
+      <div class="sitem">
+        <div class="val">Cron</div>
+        <div class="label">Scheduled jobs</div>
+      </div>
+      <div class="sitem">
+        <div class="val">Alerts</div>
+        <div class="label">Built-in monitoring</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Industry Trends</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.44.0/iconfont/tabler-icons.min.css">
+<style>
+  :root{
+    --bg:#000000;
+    --wordmark:#232323;
+    --accent:#4D6BFF;
+    --white:#F5F5F5;
+    --gray:#9A9A9A;
+    --card:#0B0B0B;
+    --border:#1E1E1E;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg);
+    font-family:'Inter', sans-serif;
+    color:var(--white);
+    padding:100px 40px 120px;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:900px; margin:0 auto; text-align:center; position:relative;}
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    font-weight:500;
+    letter-spacing:4px;
+    color:var(--accent);
+    text-transform:uppercase;
+  }
+  .wordmark{
+    font-size:100px;
+    font-weight:800;
+    letter-spacing:2px;
+    color:var(--wordmark);
+    line-height:1;
+    margin-top:20px;
+    user-select:none;
+  }
+  .heading{
+    font-size:44px;
+    font-weight:700;
+    margin-top:-70px;
+    letter-spacing:-0.5px;
+  }
+  .heading .accent-dot{color:var(--accent);}
+  .sub{
+    max-width:600px;
+    margin:24px auto 0;
+    font-size:17px;
+    line-height:1.7;
+    color:var(--gray);
+  }
+
+  .list{
+    margin-top:64px;
+    text-align:left;
+    display:flex;
+    flex-direction:column;
+    gap:1px;
+    background:var(--border);
+    border:1px solid var(--border);
+  }
+  .entry{
+    background:var(--card);
+    display:grid;
+    grid-template-columns:100px 1fr;
+    gap:26px;
+    padding:26px;
+    text-decoration:none;
+    color:inherit;
+    align-items:center;
+  }
+  .cover{
+    width:100px;
+    height:140px;
+    flex-shrink:0;
+  }
+  .entry-body .tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--accent);
+  }
+  .entry-body h3{
+    font-size:18.5px;
+    font-weight:600;
+    margin-top:8px;
+  }
+  .entry-body p{
+    font-size:13.5px;
+    color:var(--gray);
+    line-height:1.6;
+    margin-top:8px;
+  }
+  .entry-body .meta{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-top:14px;
+    font-size:12px;
+    color:#666;
+  }
+
+  @media (max-width:600px){
+    .entry{grid-template-columns:70px 1fr; gap:16px; padding:18px;}
+    .cover{width:70px; height:98px;}
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="eyebrow">Resources</div>
+    <div class="wordmark">TRENDS</div>
+    <h1 class="heading">Industry Trends<span class="accent-dot">.</span></h1>
+    <p class="sub">Our take on where SaaS, AI, and product development are heading next.</p>
+
+    <div class="list">
+      <a class="entry" href="https://www.hynastudio.com/#">
+        <svg class="cover" viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="0" width="100" height="140" rx="3" fill="#181433"/>
+        <rect x="0" y="0" width="10" height="140" fill="#534AB7"/>
+        <circle cx="50" cy="46" r="22" fill="none" stroke="#F5F5F5" stroke-width="2.2" opacity="0.85"/><ellipse cx="50" cy="46" rx="9" ry="22" fill="none" stroke="#F5F5F5" stroke-width="1.6" opacity="0.6"/><line x1="28" y1="46" x2="72" y2="46" stroke="#F5F5F5" stroke-width="1.6" opacity="0.6"/>
+        <rect x="18" y="106" width="40" height="3.5" rx="1.5" fill="#F5F5F5" opacity="0.45"/><rect x="18" y="116" width="30" height="3.5" rx="1.5" fill="#F5F5F5" opacity="0.45"/>
+      </svg>
+        <div class="entry-body">
+          <div class="tag">Perspective</div>
+          <h3>AI features are becoming table stakes</h3>
+          <p>Why baseline AI functionality is quietly shifting from differentiator to expectation.</p>
+          <div class="meta"><i class="ti ti-calendar" style="font-size:13px"></i>Jun 22, 2026<span>&middot;</span><i class="ti ti-clock" style="font-size:13px"></i>5 min read</div>
+        </div>
+      </a>
+      <a class="entry" href="https://www.hynastudio.com/#">
+        <svg class="cover" viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="0" width="100" height="140" rx="3" fill="#181433"/>
+        <rect x="0" y="0" width="10" height="140" fill="#534AB7"/>
+        <circle cx="50" cy="46" r="22" fill="none" stroke="#F5F5F5" stroke-width="2.2" opacity="0.85"/><ellipse cx="50" cy="46" rx="9" ry="22" fill="none" stroke="#F5F5F5" stroke-width="1.6" opacity="0.6"/><line x1="28" y1="46" x2="72" y2="46" stroke="#F5F5F5" stroke-width="1.6" opacity="0.6"/>
+        <rect x="18" y="106" width="40" height="3.5" rx="1.5" fill="#F5F5F5" opacity="0.45"/><rect x="18" y="116" width="30" height="3.5" rx="1.5" fill="#F5F5F5" opacity="0.45"/>
+      </svg>
+        <div class="entry-body">
+          <div class="tag">Perspective</div>
+          <h3>The shrinking gap between MVP and v1</h3>
+          <p>How tooling has compressed timelines, and what that means for early product decisions.</p>
+          <div class="meta"><i class="ti ti-calendar" style="font-size:13px"></i>Jun 05, 2026<span>&middot;</span><i class="ti ti-clock" style="font-size:13px"></i>4 min read</div>
+        </div>
+      </a>
+      <a class="entry" href="https://www.hynastudio.com/#">
+        <svg class="cover" viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="0" width="100" height="140" rx="3" fill="#181433"/>
+        <rect x="0" y="0" width="10" height="140" fill="#534AB7"/>
+        <circle cx="50" cy="46" r="22" fill="none" stroke="#F5F5F5" stroke-width="2.2" opacity="0.85"/><ellipse cx="50" cy="46" rx="9" ry="22" fill="none" stroke="#F5F5F5" stroke-width="1.6" opacity="0.6"/><line x1="28" y1="46" x2="72" y2="46" stroke="#F5F5F5" stroke-width="1.6" opacity="0.6"/>
+        <rect x="18" y="106" width="40" height="3.5" rx="1.5" fill="#F5F5F5" opacity="0.45"/><rect x="18" y="116" width="30" height="3.5" rx="1.5" fill="#F5F5F5" opacity="0.45"/>
+      </svg>
+        <div class="entry-body">
+          <div class="tag">Perspective</div>
+          <h3>Usage-based pricing is spreading beyond infra</h3>
+          <p>Why more SaaS categories are moving away from flat-rate subscription pricing.</p>
+          <div class="meta"><i class="ti ti-calendar" style="font-size:13px"></i>May 20, 2026<span>&middot;</span><i class="ti ti-clock" style="font-size:13px"></i>5 min read</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</body>
+</html>

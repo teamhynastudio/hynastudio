@@ -1,0 +1,229 @@
+saas engineering
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SaaS Engineering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.44.0/iconfont/tabler-icons.min.css">
+<style>
+  :root{
+    --bg:#000000;
+    --wordmark:#232323;
+    --accent:#4D6BFF;
+    --white:#F5F5F5;
+    --gray:#9A9A9A;
+    --card:#0B0B0B;
+    --border:#1E1E1E;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg);
+    font-family:'Inter', sans-serif;
+    color:var(--white);
+    padding:100px 40px 120px;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:1000px; margin:0 auto; text-align:center; position:relative;}
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    font-weight:500;
+    letter-spacing:4px;
+    color:var(--accent);
+    text-transform:uppercase;
+  }
+  .wordmark{
+    font-size:170px;
+    font-weight:800;
+    letter-spacing:2px;
+    color:var(--wordmark);
+    line-height:1;
+    margin-top:20px;
+    user-select:none;
+  }
+  .heading{
+    font-size:44px;
+    font-weight:700;
+    margin-top:-70px;
+    letter-spacing:-0.5px;
+  }
+  .heading .accent-dot{color:var(--accent);}
+  .sub{
+    max-width:640px;
+    margin:24px auto 0;
+    font-size:17px;
+    line-height:1.7;
+    color:var(--gray);
+  }
+
+  .cta-row{
+    display:flex;
+    justify-content:center;
+    gap:14px;
+    margin-top:32px;
+  }
+  .btn{
+    font-size:14px;
+    font-weight:600;
+    padding:13px 26px;
+    border-radius:6px;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .btn-primary{
+    background:var(--accent);
+    color:#fff;
+  }
+  .btn-secondary{
+    background:transparent;
+    color:var(--white);
+    border:1px solid var(--border);
+  }
+
+  .included{
+    margin-top:70px;
+    text-align:left;
+  }
+  .included .label{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:var(--gray);
+    text-align:center;
+  }
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--border);
+    border:1px solid var(--border);
+    margin-top:24px;
+  }
+  .card{
+    background:var(--card);
+    padding:32px 28px;
+  }
+  .card i{
+    font-size:20px;
+    color:var(--accent);
+  }
+  .card h3{
+    font-size:16.5px;
+    font-weight:600;
+    margin-top:16px;
+  }
+  .card p{
+    font-size:13.5px;
+    color:var(--gray);
+    line-height:1.6;
+    margin-top:10px;
+  }
+
+  .strip{
+    margin-top:70px;
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+    padding:30px 0;
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    text-align:left;
+  }
+  .strip .sitem{
+    padding:0 20px;
+    border-left:1px solid var(--border);
+  }
+  .strip .sitem:first-child{border-left:none;}
+  .strip .sitem .val{
+    font-size:22px;
+    font-weight:700;
+    color:var(--accent);
+  }
+  .strip .sitem .label{
+    font-size:12px;
+    color:var(--gray);
+    margin-top:6px;
+  }
+
+  @media (max-width:640px){
+    .grid{grid-template-columns:1fr;}
+    .strip{grid-template-columns:1fr;}
+    .strip .sitem{border-left:none; border-top:1px solid var(--border); padding:14px 0;}
+    .strip .sitem:first-child{border-top:none;}
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="eyebrow">Service</div>
+    <div class="wordmark">SAAS</div>
+    <h1 class="heading">SaaS Engineering<span class="accent-dot">.</span></h1>
+    <p class="sub">Multi-tenant architecture, billing, and auth engineered in from day one — built to scale from your first customer to your thousandth.</p>
+
+    <div class="cta-row">
+      <a href="https://www.hynastudio.com/saas-solutions.html" class="btn btn-primary">Start a project <i class="ti ti-arrow-right"></i></a>
+      <a href="https://www.hynastudio.com/saas-solutions.html" class="btn btn-secondary">View on hynastudio.com</a>
+    </div>
+
+    <div class="included">
+      <div class="label">What's included</div>
+      <div class="grid">
+        <div class="card">
+          <i class="ti ti-building-skyscraper"></i>
+          <h3>Multi-tenant architecture</h3>
+          <p>Data isolation and tenant management designed to scale cleanly as your customer base grows.</p>
+        </div>
+        <div class="card">
+          <i class="ti ti-credit-card"></i>
+          <h3>Billing & subscriptions</h3>
+          <p>Plans, metering, and invoicing wired in from launch, so you can start charging on day one.</p>
+        </div>
+        <div class="card">
+          <i class="ti ti-lock"></i>
+          <h3>Auth & permissions</h3>
+          <p>Role-based access, SSO, and secure auth flows built for teams, not just single users.</p>
+        </div>
+        <div class="card">
+          <i class="ti ti-server-2"></i>
+          <h3>Scalable infrastructure</h3>
+          <p>Infrastructure that grows with usage instead of needing a rebuild at your next growth stage.</p>
+        </div>
+        <div class="card">
+          <i class="ti ti-api"></i>
+          <h3>API-first design</h3>
+          <p>A clean, documented API layer so your product can integrate and extend without friction.</p>
+        </div>
+        <div class="card">
+          <i class="ti ti-activity"></i>
+          <h3>Uptime & monitoring</h3>
+          <p>Observability and alerting in place from launch, so issues get caught before customers notice.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="strip">
+      <div class="sitem">
+        <div class="val">99.9%</div>
+        <div class="label">Uptime target</div>
+      </div>
+      <div class="sitem">
+        <div class="val">SSO</div>
+        <div class="label">Enterprise-ready</div>
+      </div>
+      <div class="sitem">
+        <div class="val">API</div>
+        <div class="label">First-class</div>
+      </div>
+      <div class="sitem">
+        <div class="val">Stripe</div>
+        <div class="label">Billing built-in</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

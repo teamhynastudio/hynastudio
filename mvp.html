@@ -1,0 +1,230 @@
+mvp studio
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MVP Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.44.0/iconfont/tabler-icons.min.css">
+<style>
+  :root{
+    --bg:#000000;
+    --wordmark:#232323;
+    --accent:#4D6BFF;
+    --white:#F5F5F5;
+    --gray:#9A9A9A;
+    --card:#0B0B0B;
+    --border:#1E1E1E;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg);
+    font-family:'Inter', sans-serif;
+    color:var(--white);
+    padding:100px 40px 120px;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:1000px; margin:0 auto; text-align:center; position:relative;}
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    font-weight:500;
+    letter-spacing:4px;
+    color:var(--accent);
+    text-transform:uppercase;
+  }
+  .wordmark{
+    font-size:170px;
+    font-weight:800;
+    letter-spacing:2px;
+    color:var(--wordmark);
+    line-height:1;
+    margin-top:20px;
+    user-select:none;
+  }
+  .heading{
+    font-size:44px;
+    font-weight:700;
+    margin-top:-70px;
+    letter-spacing:-0.5px;
+  }
+  .heading .accent-dot{color:var(--accent);}
+  .sub{
+    max-width:640px;
+    margin:24px auto 0;
+    font-size:17px;
+    line-height:1.7;
+    color:var(--gray);
+  }
+
+  .cta-row{
+    display:flex;
+    justify-content:center;
+    gap:14px;
+    margin-top:32px;
+  }
+  .btn{
+    font-size:14px;
+    font-weight:600;
+    padding:13px 26px;
+    border-radius:6px;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .btn-primary{
+    background:var(--accent);
+    color:#fff;
+  }
+  .btn-secondary{
+    background:transparent;
+    color:var(--white);
+    border:1px solid var(--border);
+  }
+
+  .included{
+    margin-top:70px;
+    text-align:left;
+  }
+  .included .label{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:var(--gray);
+    text-align:center;
+  }
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--border);
+    border:1px solid var(--border);
+    margin-top:24px;
+  }
+  .card{
+    background:var(--card);
+    padding:32px 28px;
+  }
+  .card i{
+    font-size:20px;
+    color:var(--accent);
+  }
+  .card h3{
+    font-size:16.5px;
+    font-weight:600;
+    margin-top:16px;
+  }
+  .card p{
+    font-size:13.5px;
+    color:var(--gray);
+    line-height:1.6;
+    margin-top:10px;
+  }
+
+  .timeline-strip{
+    margin-top:70px;
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+    padding:34px 0;
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    text-align:left;
+  }
+  .timeline-strip .tstep{
+    padding:0 20px;
+    border-left:1px solid var(--border);
+  }
+  .timeline-strip .tstep:first-child{border-left:none;}
+  .timeline-strip .tstep .wk{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    color:var(--accent);
+    letter-spacing:1px;
+  }
+  .timeline-strip .tstep h4{
+    font-size:14.5px;
+    font-weight:600;
+    margin-top:8px;
+  }
+
+  @media (max-width:640px){
+    .grid{grid-template-columns:1fr;}
+    .timeline-strip{grid-template-columns:1fr;}
+    .timeline-strip .tstep{border-left:none; border-top:1px solid var(--border); padding:16px 0;}
+    .timeline-strip .tstep:first-child{border-top:none;}
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="eyebrow">Introducing</div>
+    <div class="wordmark">MVP</div>
+    <h1 class="heading">MVP Studio<span class="accent-dot">.</span></h1>
+    <p class="sub">A focused sprint that takes your raw idea to a working, launch-ready MVP — scoped tight, built fast, and grounded in what real users will actually pay for.</p>
+
+    <div class="cta-row">
+      <a href="#" class="btn btn-primary">Start your MVP <i class="ti ti-arrow-right"></i></a>
+      <a href="#" class="btn btn-secondary">See sample builds</a>
+    </div>
+
+    <div class="included">
+      <div class="label">What's included</div>
+      <div class="grid">
+        <div class="card">
+          <i class="ti ti-target-arrow"></i>
+          <h3>Scope, not sprawl</h3>
+          <p>We cut every feature that isn't essential to testing your core hypothesis, so you launch in weeks, not months.</p>
+        </div>
+        <div class="card">
+          <i class="ti ti-code"></i>
+          <h3>Production-ready code</h3>
+          <p>No throwaway prototypes — the MVP is built on the same stack you'll scale on if it takes off.</p>
+        </div>
+        <div class="card">
+          <i class="ti ti-credit-card"></i>
+          <h3>Billing &amp; auth included</h3>
+          <p>Payments, sign-up, and user accounts wired in from the start, so you can start charging on day one.</p>
+        </div>
+        <div class="card">
+          <i class="ti ti-chart-dots"></i>
+          <h3>Analytics baked in</h3>
+          <p>Usage tracking from launch, so you know what's working before you spend another dollar building.</p>
+        </div>
+        <div class="card">
+          <i class="ti ti-presentation"></i>
+          <h3>Investor-ready demo</h3>
+          <p>A polished, working product you can put in front of investors or early customers, not a mockup.</p>
+        </div>
+        <div class="card">
+          <i class="ti ti-rocket"></i>
+          <h3>Path to v2 mapped</h3>
+          <p>We leave you with a clear roadmap for what to build next based on what launch data tells you.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-strip">
+      <div class="tstep">
+        <div class="wk">WEEK 1</div>
+        <h4>Scope &amp; wireframe</h4>
+      </div>
+      <div class="tstep">
+        <div class="wk">WEEK 2–3</div>
+        <h4>Core build</h4>
+      </div>
+      <div class="tstep">
+        <div class="wk">WEEK 4</div>
+        <h4>Test &amp; polish</h4>
+      </div>
+      <div class="tstep">
+        <div class="wk">WEEK 5</div>
+        <h4>Launch</h4>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

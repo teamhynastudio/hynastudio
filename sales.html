@@ -1,0 +1,229 @@
+scale support
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Scale & Support</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.44.0/iconfont/tabler-icons.min.css">
+<style>
+  :root{
+    --bg:#000000;
+    --wordmark:#232323;
+    --accent:#4D6BFF;
+    --white:#F5F5F5;
+    --gray:#9A9A9A;
+    --card:#0B0B0B;
+    --border:#1E1E1E;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg);
+    font-family:'Inter', sans-serif;
+    color:var(--white);
+    padding:100px 40px 120px;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:1000px; margin:0 auto; text-align:center; position:relative;}
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    font-weight:500;
+    letter-spacing:4px;
+    color:var(--accent);
+    text-transform:uppercase;
+  }
+  .wordmark{
+    font-size:135px;
+    font-weight:800;
+    letter-spacing:2px;
+    color:var(--wordmark);
+    line-height:1;
+    margin-top:20px;
+    user-select:none;
+  }
+  .heading{
+    font-size:44px;
+    font-weight:700;
+    margin-top:-70px;
+    letter-spacing:-0.5px;
+  }
+  .heading .accent-dot{color:var(--accent);}
+  .sub{
+    max-width:640px;
+    margin:24px auto 0;
+    font-size:17px;
+    line-height:1.7;
+    color:var(--gray);
+  }
+
+  .cta-row{
+    display:flex;
+    justify-content:center;
+    gap:14px;
+    margin-top:32px;
+  }
+  .btn{
+    font-size:14px;
+    font-weight:600;
+    padding:13px 26px;
+    border-radius:6px;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .btn-primary{
+    background:var(--accent);
+    color:#fff;
+  }
+  .btn-secondary{
+    background:transparent;
+    color:var(--white);
+    border:1px solid var(--border);
+  }
+
+  .included{
+    margin-top:70px;
+    text-align:left;
+  }
+  .included .label{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:var(--gray);
+    text-align:center;
+  }
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--border);
+    border:1px solid var(--border);
+    margin-top:24px;
+  }
+  .card{
+    background:var(--card);
+    padding:32px 28px;
+  }
+  .card i{
+    font-size:20px;
+    color:var(--accent);
+  }
+  .card h3{
+    font-size:16.5px;
+    font-weight:600;
+    margin-top:16px;
+  }
+  .card p{
+    font-size:13.5px;
+    color:var(--gray);
+    line-height:1.6;
+    margin-top:10px;
+  }
+
+  .strip{
+    margin-top:70px;
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+    padding:30px 0;
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    text-align:left;
+  }
+  .strip .sitem{
+    padding:0 20px;
+    border-left:1px solid var(--border);
+  }
+  .strip .sitem:first-child{border-left:none;}
+  .strip .sitem .val{
+    font-size:22px;
+    font-weight:700;
+    color:var(--accent);
+  }
+  .strip .sitem .label{
+    font-size:12px;
+    color:var(--gray);
+    margin-top:6px;
+  }
+
+  @media (max-width:640px){
+    .grid{grid-template-columns:1fr;}
+    .strip{grid-template-columns:1fr;}
+    .strip .sitem{border-left:none; border-top:1px solid var(--border); padding:14px 0;}
+    .strip .sitem:first-child{border-top:none;}
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="eyebrow">Service</div>
+    <div class="wordmark">SCALE</div>
+    <h1 class="heading">Scale &amp; Support<span class="accent-dot">.</span></h1>
+    <p class="sub">Ongoing engineering and product support once you're live, so growth never outruns your infrastructure or your team.</p>
+
+    <div class="cta-row">
+      <a href="https://www.hynastudio.com/application-services.html" class="btn btn-primary">Start a project <i class="ti ti-arrow-right"></i></a>
+      <a href="https://www.hynastudio.com/application-services.html" class="btn btn-secondary">View on hynastudio.com</a>
+    </div>
+
+    <div class="included">
+      <div class="label">What's included</div>
+      <div class="grid">
+        <div class="card">
+          <i class="ti ti-server"></i>
+          <h3>Infrastructure scaling</h3>
+          <p>Your systems reviewed and re-architected proactively as usage grows, not reactively after an outage.</p>
+        </div>
+        <div class="card">
+          <i class="ti ti-headset"></i>
+          <h3>Dedicated support</h3>
+          <p>Direct access to the team that built your product, not a ticket queue with rotating engineers.</p>
+        </div>
+        <div class="card">
+          <i class="ti ti-bug"></i>
+          <h3>Ongoing maintenance</h3>
+          <p>Bug fixes, dependency updates, and security patches handled continuously in the background.</p>
+        </div>
+        <div class="card">
+          <i class="ti ti-chart-bar"></i>
+          <h3>Performance reviews</h3>
+          <p>Regular check-ins on speed, cost, and reliability, with a clear plan for what needs attention next.</p>
+        </div>
+        <div class="card">
+          <i class="ti ti-git-branch"></i>
+          <h3>Feature iteration</h3>
+          <p>Continued product development based on what your growing user base is actually asking for.</p>
+        </div>
+        <div class="card">
+          <i class="ti ti-shield"></i>
+          <h3>Security & compliance</h3>
+          <p>Ongoing attention to security posture as your product takes on more sensitive data and customers.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="strip">
+      <div class="sitem">
+        <div class="val">24/7</div>
+        <div class="label">Monitoring</div>
+      </div>
+      <div class="sitem">
+        <div class="val">SLA</div>
+        <div class="label">Response times</div>
+      </div>
+      <div class="sitem">
+        <div class="val">Direct</div>
+        <div class="label">Team access</div>
+      </div>
+      <div class="sitem">
+        <div class="val">Ongoing</div>
+        <div class="label">Feature work</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
