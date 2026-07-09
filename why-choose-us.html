@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Why Choose Hyna Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.44.0/iconfont/tabler-icons.min.css">
+<style>
+  :root{
+    --bg:#000000;
+    --wordmark:#232323;
+    --accent:#4D6BFF;
+    --white:#F5F5F5;
+    --gray:#9A9A9A;
+    --card:#0B0B0B;
+    --border:#1E1E1E;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg);
+    font-family:'Inter', sans-serif;
+    color:var(--white);
+    padding:100px 40px 120px;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:1000px; margin:0 auto; text-align:center; position:relative;}
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    font-weight:500;
+    letter-spacing:4px;
+    color:var(--accent);
+    text-transform:uppercase;
+  }
+  .wordmark{
+    font-size:150px;
+    font-weight:800;
+    letter-spacing:2px;
+    color:var(--wordmark);
+    line-height:1;
+    margin-top:20px;
+    user-select:none;
+  }
+  .heading{
+    font-size:44px;
+    font-weight:700;
+    margin-top:-70px;
+    letter-spacing:-0.5px;
+  }
+  .heading .accent-dot{color:var(--accent);}
+  .sub{
+    max-width:640px;
+    margin:24px auto 0;
+    font-size:17px;
+    line-height:1.7;
+    color:var(--gray);
+  }
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:1px;
+    background:var(--border);
+    border:1px solid var(--border);
+    margin-top:64px;
+    text-align:left;
+  }
+  .card{
+    background:var(--card);
+    padding:36px;
+  }
+  .card i{
+    font-size:22px;
+    color:var(--accent);
+  }
+  .card .num{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:#555;
+    letter-spacing:2px;
+    display:block;
+    margin-bottom:16px;
+  }
+  .card h3{
+    font-size:19px;
+    font-weight:600;
+    margin-top:14px;
+  }
+  .card p{
+    font-size:14.5px;
+    color:var(--gray);
+    line-height:1.65;
+    margin-top:10px;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="eyebrow">Why Choose Us</div>
+    <div class="wordmark">HYNA</div>
+    <h1 class="heading">Why Choose Hyna Studio<span class="accent-dot">?</span></h1>
+    <p class="sub">We're not an agency that ships a deck and disappears. We're a product studio built for SaaS founders — embedded from the first line of code to the first thousand paying users.</p>
+
+    <div class="grid">
+      <div class="card">
+        <i class="ti ti-rocket"></i>
+        <h3>Full-stack product execution</h3>
+        <p>One team handles discovery, design, and engineering — no handoffs, no lost context between agencies.</p>
+      </div>
+      <div class="card">
+        <i class="ti ti-cloud-code"></i>
+        <h3>SaaS-native by default</h3>
+        <p>Multi-tenant architecture, billing, auth, and onboarding built in from day one, not bolted on later.</p>
+      </div>
+      <div class="card">
+        <i class="ti ti-chart-line"></i>
+        <h3>We stay past launch</h3>
+        <p>Growth and go-to-market partnership continues after ship, so the product keeps improving with real users.</p>
+      </div>
+      <div class="card">
+        <i class="ti ti-users"></i>
+        <h3>Founder-first collaboration</h3>
+        <p>Direct access to the people building your product — no account managers standing between you and the work.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
