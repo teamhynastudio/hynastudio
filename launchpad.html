@@ -682,6 +682,7 @@
       color: var(--ink);
       opacity: 1;
       transition: opacity .2s linear;
+      pointer-events: none;
     }
 
     .hero-caption .eyebrow {
@@ -1333,14 +1334,12 @@
       <div class="hero-img-wrap" id="heroImg">
         <img src="./hynabuild.png" alt="Hyna Launchpad Billboard Mockup">
         <div class="zoom-scrim" id="zoomScrim"></div>
+        <!-- Banner overlay actions — inside hero-img-wrap so they scale and zoom perfectly with the banner -->
         <div class="banner-overlay-actions">
           <div class="banner-buttons-row">
-            <a href="https://chat.whatsapp.com/Jhs8k3Bd2cX6i1Ig4DjWMw" class="banner-btn primary-btn">Connect with
-              Hyna</a>
-            <a href="https://hynastudio.com/community" target="_blank" class="banner-btn secondary-btn">Join Hyna
-              Community</a>
+            <a href="https://chat.whatsapp.com/Jhs8k3Bd2cX6i1Ig4DjWMw" target="_blank" class="banner-btn primary-btn">Connect with Hyna</a>
+            <a href="https://hynastudio.com/community" target="_blank" class="banner-btn secondary-btn">Join Hyna Community</a>
           </div>
-
         </div>
       </div>
 
@@ -1348,7 +1347,6 @@
         <div class="eyebrow"></div>
         <h1></h1>
       </div>
-
 
       <div class="reveal-panel" id="revealPanel">
         <div class="reveal-inner" id="revealInner">
