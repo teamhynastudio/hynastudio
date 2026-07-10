@@ -4834,6 +4834,7 @@
                 justify-content: center;
                 overflow: hidden;
                 padding: 0;
+                transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
             }
 
             #build-headline .bh-inner {
@@ -4850,6 +4851,7 @@
                 letter-spacing: -0.015em;
                 margin: 0;
                 color: #ffffff;
+                transition: color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
             }
 
             #build-headline .bh-highlight {
@@ -4858,6 +4860,7 @@
                 font-weight: 700;
                 color: #ffffff;
                 font-style: italic;
+                transition: color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
             }
 
             #bhHighlightText {
@@ -4894,6 +4897,7 @@
                 stroke-linecap: round;
                 stroke-dasharray: 340;
                 stroke-dashoffset: 340;
+                transition: stroke 0.8s cubic-bezier(0.16, 1, 0.3, 1);
             }
 
             #build-headline .bh-highlight.bh-drawn svg path {
@@ -4903,6 +4907,7 @@
             #build-headline .bh-rest {
                 font-weight: 400;
                 color: #ffffff;
+                transition: color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
             }
 
             #build-headline .bh-sub {
@@ -4917,6 +4922,7 @@
                 -webkit-background-clip: text;
                 background-clip: text;
                 color: transparent;
+                transition: color 0.8s cubic-bezier(0.16, 1, 0.3, 1), -webkit-text-fill-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
             }
 
             @media (prefers-reduced-motion: reduce) {
@@ -4954,6 +4960,26 @@
 
             #build-headline .bh-line-wrap.bh-line-drawn .bh-line-path {
                 stroke-dashoffset: 0;
+            }
+
+            /* ── Theme Transitions (Light Mode Toggle Classes) ── */
+            #build-headline.theme-light {
+                background-color: #ffffff;
+            }
+
+            #build-headline.theme-light h2,
+            #build-headline.theme-light .bh-highlight,
+            #build-headline.theme-light .bh-rest {
+                color: #13141A;
+            }
+
+            #build-headline.theme-light .bh-highlight svg path {
+                stroke: #13141A;
+            }
+
+            #build-headline.theme-light .bh-sub {
+                color: #5B6270;
+                -webkit-text-fill-color: #5B6270;
             }
         </style>
 
@@ -5788,14 +5814,23 @@
                 will-change: background-color;
 
                 position: relative;
-                /* Initial dark state — GSAP transitions to white as section scrolls into view */
                 background: #000000;
                 color: #ffffff;
                 overflow: hidden;
                 font-family: 'Inter', sans-serif;
+                transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
             }
 
-            /* Dark-mode overrides for text inside the section — GSAP will animate these to light values */
+            /* CSS Transitions on typography colors */
+            body .liquid-glass-expertise-section h1,
+            body .liquid-glass-expertise-section .lede,
+            body .liquid-glass-expertise-section .eyebrow,
+            .liquid-glass-expertise-section h3,
+            .liquid-glass-expertise-section p.desc {
+                transition: color 0.8s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+
+            /* Dark-mode defaults */
             body .liquid-glass-expertise-section h1 {
                 color: #ffffff;
             }
@@ -5808,6 +5843,27 @@
                 color: #ffffff;
                 background: rgba(255, 255, 255, 0.12);
                 border-color: rgba(255, 255, 255, 0.25);
+            }
+
+            /* Theme Light CSS Overrides */
+            .liquid-glass-expertise-section.theme-light {
+                background-color: #ffffff;
+            }
+
+            body .liquid-glass-expertise-section.theme-light h1,
+            .liquid-glass-expertise-section.theme-light h3 {
+                color: #13141A;
+            }
+
+            body .liquid-glass-expertise-section.theme-light .lede,
+            .liquid-glass-expertise-section.theme-light p.desc {
+                color: #5B6270;
+            }
+
+            body .liquid-glass-expertise-section.theme-light .eyebrow {
+                color: #13141A;
+                background: rgba(255, 255, 255, 0.55);
+                border-color: rgba(255, 255, 255, 0.75);
             }
 
             .liquid-glass-expertise-section .stage {
@@ -5825,6 +5881,8 @@
                 opacity: .55;
                 z-index: -1;
                 animation: drift-lg 16s ease-in-out infinite;
+                will-change: transform;
+                transform: translateZ(0);
             }
 
             .liquid-glass-expertise-section .b1 {
