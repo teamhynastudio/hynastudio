@@ -918,7 +918,595 @@
                 flex-direction: column;
             }
         }
-    </style>
+    
+    @media (max-width: 768px) {
+
+      /* ── MOBILE NAV — Dark Pill + Hamburger Toggle ── */
+      nav {
+        position: fixed !important;
+        top: 1.25rem !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: calc(100% - 1.5rem) !important;
+        max-width: none !important;
+        min-height: 56px;
+        padding: 0.45rem 0.8rem 0.45rem 1rem !important;
+        border-radius: 40px !important;
+        background: rgba(18, 18, 22, 0.92) !important;
+        border: 1px solid rgba(255, 255, 255, 0.18) !important;
+        border-top: 1.5px solid rgba(255, 255, 255, 0.45) !important;
+        box-shadow:
+          0 20px 40px rgba(0, 0, 0, 0.6),
+          inset 0 1px 1px rgba(255, 255, 255, 0.2),
+          inset 0 -1px 0 rgba(0, 0, 0, 0.4) !important;
+        backdrop-filter: blur(25px) saturate(220%) !important;
+        -webkit-backdrop-filter: blur(25px) saturate(220%) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        flex-wrap: nowrap !important;
+        z-index: 10010;
+      }
+
+      nav.nav-scrolled {
+        background: rgba(20, 20, 24, 0.96) !important;
+        border: 1px solid rgba(255, 255, 255, 0.22) !important;
+        border-top: 1.5px solid rgba(255, 255, 255, 0.55) !important;
+        box-shadow:
+          0 24px 48px rgba(0, 0, 0, 0.7),
+          inset 0 1px 1px rgba(255, 255, 255, 0.25),
+          inset 0 -1px 0 rgba(0, 0, 0, 0.5) !important;
+      }
+
+      /* Keep logo consistent */
+      .nav-logo {
+        gap: 0.45rem !important;
+        min-width: 0;
+        flex: 0 1 auto !important;
+      }
+
+      .logo-text {
+        min-width: 0;
+      }
+
+      .logo-img {
+        width: 32px !important;
+        height: 32px !important;
+      }
+
+      .logo-main {
+        font-size: 0.95rem !important;
+        white-space: nowrap !important;
+        color: #ffffff !important;
+      }
+
+      .logo-sub {
+        display: block;
+        font-size: 0.5rem;
+        letter-spacing: 0.05em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 120px;
+      }
+
+      /* Hide duplicate floating brand mark on mobile */
+      .topmark {
+        display: none !important;
+      }
+
+      /* Add top padding to the first section so it isn't covered by the fixed navigation bar */
+      body {
+        padding-top: 96px !important;
+      }
+
+      /* Prevent horizontal scroll only */
+      html,
+      body {
+        overflow-x: hidden;
+      }
+
+      /* ── SKULL TOGGLE BUTTON (ashif_6672) ── */
+      #navMobileToggle {
+        position: relative;
+        z-index: 10011;
+        flex-shrink: 0;
+        display: inline-flex !important;
+        background: transparent;
+        border: none;
+      }
+
+      .switch {
+        position: relative;
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 20vmin;
+        height: 10vmin;
+        background: #141414;
+        border-radius: 5vmin;
+        overflow: hidden;
+        box-shadow:
+          0 0 0.1vmin 0.1vmin #000000,
+          0 0 0.5vmin 0.1vmin #0b0b10 inset;
+        cursor: pointer;
+        max-width: 80px;
+        max-height: 40px;
+      }
+
+      .switch input {
+        display: none !important;
+      }
+
+      .thumb {
+        position: absolute;
+        width: 8.75vmin;
+        height: 8.75vmin;
+        top: 0.6vmin;
+        left: calc(100% - 9.333vmin);
+        border-radius: 5vmin;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+        animation: move-skull-left 0.5s ease-in-out 0.5s forwards;
+      }
+
+      .switch input:checked~.thumb {
+        left: 0.6vmin;
+        animation: move-skull-right 0.5s ease-in-out 0.5s forwards;
+      }
+
+      @keyframes move-skull-right {
+        0% {
+          left: 0.6vmin;
+        }
+
+        100% {
+          left: calc(100% - 9.333vmin);
+        }
+      }
+
+      @keyframes move-skull-left {
+        0% {
+          left: calc(100% - 9.333vmin);
+        }
+
+        100% {
+          left: 0.6vmin;
+        }
+      }
+
+      .thumb>* {
+        position: absolute;
+        filter: drop-shadow(0px 1px 1px #000);
+        animation: unselected 1.5s ease-in-out 0s reverse forwards;
+      }
+
+      .switch input:checked~.thumb * {
+        animation: selected 1.5s ease-in-out 0s forwards;
+      }
+
+      @keyframes selected {
+
+        0%,
+        50% {
+          filter: drop-shadow(0px 1px 1px #000) brightness(1);
+        }
+
+        50.01%,
+        100% {
+          filter: drop-shadow(0px 1px 1px #000) brightness(1.875);
+        }
+      }
+
+      @keyframes unselected {
+
+        0%,
+        50% {
+          filter: drop-shadow(0px 1px 1px #000) brightness(1);
+        }
+
+        50.01%,
+        100% {
+          filter: drop-shadow(0px 1px 1px #000) brightness(1.875);
+        }
+      }
+
+      .cranium {
+        background: linear-gradient(180deg, #888 0 54%, #fff0 0 94%, #888 0 100%),
+          radial-gradient(circle at 75% 69%, #fff0 0 0.875vmin, #888 calc(0.875vmin + 1px) 2.425vmin, #fff0 calc(2.425vmin + 1px) 100%),
+          radial-gradient(circle at 25% 69%, #fff0 0 0.875vmin, #888 calc(0.875vmin + 1px) 2.425vmin, #fff0 calc(2.425vmin + 1px) 100%);
+        width: 100%;
+        height: 7vmin;
+        left: 0;
+        top: 0;
+        border-radius: 5vmin 5vmin 2.75vmin 2.75vmin;
+      }
+
+      .cranium:before {
+        content: "";
+        position: absolute;
+        width: 0.625vmin;
+        height: 0.625vmin;
+        bottom: -0.375vmin;
+        left: 3.75vmin;
+        background: #888;
+        border-radius: 100%;
+        box-shadow: 0.625vmin 0 0 0 #888;
+      }
+
+      .cranium:after {
+        content: "";
+        position: absolute;
+        width: 2.625vmin;
+        height: 0.75vmin;
+        bottom: -0.475vmin;
+        left: 3vmin;
+        background: radial-gradient(circle at 90% 10%, #888 0 0.5vmin, #fff0 calc(0.5vmin + 1px) 100%),
+          radial-gradient(circle at 10% 10%, #888 0 0.5vmin, #fff0 calc(0.5vmin + 1px) 100%);
+        border-radius: 0.5vmin;
+      }
+
+      .mouth {
+        border: 0.425vmin solid #fff0;
+        border-bottom-color: #888;
+        width: 5.875vmin;
+        left: 1.425vmin;
+        height: 3vmin;
+        top: 5.625vmin;
+        background: radial-gradient(circle at 35% 98%, #888 0 0.325vmin, #fff0 calc(0.325vmin + 1px) 100%),
+          radial-gradient(circle at 45% 100%, #888 0 0.325vmin, #fff0 calc(0.325vmin + 1px) 100%),
+          radial-gradient(circle at 55% 100%, #888 0 0.325vmin, #fff0 calc(0.325vmin + 1px) 100%),
+          radial-gradient(circle at 65% 98%, #888 0 0.325vmin, #fff0 calc(0.325vmin + 1px) 100%);
+        background-repeat: no-repeat;
+        border-radius: 100%;
+      }
+
+      .mouth:before,
+      .mouth:after {
+        content: "";
+        position: absolute;
+        border-radius: 100%;
+        background: #888;
+        width: 0.35vmin;
+        height: 0.35vmin;
+        left: 0.2vmin;
+        bottom: 0.125vmin;
+      }
+
+      .mouth:after {
+        left: 4.525vmin;
+      }
+
+      @keyframes check-on {
+        0% {
+          right: -65%;
+        }
+
+        25%,
+        33% {
+          right: 0%;
+        }
+
+        66%,
+        80% {
+          right: -50%;
+        }
+
+        100% {
+          right: -65%;
+        }
+      }
+
+      @keyframes check-off {
+        0% {
+          right: -65%;
+        }
+
+        25%,
+        33% {
+          right: 0%;
+        }
+
+        66%,
+        80% {
+          right: -50%;
+        }
+
+        100% {
+          right: -65%;
+        }
+      }
+
+      .arm-wrapper {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 5vmin;
+        overflow: hidden;
+        right: -65%;
+        animation: check-off 1.5s ease-in-out 0s reverse forwards;
+      }
+
+      .switch input:checked~.arm-wrapper {
+        animation: check-on 1.5s ease-in-out 0s forwards;
+      }
+
+      .arm {
+        position: absolute;
+        width: 8vmin;
+        height: 2.5vmin;
+        right: 2%;
+        top: calc(50% - 1.25vmin);
+        border-radius: 0.125vmin;
+      }
+
+      .bone {
+        background: #fff;
+        width: 4vmin;
+        height: 1vmin;
+        position: absolute;
+        transform: rotate(0deg);
+        top: 0.75vmin;
+        right: -2vmin;
+      }
+
+      .bone:before,
+      .bone:after,
+      .big:before,
+      .big:after {
+        content: "";
+        background: #fff;
+        width: 0.75vmin;
+        height: 0.75vmin;
+        position: absolute;
+        left: -0.25vmin;
+        top: -0.25vmin;
+        border-radius: 100%;
+        box-shadow: 4vmin 0 0 0 #fff;
+      }
+
+      .bone:after {
+        top: calc(100% - 0.5vmin);
+      }
+
+      .arm>.bone+.bone {
+        top: 0.75vmin;
+        left: 0.25vmin;
+        height: 0.425vmin;
+        width: 5.25vmin;
+        box-shadow: 0 0.575vmin 0 0 #fff;
+      }
+
+      .arm>.bone+.bone:before,
+      .arm>.bone+.bone:after {
+        box-shadow: 5.075vmin 0 0 0 #fff;
+      }
+
+      .arm>.bone+.bone:after {
+        top: 100%;
+      }
+
+      .hand {
+        position: absolute;
+        background: radial-gradient(circle at 91% 29%, #fff 0.25vmin, #fff0 calc(0.25vmin + 1px) 100%),
+          radial-gradient(circle at 92% 49%, #fff 0.25vmin, #fff0 calc(0.25vmin + 1px) 100%),
+          radial-gradient(circle at 91% 69%, #fff 0.25vmin, #fff0 calc(0.25vmin + 1px) 100%),
+          radial-gradient(circle at 76% 21%, #fff 0.25vmin, #fff0 calc(0.25vmin + 1px) 100%),
+          radial-gradient(circle at 78% 39%, #fff 0.25vmin, #fff0 calc(0.25vmin + 1px) 100%),
+          radial-gradient(circle at 79% 58%, #fff 0.25vmin, #fff0 calc(0.25vmin + 1px) 100%),
+          radial-gradient(circle at 78% 78%, #fff 0.25vmin, #fff0 calc(0.25vmin + 1px) 100%);
+        width: 3.5vmin;
+        height: 2.5vmin;
+        left: -3.5vmin;
+        z-index: 0;
+      }
+
+      .hand .bone,
+      .big {
+        width: 1.5vmin;
+        left: 0.675vmin;
+        height: 0.375vmin;
+        border-radius: 0.25vmin 0 0 0.25vmin;
+      }
+
+      .hand .bone:before,
+      .hand .bone:after,
+      .big:before,
+      .big:after {
+        width: 0.4vmin;
+        height: 0.4vmin;
+        top: -0.125vmin;
+        left: 1.125vmin;
+        box-shadow: none;
+      }
+
+      .hand .bone:after,
+      .big:after {
+        top: 0.0625vmin;
+      }
+
+      .hand .bone:nth-child(1) {
+        transform: rotate(5deg) translateY(-0.5vmin) translateX(0.075vmin);
+        filter: drop-shadow(-1.5vmin 0vmin 0px #fff);
+      }
+
+      .hand .bone:nth-child(2) {
+        transform: rotate(0deg) translateX(0.25vmin);
+        filter: drop-shadow(-1.5vmin 0vmin 0px #fff);
+      }
+
+      .hand .bone:nth-child(3) {
+        transform: rotate(-2deg) translateY(0.575vmin) translateX(0.25vmin);
+        filter: drop-shadow(-1.5vmin 0vmin 0px #fff);
+      }
+
+      .hand .bone:nth-child(4) {
+        transform: rotate(-5deg) translateY(1.15vmin) translateX(0.25vmin);
+        filter: drop-shadow(-1.5vmin 0vmin 0px #fff);
+      }
+
+      .big {
+        background: #fff;
+        height: 0.5vmin !important;
+        position: absolute;
+        left: -2.125vmin !important;
+        top: 0.575vmin;
+        z-index: 1;
+        filter: drop-shadow(-1.25vmin 0vmin 0px #fff) drop-shadow(0 0 1px #000);
+      }
+
+      /* ── MOBILE NAV LINKS DROPDOWN ── */
+      .nav-links {
+        position: fixed !important;
+        top: 68px !important;
+        left: 12px !important;
+        right: 12px !important;
+        width: auto !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        background: rgba(15, 15, 20, 0.96) !important;
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        border-radius: 20px !important;
+        padding: 12px !important;
+        gap: 2px !important;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6),
+          0 0 0 1px rgba(255, 255, 255, 0.05) !important;
+        backdrop-filter: blur(30px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(30px) saturate(180%) !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        transform: translateY(-10px) !important;
+        transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        z-index: 10010 !important;
+        margin: 0 !important;
+      }
+
+      .nav-links.active {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        transform: translateY(0) !important;
+      }
+
+      .nav-links li {
+        width: 100% !important;
+      }
+
+      .nav-links li a {
+        display: flex !important;
+        width: 100% !important;
+        padding: 12px 16px !important;
+        font-size: 0.88rem !important;
+        font-weight: 500 !important;
+        color: rgba(255, 255, 255, 0.75) !important;
+        border-radius: 12px !important;
+        background: transparent !important;
+        transition: color 0.2s, background 0.2s !important;
+        text-align: left !important;
+        border-bottom: none !important;
+      }
+
+      .nav-links li a:hover {
+        color: #ffffff !important;
+        background: rgba(255, 255, 255, 0.08) !important;
+      }
+
+      /* Mobile dropdown adjustments */
+      .nav-item-dropdown {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+      }
+
+      .nav-dropdown {
+        position: static !important;
+        transform: none !important;
+        width: 100% !important;
+        background: rgba(255, 255, 255, 0.04) !important;
+        border: none !important;
+        border-radius: 12px !important;
+        padding: 4px 0 !important;
+        margin-top: 4px !important;
+        box-shadow: none !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        display: none !important;
+        transition: none !important;
+      }
+
+      .nav-dropdown::before {
+        display: none !important;
+      }
+
+      .nav-item-dropdown.open .nav-dropdown {
+        opacity: 1 !important;
+        visibility: visible !important;
+        display: flex !important;
+        flex-direction: column !important;
+      }
+
+      .nav-dropdown a {
+        color: rgba(255, 255, 255, 0.6) !important;
+        padding: 10px 24px !important;
+        font-size: 0.82rem !important;
+        border-radius: 8px !important;
+        justify-content: flex-start !important;
+        background: transparent !important;
+      }
+
+      .nav-dropdown a:hover {
+        color: #ffffff !important;
+        background: rgba(255, 255, 255, 0.06) !important;
+      }
+
+      .nav-item-dropdown.open .nav-arrow {
+        transform: rotate(180deg);
+      }
+
+      /* Hide desktop CTA, show mobile CTA items */
+      .nav-cta.hide-mobile {
+        display: none !important;
+      }
+
+      .nav-links li.mobile-cta-item {
+        display: block !important;
+        margin-top: 4px;
+      }
+
+      .nav-links li.mobile-cta-item a {
+        text-align: center !important;
+        justify-content: center !important;
+        font-weight: 700 !important;
+        border-radius: 14px !important;
+        padding: 14px 16px !important;
+        font-size: 0.88rem !important;
+      }
+
+      .nav-links li.start-proj-mobile a {
+        background: linear-gradient(135deg, var(--accent), #7C3AED) !important;
+        color: #ffffff !important;
+        box-shadow: 0 4px 16px rgba(79, 63, 240, 0.35) !important;
+      }
+
+      .nav-links li.connect-mobile a {
+        background: rgba(255, 255, 255, 0.08) !important;
+        color: rgba(255, 255, 255, 0.85) !important;
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+      }
+
+      /* Hide mobile Book a Call button */
+      .nav-book-call {
+        display: none !important;
+      }
+      /* contact page: keep the Back link compact inside the pill */
+      .nav-back {
+        font-size: 0.8rem !important;
+        white-space: nowrap !important;
+      }
+    }
+</style>
 </head>
 
 <body>
