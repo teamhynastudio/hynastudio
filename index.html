@@ -8092,6 +8092,53 @@
                         row-gap: 36px;
                     }
                 }
+
+                /* ══ FADE-IN ANIMATION SYSTEM ══ */
+                @keyframes team-fade-up {
+                    from { opacity: 0; transform: translateY(36px); }
+                    to   { opacity: 1; transform: translateY(0); }
+                }
+                @keyframes team-fade-left {
+                    from { opacity: 0; transform: translateX(-40px); }
+                    to   { opacity: 1; transform: translateX(0); }
+                }
+                @keyframes team-fade-right {
+                    from { opacity: 0; transform: translateX(40px); }
+                    to   { opacity: 1; transform: translateX(0); }
+                }
+                @keyframes team-fade-scale {
+                    from { opacity: 0; transform: scale(0.88); }
+                    to   { opacity: 1; transform: scale(1); }
+                }
+
+                /* Hidden initial state for all animate targets */
+                .t-anim {
+                    opacity: 0;
+                    will-change: transform, opacity;
+                }
+
+                /* Triggered class — browser plays the animation */
+                .t-anim.t-in {
+                    animation-fill-mode: both;
+                    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+                    animation-duration: 0.75s;
+                }
+
+                .t-anim.t-in[data-anim="fade-up"]    { animation-name: team-fade-up; }
+                .t-anim.t-in[data-anim="fade-left"]  { animation-name: team-fade-left; }
+                .t-anim.t-in[data-anim="fade-right"] { animation-name: team-fade-right; }
+                .t-anim.t-in[data-anim="fade-scale"] { animation-name: team-fade-scale; }
+
+                .t-anim[data-delay="1"].t-in { animation-delay: 0.08s; }
+                .t-anim[data-delay="2"].t-in { animation-delay: 0.18s; }
+                .t-anim[data-delay="3"].t-in { animation-delay: 0.28s; }
+                .t-anim[data-delay="4"].t-in { animation-delay: 0.40s; }
+                .t-anim[data-delay="5"].t-in { animation-delay: 0.52s; }
+
+                /* Respect reduced-motion */
+                @media (prefers-reduced-motion: reduce) {
+                    .t-anim { opacity: 1 !important; animation: none !important; }
+                }
             </style>
         </head>
 
@@ -8099,49 +8146,52 @@
 
             <section id="team" class="team-section">
 
+                <!-- Section header -->
                 <div class="team-header">
-                    <h2>Our Leadership &amp; Innovation Team</h2>
-                    <p>Passionate experts transforming ideas into impactful solutions through design, technology, and
-                        collaboration</p>
+                    <h2 class="t-anim" data-anim="fade-up">Our Leadership &amp; Innovation Team</h2>
+                    <p class="t-anim" data-anim="fade-up" data-delay="2">Passionate experts transforming ideas into
+                        impactful solutions through design, technology, and collaboration</p>
                 </div>
 
                 <!-- Leadership: Vignesh, Jashwin, Dharshan -->
                 <div class="leadership-list">
 
+                    <!-- Vignesh -->
                     <div class="leader-row">
-                        <div class="leader-photo">
+                        <div class="leader-photo t-anim" data-anim="fade-left">
                             <img src="https://i.postimg.cc/wjtYqBpS/IMG-33081.jpg" alt="Vignesh">
                         </div>
                         <div class="leader-info">
-                            <h3>Vignesh</h3>
-                            <span class="leader-role">Founder &amp; Chief Executive Officer</span>
-                            <p class="leader-bio">Vignesh is the Founder and CEO of Hyna Studio, driving the company's
-                                strategic vision and engineering standards. He believes leadership isn't about control,
-                                but about building people who can lead without him — a philosophy that shapes how the
-                                studio operates day to day.</p>
-                            <div class="leader-links">
+                            <h3 class="t-anim" data-anim="fade-up" data-delay="1">Vignesh</h3>
+                            <span class="leader-role t-anim" data-anim="fade-up" data-delay="2">Founder &amp; Chief Executive Officer</span>
+                            <p class="leader-bio t-anim" data-anim="fade-up" data-delay="3">Vignesh is the Founder and
+                                CEO of Hyna Studio, driving the company's strategic vision and engineering standards. He
+                                believes leadership isn't about control, but about building people who can lead without
+                                him — a philosophy that shapes how the studio operates day to day.</p>
+                            <div class="leader-links t-anim" data-anim="fade-up" data-delay="4">
                                 <a href="https://vigneshvl-dev.github.io/PORTFOLIO/" target="_blank"><i
                                         class="fas fa-globe"></i> Portfolio</a>
                                 <a href="https://www.linkedin.com/in/vigneshvl-dev/" target="_blank"><i
                                         class="fab fa-linkedin-in"></i> LinkedIn</a>
-                                <a href="https://github.com/vigneshvl-dev" target="_blank"><i class="fab fa-github"></i>
-                                    GitHub</a>
+                                <a href="https://github.com/vigneshvl-dev" target="_blank"><i
+                                        class="fab fa-github"></i> GitHub</a>
                             </div>
                         </div>
                     </div>
 
+                    <!-- Jashwin -->
                     <div class="leader-row reverse">
-                        <div class="leader-photo">
+                        <div class="leader-photo t-anim" data-anim="fade-right">
                             <img src="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" alt="Jashwin">
                         </div>
                         <div class="leader-info">
-                            <h3>Jashwin</h3>
-                            <span class="leader-role">Co-Founder &amp; Project Management Lead</span>
-                            <p class="leader-bio">Jashwin ensures every project at Hyna Studio stays aligned with
-                                stakeholder goals from kickoff to delivery. His approach comes from a simple
-                                observation: deadlines don't fail because of time, they fail because alignment is
-                                missing.</p>
-                            <div class="leader-links">
+                            <h3 class="t-anim" data-anim="fade-up" data-delay="1">Jashwin</h3>
+                            <span class="leader-role t-anim" data-anim="fade-up" data-delay="2">Co-Founder &amp; Project Management Lead</span>
+                            <p class="leader-bio t-anim" data-anim="fade-up" data-delay="3">Jashwin ensures every
+                                project at Hyna Studio stays aligned with stakeholder goals from kickoff to delivery.
+                                His approach comes from a simple observation: deadlines don't fail because of time, they
+                                fail because alignment is missing.</p>
+                            <div class="leader-links t-anim" data-anim="fade-up" data-delay="4">
                                 <a href="https://www.linkedin.com/in/jashwin-j-16b06240a" target="_blank"><i
                                         class="fab fa-linkedin-in"></i> LinkedIn</a>
                                 <a href="https://github.com/jashwinj2008" target="_blank"><i class="fab fa-github"></i>
@@ -8150,24 +8200,26 @@
                         </div>
                     </div>
 
+                    <!-- Dharshan -->
                     <div class="leader-row">
-                        <div class="leader-photo">
+                        <div class="leader-photo t-anim" data-anim="fade-left">
                             <img src="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg"
                                 alt="Dharshan">
                         </div>
                         <div class="leader-info">
-                            <h3>Dharshan</h3>
-                            <span class="leader-role">Co-Founder &amp; Chief Technology Officer</span>
-                            <p class="leader-bio">Dharshan leads systems architecture, cloud infrastructure, and
-                                technical execution at Hyna Studio. He holds that a co-founder in tech doesn't follow
-                                trends — he builds what will become the next standard.</p>
-                            <div class="leader-links">
+                            <h3 class="t-anim" data-anim="fade-up" data-delay="1">Dharshan</h3>
+                            <span class="leader-role t-anim" data-anim="fade-up" data-delay="2">Co-Founder &amp; Chief Technology Officer</span>
+                            <p class="leader-bio t-anim" data-anim="fade-up" data-delay="3">Dharshan leads systems
+                                architecture, cloud infrastructure, and technical execution at Hyna Studio. He holds
+                                that a co-founder in tech doesn't follow trends — he builds what will become the next
+                                standard.</p>
+                            <div class="leader-links t-anim" data-anim="fade-up" data-delay="4">
                                 <a href="https://portholio-zeta.vercel.app/" target="_blank"><i
                                         class="fas fa-globe"></i> Portfolio</a>
                                 <a href="https://www.linkedin.com/in/dharshan-jm" target="_blank"><i
                                         class="fab fa-linkedin-in"></i> LinkedIn</a>
-                                <a href="https://github.com/dharshan00814" target="_blank"><i class="fab fa-github"></i>
-                                    GitHub</a>
+                                <a href="https://github.com/dharshan00814" target="_blank"><i
+                                        class="fab fa-github"></i> GitHub</a>
                             </div>
                         </div>
                     </div>
@@ -8176,10 +8228,10 @@
 
                 <!-- Board of Directors: Asthamil, Tharun Krishna, Zarif -->
                 <div class="board-section">
-                    <div class="board-eyebrow">Board of Directors</div>
+                    <div class="board-eyebrow t-anim" data-anim="fade-up">Board of Directors</div>
                     <div class="board-row">
 
-                        <div class="board-member">
+                        <div class="board-member t-anim" data-anim="fade-scale" data-delay="1">
                             <img class="board-avatar"
                                 src="https://i.postimg.cc/Jnwtf3ZZ/Whats-App-Image-2026-02-20-at-7-00-57-PM.jpg"
                                 alt="Asthamil">
@@ -8188,7 +8240,7 @@
                             <span class="board-org">Hyna Studio</span>
                         </div>
 
-                        <div class="board-member">
+                        <div class="board-member t-anim" data-anim="fade-scale" data-delay="2">
                             <img class="board-avatar"
                                 src="https://i.postimg.cc/TP5Jj9Th/Whats-App-Image-2026-06-11-at-11-26-46-AM.jpg"
                                 alt="Tharun Krishna">
@@ -8197,7 +8249,7 @@
                             <span class="board-org">Hyna Studio</span>
                         </div>
 
-                        <div class="board-member">
+                        <div class="board-member t-anim" data-anim="fade-scale" data-delay="3">
                             <img class="board-avatar" src="https://i.postimg.cc/1zWvJd1C/zarif.jpg"
                                 alt="Mohammad Zarif">
                             <h4>Mohammad Zarif</h4>
@@ -8211,6 +8263,25 @@
             </section>
 
         </body>
+
+        <script>
+            /* ── Team Section: Scroll-triggered fade-in via IntersectionObserver ── */
+            (function () {
+                var targets = document.querySelectorAll('#team .t-anim');
+                if (!targets.length) return;
+
+                var io = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('t-in');
+                            io.unobserve(entry.target); /* fire once */
+                        }
+                    });
+                }, { threshold: 0.15 });
+
+                targets.forEach(function (el) { io.observe(el); });
+            })();
+        </script>
 
         </html>
 
