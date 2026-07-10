@@ -3310,7 +3310,9 @@
         <!-- Mobile Menu Toggle (Uiverse.io by vinodjangid07) -->
         <button class="nav-power-switch" id="navMobileToggle" aria-label="Toggle menu" type="button">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="nav-power-icon">
-                <path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V256c0 17.7 14.3 32 32 32s32-14.3 32-32V32zM143.5 120.6c13.6-11.3 15.4-31.5 4.1-45.1s-31.5-15.4-45.1-4.1C49.7 115.4 16 181.8 16 256c0 132.5 107.5 240 240 240s240-107.5 240-240c0-74.2-33.8-140.6-86.6-184.6c-13.6-11.3-33.8-9.4-45.1 4.1s-9.4 33.8 4.1 45.1c38.9 32.3 63.5 81 63.5 135.4c0 97.2-78.8 176-176 176s-176-78.8-176-176c0-54.4 24.7-103.1 63.5-135.4z"></path>
+                <path
+                    d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V256c0 17.7 14.3 32 32 32s32-14.3 32-32V32zM143.5 120.6c13.6-11.3 15.4-31.5 4.1-45.1s-31.5-15.4-45.1-4.1C49.7 115.4 16 181.8 16 256c0 132.5 107.5 240 240 240s240-107.5 240-240c0-74.2-33.8-140.6-86.6-184.6c-13.6-11.3-33.8-9.4-45.1 4.1s-9.4 33.8 4.1 45.1c38.9 32.3 63.5 81 63.5 135.4c0 97.2-78.8 176-176 176s-176-78.8-176-176c0-54.4 24.7-103.1 63.5-135.4z">
+                </path>
             </svg>
         </button>
 
@@ -3745,9 +3747,11 @@
                     height: 120px;
                     margin-top: -2rem;
                 }
+
                 #what-is-hyna .wh-inner {
                     padding: 24px 20px;
                 }
+
                 #what-is-hyna .wh-eyebrow {
                     margin-bottom: 12px;
                 }
@@ -3832,7 +3836,8 @@
                     </div>
                     <!-- MSME Govt of India -->
                     <div class="trusted-logo-item duplicate">
-                        <img src="https://i.postimg.cc/QtjGCxYJ/Screenshot-2026-07-10-125253.png" alt="MSME Govt of India">
+                        <img src="https://i.postimg.cc/QtjGCxYJ/Screenshot-2026-07-10-125253.png"
+                            alt="MSME Govt of India">
                     </div>
                     <!-- MeitY Startup Hub -->
                     <div class="trusted-logo-item duplicate">
@@ -4733,9 +4738,11 @@
                 #build-headline .bh-inner {
                     padding: 30px 20px 40px;
                 }
+
                 #build-headline .bh-sub {
                     margin-top: 16px;
                 }
+
                 #build-headline .bh-line-wrap {
                     margin-top: 24px;
                 }
@@ -7843,666 +7850,440 @@
 
 
 
-        <!-- TEAM -->
+        <!DOCTYPE html>
+        <html lang="en">
 
-        <style>
-            .team-section {
-                padding: 100px 8% 0;
-                background:
-                    radial-gradient(circle at 50% 0%, rgba(79, 70, 229, 0.12) 0%, transparent 60%),
-                    radial-gradient(circle at 20% 40%, rgba(0, 217, 163, 0.05) 0%, transparent 50%),
-                    radial-gradient(circle at 80% 60%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
-                    linear-gradient(rgba(10, 10, 15, 0.03) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(10, 10, 15, 0.03) 1px, transparent 1px),
-                    #ffffff;
-                background-size: 100% 100%, 100% 100%, 100% 100%, 50px 50px, 50px 50px;
-                position: relative;
-            }
-
-            .team-section::after {
-                content: "";
-                position: absolute;
-                top: 30%;
-                left: 50%;
-                transform: translate(-50%, -50%) rotate(15deg);
-                width: 80vw;
-                max-width: 750px;
-                height: 80vw;
-                max-height: 750px;
-                background: url('./hyna-logo.png') no-repeat center center / contain;
-                opacity: 0.04;
-                pointer-events: none;
-                z-index: 1;
-            }
-
-            .team-header {
-                max-width: 1200px;
-                margin: 0 auto 100px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                gap: 20px;
-                position: relative;
-                z-index: 2;
-            }
-
-            .team-header h2 {
-                font-size: clamp(2.5rem, 5vw, 3.5rem);
-                font-weight: 700;
-                line-height: 1.2;
-                color: var(--ink);
-                margin: 0;
-                font-family: var(--font-display);
-            }
-
-            .team-header h2 span {
-                display: block;
-                text-align: center;
-            }
-
-            .team-header p {
-                max-width: 700px;
-                color: var(--muted);
-                font-size: 1rem;
-                margin: 0 auto;
-                line-height: 1.6;
-                text-align: center;
-            }
-
-            @media (max-width: 768px) {
-                .team-header {
-                    padding: 0 20px;
-                    margin-bottom: 50px;
+        <head>
+            <meta charset="UTF-8">
+            <title>Team — Hyna Studio</title>
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link
+                href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap"
+                rel="stylesheet">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+            <style>
+                :root {
+                    --ink: #111318;
+                    --muted: #6b6f79;
+                    --line: rgba(17, 19, 24, 0.08);
+                    --accent: #4f3ff0;
+                    --font-display: 'Sora', sans-serif;
+                    --font-body: 'Inter', sans-serif;
                 }
-            }
 
-            < !-- TEAM --><style>.team-section {
-                padding: 100px 8% 0;
-                background:
-                    radial-gradient(circle at 50% 0%, rgba(79, 70, 229, 0.12) 0%, transparent 60%),
-                    radial-gradient(circle at 20% 40%, rgba(0, 217, 163, 0.05) 0%, transparent 50%),
-                    radial-gradient(circle at 80% 60%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
-                    linear-gradient(rgba(10, 10, 15, 0.03) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(10, 10, 15, 0.03) 1px, transparent 1px),
-                    #ffffff;
-                background-size: 100% 100%, 100% 100%, 100% 100%, 50px 50px, 50px 50px;
-                position: relative;
-            }
-
-            .team-section::after {
-                content: "";
-                position: absolute;
-                top: 30%;
-                left: 50%;
-                transform: translate(-50%, -50%) rotate(15deg);
-                width: 80vw;
-                max-width: 750px;
-                height: 80vw;
-                max-height: 750px;
-                background: url('./hyna-logo.png') no-repeat center center / contain;
-                opacity: 0.04;
-                pointer-events: none;
-                z-index: 1;
-            }
-
-            .team-header {
-                max-width: 1200px;
-                margin: 0 auto 100px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                gap: 20px;
-                position: relative;
-                z-index: 2;
-            }
-
-            .team-header h2 {
-                font-size: clamp(2.5rem, 5vw, 3.5rem);
-                font-weight: 700;
-                line-height: 1.2;
-                color: var(--ink);
-                margin: 0;
-                font-family: var(--font-display);
-            }
-
-            .team-header h2 span {
-                display: block;
-                text-align: center;
-            }
-
-            .team-header p {
-                max-width: 700px;
-                color: var(--muted);
-                font-size: 1rem;
-                margin: 0 auto;
-                line-height: 1.6;
-                text-align: center;
-            }
-
-            @media (max-width: 768px) {
-                .team-header {
-                    padding: 0 20px;
-                    margin-bottom: 50px;
+                * {
+                    box-sizing: border-box;
                 }
-            }
 
-            /* ─── TEAM STACK ─── */
-            .team-stack-section {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 100px;
-                padding: 20px 12px 150px;
-                position: relative;
-                z-index: 2;
-            }
+                body {
+                    margin: 0;
+                    background: #f6f5fb;
+                    font-family: var(--font-body);
+                }
 
-            .team-card {
-                --x: 50%;
-                --y: 50%;
-
-                position: sticky;
-                top: 100px;
-                width: 100%;
-                max-width: 420px;
-                background: #ffffff;
-                border-radius: 26px;
-                padding: 40px 32px 32px;
-                overflow: hidden;
-                border: 1px solid rgba(10, 10, 15, 0.08);
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04), 0 16px 48px rgba(0, 0, 0, 0.08);
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                cursor: pointer;
-                will-change: transform, opacity, filter;
-                z-index: 10;
-            }
-
-            .team-card.non-sticky {
-                position: relative;
-                top: auto;
-            }
-
-            .team-card:hover {
-                border-color: rgba(79, 63, 240, 0.3);
-                box-shadow: 0 20px 50px rgba(79, 63, 240, 0.12);
-            }
-
-            /* Progress bar strip */
-            .team-stack-progress {
-                position: fixed;
-                top: 0;
-                left: 0;
-                height: 3px;
-                width: 0%;
-                background: linear-gradient(90deg, #4f3ff0, #a855f7, #06b6d4);
-                z-index: 9999;
-                border-radius: 0 3px 3px 0;
-                box-shadow: 0 0 10px rgba(79, 63, 240, 0.5);
-                transition: width 0.08s linear;
-                pointer-events: none;
-            }
-
-            /* Active card counter */
-            .team-stack-counter {
-                position: fixed;
-                bottom: 32px;
-                right: 36px;
-                font-family: var(--font-mono, monospace);
-                font-size: 11px;
-                font-weight: 700;
-                letter-spacing: 0.12em;
-                color: rgba(10, 10, 15, 0.3);
-                opacity: 0;
-                transform: translateY(6px);
-                transition: opacity 0.4s, transform 0.4s;
-                pointer-events: none;
-                z-index: 9998;
-            }
-
-            .team-stack-counter.visible {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            .team-card::before {
-                content: "";
-                position: absolute;
-                inset: -2px;
-                border-radius: inherit;
-                padding: 2px;
-                background: radial-gradient(circle at var(--x) var(--y),
-                        #c084fc 0%, #f472b6 30%, #38bdf8 60%, transparent 75%);
-                opacity: 0;
-                transition: opacity 0.3s ease;
-                -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-                mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-                -webkit-mask-composite: xor;
-                mask-composite: exclude;
-                pointer-events: none;
-            }
-
-            .team-card:hover::before {
-                opacity: 1;
-            }
-
-            /* Card number badge */
-            .team-card-num {
-                position: absolute;
-                top: 20px;
-                right: 28px;
-                font-size: 11px;
-                font-weight: 700;
-                letter-spacing: 0.1em;
-                text-transform: uppercase;
-                color: rgba(10, 10, 15, 0.2);
-            }
-
-            /* Avatar wrap: gradient ring like the reference profile card */
-            .team-card-avatar-wrap {
-                flex-shrink: 0;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 0;
-                margin-bottom: 22px;
-            }
-
-            .team-avatar-ring {
-                width: 168px;
-                height: 168px;
-                border-radius: 50%;
-                padding: 6px;
-                background: linear-gradient(135deg, #4f3ff0, #a855f7, #38bdf8);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .team-avatar {
-                width: 100%;
-                height: 100%;
-                border-radius: 50%;
-                object-fit: cover;
-                border: 4px solid #ffffff;
-                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-                display: block;
-                transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            }
-
-            .team-card:hover .team-avatar {
-                transform: scale(1.05);
-            }
-
-            /* Right info side -> now centered below avatar */
-            .team-card-info {
-                flex: 1;
-                width: 100%;
-                text-align: center;
-            }
-
-            .team-card-info h3 {
-                font-size: 1.9rem;
-                color: var(--ink);
-                margin: 0 0 4px;
-                font-family: var(--font-display);
-                font-weight: 800;
-            }
-
-            .team-role {
-                display: block;
-                color: var(--accent);
-                margin-bottom: 22px;
-                font-weight: 600;
-                font-size: 0.9rem;
-            }
-
-            /* Quote box, styled like the reference card's quote panel */
-            .team-quote-box {
-                display: flex;
-                align-items: flex-start;
-                gap: 14px;
-                background: #f6f6fb;
-                border-radius: 16px;
-                padding: 20px 20px;
-                text-align: left;
-                margin-bottom: 26px;
-            }
-
-            .team-quote-mark {
-                flex-shrink: 0;
-                width: 38px;
-                height: 38px;
-                border-radius: 50%;
-                background: rgba(79, 63, 240, 0.12);
-                color: var(--accent);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 20px;
-                font-weight: 800;
-                line-height: 1;
-            }
-
-            .team-description {
-                color: var(--muted);
-                line-height: 1.7;
-                font-size: 0.92rem;
-                font-style: italic;
-                margin: 0;
-            }
-
-            .team-social {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 14px;
-            }
-
-            .team-social a {
-                width: 44px;
-                height: 44px;
-                border-radius: 50%;
-                background: #ffffff;
-                border: 1.5px solid rgba(10, 10, 15, 0.1);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: var(--ink);
-                text-decoration: none;
-                font-size: 15px;
-                box-shadow: 0 4px 10px rgba(20, 30, 60, 0.05);
-                transition: all 0.3s ease;
-            }
-
-            .team-social a:hover {
-                background: var(--accent);
-                color: #ffffff;
-                border-color: var(--accent);
-                transform: translateY(-2px);
-            }
-
-            .team-step-dots {
-                display: flex;
-                justify-content: center;
-                gap: 6px;
-                margin-top: 24px;
-            }
-
-            @media (max-width: 768px) {
                 .team-section {
-                    padding: 80px 4% 0;
+                    padding: 100px 8% 0;
+                    background:
+                        linear-gradient(rgba(120, 110, 200, 0.07) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(120, 110, 200, 0.07) 1px, transparent 1px),
+                        linear-gradient(180deg, #eceaf7 0%, #f6f5fb 45%, #fbfaff 100%);
+                    background-size: 48px 48px, 48px 48px, 100% 100%;
                 }
 
-                .team-stack-section {
+                .team-header {
+                    max-width: 900px;
+                    margin: 0 auto 90px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    text-align: center;
+                    gap: 16px;
+                }
+
+                .team-header h2 {
+                    font-family: var(--font-display);
+                    font-size: clamp(2.2rem, 4.4vw, 3rem);
+                    font-weight: 800;
+                    line-height: 1.2;
+                    color: var(--ink);
+                    margin: 0;
+                }
+
+                .team-header p {
+                    max-width: 640px;
+                    color: var(--muted);
+                    font-size: 1rem;
+                    line-height: 1.6;
+                    margin: 0;
+                }
+
+                /* ── LEADERSHIP LIST ── */
+                .leadership-list {
+                    max-width: 980px;
+                    margin: 0 auto;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 70px;
+                    padding-bottom: 110px;
+                }
+
+                .leader-row {
+                    display: grid;
+                    grid-template-columns: 200px 1fr;
+                    gap: 48px;
+                    align-items: start;
+                }
+
+                .leader-row.reverse {
+                    grid-template-columns: 1fr 200px;
+                }
+
+                .leader-row.reverse .leader-photo {
+                    order: 2;
+                }
+
+                .leader-row.reverse .leader-info {
+                    order: 1;
+                }
+
+                .leader-photo img {
+                    width: 100%;
+                    aspect-ratio: 1 / 1;
+                    object-fit: cover;
+                    border-radius: 14px;
+                    display: block;
+                }
+
+                .leader-info h3 {
+                    font-family: var(--font-display);
+                    font-size: 1.5rem;
+                    font-weight: 800;
+                    color: var(--ink);
+                    margin: 0 0 6px;
+                    letter-spacing: -0.01em;
+                }
+
+                .leader-role {
+                    display: block;
+                    font-size: 0.76rem;
+                    font-weight: 700;
+                    letter-spacing: 0.1em;
+                    text-transform: uppercase;
+                    color: var(--accent);
+                    margin-bottom: 16px;
+                }
+
+                .leader-bio {
+                    color: var(--muted);
+                    font-size: 0.96rem;
+                    line-height: 1.7;
+                    margin: 0 0 16px;
+                    max-width: 640px;
+                }
+
+                .leader-links {
+                    display: flex;
+                    gap: 16px;
+                    flex-wrap: wrap;
+                }
+
+                .leader-links a {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 6px;
+                    color: var(--ink);
+                    font-size: 0.84rem;
+                    font-weight: 600;
+                    text-decoration: none;
+                    border-bottom: 1px solid var(--line);
+                    padding-bottom: 2px;
+                    transition: color .25s ease, border-color .25s ease;
+                }
+
+                .leader-links a:hover {
+                    color: var(--accent);
+                    border-color: var(--accent);
+                }
+
+                @media (max-width: 700px) {
+
+                    .leader-row,
+                    .leader-row.reverse {
+                        grid-template-columns: 1fr;
+                    }
+
+                    .leader-row.reverse .leader-photo {
+                        order: 1;
+                    }
+
+                    .leader-row.reverse .leader-info {
+                        order: 2;
+                    }
+
+                    .leader-photo img {
+                        max-width: 160px;
+                    }
+                }
+
+                /* ── BOARD OF DIRECTORS ── */
+                .board-section {
+                    max-width: 980px;
+                    margin: 0 auto;
+                    padding: 70px 0 120px;
+                    border-top: 1px solid var(--line);
+                }
+
+                .board-eyebrow {
+                    font-family: var(--font-display);
+                    font-size: 0.86rem;
+                    font-weight: 800;
+                    letter-spacing: 0.12em;
+                    text-transform: uppercase;
+                    color: var(--ink);
+                    margin-bottom: 40px;
+                }
+
+                .board-row {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
                     gap: 32px;
-                    padding: 12px 0 60px;
-                    overflow-x: hidden;
                 }
 
-                .team-card {
-                    position: relative !important;
-                    top: auto !important;
-                    padding: 32px 20px 24px;
-                    max-width: 100%;
+                .board-member {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
                 }
 
-                .team-avatar-ring {
-                    width: 120px;
-                    height: 120px;
+                .board-avatar {
+                    width: 110px;
+                    height: 110px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    margin-bottom: 16px;
                 }
 
-                .team-card-info h3 {
-                    font-size: clamp(1.4rem, 5vw, 1.8rem);
-                    border: 1px solid rgba(79, 63, 240, 0.2);
+                .board-member h4 {
+                    font-size: 0.86rem;
+                    font-weight: 700;
+                    letter-spacing: 0.03em;
+                    text-transform: uppercase;
+                    color: var(--ink);
+                    margin: 0 0 4px;
                 }
 
-                .team-card-badge.founder-badge {
-                    background: linear-gradient(135deg, rgba(234, 179, 8, 0.12), rgba(245, 158, 11, 0.12));
-                    color: #b45309;
-                    border: 1px solid rgba(234, 179, 8, 0.3);
+                .board-member .board-role {
+                    display: block;
+                    font-size: 0.82rem;
+                    color: var(--muted);
+                    line-height: 1.4;
                 }
-        </style>
 
-        <!-- TECHNOLOGIES -->
-        <section id="team" class="team-section">
+                .board-member .board-org {
+                    display: block;
+                    font-size: 0.82rem;
+                    color: var(--muted);
+                    line-height: 1.4;
+                }
 
-            <div class="team-header">
-                <h2>Our Leadership & Innovation Team</h2>
-                <p>Passionate experts transforming ideas into impactful solutions through design, technology, and
-                    collaboration</p>
+                @media (max-width: 700px) {
+                    .board-row {
+                        grid-template-columns: repeat(2, 1fr);
+                        row-gap: 36px;
+                    }
+                }
 
-            </div>
+                /* ══ FADE-IN ANIMATION SYSTEM ══ */
+                @keyframes team-fade-up {
+                    from { opacity: 0; transform: translateY(36px); }
+                    to   { opacity: 1; transform: translateY(0); }
+                }
+                @keyframes team-fade-left {
+                    from { opacity: 0; transform: translateX(-40px); }
+                    to   { opacity: 1; transform: translateX(0); }
+                }
+                @keyframes team-fade-right {
+                    from { opacity: 0; transform: translateX(40px); }
+                    to   { opacity: 1; transform: translateX(0); }
+                }
+                @keyframes team-fade-scale {
+                    from { opacity: 0; transform: scale(0.88); }
+                    to   { opacity: 1; transform: scale(1); }
+                }
 
-            <div class="team-stack-section" id="teamStackSection">
+                /* Hidden initial state for all animate targets */
+                .t-anim {
+                    opacity: 0;
+                    will-change: transform, opacity;
+                }
 
-                <!-- Vignesh -->
-                <div class="team-card" role="button" tabindex="0" data-name="Vignesh" data-role="Founder | CEO"
-                    data-bio="&quot;Leadership is not about control, it is about building people who can lead without you.&quot; Vignesh drives the strategic vision and engineering standards at Hyna Studio."
-                    data-photo="https://i.postimg.cc/wjtYqBpS/IMG-33081.jpg"
-                    data-portfolio="https://vigneshvl-dev.github.io/PORTFOLIO/"
-                    data-github="https://github.com/vigneshvl-dev"
-                    data-linkedin="https://www.linkedin.com/in/vigneshvl-dev/" data-college="Anna University"
-                    data-degree="B.E. Computer Science & Engineering" data-college-logo="">
+                /* Triggered class — browser plays the animation */
+                .t-anim.t-in {
+                    animation-fill-mode: both;
+                    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+                    animation-duration: 0.75s;
+                }
 
-                    <div class="team-card-avatar-wrap">
-                        <div class="team-avatar-ring">
-                            <img src="https://i.postimg.cc/wjtYqBpS/IMG-33081.jpg" alt="Vignesh" class="team-avatar">
-                        </div>
-                    </div>
-                    <div class="team-card-info">
-                        <h3>Vignesh</h3>
-                        <span class="team-role">Founder | CEO</span>
-                        <div class="team-quote-box">
-                            <div class="team-quote-mark">&ldquo;</div>
-                            <p class="team-description">Leadership is not about control, it is about building people
-                                who can lead without you.</p>
-                        </div>
-                        <div class="team-social">
-                            <a href="https://vigneshvl-dev.github.io/PORTFOLIO/" target="_blank" title="Portfolio"><i
-                                    class="fas fa-globe"></i></a>
-                            <a href="https://www.linkedin.com/in/vigneshvl-dev/" target="_blank" title="LinkedIn"><i
-                                    class="fab fa-linkedin-in"></i></a>
-                            <a href="https://github.com/vigneshvl-dev" target="_blank" title="GitHub"><i
-                                    class="fab fa-github"></i></a>
-                        </div>
-                        <div class="team-step-dots">
-                            <span class="team-dot active"></span><span class="team-dot"></span><span
-                                class="team-dot"></span>
-                            <span class="team-dot"></span><span class="team-dot"></span><span class="team-dot"></span>
-                        </div>
-                    </div>
+                .t-anim.t-in[data-anim="fade-up"]    { animation-name: team-fade-up; }
+                .t-anim.t-in[data-anim="fade-left"]  { animation-name: team-fade-left; }
+                .t-anim.t-in[data-anim="fade-right"] { animation-name: team-fade-right; }
+                .t-anim.t-in[data-anim="fade-scale"] { animation-name: team-fade-scale; }
+
+                .t-anim[data-delay="1"].t-in { animation-delay: 0.08s; }
+                .t-anim[data-delay="2"].t-in { animation-delay: 0.18s; }
+                .t-anim[data-delay="3"].t-in { animation-delay: 0.28s; }
+                .t-anim[data-delay="4"].t-in { animation-delay: 0.40s; }
+                .t-anim[data-delay="5"].t-in { animation-delay: 0.52s; }
+
+                /* Respect reduced-motion */
+                @media (prefers-reduced-motion: reduce) {
+                    .t-anim { opacity: 1 !important; animation: none !important; }
+                }
+            </style>
+        </head>
+
+        <body>
+
+            <section id="team" class="team-section">
+
+                <!-- Section header -->
+                <div class="team-header">
+                    <h2 class="t-anim" data-anim="fade-up">Our Leadership &amp; Innovation Team</h2>
+                    <p class="t-anim" data-anim="fade-up" data-delay="2">Passionate experts transforming ideas into
+                        impactful solutions through design, technology, and collaboration</p>
                 </div>
 
-                <!-- Jashwin -->
-                <div class="team-card" role="button" tabindex="0" data-name="Jashwin"
-                    data-role="Co-Founder & Project Management Lead"
-                    data-bio="&quot;Deadlines don’t fail because of time, they fail because alignment is missing.&quot; Jashwin ensures that every project at Hyna Studio is aligned with stakeholder goals and delivered seamlessly."
-                    data-photo="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" data-portfolio="#"
-                    data-github="https://github.com/jashwinj2008"
-                    data-linkedin="https://www.linkedin.com/in/jashwin-j-16b06240a?utm_source=share_via&utm_content=profile&utm_medium=member_android"
-                    data-college="Anna University" data-degree="B.E. Computer Science & Engineering"
-                    data-college-logo="">
-                    <div class="team-card-avatar-wrap">
-                        <div class="team-avatar-ring">
-                            <img src="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" alt="Jashwin"
-                                class="team-avatar">
-                        </div>
-                    </div>
-                    <div class="team-card-info">
-                        <h3>Jashwin</h3>
-                        <span class="team-role">Co-Founder & Project Management Lead</span>
-                        <div class="team-quote-box">
-                            <div class="team-quote-mark">&ldquo;</div>
-                            <p class="team-description">Deadlines don't fail because of time, they fail because
-                                alignment is missing.</p>
-                        </div>
-                        <div class="team-social">
-                            <a href="#" title="Portfolio"><i class="fas fa-globe"></i></a>
-                            <a href="https://www.linkedin.com/in/jashwin-j-16b06240a?utm_source=share_via&utm_content=profile&utm_medium=member_android"
-                                target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="https://github.com/jashwinj2008" target="_blank" title="GitHub"><i
-                                    class="fab fa-github"></i></a>
-                        </div>
-                        <div class="team-step-dots">
-                            <span class="team-dot"></span><span class="team-dot active"></span><span
-                                class="team-dot"></span>
-                            <span class="team-dot"></span><span class="team-dot"></span><span class="team-dot"></span>
-                        </div>
-                    </div>
-                </div>
+                <!-- Leadership: Vignesh, Jashwin, Dharshan -->
+                <div class="leadership-list">
 
-                <!-- Dharshan -->
-                <div class="team-card" role="button" tabindex="0" data-name="Dharshan"
-                    data-role="Co-Founder & Chief Technology Officer (CTO)"
-                    data-bio="&quot;A co-founder in tech doesn’t follow trends, he builds what will become the next standard.&quot; Dharshan leads our systems architecture, cloud infrastructure, and technical execution."
-                    data-photo="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg"
-                    data-portfolio="https://portholio-zeta.vercel.app/" data-github="https://github.com/dharshan00814"
-                    data-linkedin="https://www.linkedin.com/in/dharshan-jm" data-college="Anna University"
-                    data-degree="B.E. Computer Science & Engineering" data-college-logo="">
-                    <div class="team-card-avatar-wrap">
-                        <div class="team-avatar-ring">
+                    <!-- Vignesh -->
+                    <div class="leader-row">
+                        <div class="leader-photo t-anim" data-anim="fade-left">
+                            <img src="https://i.postimg.cc/wjtYqBpS/IMG-33081.jpg" alt="Vignesh">
+                        </div>
+                        <div class="leader-info">
+                            <h3 class="t-anim" data-anim="fade-up" data-delay="1">Vignesh</h3>
+                            <span class="leader-role t-anim" data-anim="fade-up" data-delay="2">Founder &amp; Chief Executive Officer</span>
+                            <p class="leader-bio t-anim" data-anim="fade-up" data-delay="3">Vignesh is the Founder and
+                                CEO of Hyna Studio, driving the company's strategic vision and engineering standards. He
+                                believes leadership isn't about control, but about building people who can lead without
+                                him — a philosophy that shapes how the studio operates day to day.</p>
+                            <div class="leader-links t-anim" data-anim="fade-up" data-delay="4">
+                                <a href="https://vigneshvl-dev.github.io/PORTFOLIO/" target="_blank"><i
+                                        class="fas fa-globe"></i> Portfolio</a>
+                                <a href="https://www.linkedin.com/in/vigneshvl-dev/" target="_blank"><i
+                                        class="fab fa-linkedin-in"></i> LinkedIn</a>
+                                <a href="https://github.com/vigneshvl-dev" target="_blank"><i
+                                        class="fab fa-github"></i> GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Jashwin -->
+                    <div class="leader-row reverse">
+                        <div class="leader-photo t-anim" data-anim="fade-right">
+                            <img src="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" alt="Jashwin">
+                        </div>
+                        <div class="leader-info">
+                            <h3 class="t-anim" data-anim="fade-up" data-delay="1">Jashwin</h3>
+                            <span class="leader-role t-anim" data-anim="fade-up" data-delay="2">Co-Founder &amp; Project Management Lead</span>
+                            <p class="leader-bio t-anim" data-anim="fade-up" data-delay="3">Jashwin ensures every
+                                project at Hyna Studio stays aligned with stakeholder goals from kickoff to delivery.
+                                His approach comes from a simple observation: deadlines don't fail because of time, they
+                                fail because alignment is missing.</p>
+                            <div class="leader-links t-anim" data-anim="fade-up" data-delay="4">
+                                <a href="https://www.linkedin.com/in/jashwin-j-16b06240a" target="_blank"><i
+                                        class="fab fa-linkedin-in"></i> LinkedIn</a>
+                                <a href="https://github.com/jashwinj2008" target="_blank"><i class="fab fa-github"></i>
+                                    GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dharshan -->
+                    <div class="leader-row">
+                        <div class="leader-photo t-anim" data-anim="fade-left">
                             <img src="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg"
-                                alt="Dharshan" class="team-avatar">
+                                alt="Dharshan">
+                        </div>
+                        <div class="leader-info">
+                            <h3 class="t-anim" data-anim="fade-up" data-delay="1">Dharshan</h3>
+                            <span class="leader-role t-anim" data-anim="fade-up" data-delay="2">Co-Founder &amp; Chief Technology Officer</span>
+                            <p class="leader-bio t-anim" data-anim="fade-up" data-delay="3">Dharshan leads systems
+                                architecture, cloud infrastructure, and technical execution at Hyna Studio. He holds
+                                that a co-founder in tech doesn't follow trends — he builds what will become the next
+                                standard.</p>
+                            <div class="leader-links t-anim" data-anim="fade-up" data-delay="4">
+                                <a href="https://portholio-zeta.vercel.app/" target="_blank"><i
+                                        class="fas fa-globe"></i> Portfolio</a>
+                                <a href="https://www.linkedin.com/in/dharshan-jm" target="_blank"><i
+                                        class="fab fa-linkedin-in"></i> LinkedIn</a>
+                                <a href="https://github.com/dharshan00814" target="_blank"><i
+                                        class="fab fa-github"></i> GitHub</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="team-card-info">
-                        <h3>Dharshan</h3>
-                        <span class="team-role">Co-Founder & Chief Technology Officer (CTO)</span>
-                        <div class="team-quote-box">
-                            <div class="team-quote-mark">&ldquo;</div>
-                            <p class="team-description">A co-founder in tech doesn't follow trends, he builds what
-                                will become the next standard.</p>
+
+                </div>
+
+                <!-- Board of Directors: Asthamil, Tharun Krishna, Zarif -->
+                <div class="board-section">
+                    <div class="board-eyebrow t-anim" data-anim="fade-up">Board of Directors</div>
+                    <div class="board-row">
+
+                        <div class="board-member t-anim" data-anim="fade-scale" data-delay="1">
+                            <img class="board-avatar"
+                                src="https://i.postimg.cc/Jnwtf3ZZ/Whats-App-Image-2026-02-20-at-7-00-57-PM.jpg"
+                                alt="Asthamil">
+                            <h4>Asthamil</h4>
+                            <span class="board-role">Chief Product Officer &amp; Director</span>
+                            <span class="board-org">Hyna Studio</span>
                         </div>
-                        <div class="team-social">
-                            <a href="https://portholio-zeta.vercel.app/" target="_blank" title="Portfolio"><i
-                                    class="fas fa-globe"></i></a>
-                            <a href="https://www.linkedin.com/in/dharshan-jm" target="_blank" title="LinkedIn"><i
-                                    class="fab fa-linkedin-in"></i></a>
-                            <a href="https://github.com/dharshan00814" target="_blank" title="GitHub"><i
-                                    class="fab fa-github"></i></a>
+
+                        <div class="board-member t-anim" data-anim="fade-scale" data-delay="2">
+                            <img class="board-avatar"
+                                src="https://i.postimg.cc/TP5Jj9Th/Whats-App-Image-2026-06-11-at-11-26-46-AM.jpg"
+                                alt="Tharun Krishna">
+                            <h4>Tharun Krishna</h4>
+                            <span class="board-role">Chief Design Officer &amp; Director</span>
+                            <span class="board-org">Hyna Studio</span>
                         </div>
-                        <div class="team-step-dots">
-                            <span class="team-dot"></span><span class="team-dot"></span><span
-                                class="team-dot active"></span>
-                            <span class="team-dot"></span><span class="team-dot"></span><span class="team-dot"></span>
+
+                        <div class="board-member t-anim" data-anim="fade-scale" data-delay="3">
+                            <img class="board-avatar" src="https://i.postimg.cc/1zWvJd1C/zarif.jpg"
+                                alt="Mohammad Zarif">
+                            <h4>Mohammad Zarif</h4>
+                            <span class="board-role">Chief Operating Officer</span>
+                            <span class="board-org">Hyna Studio</span>
                         </div>
+
                     </div>
                 </div>
 
-                <!-- Asthamil -->
-                <div class="team-card" role="button" tabindex="0" data-name="Asthamil"
-                    data-role="Chief Product Officer (CPO) & Director"
-                    data-bio="&quot;Product thinking is not about features, it is about solving the right problem in the right way.&quot; Asthamil directs product roadmap strategy, user research, and functional design."
-                    data-photo="https://i.postimg.cc/Jnwtf3ZZ/Whats-App-Image-2026-02-20-at-7-00-57-PM.jpg"
-                    data-portfolio="#" data-github="#" data-linkedin="#" data-college="Anna University"
-                    data-degree="B.E. Computer Science & Engineering" data-college-logo="">
-                    <div class="team-card-avatar-wrap">
-                        <div class="team-avatar-ring">
-                            <img src="https://i.postimg.cc/Jnwtf3ZZ/Whats-App-Image-2026-02-20-at-7-00-57-PM.jpg"
-                                alt="Asthamil" class="team-avatar">
-                        </div>
-                    </div>
-                    <div class="team-card-info">
-                        <h3>Asthamil</h3>
-                        <span class="team-role">Chief Product Officer (CPO) & Director</span>
-                        <div class="team-quote-box">
-                            <div class="team-quote-mark">&ldquo;</div>
-                            <p class="team-description">Product thinking is not about features, it is about solving
-                                the right problem in the right way.</p>
-                        </div>
-                        <div class="team-social">
-                            <a href="#" title="Portfolio"><i class="fas fa-globe"></i></a>
-                            <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
-                        </div>
-                        <div class="team-step-dots">
-                            <span class="team-dot"></span><span class="team-dot"></span><span class="team-dot"></span>
-                            <span class="team-dot active"></span><span class="team-dot"></span><span
-                                class="team-dot"></span>
-                        </div>
-                    </div>
-                </div>
+            </section>
 
-                <!-- Tharun Krishna -->
-                <div class="team-card" role="button" tabindex="0" data-name="Tharun Krishna"
-                    data-role="Chief Design Officer (CDO)"
-                    data-bio="&quot;Good design is invisible, but its impact is impossible to ignore.&quot; Tharun translates brand visions into premium user interfaces, styling guidelines, and interactive experiences."
-                    data-photo="https://i.postimg.cc/TP5Jj9Th/Whats-App-Image-2026-06-11-at-11-26-46-AM.jpg"
-                    data-portfolio="#" data-github="#"
-                    data-linkedin="https://www.linkedin.com/in/tharun-krishna-347b123a0?utm_source=share_via&utm_content=profile&utm_medium=member_android"
-                    data-college="Anna University" data-degree="B.E. Computer Science & Engineering"
-                    data-college-logo="">
-                    <div class="team-card-avatar-wrap">
-                        <div class="team-avatar-ring">
-                            <img src="https://i.postimg.cc/TP5Jj9Th/Whats-App-Image-2026-06-11-at-11-26-46-AM.jpg"
-                                alt="Tharun Krishna" class="team-avatar">
-                        </div>
-                    </div>
-                    <div class="team-card-info">
-                        <h3>Tharun Krishna</h3>
-                        <span class="team-role">Chief Design Officer (CDO) & Director</span>
-                        <div class="team-quote-box">
-                            <div class="team-quote-mark">&ldquo;</div>
-                            <p class="team-description">Good design is invisible, but its impact is impossible to
-                                ignore.</p>
-                        </div>
-                        <div class="team-social">
-                            <a href="https://tharunkrishna.vercel.app/" title="Portfolio"><i
-                                    class="fas fa-globe"></i></a>
-                            <a href="https://www.linkedin.com/in/tharun-krishna-347b123a0" target="_blank"
-                                title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
-                        </div>
-                        <div class="team-step-dots">
-                            <span class="team-dot"></span><span class="team-dot"></span><span class="team-dot"></span>
-                            <span class="team-dot"></span><span class="team-dot active"></span><span
-                                class="team-dot"></span>
-                        </div>
-                    </div>
-                </div>
+        </body>
 
-                <!-- Zarif -->
-                <div class="team-card" role="button" tabindex="0" data-name="Mohammad Zarif"
-                    data-role="Chief Operating Officer (COO)"
-                    data-bio="&quot;Execution is not about speed alone, it is about consistency, structure, and discipline.&quot; Mohammad oversees business operations, client partnerships, and project scaling."
-                    data-photo="https://i.postimg.cc/1zWvJd1C/zarif.jpg" data-portfolio="#" data-github="#"
-                    data-linkedin="https://www.linkedin.com/in/muhamed-zarif-80860a37a?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
-                    data-college="Anna University" data-degree="B.E. Computer Science & Engineering"
-                    data-college-logo="">
-                    <div class="team-card-avatar-wrap">
-                        <div class="team-avatar-ring">
-                            <img src="https://i.postimg.cc/1zWvJd1C/zarif.jpg" alt="Mohammad Zarif" class="team-avatar">
-                        </div>
-                    </div>
-                    <div class="team-card-info">
-                        <h3>Mohammad Zarif</h3>
-                        <span class="team-role">Chief Operating Officer (COO)</span>
-                        <div class="team-quote-box">
-                            <div class="team-quote-mark">&ldquo;</div>
-                            <p class="team-description">Execution is not about speed alone, it is about consistency,
-                                structure, and discipline.</p>
-                        </div>
-                        <div class="team-social">
-                            <a href="#" title="Portfolio"><i class="fas fa-globe"></i></a>
-                            <a href="https://www.linkedin.com/in/muhamed-zarif-80860a37a" target="_blank"
-                                title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="https://github.com/muhamedzarif" target="_blank" title="GitHub"><i
-                                    class="fab fa-github"></i></a>
-                        </div>
-                        <div class="team-step-dots">
-                            <span class="team-dot"></span><span class="team-dot"></span><span class="team-dot"></span>
-                            <span class="team-dot"></span><span class="team-dot"></span><span
-                                class="team-dot active"></span>
-                        </div>
-                    </div>
-                </div>
+        <script>
+            /* ── Team Section: Scroll-triggered fade-in via IntersectionObserver ── */
+            (function () {
+                var targets = document.querySelectorAll('#team .t-anim');
+                if (!targets.length) return;
 
-            </div>
+                var io = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('t-in');
+                            io.unobserve(entry.target); /* fire once */
+                        }
+                    });
+                }, { threshold: 0.15 });
+
+                targets.forEach(function (el) { io.observe(el); });
+            })();
+        </script>
+
+        </html>
 
         </section>
         <!-- ── API DEVELOPER SECTION ── -->
