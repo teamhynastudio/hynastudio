@@ -3209,17 +3209,19 @@
                 var letters = document.getElementById('loader-stage-letters');
                 var newLoader = document.getElementById('hyna-new-loader');
 
+                // Trigger hero and nav animations immediately on load
+                document.body.classList.add('hero-animate');
+
                 // Stage 1: HYNASTUDIO letter loader, then switch to the speeder sweep
                 setTimeout(function () {
                     if (letters) letters.classList.add('loader-stage-hidden');
                     if (speeder) speeder.classList.remove('loader-stage-hidden');
                 }, 1600);
 
-                // Stage 2: letter loader finishes, then reveal the page
+                // Stage 2: letter loader finishes, then clean up the loader overlay
                 setTimeout(function () {
                     if (newLoader) {
                         newLoader.classList.add('loader-hidden');
-                        document.body.classList.add('hero-animate');
                         setTimeout(function () {
                             newLoader.remove();
                         }, 800);
