@@ -3730,12 +3730,25 @@
             /* ── SPARKLES ORB ── */
             .trusted-sparkles-wrap {
                 position: relative;
-                margin-top: -6rem;
-                height: 420px;
+                margin-top: -4rem;
+                height: 240px;
                 overflow: hidden;
                 /* vignette mask */
                 mask-image: radial-gradient(50% 50% at 50% 50%, white, transparent);
                 -webkit-mask-image: radial-gradient(50% 50% at 50% 50%, white, transparent);
+            }
+
+            @media (max-width: 768px) {
+                .trusted-sparkles-wrap {
+                    height: 120px;
+                    margin-top: -2rem;
+                }
+                #what-is-hyna .wh-inner {
+                    padding: 24px 20px;
+                }
+                #what-is-hyna .wh-eyebrow {
+                    margin-bottom: 12px;
+                }
             }
 
             .trusted-sparkles-orb {
@@ -3798,7 +3811,7 @@
                     </div>
                     <!-- MSME Govt of India -->
                     <div class="trusted-logo-item">
-                        <img src=https://i.postimg.cc/QtjGCxYJ/Screenshot-2026-07-10-125253.png"
+                        <img src="https://i.postimg.cc/QtjGCxYJ/Screenshot-2026-07-10-125253.png"
                             alt="MSME Govt of India">
                     </div>
                     <!-- MeitY Startup Hub -->
@@ -3814,6 +3827,10 @@
                     <!-- Startup TN -->
                     <div class="trusted-logo-item duplicate">
                         <img src="https://i.postimg.cc/T27ZHwy9/startup-tn-logo.png" alt="Startup TN">
+                    </div>
+                    <!-- MSME Govt of India -->
+                    <div class="trusted-logo-item duplicate">
+                        <img src="https://i.postimg.cc/QtjGCxYJ/Screenshot-2026-07-10-125253.png" alt="MSME Govt of India">
                     </div>
                     <!-- MeitY Startup Hub -->
                     <div class="trusted-logo-item duplicate">
@@ -4708,6 +4725,18 @@
             #build-headline.theme-light .bh-sub {
                 color: #5B6270;
                 -webkit-text-fill-color: #5B6270;
+            }
+
+            @media (max-width: 768px) {
+                #build-headline .bh-inner {
+                    padding: 30px 20px 40px;
+                }
+                #build-headline .bh-sub {
+                    margin-top: 16px;
+                }
+                #build-headline .bh-line-wrap {
+                    margin-top: 24px;
+                }
             }
         </style>
 
