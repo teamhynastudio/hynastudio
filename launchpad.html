@@ -15,6 +15,8 @@
       --cream: #000000;
       --cream-dim: #a0a0a5;
       --paper: #000000;
+      --accent: #4F3FF0;
+      --accent2: #00D9A3;
     }
 
     * {
@@ -36,105 +38,585 @@
 
     /* Mobile nav — scoped only to nav area, non-destructive to team stacking */
     @media (max-width: 768px) {
+
+      /* ── MOBILE NAV — Dark Pill + Hamburger Toggle ── */
       nav {
-        position: relative;
+        position: fixed !important;
+        top: 1.25rem !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: calc(100% - 1.5rem) !important;
+        max-width: none !important;
+        min-height: 56px;
+        padding: 0.45rem 0.8rem 0.45rem 1rem !important;
+        border-radius: 40px !important;
+        background: rgba(18, 18, 22, 0.92) !important;
+        border: 1px solid rgba(255, 255, 255, 0.18) !important;
+        border-top: 1.5px solid rgba(255, 255, 255, 0.45) !important;
+        box-shadow:
+          0 20px 40px rgba(0, 0, 0, 0.6),
+          inset 0 1px 1px rgba(255, 255, 255, 0.2),
+          inset 0 -1px 0 rgba(0, 0, 0, 0.4) !important;
+        backdrop-filter: blur(25px) saturate(220%) !important;
+        -webkit-backdrop-filter: blur(25px) saturate(220%) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        flex-wrap: nowrap !important;
         z-index: 10010;
       }
 
-
-      /* keep nav above page, but below team-stack controls if needed */
-
-      .nav-links {
-        position: fixed;
-        top: 70px;
-        left: 12px;
-        right: 12px;
-        background: #0f0f14;
-        border: 1px solid rgba(255, 255, 255, 0.10);
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-        align-items: stretch;
-        padding: 10px;
-        border-radius: 18px;
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 160ms ease;
+      nav.nav-scrolled {
+        background: rgba(20, 20, 24, 0.96) !important;
+        border: 1px solid rgba(255, 255, 255, 0.22) !important;
+        border-top: 1.5px solid rgba(255, 255, 255, 0.55) !important;
+        box-shadow:
+          0 24px 48px rgba(0, 0, 0, 0.7),
+          inset 0 1px 1px rgba(255, 255, 255, 0.25),
+          inset 0 -1px 0 rgba(0, 0, 0, 0.5) !important;
       }
 
-      .nav-links.active {
-        opacity: 1;
-        pointer-events: auto;
+      /* Keep logo consistent */
+      .nav-logo {
+        gap: 0.45rem !important;
+        min-width: 0;
+        flex: 0 1 auto !important;
       }
 
-      .nav-links a {
-        width: 100%;
-        text-align: center;
-        padding: 10px 6px;
-        color: rgba(255, 255, 255, 0.7) !important;
+      .logo-text {
+        min-width: 0;
       }
 
-      /* Navbar subtitle styling for mobile */
+      .logo-img {
+        width: 32px !important;
+        height: 32px !important;
+      }
+
+      .logo-main {
+        font-size: 0.95rem !important;
+        white-space: nowrap !important;
+        color: #ffffff !important;
+      }
+
       .logo-sub {
-        font-size: 0.55rem;
-        color: rgba(255, 255, 255, 0.8);
-        margin-top: 0.05rem;
-        text-align: center;
-        transition: color 0.3s ease;
+        display: block;
+        font-size: 0.5rem;
+        letter-spacing: 0.05em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 120px;
       }
 
-
-      /* Keep hamburger clickable and on top */
-      #navMobileToggle {
-        position: relative;
-        z-index: 10011;
-        background: transparent;
-        border: none;
+      /* Hide duplicate floating brand mark on mobile */
+      .topmark {
+        display: none !important;
       }
 
-      /* Prevent horizontal scroll only (no changes to vertical overflow used by sticky team cards) */
+      /* Add top padding to the first section so it isn't covered by the fixed navigation bar */
+      section.bio:first-of-type {
+        padding-top: 120px !important;
+      }
+
+      /* Prevent horizontal scroll only */
       html,
       body {
         overflow-x: hidden;
       }
 
-      .nav-item-dropdown {
-        display: flex;
-        flex-direction: column;
+      /* ── SKULL TOGGLE BUTTON (ashif_6672) ── */
+      #navMobileToggle {
+        position: relative;
+        z-index: 10011;
+        flex-shrink: 0;
+        display: inline-flex !important;
+        background: transparent;
+        border: none;
+      }
+
+      .switch {
+        position: relative;
+        display: inline-flex !important;
         align-items: center;
+        justify-content: center;
+        width: 20vmin;
+        height: 10vmin;
+        background: #141414;
+        border-radius: 5vmin;
+        overflow: hidden;
+        box-shadow:
+          0 0 0.1vmin 0.1vmin #000000,
+          0 0 0.5vmin 0.1vmin #0b0b10 inset;
+        cursor: pointer;
+        max-width: 80px;
+        max-height: 40px;
+      }
+
+      .switch input {
+        display: none !important;
+      }
+
+      .thumb {
+        position: absolute;
+        width: 8.75vmin;
+        height: 8.75vmin;
+        top: 0.6vmin;
+        left: calc(100% - 9.333vmin);
+        border-radius: 5vmin;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+        animation: move-skull-left 0.5s ease-in-out 0.5s forwards;
+      }
+
+      .switch input:checked~.thumb {
+        left: 0.6vmin;
+        animation: move-skull-right 0.5s ease-in-out 0.5s forwards;
+      }
+
+      @keyframes move-skull-right {
+        0% {
+          left: 0.6vmin;
+        }
+
+        100% {
+          left: calc(100% - 9.333vmin);
+        }
+      }
+
+      @keyframes move-skull-left {
+        0% {
+          left: calc(100% - 9.333vmin);
+        }
+
+        100% {
+          left: 0.6vmin;
+        }
+      }
+
+      .thumb>* {
+        position: absolute;
+        filter: drop-shadow(0px 1px 1px #000);
+        animation: unselected 1.5s ease-in-out 0s reverse forwards;
+      }
+
+      .switch input:checked~.thumb * {
+        animation: selected 1.5s ease-in-out 0s forwards;
+      }
+
+      @keyframes selected {
+
+        0%,
+        50% {
+          filter: drop-shadow(0px 1px 1px #000) brightness(1);
+        }
+
+        50.01%,
+        100% {
+          filter: drop-shadow(0px 1px 1px #000) brightness(1.875);
+        }
+      }
+
+      @keyframes unselected {
+
+        0%,
+        50% {
+          filter: drop-shadow(0px 1px 1px #000) brightness(1);
+        }
+
+        50.01%,
+        100% {
+          filter: drop-shadow(0px 1px 1px #000) brightness(1.875);
+        }
+      }
+
+      .cranium {
+        background: linear-gradient(180deg, #888 0 54%, #fff0 0 94%, #888 0 100%),
+          radial-gradient(circle at 75% 69%, #fff0 0 0.875vmin, #888 calc(0.875vmin + 1px) 2.425vmin, #fff0 calc(2.425vmin + 1px) 100%),
+          radial-gradient(circle at 25% 69%, #fff0 0 0.875vmin, #888 calc(0.875vmin + 1px) 2.425vmin, #fff0 calc(2.425vmin + 1px) 100%);
         width: 100%;
+        height: 7vmin;
+        left: 0;
+        top: 0;
+        border-radius: 5vmin 5vmin 2.75vmin 2.75vmin;
+      }
+
+      .cranium:before {
+        content: "";
+        position: absolute;
+        width: 0.625vmin;
+        height: 0.625vmin;
+        bottom: -0.375vmin;
+        left: 3.75vmin;
+        background: #888;
+        border-radius: 100%;
+        box-shadow: 0.625vmin 0 0 0 #888;
+      }
+
+      .cranium:after {
+        content: "";
+        position: absolute;
+        width: 2.625vmin;
+        height: 0.75vmin;
+        bottom: -0.475vmin;
+        left: 3vmin;
+        background: radial-gradient(circle at 90% 10%, #888 0 0.5vmin, #fff0 calc(0.5vmin + 1px) 100%),
+          radial-gradient(circle at 10% 10%, #888 0 0.5vmin, #fff0 calc(0.5vmin + 1px) 100%);
+        border-radius: 0.5vmin;
+      }
+
+      .mouth {
+        border: 0.425vmin solid #fff0;
+        border-bottom-color: #888;
+        width: 5.875vmin;
+        left: 1.425vmin;
+        height: 3vmin;
+        top: 5.625vmin;
+        background: radial-gradient(circle at 35% 98%, #888 0 0.325vmin, #fff0 calc(0.325vmin + 1px) 100%),
+          radial-gradient(circle at 45% 100%, #888 0 0.325vmin, #fff0 calc(0.325vmin + 1px) 100%),
+          radial-gradient(circle at 55% 100%, #888 0 0.325vmin, #fff0 calc(0.325vmin + 1px) 100%),
+          radial-gradient(circle at 65% 98%, #888 0 0.325vmin, #fff0 calc(0.325vmin + 1px) 100%);
+        background-repeat: no-repeat;
+        border-radius: 100%;
+      }
+
+      .mouth:before,
+      .mouth:after {
+        content: "";
+        position: absolute;
+        border-radius: 100%;
+        background: #888;
+        width: 0.35vmin;
+        height: 0.35vmin;
+        left: 0.2vmin;
+        bottom: 0.125vmin;
+      }
+
+      .mouth:after {
+        left: 4.525vmin;
+      }
+
+      @keyframes check-on {
+        0% {
+          right: -65%;
+        }
+
+        25%,
+        33% {
+          right: 0%;
+        }
+
+        66%,
+        80% {
+          right: -50%;
+        }
+
+        100% {
+          right: -65%;
+        }
+      }
+
+      @keyframes check-off {
+        0% {
+          right: -65%;
+        }
+
+        25%,
+        33% {
+          right: 0%;
+        }
+
+        66%,
+        80% {
+          right: -50%;
+        }
+
+        100% {
+          right: -65%;
+        }
+      }
+
+      .arm-wrapper {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 5vmin;
+        overflow: hidden;
+        right: -65%;
+        animation: check-off 1.5s ease-in-out 0s reverse forwards;
+      }
+
+      .switch input:checked~.arm-wrapper {
+        animation: check-on 1.5s ease-in-out 0s forwards;
+      }
+
+      .arm {
+        position: absolute;
+        width: 8vmin;
+        height: 2.5vmin;
+        right: 2%;
+        top: calc(50% - 1.25vmin);
+        border-radius: 0.125vmin;
+      }
+
+      .bone {
+        background: #fff;
+        width: 4vmin;
+        height: 1vmin;
+        position: absolute;
+        transform: rotate(0deg);
+        top: 0.75vmin;
+        right: -2vmin;
+      }
+
+      .bone:before,
+      .bone:after,
+      .big:before,
+      .big:after {
+        content: "";
+        background: #fff;
+        width: 0.75vmin;
+        height: 0.75vmin;
+        position: absolute;
+        left: -0.25vmin;
+        top: -0.25vmin;
+        border-radius: 100%;
+        box-shadow: 4vmin 0 0 0 #fff;
+      }
+
+      .bone:after {
+        top: calc(100% - 0.5vmin);
+      }
+
+      .arm>.bone+.bone {
+        top: 0.75vmin;
+        left: 0.25vmin;
+        height: 0.425vmin;
+        width: 5.25vmin;
+        box-shadow: 0 0.575vmin 0 0 #fff;
+      }
+
+      .arm>.bone+.bone:before,
+      .arm>.bone+.bone:after {
+        box-shadow: 5.075vmin 0 0 0 #fff;
+      }
+
+      .arm>.bone+.bone:after {
+        top: 100%;
+      }
+
+      .hand {
+        position: absolute;
+        background: radial-gradient(circle at 91% 29%, #fff 0.25vmin, #fff0 calc(0.25vmin + 1px) 100%),
+          radial-gradient(circle at 92% 49%, #fff 0.25vmin, #fff0 calc(0.25vmin + 1px) 100%),
+          radial-gradient(circle at 91% 69%, #fff 0.25vmin, #fff0 calc(0.25vmin + 1px) 100%),
+          radial-gradient(circle at 76% 21%, #fff 0.25vmin, #fff0 calc(0.25vmin + 1px) 100%),
+          radial-gradient(circle at 78% 39%, #fff 0.25vmin, #fff0 calc(0.25vmin + 1px) 100%),
+          radial-gradient(circle at 79% 58%, #fff 0.25vmin, #fff0 calc(0.25vmin + 1px) 100%),
+          radial-gradient(circle at 78% 78%, #fff 0.25vmin, #fff0 calc(0.25vmin + 1px) 100%);
+        width: 3.5vmin;
+        height: 2.5vmin;
+        left: -3.5vmin;
+        z-index: 0;
+      }
+
+      .hand .bone,
+      .big {
+        width: 1.5vmin;
+        left: 0.675vmin;
+        height: 0.375vmin;
+        border-radius: 0.25vmin 0 0 0.25vmin;
+      }
+
+      .hand .bone:before,
+      .hand .bone:after,
+      .big:before,
+      .big:after {
+        width: 0.4vmin;
+        height: 0.4vmin;
+        top: -0.125vmin;
+        left: 1.125vmin;
+        box-shadow: none;
+      }
+
+      .hand .bone:after,
+      .big:after {
+        top: 0.0625vmin;
+      }
+
+      .hand .bone:nth-child(1) {
+        transform: rotate(5deg) translateY(-0.5vmin) translateX(0.075vmin);
+        filter: drop-shadow(-1.5vmin 0vmin 0px #fff);
+      }
+
+      .hand .bone:nth-child(2) {
+        transform: rotate(0deg) translateX(0.25vmin);
+        filter: drop-shadow(-1.5vmin 0vmin 0px #fff);
+      }
+
+      .hand .bone:nth-child(3) {
+        transform: rotate(-2deg) translateY(0.575vmin) translateX(0.25vmin);
+        filter: drop-shadow(-1.5vmin 0vmin 0px #fff);
+      }
+
+      .hand .bone:nth-child(4) {
+        transform: rotate(-5deg) translateY(1.15vmin) translateX(0.25vmin);
+        filter: drop-shadow(-1.5vmin 0vmin 0px #fff);
+      }
+
+      .big {
+        background: #fff;
+        height: 0.5vmin !important;
+        position: absolute;
+        left: -2.125vmin !important;
+        top: 0.575vmin;
+        z-index: 1;
+        filter: drop-shadow(-1.25vmin 0vmin 0px #fff) drop-shadow(0 0 1px #000);
+      }
+
+      /* ── MOBILE NAV LINKS DROPDOWN ── */
+      .nav-links {
+        position: fixed !important;
+        top: 68px !important;
+        left: 12px !important;
+        right: 12px !important;
+        width: auto !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        background: rgba(15, 15, 20, 0.96) !important;
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        border-radius: 20px !important;
+        padding: 12px !important;
+        gap: 2px !important;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6),
+          0 0 0 1px rgba(255, 255, 255, 0.05) !important;
+        backdrop-filter: blur(30px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(30px) saturate(180%) !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        transform: translateY(-10px) !important;
+        transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        z-index: 10010 !important;
+        margin: 0 !important;
+      }
+
+      .nav-links.active {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        transform: translateY(0) !important;
+      }
+
+      .nav-links li {
+        width: 100% !important;
+      }
+
+      .nav-links li a {
+        display: flex !important;
+        width: 100% !important;
+        padding: 12px 16px !important;
+        font-size: 0.88rem !important;
+        font-weight: 500 !important;
+        color: rgba(255, 255, 255, 0.75) !important;
+        border-radius: 12px !important;
+        background: transparent !important;
+        transition: color 0.2s, background 0.2s !important;
+        text-align: left !important;
+        border-bottom: none !important;
+      }
+
+      .nav-links li a:hover {
+        color: #ffffff !important;
+        background: rgba(255, 255, 255, 0.08) !important;
+      }
+
+      /* Mobile dropdown adjustments */
+      .nav-item-dropdown {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
       }
 
       .nav-dropdown {
-        position: static;
-        transform: none;
-        opacity: 0;
-        visibility: hidden;
-        display: none;
-        width: 100%;
-        box-shadow: none;
-        border: none;
-        background: rgba(10, 10, 15, 0.03);
-        padding: 0.5rem 0;
-        margin-top: 0.5rem;
-        border-radius: 10px;
-        text-align: center;
-        transition: none;
+        position: static !important;
+        transform: none !important;
+        width: 100% !important;
+        background: rgba(255, 255, 255, 0.04) !important;
+        border: none !important;
+        border-radius: 12px !important;
+        padding: 4px 0 !important;
+        margin-top: 4px !important;
+        box-shadow: none !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        display: none !important;
+        transition: none !important;
+      }
+
+      .nav-dropdown::before {
+        display: none !important;
       }
 
       .nav-item-dropdown.open .nav-dropdown {
-        opacity: 1;
-        visibility: visible;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        opacity: 1 !important;
+        visibility: visible !important;
+        display: flex !important;
+        flex-direction: column !important;
       }
 
       .nav-dropdown a {
-        justify-content: center;
-        width: 100%;
-        box-sizing: border-box;
+        color: rgba(255, 255, 255, 0.6) !important;
+        padding: 10px 24px !important;
+        font-size: 0.82rem !important;
+        border-radius: 8px !important;
+        justify-content: flex-start !important;
+        background: transparent !important;
+      }
+
+      .nav-dropdown a:hover {
+        color: #ffffff !important;
+        background: rgba(255, 255, 255, 0.06) !important;
+      }
+
+      .nav-item-dropdown.open .nav-arrow {
+        transform: rotate(180deg);
+      }
+
+      /* Hide desktop CTA, show mobile CTA items */
+      .nav-cta.hide-mobile {
+        display: none !important;
+      }
+
+      .nav-links li.mobile-cta-item {
+        display: block !important;
+        margin-top: 4px;
+      }
+
+      .nav-links li.mobile-cta-item a {
+        text-align: center !important;
+        justify-content: center !important;
+        font-weight: 700 !important;
+        border-radius: 14px !important;
+        padding: 14px 16px !important;
+        font-size: 0.88rem !important;
+      }
+
+      .nav-links li.start-proj-mobile a {
+        background: linear-gradient(135deg, var(--accent), #7C3AED) !important;
+        color: #ffffff !important;
+        box-shadow: 0 4px 16px rgba(79, 63, 240, 0.35) !important;
+      }
+
+      .nav-links li.connect-mobile a {
+        background: rgba(255, 255, 255, 0.08) !important;
+        color: rgba(255, 255, 255, 0.85) !important;
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+      }
+
+      /* Hide mobile Book a Call button */
+      .nav-book-call {
+        display: none !important;
       }
     }
 
@@ -652,12 +1134,14 @@
       will-change: transform, filter;
       filter: brightness(1);
       width: min(96vw, 1600px);
-      height: min(92vh, 950px) border-radius: 22px;
+      height: min(92vh, 950px);
+      border-radius: 22px;
       overflow: hidden;
       box-shadow: 0 30px 80px rgba(0, 0, 0, .35);
     }
 
-    .hero-img-wrap img {
+    .hero-img-wrap img,
+    .hero-img-wrap video {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -1057,9 +1541,14 @@
     }
 
     @media (max-width:820px) {
+      .bio {
+        padding: 110px 6vw 80px;
+      }
+
       .bio-grid {
         grid-template-columns: 1fr;
-        gap: 36px;
+        gap: 28px;
+        text-align: left;
       }
 
       .bio-label {
@@ -1067,10 +1556,160 @@
         display: flex;
         align-items: baseline;
         gap: 16px;
+        text-align: left;
+      }
+
+      .bio-label .num {
+        font-size: 48px;
+      }
+
+      .bio-copy h2 {
+        font-size: clamp(28px, 8vw, 40px);
+        max-width: 100%;
+      }
+
+      .bio-copy p {
+        font-size: 16px;
+        max-width: 100%;
+      }
+
+      .pullquote {
+        font-size: clamp(18px, 5vw, 22px);
+        max-width: 100%;
       }
 
       .facts {
         grid-template-columns: 1fr;
+        gap: 18px;
+        margin-top: 48px;
+      }
+
+      .launchpad {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        margin-top: 64px;
+        justify-items: stretch;
+        align-items: start;
+      }
+
+      .launchpad-img {
+        max-width: 100%;
+        margin: 0 auto;
+      }
+
+      .launchpad-copy {
+        max-width: 100%;
+      }
+
+      .launchpad-copy h3 {
+        font-size: clamp(22px, 6vw, 28px);
+      }
+    }
+
+    @media (max-width:640px) {
+      .bio {
+        padding: 104px 22px 64px;
+      }
+
+      .bio-label {
+        flex-wrap: wrap;
+        gap: 6px 14px;
+      }
+
+      .bio-copy h2 {
+        font-size: clamp(26px, 9vw, 34px);
+      }
+
+      .bio-copy p {
+        font-size: 15px;
+      }
+
+      .launchpad {
+        margin-top: 48px;
+        gap: 22px;
+      }
+
+      .launchpad-copy p {
+        font-size: 15px;
+      }
+
+      .facts {
+        margin-top: 40px;
+      }
+    }
+
+    @media (max-width:480px) {
+      .bio {
+        padding: 100px 16px 56px;
+      }
+
+      .bio-label .num {
+        font-size: 40px;
+      }
+
+      .launchpad-img {
+        border-radius: 14px;
+      }
+    }
+
+    /* ── Reduce excess blank space on mobile ── */
+    @media (max-width:768px) {
+
+      /* Collapse the tall sticky zoom section into normal flow (no long empty scroll) */
+      .pin-wrap {
+        height: auto;
+      }
+
+      .pin-sticky {
+        position: static;
+        height: auto;
+        min-height: 0;
+        overflow: visible;
+        padding: 24px 0;
+      }
+
+      /* Fit the hero video to content instead of a huge fixed frame */
+      .hero-img-wrap {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none !important;
+        filter: none !important;
+        width: 92vw;
+        height: auto;
+        aspect-ratio: 16 / 11;
+        margin: 0 auto;
+      }
+
+      /* Keep buttons anchored inside the smaller video frame */
+      .banner-overlay-actions {
+        top: auto;
+        bottom: 18px;
+      }
+
+      /* Tighten spacing around the engine section */
+      #engine.bio {
+        padding-top: 32px !important;
+        padding-bottom: 48px;
+      }
+
+      /* Trim the oversized footer padding */
+      .close {
+        padding: 56px 6vw 40px;
+      }
+
+      .close .foot-note {
+        margin-top: 32px;
+      }
+    }
+
+    @media (max-width:480px) {
+      .hero-img-wrap {
+        aspect-ratio: 4 / 3;
+      }
+
+      .pin-sticky {
+        padding: 16px 0;
       }
     }
 
@@ -1202,7 +1841,7 @@
   <nav>
 
     <a href="index.html" class="nav-logo">
-      <img src="./Startup_SaaS_product_building_an…_202607100010.mp4" class="logo-img" alt="Hyna Studio Logo">
+      <img src="./hyna-logo-new.png" class="logo-img" alt="Hyna Studio Logo">
       <div class="logo-text">
         <span class="logo-main">Hyna Studio</span>
         <span class="logo-sub">Democratizing Entrepreneurship</span>
@@ -1332,19 +1971,28 @@
   <div class="pin-wrap" id="pinWrap">
     <div class="pin-sticky">
       <div class="hero-img-wrap" id="heroImg">
-        <img src="./hynabuild.png" alt="Hyna Launchpad Billboard Mockup">
+
+        <video id="heroVideo" class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto"
+          poster="./channels4_profile.jpg">
+          <source src="./Startup_SaaS_product_building_and_scaling_202607100010.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+
         <div class="zoom-scrim" id="zoomScrim"></div>
-        <!-- Banner overlay actions — inside hero-img-wrap so they scale and zoom perfectly with the banner -->
+
         <div class="banner-overlay-actions">
           <div class="banner-buttons-row">
-            <a href="https://chat.whatsapp.com/Jhs8k3Bd2cX6i1Ig4DjWMw" target="_blank"
-              class="banner-btn primary-btn">Connect with Hyna</a>
-            <a href="https://hynastudio.com/community" target="_blank" class="banner-btn secondary-btn">Join Hyna
-              Community</a>
+            <a href="https://chat.whatsapp.com/Jhs8k3Bd2cX6i1Ig4DjWMw" target="_blank" class="banner-btn primary-btn">
+              Connect with Hyna
+            </a>
+
+            <a href="https://hynastudio.com/community" target="_blank" class="banner-btn secondary-btn">
+              Join Hyna Community
+            </a>
           </div>
         </div>
-      </div>
 
+      </div>
       <div class="hero-caption" id="heroCaption">
         <div class="eyebrow"></div>
         <h1></h1>
@@ -1363,7 +2011,7 @@
   <section class="bio" id="engine" style="padding-top: min(8vw, 80px);">
     <div class="launchpad" style="margin-top: 0; border-top: none; padding-top: 0;">
       <div class="launchpad-img">
-        <img src="" alt="Hyna Launchpad Engine">
+        <img src="./channels4_profile.jpg" alt="Hyna Launchpad Engine">
       </div>
       <div class="launchpad-copy">
         <div class="eyebrow">Visualizing Ideas</div>
@@ -1516,6 +2164,58 @@
       // Hero animation class
       requestAnimationFrame(() => {
         document.body.classList.add("hero-animate");
+      });
+    });
+  </script>
+
+  <!-- Robust hero video autoplay -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const video = document.getElementById("heroVideo");
+      if (!video) return;
+
+      // Autoplay policies require the muted PROPERTY (not just the attribute)
+      video.muted = true;
+      video.defaultMuted = true;
+      video.setAttribute("muted", "");
+      video.playsInline = true;
+
+      const tryPlay = () => {
+        const p = video.play();
+        if (p && typeof p.catch === "function") {
+          p.catch(() => {
+            // Autoplay was blocked — retry on the first user interaction
+            const resume = () => {
+              video.play().catch(() => { });
+              window.removeEventListener("touchstart", resume);
+              window.removeEventListener("click", resume);
+              window.removeEventListener("scroll", resume);
+            };
+            window.addEventListener("touchstart", resume, { once: true, passive: true });
+            window.addEventListener("click", resume, { once: true });
+            window.addEventListener("scroll", resume, { once: true, passive: true });
+          });
+        }
+      };
+
+      // Log source errors so failures are visible in the console
+      video.addEventListener("error", () => {
+        console.error("Hero video failed to load:", video.error);
+      });
+
+      if (video.readyState >= 2) {
+        tryPlay();
+      } else {
+        video.addEventListener("loadeddata", tryPlay, { once: true });
+        video.addEventListener("canplay", tryPlay, { once: true });
+      }
+
+      // Kick the loader in case the browser is waiting
+      video.load();
+
+      // Resume playback when returning to the tab
+      document.addEventListener("visibilitychange", () => {
+        if (!document.hidden && video.paused) tryPlay();
       });
     });
   </script>
