@@ -652,14 +652,12 @@
       will-change: transform, filter;
       filter: brightness(1);
       width: min(96vw, 1600px);
-      height: min(92vh, 950px);
-      border-radius: 22px;
+      height: min(92vh, 950px) border-radius: 22px;
       overflow: hidden;
       box-shadow: 0 30px 80px rgba(0, 0, 0, .35);
     }
 
-    .hero-img-wrap img,
-    .hero-img-wrap video {
+    .hero-img-wrap img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -1195,35 +1193,6 @@
       .banner-link {
         font-size: 11px;
       }
-      .hero-img-wrap{
-    position: relative;
-    overflow: hidden;
-}
-
-.hero-video{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
-}
-
-.banner-overlay-actions,
-.zoom-scrim{
-    position:absolute;
-    inset:0;
-}
-
-.banner-overlay-actions{
-    display:flex;
-    justify-content:center;
-    align-items:flex-end;
-    padding-bottom:40px;
-    z-index:3;
-}
-
-.zoom-scrim{
-    z-index:2;
-}
     }
   </style>
 </head>
@@ -1233,7 +1202,7 @@
   <nav>
 
     <a href="index.html" class="nav-logo">
-      <img src="./hyna-logo-new.png" class="logo-img" alt="Hyna Studio Logo">
+      <img src="./Startup_SaaS_product_building_an…_202607100010.mp4" class="logo-img" alt="Hyna Studio Logo">
       <div class="logo-text">
         <span class="logo-main">Hyna Studio</span>
         <span class="logo-sub">Democratizing Entrepreneurship</span>
@@ -1362,37 +1331,20 @@
   <!-- ================= PIN / ZOOM SECTION ================= -->
   <div class="pin-wrap" id="pinWrap">
     <div class="pin-sticky">
-     <div class="hero-img-wrap" id="heroImg">
-
-    <video
-        class="hero-video"
-        autoplay
-        muted
-        loop
-        playsinline>
-        <source src="./Startup_SaaS_product_building_and_scaling_202607100010.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-
-    <div class="zoom-scrim" id="zoomScrim"></div>
-
-    <div class="banner-overlay-actions">
-        <div class="banner-buttons-row">
-            <a href="https://chat.whatsapp.com/Jhs8k3Bd2cX6i1Ig4DjWMw"
-                target="_blank"
-                class="banner-btn primary-btn">
-                Connect with Hyna
-            </a>
-
-            <a href="https://hynastudio.com/community"
-                target="_blank"
-                class="banner-btn secondary-btn">
-                Join Hyna Community
-            </a>
+      <div class="hero-img-wrap" id="heroImg">
+        <img src="./hynabuild.png" alt="Hyna Launchpad Billboard Mockup">
+        <div class="zoom-scrim" id="zoomScrim"></div>
+        <!-- Banner overlay actions — inside hero-img-wrap so they scale and zoom perfectly with the banner -->
+        <div class="banner-overlay-actions">
+          <div class="banner-buttons-row">
+            <a href="https://chat.whatsapp.com/Jhs8k3Bd2cX6i1Ig4DjWMw" target="_blank"
+              class="banner-btn primary-btn">Connect with Hyna</a>
+            <a href="https://hynastudio.com/community" target="_blank" class="banner-btn secondary-btn">Join Hyna
+              Community</a>
+          </div>
         </div>
-    </div>
+      </div>
 
-</div>
       <div class="hero-caption" id="heroCaption">
         <div class="eyebrow"></div>
         <h1></h1>
@@ -1411,7 +1363,7 @@
   <section class="bio" id="engine" style="padding-top: min(8vw, 80px);">
     <div class="launchpad" style="margin-top: 0; border-top: none; padding-top: 0;">
       <div class="launchpad-img">
-        <img src="./channels4_profile.jpg" alt="Hyna Launchpad Engine">
+        <img src="" alt="Hyna Launchpad Engine">
       </div>
       <div class="launchpad-copy">
         <div class="eyebrow">Visualizing Ideas</div>
