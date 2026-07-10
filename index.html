@@ -140,12 +140,10 @@
             }
 
 
-            /* Keep hamburger clickable and on top */
+            /* Keep power toggle clickable and on top */
             #navMobileToggle {
                 position: relative;
                 z-index: 10011;
-                background: transparent;
-                border: none;
             }
 
             /* Prevent horizontal scroll only (no changes to vertical overflow used by sticky team cards) */
@@ -615,7 +613,9 @@
         }
 
         .nav-mobile-toggle,
-        .switch {
+        .switch,
+        .nav-power-switch,
+        #navToggleCheckbox {
             display: none;
         }
 
@@ -2386,352 +2386,65 @@
                 color: rgba(255, 255, 255, 0.6) !important;
             }
 
-            /* ── SKULL TOGGLE BUTTON (ashif_6672) ── */
+            /* ── POWER-BUTTON TOGGLE ── */
             #navMobileToggle {
                 position: relative;
                 z-index: 10011;
                 flex-shrink: 0;
+                display: flex !important;
             }
 
-            .switch {
-                position: relative;
-                display: inline-flex !important;
-                align-items: center;
-                justify-content: center;
-                width: 20vmin;
-                height: 10vmin;
-                background: #141414;
-                border-radius: 5vmin;
-                overflow: hidden;
-                box-shadow:
-                    0 0 0.1vmin 0.1vmin #000000,
-                    0 0 0.5vmin 0.1vmin #0b0b10 inset;
-                cursor: pointer;
-                max-width: 80px;
-                max-height: 40px;
-            }
-
-            .switch input {
+            /* ── Power-button Nav Toggle (Uiverse.io by vinodjangid07) ── */
+            #navToggleCheckbox {
                 display: none !important;
             }
 
-            .thumb {
-                position: absolute;
-                width: 8.75vmin;
-                height: 8.75vmin;
-                top: 0.6vmin;
-                left: calc(100% - 9.333vmin);
-                border-radius: 5vmin;
-                display: flex;
+            .nav-power-switch {
+                position: relative;
+                width: 44px;
+                height: 44px;
+                background-color: rgb(60, 60, 60);
+                border-radius: 50%;
+                z-index: 10011;
+                cursor: pointer;
+                display: flex !important;
                 align-items: center;
                 justify-content: center;
-                z-index: 1;
-                animation: move-skull-left 0.5s ease-in-out 0.5s forwards;
+                border: 2px solid rgb(100, 100, 100);
+                box-shadow: 0px 0px 4px rgb(2, 2, 2) inset;
+                flex-shrink: 0;
+                transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
             }
 
-            .switch input:checked~.thumb {
-                left: 0.6vmin;
-                animation: move-skull-right 0.5s ease-in-out 0.5s forwards;
+            .nav-power-icon {
+                width: 1.1em;
+                height: 1.1em;
+                transition: filter 0.3s ease;
             }
 
-            @keyframes move-skull-right {
-                0% {
-                    left: 0.6vmin;
-                }
-
-                100% {
-                    left: calc(100% - 9.333vmin);
-                }
+            .nav-power-icon path {
+                fill: rgb(200, 200, 200);
+                transition: fill 0.3s ease;
             }
 
-            @keyframes move-skull-left {
-                0% {
-                    left: calc(100% - 9.333vmin);
-                }
-
-                100% {
-                    left: 0.6vmin;
-                }
+            #navToggleCheckbox:checked + .nav-power-switch {
+                box-shadow:
+                    0px 0px 1px rgb(151, 243, 255) inset,
+                    0px 0px 2px rgb(151, 243, 255) inset,
+                    0px 0px 10px rgb(151, 243, 255) inset,
+                    0px 0px 30px rgb(151, 243, 255),
+                    0px 0px 70px rgb(151, 243, 255),
+                    0px 0px 5px rgb(151, 243, 255);
+                border: 2px solid rgb(255, 255, 255);
+                background-color: rgb(100, 160, 170);
             }
 
-            .thumb>* {
-                position: absolute;
-                filter: drop-shadow(0px 1px 1px #000);
-                animation: unselected 1.5s ease-in-out 0s reverse forwards;
+            #navToggleCheckbox:checked + .nav-power-switch .nav-power-icon {
+                filter: drop-shadow(0px 0px 5px rgb(151, 243, 255));
             }
 
-            .switch input:checked~.thumb * {
-                animation: selected 1.5s ease-in-out 0s forwards;
-            }
-
-            @keyframes selected {
-
-                0%,
-                50% {
-                    filter: drop-shadow(0px 1px 1px #000) brightness(1);
-                }
-
-                50.01%,
-                100% {
-                    filter: drop-shadow(0px 1px 1px #000) brightness(1.875);
-                }
-            }
-
-            @keyframes unselected {
-
-                0%,
-                50% {
-                    filter: drop-shadow(0px 1px 1px #000) brightness(1);
-                }
-
-                50.01%,
-                100% {
-                    filter: drop-shadow(0px 1px 1px #000) brightness(1.875);
-                }
-            }
-
-            .cranium {
-                background: linear-gradient(180deg, #888 0 54%, #fff0 0 94%, #888 0 100%),
-                    radial-gradient(circle at 75% 69%, #fff0 0 0.875vmin, #888 calc(0.875vmin + 1px) 2.425vmin, #fff0 calc(2.425vmin + 1px) 100%),
-                    radial-gradient(circle at 25% 69%, #fff0 0 0.875vmin, #888 calc(0.875vmin + 1px) 2.425vmin, #fff0 calc(2.425vmin + 1px) 100%);
-                width: 100%;
-                height: 7vmin;
-                left: 0;
-                top: 0;
-                border-radius: 5vmin 5vmin 2.75vmin 2.75vmin;
-            }
-
-            .cranium:before {
-                content: "";
-                position: absolute;
-                width: 0.625vmin;
-                height: 0.625vmin;
-                bottom: -0.375vmin;
-                left: 3.75vmin;
-                background: #888;
-                border-radius: 100%;
-                box-shadow: 0.625vmin 0 0 0 #888;
-            }
-
-            .cranium:after {
-                content: "";
-                position: absolute;
-                width: 2.625vmin;
-                height: 0.75vmin;
-                bottom: -0.475vmin;
-                left: 3vmin;
-                background: radial-gradient(circle at 90% 10%, #888 0 0.5vmin, #fff0 calc(0.5vmin + 1px) 100%),
-                    radial-gradient(circle at 10% 10%, #888 0 0.5vmin, #fff0 calc(0.5vmin + 1px) 100%);
-                border-radius: 0.5vmin;
-            }
-
-            .mouth {
-                border: 0.425vmin solid #fff0;
-                border-bottom-color: #888;
-                width: 5.875vmin;
-                left: 1.425vmin;
-                height: 3vmin;
-                top: 5.625vmin;
-                background: radial-gradient(circle at 35% 98%, #888 0 0.325vmin, #fff0 calc(0.325vmin + 1px) 100%),
-                    radial-gradient(circle at 45% 100%, #888 0 0.325vmin, #fff0 calc(0.325vmin + 1px) 100%),
-                    radial-gradient(circle at 55% 100%, #888 0 0.325vmin, #fff0 calc(0.325vmin + 1px) 100%),
-                    radial-gradient(circle at 65% 98%, #888 0 0.325vmin, #fff0 calc(0.325vmin + 1px) 100%);
-                background-repeat: no-repeat;
-                border-radius: 100%;
-            }
-
-            .mouth:before,
-            .mouth:after {
-                content: "";
-                position: absolute;
-                border-radius: 100%;
-                background: #888;
-                width: 0.35vmin;
-                height: 0.35vmin;
-                left: 0.2vmin;
-                bottom: 0.125vmin;
-            }
-
-            .mouth:after {
-                left: 4.525vmin;
-            }
-
-            @keyframes check-on {
-                0% {
-                    right: -65%;
-                }
-
-                25%,
-                33% {
-                    right: 0%;
-                }
-
-                66%,
-                80% {
-                    right: -50%;
-                }
-
-                100% {
-                    right: -65%;
-                }
-            }
-
-            @keyframes check-off {
-                0% {
-                    right: -65%;
-                }
-
-                25%,
-                33% {
-                    right: 0%;
-                }
-
-                66%,
-                80% {
-                    right: -50%;
-                }
-
-                100% {
-                    right: -65%;
-                }
-            }
-
-            .arm-wrapper {
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                border-radius: 5vmin;
-                overflow: hidden;
-                right: -65%;
-                animation: check-off 1.5s ease-in-out 0s reverse forwards;
-            }
-
-            .switch input:checked~.arm-wrapper {
-                animation: check-on 1.5s ease-in-out 0s forwards;
-            }
-
-            .arm {
-                position: absolute;
-                width: 8vmin;
-                height: 2.5vmin;
-                right: 2%;
-                top: calc(50% - 1.25vmin);
-                border-radius: 0.125vmin;
-            }
-
-            .bone {
-                background: #fff;
-                width: 4vmin;
-                height: 1vmin;
-                position: absolute;
-                transform: rotate(0deg);
-                top: 0.75vmin;
-                right: -2vmin;
-            }
-
-            .bone:before,
-            .bone:after,
-            .big:before,
-            .big:after {
-                content: "";
-                background: #fff;
-                width: 0.75vmin;
-                height: 0.75vmin;
-                position: absolute;
-                left: -0.25vmin;
-                top: -0.25vmin;
-                border-radius: 100%;
-                box-shadow: 4vmin 0 0 0 #fff;
-            }
-
-            .bone:after {
-                top: calc(100% - 0.5vmin);
-            }
-
-            .arm>.bone+.bone {
-                top: 0.75vmin;
-                left: 0.25vmin;
-                height: 0.425vmin;
-                width: 5.25vmin;
-                box-shadow: 0 0.575vmin 0 0 #fff;
-            }
-
-            .arm>.bone+.bone:before,
-            .arm>.bone+.bone:after {
-                box-shadow: 5.075vmin 0 0 0 #fff;
-            }
-
-            .arm>.bone+.bone:after {
-                top: 100%;
-            }
-
-            .hand {
-                position: absolute;
-                background: radial-gradient(circle at 91% 29%, #fff 0.25vmin, #fff0 calc(0.25vmin + 1px) 100%),
-                    radial-gradient(circle at 92% 49%, #fff 0.25vmin, #fff0 calc(0.25vmin + 1px) 100%),
-                    radial-gradient(circle at 91% 69%, #fff 0.25vmin, #fff0 calc(0.25vmin + 1px) 100%),
-                    radial-gradient(circle at 76% 21%, #fff 0.25vmin, #fff0 calc(0.25vmin + 1px) 100%),
-                    radial-gradient(circle at 78% 39%, #fff 0.25vmin, #fff0 calc(0.25vmin + 1px) 100%),
-                    radial-gradient(circle at 79% 58%, #fff 0.25vmin, #fff0 calc(0.25vmin + 1px) 100%),
-                    radial-gradient(circle at 78% 78%, #fff 0.25vmin, #fff0 calc(0.25vmin + 1px) 100%);
-                width: 3.5vmin;
-                height: 2.5vmin;
-                left: -3.5vmin;
-                z-index: 0;
-            }
-
-            .hand .bone,
-            .big {
-                width: 1.5vmin;
-                left: 0.675vmin;
-                height: 0.375vmin;
-                border-radius: 0.25vmin 0 0 0.25vmin;
-            }
-
-            .hand .bone:before,
-            .hand .bone:after,
-            .big:before,
-            .big:after {
-                width: 0.4vmin;
-                height: 0.4vmin;
-                top: -0.125vmin;
-                left: 1.125vmin;
-                box-shadow: none;
-            }
-
-            .hand .bone:after,
-            .big:after {
-                top: 0.0625vmin;
-            }
-
-            .hand .bone:nth-child(1) {
-                transform: rotate(5deg) translateY(-0.5vmin) translateX(0.075vmin);
-                filter: drop-shadow(-1.5vmin 0vmin 0px #fff);
-            }
-
-            .hand .bone:nth-child(2) {
-                transform: rotate(0deg) translateX(0.25vmin);
-                filter: drop-shadow(-1.5vmin 0vmin 0px #fff);
-            }
-
-            .hand .bone:nth-child(3) {
-                transform: rotate(-2deg) translateY(0.575vmin) translateX(0.25vmin);
-                filter: drop-shadow(-1.5vmin 0vmin 0px #fff);
-            }
-
-            .hand .bone:nth-child(4) {
-                transform: rotate(-5deg) translateY(1.15vmin) translateX(0.25vmin);
-                filter: drop-shadow(-1.5vmin 0vmin 0px #fff);
-            }
-
-            .big {
-                background: #fff;
-                height: 0.5vmin !important;
-                position: absolute;
-                left: -2.125vmin !important;
-                top: 0.575vmin;
-                z-index: 1;
-                filter: drop-shadow(-1.25vmin 0vmin 0px #fff) drop-shadow(0 0 1px #000);
+            #navToggleCheckbox:checked + .nav-power-switch .nav-power-icon path {
+                fill: rgb(255, 255, 255);
             }
 
             /* ── MOBILE NAV LINKS DROPDOWN ── */
@@ -3590,26 +3303,12 @@
             Schedule
         </a>
 
-        <!-- Mobile Menu Toggle (Uiverse.io by ashif_6672) -->
-        <label class="switch" id="navMobileToggle" aria-label="Toggle menu">
-            <input type="checkbox" id="navToggleCheckbox">
-            <span class="thumb">
-                <div class="cranium"></div>
-                <div class="mouth"></div>
-            </span>
-            <span class="arm-wrapper">
-                <span class="arm">
-                    <span class="bone"></span>
-                    <span class="bone"></span>
-                    <span class="hand">
-                        <span class="bone"></span>
-                        <span class="bone"></span>
-                        <span class="bone"></span>
-                        <span class="bone"></span>
-                    </span>
-                    <span class="big"></span>
-                </span>
-            </span>
+        <!-- Mobile Menu Toggle (Uiverse.io by vinodjangid07) -->
+        <input id="navToggleCheckbox" type="checkbox" />
+        <label class="nav-power-switch" id="navMobileToggle" for="navToggleCheckbox" aria-label="Toggle menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="nav-power-icon">
+                <path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V256c0 17.7 14.3 32 32 32s32-14.3 32-32V32zM143.5 120.6c13.6-11.3 15.4-31.5 4.1-45.1s-31.5-15.4-45.1-4.1C49.7 115.4 16 181.8 16 256c0 132.5 107.5 240 240 240s240-107.5 240-240c0-74.2-33.8-140.6-86.6-184.6c-13.6-11.3-33.8-9.4-45.1 4.1s-9.4 33.8 4.1 45.1c38.9 32.3 63.5 81 63.5 135.4c0 97.2-78.8 176-176 176s-176-78.8-176-176c0-54.4 24.7-103.1 63.5-135.4z"></path>
+            </svg>
         </label>
 
 
@@ -10426,7 +10125,7 @@
                 const navLinks = document.querySelector('.nav-links');
 
                 if (toggleCheckbox && navLinks) {
-                    // Toggle menu when skull checkbox changes
+                    // Toggle menu when power-button checkbox changes
                     toggleCheckbox.addEventListener('change', (e) => {
                         e.stopPropagation();
                         if (toggleCheckbox.checked) {
