@@ -6029,95 +6029,7 @@
             }
         </style>
 
-        <!-- ══════════ VIDEO PAGE (Statement Hero) ══════════ -->
-        <section class="statement-hero">
-            <div class="bg-videos">
-                <video class="bg-video" autoplay muted playsinline preload="auto">
-                    <source src="./videos/IMG_4590.MOV" type="video/mp4">
-                    <source src="./videos/IMG_4563.MOV" type="video/mp4">
-                </video>
-            </div>
-            <script>
-                (function () {
-                    var v = document.querySelector('.statement-hero .bg-video');
-                    if (!v) return;
-                    v.muted = true;
-                    v.defaultMuted = true;
-                    v.setAttribute('muted', '');
-                    v.playsInline = true;
 
-                    /* Continuous looping background playlist */
-                    var playlist = [
-                        './videos/IMG_4590.MOV',
-                        './videos/IMG_4563.MOV'
-                    ];
-                    var i = 0;
-
-                    var playIndex = function (idx) {
-                        i = ((idx % playlist.length) + playlist.length) % playlist.length;
-                        v.src = playlist[i];
-                        var p = v.play();
-                        if (p && typeof p.catch === 'function') { p.catch(function () {}); }
-                    };
-
-                    v.addEventListener('ended', function () {
-                        playIndex(i + 1);
-                    });
-
-                    var tryPlay = function () {
-                        var p = v.play();
-                        if (p && typeof p.catch === 'function') {
-                            p.catch(function () {
-                                var resume = function () {
-                                    v.play().catch(function () {});
-                                    window.removeEventListener('pointerdown', resume);
-                                    window.removeEventListener('keydown', resume);
-                                };
-                                window.addEventListener('pointerdown', resume, { once: true });
-                                window.addEventListener('keydown', resume, { once: true });
-                            });
-                        }
-                    };
-
-                    if (v.readyState >= 2) { tryPlay(); }
-                    else {
-                        v.addEventListener('loadeddata', tryPlay, { once: true });
-                        v.addEventListener('canplay', tryPlay, { once: true });
-                    }
-                    playIndex(0);
-                })();
-            </script>
-            <div class="statement-card" id="statementCard">
-                <h2>
-                    <span class="statement-line">WE ARE NOT</span>
-                    <span class="statement-line big">A NORMAL</span>
-                    <span class="statement-line small">SOFTWARE&nbsp;STUDIO</span>
-                    <span class="statement-line big">WHY?</span>
-                </h2>
-            </div>
-
-            <div class="statement-tagline" id="statementTagline">
-                <p>We break the rules.</p>
-                <p class="strong">We ship the results.</p>
-            </div>
-        </section>
-
-        <script>
-            // Fade in on load, and re-trigger if the section re-enters the viewport on scroll
-            const card = document.getElementById('statementCard');
-            const tagline = document.getElementById('statementTagline');
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                    }
-                });
-            }, { threshold: 0.3 });
-
-            observer.observe(card);
-            observer.observe(tagline);
-        </script>
 
         <!-- Start Your Project Section -->
 
@@ -8375,8 +8287,8 @@
                 opacity: 1;
             }
 
-            .statement-hero > .statement-card,
-            .statement-hero > .statement-tagline {
+            .statement-hero>.statement-card,
+            .statement-hero>.statement-tagline {
                 position: relative;
                 z-index: 2;
             }
@@ -9363,111 +9275,109 @@
 
 
 
-        <section id="hyna-start-project" class="hyna-start">
-            <div class="hyna-grain"></div>
+<section id="hyna-start-project" class="hyna-start">
+    <div class="hyna-grain"></div>
 
-            <div class="hyna-inner">
-                <div class="hyna-content">
-                    <div class="hyna-top-row">
-                        <p class="hyna-eyebrow" data-hyna-reveal></p>
-                        <div class="hyna-icon" data-hyna-reveal aria-hidden="true">
-                            <svg class="hyna-icon-ring" width="100%" height="100%" viewBox="0 0 120 120">
-                                <circle cx="60" cy="60" r="58" fill="none" stroke="currentColor" stroke-width="1"
-                                    stroke-dasharray="2 6" stroke-linecap="round" />
-                            </svg>
-                        </div>
-                    </div>
-
-                    <h2 class="hyna-headline" aria-label="Start Your Project">
-                        <span class="hyna-line-wrap"><span class="hyna-line" data-hyna-line
-                                style="--d:0">Start</span></span>
-                        <span class="hyna-line-wrap"><span class="hyna-line" data-hyna-line
-                                style="--d:1">Your</span></span>
-                        <span class="hyna-line-wrap"><span class="hyna-line hyna-italic" data-hyna-line
-                                style="--d:2">Project</span></span>
-                    </h2>
-
-                    <div class="hyna-body-row">
-                        <p class="hyna-desc" data-hyna-reveal>
-                            We partner with founders and brands to design and build work that
-                            earns attention on its own — from first sketch to final ship.
-                            Tell us where you're headed, and let's map the fastest way there.
-                        </p>
-                    </div>
-
-                    <div class="hyna-meta-row" data-hyna-reveal>
-                        <div class="hyna-meta">
-                            <span class="hyna-meta-num">01</span>
-                            <span class="hyna-meta-label">Discovery call</span>
-                        </div>
-                        <div class="hyna-meta">
-                            <span class="hyna-meta-num">02</span>
-                            <span class="hyna-meta-label">Scope &amp; proposal</span>
-                        </div>
-                        <div class="hyna-meta">
-                            <span class="hyna-meta-num">03</span>
-                            <span class="hyna-meta-label">Work begins</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right-side Connect panel, centered in the column -->
-                <div class="hyna-connect-col" data-hyna-reveal>
-                    <a class="hyna-connect-panel" href="./contact.html">
-                        <span class="hyna-connect-ring" aria-hidden="true">
-                            <svg width="100%" height="100%" viewBox="0 0 200 200">
-                                <circle cx="100" cy="100" r="98" fill="none" stroke="currentColor" stroke-width="1"
-                                    stroke-dasharray="2 7" stroke-linecap="round" />
-                            </svg>
-                        </span>
-                        <span class="hyna-connect-core">
-                            <span class="hyna-connect-label">Connect</span>
-                            <span class="hyna-connect-circle" aria-hidden="true">
-                                <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
-                                    <path d="M3 13L13 3M13 3H5M13 3V11" stroke="currentColor" stroke-width="1.4"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </span>
-                        </span>
-                    </a>
+    <div class="hyna-inner">
+        <div class="hyna-content">
+            <div class="hyna-top-row">
+                <p class="hyna-eyebrow" data-hyna-reveal></p>
+                <div class="hyna-icon" data-hyna-reveal aria-hidden="true">
+                    <svg class="hyna-icon-ring" width="100%" height="100%" viewBox="0 0 120 120">
+                        <circle cx="60" cy="60" r="58" fill="none" stroke="currentColor" stroke-width="1"
+                            stroke-dasharray="2 6" stroke-linecap="round" />
+                    </svg>
                 </div>
             </div>
-        </section>
 
-        <script>
-            (function () {
-                function initHWT() {
-                    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-                        setTimeout(initHWT, 80);
-                        return;
-                    }
-                    gsap.registerPlugin(ScrollTrigger);
+            <h2 class="hyna-headline" aria-label="Start Your Project">
+                <span class="hyna-line-wrap"><span class="hyna-line" data-hyna-line style="--d:0">Start</span></span>
+                <span class="hyna-line-wrap"><span class="hyna-line" data-hyna-line style="--d:1">Your</span></span>
+                <span class="hyna-line-wrap"><span class="hyna-line hyna-italic" data-hyna-line
+                        style="--d:2">Project</span></span>
+            </h2>
 
-                    var startProject = document.getElementById('hyna-start-project');
-                    if (!startProject) return;
+            <div class="hyna-body-row">
+                <p class="hyna-desc" data-hyna-reveal>
+                    We partner with founders and brands to design and build work that
+                    earns attention on its own — from first sketch to final ship.
+                    Tell us where you're headed, and let's map the fastest way there.
+                </p>
+            </div>
 
-                    ScrollTrigger.create({
-                        trigger: startProject,
-                        start: 'top 75%',
-                        onEnter: function () {
-                            startProject.classList.add('hyna-in-view');
-                        },
-                        onLeaveBack: function () {
-                            startProject.classList.remove('hyna-in-view');
-                        }
-                    });
+            <div class="hyna-meta-row" data-hyna-reveal>
+                <div class="hyna-meta">
+                    <span class="hyna-meta-num">01</span>
+                    <span class="hyna-meta-label">Discovery call</span>
+                </div>
+                <div class="hyna-meta">
+                    <span class="hyna-meta-num">02</span>
+                    <span class="hyna-meta-label">Scope &amp; proposal</span>
+                </div>
+                <div class="hyna-meta">
+                    <span class="hyna-meta-num">03</span>
+                    <span class="hyna-meta-label">Work begins</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right-side Connect panel, centered in the column -->
+        <div class="hyna-connect-col" data-hyna-reveal>
+            <a class="hyna-connect-panel" href="./contact.html">
+                <span class="hyna-connect-ring" aria-hidden="true">
+                    <svg width="100%" height="100%" viewBox="0 0 200 200">
+                        <circle cx="100" cy="100" r="98" fill="none" stroke="currentColor" stroke-width="1"
+                            stroke-dasharray="2 7" stroke-linecap="round" />
+                    </svg>
+                </span>
+                <span class="hyna-connect-core">
+                    <span class="hyna-connect-label">Connect</span>
+                    <span class="hyna-connect-circle" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
+                            <path d="M3 13L13 3M13 3H5M13 3V11" stroke="currentColor" stroke-width="1.4"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                </span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<script>
+    (function () {
+        function initHWT() {
+            if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+                setTimeout(initHWT, 80);
+                return;
+            }
+            gsap.registerPlugin(ScrollTrigger);
+
+            var startProject = document.getElementById('hyna-start-project');
+            if (!startProject) return;
+
+            ScrollTrigger.create({
+                trigger: startProject,
+                start: 'top 75%',
+                onEnter: function () {
+                    startProject.classList.add('hyna-in-view');
+                },
+                onLeaveBack: function () {
+                    startProject.classList.remove('hyna-in-view');
                 }
+            });
+        }
 
-                if (document.readyState === 'loading') {
-                    document.addEventListener('DOMContentLoaded', initHWT);
-                } else {
-                    initHWT();
-                }
-                window.addEventListener('resize', function () {
-                    if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
-                });
-            })();
-        </script>
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initHWT);
+        } else {
+            initHWT();
+        }
+        window.addEventListener('resize', function () {
+            if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+        });
+    })();
+</script>
 
 <section id="faq" class="faq-section">
     <style>
