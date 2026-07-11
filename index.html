@@ -6029,6 +6029,95 @@
             }
         </style>
 
+        <!-- ══════════ VIDEO PAGE (Statement Hero) ══════════ -->
+        <section class="statement-hero">
+            <div class="bg-videos">
+                <video class="bg-video" autoplay muted playsinline preload="auto">
+                    <source src="./videos/bg-right.mp4" type="video/mp4">
+                    <source src="./videos/IMG_4590.MOV" type="video/quicktime">
+                    <source src="./videos/IMG_4563.MOV" type="video/quicktime">
+                </video>
+            </div>
+            <script>
+                (function () {
+                    var v = document.querySelector('.statement-hero .bg-video');
+                    if (!v) return;
+                    v.muted = true;
+                    v.defaultMuted = true;
+                    v.setAttribute('muted', '');
+                    v.playsInline = true;
+                    v.loop = false;
+
+                    /* Continuing background playlist: mp4 -> MOV1 -> MOV2 -> repeat */
+                    var playlist = [
+                        './videos/bg-right.mp4',
+                        './videos/IMG_4590.MOV',
+                        './videos/IMG_4563.MOV'
+                    ];
+                    var i = 0;
+
+                    v.addEventListener('ended', function () {
+                        i = (i + 1) % playlist.length;
+                        v.src = playlist[i];
+                        var p = v.play();
+                        if (p && typeof p.catch === 'function') { p.catch(function () {}); }
+                    });
+
+                    var tryPlay = function () {
+                        var p = v.play();
+                        if (p && typeof p.catch === 'function') {
+                            p.catch(function () {
+                                var resume = function () {
+                                    v.play().catch(function () {});
+                                    window.removeEventListener('pointerdown', resume);
+                                    window.removeEventListener('keydown', resume);
+                                };
+                                window.addEventListener('pointerdown', resume, { once: true });
+                                window.addEventListener('keydown', resume, { once: true });
+                            });
+                        }
+                    };
+
+                    if (v.readyState >= 2) { tryPlay(); }
+                    else {
+                        v.addEventListener('loadeddata', tryPlay, { once: true });
+                        v.addEventListener('canplay', tryPlay, { once: true });
+                    }
+                    v.load();
+                })();
+            </script>
+            <div class="statement-card" id="statementCard">
+                <h2>
+                    <span class="statement-line">WE ARE NOT</span>
+                    <span class="statement-line big">A NORMAL</span>
+                    <span class="statement-line small">SOFTWARE&nbsp;STUDIO</span>
+                    <span class="statement-line big">WHY?</span>
+                </h2>
+            </div>
+
+            <div class="statement-tagline" id="statementTagline">
+                <p>We break the rules.</p>
+                <p class="strong">We ship the results.</p>
+            </div>
+        </section>
+
+        <script>
+            // Fade in on load, and re-trigger if the section re-enters the viewport on scroll
+            const card = document.getElementById('statementCard');
+            const tagline = document.getElementById('statementTagline');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            observer.observe(card);
+            observer.observe(tagline);
+        </script>
+
         <!-- Start Your Project Section -->
         <section id="hyna-start-project" class="hyna-start">
             <div class="hyna-grain"></div>
@@ -8643,78 +8732,7 @@
         </style>
         </head>
 
-        <body>
-
-            <section class="statement-hero">
-                <div class="bg-videos">
-                    <video class="bg-video" autoplay muted loop playsinline preload="auto">
-                        <source src="./videos/bg-right.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <script>
-                    (function () {
-                        var v = document.querySelector('.statement-hero .bg-video');
-                        if (!v) return;
-                        v.muted = true;
-                        v.defaultMuted = true;
-                        v.setAttribute('muted', '');
-                        v.playsInline = true;
-                        v.loop = true;
-                        var tryPlay = function () {
-                            var p = v.play();
-                            if (p && typeof p.catch === 'function') {
-                                p.catch(function () {
-                                    var resume = function () {
-                                        v.play().catch(function () {});
-                                        window.removeEventListener('pointerdown', resume);
-                                        window.removeEventListener('keydown', resume);
-                                    };
-                                    window.addEventListener('pointerdown', resume, { once: true });
-                                    window.addEventListener('keydown', resume, { once: true });
-                                });
-                            }
-                        };
-                        if (v.readyState >= 2) { tryPlay(); }
-                        else {
-                            v.addEventListener('loadeddata', tryPlay, { once: true });
-                            v.addEventListener('canplay', tryPlay, { once: true });
-                        }
-                        v.load();
-                    })();
-                </script>
-                <div class="statement-card" id="statementCard">
-                    <h2>
-                        <span class="statement-line">WE ARE NOT</span>
-                        <span class="statement-line big">A NORMAL</span>
-                        <span class="statement-line small">SOFTWARE&nbsp;STUDIO</span>
-                        <span class="statement-line big">WHY?</span>
-                    </h2>
-                </div>
-
-                <div class="statement-tagline" id="statementTagline">
-                    <p>We break the rules.</p>
-                    <p class="strong">We ship the results.</p>
-                </div>
-            </section>
-
-            <script>
-                // Fade in on load, and re-trigger if the section re-enters the viewport on scroll
-                const card = document.getElementById('statementCard');
-                const tagline = document.getElementById('statementTagline');
-
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('is-visible');
-                        }
-                    });
-                }, { threshold: 0.3 });
-
-                observer.observe(card);
-                observer.observe(tagline);
-            </script>
-
-        </body>
+        <body></body>
 
         </html>
 
