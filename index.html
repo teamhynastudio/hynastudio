@@ -3170,20 +3170,8 @@
 
 <body>
 
-    <!-- Loading screen: speeder stage → HYNASTUDIO letter stage -->
+    <!-- Loading screen: HYNASTUDIO letter stage -->
     <div id="hyna-new-loader">
-        <div class="loader-stage loader-stage-hidden" id="loader-stage-speeder">
-            <div class="speeder-loader">
-                <span><span></span><span></span><span></span><span></span></span>
-                <div class="speeder-base">
-                    <span></span>
-                    <div class="speeder-face"></div>
-                </div>
-            </div>
-            <div class="speeder-longfazers">
-                <span></span><span></span><span></span><span></span>
-            </div>
-        </div>
         <div class="loader-stage" id="loader-stage-letters">
             <div class="loader-wrapper">
                 <span class="loader-letter">H</span>
@@ -3205,20 +3193,12 @@
     <script>
         (function () {
             window.addEventListener('load', function () {
-                var speeder = document.getElementById('loader-stage-speeder');
-                var letters = document.getElementById('loader-stage-letters');
                 var newLoader = document.getElementById('hyna-new-loader');
 
                 // Trigger hero and nav animations immediately on load
                 document.body.classList.add('hero-animate');
 
-                // Stage 1: HYNASTUDIO letter loader, then switch to the speeder sweep
-                setTimeout(function () {
-                    if (letters) letters.classList.add('loader-stage-hidden');
-                    if (speeder) speeder.classList.remove('loader-stage-hidden');
-                }, 1600);
-
-                // Stage 2: letter loader finishes, then clean up the loader overlay
+                // Dismiss the loader after the letter animation finishes
                 setTimeout(function () {
                     if (newLoader) {
                         newLoader.classList.add('loader-hidden');
@@ -3226,7 +3206,7 @@
                             newLoader.remove();
                         }, 800);
                     }
-                }, 3400);
+                }, 1600);
             });
         })();
     </script>
