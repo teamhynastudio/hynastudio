@@ -6014,2229 +6014,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- ══════════ THE HYNA METHOD – ZOOM-THROUGH SECTION ══════════ -->
-        <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
-
-        <style>
-            body {
-                --smooth-scroll: true;
-            }
-
-            body,
-            [data-elementor-type="wp-page"] {
-                overflow-x: hidden;
-            }
-        </style>
-
-
-
-        <!-- Start Your Project Section -->
-
-        <!-- Lenis Smooth Scroll -->
-        <style>
-            html.lenis,
-            html.lenis body {
-                height: auto;
-            }
-
-            .lenis.lenis-smooth {
-                scroll-behavior: auto !important;
-            }
-
-            .lenis.lenis-smooth [data-lenis-prevent] {
-                overscroll-behavior: contain;
-            }
-
-            .lenis.lenis-stopped {
-                overflow: hidden;
-            }
-
-            .lenis.lenis-smooth iframe {
-                pointer-events: none;
-            }
-        </style>
-        <script src="https://unpkg.com/lenis@1.1.11/dist/lenis.min.js"></script>
-        <script>
-            (function () {
-                var ss = getComputedStyle(document.body).getPropertyValue('--smooth-scroll');
-                if (ss && ss.trim() === 'true') {
-                    var lenis = new Lenis({ lerp: 0.08, smoothWheel: true });
-                    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-                    requestAnimationFrame(raf);
-                }
-            })();
-        </script>
-        <!-- ══════════ END HAND-WRITING SECTION ══════════ -->
-
-
-        <!-- ══════════ CONTAINER SCROLL ANIMATION — Hyna Studio ══════════ -->
-        <style>
-            .csa-wrapper {
-                width: 100%;
-                background: #000;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                padding: 80px 20px 160px;
-                box-sizing: border-box;
-                overflow: hidden;
-            }
-
-            .csa-inner {
-                width: 100%;
-                max-width: 1100px;
-                position: relative;
-                perspective: 1000px;
-            }
-
-            .csa-header {
-                text-align: center;
-                max-width: 860px;
-                margin: 0 auto 0;
-                will-change: transform;
-            }
-
-            .csa-eyebrow {
-                display: inline-block;
-                font-size: 0.85rem;
-                font-weight: 600;
-                letter-spacing: 0.12em;
-                text-transform: uppercase;
-                color: #76ecf0;
-                margin-bottom: 20px;
-            }
-
-            .csa-title {
-                font-size: clamp(2rem, 4vw, 3.5rem);
-                font-weight: 700;
-                color: #fff;
-                line-height: 1.15;
-                letter-spacing: -0.025em;
-                margin: 0 0 14px;
-            }
-
-            .csa-title span {
-                font-size: clamp(2.8rem, 6vw, 5.5rem);
-                font-weight: 800;
-                display: block;
-                background: linear-gradient(135deg, #fff 30%, #7c5cfc 70%, #76ecf0 100%);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-clip: text;
-                line-height: 1.05;
-            }
-
-            .csa-subtitle {
-                font-size: clamp(1rem, 1.3vw, 1.15rem);
-                color: rgba(255, 255, 255, 0.55);
-                margin: 0 auto;
-                max-width: 580px;
-                line-height: 1.65;
-            }
-
-            .csa-card {
-                margin-top: 40px;
-                width: 100%;
-                max-width: 1000px;
-                margin-left: auto;
-                margin-right: auto;
-                height: clamp(320px, 50vw, 580px);
-                background: #222;
-                border-radius: 30px;
-                border: 4px solid #6C6C6C;
-                box-shadow:
-                    0 0 #0000004d,
-                    0 9px 20px #0000004a,
-                    0 37px 37px #00000042,
-                    0 84px 50px #00000026,
-                    0 149px 60px #0000000a,
-                    0 233px 65px #00000003;
-                padding: 10px;
-                transform-origin: top center;
-                will-change: transform;
-                overflow: hidden;
-            }
-
-            .csa-card-inner {
-                width: 100%;
-                height: 100%;
-                border-radius: 20px;
-                overflow: hidden;
-                background: #111;
-                position: relative;
-            }
-
-            .csa-card-inner img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                object-position: left top;
-                border-radius: 18px;
-                display: block;
-            }
-
-            .csa-card-overlay {
-                position: absolute;
-                inset: 0;
-                border-radius: 18px;
-                background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.45) 100%);
-                pointer-events: none;
-            }
-
-            @media (max-width: 768px) {
-                .csa-wrapper {
-                    padding: 60px 16px 100px;
-                }
-
-                .csa-card {
-                    height: clamp(200px, 55vw, 360px);
-                    border-radius: 20px;
-                    border-width: 3px;
-                }
-            }
-        </style>
-
-
-
-        <script>
-            /* ── Innovation in Action — Scroll Fade-In ── */
-            (function () {
-                var els = document.querySelectorAll('#problems-solving-expertise .lge-reveal');
-                if (!els.length) return;
-                var io = new IntersectionObserver(function (entries) {
-                    entries.forEach(function (e) {
-                        if (e.isIntersecting) { e.target.classList.add('lge-in'); io.unobserve(e.target); }
-                    });
-                }, { threshold: 0.14 });
-                els.forEach(function (el) { io.observe(el); });
-            })();
-        </script>
-
-        <script>
-            /* ── Innovation in Action & Build Headline: Scroll Transition & Line Draw ──
-               Starts fully black with white text when entering viewport from below.
-               Transitions to pure white with dark text as the user scrolls,
-               with the line animations drawing slowly based on the scroll position. */
-            (function () {
-                function initColorTransition() {
-                    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-                        setTimeout(initColorTransition, 80);
-                        return;
-                    }
-                    gsap.registerPlugin(ScrollTrigger);
-
-                    var section = document.getElementById('problems-solving-expertise');
-                    if (!section) return;
-
-                    /* ─── 1. Build Headline Section & Line Drawing Transition ─── */
-                    var bhSection = document.getElementById('build-headline');
-                    if (bhSection) {
-                        var bhHighlight = bhSection.querySelector('.bh-highlight');
-                        var bhPath = bhSection.querySelector('.bh-highlight svg path');
-                        var bhRest = bhSection.querySelector('.bh-rest');
-                        var bhSub = bhSection.querySelector('.bh-sub');
-                        var bhLine = bhSection.querySelector('.bh-line-path');
-
-                        var bhTrigger = {
-                            trigger: section,        /* Triggered by the innovation section! */
-                            start: 'top 50%',      /* Stays black until the innovation section scrolls up into the viewport */
-                            end: 'top 55%',      /* Becomes white as the innovation section is fully scrolled in */
-                            scrub: 0.4
-                        };
-
-                        /* Tighter trigger for line drawing to make them draw faster */
-                        var lineTrigger = {
-                            trigger: bhSection,
-                            start: 'top 70%',      /* Starts drawing sooner */
-                            end: 'top 45%',      /* Completes drawing quickly */
-                            scrub: 0.3
-                        };
-
-                        gsap.fromTo(bhSection,
-                            { backgroundColor: '#000000' },
-                            { backgroundColor: '#ffffff', ease: 'none', scrollTrigger: bhTrigger }
-                        );
-
-                        if (bhHighlight) {
-                            gsap.fromTo(bhHighlight,
-                                { color: '#ffffff' },
-                                { color: '#13141A', ease: 'none', scrollTrigger: bhTrigger }
-                            );
-                        }
-
-                        /* Underline under the word BUILD: draws slowly on scroll (speed up range) */
-                        if (bhPath) {
-                            gsap.fromTo(bhPath,
-                                { strokeDashoffset: 340 },
-                                { strokeDashoffset: 0, ease: 'none', scrollTrigger: lineTrigger }
-                            );
-                            gsap.fromTo(bhPath,
-                                { stroke: '#ffffff' },
-                                { stroke: '#13141A', ease: 'none', scrollTrigger: bhTrigger }
-                            );
-                        }
-
-                        if (bhRest) {
-                            gsap.fromTo(bhRest,
-                                { color: '#ffffff' },
-                                { color: '#13141A', ease: 'none', scrollTrigger: bhTrigger }
-                            );
-                        }
-
-                        if (bhSub) {
-                            gsap.fromTo(bhSub,
-                                { color: '#ffffff', webkitTextFillColor: '#ffffff' },
-                                { color: '#5B6270', webkitTextFillColor: '#5B6270', ease: 'none', scrollTrigger: bhTrigger }
-                            );
-                        }
-
-                        /* Full-width line below paragraph: draws slowly on scroll (speed up range) */
-                        if (bhLine) {
-                            gsap.fromTo(bhLine,
-                                { strokeDashoffset: 1000 },
-                                { strokeDashoffset: 0, ease: 'none', scrollTrigger: lineTrigger }
-                            );
-                        }
-                    }
-
-
-
-                    var heading = section.querySelector('h1');
-                    var lede = section.querySelector('.lede');
-                    var eyebrow = section.querySelector('.eyebrow');
-                    var cardTitles = section.querySelectorAll('.card h3');
-                    var cardDescs = section.querySelectorAll('.card p.desc');
-
-                    var commonTrigger = {
-                        trigger: section,
-                        start: 'top 50%',
-                        end: 'top 55%',
-                        scrub: 0.4
-                    };
-
-                    /* Background: black → white */
-                    gsap.fromTo(section,
-                        { backgroundColor: '#000000' },
-                        { backgroundColor: '#ffffff', ease: 'none', scrollTrigger: commonTrigger }
-                    );
-
-                    /* Heading: white → dark */
-                    if (heading) {
-                        gsap.fromTo(heading,
-                            { color: '#ffffff' },
-                            { color: '#13141A', ease: 'none', scrollTrigger: commonTrigger }
-                        );
-                    }
-
-                    /* Lede: semi-white → slate */
-                    if (lede) {
-                        gsap.fromTo(lede,
-                            { color: 'rgba(255,255,255,0.72)' },
-                            { color: '#5B6270', ease: 'none', scrollTrigger: commonTrigger }
-                        );
-                    }
-
-                    /* Eyebrow pill: white-tinted → dark ink */
-                    if (eyebrow) {
-                        gsap.fromTo(eyebrow,
-                            { color: '#ffffff', backgroundColor: 'rgba(255,255,255,0.12)', borderColor: 'rgba(255,255,255,0.25)' },
-                            { color: '#13141A', backgroundColor: 'rgba(255,255,255,0.55)', borderColor: 'rgba(255,255,255,0.75)', ease: 'none', scrollTrigger: commonTrigger }
-                        );
-                    }
-
-                    /* Card Titles: white → dark */
-                    if (cardTitles.length) {
-                        gsap.fromTo(cardTitles,
-                            { color: '#ffffff' },
-                            { color: '#13141A', ease: 'none', scrollTrigger: commonTrigger }
-                        );
-                    }
-
-                    /* Card Descriptions: semi-white → slate */
-                    if (cardDescs.length) {
-                        gsap.fromTo(cardDescs,
-                            { color: 'rgba(255,255,255,0.7)' },
-                            { color: '#5B6270', ease: 'none', scrollTrigger: commonTrigger }
-                        );
-                    }
-                }
-                initColorTransition();
-            })();
-        </script>
-
-        <!-- ══════════════ OUR PROCESS — Hyna Studio ══════════════
-  Fixed: left brand panel now uses native CSS `position: sticky`
-  instead of manual JS scroll math — it pins itself while the
-  right column of cards scrolls past, and releases cleanly at
-  the top and bottom of the section. No JS needed for the pin.
-  Drop this whole block into your page's <body>.
-======================================================= -->
-
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&display=swap');
-
-            /* ── PROCESS SECTION WRAPPER ── */
-            .op-section {
-                width: 100%;
-                background: #000;
-                font-family: 'Inter', sans-serif;
-                position: relative;
-            }
-
-            /* ── GRID: sticky left column + scrolling right column ── */
-            .op-grid {
-                position: relative;
-                max-width: 1400px;
-                margin: 0 auto;
-                display: flex;
-                align-items: flex-start;
-            }
-
-            /* ── LEFT: sticky brand panel — pure CSS, no JS math ── */
-            .op-left {
-                position: sticky;
-                top: 0;
-                flex: 0 0 50%;
-                width: 50%;
-                height: 100vh;
-                background: #000;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                padding: 40px 32px;
-                z-index: 1;
-            }
-
-            .op-brand-card {
-                position: relative;
-                width: 100%;
-                max-width: 460px;
-                aspect-ratio: 1 / 1;
-                background: rgba(10, 16, 36, 0.55);
-                border: 1px solid rgba(120, 170, 255, 0.25);
-                border-radius: 26px;
-                backdrop-filter: blur(28px) saturate(160%);
-                -webkit-backdrop-filter: blur(28px) saturate(160%);
-                box-shadow:
-                    0 0 60px rgba(56, 132, 255, 0.14),
-                    0 0 120px rgba(56, 132, 255, 0.07),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.06);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                overflow: hidden;
-            }
-
-            /* Ambient glow orbs inside brand card */
-            .op-brand-card::before {
-                content: '';
-                position: absolute;
-                width: 300px;
-                height: 300px;
-                border-radius: 50%;
-                background: radial-gradient(circle, rgba(34, 211, 238, 0.08) 0%, transparent 70%);
-                top: -100px;
-                left: -100px;
-                pointer-events: none;
-            }
-
-            .op-brand-card::after {
-                content: '';
-                position: absolute;
-                width: 280px;
-                height: 280px;
-                border-radius: 50%;
-                background: radial-gradient(circle, rgba(29, 78, 216, 0.1) 0%, transparent 70%);
-                bottom: -80px;
-                right: -80px;
-                pointer-events: none;
-            }
-
-            /* Corner taglines */
-            .op-corner {
-                position: absolute;
-                font-size: 9.5px;
-                font-weight: 600;
-                letter-spacing: 0.2em;
-                text-transform: uppercase;
-                color: rgba(140, 180, 255, 0.65);
-                line-height: 1.4;
-                z-index: 2;
-                max-width: 140px;
-            }
-
-            .op-corner::after {
-                content: '';
-                display: block;
-                width: 28px;
-                height: 1.5px;
-                background: rgba(120, 170, 255, 0.45);
-                margin-top: 6px;
-            }
-
-            .op-corner.tl {
-                top: 28px;
-                left: 28px;
-                text-align: left;
-            }
-
-            .op-corner.tl::after {
-                margin-left: 0;
-            }
-
-            .op-corner.tr {
-                top: 28px;
-                right: 28px;
-                text-align: right;
-            }
-
-            .op-corner.tr::after {
-                margin-left: auto;
-            }
-
-            .op-corner.bl {
-                bottom: 28px;
-                left: 28px;
-                text-align: left;
-            }
-
-            .op-corner.bl::after {
-                margin-left: 0;
-            }
-
-            .op-corner.br {
-                bottom: 28px;
-                right: 28px;
-                text-align: right;
-            }
-
-            .op-corner.br::after {
-                margin-left: auto;
-            }
-
-            /* Center logo card — text-based mark, no external image dependency */
-            .op-logo-card {
-                position: relative;
-                z-index: 3;
-                width: 200px;
-                height: 200px;
-                background: rgba(5, 10, 25, 0.85);
-                border: 1.5px solid rgba(34, 211, 238, 0.35);
-                border-radius: 22px;
-                box-shadow:
-                    0 0 30px rgba(34, 211, 238, 0.18),
-                    0 0 60px rgba(29, 78, 216, 0.12),
-                    inset 0 1px 0 rgba(34, 211, 238, 0.1);
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                gap: 14px;
-                animation: op-logo-float 4s ease-in-out infinite alternate;
-            }
-
-            @keyframes op-logo-float {
-                from {
-                    transform: translateY(0px);
-                }
-
-                to {
-                    transform: translateY(-8px);
-                }
-            }
-
-            .op-logo-mark {
-                width: 46px;
-                height: 46px;
-                border-radius: 12px;
-                background: linear-gradient(135deg, #38bdf8, #1d4ed8);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-family: 'Syne', sans-serif;
-                font-weight: 800;
-                font-size: 20px;
-                color: #050914;
-                box-shadow: 0 6px 18px rgba(56, 189, 248, 0.35);
-            }
-
-            .op-logo-name {
-                text-align: center;
-                line-height: 1.2;
-            }
-
-            .op-logo-name .op-hyna {
-                display: block;
-                font-size: 16px;
-                font-weight: 800;
-                letter-spacing: 0.25em;
-                color: #ffffff;
-                text-transform: uppercase;
-            }
-
-            .op-logo-name .op-studio {
-                display: block;
-                font-size: 10px;
-                font-weight: 600;
-                letter-spacing: 0.35em;
-                color: #38bdf8;
-                text-transform: uppercase;
-                margin-top: 2px;
-            }
-
-            /* ── RIGHT: SCROLLABLE CARDS COLUMN ── */
-            .op-right {
-                background: #000;
-                flex: 1 1 50%;
-                min-width: 0;
-                padding: 80px 48px 100px 48px;
-                display: flex;
-                flex-direction: column;
-                gap: 0;
-            }
-
-            /* Intro block */
-            .op-intro {
-                margin-bottom: 56px;
-            }
-
-            .op-eyebrow {
-                display: inline-block;
-                font-size: 10.5px;
-                font-weight: 700;
-                letter-spacing: 0.28em;
-                text-transform: uppercase;
-                color: #38bdf8;
-                margin-bottom: 16px;
-            }
-
-            .op-heading {
-                font-size: clamp(2rem, 3.5vw, 3rem);
-                font-weight: 800;
-                letter-spacing: -0.025em;
-                line-height: 1.1;
-                color: #fff;
-                margin: 0 0 14px;
-                font-family: 'Syne', sans-serif;
-            }
-
-            .op-subtext {
-                font-size: 15px;
-                color: rgba(180, 200, 255, 0.55);
-                font-weight: 400;
-                margin: 0;
-            }
-
-            /* Step cards */
-            .op-cards {
-                display: flex;
-                flex-direction: column;
-                gap: 24px;
-            }
-
-            .op-card {
-                background: rgba(255, 255, 255, 0.04);
-                border: 1px solid rgba(255, 255, 255, 0.08);
-                border-radius: 24px;
-                padding: 32px 32px 28px;
-                position: relative;
-                backdrop-filter: blur(20px) saturate(140%);
-                -webkit-backdrop-filter: blur(20px) saturate(140%);
-                box-shadow:
-                    0 8px 32px rgba(0, 0, 0, 0.4),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.06);
-                overflow: hidden;
-                cursor: default;
-                opacity: 0;
-                transform: translateY(40px);
-                transition:
-                    opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
-                    transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
-                    border-color 0.3s ease,
-                    box-shadow 0.3s ease;
-            }
-
-            .op-card.op-visible {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            .op-card:hover {
-                transform: translateY(-6px) !important;
-                border-color: rgba(255, 255, 255, 0.18);
-                box-shadow:
-                    0 20px 60px rgba(0, 0, 0, 0.5),
-                    0 0 40px rgba(56, 132, 255, 0.08),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            }
-
-            .op-card::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                height: 1px;
-                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
-                border-radius: 24px 24px 0 0;
-            }
-
-            .op-card-top {
-                display: flex;
-                align-items: flex-start;
-                justify-content: space-between;
-                margin-bottom: 18px;
-            }
-
-            .op-card-meta {
-                display: flex;
-                flex-direction: column;
-                gap: 6px;
-            }
-
-            .op-step-num {
-                font-size: 10px;
-                font-weight: 700;
-                letter-spacing: 0.22em;
-                text-transform: uppercase;
-            }
-
-            .op-card-title {
-                font-size: 20px;
-                font-weight: 800;
-                color: #fff;
-                letter-spacing: -0.02em;
-                margin: 0;
-                font-family: 'Syne', sans-serif;
-            }
-
-            .op-card-subtitle {
-                font-size: 13px;
-                color: rgba(180, 200, 255, 0.5);
-                margin: 0;
-                font-weight: 400;
-            }
-
-            .op-icon-badge {
-                width: 52px;
-                height: 52px;
-                border-radius: 14px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 22px;
-                flex-shrink: 0;
-                transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            }
-
-            .op-card:hover .op-icon-badge {
-                transform: scale(1.12) rotate(6deg);
-            }
-
-            .op-pills {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 8px;
-                margin-top: 4px;
-            }
-
-            .op-pill {
-                display: inline-flex;
-                align-items: center;
-                gap: 6px;
-                background: rgba(255, 255, 255, 0.05);
-                border: 1px solid rgba(255, 255, 255, 0.1);
-                border-radius: 100px;
-                padding: 5px 13px;
-                font-size: 12px;
-                font-weight: 500;
-                color: rgba(220, 235, 255, 0.7);
-                transition: all 0.25s ease;
-                cursor: default;
-            }
-
-            .op-pill::before {
-                content: '';
-                width: 5px;
-                height: 5px;
-                border-radius: 50%;
-                background: currentColor;
-                opacity: 0.6;
-                flex-shrink: 0;
-            }
-
-            .op-card:hover .op-pill {
-                background: rgba(255, 255, 255, 0.08);
-                border-color: rgba(255, 255, 255, 0.16);
-                color: rgba(220, 235, 255, 0.9);
-                transform: translateX(2px);
-            }
-
-            /* ── STEP ACCENT COLORS ── */
-            .op-card[data-step="1"] .op-step-num {
-                color: #a78bfa;
-            }
-
-            .op-card[data-step="1"] .op-icon-badge {
-                background: linear-gradient(135deg, #7c3aed, #a855f7);
-                box-shadow: 0 4px 20px rgba(168, 85, 247, 0.35);
-            }
-
-            .op-card[data-step="1"]:hover {
-                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(168, 85, 247, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            }
-
-            .op-card[data-step="2"] .op-step-num {
-                color: #f472b6;
-            }
-
-            .op-card[data-step="2"] .op-icon-badge {
-                background: linear-gradient(135deg, #be185d, #ec4899);
-                box-shadow: 0 4px 20px rgba(236, 72, 153, 0.35);
-            }
-
-            .op-card[data-step="2"]:hover {
-                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(236, 72, 153, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            }
-
-            .op-card[data-step="3"] .op-step-num {
-                color: #34d399;
-            }
-
-            .op-card[data-step="3"] .op-icon-badge {
-                background: linear-gradient(135deg, #059669, #10b981);
-                box-shadow: 0 4px 20px rgba(16, 185, 129, 0.35);
-            }
-
-            .op-card[data-step="3"]:hover {
-                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(16, 185, 129, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            }
-
-            .op-card[data-step="4"] .op-step-num {
-                color: #fb923c;
-            }
-
-            .op-card[data-step="4"] .op-icon-badge {
-                background: linear-gradient(135deg, #c2410c, #f97316);
-                box-shadow: 0 4px 20px rgba(249, 115, 22, 0.35);
-            }
-
-            .op-card[data-step="4"]:hover {
-                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(249, 115, 22, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            }
-
-            .op-card[data-step="5"] .op-step-num {
-                color: #f87171;
-            }
-
-            .op-card[data-step="5"] .op-icon-badge {
-                background: linear-gradient(135deg, #b91c1c, #ef4444);
-                box-shadow: 0 4px 20px rgba(239, 68, 68, 0.35);
-            }
-
-            .op-card[data-step="5"]:hover {
-                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(239, 68, 68, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            }
-
-            .op-card[data-step="6"] .op-step-num {
-                color: #60a5fa;
-            }
-
-            .op-card[data-step="6"] .op-icon-badge {
-                background: linear-gradient(135deg, #1d4ed8, #3b82f6);
-                box-shadow: 0 4px 20px rgba(59, 130, 246, 0.35);
-            }
-
-            .op-card[data-step="6"]:hover {
-                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(59, 130, 246, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            }
-
-            .op-card[data-step="7"] .op-step-num {
-                color: #2dd4bf;
-            }
-
-            .op-card[data-step="7"] .op-icon-badge {
-                background: linear-gradient(135deg, #0f766e, #14b8a6);
-                box-shadow: 0 4px 20px rgba(20, 184, 166, 0.35);
-            }
-
-            .op-card[data-step="7"]:hover {
-                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(20, 184, 166, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            }
-
-            /* ── RESPONSIVE: stack on narrow screens, sticky turns off ── */
-            @media (max-width: 980px) {
-                .op-grid {
-                    flex-direction: column;
-                }
-
-                .op-left {
-                    position: relative;
-                    top: auto;
-                    width: 100%;
-                    height: auto;
-                    min-height: 360px;
-                    padding: 48px 24px;
-                }
-
-                .op-brand-card {
-                    max-width: 340px;
-                    aspect-ratio: unset;
-                    height: 280px;
-                }
-
-                .op-corner {
-                    font-size: 8px;
-                    max-width: 110px;
-                }
-
-                .op-right {
-                    padding: 48px 24px 64px;
-                    width: 100%;
-                }
-
-                .op-card {
-                    padding: 24px 22px 20px;
-                }
-            }
-
-            @media (max-width: 480px) {
-                .op-left {
-                    min-height: 300px;
-                    padding: 32px 16px;
-                }
-
-                .op-brand-card {
-                    max-width: 280px;
-                    height: 240px;
-                }
-
-                .op-corner.tr,
-                .op-corner.br {
-                    display: none;
-                }
-
-                .op-logo-card {
-                    width: 160px;
-                    height: 160px;
-                }
-
-                .op-right {
-                    padding: 36px 16px 56px;
-                }
-
-                .op-heading {
-                    font-size: 1.9rem;
-                }
-            }
-
-            @media (prefers-reduced-motion: reduce) {
-
-                .op-card,
-                .op-logo-card {
-                    transition: none !important;
-                    animation: none !important;
-                    transform: none !important;
-                    opacity: 1 !important;
-                }
-            }
-        </style>
-
-
-
-        <!-- ══════════ STORY SCROLL (FlowArt) — Hyna Studio ══════════ -->
-
-
-        <style>
-            .philosophy-section {
-                background-color: #ffffff;
-                padding: 80px 8% 100px;
-                position: relative;
-                overflow: hidden;
-                font-family: var(--font-body), sans-serif;
-                border-top: 1px solid rgba(19, 19, 26, 0.05);
-            }
-
-            .phil-container {
-                max-width: 1200px;
-                margin: 0 auto;
-                position: relative;
-                z-index: 2;
-            }
-
-            .phil-grid {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 32px;
-            }
-
-            .phil-card {
-                background: #f8fafc;
-                border: 1px solid rgba(19, 19, 26, 0.05);
-                border-radius: 24px;
-                padding: 45px 40px;
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                    border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                    background 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-                cursor: default;
-            }
-
-            .phil-card:hover {
-                transform: translateY(-6px);
-                border-color: rgba(79, 63, 240, 0.25);
-                box-shadow: 0 16px 36px rgba(79, 63, 240, 0.08);
-                background: #ffffff;
-            }
-
-            .phil-num {
-                font-family: var(--font-mono), monospace;
-                font-size: 13px;
-                font-weight: 700;
-                color: #2563eb;
-                letter-spacing: 0.1em;
-                margin-bottom: 24px;
-                display: inline-block;
-            }
-
-            .phil-title {
-                font-family: var(--font-display), sans-serif;
-                font-size: 24px;
-                font-weight: 800;
-                color: var(--ink);
-                margin-bottom: 16px;
-                letter-spacing: -0.02em;
-                line-height: 1.25;
-            }
-
-            .phil-desc {
-                font-size: 15px;
-                color: var(--muted);
-                line-height: 1.65;
-                margin: 0;
-            }
-
-            @media (max-width: 1024px) {
-                .philosophy-section {
-                    padding: 60px 6% 80px;
-                }
-
-                .phil-grid {
-                    gap: 24px;
-                }
-
-                .phil-card {
-                    padding: 35px 30px;
-                }
-            }
-
-            @media (max-width: 768px) {
-                .phil-grid {
-                    grid-template-columns: 1fr;
-                    gap: 20px;
-                }
-
-                .philosophy-section {
-                    padding: 50px 20px 70px;
-                }
-            }
-        </style>
-
-
-
-
-        <!-- HOW WE SOLVE THIS + WHY WE EXIST SECTION -->
-        <style>
-            /* ── HOW WE SOLVE THIS ── */
-            .solve-section {
-                background: #ffffff;
-                padding: 100px 8% 80px;
-                position: relative;
-                overflow: hidden;
-                font-family: var(--font-body), sans-serif;
-                border-top: 1px solid rgba(19, 19, 26, 0.06);
-            }
-
-            .solve-inner {
-                max-width: 1100px;
-                margin: 0 auto;
-            }
-
-            .solve-heading {
-                text-align: center;
-                font-family: var(--font-display), sans-serif;
-                font-size: clamp(2rem, 4.5vw, 3rem);
-                font-weight: 800;
-                color: var(--ink);
-                letter-spacing: -0.03em;
-                margin: 0 0 56px;
-                line-height: 1.15;
-            }
-
-            .solve-heading em {
-                font-style: normal;
-                font-weight: 400;
-            }
-
-            .solve-cards {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 24px;
-            }
-
-            .solve-card {
-                background: #111118;
-                border: 1px solid rgba(255, 255, 255, 0.06);
-                border-radius: 20px;
-                padding: 36px 32px;
-                display: flex;
-                align-items: flex-start;
-                gap: 22px;
-                transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-                    box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-            }
-
-            .solve-card:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
-            }
-
-            .solve-card-icon {
-                width: 46px;
-                height: 46px;
-                flex-shrink: 0;
-                border-radius: 12px;
-                background: rgba(255, 255, 255, 0.06);
-                border: 1px solid rgba(255, 255, 255, 0.08);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 18px;
-                color: #ffffff;
-            }
-
-            .solve-card-body h4 {
-                font-family: var(--font-display), sans-serif;
-                font-size: 17px;
-                font-weight: 700;
-                color: #ffffff;
-                margin: 0 0 10px;
-                letter-spacing: -0.01em;
-            }
-
-            .solve-card-body p {
-                font-size: 14.5px;
-                color: rgba(255, 255, 255, 0.52);
-                line-height: 1.7;
-                margin: 0;
-            }
-
-            /* ── WHY WE EXIST ── */
-            .exist-section {
-                background: #ffffff;
-                padding: 0 8% 100px;
-                font-family: var(--font-body), sans-serif;
-            }
-
-            .exist-inner {
-                max-width: 1100px;
-                margin: 0 auto;
-            }
-
-            .exist-heading {
-                text-align: center;
-                font-family: var(--font-display), sans-serif;
-                font-size: clamp(2.4rem, 5vw, 3.4rem);
-                font-weight: 800;
-                color: var(--ink);
-                letter-spacing: -0.03em;
-                margin: 0 0 44px;
-                line-height: 1.1;
-            }
-
-            .exist-heading span {
-                color: #e11d48;
-            }
-
-            .exist-highlight-box {
-                background: #111118;
-                border-radius: 22px;
-                padding: 52px 60px;
-                text-align: center;
-                margin-bottom: 64px;
-                border: 1px solid rgba(255, 255, 255, 0.05);
-            }
-
-            .exist-highlight-box h3 {
-                font-family: var(--font-display), sans-serif;
-                font-size: clamp(1.5rem, 3.5vw, 2.3rem);
-                font-weight: 800;
-                color: #ffffff;
-                letter-spacing: -0.025em;
-                line-height: 1.2;
-                margin: 0 0 16px;
-            }
-
-            .exist-highlight-box p {
-                font-size: 15px;
-                color: rgba(255, 255, 255, 0.5);
-                margin: 0;
-                line-height: 1.6;
-            }
-
-            .problem-heading {
-                text-align: center;
-                font-family: var(--font-display), sans-serif;
-                font-size: clamp(1.6rem, 3vw, 2.2rem);
-                font-weight: 700;
-                color: var(--ink);
-                letter-spacing: -0.025em;
-                margin: 0 0 36px;
-                line-height: 1.2;
-            }
-
-            .problem-heading em {
-                font-style: italic;
-                font-weight: 400;
-            }
-
-            .problem-cards {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 20px;
-            }
-
-            .problem-card {
-                background: #111118;
-                border: 1px solid rgba(255, 255, 255, 0.05);
-                border-radius: 18px;
-                padding: 32px 28px;
-                transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-                    box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-            }
-
-            .problem-card:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16);
-            }
-
-            .problem-card h4 {
-                font-family: var(--font-display), sans-serif;
-                font-size: 16px;
-                font-weight: 700;
-                color: #ffffff;
-                margin: 0 0 14px;
-                letter-spacing: -0.01em;
-                line-height: 1.3;
-            }
-
-            .problem-card p {
-                font-size: 14px;
-                color: rgba(255, 255, 255, 0.48);
-                line-height: 1.7;
-                margin: 0;
-            }
-
-            /* Responsive */
-            @media (max-width: 900px) {
-
-                .solve-cards,
-                .problem-cards {
-                    grid-template-columns: 1fr;
-                }
-
-                .exist-highlight-box {
-                    padding: 40px 32px;
-                }
-            }
-
-            @media (max-width: 640px) {
-                .solve-section {
-                    padding: 70px 20px 60px;
-                }
-
-                .exist-section {
-                    padding: 0 20px 80px;
-                }
-
-                .exist-highlight-box {
-                    padding: 36px 24px;
-                }
-            }
-        </style>
-
-
-        <style>
-            #hyna-start-project,
-            #hyna-start-project * {
-                box-sizing: border-box;
-            }
-
-            #hyna-start-project {
-                --hyna-ink: #14140f;
-                --hyna-ink-soft: #4a4a42;
-                --hyna-paper: #ffffff;
-                --hyna-line: #dedcd3;
-                --hyna-accent: #8a6a3f;
-                --hyna-accent-soft: #f4efe4;
-
-                position: relative;
-                width: 100%;
-                min-height: 100vh;
-                z-index: 20;
-
-                background: var(--hyna-paper);
-                color: var(--hyna-ink);
-                display: flex;
-                align-items: center;
-                padding: clamp(60px, 8vw, 120px) clamp(24px, 7vw, 96px);
-                overflow: hidden;
-                font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-                isolation: isolate;
-            }
-
-            @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:opsz,wght,ital@9..144,300,1,9..144,450,0;9..144,450,1&display=swap');
-
-            #hyna-start-project .hyna-grain {
-                position: absolute;
-                inset: 0;
-                pointer-events: none;
-                opacity: 0.035;
-                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-                z-index: 0;
-            }
-
-            #hyna-start-project .hyna-rule {
-                position: absolute;
-                top: 0;
-                left: 50%;
-                width: 1px;
-                height: 100%;
-                background: var(--hyna-line);
-                transform-origin: top;
-                transform: scaleY(0);
-                transition: transform 1.4s cubic-bezier(.2, .7, .2, 1) .1s;
-                z-index: 0;
-            }
-
-            #hyna-start-project.hyna-in-view .hyna-rule {
-                transform: scaleY(1);
-            }
-
-            #hyna-start-project .hyna-inner {
-                position: relative;
-                z-index: 1;
-                width: 100%;
-                max-width: 1240px;
-                margin: 0 auto;
-                display: grid;
-                grid-template-columns: 1.15fr 0.85fr;
-                gap: clamp(32px, 5vw, 72px);
-                align-items: center;
-            }
-
-            #hyna-start-project .hyna-content {
-                min-width: 0;
-            }
-
-            #hyna-start-project .hyna-connect-col {
-                position: relative;
-                align-self: stretch;
-                min-height: clamp(280px, 38vw, 460px);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                opacity: 0;
-                transform: scale(0.85);
-                transition: opacity 1s cubic-bezier(.19, 1, .22, 1) .45s,
-                    transform 1.1s cubic-bezier(.19, 1, .22, 1) .45s;
-            }
-
-            #hyna-start-project.hyna-in-view .hyna-connect-col {
-                opacity: 1;
-                transform: scale(1);
-            }
-
-            #hyna-start-project .hyna-connect-panel {
-                position: relative;
-                width: clamp(180px, 20vw, 232px);
-                height: clamp(180px, 20vw, 232px);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                text-decoration: none;
-                color: var(--hyna-ink);
-            }
-
-            #hyna-start-project .hyna-connect-ring {
-                position: absolute;
-                inset: 0;
-                color: var(--hyna-line);
-                animation: hyna-spin 26s linear infinite;
-            }
-
-            #hyna-start-project .hyna-connect-core {
-                position: relative;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                gap: 14px;
-                width: 68%;
-                height: 68%;
-                border-radius: 50%;
-                background: var(--hyna-ink);
-                color: #fff;
-                transition: background .35s ease, transform .45s cubic-bezier(.2, .8, .2, 1);
-            }
-
-            #hyna-start-project .hyna-connect-label {
-                font-size: 15px;
-                font-weight: 500;
-                letter-spacing: 0.01em;
-            }
-
-            #hyna-start-project .hyna-connect-circle {
-                width: 34px;
-                height: 34px;
-                border-radius: 50%;
-                background: #fff;
-                color: var(--hyna-ink);
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                transition: transform .45s cubic-bezier(.2, .8, .2, 1);
-            }
-
-            #hyna-start-project .hyna-connect-panel:hover .hyna-connect-core {
-                background: var(--hyna-accent);
-                transform: scale(1.04);
-            }
-
-            #hyna-start-project .hyna-connect-panel:hover .hyna-connect-circle {
-                transform: rotate(45deg);
-            }
-
-            #hyna-start-project .hyna-top-row {
-                display: flex;
-                align-items: flex-start;
-                justify-content: space-between;
-                gap: 24px;
-                margin-bottom: 28px;
-            }
-
-            #hyna-start-project .hyna-eyebrow {
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                font-size: 12.5px;
-                letter-spacing: 0.18em;
-                text-transform: uppercase;
-                color: var(--hyna-ink-soft);
-                margin: 0;
-                font-weight: 500;
-                opacity: 0;
-                transform: translateY(14px);
-                transition: opacity .8s ease, transform .8s ease;
-            }
-
-            #hyna-start-project .hyna-eyebrow-mark {
-                width: 7px;
-                height: 7px;
-                border-radius: 50%;
-                background: var(--hyna-accent);
-                display: inline-block;
-            }
-
-            #hyna-start-project .hyna-icon {
-                position: relative;
-                flex: 0 0 auto;
-                width: clamp(64px, 8vw, 92px);
-                height: clamp(64px, 8vw, 92px);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: var(--hyna-ink);
-                opacity: 0;
-                transform: scale(0.6) rotate(-25deg);
-                transition: opacity .9s cubic-bezier(.19, 1, .22, 1) .3s,
-                    transform 1.1s cubic-bezier(.19, 1, .22, 1) .3s;
-            }
-
-            #hyna-start-project.hyna-in-view .hyna-icon {
-                opacity: 1;
-                transform: scale(1) rotate(0deg);
-            }
-
-            #hyna-start-project .hyna-icon-ring {
-                position: absolute;
-                inset: 0;
-                color: var(--hyna-line);
-                animation: hyna-spin 22s linear infinite;
-            }
-
-            @keyframes hyna-spin {
-                from {
-                    transform: rotate(0deg);
-                }
-
-                to {
-                    transform: rotate(360deg);
-                }
-            }
-
-            #hyna-start-project .hyna-headline {
-                font-family: 'Fraunces', Georgia, serif;
-                font-weight: 450;
-                font-size: clamp(48px, 9.5vw, 128px);
-                line-height: 0.94;
-                letter-spacing: -0.02em;
-                margin: 0 0 clamp(36px, 6vw, 64px);
-            }
-
-            #hyna-start-project .hyna-line-wrap {
-                display: block;
-                overflow: hidden;
-            }
-
-            #hyna-start-project .hyna-line {
-                display: inline-block;
-                transform: translateY(115%);
-                transition: transform 1s cubic-bezier(.19, 1, .22, 1);
-                transition-delay: calc(var(--d) * 0.12s);
-            }
-
-            #hyna-start-project.hyna-in-view .hyna-line {
-                transform: translateY(0);
-            }
-
-            #hyna-start-project .hyna-italic {
-                font-style: italic;
-                color: var(--hyna-accent);
-            }
-
-            #hyna-start-project .hyna-body-row {
-                display: grid;
-                grid-template-columns: 1fr auto;
-                gap: 48px;
-                align-items: end;
-                padding-top: clamp(20px, 3vw, 36px);
-                border-top: 1px solid var(--hyna-line);
-            }
-
-            #hyna-start-project .hyna-desc {
-                max-width: 480px;
-                font-size: 16.5px;
-                line-height: 1.65;
-                color: var(--hyna-ink-soft);
-                margin: 0;
-                opacity: 0;
-                transform: translateY(16px);
-                transition: opacity .9s ease .5s, transform .9s ease .5s;
-            }
-
-            #hyna-start-project .hyna-cta {
-                display: inline-flex;
-                align-items: center;
-                gap: 12px;
-                text-decoration: none;
-                color: #fff;
-                background: var(--hyna-ink);
-                font-size: 14.5px;
-                font-weight: 500;
-                white-space: nowrap;
-                padding: 10px 10px 10px 22px;
-                border-radius: 999px;
-                border: 1px solid var(--hyna-ink);
-                opacity: 0;
-                transform: translateY(16px);
-                transition: opacity .9s ease .65s, transform .9s ease .65s,
-                    background .3s ease, border-color .3s ease, color .3s ease;
-            }
-
-            #hyna-start-project .hyna-cta-circle {
-                width: 30px;
-                height: 30px;
-                border-radius: 50%;
-                background: #fff;
-                color: var(--hyna-ink);
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                transition: transform .45s cubic-bezier(.2, .8, .2, 1), background .3s ease, color .3s ease;
-            }
-
-            #hyna-start-project .hyna-cta:hover {
-                background: var(--hyna-accent);
-                border-color: var(--hyna-accent);
-            }
-
-            #hyna-start-project .hyna-cta:hover .hyna-cta-circle {
-                transform: rotate(45deg);
-            }
-
-            #hyna-start-project.hyna-in-view .hyna-desc,
-            #hyna-start-project.hyna-in-view .hyna-cta,
-            #hyna-start-project.hyna-in-view .hyna-eyebrow,
-            #hyna-start-project.hyna-in-view .hyna-meta-row {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            #hyna-start-project .hyna-meta-row {
-                display: flex;
-                gap: clamp(24px, 5vw, 56px);
-                margin-top: clamp(40px, 6vw, 72px);
-                flex-wrap: wrap;
-                opacity: 0;
-                transform: translateY(16px);
-                transition: opacity .9s ease .8s, transform .9s ease .8s;
-            }
-
-            #hyna-start-project .hyna-meta {
-                display: flex;
-                align-items: baseline;
-                gap: 10px;
-            }
-
-            #hyna-start-project .hyna-meta-num {
-                font-family: 'Fraunces', serif;
-                font-style: italic;
-                font-size: 14px;
-                color: var(--hyna-accent);
-            }
-
-            #hyna-start-project .hyna-meta-label {
-                font-size: 13.5px;
-                color: var(--hyna-ink-soft);
-                letter-spacing: 0.01em;
-            }
-
-            #hyna-start-project .hyna-scrollcue {
-                position: absolute;
-                right: clamp(24px, 7vw, 96px);
-                bottom: 40px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 10px;
-                font-size: 11px;
-                letter-spacing: 0.16em;
-                text-transform: uppercase;
-                color: var(--hyna-ink-soft);
-                z-index: 1;
-                opacity: 0;
-                transition: opacity 1s ease 1.1s;
-            }
-
-            #hyna-start-project.hyna-in-view .hyna-scrollcue {
-                opacity: 0.7;
-            }
-
-            #hyna-start-project .hyna-scrollcue-line {
-                width: 1px;
-                height: 36px;
-                background: linear-gradient(var(--hyna-ink-soft), transparent);
-                animation: hyna-cue 1.8s ease-in-out infinite;
-            }
-
-            @keyframes hyna-cue {
-                0% {
-                    transform: scaleY(0);
-                    transform-origin: top;
-                }
-
-                50% {
-                    transform: scaleY(1);
-                    transform-origin: top;
-                }
-
-                50.01% {
-                    transform-origin: bottom;
-                }
-
-                100% {
-                    transform: scaleY(0);
-                    transform-origin: bottom;
-                }
-            }
-
-            @media (max-width: 900px) {
-                #hyna-start-project {
-                    align-items: flex-start;
-                    padding-top: clamp(100px, 15vh, 140px);
-                    overflow-y: auto;
-                }
-
-                #hyna-start-project .hyna-inner {
-                    grid-template-columns: 1fr;
-                    gap: clamp(20px, 4vh, 40px);
-                }
-
-                #hyna-start-project .hyna-connect-col {
-                    min-height: 180px;
-                    order: 1;
-                }
-
-                #hyna-start-project .hyna-headline {
-                    font-size: clamp(32px, 8vw, 48px);
-                    margin-bottom: 20px;
-                }
-
-                #hyna-start-project .hyna-meta-row {
-                    margin-top: 24px;
-                    gap: 16px 24px;
-                }
-
-                #hyna-start-project .hyna-desc {
-                    font-size: 14.5px;
-                }
-            }
-
-            @media (max-width: 720px) {
-                #hyna-start-project {
-                    min-height: auto;
-                    padding: 56px 22px 64px;
-                }
-
-                #hyna-start-project .hyna-body-row {
-                    grid-template-columns: 1fr;
-                    align-items: center;
-                    gap: 20px;
-                }
-
-                #hyna-start-project .hyna-line {
-                    text-align: center;
-                    /* centers the heading text */
-                    margin: 0 auto;
-                    /* ensures balanced spacing */
-                    display: block;
-                }
-
-                #hyna-start-project .hyna-rule {
-                    display: none;
-                }
-
-                #hyna-start-project .hyna-scrollcue {
-                    display: none;
-                }
-            }
-
-            @media (prefers-reduced-motion: reduce) {
-
-                #hyna-start-project .hyna-line,
-                #hyna-start-project .hyna-eyebrow,
-                #hyna-start-project .hyna-desc,
-                #hyna-start-project .hyna-cta,
-                #hyna-start-project .hyna-meta-row,
-                #hyna-start-project .hyna-rule,
-                #hyna-start-project .hyna-scrollcue-line,
-                #hyna-start-project .hyna-icon,
-                #hyna-start-project .hyna-icon-ring,
-                #hyna-start-project .hyna-connect-col,
-                #hyna-start-project .hyna-connect-ring {
-                    transition: none !important;
-                    animation: none !important;
-                    transform: none !important;
-                    opacity: 1 !important;
-                }
-            }
-        </style>
-
-
-
-
-
-
-        <!DOCTYPE html>
-        <html lang="en">
-
-        <head>
-            <meta charset="UTF-8">
-            <title>Team — Hyna Studio</title>
-            <link rel="preconnect" href="https://fonts.googleapis.com">
-            <link
-                href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap"
-                rel="stylesheet">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-            <style>
-                :root {
-                    --ink: #111318;
-                    --muted: #6b6f79;
-                    --line: rgba(17, 19, 24, 0.08);
-                    --accent: #4f3ff0;
-                    --font-display: 'Sora', sans-serif;
-                    --font-body: 'Inter', sans-serif;
-                }
-
-                * {
-                    box-sizing: border-box;
-                }
-
-                body {
-                    margin: 0;
-                    background: #f6f5fb;
-                    font-family: var(--font-body);
-                }
-
-                .team-section {
-                    padding: 100px 8% 0;
-                    background:
-                        linear-gradient(rgba(120, 110, 200, 0.07) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(120, 110, 200, 0.07) 1px, transparent 1px),
-                        linear-gradient(180deg, #eceaf7 0%, #f6f5fb 45%, #fbfaff 100%);
-                    background-size: 48px 48px, 48px 48px, 100% 100%;
-                }
-
-                .team-header {
-                    max-width: 900px;
-                    margin: 0 auto 90px;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    text-align: center;
-                    gap: 16px;
-                }
-
-                .team-header h2 {
-                    font-family: var(--font-display);
-                    font-size: clamp(2.2rem, 4.4vw, 3rem);
-                    font-weight: 800;
-                    line-height: 1.2;
-                    color: var(--ink);
-                    margin: 0;
-                }
-
-                .team-header p {
-                    max-width: 640px;
-                    color: var(--muted);
-                    font-size: 1rem;
-                    line-height: 1.6;
-                    margin: 0;
-                }
-
-                /* ── LEADERSHIP LIST ── */
-                .leadership-list {
-                    max-width: 980px;
-                    margin: 0 auto;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 70px;
-                    padding-bottom: 110px;
-                }
-
-                .leader-row {
-                    display: grid;
-                    grid-template-columns: 200px 1fr;
-                    gap: 48px;
-                    align-items: start;
-                }
-
-                .leader-row.reverse {
-                    grid-template-columns: 1fr 200px;
-                }
-
-                .leader-row.reverse .leader-photo {
-                    order: 2;
-                }
-
-                .leader-row.reverse .leader-info {
-                    order: 1;
-                }
-
-                .leader-photo img {
-                    width: 100%;
-                    aspect-ratio: 1 / 1;
-                    object-fit: cover;
-                    border-radius: 14px;
-                    display: block;
-                }
-
-                .leader-info h3 {
-                    font-family: var(--font-display);
-                    font-size: 1.5rem;
-                    font-weight: 800;
-                    color: var(--ink);
-                    margin: 0 0 6px;
-                    letter-spacing: -0.01em;
-                }
-
-                .leader-role {
-                    display: block;
-                    font-size: 0.76rem;
-                    font-weight: 700;
-                    letter-spacing: 0.1em;
-                    text-transform: uppercase;
-                    color: var(--accent);
-                    margin-bottom: 16px;
-                }
-
-                .leader-bio {
-                    color: var(--muted);
-                    font-size: 0.96rem;
-                    line-height: 1.7;
-                    margin: 0 0 16px;
-                    max-width: 640px;
-                }
-
-                .leader-links {
-                    display: flex;
-                    gap: 16px;
-                    flex-wrap: wrap;
-                }
-
-                .leader-links a {
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 6px;
-                    color: var(--ink);
-                    font-size: 0.84rem;
-                    font-weight: 600;
-                    text-decoration: none;
-                    border-bottom: 1px solid var(--line);
-                    padding-bottom: 2px;
-                    transition: color .25s ease, border-color .25s ease;
-                }
-
-                .leader-links a:hover {
-                    color: var(--accent);
-                    border-color: var(--accent);
-                }
-
-                @media (max-width: 700px) {
-
-                    .leader-row,
-                    .leader-row.reverse {
-                        grid-template-columns: 1fr;
-                        gap: 20px;
-                        text-align: center;
-                    }
-
-                    .leader-row.reverse .leader-photo {
-                        order: 1;
-                    }
-
-                    .leader-row.reverse .leader-info {
-                        order: 2;
-                    }
-
-                    .leader-photo img {
-                        max-width: 160px;
-                        margin: 0 auto;
-                    }
-
-                    .leader-links {
-                        justify-content: center;
-                    }
-                }
-
-                /* ── BOARD OF DIRECTORS ── */
-                .board-section {
-                    max-width: 980px;
-                    margin: 0 auto;
-                    padding: 70px 0 120px;
-                    border-top: 1px solid var(--line);
-                }
-
-                .board-eyebrow {
-                    font-family: var(--font-display);
-                    font-size: 0.86rem;
-                    font-weight: 800;
-                    letter-spacing: 0.12em;
-                    text-transform: uppercase;
-                    color: var(--ink);
-                    margin-bottom: 40px;
-                }
-
-                .board-row {
-                    display: grid;
-                    grid-template-columns: repeat(3, 1fr);
-                    gap: 32px;
-                }
-
-                .board-member {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-start;
-                }
-
-                .board-avatar {
-                    width: 110px;
-                    height: 110px;
-                    border-radius: 50%;
-                    object-fit: cover;
-                    margin-bottom: 16px;
-                }
-
-                .board-member h4 {
-                    font-size: 0.86rem;
-                    font-weight: 700;
-                    letter-spacing: 0.03em;
-                    text-transform: uppercase;
-                    color: var(--ink);
-                    margin: 0 0 4px;
-                }
-
-                .board-member .board-role {
-                    display: block;
-                    font-size: 0.82rem;
-                    color: var(--muted);
-                    line-height: 1.4;
-                }
-
-                .board-member .board-org {
-                    display: block;
-                    font-size: 0.82rem;
-                    color: var(--muted);
-                    line-height: 1.4;
-                }
-
-                @media (max-width: 700px) {
-                    .board-row {
-                        grid-template-columns: repeat(2, 1fr);
-                        row-gap: 36px;
-                    }
-                }
-
-                /* ══ FADE-IN ANIMATION SYSTEM ══ */
-                @keyframes team-fade-up {
-                    from {
-                        opacity: 0;
-                        transform: translateY(36px);
-                    }
-
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-                }
-
-                @keyframes team-fade-left {
-                    from {
-                        opacity: 0;
-                        transform: translateX(-40px);
-                    }
-
-                    to {
-                        opacity: 1;
-                        transform: translateX(0);
-                    }
-                }
-
-                @keyframes team-fade-right {
-                    from {
-                        opacity: 0;
-                        transform: translateX(40px);
-                    }
-
-                    to {
-                        opacity: 1;
-                        transform: translateX(0);
-                    }
-                }
-
-                @keyframes team-fade-scale {
-                    from {
-                        opacity: 0;
-                        transform: scale(0.88);
-                    }
-
-                    to {
-                        opacity: 1;
-                        transform: scale(1);
-                    }
-                }
-
-                /* Hidden initial state for all animate targets */
-                .t-anim {
-                    opacity: 0;
-                    will-change: transform, opacity;
-                }
-
-
-                /* Triggered class — browser plays the animation */
-                .t-anim.t-in {
-                    animation-fill-mode: both;
-                    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-                    animation-duration: 0.75s;
-                }
-
-
-                .t-anim.t-in[data-anim="fade-up"] {
-                    animation-name: team-fade-up;
-                }
-
-                .t-anim.t-in[data-anim="fade-left"] {
-                    animation-name: team-fade-left;
-                }
-
-                .t-anim.t-in[data-anim="fade-right"] {
-                    animation-name: team-fade-right;
-                }
-
-                .t-anim.t-in[data-anim="fade-scale"] {
-                    animation-name: team-fade-scale;
-                }
-
-                .t-anim[data-delay="1"].t-in {
-                    animation-delay: 0.08s;
-                }
-
-                .t-anim[data-delay="2"].t-in {
-                    animation-delay: 0.18s;
-                }
-
-                .t-anim[data-delay="3"].t-in {
-                    animation-delay: 0.28s;
-                }
-
-                .t-anim[data-delay="4"].t-in {
-                    animation-delay: 0.40s;
-                }
-
-                .t-anim[data-delay="5"].t-in {
-                    animation-delay: 0.52s;
-                }
-
-                /* Respect reduced-motion */
-                @media (prefers-reduced-motion: reduce) {
-                    .t-anim {
-                        opacity: 1 !important;
-                        animation: none !important;
-                    }
-                }
-            </style>
-        </head>
-
-        <body>
-
-            <section id="team" class="team-section">
-
-                <!-- Section header -->
-                <div class="team-header">
-                    <h2 class="t-anim" data-anim="fade-up">Our Leadership &amp; Innovation Team</h2>
-                    <p class="t-anim" data-anim="fade-up" data-delay="2">Passionate experts transforming ideas into
-                        impactful solutions through design, technology, and collaboration</p>
-                </div>
-
-                <!-- Leadership: Vignesh, Jashwin, Dharshan -->
-                <div class="leadership-list">
-
-                    <!-- Vignesh -->
-                    <div class="leader-row">
-                        <div class="leader-photo t-anim" data-anim="fade-left">
-                            <img src="https://i.postimg.cc/wjtYqBpS/IMG-33081.jpg" alt="Vignesh">
-                        </div>
-                        <div class="leader-info">
-                            <h3 class="t-anim" data-anim="fade-up" data-delay="1">Vignesh</h3>
-                            <span class="leader-role t-anim" data-anim="fade-up" data-delay="2">Founder &amp; Chief
-                                Executive Officer</span>
-                            <p class="leader-bio t-anim" data-anim="fade-up" data-delay="3">Vignesh is the Founder and
-                                CEO of Hyna Studio, driving the company's strategic vision and engineering standards. He
-                                believes leadership isn't about control, but about building people who can lead without
-                                him — a philosophy that shapes how the studio operates day to day.</p>
-                            <div class="leader-links t-anim" data-anim="fade-up" data-delay="4">
-                                <a href="https://vigneshvl-dev.github.io/PORTFOLIO/" target="_blank"><i
-                                        class="fas fa-globe"></i> Portfolio</a>
-                                <a href="https://www.linkedin.com/in/vigneshvl-dev/" target="_blank"><i
-                                        class="fab fa-linkedin-in"></i> LinkedIn</a>
-                                <a href="https://github.com/vigneshvl-dev" target="_blank"><i class="fab fa-github"></i>
-                                    GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Jashwin -->
-                    <div class="leader-row reverse">
-                        <div class="leader-photo t-anim" data-anim="fade-right">
-                            <img src="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" alt="Jashwin">
-                        </div>
-                        <div class="leader-info">
-                            <h3 class="t-anim" data-anim="fade-up" data-delay="1">Jashwin</h3>
-                            <span class="leader-role t-anim" data-anim="fade-up" data-delay="2">Co-Founder &amp; Project
-                                Management Lead</span>
-                            <p class="leader-bio t-anim" data-anim="fade-up" data-delay="3">Jashwin ensures every
-                                project at Hyna Studio stays aligned with stakeholder goals from kickoff to delivery.
-                                His approach comes from a simple observation: deadlines don't fail because of time, they
-                                fail because alignment is missing.</p>
-                            <div class="leader-links t-anim" data-anim="fade-up" data-delay="4">
-                                <a href="https://www.linkedin.com/in/jashwin-j-16b06240a" target="_blank"><i
-                                        class="fab fa-linkedin-in"></i> LinkedIn</a>
-                                <a href="https://github.com/jashwinj2008" target="_blank"><i class="fab fa-github"></i>
-                                    GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Dharshan -->
-                    <div class="leader-row">
-                        <div class="leader-photo t-anim" data-anim="fade-left">
-                            <img src="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg"
-                                alt="Dharshan">
-                        </div>
-                        <div class="leader-info">
-                            <h3 class="t-anim" data-anim="fade-up" data-delay="1">Dharshan</h3>
-                            <span class="leader-role t-anim" data-anim="fade-up" data-delay="2">Co-Founder &amp; Chief
-                                Technology Officer</span>
-                            <p class="leader-bio t-anim" data-anim="fade-up" data-delay="3">Dharshan leads systems
-                                architecture, cloud infrastructure, and technical execution at Hyna Studio. He holds
-                                that a co-founder in tech doesn't follow trends — he builds what will become the next
-                                standard.</p>
-                            <div class="leader-links t-anim" data-anim="fade-up" data-delay="4">
-                                <a href="https://portholio-zeta.vercel.app/" target="_blank"><i
-                                        class="fas fa-globe"></i> Portfolio</a>
-                                <a href="https://www.linkedin.com/in/dharshan-jm" target="_blank"><i
-                                        class="fab fa-linkedin-in"></i> LinkedIn</a>
-                                <a href="https://github.com/dharshan00814" target="_blank"><i class="fab fa-github"></i>
-                                    GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- Board of Directors: Asthamil, Tharun Krishna, Zarif -->
-                <div class="board-section">
-                    <div class="board-eyebrow t-anim" data-anim="fade-up">Board of Directors</div>
-                    <div class="board-row">
-
-                        <div class="board-member t-anim" data-anim="fade-scale" data-delay="1">
-                            <img class="board-avatar"
-                                src="https://i.postimg.cc/Jnwtf3ZZ/Whats-App-Image-2026-02-20-at-7-00-57-PM.jpg"
-                                alt="Asthamil">
-                            <h4>Asthamil</h4>
-                            <span class="board-role">Chief Product Officer &amp; Director</span>
-                            <span class="board-org">Hyna Studio</span>
-                        </div>
-
-                        <div class="board-member t-anim" data-anim="fade-scale" data-delay="2">
-                            <img class="board-avatar"
-                                src="https://i.postimg.cc/TP5Jj9Th/Whats-App-Image-2026-06-11-at-11-26-46-AM.jpg"
-                                alt="Tharun Krishna">
-                            <h4>Tharun Krishna</h4>
-                            <span class="board-role">Chief Design Officer &amp; Director</span>
-                            <span class="board-org">Hyna Studio</span>
-                        </div>
-
-                        <div class="board-member t-anim" data-anim="fade-scale" data-delay="3">
-                            <img class="board-avatar" src="https://i.postimg.cc/1zWvJd1C/zarif.jpg"
-                                alt="Mohammad Zarif">
-                            <h4>Mohammad Zarif</h4>
-                            <span class="board-role">Chief Operating Officer</span>
-                            <span class="board-org">Hyna Studio</span>
-                        </div>
-
-                    </div>
-                </div>
-
-            </section>
-
-        </body>
-
         <style>
             :root {
                 --bg-deep: #1a0f3d;
@@ -8271,31 +6048,18 @@
                     radial-gradient(circle at 50% 35%, var(--bg-mid) 0%, var(--bg-deep) 62%);
             }
 
-            .bg-videos {
-                position: absolute;
-                inset: 0;
-                z-index: 1;
-                pointer-events: none;
-                overflow: hidden;
-                background: #000;
-            }
-
-            .bg-video {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                opacity: 1;
-            }
-
-            .statement-hero>.statement-card,
-            .statement-hero>.statement-tagline {
-                position: relative;
-                z-index: 2;
-            }
-
             .statement-hero::before,
             .statement-hero::after {
-                display: none;
+                content: "";
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                width: 52%;
+                background-size: cover;
+                background-position: center;
+                opacity: 0.28;
+                mix-blend-mode: luminosity;
+                z-index: 0;
             }
 
             .statement-hero::before {
@@ -8546,28 +6310,2236 @@
         </style>
         </head>
 
-        <body></body>
+        <body>
 
-        </html>
+            <section class="statement-hero">
+                <div class="statement-card" id="statementCard">
+                    <h2>
+                        <span class="statement-line">WE ARE NOT</span>
+                        <span class="statement-line big">A NORMAL</span>
+                        <span class="statement-line small">SOFTWARE&nbsp;STUDIO</span>
+                        <span class="statement-line big">WHY?</span>
+                    </h2>
+                </div>
 
-        <script>
-            /* ── Team Section: Scroll-triggered fade-in via IntersectionObserver ── */
-            (function () {
-                var targets = document.querySelectorAll('#team .t-anim');
-                if (!targets.length) return;
+                <div class="statement-tagline" id="statementTagline">
+                    <p>We break the rules.</p>
+                    <p class="strong">We ship the results.</p>
+                </div>
+            </section>
 
-                var io = new IntersectionObserver(function (entries) {
-                    entries.forEach(function (entry) {
+            <script>
+                // Fade in on load, and re-trigger if the section re-enters the viewport on scroll
+                const card = document.getElementById('statementCard');
+                const tagline = document.getElementById('statementTagline');
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
                         if (entry.isIntersecting) {
-                            entry.target.classList.add('t-in');
-                            io.unobserve(entry.target); /* fire once */
+                            entry.target.classList.add('is-visible');
                         }
                     });
-                }, { threshold: 0.15 });
+                }, { threshold: 0.3 });
 
-                targets.forEach(function (el) { io.observe(el); });
-            })();
-        </script>
+                observer.observe(card);
+                observer.observe(tagline);
+            </script>
+
+        </body>
+
+</html>
+<!-- ══════════ THE HYNA METHOD – ZOOM-THROUGH SECTION ══════════ -->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        --smooth-scroll: true;
+    }
+
+    body,
+    [data-elementor-type="wp-page"] {
+        overflow-x: hidden;
+    }
+</style>
+
+
+<!-- ══════════ CONTAINER SCROLL ANIMATION — Hyna Studio ══════════ -->
+<style>
+    .csa-wrapper {
+        width: 100%;
+        background: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 80px 20px 160px;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .csa-inner {
+        width: 100%;
+        max-width: 1100px;
+        position: relative;
+        perspective: 1000px;
+    }
+
+    .csa-header {
+        text-align: center;
+        max-width: 860px;
+        margin: 0 auto 0;
+        will-change: transform;
+    }
+
+    .csa-eyebrow {
+        display: inline-block;
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #76ecf0;
+        margin-bottom: 20px;
+    }
+
+    .csa-title {
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        font-weight: 700;
+        color: #fff;
+        line-height: 1.15;
+        letter-spacing: -0.025em;
+        margin: 0 0 14px;
+    }
+
+    .csa-title span {
+        font-size: clamp(2.8rem, 6vw, 5.5rem);
+        font-weight: 800;
+        display: block;
+        background: linear-gradient(135deg, #fff 30%, #7c5cfc 70%, #76ecf0 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        line-height: 1.05;
+    }
+
+    .csa-subtitle {
+        font-size: clamp(1rem, 1.3vw, 1.15rem);
+        color: rgba(255, 255, 255, 0.55);
+        margin: 0 auto;
+        max-width: 580px;
+        line-height: 1.65;
+    }
+
+    .csa-card {
+        margin-top: 40px;
+        width: 100%;
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+        height: clamp(320px, 50vw, 580px);
+        background: #222;
+        border-radius: 30px;
+        border: 4px solid #6C6C6C;
+        box-shadow:
+            0 0 #0000004d,
+            0 9px 20px #0000004a,
+            0 37px 37px #00000042,
+            0 84px 50px #00000026,
+            0 149px 60px #0000000a,
+            0 233px 65px #00000003;
+        padding: 10px;
+        transform-origin: top center;
+        will-change: transform;
+        overflow: hidden;
+    }
+
+    .csa-card-inner {
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+        overflow: hidden;
+        background: #111;
+        position: relative;
+    }
+
+    .csa-card-inner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: left top;
+        border-radius: 18px;
+        display: block;
+    }
+
+    .csa-card-overlay {
+        position: absolute;
+        inset: 0;
+        border-radius: 18px;
+        background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.45) 100%);
+        pointer-events: none;
+    }
+
+    @media (max-width: 768px) {
+        .csa-wrapper {
+            padding: 60px 16px 100px;
+        }
+
+        .csa-card {
+            height: clamp(200px, 55vw, 360px);
+            border-radius: 20px;
+            border-width: 3px;
+        }
+    }
+</style>
+
+
+
+<script>
+    /* ── Innovation in Action — Scroll Fade-In ── */
+    (function () {
+        var els = document.querySelectorAll('#problems-solving-expertise .lge-reveal');
+        if (!els.length) return;
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) { e.target.classList.add('lge-in'); io.unobserve(e.target); }
+            });
+        }, { threshold: 0.14 });
+        els.forEach(function (el) { io.observe(el); });
+    })();
+</script>
+
+<script>
+    /* ── Innovation in Action & Build Headline: Scroll Transition & Line Draw ──
+       Starts fully black with white text when entering viewport from below.
+       Transitions to pure white with dark text as the user scrolls,
+       with the line animations drawing slowly based on the scroll position. */
+    (function () {
+        function initColorTransition() {
+            if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+                setTimeout(initColorTransition, 80);
+                return;
+            }
+            gsap.registerPlugin(ScrollTrigger);
+
+            var section = document.getElementById('problems-solving-expertise');
+            if (!section) return;
+
+            /* ─── 1. Build Headline Section & Line Drawing Transition ─── */
+            var bhSection = document.getElementById('build-headline');
+            if (bhSection) {
+                var bhHighlight = bhSection.querySelector('.bh-highlight');
+                var bhPath = bhSection.querySelector('.bh-highlight svg path');
+                var bhRest = bhSection.querySelector('.bh-rest');
+                var bhSub = bhSection.querySelector('.bh-sub');
+                var bhLine = bhSection.querySelector('.bh-line-path');
+
+                var bhTrigger = {
+                    trigger: section,        /* Triggered by the innovation section! */
+                    start: 'top 50%',      /* Stays black until the innovation section scrolls up into the viewport */
+                    end: 'top 55%',      /* Becomes white as the innovation section is fully scrolled in */
+                    scrub: 0.4
+                };
+
+                /* Tighter trigger for line drawing to make them draw faster */
+                var lineTrigger = {
+                    trigger: bhSection,
+                    start: 'top 70%',      /* Starts drawing sooner */
+                    end: 'top 45%',      /* Completes drawing quickly */
+                    scrub: 0.3
+                };
+
+                gsap.fromTo(bhSection,
+                    { backgroundColor: '#000000' },
+                    { backgroundColor: '#ffffff', ease: 'none', scrollTrigger: bhTrigger }
+                );
+
+                if (bhHighlight) {
+                    gsap.fromTo(bhHighlight,
+                        { color: '#ffffff' },
+                        { color: '#13141A', ease: 'none', scrollTrigger: bhTrigger }
+                    );
+                }
+
+                /* Underline under the word BUILD: draws slowly on scroll (speed up range) */
+                if (bhPath) {
+                    gsap.fromTo(bhPath,
+                        { strokeDashoffset: 340 },
+                        { strokeDashoffset: 0, ease: 'none', scrollTrigger: lineTrigger }
+                    );
+                    gsap.fromTo(bhPath,
+                        { stroke: '#ffffff' },
+                        { stroke: '#13141A', ease: 'none', scrollTrigger: bhTrigger }
+                    );
+                }
+
+                if (bhRest) {
+                    gsap.fromTo(bhRest,
+                        { color: '#ffffff' },
+                        { color: '#13141A', ease: 'none', scrollTrigger: bhTrigger }
+                    );
+                }
+
+                if (bhSub) {
+                    gsap.fromTo(bhSub,
+                        { color: '#ffffff', webkitTextFillColor: '#ffffff' },
+                        { color: '#5B6270', webkitTextFillColor: '#5B6270', ease: 'none', scrollTrigger: bhTrigger }
+                    );
+                }
+
+                /* Full-width line below paragraph: draws slowly on scroll (speed up range) */
+                if (bhLine) {
+                    gsap.fromTo(bhLine,
+                        { strokeDashoffset: 1000 },
+                        { strokeDashoffset: 0, ease: 'none', scrollTrigger: lineTrigger }
+                    );
+                }
+            }
+
+
+
+            var heading = section.querySelector('h1');
+            var lede = section.querySelector('.lede');
+            var eyebrow = section.querySelector('.eyebrow');
+            var cardTitles = section.querySelectorAll('.card h3');
+            var cardDescs = section.querySelectorAll('.card p.desc');
+
+            var commonTrigger = {
+                trigger: section,
+                start: 'top 50%',
+                end: 'top 55%',
+                scrub: 0.4
+            };
+
+            /* Background: black → white */
+            gsap.fromTo(section,
+                { backgroundColor: '#000000' },
+                { backgroundColor: '#ffffff', ease: 'none', scrollTrigger: commonTrigger }
+            );
+
+            /* Heading: white → dark */
+            if (heading) {
+                gsap.fromTo(heading,
+                    { color: '#ffffff' },
+                    { color: '#13141A', ease: 'none', scrollTrigger: commonTrigger }
+                );
+            }
+
+            /* Lede: semi-white → slate */
+            if (lede) {
+                gsap.fromTo(lede,
+                    { color: 'rgba(255,255,255,0.72)' },
+                    { color: '#5B6270', ease: 'none', scrollTrigger: commonTrigger }
+                );
+            }
+
+            /* Eyebrow pill: white-tinted → dark ink */
+            if (eyebrow) {
+                gsap.fromTo(eyebrow,
+                    { color: '#ffffff', backgroundColor: 'rgba(255,255,255,0.12)', borderColor: 'rgba(255,255,255,0.25)' },
+                    { color: '#13141A', backgroundColor: 'rgba(255,255,255,0.55)', borderColor: 'rgba(255,255,255,0.75)', ease: 'none', scrollTrigger: commonTrigger }
+                );
+            }
+
+            /* Card Titles: white → dark */
+            if (cardTitles.length) {
+                gsap.fromTo(cardTitles,
+                    { color: '#ffffff' },
+                    { color: '#13141A', ease: 'none', scrollTrigger: commonTrigger }
+                );
+            }
+
+            /* Card Descriptions: semi-white → slate */
+            if (cardDescs.length) {
+                gsap.fromTo(cardDescs,
+                    { color: 'rgba(255,255,255,0.7)' },
+                    { color: '#5B6270', ease: 'none', scrollTrigger: commonTrigger }
+                );
+            }
+        }
+        initColorTransition();
+    })();
+</script>
+
+<!-- ══════════════ OUR PROCESS — Hyna Studio ══════════════
+  Fixed: left brand panel now uses native CSS `position: sticky`
+  instead of manual JS scroll math — it pins itself while the
+  right column of cards scrolls past, and releases cleanly at
+  the top and bottom of the section. No JS needed for the pin.
+  Drop this whole block into your page's <body>.
+======================================================= -->
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&display=swap');
+
+    /* ── PROCESS SECTION WRAPPER ── */
+    .op-section {
+        width: 100%;
+        background: #000;
+        font-family: 'Inter', sans-serif;
+        position: relative;
+    }
+
+    /* ── GRID: sticky left column + scrolling right column ── */
+    .op-grid {
+        position: relative;
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        align-items: flex-start;
+    }
+
+    /* ── LEFT: sticky brand panel — pure CSS, no JS math ── */
+    .op-left {
+        position: sticky;
+        top: 0;
+        flex: 0 0 50%;
+        width: 50%;
+        height: 100vh;
+        background: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 32px;
+        z-index: 1;
+    }
+
+    .op-brand-card {
+        position: relative;
+        width: 100%;
+        max-width: 460px;
+        aspect-ratio: 1 / 1;
+        background: rgba(10, 16, 36, 0.55);
+        border: 1px solid rgba(120, 170, 255, 0.25);
+        border-radius: 26px;
+        backdrop-filter: blur(28px) saturate(160%);
+        -webkit-backdrop-filter: blur(28px) saturate(160%);
+        box-shadow:
+            0 0 60px rgba(56, 132, 255, 0.14),
+            0 0 120px rgba(56, 132, 255, 0.07),
+            inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    /* Ambient glow orbs inside brand card */
+    .op-brand-card::before {
+        content: '';
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(34, 211, 238, 0.08) 0%, transparent 70%);
+        top: -100px;
+        left: -100px;
+        pointer-events: none;
+    }
+
+    .op-brand-card::after {
+        content: '';
+        position: absolute;
+        width: 280px;
+        height: 280px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(29, 78, 216, 0.1) 0%, transparent 70%);
+        bottom: -80px;
+        right: -80px;
+        pointer-events: none;
+    }
+
+    /* Corner taglines */
+    .op-corner {
+        position: absolute;
+        font-size: 9.5px;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: rgba(140, 180, 255, 0.65);
+        line-height: 1.4;
+        z-index: 2;
+        max-width: 140px;
+    }
+
+    .op-corner::after {
+        content: '';
+        display: block;
+        width: 28px;
+        height: 1.5px;
+        background: rgba(120, 170, 255, 0.45);
+        margin-top: 6px;
+    }
+
+    .op-corner.tl {
+        top: 28px;
+        left: 28px;
+        text-align: left;
+    }
+
+    .op-corner.tl::after {
+        margin-left: 0;
+    }
+
+    .op-corner.tr {
+        top: 28px;
+        right: 28px;
+        text-align: right;
+    }
+
+    .op-corner.tr::after {
+        margin-left: auto;
+    }
+
+    .op-corner.bl {
+        bottom: 28px;
+        left: 28px;
+        text-align: left;
+    }
+
+    .op-corner.bl::after {
+        margin-left: 0;
+    }
+
+    .op-corner.br {
+        bottom: 28px;
+        right: 28px;
+        text-align: right;
+    }
+
+    .op-corner.br::after {
+        margin-left: auto;
+    }
+
+    /* Center logo card — text-based mark, no external image dependency */
+    .op-logo-card {
+        position: relative;
+        z-index: 3;
+        width: 200px;
+        height: 200px;
+        background: rgba(5, 10, 25, 0.85);
+        border: 1.5px solid rgba(34, 211, 238, 0.35);
+        border-radius: 22px;
+        box-shadow:
+            0 0 30px rgba(34, 211, 238, 0.18),
+            0 0 60px rgba(29, 78, 216, 0.12),
+            inset 0 1px 0 rgba(34, 211, 238, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        animation: op-logo-float 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes op-logo-float {
+        from {
+            transform: translateY(0px);
+        }
+
+        to {
+            transform: translateY(-8px);
+        }
+    }
+
+    .op-logo-mark {
+        width: 46px;
+        height: 46px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #38bdf8, #1d4ed8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Syne', sans-serif;
+        font-weight: 800;
+        font-size: 20px;
+        color: #050914;
+        box-shadow: 0 6px 18px rgba(56, 189, 248, 0.35);
+    }
+
+    .op-logo-name {
+        text-align: center;
+        line-height: 1.2;
+    }
+
+    .op-logo-name .op-hyna {
+        display: block;
+        font-size: 16px;
+        font-weight: 800;
+        letter-spacing: 0.25em;
+        color: #ffffff;
+        text-transform: uppercase;
+    }
+
+    .op-logo-name .op-studio {
+        display: block;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.35em;
+        color: #38bdf8;
+        text-transform: uppercase;
+        margin-top: 2px;
+    }
+
+    /* ── RIGHT: SCROLLABLE CARDS COLUMN ── */
+    .op-right {
+        background: #000;
+        flex: 1 1 50%;
+        min-width: 0;
+        padding: 80px 48px 100px 48px;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    /* Intro block */
+    .op-intro {
+        margin-bottom: 56px;
+    }
+
+    .op-eyebrow {
+        display: inline-block;
+        font-size: 10.5px;
+        font-weight: 700;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: #38bdf8;
+        margin-bottom: 16px;
+    }
+
+    .op-heading {
+        font-size: clamp(2rem, 3.5vw, 3rem);
+        font-weight: 800;
+        letter-spacing: -0.025em;
+        line-height: 1.1;
+        color: #fff;
+        margin: 0 0 14px;
+        font-family: 'Syne', sans-serif;
+    }
+
+    .op-subtext {
+        font-size: 15px;
+        color: rgba(180, 200, 255, 0.55);
+        font-weight: 400;
+        margin: 0;
+    }
+
+    /* Step cards */
+    .op-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .op-card {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 24px;
+        padding: 32px 32px 28px;
+        position: relative;
+        backdrop-filter: blur(20px) saturate(140%);
+        -webkit-backdrop-filter: blur(20px) saturate(140%);
+        box-shadow:
+            0 8px 32px rgba(0, 0, 0, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        overflow: hidden;
+        cursor: default;
+        opacity: 0;
+        transform: translateY(40px);
+        transition:
+            opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+            transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+            border-color 0.3s ease,
+            box-shadow 0.3s ease;
+    }
+
+    .op-card.op-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .op-card:hover {
+        transform: translateY(-6px) !important;
+        border-color: rgba(255, 255, 255, 0.18);
+        box-shadow:
+            0 20px 60px rgba(0, 0, 0, 0.5),
+            0 0 40px rgba(56, 132, 255, 0.08),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    .op-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+        border-radius: 24px 24px 0 0;
+    }
+
+    .op-card-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        margin-bottom: 18px;
+    }
+
+    .op-card-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .op-step-num {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+    }
+
+    .op-card-title {
+        font-size: 20px;
+        font-weight: 800;
+        color: #fff;
+        letter-spacing: -0.02em;
+        margin: 0;
+        font-family: 'Syne', sans-serif;
+    }
+
+    .op-card-subtitle {
+        font-size: 13px;
+        color: rgba(180, 200, 255, 0.5);
+        margin: 0;
+        font-weight: 400;
+    }
+
+    .op-icon-badge {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        flex-shrink: 0;
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .op-card:hover .op-icon-badge {
+        transform: scale(1.12) rotate(6deg);
+    }
+
+    .op-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 4px;
+    }
+
+    .op-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 100px;
+        padding: 5px 13px;
+        font-size: 12px;
+        font-weight: 500;
+        color: rgba(220, 235, 255, 0.7);
+        transition: all 0.25s ease;
+        cursor: default;
+    }
+
+    .op-pill::before {
+        content: '';
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: currentColor;
+        opacity: 0.6;
+        flex-shrink: 0;
+    }
+
+    .op-card:hover .op-pill {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.16);
+        color: rgba(220, 235, 255, 0.9);
+        transform: translateX(2px);
+    }
+
+    /* ── STEP ACCENT COLORS ── */
+    .op-card[data-step="1"] .op-step-num {
+        color: #a78bfa;
+    }
+
+    .op-card[data-step="1"] .op-icon-badge {
+        background: linear-gradient(135deg, #7c3aed, #a855f7);
+        box-shadow: 0 4px 20px rgba(168, 85, 247, 0.35);
+    }
+
+    .op-card[data-step="1"]:hover {
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(168, 85, 247, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    .op-card[data-step="2"] .op-step-num {
+        color: #f472b6;
+    }
+
+    .op-card[data-step="2"] .op-icon-badge {
+        background: linear-gradient(135deg, #be185d, #ec4899);
+        box-shadow: 0 4px 20px rgba(236, 72, 153, 0.35);
+    }
+
+    .op-card[data-step="2"]:hover {
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(236, 72, 153, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    .op-card[data-step="3"] .op-step-num {
+        color: #34d399;
+    }
+
+    .op-card[data-step="3"] .op-icon-badge {
+        background: linear-gradient(135deg, #059669, #10b981);
+        box-shadow: 0 4px 20px rgba(16, 185, 129, 0.35);
+    }
+
+    .op-card[data-step="3"]:hover {
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(16, 185, 129, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    .op-card[data-step="4"] .op-step-num {
+        color: #fb923c;
+    }
+
+    .op-card[data-step="4"] .op-icon-badge {
+        background: linear-gradient(135deg, #c2410c, #f97316);
+        box-shadow: 0 4px 20px rgba(249, 115, 22, 0.35);
+    }
+
+    .op-card[data-step="4"]:hover {
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(249, 115, 22, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    .op-card[data-step="5"] .op-step-num {
+        color: #f87171;
+    }
+
+    .op-card[data-step="5"] .op-icon-badge {
+        background: linear-gradient(135deg, #b91c1c, #ef4444);
+        box-shadow: 0 4px 20px rgba(239, 68, 68, 0.35);
+    }
+
+    .op-card[data-step="5"]:hover {
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(239, 68, 68, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    .op-card[data-step="6"] .op-step-num {
+        color: #60a5fa;
+    }
+
+    .op-card[data-step="6"] .op-icon-badge {
+        background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+        box-shadow: 0 4px 20px rgba(59, 130, 246, 0.35);
+    }
+
+    .op-card[data-step="6"]:hover {
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(59, 130, 246, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    .op-card[data-step="7"] .op-step-num {
+        color: #2dd4bf;
+    }
+
+    .op-card[data-step="7"] .op-icon-badge {
+        background: linear-gradient(135deg, #0f766e, #14b8a6);
+        box-shadow: 0 4px 20px rgba(20, 184, 166, 0.35);
+    }
+
+    .op-card[data-step="7"]:hover {
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(20, 184, 166, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    /* ── RESPONSIVE: stack on narrow screens, sticky turns off ── */
+    @media (max-width: 980px) {
+        .op-grid {
+            flex-direction: column;
+        }
+
+        .op-left {
+            position: relative;
+            top: auto;
+            width: 100%;
+            height: auto;
+            min-height: 360px;
+            padding: 48px 24px;
+        }
+
+        .op-brand-card {
+            max-width: 340px;
+            aspect-ratio: unset;
+            height: 280px;
+        }
+
+        .op-corner {
+            font-size: 8px;
+            max-width: 110px;
+        }
+
+        .op-right {
+            padding: 48px 24px 64px;
+            width: 100%;
+        }
+
+        .op-card {
+            padding: 24px 22px 20px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .op-left {
+            min-height: 300px;
+            padding: 32px 16px;
+        }
+
+        .op-brand-card {
+            max-width: 280px;
+            height: 240px;
+        }
+
+        .op-corner.tr,
+        .op-corner.br {
+            display: none;
+        }
+
+        .op-logo-card {
+            width: 160px;
+            height: 160px;
+        }
+
+        .op-right {
+            padding: 36px 16px 56px;
+        }
+
+        .op-heading {
+            font-size: 1.9rem;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+        .op-card,
+        .op-logo-card {
+            transition: none !important;
+            animation: none !important;
+            transform: none !important;
+            opacity: 1 !important;
+        }
+    }
+</style>
+
+
+
+<!-- ══════════ STORY SCROLL (FlowArt) — Hyna Studio ══════════ -->
+
+
+<style>
+    .philosophy-section {
+        background-color: #ffffff;
+        padding: 80px 8% 100px;
+        position: relative;
+        overflow: hidden;
+        font-family: var(--font-body), sans-serif;
+        border-top: 1px solid rgba(19, 19, 26, 0.05);
+    }
+
+    .phil-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+    }
+
+    .phil-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+    }
+
+    .phil-card {
+        background: #f8fafc;
+        border: 1px solid rgba(19, 19, 26, 0.05);
+        border-radius: 24px;
+        padding: 45px 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+            box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+            border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+            background 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        cursor: default;
+    }
+
+    .phil-card:hover {
+        transform: translateY(-6px);
+        border-color: rgba(79, 63, 240, 0.25);
+        box-shadow: 0 16px 36px rgba(79, 63, 240, 0.08);
+        background: #ffffff;
+    }
+
+    .phil-num {
+        font-family: var(--font-mono), monospace;
+        font-size: 13px;
+        font-weight: 700;
+        color: #2563eb;
+        letter-spacing: 0.1em;
+        margin-bottom: 24px;
+        display: inline-block;
+    }
+
+    .phil-title {
+        font-family: var(--font-display), sans-serif;
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--ink);
+        margin-bottom: 16px;
+        letter-spacing: -0.02em;
+        line-height: 1.25;
+    }
+
+    .phil-desc {
+        font-size: 15px;
+        color: var(--muted);
+        line-height: 1.65;
+        margin: 0;
+    }
+
+    @media (max-width: 1024px) {
+        .philosophy-section {
+            padding: 60px 6% 80px;
+        }
+
+        .phil-grid {
+            gap: 24px;
+        }
+
+        .phil-card {
+            padding: 35px 30px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .phil-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .philosophy-section {
+            padding: 50px 20px 70px;
+        }
+    }
+</style>
+
+
+
+
+<!-- HOW WE SOLVE THIS + WHY WE EXIST SECTION -->
+<style>
+    /* ── HOW WE SOLVE THIS ── */
+    .solve-section {
+        background: #ffffff;
+        padding: 100px 8% 80px;
+        position: relative;
+        overflow: hidden;
+        font-family: var(--font-body), sans-serif;
+        border-top: 1px solid rgba(19, 19, 26, 0.06);
+    }
+
+    .solve-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    .solve-heading {
+        text-align: center;
+        font-family: var(--font-display), sans-serif;
+        font-size: clamp(2rem, 4.5vw, 3rem);
+        font-weight: 800;
+        color: var(--ink);
+        letter-spacing: -0.03em;
+        margin: 0 0 56px;
+        line-height: 1.15;
+    }
+
+    .solve-heading em {
+        font-style: normal;
+        font-weight: 400;
+    }
+
+    .solve-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+    }
+
+    .solve-card {
+        background: #111118;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 20px;
+        padding: 36px 32px;
+        display: flex;
+        align-items: flex-start;
+        gap: 22px;
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+            box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .solve-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+    }
+
+    .solve-card-icon {
+        width: 46px;
+        height: 46px;
+        flex-shrink: 0;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        color: #ffffff;
+    }
+
+    .solve-card-body h4 {
+        font-family: var(--font-display), sans-serif;
+        font-size: 17px;
+        font-weight: 700;
+        color: #ffffff;
+        margin: 0 0 10px;
+        letter-spacing: -0.01em;
+    }
+
+    .solve-card-body p {
+        font-size: 14.5px;
+        color: rgba(255, 255, 255, 0.52);
+        line-height: 1.7;
+        margin: 0;
+    }
+
+    /* ── WHY WE EXIST ── */
+    .exist-section {
+        background: #ffffff;
+        padding: 0 8% 100px;
+        font-family: var(--font-body), sans-serif;
+    }
+
+    .exist-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    .exist-heading {
+        text-align: center;
+        font-family: var(--font-display), sans-serif;
+        font-size: clamp(2.4rem, 5vw, 3.4rem);
+        font-weight: 800;
+        color: var(--ink);
+        letter-spacing: -0.03em;
+        margin: 0 0 44px;
+        line-height: 1.1;
+    }
+
+    .exist-heading span {
+        color: #e11d48;
+    }
+
+    .exist-highlight-box {
+        background: #111118;
+        border-radius: 22px;
+        padding: 52px 60px;
+        text-align: center;
+        margin-bottom: 64px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .exist-highlight-box h3 {
+        font-family: var(--font-display), sans-serif;
+        font-size: clamp(1.5rem, 3.5vw, 2.3rem);
+        font-weight: 800;
+        color: #ffffff;
+        letter-spacing: -0.025em;
+        line-height: 1.2;
+        margin: 0 0 16px;
+    }
+
+    .exist-highlight-box p {
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.5);
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    .problem-heading {
+        text-align: center;
+        font-family: var(--font-display), sans-serif;
+        font-size: clamp(1.6rem, 3vw, 2.2rem);
+        font-weight: 700;
+        color: var(--ink);
+        letter-spacing: -0.025em;
+        margin: 0 0 36px;
+        line-height: 1.2;
+    }
+
+    .problem-heading em {
+        font-style: italic;
+        font-weight: 400;
+    }
+
+    .problem-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .problem-card {
+        background: #111118;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 18px;
+        padding: 32px 28px;
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+            box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .problem-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16);
+    }
+
+    .problem-card h4 {
+        font-family: var(--font-display), sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        color: #ffffff;
+        margin: 0 0 14px;
+        letter-spacing: -0.01em;
+        line-height: 1.3;
+    }
+
+    .problem-card p {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.48);
+        line-height: 1.7;
+        margin: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+
+        .solve-cards,
+        .problem-cards {
+            grid-template-columns: 1fr;
+        }
+
+        .exist-highlight-box {
+            padding: 40px 32px;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .solve-section {
+            padding: 70px 20px 60px;
+        }
+
+        .exist-section {
+            padding: 0 20px 80px;
+        }
+
+        .exist-highlight-box {
+            padding: 36px 24px;
+        }
+    }
+</style>
+
+
+<style>
+    #hyna-start-project,
+    #hyna-start-project * {
+        box-sizing: border-box;
+    }
+
+    #hyna-start-project {
+        --hyna-ink: #14140f;
+        --hyna-ink-soft: #4a4a42;
+        --hyna-paper: #ffffff;
+        --hyna-line: #dedcd3;
+        --hyna-accent: #8a6a3f;
+        --hyna-accent-soft: #f4efe4;
+
+        position: relative;
+        width: 100%;
+        min-height: 100vh;
+        z-index: 20;
+
+        background: var(--hyna-paper);
+        color: var(--hyna-ink);
+        display: flex;
+        align-items: center;
+        padding: clamp(60px, 8vw, 120px) clamp(24px, 7vw, 96px);
+        overflow: hidden;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        isolation: isolate;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:opsz,wght,ital@9..144,300,1,9..144,450,0;9..144,450,1&display=swap');
+
+    #hyna-start-project .hyna-grain {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.035;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        z-index: 0;
+    }
+
+    #hyna-start-project .hyna-rule {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 1px;
+        height: 100%;
+        background: var(--hyna-line);
+        transform-origin: top;
+        transform: scaleY(0);
+        transition: transform 1.4s cubic-bezier(.2, .7, .2, 1) .1s;
+        z-index: 0;
+    }
+
+    #hyna-start-project.hyna-in-view .hyna-rule {
+        transform: scaleY(1);
+    }
+
+    #hyna-start-project .hyna-inner {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 1240px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: clamp(32px, 5vw, 72px);
+        align-items: center;
+    }
+
+    #hyna-start-project .hyna-content {
+        min-width: 0;
+    }
+
+    #hyna-start-project .hyna-connect-col {
+        position: relative;
+        align-self: stretch;
+        min-height: clamp(280px, 38vw, 460px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transform: scale(0.85);
+        transition: opacity 1s cubic-bezier(.19, 1, .22, 1) .45s,
+            transform 1.1s cubic-bezier(.19, 1, .22, 1) .45s;
+    }
+
+    #hyna-start-project.hyna-in-view .hyna-connect-col {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    #hyna-start-project .hyna-connect-panel {
+        position: relative;
+        width: clamp(180px, 20vw, 232px);
+        height: clamp(180px, 20vw, 232px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: var(--hyna-ink);
+    }
+
+    #hyna-start-project .hyna-connect-ring {
+        position: absolute;
+        inset: 0;
+        color: var(--hyna-line);
+        animation: hyna-spin 26s linear infinite;
+    }
+
+    #hyna-start-project .hyna-connect-core {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        width: 68%;
+        height: 68%;
+        border-radius: 50%;
+        background: var(--hyna-ink);
+        color: #fff;
+        transition: background .35s ease, transform .45s cubic-bezier(.2, .8, .2, 1);
+    }
+
+    #hyna-start-project .hyna-connect-label {
+        font-size: 15px;
+        font-weight: 500;
+        letter-spacing: 0.01em;
+    }
+
+    #hyna-start-project .hyna-connect-circle {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: #fff;
+        color: var(--hyna-ink);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform .45s cubic-bezier(.2, .8, .2, 1);
+    }
+
+    #hyna-start-project .hyna-connect-panel:hover .hyna-connect-core {
+        background: var(--hyna-accent);
+        transform: scale(1.04);
+    }
+
+    #hyna-start-project .hyna-connect-panel:hover .hyna-connect-circle {
+        transform: rotate(45deg);
+    }
+
+    #hyna-start-project .hyna-top-row {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 24px;
+        margin-bottom: 28px;
+    }
+
+    #hyna-start-project .hyna-eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 12.5px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--hyna-ink-soft);
+        margin: 0;
+        font-weight: 500;
+        opacity: 0;
+        transform: translateY(14px);
+        transition: opacity .8s ease, transform .8s ease;
+    }
+
+    #hyna-start-project .hyna-eyebrow-mark {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--hyna-accent);
+        display: inline-block;
+    }
+
+    #hyna-start-project .hyna-icon {
+        position: relative;
+        flex: 0 0 auto;
+        width: clamp(64px, 8vw, 92px);
+        height: clamp(64px, 8vw, 92px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--hyna-ink);
+        opacity: 0;
+        transform: scale(0.6) rotate(-25deg);
+        transition: opacity .9s cubic-bezier(.19, 1, .22, 1) .3s,
+            transform 1.1s cubic-bezier(.19, 1, .22, 1) .3s;
+    }
+
+    #hyna-start-project.hyna-in-view .hyna-icon {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+
+    #hyna-start-project .hyna-icon-ring {
+        position: absolute;
+        inset: 0;
+        color: var(--hyna-line);
+        animation: hyna-spin 22s linear infinite;
+    }
+
+    @keyframes hyna-spin {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    #hyna-start-project .hyna-headline {
+        font-family: 'Fraunces', Georgia, serif;
+        font-weight: 450;
+        font-size: clamp(48px, 9.5vw, 128px);
+        line-height: 0.94;
+        letter-spacing: -0.02em;
+        margin: 0 0 clamp(36px, 6vw, 64px);
+    }
+
+    #hyna-start-project .hyna-line-wrap {
+        display: block;
+        overflow: hidden;
+    }
+
+    #hyna-start-project .hyna-line {
+        display: inline-block;
+        transform: translateY(115%);
+        transition: transform 1s cubic-bezier(.19, 1, .22, 1);
+        transition-delay: calc(var(--d) * 0.12s);
+    }
+
+    #hyna-start-project.hyna-in-view .hyna-line {
+        transform: translateY(0);
+    }
+
+    #hyna-start-project .hyna-italic {
+        font-style: italic;
+        color: var(--hyna-accent);
+    }
+
+    #hyna-start-project .hyna-body-row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 48px;
+        align-items: end;
+        padding-top: clamp(20px, 3vw, 36px);
+        border-top: 1px solid var(--hyna-line);
+    }
+
+    #hyna-start-project .hyna-desc {
+        max-width: 480px;
+        font-size: 16.5px;
+        line-height: 1.65;
+        color: var(--hyna-ink-soft);
+        margin: 0;
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity .9s ease .5s, transform .9s ease .5s;
+    }
+
+    #hyna-start-project .hyna-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        color: #fff;
+        background: var(--hyna-ink);
+        font-size: 14.5px;
+        font-weight: 500;
+        white-space: nowrap;
+        padding: 10px 10px 10px 22px;
+        border-radius: 999px;
+        border: 1px solid var(--hyna-ink);
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity .9s ease .65s, transform .9s ease .65s,
+            background .3s ease, border-color .3s ease, color .3s ease;
+    }
+
+    #hyna-start-project .hyna-cta-circle {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #fff;
+        color: var(--hyna-ink);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform .45s cubic-bezier(.2, .8, .2, 1), background .3s ease, color .3s ease;
+    }
+
+    #hyna-start-project .hyna-cta:hover {
+        background: var(--hyna-accent);
+        border-color: var(--hyna-accent);
+    }
+
+    #hyna-start-project .hyna-cta:hover .hyna-cta-circle {
+        transform: rotate(45deg);
+    }
+
+    #hyna-start-project.hyna-in-view .hyna-desc,
+    #hyna-start-project.hyna-in-view .hyna-cta,
+    #hyna-start-project.hyna-in-view .hyna-eyebrow,
+    #hyna-start-project.hyna-in-view .hyna-meta-row {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    #hyna-start-project .hyna-meta-row {
+        display: flex;
+        gap: clamp(24px, 5vw, 56px);
+        margin-top: clamp(40px, 6vw, 72px);
+        flex-wrap: wrap;
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity .9s ease .8s, transform .9s ease .8s;
+    }
+
+    #hyna-start-project .hyna-meta {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+    }
+
+    #hyna-start-project .hyna-meta-num {
+        font-family: 'Fraunces', serif;
+        font-style: italic;
+        font-size: 14px;
+        color: var(--hyna-accent);
+    }
+
+    #hyna-start-project .hyna-meta-label {
+        font-size: 13.5px;
+        color: var(--hyna-ink-soft);
+        letter-spacing: 0.01em;
+    }
+
+    #hyna-start-project .hyna-scrollcue {
+        position: absolute;
+        right: clamp(24px, 7vw, 96px);
+        bottom: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        font-size: 11px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--hyna-ink-soft);
+        z-index: 1;
+        opacity: 0;
+        transition: opacity 1s ease 1.1s;
+    }
+
+    #hyna-start-project.hyna-in-view .hyna-scrollcue {
+        opacity: 0.7;
+    }
+
+    #hyna-start-project .hyna-scrollcue-line {
+        width: 1px;
+        height: 36px;
+        background: linear-gradient(var(--hyna-ink-soft), transparent);
+        animation: hyna-cue 1.8s ease-in-out infinite;
+    }
+
+    @keyframes hyna-cue {
+        0% {
+            transform: scaleY(0);
+            transform-origin: top;
+        }
+
+        50% {
+            transform: scaleY(1);
+            transform-origin: top;
+        }
+
+        50.01% {
+            transform-origin: bottom;
+        }
+
+        100% {
+            transform: scaleY(0);
+            transform-origin: bottom;
+        }
+    }
+
+    @media (max-width: 900px) {
+        #hyna-start-project {
+            align-items: flex-start;
+            padding-top: clamp(100px, 15vh, 140px);
+            overflow-y: auto;
+        }
+
+        #hyna-start-project .hyna-inner {
+            grid-template-columns: 1fr;
+            gap: clamp(20px, 4vh, 40px);
+        }
+
+        #hyna-start-project .hyna-connect-col {
+            min-height: 180px;
+            order: 1;
+        }
+
+        #hyna-start-project .hyna-headline {
+            font-size: clamp(32px, 8vw, 48px);
+            margin-bottom: 20px;
+        }
+
+        #hyna-start-project .hyna-meta-row {
+            margin-top: 24px;
+            gap: 16px 24px;
+        }
+
+        #hyna-start-project .hyna-desc {
+            font-size: 14.5px;
+        }
+    }
+
+    @media (max-width: 720px) {
+        #hyna-start-project .hyna-body-row {
+            grid-template-columns: 1fr;
+            align-items: center;
+            gap: 20px;
+        }
+
+        #hyna-start-project .hyna-line {
+            text-align: center;
+            /* centers the heading text */
+            margin: 0 auto;
+            /* ensures balanced spacing */
+            display: block;
+        }
+
+        #hyna-start-project .hyna-rule {
+            display: none;
+        }
+
+        #hyna-start-project .hyna-scrollcue {
+            display: none;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+        #hyna-start-project .hyna-line,
+        #hyna-start-project .hyna-eyebrow,
+        #hyna-start-project .hyna-desc,
+        #hyna-start-project .hyna-cta,
+        #hyna-start-project .hyna-meta-row,
+        #hyna-start-project .hyna-rule,
+        #hyna-start-project .hyna-scrollcue-line,
+        #hyna-start-project .hyna-icon,
+        #hyna-start-project .hyna-icon-ring,
+        #hyna-start-project .hyna-connect-col,
+        #hyna-start-project .hyna-connect-ring {
+            transition: none !important;
+            animation: none !important;
+            transform: none !important;
+            opacity: 1 !important;
+        }
+    }
+</style>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Team — Hyna Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --ink: #111318;
+            --muted: #6b6f79;
+            --line: rgba(17, 19, 24, 0.08);
+            --accent: #4f3ff0;
+            --font-display: 'Sora', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #f6f5fb;
+            font-family: var(--font-body);
+        }
+
+        .team-section {
+            padding: 100px 8% 0;
+            background:
+                linear-gradient(rgba(120, 110, 200, 0.07) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(120, 110, 200, 0.07) 1px, transparent 1px),
+                linear-gradient(180deg, #eceaf7 0%, #f6f5fb 45%, #fbfaff 100%);
+            background-size: 48px 48px, 48px 48px, 100% 100%;
+        }
+
+        .team-header {
+            max-width: 900px;
+            margin: 0 auto 90px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 16px;
+        }
+
+        .team-header h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 4.4vw, 3rem);
+            font-weight: 800;
+            line-height: 1.2;
+            color: var(--ink);
+            margin: 0;
+        }
+
+        .team-header p {
+            max-width: 640px;
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* ── LEADERSHIP LIST ── */
+        .leadership-list {
+            max-width: 980px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 70px;
+            padding-bottom: 110px;
+        }
+
+        .leader-row {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .leader-row.reverse {
+            grid-template-columns: 1fr 200px;
+        }
+
+        .leader-row.reverse .leader-photo {
+            order: 2;
+        }
+
+        .leader-row.reverse .leader-info {
+            order: 1;
+        }
+
+        .leader-photo img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 14px;
+            display: block;
+        }
+
+        .leader-info h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--ink);
+            margin: 0 0 6px;
+            letter-spacing: -0.01em;
+        }
+
+        .leader-role {
+            display: block;
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .leader-bio {
+            color: var(--muted);
+            font-size: 0.96rem;
+            line-height: 1.7;
+            margin: 0 0 16px;
+            max-width: 640px;
+        }
+
+        .leader-links {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .leader-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--ink);
+            font-size: 0.84rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 2px;
+            transition: color .25s ease, border-color .25s ease;
+        }
+
+        .leader-links a:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        @media (max-width: 700px) {
+
+            .leader-row,
+            .leader-row.reverse {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .leader-row.reverse .leader-photo {
+                order: 1;
+            }
+
+            .leader-row.reverse .leader-info {
+                order: 2;
+            }
+
+            .leader-photo img {
+                max-width: 160px;
+                margin: 0 auto;
+            }
+
+            .leader-links {
+                justify-content: center;
+            }
+        }
+
+        /* ── BOARD OF DIRECTORS ── */
+        .board-section {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 70px 0 120px;
+            border-top: 1px solid var(--line);
+        }
+
+        .board-eyebrow {
+            font-family: var(--font-display);
+            font-size: 0.86rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--ink);
+            margin-bottom: 40px;
+        }
+
+        .board-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .board-member {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .board-avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 16px;
+        }
+
+        .board-member h4 {
+            font-size: 0.86rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            color: var(--ink);
+            margin: 0 0 4px;
+        }
+
+        .board-member .board-role {
+            display: block;
+            font-size: 0.82rem;
+            color: var(--muted);
+            line-height: 1.4;
+        }
+
+        .board-member .board-org {
+            display: block;
+            font-size: 0.82rem;
+            color: var(--muted);
+            line-height: 1.4;
+        }
+
+        @media (max-width: 700px) {
+            .board-row {
+                grid-template-columns: repeat(2, 1fr);
+                row-gap: 36px;
+            }
+        }
+
+        /* ══ FADE-IN ANIMATION SYSTEM ══ */
+        @keyframes team-fade-up {
+            from {
+                opacity: 0;
+                transform: translateY(36px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes team-fade-left {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes team-fade-right {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes team-fade-scale {
+            from {
+                opacity: 0;
+                transform: scale(0.88);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Hidden initial state for all animate targets */
+        .t-anim {
+            opacity: 0;
+            will-change: transform, opacity;
+        }
+
+        /* Triggered class — browser plays the animation */
+        .t-anim.t-in {
+            animation-fill-mode: both;
+            animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+            animation-duration: 0.75s;
+        }
+
+        .t-anim.t-in[data-anim="fade-up"] {
+            animation-name: team-fade-up;
+        }
+
+        .t-anim.t-in[data-anim="fade-left"] {
+            animation-name: team-fade-left;
+        }
+
+        .t-anim.t-in[data-anim="fade-right"] {
+            animation-name: team-fade-right;
+        }
+
+        .t-anim.t-in[data-anim="fade-scale"] {
+            animation-name: team-fade-scale;
+        }
+
+        .t-anim[data-delay="1"].t-in {
+            animation-delay: 0.08s;
+        }
+
+        .t-anim[data-delay="2"].t-in {
+            animation-delay: 0.18s;
+        }
+
+        .t-anim[data-delay="3"].t-in {
+            animation-delay: 0.28s;
+        }
+
+        .t-anim[data-delay="4"].t-in {
+            animation-delay: 0.40s;
+        }
+
+        .t-anim[data-delay="5"].t-in {
+            animation-delay: 0.52s;
+        }
+
+        /* Respect reduced-motion */
+        @media (prefers-reduced-motion: reduce) {
+            .t-anim {
+                opacity: 1 !important;
+                animation: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section id="team" class="team-section">
+
+        <!-- Section header -->
+        <div class="team-header">
+            <h2 class="t-anim" data-anim="fade-up">Our Leadership &amp; Innovation Team</h2>
+            <p class="t-anim" data-anim="fade-up" data-delay="2">Passionate experts transforming ideas into
+                impactful solutions through design, technology, and collaboration</p>
+        </div>
+
+        <!-- Leadership: Vignesh, Jashwin, Dharshan -->
+        <div class="leadership-list">
+
+            <!-- Vignesh -->
+            <div class="leader-row">
+                <div class="leader-photo t-anim" data-anim="fade-left">
+                    <img src="https://i.postimg.cc/wjtYqBpS/IMG-33081.jpg" alt="Vignesh">
+                </div>
+                <div class="leader-info">
+                    <h3 class="t-anim" data-anim="fade-up" data-delay="1">Vignesh</h3>
+                    <span class="leader-role t-anim" data-anim="fade-up" data-delay="2">Founder &amp; Chief
+                        Executive Officer</span>
+                    <p class="leader-bio t-anim" data-anim="fade-up" data-delay="3">Vignesh is the Founder and
+                        CEO of Hyna Studio, driving the company's strategic vision and engineering standards. He
+                        believes leadership isn't about control, but about building people who can lead without
+                        him — a philosophy that shapes how the studio operates day to day.</p>
+                    <div class="leader-links t-anim" data-anim="fade-up" data-delay="4">
+                        <a href="https://vigneshvl-dev.github.io/PORTFOLIO/" target="_blank"><i
+                                class="fas fa-globe"></i> Portfolio</a>
+                        <a href="https://www.linkedin.com/in/vigneshvl-dev/" target="_blank"><i
+                                class="fab fa-linkedin-in"></i> LinkedIn</a>
+                        <a href="https://github.com/vigneshvl-dev" target="_blank"><i class="fab fa-github"></i>
+                            GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jashwin -->
+            <div class="leader-row reverse">
+                <div class="leader-photo t-anim" data-anim="fade-right">
+                    <img src="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" alt="Jashwin">
+                </div>
+                <div class="leader-info">
+                    <h3 class="t-anim" data-anim="fade-up" data-delay="1">Jashwin</h3>
+                    <span class="leader-role t-anim" data-anim="fade-up" data-delay="2">Co-Founder &amp; Project
+                        Management Lead</span>
+                    <p class="leader-bio t-anim" data-anim="fade-up" data-delay="3">Jashwin ensures every
+                        project at Hyna Studio stays aligned with stakeholder goals from kickoff to delivery.
+                        His approach comes from a simple observation: deadlines don't fail because of time, they
+                        fail because alignment is missing.</p>
+                    <div class="leader-links t-anim" data-anim="fade-up" data-delay="4">
+                        <a href="https://www.linkedin.com/in/jashwin-j-16b06240a" target="_blank"><i
+                                class="fab fa-linkedin-in"></i> LinkedIn</a>
+                        <a href="https://github.com/jashwinj2008" target="_blank"><i class="fab fa-github"></i>
+                            GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dharshan -->
+            <div class="leader-row">
+                <div class="leader-photo t-anim" data-anim="fade-left">
+                    <img src="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg"
+                        alt="Dharshan">
+                </div>
+                <div class="leader-info">
+                    <h3 class="t-anim" data-anim="fade-up" data-delay="1">Dharshan</h3>
+                    <span class="leader-role t-anim" data-anim="fade-up" data-delay="2">Co-Founder &amp; Chief
+                        Technology Officer</span>
+                    <p class="leader-bio t-anim" data-anim="fade-up" data-delay="3">Dharshan leads systems
+                        architecture, cloud infrastructure, and technical execution at Hyna Studio. He holds
+                        that a co-founder in tech doesn't follow trends — he builds what will become the next
+                        standard.</p>
+                    <div class="leader-links t-anim" data-anim="fade-up" data-delay="4">
+                        <a href="https://portholio-zeta.vercel.app/" target="_blank"><i class="fas fa-globe"></i>
+                            Portfolio</a>
+                        <a href="https://www.linkedin.com/in/dharshan-jm" target="_blank"><i
+                                class="fab fa-linkedin-in"></i> LinkedIn</a>
+                        <a href="https://github.com/dharshan00814" target="_blank"><i class="fab fa-github"></i>
+                            GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Board of Directors: Asthamil, Tharun Krishna, Zarif -->
+        <div class="board-section">
+            <div class="board-eyebrow t-anim" data-anim="fade-up">Board of Directors</div>
+            <div class="board-row">
+
+                <div class="board-member t-anim" data-anim="fade-scale" data-delay="1">
+                    <img class="board-avatar"
+                        src="https://i.postimg.cc/Jnwtf3ZZ/Whats-App-Image-2026-02-20-at-7-00-57-PM.jpg" alt="Asthamil">
+                    <h4>Asthamil</h4>
+                    <span class="board-role">Chief Product Officer &amp; Director</span>
+                    <span class="board-org">Hyna Studio</span>
+                </div>
+
+                <div class="board-member t-anim" data-anim="fade-scale" data-delay="2">
+                    <img class="board-avatar"
+                        src="https://i.postimg.cc/TP5Jj9Th/Whats-App-Image-2026-06-11-at-11-26-46-AM.jpg"
+                        alt="Tharun Krishna">
+                    <h4>Tharun Krishna</h4>
+                    <span class="board-role">Chief Design Officer &amp; Director</span>
+                    <span class="board-org">Hyna Studio</span>
+                </div>
+
+                <div class="board-member t-anim" data-anim="fade-scale" data-delay="3">
+                    <img class="board-avatar" src="https://i.postimg.cc/1zWvJd1C/zarif.jpg" alt="Mohammad Zarif">
+                    <h4>Mohammad Zarif</h4>
+                    <span class="board-role">Chief Operating Officer</span>
+                    <span class="board-org">Hyna Studio</span>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+</body>
+
+
+<script>
+    /* ── Team Section: Scroll-triggered fade-in via IntersectionObserver ── */
+    (function () {
+        var targets = document.querySelectorAll('#team .t-anim');
+        if (!targets.length) return;
+
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('t-in');
+                    io.unobserve(entry.target); /* fire once */
+                }
+            });
+        }, { threshold: 0.15 });
+
+        targets.forEach(function (el) { io.observe(el); });
+    })();
+</script>
 
 </html>
 
@@ -8621,6 +8593,147 @@
         <button class="api-lang-btn" data-lang="Go">Go</button>
     </div>
 </section>
+<!-- Start Your Project Section -->
+<section id="hyna-start-project" class="hyna-start">
+    <div class="hyna-grain"></div>
+
+    <div class="hyna-inner">
+        <div class="hyna-content">
+            <div class="hyna-top-row">
+                <p class="hyna-eyebrow" data-hyna-reveal></p>
+                <div class="hyna-icon" data-hyna-reveal aria-hidden="true">
+                    <svg class="hyna-icon-ring" width="100%" height="100%" viewBox="0 0 120 120">
+                        <circle cx="60" cy="60" r="58" fill="none" stroke="currentColor" stroke-width="1"
+                            stroke-dasharray="2 6" stroke-linecap="round" />
+                    </svg>
+                </div>
+            </div>
+
+            <h2 class="hyna-headline" aria-label="Start Your Project">
+                <span class="hyna-line-wrap"><span class="hyna-line" data-hyna-line style="--d:0">Start</span></span>
+                <span class="hyna-line-wrap"><span class="hyna-line" data-hyna-line style="--d:1">Your</span></span>
+                <span class="hyna-line-wrap"><span class="hyna-line hyna-italic" data-hyna-line
+                        style="--d:2">Project</span></span>
+            </h2>
+
+            <div class="hyna-body-row">
+                <p class="hyna-desc" data-hyna-reveal>
+                    We partner with founders and brands to design and build work that
+                    earns attention on its own — from first sketch to final ship.
+                    Tell us where you're headed, and let's map the fastest way there.
+                </p>
+            </div>
+
+            <div class="hyna-meta-row" data-hyna-reveal>
+                <div class="hyna-meta">
+                    <span class="hyna-meta-num">01</span>
+                    <span class="hyna-meta-label">Discovery call</span>
+                </div>
+                <div class="hyna-meta">
+                    <span class="hyna-meta-num">02</span>
+                    <span class="hyna-meta-label">Scope &amp; proposal</span>
+                </div>
+                <div class="hyna-meta">
+                    <span class="hyna-meta-num">03</span>
+                    <span class="hyna-meta-label">Work begins</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right-side Connect panel, centered in the column -->
+        <div class="hyna-connect-col" data-hyna-reveal>
+            <a class="hyna-connect-panel" href="./contact.html">
+                <span class="hyna-connect-ring" aria-hidden="true">
+                    <svg width="100%" height="100%" viewBox="0 0 200 200">
+                        <circle cx="100" cy="100" r="98" fill="none" stroke="currentColor" stroke-width="1"
+                            stroke-dasharray="2 7" stroke-linecap="round" />
+                    </svg>
+                </span>
+                <span class="hyna-connect-core">
+                    <span class="hyna-connect-label">Connect</span>
+                    <span class="hyna-connect-circle" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
+                            <path d="M3 13L13 3M13 3H5M13 3V11" stroke="currentColor" stroke-width="1.4"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                </span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<script>
+    (function () {
+        function initHWT() {
+            if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+                setTimeout(initHWT, 80);
+                return;
+            }
+            gsap.registerPlugin(ScrollTrigger);
+
+            var startProject = document.getElementById('hyna-start-project');
+            if (!startProject) return;
+
+            ScrollTrigger.create({
+                trigger: startProject,
+                start: 'top 75%',
+                onEnter: function () {
+                    startProject.classList.add('hyna-in-view');
+                },
+                onLeaveBack: function () {
+                    startProject.classList.remove('hyna-in-view');
+                }
+            });
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initHWT);
+        } else {
+            initHWT();
+        }
+        window.addEventListener('resize', function () {
+            if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+        });
+    })();
+</script>
+
+<!-- Lenis Smooth Scroll -->
+<style>
+    html.lenis,
+    html.lenis body {
+        height: auto;
+    }
+
+    .lenis.lenis-smooth {
+        scroll-behavior: auto !important;
+    }
+
+    .lenis.lenis-smooth [data-lenis-prevent] {
+        overscroll-behavior: contain;
+    }
+
+    .lenis.lenis-stopped {
+        overflow: hidden;
+    }
+
+    .lenis.lenis-smooth iframe {
+        pointer-events: none;
+    }
+</style>
+<script src="https://unpkg.com/lenis@1.1.11/dist/lenis.min.js"></script>
+<script>
+    (function () {
+        var ss = getComputedStyle(document.body).getPropertyValue('--smooth-scroll');
+        if (ss && ss.trim() === 'true') {
+            var lenis = new Lenis({ lerp: 0.08, smoothWheel: true });
+            function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+            requestAnimationFrame(raf);
+        }
+    })();
+</script>
+<!-- ══════════ END HAND-WRITING SECTION ══════════ -->
+
 
 <style>
     /* ── API DEV SECTION ── */
@@ -9274,110 +9387,6 @@
 
 
 
-
-<section id="hyna-start-project" class="hyna-start">
-    <div class="hyna-grain"></div>
-
-    <div class="hyna-inner">
-        <div class="hyna-content">
-            <div class="hyna-top-row">
-                <p class="hyna-eyebrow" data-hyna-reveal></p>
-                <div class="hyna-icon" data-hyna-reveal aria-hidden="true">
-                    <svg class="hyna-icon-ring" width="100%" height="100%" viewBox="0 0 120 120">
-                        <circle cx="60" cy="60" r="58" fill="none" stroke="currentColor" stroke-width="1"
-                            stroke-dasharray="2 6" stroke-linecap="round" />
-                    </svg>
-                </div>
-            </div>
-
-            <h2 class="hyna-headline" aria-label="Start Your Project">
-                <span class="hyna-line-wrap"><span class="hyna-line" data-hyna-line style="--d:0">Start</span></span>
-                <span class="hyna-line-wrap"><span class="hyna-line" data-hyna-line style="--d:1">Your</span></span>
-                <span class="hyna-line-wrap"><span class="hyna-line hyna-italic" data-hyna-line
-                        style="--d:2">Project</span></span>
-            </h2>
-
-            <div class="hyna-body-row">
-                <p class="hyna-desc" data-hyna-reveal>
-                    We partner with founders and brands to design and build work that
-                    earns attention on its own — from first sketch to final ship.
-                    Tell us where you're headed, and let's map the fastest way there.
-                </p>
-            </div>
-
-            <div class="hyna-meta-row" data-hyna-reveal>
-                <div class="hyna-meta">
-                    <span class="hyna-meta-num">01</span>
-                    <span class="hyna-meta-label">Discovery call</span>
-                </div>
-                <div class="hyna-meta">
-                    <span class="hyna-meta-num">02</span>
-                    <span class="hyna-meta-label">Scope &amp; proposal</span>
-                </div>
-                <div class="hyna-meta">
-                    <span class="hyna-meta-num">03</span>
-                    <span class="hyna-meta-label">Work begins</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Right-side Connect panel, centered in the column -->
-        <div class="hyna-connect-col" data-hyna-reveal>
-            <a class="hyna-connect-panel" href="./contact.html">
-                <span class="hyna-connect-ring" aria-hidden="true">
-                    <svg width="100%" height="100%" viewBox="0 0 200 200">
-                        <circle cx="100" cy="100" r="98" fill="none" stroke="currentColor" stroke-width="1"
-                            stroke-dasharray="2 7" stroke-linecap="round" />
-                    </svg>
-                </span>
-                <span class="hyna-connect-core">
-                    <span class="hyna-connect-label">Connect</span>
-                    <span class="hyna-connect-circle" aria-hidden="true">
-                        <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
-                            <path d="M3 13L13 3M13 3H5M13 3V11" stroke="currentColor" stroke-width="1.4"
-                                stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                    </span>
-                </span>
-            </a>
-        </div>
-    </div>
-</section>
-
-<script>
-    (function () {
-        function initHWT() {
-            if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-                setTimeout(initHWT, 80);
-                return;
-            }
-            gsap.registerPlugin(ScrollTrigger);
-
-            var startProject = document.getElementById('hyna-start-project');
-            if (!startProject) return;
-
-            ScrollTrigger.create({
-                trigger: startProject,
-                start: 'top 75%',
-                onEnter: function () {
-                    startProject.classList.add('hyna-in-view');
-                },
-                onLeaveBack: function () {
-                    startProject.classList.remove('hyna-in-view');
-                }
-            });
-        }
-
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initHWT);
-        } else {
-            initHWT();
-        }
-        window.addEventListener('resize', function () {
-            if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
-        });
-    })();
-</script>
 
 <section id="faq" class="faq-section">
     <style>
