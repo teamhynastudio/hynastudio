@@ -6033,9 +6033,8 @@
         <section class="statement-hero">
             <div class="bg-videos">
                 <video class="bg-video" autoplay muted playsinline preload="auto">
-                    <source src="./videos/bg-right.mp4" type="video/mp4">
-                    <source src="./videos/IMG_4590.MOV" type="video/quicktime">
-                    <source src="./videos/IMG_4563.MOV" type="video/quicktime">
+                    <source src="./videos/IMG_4590.MOV" type="video/mp4">
+                    <source src="./videos/IMG_4563.MOV" type="video/mp4">
                 </video>
             </div>
             <script>
@@ -6046,21 +6045,23 @@
                     v.defaultMuted = true;
                     v.setAttribute('muted', '');
                     v.playsInline = true;
-                    v.loop = false;
 
-                    /* Continuing background playlist: mp4 -> MOV1 -> MOV2 -> repeat */
+                    /* Continuous looping background playlist */
                     var playlist = [
-                        
                         './videos/IMG_4590.MOV',
                         './videos/IMG_4563.MOV'
                     ];
                     var i = 0;
 
-                    v.addEventListener('ended', function () {
-                        i = (i + 1) % playlist.length;
+                    var playIndex = function (idx) {
+                        i = ((idx % playlist.length) + playlist.length) % playlist.length;
                         v.src = playlist[i];
                         var p = v.play();
                         if (p && typeof p.catch === 'function') { p.catch(function () {}); }
+                    };
+
+                    v.addEventListener('ended', function () {
+                        playIndex(i + 1);
                     });
 
                     var tryPlay = function () {
@@ -6083,7 +6084,7 @@
                         v.addEventListener('loadeddata', tryPlay, { once: true });
                         v.addEventListener('canplay', tryPlay, { once: true });
                     }
-                    v.load();
+                    playIndex(0);
                 })();
             </script>
             <div class="statement-card" id="statementCard">
