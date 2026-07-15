@@ -5993,6 +5993,189 @@
                 </div>
             </div>
         </section>
+
+        <!-- ══════════ BOOKS SECTION ══════════ -->
+        <style>
+            .books-section {
+                background: #000;
+                padding: 60px 5% 80px;
+                font-family: 'Syne', 'Inter', sans-serif;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .books-heading {
+                font-size: clamp(2rem, 4vw, 3rem);
+                font-weight: 800;
+                color: #fff;
+                font-family: 'Syne', sans-serif;
+                font-style: italic;
+                margin-bottom: 40px;
+                letter-spacing: -0.02em;
+            }
+
+            .books-shelf-wrap {
+                position: relative;
+                max-width: 900px;
+                margin: 0 auto;
+            }
+
+            .books-row {
+                display: flex;
+                align-items: flex-end;
+                gap: 10px;
+                padding-bottom: 0;
+                justify-content: center;
+                position: relative;
+                z-index: 2;
+            }
+
+            .book-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                transition: transform 0.35s cubic-bezier(0.16,1,0.3,1);
+                cursor: pointer;
+            }
+
+            .book-item:hover {
+                transform: translateY(-18px);
+            }
+
+            .book-cover {
+                border-radius: 4px 8px 8px 4px;
+                object-fit: cover;
+                box-shadow:
+                    4px 6px 18px rgba(0,0,0,0.7),
+                    -2px 0 6px rgba(0,0,0,0.35);
+                display: block;
+            }
+
+            .book-cover.tall {
+                height: 280px;
+                width: 180px;
+            }
+
+            .book-cover.mid {
+                height: 250px;
+                width: 162px;
+            }
+
+            .book-cover.short {
+                height: 220px;
+                width: 145px;
+            }
+
+            /* Shelf bar */
+            .books-shelf-bar {
+                position: relative;
+                z-index: 3;
+                height: 52px;
+                background: linear-gradient(180deg,
+                    #5fa8e0 0%,
+                    #2e7bca 18%,
+                    #1a5ea8 40%,
+                    #2576cc 60%,
+                    #4096d8 78%,
+                    #2568b0 100%
+                );
+                border-radius: 10px;
+                max-width: 900px;
+                margin: 0 auto;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 24px;
+                box-shadow:
+                    0 6px 24px rgba(0,60,160,0.45),
+                    inset 0 2px 0 rgba(255,255,255,0.18),
+                    inset 0 -2px 0 rgba(0,0,0,0.2);
+            }
+
+            .books-shelf-bar::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 10px;
+                background: linear-gradient(180deg, #1a5ea8, #0e3d7a);
+                border-radius: 0 0 10px 10px;
+            }
+
+            .shelf-knob {
+                width: 32px;
+                height: 32px;
+                border-radius: 50%;
+                background: radial-gradient(circle at 38% 35%, #b0c8e8, #6a8fc4 40%, #2a5a9e 80%, #162f5a);
+                box-shadow:
+                    0 2px 8px rgba(0,0,0,0.5),
+                    inset 0 1px 2px rgba(255,255,255,0.35);
+                flex-shrink: 0;
+            }
+
+            .shelf-view-more {
+                font-size: 11px;
+                font-weight: 700;
+                letter-spacing: 0.22em;
+                text-transform: uppercase;
+                color: rgba(255,255,255,0.75);
+                cursor: pointer;
+                user-select: none;
+                transition: color 0.2s;
+            }
+
+            .shelf-view-more:hover {
+                color: #fff;
+            }
+
+            @media (max-width: 768px) {
+                .book-cover.tall { height: 180px; width: 118px; }
+                .book-cover.mid  { height: 160px; width: 105px; }
+                .book-cover.short{ height: 140px; width: 92px; }
+                .books-row { gap: 6px; }
+            }
+        </style>
+
+        <section class="books-section">
+            <h2 class="books-heading">Books</h2>
+            <div class="books-shelf-wrap">
+                <div class="books-row">
+                    <div class="book-item">
+                        <img class="book-cover tall"
+                            src="https://covers.openlibrary.org/b/id/10527843-L.jpg"
+                            alt="Atomic Habits">
+                    </div>
+                    <div class="book-item">
+                        <img class="book-cover mid"
+                            src="https://covers.openlibrary.org/b/id/10438536-L.jpg"
+                            alt="Ikigai">
+                    </div>
+                    <div class="book-item">
+                        <img class="book-cover tall"
+                            src="https://covers.openlibrary.org/b/id/10378765-L.jpg"
+                            alt="The Silent Patient">
+                    </div>
+                    <div class="book-item">
+                        <img class="book-cover mid"
+                            src="https://covers.openlibrary.org/b/id/12647043-L.jpg"
+                            alt="Surrounded by Idiots">
+                    </div>
+                    <div class="book-item">
+                        <img class="book-cover short"
+                            src="https://covers.openlibrary.org/b/id/10909258-L.jpg"
+                            alt="Almanack of Naval">
+                    </div>
+                </div>
+                <div class="books-shelf-bar">
+                    <div class="shelf-knob"></div>
+                    <span class="shelf-view-more">VIEW MORE</span>
+                    <div class="shelf-knob"></div>
+                </div>
+            </div>
+        </section>
+        <!-- ══════════ END BOOKS SECTION ══════════ -->
+
         <style>
             :root {
                 --bg-deep: #1a0f3d;
