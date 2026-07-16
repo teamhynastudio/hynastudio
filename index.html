@@ -131,12 +131,21 @@
             }
 
             /* Navbar subtitle styling for mobile */
+            .logo-text {
+                min-width: 0;
+                flex: 1 1 auto;
+            }
+
             .logo-sub {
                 font-size: 0.55rem;
                 color: rgba(255, 255, 255, 0.8);
                 margin-top: 0.05rem;
-                text-align: center;
+                text-align: left;
                 transition: color 0.3s ease;
+                white-space: normal;
+                overflow-wrap: break-word;
+                line-height: 1.15;
+                max-width: none;
             }
 
 
@@ -2380,7 +2389,7 @@
             }
 
             .logo-sub {
-                font-size: 0.5rem !important;
+                font-size: 0.4rem !important;
                 letter-spacing: 0.02em !important;
                 white-space: nowrap !important;
                 color: rgba(255, 255, 255, 0.6) !important;
@@ -2596,14 +2605,16 @@
 
             /* Logo subtitle visible on mobile */
             .logo-sub {
-                display: block;
-                font-size: 0.5rem;
-                letter-spacing: 0.05em;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                max-width: 120px;
-            }
+        display: block;
+        font-size: 0.5rem;
+        letter-spacing: 0.05em;
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
+        max-width: none;
+        line-height: 1.15;
+        overflow-wrap: break-word;
+      }
 
             section {
                 padding: 2rem 1.5rem;

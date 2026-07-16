@@ -246,14 +246,16 @@
     }
 
     .logo-sub {
-      display: block;
-      font-size: 0.5rem;
-      letter-spacing: 0.05em;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 120px;
-    }
+        display: block;
+        font-size: 0.5rem;
+        letter-spacing: 0.05em;
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
+        max-width: none;
+        line-height: 1.15;
+        overflow-wrap: break-word;
+      }
 
     /* Hide duplicate floating brand mark on mobile */
     .topmark {
