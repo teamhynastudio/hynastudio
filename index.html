@@ -2605,16 +2605,16 @@
 
             /* Logo subtitle visible on mobile */
             .logo-sub {
-        display: block;
-        font-size: 0.5rem;
-        letter-spacing: 0.05em;
-        white-space: normal;
-        overflow: visible;
-        text-overflow: clip;
-        max-width: none;
-        line-height: 1.15;
-        overflow-wrap: break-word;
-      }
+                display: block;
+                font-size: 0.5rem;
+                letter-spacing: 0.05em;
+                white-space: normal;
+                overflow: visible;
+                text-overflow: clip;
+                max-width: none;
+                line-height: 1.15;
+                overflow-wrap: break-word;
+            }
 
             section {
                 padding: 2rem 1.5rem;
@@ -3646,6 +3646,10 @@
                 transition: filter 0.3s ease, opacity 0.3s ease;
             }
 
+            .trusted-logo-item.skill-india-logo img {
+                max-height: 100px;
+            }
+
             .trusted-logo-item:hover img {
                 filter: grayscale(0) brightness(1) contrast(1);
                 opacity: 1;
@@ -3801,6 +3805,10 @@
                     <div class="trusted-logo-item">
                         <img src="https://i.postimg.cc/XJ7ndzh4/Screenshot-2026-07-09-203138.png" alt="MSME">
                     </div>
+                    <!-- Skill India -->
+                    <div class="trusted-logo-item skill-india-logo">
+                        <img src="https://i.postimg.cc/qBjTHGHX/skilllindialogo-removebg-preview.png" alt="Skill India">
+                    </div>
                     <!-- Startup TN -->
                     <div class="trusted-logo-item">
                         <img src="https://i.postimg.cc/T27ZHwy9/startup-tn-logo.png" alt="Startup TN">
@@ -3819,6 +3827,10 @@
                     <!-- MSME -->
                     <div class="trusted-logo-item duplicate">
                         <img src="https://i.postimg.cc/XJ7ndzh4/Screenshot-2026-07-09-203138.png" alt="MSME">
+                    </div>
+                    <!-- Skill India -->
+                    <div class="trusted-logo-item duplicate skill-india-logo">
+                        <img src="https://i.postimg.cc/qBjTHGHX/skilllindialogo-removebg-preview.png" alt="Skill India">
                     </div>
                     <!-- Startup TN -->
                     <div class="trusted-logo-item duplicate">
@@ -6392,7 +6404,7 @@
                             src="https://covers.openlibrary.org/b/id/10378765-L.jpg" alt="The Silent Patient"></div>
                     <div class="book-item"><img class="book-cover mid"
                             src="https://covers.openlibrary.org/b/id/12647043-L.jpg" alt="Surrounded by Idiots"></div>
-                                    </div>
+                </div>
                 <div class="books-shelf-bar">
                     <div class="shelf-knob"></div>
                     <button class="shelf-view-more" onclick="openBooksModal()">VIEW MORE</button>
@@ -6508,7 +6520,7 @@
             }
 
 
-        /*---------container scr5roll---------*/
+            /*---------container scr5roll---------*/
             <style>.csa-wrapper {
                 width: 100%;
                 background: #000;
