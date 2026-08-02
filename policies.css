@@ -1,14 +1,14 @@
 /* Hyna Studio Legal Policy Pages Stylesheet - Professional Light Theme */
 
 :root {
-    --ink: #0f172a;         /* Slate 900 (Main text color) */
-    --paper: #f8fafc;       /* Slate 50 (Background color) */
-    --accent: #2563eb;      /* Royal/Electric Blue */
-    --accent-light: #3b82f6; /* Accent light */
-    --accent2: #0d9488;     /* Teal */
-    --muted: #475569;       /* Slate 600 */
-    --border: rgba(15, 23, 42, 0.08);
-    --card: #ffffff;
+    --ink: #f8fafc;         /* White/Slate 50 (Main text color in dark theme) */
+    --paper: #000000;       /* Pure Black background */
+    --accent: #3b82f6;      /* Classic Professional Blue */
+    --accent-light: #60a5fa; /* Accent light */
+    --accent2: #1d4ed8;     /* Dark Blue */
+    --muted: #94a3b8;       /* Slate 400 */
+    --border: rgba(255, 255, 255, 0.08);
+    --card: #0a0a0c;        /* Dark zinc 950 */
     
     --font-display: 'Syne', sans-serif;
     --font-body: 'Inter', sans-serif;
@@ -37,41 +37,16 @@ body {
 
 /* Background Grid Effect */
 body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: 
-        linear-gradient(rgba(15, 23, 42, 0.015) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(15, 23, 42, 0.015) 1px, transparent 1px);
-    background-size: 40px 40px;
-    pointer-events: none;
-    z-index: -2;
+    display: none;
 }
 
 /* Glowing background orbs */
 body::after {
-    content: '';
-    position: fixed;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, transparent 70%);
-    top: -150px;
-    left: -150px;
-    pointer-events: none;
-    z-index: -1;
-    border-radius: 50%;
+    display: none;
 }
 
 .glow-orb {
-    position: fixed;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(13, 148, 136, 0.04) 0%, transparent 70%);
-    bottom: -100px;
-    right: -100px;
-    pointer-events: none;
-    z-index: -1;
-    border-radius: 50%;
+    display: none;
 }
 
 /* ── CAPSULE NAVBAR ── */
@@ -87,10 +62,10 @@ nav {
     align-items: center;
     justify-content: space-between;
     padding: 0.75rem 2.5rem;
-    background: rgba(255, 255, 255, 0.75);
-    border: 1px solid rgba(15, 23, 42, 0.08);
+    background: rgba(10, 10, 12, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 60px;
-    box-shadow: 0 8px 32px rgba(15, 23, 42, 0.04), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(20px) saturate(160%);
     -webkit-backdrop-filter: blur(20px) saturate(160%);
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -180,7 +155,7 @@ nav {
 
 .page-hero h1 em {
     font-style: normal;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -245,11 +220,11 @@ nav {
 }
 
 .sidebar-link.active {
-    background: rgba(37, 99, 235, 0.08);
-    border-color: rgba(37, 99, 235, 0.2);
-    color: var(--accent);
+    background: rgba(59, 130, 246, 0.12);
+    border-color: rgba(59, 130, 246, 0.25);
+    color: var(--accent-light);
     font-weight: 600;
-    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.05);
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.1);
 }
 
 /* Document Content */
@@ -326,7 +301,7 @@ nav {
 }
 
 .doc-section th {
-    background: rgba(15, 23, 42, 0.03);
+    background: rgba(255, 255, 255, 0.04);
     color: var(--ink);
     font-weight: 600;
 }
@@ -336,7 +311,7 @@ nav {
 }
 
 .doc-section .highlight-box {
-    background: rgba(37, 99, 235, 0.04);
+    background: rgba(59, 130, 246, 0.06);
     border-left: 3px solid var(--accent);
     padding: 1.25rem 1.5rem;
     border-radius: 0 12px 12px 0;
@@ -351,10 +326,10 @@ nav {
 
 /* ── FOOTER ── */
 footer {
-    background: #f1f5f9;
+    background: #000000;
     color: var(--ink);
     padding: 4rem 4rem 2.5rem;
-    border-top: 1px solid rgba(15, 23, 42, 0.08);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
     position: relative;
     z-index: 10;
 }
@@ -364,7 +339,7 @@ footer {
     justify-content: space-between;
     align-items: flex-start;
     padding-bottom: 3rem;
-    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     margin-bottom: 2rem;
     max-width: 1200px;
     margin-left: auto;
@@ -447,7 +422,7 @@ footer {
     color: var(--accent);
 }
 
-/* Location Box Override for Light Theme */
+/* Location Box Override for Dark Theme */
 footer .footer-location h5 {
     color: var(--ink) !important;
 }
@@ -461,9 +436,9 @@ footer .footer-location div {
 }
 
 footer .footer-location div[style*="width: 44px"] {
-    background: #ffffff !important;
-    border: 1.5px solid rgba(15, 23, 42, 0.08) !important;
-    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05) !important;
+    background: #0a0a0c !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
 }
 
 /* ── RESPONSIVE ── */
