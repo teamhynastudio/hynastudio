@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -5864,7 +5864,175 @@
                 </div>
             </div>
         </section>
+  
+<section class="happy-clients">
+    <h2>Happy Clients </h2>
 
+    <div class="feedback-slider">
+        <div class="feedback-track">
+
+            <!-- Original Cards -->
+            <div class="feedback-card">
+                <img src="kappa1.jpg.jpeg" alt="Kappa">
+                <h3>Kappa Clothing</h3>
+                <p>"Excellent service! Professional team and amazing support throughout our project."</p>
+            </div>
+
+            <div class="feedback-card">
+                <img src="VINS LOGO-Photoroom copy.png" alt="VINS">
+                <h3>VINS Construction</h3>
+                <p>"Highly professional and delivered exactly what we expected. Highly recommended!"</p>
+            </div>
+
+            <div class="feedback-card">
+                <img src="DADSON.jpg.jpeg" alt="Dadson">
+                <h3>Dadson</h3>
+                <p>"Our business website looks fantastic. Great communication and quality."</p>
+            </div>
+
+            <div class="feedback-card">
+                <img src="fule.png" alt="Fuel">
+                <h3>Fuel</h3>
+                <p>"Fast delivery, modern design, and excellent customer support."</p>
+            </div>
+            <div class="feedback-card">
+               <img src="pravin kitchen.jpg.jpeg" alt="pravin kitchen">
+               <h3>Pravin Kitchen</h3>
+               <p>"Good Responce, fast delivery,Excellent work"</p>
+            </div>
+
+
+            <!-- Duplicate Cards -->
+            <div class="feedback-card">
+                <img src="kappa1.jpg.jpeg" alt="Kappa">
+                <h3>Kappa Clothing</h3>
+                <p>"Excellent service! Professional team and amazing support throughout our project."</p>
+            </div>
+
+            <div class="feedback-card">
+                <img src="VINS LOGO-Photoroom copy.png" alt="VINS">
+                <h3>VINS Construction</h3>
+                <p>"Highly professional and delivered exactly what we expected. Highly recommended!"</p>
+            </div>
+
+            <div class="feedback-card">
+                <img src="DADSON.jpg.jpeg" alt="Dadson">
+                <h3>Dadson</h3>
+                <p>"Our business website looks fantastic. Great communication and quality."</p>
+            </div>
+
+            <div class="feedback-card">
+                <img src="fule.png" alt="Fuel">
+                <h3>Fuel</h3>
+                <p>"Fast delivery, modern design, and excellent customer support."</p>
+            </div>
+            <div class="feedback-card">
+               <img src="pravin kitchen.jpg.jpeg" alt="pravin kitchen">
+               <h3>Pravin Kitchen</h3>
+               <p>"Good Responce, fast delivery,Excellent work"</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<style>
+.happy-clients {
+    background: #fff;
+    padding: 80px 0;
+    overflow: hidden;
+}
+
+.happy-clients h2 {
+    text-align: center;
+    font-size: 42px;
+    margin-bottom: 50px;
+    color: #222;
+}
+
+.feedback-slider {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+
+.feedback-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 30s linear infinite;
+}
+
+.feedback-slider:hover .feedback-track {
+    animation-play-state: paused;
+}
+
+.feedback-card {
+    width: 340px;
+    min-width: 340px;
+    margin: 0 20px;
+    background: #fff;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+    transition: .4s;
+}
+
+.feedback-card:hover {
+    transform: translateY(-10px);
+}
+
+.feedback-card img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+.feedback-card h3 {
+    font-size: 22px;
+    color: #222;
+    margin-bottom: 15px;
+}
+
+.feedback-card p {
+    color: #666;
+    line-height: 1.7;
+    font-style: italic;
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* Responsive */
+
+@media (max-width:768px){
+
+.feedback-card{
+    width:280px;
+    min-width:280px;
+    margin:0 12px;
+    padding:25px;
+}
+
+.happy-clients h2{
+    font-size:32px;
+}
+
+.feedback-track{
+    animation-duration:20s;
+}
+
+}
+
+
+</style>
 
         <!-- â•â•â•â•â•â•â•â•â•â• BOOKS SECTION â•â•â•â•â•â•â•â•â•â• -->
         <style>
@@ -6239,6 +6407,7 @@
                 }
             }
         </style>
+        
 
         <section class="books-section">
             <h2 class="books-heading">Books Shelf</h2>
