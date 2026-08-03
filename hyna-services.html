@@ -2,6 +2,20 @@
 <html lang="en">
 
 <head>
+    <script>
+        // Clean URL file names (e.g. index.html) from address bar
+        if (window.location.protocol.startsWith('http')) {
+            var path = window.location.pathname;
+            if (path.endsWith('/index.html') || path.endsWith('/index')) {
+                var clean = path.replace(/\/index(\.html)?$/, '/');
+                window.history.replaceState(null, '', clean + window.location.search + window.location.hash);
+            } else if (path.endsWith('.html')) {
+                var clean = path.slice(0, -5);
+                window.history.replaceState(null, '', clean + window.location.search + window.location.hash);
+            }
+        }
+    </script>
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1B1FN1XNL0"></script>
   <script>
@@ -1252,7 +1266,7 @@
   <!-- NAV -->
   <nav>
 
-    <a href="index.html" class="nav-logo">
+    <a href="./" class="nav-logo">
       <img src="./hyna-logo-new.png" class="logo-img" alt="Hyna Studio Logo">
       <div class="logo-text">
         <span class="logo-main">Hyna Studio</span>
@@ -1261,34 +1275,34 @@
     </a>
 
     <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
+      <li><a href="./">Home</a></li>
 
       <li class="nav-item-dropdown">
         <a href="#" class="nav-link-has-dropdown">Why Us <span class="nav-arrow">▾</span></a>
         <div class="nav-dropdown">
-          <a href="index.html#why-we-exist">Why Choose Us</a>
-          <a href="index.html#team">Meet the Founder</a>
-          <a href="index.html#problems-solving-expertise">Our Advantages</a>
-          <a href="index.html#how-we-solve">What Makes Us Different</a>
-          <a href="index.html#our-process">Our Process</a>
-          <a href="index.html#solutions-overview">Customer Success</a>
-          <a href="index.html#testimonials">Testimonials</a>
-          <a href="privacy-policy.html">Security &amp; Privacy</a>
-          <a href="index.html#faq">FAQs</a>
+          <a href="./#why-we-exist">Why Choose Us</a>
+          <a href="./#team">Meet the Founder</a>
+          <a href="./#problems-solving-expertise">Our Advantages</a>
+          <a href="./#how-we-solve">What Makes Us Different</a>
+          <a href="./#our-process">Our Process</a>
+          <a href="./#solutions-overview">Customer Success</a>
+          <a href="./#testimonials">Testimonials</a>
+          <a href="privacy-policy">Security &amp; Privacy</a>
+          <a href="./#faq">FAQs</a>
         </div>
       </li>
 
       <li class="nav-item-dropdown">
         <a href="#" class="nav-link-has-dropdown">Forge <span class="nav-arrow">▾</span></a>
         <div class="nav-dropdown">
-          <a href="saas-solutions.html">MVP Studio</a>
-          <a href="data-ai.html">AI Products</a>
-          <a href="saas-solutions.html">SaaS Engineering</a>
-          <a href="application-services.html">Mobile Experiences</a>
-          <a href="application-services.html">Web Experiences</a>
-          <a href="digitalization.html">Automation Workflows</a>
-          <a href="digitalization.html">Growth Technology</a>
-          <a href="application-services.html">Scale &amp; Support</a>
+          <a href="saas-solutions">MVP Studio</a>
+          <a href="data-ai">AI Products</a>
+          <a href="saas-solutions">SaaS Engineering</a>
+          <a href="application-services">Mobile Experiences</a>
+          <a href="application-services">Web Experiences</a>
+          <a href="digitalization">Automation Workflows</a>
+          <a href="digitalization">Growth Technology</a>
+          <a href="application-services">Scale &amp; Support</a>
         </div>
       </li>
 
@@ -1369,7 +1383,7 @@
             <span class="stag">Admin dashboards</span>
             <span class="stag">Next.js / React</span>
           </div>
-          <a href="saas-solutions.html" class="service-link">
+          <a href="saas-solutions" class="service-link">
             Explore SaaS Services
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
               stroke-linejoin="round">
@@ -1398,7 +1412,7 @@
             <span class="stag">PWA</span>
             <span class="stag">Shopify</span>
           </div>
-          <a href="./application-services.html" class="service-link">
+          <a href="./application-services" class="service-link">
             Get Started
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
               stroke-linejoin="round">
@@ -1430,7 +1444,7 @@
             <span class="stag">Langchain</span>
             <span class="stag">Data engineering</span>
           </div>
-          <a href="./data-ai.html" class="service-link">
+          <a href="./data-ai" class="service-link">
             Explore AI Services
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
               stroke-linejoin="round">
@@ -1462,7 +1476,7 @@
             <span class="stag">CRM / ERP</span>
             <span class="stag">n8n / Zapier</span>
           </div>
-          <a href="./digitalization.html" class="service-link">
+          <a href="./digitalization" class="service-link">
             Transform Your Business
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
               stroke-linejoin="round">
@@ -1651,14 +1665,14 @@
         <p>Whether you're a founder with an idea, a startup scaling fast, or an enterprise modernising legacy systems —
           we have the team to make it happen.</p>
         <div class="cta-actions">
-          <a href="contact.html" class="btn-primary">
+          <a href="contact" class="btn-primary">
             Book a Free Discovery Call
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
               stroke-linecap="round" stroke-linejoin="round">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
           </a>
-          <a href="index.html#team" class="btn-ghost">
+          <a href="./#team" class="btn-ghost">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;">
               <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
               <circle cx="9" cy="7" r="4"/>

@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+        // Clean URL file names (e.g. index.html) from address bar
+        if (window.location.protocol.startsWith('http')) {
+            var path = window.location.pathname;
+            if (path.endsWith('/index.html') || path.endsWith('/index')) {
+                var clean = path.replace(/\/index(\.html)?$/, '/');
+                window.history.replaceState(null, '', clean + window.location.search + window.location.hash);
+            } else if (path.endsWith('.html')) {
+                var clean = path.slice(0, -5);
+                window.history.replaceState(null, '', clean + window.location.search + window.location.hash);
+            }
+        }
+    </script>
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-1B1FN1XNL0"></script>
     <script>
@@ -26,7 +40,7 @@
 
     <!-- NAV -->
     <nav>
-        <a href="index.html" class="nav-logo">
+        <a href="./" class="nav-logo">
             <img src="./hyna-logo-new.png" class="logo-img" alt="Hyna Studio Logo">
             <div class="logo-text">
                 <span class="logo-main">Hyna Studio</span>
@@ -34,7 +48,7 @@
             </div>
         </a>
         <div style="display: flex; align-items: center; gap: 1.5rem;">
-            <a href="index.html" class="nav-back">
+            <a href="./" class="nav-back">
                 ← Back to Home
             </a>
         </div>
@@ -52,16 +66,16 @@
         <!-- Sidebar -->
         <aside class="sidebar-nav">
             <div class="sidebar-title">Documents</div>
-            <a href="privacy-policy.html" class="sidebar-link active">
+            <a href="privacy-policy" class="sidebar-link active">
                 <i class="fa-solid fa-shield-halved" style="margin-right: 8px;"></i> Privacy Policy
             </a>
-            <a href="shipping-policy.html" class="sidebar-link">
+            <a href="shipping-policy" class="sidebar-link">
                 <i class="fa-solid fa-truck" style="margin-right: 8px;"></i> Shipping Policy
             </a>
-            <a href="terms-conditions.html" class="sidebar-link">
+            <a href="terms-conditions" class="sidebar-link">
                 <i class="fa-solid fa-file-contract" style="margin-right: 8px;"></i> Terms & Conditions
             </a>
-            <a href="refund-policy.html" class="sidebar-link">
+            <a href="refund-policy" class="sidebar-link">
                 <i class="fa-solid fa-hand-holding-dollar" style="margin-right: 8px;"></i> Refund Policy
             </a>
         </aside>
@@ -161,19 +175,19 @@
             <div class="footer-links">
                 <h5>SHOP</h5>
                 <ul>
-                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                    <li><a href="shipping-policy.html">Shipping Policy</a></li>
-                    <li><a href="terms-conditions.html">Terms & Conditions</a></li>
-                    <li><a href="refund-policy.html">Refund Policy</a></li>
+                    <li><a href="privacy-policy">Privacy Policy</a></li>
+                    <li><a href="shipping-policy">Shipping Policy</a></li>
+                    <li><a href="terms-conditions">Terms & Conditions</a></li>
+                    <li><a href="refund-policy">Refund Policy</a></li>
                 </ul>
             </div>
             <div class="footer-links">
                 <h5>Studio</h5>
                 <ul>
-                    <li><a href="index.html#about">About</a></li>
-                    <li><a href="index.html#team">Team</a></li>
-                    <li><a href="index.html#faq">FAQ</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="./#about">About</a></li>
+                    <li><a href="./#team">Team</a></li>
+                    <li><a href="./#faq">FAQ</a></li>
+                    <li><a href="./#contact">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-links">
@@ -201,8 +215,8 @@
         <div class="footer-bottom">
             <p>© 2026 Hyna Studio. All rights reserved.</p>
             <div class="footer-bottom-links">
-                <a href="privacy-policy.html">Privacy Policy</a>
-                <a href="terms-conditions.html">Terms & Conditions</a>
+                <a href="privacy-policy">Privacy Policy</a>
+                <a href="terms-conditions">Terms & Conditions</a>
             </div>
         </div>
     </footer>
