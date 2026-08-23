@@ -7041,8 +7041,8 @@
             }
 
 
-            /*---------container scr5roll---------*/
-            <style>.csa-wrapper {
+            /*---------container scroll---------*/
+            .csa-wrapper {
                 width: 100%;
                 background: #000;
                 display: flex;
@@ -8967,7 +8967,12 @@
                     height: 110px;
                     border-radius: 50%;
                     object-fit: cover;
+                    object-position: center;
                     margin-bottom: 16px;
+                }
+
+                .board-avatar.linciya-avatar {
+                    object-position: center top;
                 }
 
                 .board-member h4 {
@@ -9221,7 +9226,7 @@
                         <div class="board-member t-anim" data-anim="fade-scale" data-delay="3">
                             <img class="board-avatar" src="https://i.postimg.cc/d3HPcdBJ/Screenshot-2026-08-02-233225.png"
                                 alt="Haajra Mufliha">
-                            <h4>Haajra Mufliha</h4>
+                            <h4>Mohamed Arshiya</h4>
                             <span class="board-role">Chief Product & Strategy Officer</span>
                             <span class="board-org">Hyna Studio</span>
                             <div class="board-links">
@@ -9235,7 +9240,7 @@
                             </div>
                         </div>
                         <div class="board-member t-anim" data-anim="fade-scale" data-delay="3">
-                            <img class="board-avatar" src="https://i.postimg.cc/d3HPcdBJ/Screenshot-2026-08-02-233225.png"
+                            <img class="board-avatar linciya-avatar" src="linciya.jpeg"
                                 alt="Linciya">
                             <h4>linciya</h4>
                             <span class="board-role">Chief  Officer</span>
@@ -10996,6 +11001,7 @@
             if (window.lucide) {
                 lucide.createIcons();
             }
+        })();
 
     </script>
 
