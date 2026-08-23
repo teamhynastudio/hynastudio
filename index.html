@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6535,7 +6535,9 @@
                 font-family: var(--font-body);
             }
 
-            style>.csa-wrapper {
+
+            /*---------container scr5roll---------*/
+            <style>.csa-wrapper {
                 width: 100%;
                 background: #000;
                 display: flex;
@@ -8460,7 +8462,12 @@
                     height: 110px;
                     border-radius: 50%;
                     object-fit: cover;
+                    object-position: center;
                     margin-bottom: 16px;
+                }
+
+                .board-avatar.linciya-avatar {
+                    object-position: center top;
                 }
 
                 .board-member h4 {
@@ -8715,8 +8722,8 @@
                             <img class="board-avatar"
                                 src="https://i.postimg.cc/d3HPcdBJ/Screenshot-2026-08-02-233225.png"
                                 alt="Haajra Mufliha">
-                            <h4>Haajra Mufliha</h4>
-                            <span class="board-role">Chief Marketing Officer</span>
+                            <h4>Mohamed Arshiya</h4>
+                            <span class="board-role">Chief Product & Strategy Officer</span>
                             <span class="board-org">Hyna Studio</span>
                             <div class="board-links">
                                 <a href="https://www.linkedin.com/in/USERNAME" target="_blank" aria-label="LinkedIn">
@@ -8728,9 +8735,26 @@
                                 </a>
                             </div>
                         </div>
+                        <div class="board-member t-anim" data-anim="fade-scale" data-delay="3">
+                            <img class="board-avatar linciya-avatar" src="linciya.jpeg" alt="Linciya">
+                            <h4>linciya</h4>
+                            <span class="board-role">Chief Officer</span>
+                            <span class="board-org">Hyna Studio</span>
+                            <div class="board-links">
+                                <a href="https://www.linkedin.com/in/USERNAME" target="_blank" aria-label="LinkedIn">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+
+                                <a href="https://portfolio.yourdomain.com" target="_blank" aria-label="Portfolio">
+                                    <i class="fas fa-globe"></i>
+                                </a>
+                            </div>
+
+
+
+                        </div>
 
                     </div>
-                </div>
 
             </section>
 
@@ -10472,116 +10496,117 @@
             if (window.lucide) {
                 lucide.createIcons();
             }
+        })();
 
     </script>
 
     <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const toggleBtn = document.getElementById('navMobileToggle');
-                const navLinks = document.querySelector('.nav-links');
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleBtn = document.getElementById('navMobileToggle');
+            const navLinks = document.querySelector('.nav-links');
 
-                if (toggleBtn && navLinks) {
-                    // Toggle menu open/closed
-                    toggleBtn.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        const isOpen = toggleBtn.classList.toggle('open');
-                        navLinks.classList.toggle('active', isOpen);
-                    });
+            if (toggleBtn && navLinks) {
+                // Toggle menu open/closed
+                toggleBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const isOpen = toggleBtn.classList.toggle('open');
+                    navLinks.classList.toggle('active', isOpen);
+                });
 
-                    // Close menu when clicking outside
-                    document.addEventListener('click', (e) => {
-                        if (!navLinks.contains(e.target) && !toggleBtn.contains(e.target)) {
-                            toggleBtn.classList.remove('open');
-                            navLinks.classList.remove('active');
+                // Close menu when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!navLinks.contains(e.target) && !toggleBtn.contains(e.target)) {
+                        toggleBtn.classList.remove('open');
+                        navLinks.classList.remove('active');
+                    }
+                });
+
+                // Mobile dropdown toggle
+                document.querySelectorAll('.nav-link-has-dropdown').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        if (window.innerWidth <= 768) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            const parent = link.parentElement;
+                            document.querySelectorAll('.nav-item-dropdown').forEach(item => {
+                                if (item !== parent) item.classList.remove('open');
+                            });
+                            parent.classList.toggle('open');
                         }
                     });
+                });
 
-                    // Mobile dropdown toggle
-                    document.querySelectorAll('.nav-link-has-dropdown').forEach(link => {
-                        link.addEventListener('click', (e) => {
-                            if (window.innerWidth <= 768) {
-                                e.preventDefault();
-                                e.stopPropagation();
-                                const parent = link.parentElement;
-                                document.querySelectorAll('.nav-item-dropdown').forEach(item => {
-                                    if (item !== parent) item.classList.remove('open');
-                                });
-                                parent.classList.toggle('open');
-                            }
-                        });
+                // Close menu when clicking a nav link
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        if (link.classList.contains('nav-link-has-dropdown') && window.innerWidth <= 768) {
+                            return;
+                        }
+                        toggleBtn.classList.remove('open');
+                        navLinks.classList.remove('active');
                     });
-
-                    // Close menu when clicking a nav link
-                    navLinks.querySelectorAll('a').forEach(link => {
-                        link.addEventListener('click', (e) => {
-                            if (link.classList.contains('nav-link-has-dropdown') && window.innerWidth <= 768) {
-                                return;
-                            }
-                            toggleBtn.classList.remove('open');
-                            navLinks.classList.remove('active');
-                        });
-                    });
-                }
-            });
+                });
+            }
+        });
     </script>
 
 
     <!-- ── STICKY FOOTER REVEAL HEIGHT CALCULATION ── -->
     <script>
-            (function () {
-                'use strict';
-                var footer = document.querySelector('footer');
-                if (!footer) return;
+        (function () {
+            'use strict';
+            var footer = document.querySelector('footer');
+            if (!footer) return;
 
-                function setFooterHeight() {
-                    var height = Math.ceil(footer.getBoundingClientRect().height);
-                    document.documentElement.style.setProperty('--footer-height', height + 'px');
-                }
+            function setFooterHeight() {
+                var height = Math.ceil(footer.getBoundingClientRect().height);
+                document.documentElement.style.setProperty('--footer-height', height + 'px');
+            }
 
-                if (typeof ResizeObserver !== 'undefined') {
-                    var ro = new ResizeObserver(setFooterHeight);
-                    ro.observe(footer);
-                }
+            if (typeof ResizeObserver !== 'undefined') {
+                var ro = new ResizeObserver(setFooterHeight);
+                ro.observe(footer);
+            }
 
-                window.addEventListener('resize', setFooterHeight, { passive: true });
+            window.addEventListener('resize', setFooterHeight, { passive: true });
 
-                // Initialize immediately
+            // Initialize immediately
+            setFooterHeight();
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', setFooterHeight);
+            } else {
                 setFooterHeight();
-
-                if (document.readyState === 'loading') {
-                    document.addEventListener('DOMContentLoaded', setFooterHeight);
-                } else {
-                    setFooterHeight();
-                    setTimeout(setFooterHeight, 50);
-                }
-                window.addEventListener('load', setFooterHeight);
-            })();
+                setTimeout(setFooterHeight, 50);
+            }
+            window.addEventListener('load', setFooterHeight);
+        })();
     </script>
 
     <!-- ── HERO TEXT ROTATOR ── -->
     <script>
-            (function () {
-                var textElement = document.getElementById("hero-changing-text");
-                if (!textElement) return;
+        (function () {
+            var textElement = document.getElementById("hero-changing-text");
+            if (!textElement) return;
 
-                var phrases = [
-                    "software with impact.",
-                    "the future of software.",
-                    "the next gen of products.",
+            var phrases = [
+                "software with impact.",
+                "the future of software.",
+                "the next gen of products.",
 
-                ];
+            ];
 
-                var currentIndex = 0;
+            var currentIndex = 0;
 
-                setInterval(function () {
-                    textElement.classList.add("fade-out");
-                    setTimeout(function () {
-                        currentIndex = (currentIndex + 1) % phrases.length;
-                        textElement.textContent = phrases[currentIndex];
-                        textElement.classList.remove("fade-out");
-                    }, 400); // 400ms match transition time
-                }, 2000);
-            })();
+            setInterval(function () {
+                textElement.classList.add("fade-out");
+                setTimeout(function () {
+                    currentIndex = (currentIndex + 1) % phrases.length;
+                    textElement.textContent = phrases[currentIndex];
+                    textElement.classList.remove("fade-out");
+                }, 400); // 400ms match transition time
+            }, 2000);
+        })();
     </script>
 
 </body>
