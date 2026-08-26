@@ -34,29 +34,20 @@
     <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
     <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script>
-        if (typeof gsap !== 'undefined') {
-            gsap.ticker.fps(120);
-            gsap.ticker.lagSmoothing(0);
-        }
-    </script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Sora:wght@700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap"
-        rel="stylesheet">
+    <!-- Preconnect first for fastest font/CDN load -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,900;1,9..144,500&family=Space+Mono:wght@400;700&display=swap"
-        rel="stylesheet">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <!-- Single merged Google Fonts request -->
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Sora:wght@700;800&family=Space+Grotesk:wght@500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <!-- Icons (single load) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <!-- GSAP & Lenis deferred -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <!-- Lucide icons deferred -->
+    <script defer src="https://unpkg.com/lucide@latest"></script>
     <style>
         *,
         *::before,
@@ -3229,19 +3220,14 @@
         (function () {
             window.addEventListener('load', function () {
                 var newLoader = document.getElementById('hyna-new-loader');
-
-                // Trigger hero and nav animations immediately on load
                 document.body.classList.add('hero-animate');
-
-                // Dismiss the loader after the letter animation finishes
+                // Dismiss loader almost immediately
                 setTimeout(function () {
                     if (newLoader) {
                         newLoader.classList.add('loader-hidden');
-                        setTimeout(function () {
-                            newLoader.remove();
-                        }, 800);
+                        setTimeout(function () { newLoader.remove(); }, 200);
                     }
-                }, 1600);
+                }, 200);
             });
         })();
     </script>
@@ -5984,7 +5970,7 @@
             .sdf-phone-screen {
                 width: 100%;
                 height: 100%;
-                background: #000000;
+                background: #ffffff;
                 border-radius: 38px;
                 position: relative;
                 overflow: hidden;
@@ -5992,7 +5978,7 @@
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                border: 1px solid rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(0, 0, 0, 0.06);
             }
 
             /* Screen Glass Gloss Reflection */
