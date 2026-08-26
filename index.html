@@ -220,15 +220,13 @@
                 0 24px 48px rgba(0, 0, 0, 0.8),
                 inset 0 1px 1px rgba(255, 255, 255, 0.25),
                 inset 0 -1px 0 rgba(0, 0, 0, 0.5);
-            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), max-width 0.4s cubic-bezier(0.19, 1, 0.22, 1), background 0.4s cubic-bezier(0.19, 1, 0.22, 1), border-top 0.4s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-            will-change: transform, opacity, box-shadow;
         }
 
-        /* Initial state before page loader finishes */
+        /* Initial state - always visible, no animation */
         body:not(.hero-animate) nav {
-            transform: translateX(-50%) translateY(-28px) translateZ(0);
-            opacity: 0;
-            pointer-events: none;
+            transform: translateX(-50%) translateZ(0);
+            opacity: 1;
+            pointer-events: auto;
         }
 
 
@@ -256,11 +254,9 @@
         }
 
 
-        /* Hide nav while user is actively scrolling */
+        /* nav-hidden - disabled, nav always visible */
         nav.nav-hidden {
-            transform: translateX(-50%) translateY(-120%) translateZ(0);
-            opacity: 0;
-            pointer-events: none;
+            /* no hide animation */
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -5854,490 +5850,270 @@
         </section>
 
 
-        <!-- â•â•â•â•â•â•â•â•â•â• BOOKS SECTION â•â•â•â•â•â•â•â•â•â• -->
+
+            <!-- ══════════ SIMPLE DIRECT FAIR SLIDE SECTION (PURE CODE) ══════════ -->
         <style>
-            .books-section {
-                background: #000;
-                padding: 60px 5% 80px;
-                font-family: 'Syne', 'Inter', sans-serif;
-                position: relative;
-                overflow: hidden;
-            }
-
-            .books-heading {
-                font-size: clamp(2rem, 4vw, 3rem);
-                font-weight: 800;
-                color: #fff;
-                font-family: 'Syne', sans-serif;
-                font-style: italic;
-                margin-bottom: 8px;
-                letter-spacing: -0.02em;
-            }
-
-            .books-subtext {
-                font-size: 14px;
-                color: rgba(255, 255, 255, 0.55);
-                max-width: 520px;
-                line-height: 1.6;
-                margin-bottom: 40px;
-            }
-
-            .books-subtext strong {
-                color: rgba(255, 255, 255, 0.85);
-                font-weight: 600;
-            }
-
-            .books-shelf-wrap {
-                position: relative;
-                max-width: 900px;
-                margin: 0 auto;
-            }
-
-            .books-row {
+            .sdf-slide-section {
+                width: 100%;
+                background: #000000;
+                padding: 70px 5% 90px;
                 display: flex;
-                align-items: flex-end;
-                gap: 10px;
-                padding-bottom: 0;
+                align-items: center;
                 justify-content: center;
                 position: relative;
-                z-index: 2;
+                overflow: hidden;
+                box-sizing: border-box;
+                font-family: 'Syne', 'Inter', sans-serif;
             }
 
-            .book-item {
+            /* Ambient Glows */
+            .sdf-glow-ambient {
+                position: absolute;
+                top: 50%;
+                right: 15%;
+                transform: translateY(-50%);
+                width: 480px;
+                height: 480px;
+                background: radial-gradient(circle, rgba(255, 200, 0, 0.08) 0%, rgba(255, 200, 0, 0.02) 45%, transparent 70%);
+                pointer-events: none;
+                z-index: 1;
+            }
+
+            .sdf-slide-container {
+                width: 100%;
+                max-width: 1140px;
+                margin: 0 auto;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                position: relative;
+                z-index: 2;
+                gap: 40px;
+            }
+
+            /* ── Left Typography ── */
+            .sdf-text-wrap {
+                flex: 1;
+                max-width: 520px;
+            }
+
+            .sdf-heading {
+                font-family: 'Syne', sans-serif;
+                font-size: clamp(3.2rem, 6.8vw, 5.4rem);
+                font-weight: 800;
+                line-height: 1.1;
+                letter-spacing: -0.03em;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .sdf-word-simple {
+                color: #ffffff;
+            }
+
+            .sdf-word-direct {
+                color: #FFC800;
+                text-shadow: 0 0 40px rgba(255, 200, 0, 0.35);
+            }
+
+            .sdf-word-fair {
+                color: #ffffff;
+            }
+
+            /* ── Right Phone Mockup ── */
+            .sdf-phone-wrap {
+                flex: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                perspective: 1400px;
+                padding: 30px 10px;
+            }
+
+            .sdf-phone-3d {
+                width: 270px;
+                height: 540px;
+                position: relative;
+                transform-style: preserve-3d;
+                transform: rotateY(-24deg) rotateX(15deg) rotateZ(14deg);
+                filter: drop-shadow(-30px 40px 60px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 35px rgba(255, 200, 0, 0.06));
+            }
+
+            /* Phone Chassis / Outer Rim */
+            .sdf-phone-body {
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(135deg, #1e1b29 0%, #0d0c13 50%, #15131f 100%);
+                border-radius: 46px;
+                padding: 10px;
+                box-sizing: border-box;
+                position: relative;
+                box-shadow:
+                    0 0 0 2px rgba(255, 255, 255, 0.18),
+                    0 0 0 4px rgba(20, 18, 28, 0.9),
+                    inset 0 1px 2px rgba(255, 255, 255, 0.3),
+                    inset 0 -2px 4px rgba(0, 0, 0, 0.8);
+            }
+
+            /* Side Buttons */
+            .sdf-phone-body::before {
+                content: '';
+                position: absolute;
+                left: -6px;
+                top: 110px;
+                width: 4px;
+                height: 48px;
+                background: #2b2839;
+                border-radius: 3px 0 0 3px;
+                box-shadow: 0 65px 0 #2b2839, 0 -45px 0 #2b2839;
+            }
+
+            .sdf-phone-body::after {
+                content: '';
+                position: absolute;
+                right: -6px;
+                top: 140px;
+                width: 4px;
+                height: 65px;
+                background: #2b2839;
+                border-radius: 0 3px 3px 0;
+            }
+
+            /* Phone Screen */
+            .sdf-phone-screen {
+                width: 100%;
+                height: 100%;
+                background: #000000;
+                border-radius: 38px;
+                position: relative;
+                overflow: hidden;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-                cursor: pointer;
+                justify-content: center;
+                border: 1px solid rgba(255, 255, 255, 0.05);
             }
 
-            .book-item:hover {
-                transform: translateY(-18px);
-            }
-
-            .book-cover {
-                border-radius: 4px 8px 8px 4px;
-                object-fit: cover;
-                display: block;
-                box-shadow: 4px 6px 18px rgba(0, 0, 0, 0.7), -2px 0 6px rgba(0, 0, 0, 0.35);
-            }
-
-            .book-cover.tall {
-                height: 280px;
-                width: 180px;
-            }
-
-            .book-cover.mid {
-                height: 250px;
-                width: 162px;
-            }
-
-            .book-cover.short {
-                height: 220px;
-                width: 145px;
-            }
-
-            .books-shelf-bar {
-                position: relative;
-                z-index: 3;
-                height: 52px;
-                background: linear-gradient(180deg, #5fa8e0 0%, #2e7bca 18%, #1a5ea8 40%, #2576cc 60%, #4096d8 78%, #2568b0 100%);
-                border-radius: 10px;
-                max-width: 900px;
-                margin: 0 auto;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding: 0 24px;
-                box-shadow: 0 6px 24px rgba(0, 60, 160, 0.45), inset 0 2px 0 rgba(255, 255, 255, 0.18), inset 0 -2px 0 rgba(0, 0, 0, 0.2);
-            }
-
-            .books-shelf-bar::after {
-                content: '';
+            /* Screen Glass Gloss Reflection */
+            .sdf-screen-glare {
                 position: absolute;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                height: 10px;
-                background: linear-gradient(180deg, #1a5ea8, #0e3d7a);
-                border-radius: 0 0 10px 10px;
-            }
-
-            .shelf-knob {
-                width: 32px;
-                height: 32px;
-                border-radius: 50%;
-                background: radial-gradient(circle at 38% 35%, #b0c8e8, #6a8fc4 40%, #2a5a9e 80%, #162f5a);
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.35);
-                flex-shrink: 0;
-            }
-
-            .shelf-view-more {
-                font-size: 11px;
-                font-weight: 700;
-                letter-spacing: 0.22em;
-                text-transform: uppercase;
-                color: rgba(255, 255, 255, 0.8);
-                cursor: pointer;
-                user-select: none;
-                transition: color 0.2s;
-                background: none;
-                border: none;
-                font-family: inherit;
-            }
-
-            .shelf-view-more:hover {
-                color: #fff;
-            }
-
-            /* â”€â”€ BOOKS MODAL â”€â”€ */
-            .books-modal-overlay {
-                display: none;
-                position: fixed;
                 inset: 0;
-                z-index: 2147483646;
-                background: rgba(0, 0, 0, 0.88);
-                backdrop-filter: blur(14px);
-                -webkit-backdrop-filter: blur(14px);
-                overflow-y: auto;
-                padding: 120px 20px 80px;
+                background: linear-gradient(125deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 35%, transparent 55%);
+                pointer-events: none;
+                z-index: 5;
             }
 
-            .books-modal-overlay.bm-open {
-                display: block;
-                animation: bmFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            /* Dynamic Island / Camera Notch */
+            .sdf-dynamic-island {
+                position: absolute;
+                top: 14px;
+                width: 76px;
+                height: 20px;
+                background: #000000;
+                border-radius: 20px;
+                z-index: 6;
+                box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 0 4px rgba(0, 0, 0, 0.8);
             }
 
-            @keyframes bmFadeIn {
-                from {
-                    opacity: 0
-                }
-
-                to {
-                    opacity: 1
-                }
-            }
-
-            .books-modal-inner {
-                max-width: 600px;
-                margin: 0 auto;
-                position: relative;
-            }
-
-            .books-modal-close {
-                position: fixed;
-                top: 80px;
-                right: 28px;
-                z-index: 2147483647;
-                background: rgba(255, 255, 255, 0.1);
-                border: 1px solid rgba(255, 255, 255, 0.2);
-                color: #fff;
-                width: 40px;
-                height: 40px;
-                border-radius: 50%;
-                font-size: 18px;
+            /* Emblem / Screen Logo */
+            .sdf-screen-logo-wrap {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                cursor: pointer;
-                transition: background 0.2s;
-            }
-
-            .books-modal-close:hover {
-                background: rgba(255, 255, 255, 0.2);
-            }
-
-            .bm-heading {
-                font-size: clamp(2rem, 5vw, 3rem);
-                font-weight: 800;
-                color: #fff;
-                font-style: italic;
-                font-family: 'Syne', sans-serif;
-                margin-bottom: 10px;
-            }
-
-            .bm-desc {
-                font-size: 14px;
-                color: rgba(255, 255, 255, 0.5);
-                line-height: 1.65;
-                max-width: 460px;
-                margin-bottom: 44px;
-            }
-
-            .bm-desc strong {
-                color: rgba(255, 255, 255, 0.85);
-                font-weight: 600;
-            }
-
-            .bm-category {
-                margin-bottom: 36px;
-            }
-
-            .bm-cat-books {
-                display: flex;
-                align-items: flex-end;
-                gap: 8px;
-            }
-
-            .bm-book-item {
-                transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-                cursor: pointer;
-            }
-
-            .bm-book-item:hover {
-                transform: translateY(-14px);
-            }
-
-            .bm-book-cover {
-                border-radius: 3px 6px 6px 3px;
-                object-fit: cover;
-                display: block;
-                box-shadow: 3px 5px 14px rgba(0, 0, 0, 0.75), -1px 0 4px rgba(0, 0, 0, 0.3);
-            }
-
-            .bm-book-cover.b-tall {
-                height: 200px;
-                width: 130px;
-            }
-
-            .bm-book-cover.b-mid {
-                height: 175px;
-                width: 113px;
-            }
-
-            .bm-book-cover.b-short {
-                height: 155px;
-                width: 100px;
-            }
-
-            .bm-shelf-bar {
                 position: relative;
-                height: 44px;
-                border-radius: 8px;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding: 0 18px;
+                z-index: 4;
             }
 
-            .bm-shelf-bar::after {
-                content: '';
+            .sdf-screen-logo-img {
+                width: 105px;
+                height: 105px;
+                object-fit: contain;
+                border-radius: 20px;
+                filter: drop-shadow(0 0 25px rgba(0, 122, 255, 0.55)) drop-shadow(0 10px 20px rgba(0, 0, 0, 0.7));
+            }
+
+            /* Bottom Speaker Dots (Realistic Edge) */
+            .sdf-phone-bottom-edge {
                 position: absolute;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                height: 8px;
-                border-radius: 0 0 8px 8px;
-                filter: brightness(0.7);
-                background: inherit;
+                bottom: -4px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 140px;
+                height: 3px;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                opacity: 0.6;
             }
 
-            .bm-shelf-bar.blue {
-                background: linear-gradient(180deg, #5fa8e0 0%, #2e7bca 25%, #1a5ea8 50%, #2576cc 75%, #2568b0 100%);
-                box-shadow: 0 5px 20px rgba(0, 60, 160, 0.4), inset 0 2px 0 rgba(255, 255, 255, 0.18);
-            }
-
-            .bm-shelf-bar.gold {
-                background: linear-gradient(180deg, #d4aa50 0%, #b8882a 25%, #9a6e18 50%, #b07d20 75%, #8a5e10 100%);
-                box-shadow: 0 5px 20px rgba(120, 80, 0, 0.45), inset 0 2px 0 rgba(255, 255, 255, 0.18);
-            }
-
-            .bm-shelf-bar.olive {
-                background: linear-gradient(180deg, #8a9040 0%, #6e7230 25%, #555820 50%, #666830 75%, #4a4c18 100%);
-                box-shadow: 0 5px 20px rgba(60, 65, 0, 0.4), inset 0 2px 0 rgba(255, 255, 255, 0.15);
-            }
-
-            .bm-shelf-bar.dark {
-                background: linear-gradient(180deg, #4a3060 0%, #35204a 25%, #261538 50%, #321d46 75%, #1e1028 100%);
-                box-shadow: 0 5px 20px rgba(40, 10, 80, 0.45), inset 0 2px 0 rgba(255, 255, 255, 0.12);
-            }
-
-            .bm-shelf-knob {
-                width: 26px;
-                height: 26px;
-                border-radius: 50%;
-                background: radial-gradient(circle at 38% 35%, #dce8f8, #8aaad8 40%, #3a60a8 80%, #1a2f5a);
-                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.3);
-                flex-shrink: 0;
-            }
-
-            .bm-shelf-bar.gold .bm-shelf-knob {
-                background: radial-gradient(circle at 38% 35%, #f5e0a0, #d4b055 40%, #9a7018 80%, #5a3e08);
-            }
-
-            .bm-shelf-bar.olive .bm-shelf-knob {
-                background: radial-gradient(circle at 38% 35%, #d8e0a0, #aab050 40%, #6a7820 80%, #3a4210);
-            }
-
-            .bm-shelf-bar.dark .bm-shelf-knob {
-                background: radial-gradient(circle at 38% 35%, #c8b0e8, #9070c0 40%, #5030a0 80%, #28105a);
-            }
-
-            .bm-cat-label {
-                font-size: 10px;
-                font-weight: 700;
-                letter-spacing: 0.2em;
-                text-transform: uppercase;
-                color: rgba(255, 255, 255, 0.75);
-                font-family: 'Inter', sans-serif;
-            }
-
-            @media (max-width:600px) {
-                .bm-book-cover.b-tall {
-                    height: 140px;
-                    width: 90px
+            /* Responsive */
+            @media (max-width: 900px) {
+                .sdf-slide-container {
+                    flex-direction: column;
+                    text-align: center;
+                    gap: 30px;
                 }
 
-                .bm-book-cover.b-mid {
-                    height: 122px;
-                    width: 78px
+                .sdf-heading {
+                    align-items: center;
                 }
 
-                .bm-book-cover.b-short {
-                    height: 108px;
-                    width: 68px
+                .sdf-phone-3d {
+                    width: 230px;
+                    height: 460px;
+                    transform: rotateY(-18deg) rotateX(12deg) rotateZ(10deg);
+                }
+            }
+
+            @media (max-width: 480px) {
+                .sdf-slide-section {
+                    padding: 50px 16px 60px;
                 }
 
-                .bm-cat-books {
-                    gap: 6px
+                .sdf-phone-3d {
+                    width: 200px;
+                    height: 400px;
+                    transform: rotateY(-14deg) rotateX(10deg) rotateZ(8deg);
                 }
 
-                .book-cover.tall {
-                    height: 180px;
-                    width: 118px
-                }
-
-                .book-cover.mid {
-                    height: 160px;
-                    width: 105px
-                }
-
-                .book-cover.short {
-                    height: 140px;
-                    width: 92px
-                }
-
-                .books-row {
-                    gap: 6px
-                }
-
-                .books-modal-close {
-                    top: 80px;
-                    right: 20px;
+                .sdf-screen-logo-img {
+                    width: 85px;
+                    height: 85px;
                 }
             }
         </style>
 
-
-        <section class="books-section">
-            <h2 class="books-heading">Books Shelf</h2>
-            <p class="books-subtext">We share the <strong>books</strong> that shaped my thinking &mdash; the ones that
-                challenged me, refined my perspective, and continue to influence how I <strong>build</strong>,
-                <strong>learn</strong>, and grow <strong>over time</strong>.
-            </p>
-            <div class="books-shelf-wrap">
-                <div class="books-row">
-                    <div class="book-item"><img class="book-cover tall"
-                            src="https://covers.openlibrary.org/b/id/10527843-L.jpg" alt="Atomic Habits"></div>
-                    <div class="book-item"><img class="book-cover mid"
-                            src="https://covers.openlibrary.org/b/id/10438536-L.jpg" alt="Ikigai"></div>
-                    <div class="book-item"><img class="book-cover tall"
-                            src="https://covers.openlibrary.org/b/id/10378765-L.jpg" alt="The Silent Patient"></div>
-                    <div class="book-item"><img class="book-cover mid"
-                            src="https://covers.openlibrary.org/b/id/12647043-L.jpg" alt="Surrounded by Idiots"></div>
+        <section class="sdf-slide-section" id="simple-direct-fair">
+            <div class="sdf-glow-ambient"></div>
+            <div class="sdf-slide-container">
+                <!-- Left Text -->
+                <div class="sdf-text-wrap">
+                    <h2 class="sdf-heading">
+                        <span class="sdf-word-simple">Simple.</span>
+                        <span class="sdf-word-direct">Direct.</span>
+                        <span class="sdf-word-fair">Fair.</span>
+                    </h2>
                 </div>
-                <div class="books-shelf-bar">
-                    <div class="shelf-knob"></div>
-                    <button class="shelf-view-more" onclick="openBooksModal()">VIEW MORE</button>
-                    <div class="shelf-knob"></div>
+
+                <!-- Right 3D Phone Mockup -->
+                <div class="sdf-phone-wrap">
+                    <div class="sdf-phone-3d">
+                        <div class="sdf-phone-body">
+                            <div class="sdf-phone-screen">
+                                <div class="sdf-dynamic-island"></div>
+                                <div class="sdf-screen-glare"></div>
+                                <div class="sdf-screen-logo-wrap">
+                                    <img src="hb-logo.png" alt="HB Logo" class="sdf-screen-logo-img">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
+        <!-- ══════════ END SIMPLE DIRECT FAIR SLIDE SECTION ══════════ -->
 
-        <!-- â”€â”€ BOOKS CATEGORY MODAL â”€â”€ -->
-        <div class="books-modal-overlay" id="booksModal" data-lenis-prevent
-            onclick="if(event.target===this)closeBooksModal()">
-            <button class="books-modal-close" onclick="closeBooksModal()">&#x2715;</button>
-            <div class="books-modal-inner">
-                <h2 class="bm-heading">Books</h2>
-                <p class="bm-desc">We share the <strong>books</strong> that shaped my thinking &mdash; the ones that
-                    challenged me, refined my perspective, and continue to influence how I <strong>build</strong>,
-                    <strong>learn</strong>, and grow <strong>over time</strong>.
-                </p>
-                <!-- Fiction -->
-                <div class="bm-category">
-                    <div class="bm-cat-books">
-                        <div class="bm-book-item"><img class="bm-book-cover b-tall"
-                                src="https://covers.openlibrary.org/b/id/10378765-L.jpg" alt="The Silent Patient"></div>
-                        <div class="bm-book-item"><img class="bm-book-cover b-mid"
-                                src="https://covers.openlibrary.org/b/id/8739161-L.jpg" alt="The Alchemist"></div>
-                        <div class="bm-book-item"><img class="bm-book-cover b-mid"
-                                src="https://covers.openlibrary.org/b/id/252002-L.jpg" alt="A Passage to India"></div>
-                    </div>
-                    <div class="bm-shelf-bar blue">
-                        <div class="bm-shelf-knob"></div><span class="bm-cat-label">Fiction</span>
-                        <div class="bm-shelf-knob"></div>
-                    </div>
-                </div>
-                <!-- Self-help -->
-                <div class="bm-category">
-                    <div class="bm-cat-books">
-                        <div class="bm-book-item"><img class="bm-book-cover b-tall"
-                                src="https://covers.openlibrary.org/b/id/10527843-L.jpg" alt="Atomic Habits"></div>
-                        <div class="bm-book-item"><img class="bm-book-cover b-mid"
-                                src="https://covers.openlibrary.org/b/id/10438536-L.jpg" alt="Ikigai"></div>
-                    </div>
-                    <div class="bm-shelf-bar gold">
-                        <div class="bm-shelf-knob"></div><span class="bm-cat-label">Self Help</span>
-                        <div class="bm-shelf-knob"></div>
-                    </div>
-                </div>
-                <!-- Psychology -->
-                <div class="bm-category">
-                    <div class="bm-cat-books">
-                        <div class="bm-book-item"><img class="bm-book-cover b-tall"
-                                src="https://covers.openlibrary.org/b/id/12647043-L.jpg" alt="Surrounded by Idiots">
-                        </div>
-                        <div class="bm-book-item"><img class="bm-book-cover b-mid"
-                                src="https://covers.openlibrary.org/b/id/8159491-L.jpg" alt="The 48 Laws of Power">
-                        </div>
-                    </div>
-                    <div class="bm-shelf-bar olive">
-                        <div class="bm-shelf-knob"></div><span class="bm-cat-label">Psychology</span>
-                        <div class="bm-shelf-knob"></div>
-                    </div>
-                </div>
-                <!-- Poetry -->
-                <div class="bm-category">
-                    <div class="bm-cat-books">
-                        <div class="bm-book-item"><img class="bm-book-cover b-short"
-                                src="https://covers.openlibrary.org/b/id/8738661-L.jpg" alt="Thirukkural"></div>
-                    </div>
-                    <div class="bm-shelf-bar dark">
-                        <div class="bm-shelf-knob"></div><span class="bm-cat-label">Poetry</span>
-                        <div class="bm-shelf-knob"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <script>
-            function openBooksModal() {
-                document.getElementById('booksModal').classList.add('bm-open');
-                document.body.style.overflow = 'hidden';
-                if (window.lenis) {
-                    window.lenis.stop();
-                }
-            }
-
-            function closeBooksModal() {
-                document.getElementById('booksModal').classList.remove('bm-open');
-                document.body.style.overflow = '';
-                if (window.lenis) {
-                    window.lenis.start();
-                }
-            }
-        </script>
-        <!-- â•â•â•â•â•â•â•â•â•â• END BOOKS SECTION â•â•â•â•â•â•â•â•â•â• -->
         <style>
             :root {
                 --bg-deep: #1a0f3d;
@@ -10263,28 +10039,15 @@
                 });
             }, 1500);
 
-            // Nav hide-on-scroll / show-on-stop behavior
+            // Nav scroll - only styling changes, no hide/show animation
             const navElement = document.querySelector('nav');
-            let navScrollTimer = null;
-
             const handleScroll = () => {
                 if (navElement) {
-                    // Add nav-scrolled class for styling adjustments
                     if (window.scrollY > 50) {
                         navElement.classList.add('nav-scrolled');
                     } else {
                         navElement.classList.remove('nav-scrolled');
                     }
-
-                    // Hide nav while scrolling
-                    navElement.classList.add('nav-hidden');
-
-                    // Clear previous timer and start a new one
-                    clearTimeout(navScrollTimer);
-                    navScrollTimer = setTimeout(() => {
-                        // Show nav when scrolling stops (after 200ms idle)
-                        navElement.classList.remove('nav-hidden');
-                    }, 200);
                 }
             };
             window.addEventListener('scroll', handleScroll, { passive: true });
