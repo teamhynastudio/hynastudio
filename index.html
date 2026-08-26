@@ -3047,177 +3047,153 @@
             }
         }
 
-        /* ══════════ FULL-SCREEN LOADING PAGE ══════════ */
+        /* ── NEW LOADING SCREEN OVERLAY ── */
         #hyna-new-loader {
             position: fixed;
             inset: 0;
             z-index: 2147483646;
-            background: #0a0a0f;
+            background-color: transparent;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 0;
-            transition: opacity 0.8s cubic-bezier(0.77, 0, 0.175, 1),
-                        transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+            transition: opacity 0.8s cubic-bezier(0.77, 0, 0.175, 1), visibility 0.8s cubic-bezier(0.77, 0, 0.175, 1);
         }
 
         #hyna-new-loader.loader-hidden {
             opacity: 0;
-            transform: translateY(-20px);
+            visibility: hidden;
             pointer-events: none;
         }
 
-        /* Logo mark on loader */
-        .loader-logo-wrap {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 32px;
-            animation: loaderFadeUp 0.6s ease both;
-        }
-
-        .loader-logo-img {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-        }
-
-        .loader-brand-name {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #ffffff;
-            letter-spacing: -0.02em;
-        }
-
-        .loader-brand-sub {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.6rem;
-            font-weight: 500;
-            color: rgba(255,255,255,0.4);
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            margin-top: 2px;
-        }
-
-        /* Animated letters */
         .loader-wrapper {
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 2px;
-            font-family: 'Syne', sans-serif;
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: #ffffff;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            margin-bottom: 40px;
-            animation: loaderFadeUp 0.6s 0.15s ease both;
+            width: 180px;
+            height: 180px;
+            font-family: "Inter", sans-serif;
+            font-size: 1.2em;
+            font-weight: 300;
+            color: white;
+            border-radius: 50%;
+            background-color: transparent;
+            user-select: none;
+        }
+
+        .loader {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            border-radius: 50%;
+            background-color: transparent;
+            animation: loader-rotate 2s linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes loader-rotate {
+            0% {
+                transform: rotate(90deg);
+                box-shadow:
+                    0 10px 20px 0 #fff inset,
+                    0 20px 30px 0 #ad5fff inset,
+                    0 60px 60px 0 #471eec inset;
+            }
+
+            50% {
+                transform: rotate(270deg);
+                box-shadow:
+                    0 10px 20px 0 #fff inset,
+                    0 20px 10px 0 #d60a47 inset,
+                    0 40px 60px 0 #311e80 inset;
+            }
+
+            100% {
+                transform: rotate(450deg);
+                box-shadow:
+                    0 10px 20px 0 #fff inset,
+                    0 20px 30px 0 #ad5fff inset,
+                    0 60px 60px 0 #471eec inset;
+            }
         }
 
         .loader-letter {
             display: inline-block;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: loaderLetterIn 0.5s ease forwards;
+            opacity: 0.4;
+            transform: translateY(0);
+            animation: loader-letter-anim 2s infinite;
+            z-index: 1;
+            border-radius: 50ch;
+            border: none;
         }
 
-        .loader-letter:nth-child(1)  { animation-delay: 0.1s; }
-        .loader-letter:nth-child(2)  { animation-delay: 0.18s; }
-        .loader-letter:nth-child(3)  { animation-delay: 0.26s; }
-        .loader-letter:nth-child(4)  { animation-delay: 0.34s; }
-        .loader-letter:nth-child(5)  { animation-delay: 0.42s; }
-        .loader-letter:nth-child(6)  { animation-delay: 0.50s; }
-        .loader-letter:nth-child(7)  { animation-delay: 0.58s; }
-        .loader-letter:nth-child(8)  { animation-delay: 0.66s; }
-        .loader-letter:nth-child(9)  { animation-delay: 0.74s; }
-        .loader-letter:nth-child(10) { animation-delay: 0.82s; }
-        .loader-letter:nth-child(11) { animation-delay: 0.90s; }
+        .loader-letter:nth-child(1)  { animation-delay: 0s; }
+        .loader-letter:nth-child(2)  { animation-delay: 0.1s; }
+        .loader-letter:nth-child(3)  { animation-delay: 0.2s; }
+        .loader-letter:nth-child(4)  { animation-delay: 0.3s; }
+        .loader-letter:nth-child(5)  { animation-delay: 0.35s; }
+        .loader-letter:nth-child(6)  { animation-delay: 0.4s; }
+        .loader-letter:nth-child(7)  { animation-delay: 0.5s; }
+        .loader-letter:nth-child(8)  { animation-delay: 0.6s; }
+        .loader-letter:nth-child(9)  { animation-delay: 0.7s; }
+        .loader-letter:nth-child(10) { animation-delay: 0.8s; }
+        .loader-letter:nth-child(11) { animation-delay: 0.9s; }
 
-        @keyframes loaderLetterIn {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Progress bar */
-        .loader-progress-track {
-            width: 220px;
-            height: 2px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 99px;
-            overflow: hidden;
-            animation: loaderFadeUp 0.6s 0.3s ease both;
-        }
-
-        .loader-progress-fill {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, #6C63FF, #00D9A3);
-            border-radius: 99px;
-            animation: loaderBarFill 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-        }
-
-        @keyframes loaderBarFill {
-            0%   { width: 0%; }
-            60%  { width: 75%; }
-            100% { width: 100%; }
-        }
-
-        @keyframes loaderFadeUp {
-            from { opacity: 0; transform: translateY(12px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Hide body scroll during load */
-        body.loading-active {
-            overflow: hidden;
+        @keyframes loader-letter-anim {
+            0%, 100% {
+                opacity: 0.4;
+                transform: translateY(0);
+            }
+            20% {
+                opacity: 1;
+                transform: scale(1.15);
+            }
+            40% {
+                opacity: 0.7;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- ══ FULL-SCREEN LOADING PAGE ══ -->
+    <!-- Loading screen: HYNASTUDIO letter stage -->
     <div id="hyna-new-loader">
-        <div id="loader-stage-letters">
-            <!-- Logo -->
-            <div class="loader-logo-wrap">
-                <img src="./hyna-logo-new.png" class="loader-logo-img" alt="Hyna Studio">
-                <div>
-                    <div class="loader-brand-name">Hyna Studio</div>
-                    <div class="loader-brand-sub">Democratizing Entrepreneurship</div>
-                </div>
-            </div>
-            <!-- Animated letters -->
+        <div class="loader-stage" id="loader-stage-letters">
             <div class="loader-wrapper">
-                <span class="loader-letter">H</span><span class="loader-letter">Y</span><span class="loader-letter">N</span><span class="loader-letter">A</span><span class="loader-letter">&nbsp;</span><span class="loader-letter">S</span><span class="loader-letter">T</span><span class="loader-letter">U</span><span class="loader-letter">D</span><span class="loader-letter">I</span><span class="loader-letter">O</span>
-            </div>
-            <!-- Progress bar -->
-            <div class="loader-progress-track">
-                <div class="loader-progress-fill"></div>
+                <span class="loader-letter">H</span>
+                <span class="loader-letter">y</span>
+                <span class="loader-letter">n</span>
+                <span class="loader-letter">a</span>
+                <span class="loader-letter">&nbsp;</span>
+                <span class="loader-letter">S</span>
+                <span class="loader-letter">t</span>
+                <span class="loader-letter">u</span>
+                <span class="loader-letter">d</span>
+                <span class="loader-letter">i</span>
+                <span class="loader-letter">o</span>
+                <div class="loader"></div>
             </div>
         </div>
     </div>
 
     <script>
-        // Lock scroll while loader is visible
-        document.body.classList.add('loading-active');
-
-        window.addEventListener('load', function () {
-            var newLoader = document.getElementById('hyna-new-loader');
-            // Minimum display: 2200ms so user sees the loading screen
-            var elapsed = Date.now() - performance.timing.navigationStart;
-            var remaining = Math.max(0, 2200 - elapsed);
-            setTimeout(function () {
+        (function () {
+            window.addEventListener('load', function () {
+                var newLoader = document.getElementById('hyna-new-loader');
                 document.body.classList.add('hero-animate');
-                document.body.classList.remove('loading-active');
-                if (newLoader) {
-                    newLoader.classList.add('loader-hidden');
-                    setTimeout(function () { newLoader.remove(); }, 850);
-                }
-            }, remaining);
-        });
+                // Dismiss the loader after the letter animation finishes
+                setTimeout(function () {
+                    if (newLoader) {
+                        newLoader.classList.add('loader-hidden');
+                        setTimeout(function () { newLoader.remove(); }, 800);
+                    }
+                }, 1600);
+            });
+        })();
     </script>
 
 
