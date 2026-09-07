@@ -7401,18 +7401,13 @@
                             <div class="story-col">
                                 <p>At Hyna Studio, we believe technology should solve real problems, create
                                     opportunities, and move people and businesses forward.</p>
-                                <p>We started with a vision to break barriers in technology and build meaningful digital
-                                    products for the future.</p>
                                 <p><strong>HynaBiz</strong> is built to help businesses manage, connect, and grow.
                                     <strong>HynaPay</strong> is part of our vision to create simpler and smarter digital
                                     payment experiences.</p>
                             </div>
                             <div class="story-col">
-                                <p>But our mission is bigger than building individual applications. We are building an
-                                    ecosystem of technology that people and businesses can rely on.</p>
                                 <p>Hyna Studio is powered by a team of students, builders, developers, designers, and
                                     innovators who believe that the future belongs to those who build it.</p>
-                                <p><em>This is just the beginning.</em></p>
                             </div>
                         </div>
                     </div>
@@ -7625,55 +7620,7 @@
                 })();
             </script>
 
-            <!-- ── API DEVELOPER SECTION ── -->
-            <section id="api-section" class="api-dev-section">
-                <!-- LEFT: Info Card -->
-                <div class="api-info-card">
-                    <div class="api-card-inner">
-                        <h2 class="api-card-title">Build and scale faster with <em>developer-friendly APIs</em></h2>
-                        <p class="api-card-desc">Accelerate development with 480+ pre-built workflows and API endpoints.
-                            Give
-                            your engineering team complete control over customer management, invoicing, and subscription
-                            plans —
-                            all with comprehensive documentation and predictable response times.</p>
-                        <div class="api-card-links">
-                            <a href="#" class="api-link-tag">API Explorer ↗</a>
-                            <a href="#" class="api-link-tag">Help Docs ↗</a>
-                            <a href="#" class="api-link-tag">API Docs ↗</a>
-                        </div>
-                        <div class="api-card-badge">
-                            <span class="api-badge-dot"></span>
-                            <span>Built inside <strong>Hyna Studio</strong></span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CENTER: Code Window -->
-                <div class="api-code-panel">
-                    <div class="api-code-header">
-                        <span class="api-code-dot red"></span>
-                        <span class="api-code-dot yellow"></span>
-                        <span class="api-code-dot green"></span>
-                        <span class="api-code-lang-label" id="apiLangLabel">cURL</span>
-                    </div>
-                    <div class="api-code-body">
-                        <pre class="api-code-pre" id="apiCodeDisplay"></pre>
-                        <span class="api-cursor" id="apiCursor">|</span>
-                    </div>
-                </div>
-
-                <!-- RIGHT: Language Selector -->
-                <div class="api-lang-list">
-                    <button class="api-lang-btn active" data-lang="cURL">cURL</button>
-                    <button class="api-lang-btn" data-lang="TypeScript">TypeScript</button>
-                    <button class="api-lang-btn" data-lang="Python">Python</button>
-                    <button class="api-lang-btn" data-lang="PHP">PHP</button>
-                    <button class="api-lang-btn" data-lang="Java">Java</button>
-                    <button class="api-lang-btn" data-lang="Ruby">Ruby</button>
-                    <button class="api-lang-btn" data-lang=".NET">.NET</button>
-                    <button class="api-lang-btn" data-lang="Go">Go</button>
-                </div>
-            </section>
+            
 
             <script>
                 (function () {
@@ -7746,6 +7693,154 @@
             </script>
             <!-- ══════════ END HAND-WRITING SECTION ══════════ -->
 
+
+            
+
+            <script>
+                /* ─── Team card mouse-glow ─── */
+                document.querySelectorAll('.team-card').forEach(card => {
+                    card.addEventListener('mousemove', (e) => {
+                        const rect = card.getBoundingClientRect();
+                        const x = ((e.clientX - rect.left) / rect.width) * 100;
+                        const y = ((e.clientY - rect.top) / rect.height) * 100;
+                        card.style.setProperty('--x', `${x}%`);
+                        card.style.setProperty('--y', `${y}%`);
+                    });
+                });
+
+            </script>
+
+
+            <!-- SplitText Animation for About Section Title (React Bits Variant) -->
+            <style>
+                .about-section .section-title {
+                    opacity: 1;
+                }
+
+                .about-section .section-title .split-word {
+                    display: inline-block;
+                    white-space: nowrap;
+                }
+
+                .about-section .section-title .split-char {
+                    display: inline-block;
+                    will-change: transform, opacity;
+                }
+
+                .about-section .section-title .split-space {
+                    display: inline-block;
+                    white-space: pre;
+                }
+            </style>
+            <script>
+                (function () {
+                    document.addEventListener('DOMContentLoaded', function () {
+                        var titleEl = document.querySelector('#about .section-title');
+                        if (!titleEl) return;
+
+                        var text = titleEl.textContent.trim();
+                        titleEl.textContent = ''; // Clear original text
+
+                        var words = text.split(/\s+/);
+                        words.forEach(function (word, wordIdx) {
+                            var wordSpan = document.createElement('span');
+                            wordSpan.className = 'split-word';
+
+                            for (var i = 0; i < word.length; i++) {
+                                var charSpan = document.createElement('span');
+                                charSpan.className = 'split-char';
+                                charSpan.textContent = word[i];
+                                wordSpan.appendChild(charSpan);
+                            }
+
+                            titleEl.appendChild(wordSpan);
+
+                            // Add spaces between words
+                            if (wordIdx < words.length - 1) {
+                                var spaceSpan = document.createElement('span');
+                                spaceSpan.className = 'split-space';
+                                spaceSpan.textContent = ' ';
+                                titleEl.appendChild(spaceSpan);
+                            }
+                        });
+
+                        // Trigger the animation using GSAP & ScrollTrigger
+                        var chars = titleEl.querySelectorAll('.split-char');
+                        gsap.fromTo(chars,
+                            {
+                                opacity: 0,
+                                y: 40
+                            },
+                            {
+                                opacity: 1,
+                                y: 0,
+                                duration: 1.25,
+                                ease: 'power3.out',
+                                stagger: 0.05, // 50ms delay
+                                scrollTrigger: {
+                                    trigger: titleEl,
+                                    start: 'top 90%-=100px', // threshold: 0.1, rootMargin: -100px
+                                    once: true,
+                                    fastScrollEnd: true
+                                }
+                            }
+                        );
+                    });
+                })();
+            </script>
+
+
+
+
+            <!-- ── API DEVELOPER SECTION ── -->
+            <section id="api-section" class="api-dev-section">
+                <!-- LEFT: Info Card -->
+                <div class="api-info-card">
+                    <div class="api-card-inner">
+                        <h2 class="api-card-title">Build and scale faster with <em>developer-friendly APIs</em></h2>
+                        <p class="api-card-desc">Accelerate development with 480+ pre-built workflows and API endpoints.
+                            Give
+                            your engineering team complete control over customer management, invoicing, and subscription
+                            plans —
+                            all with comprehensive documentation and predictable response times.</p>
+                        <div class="api-card-links">
+                            <a href="#" class="api-link-tag">API Explorer ↗</a>
+                            <a href="#" class="api-link-tag">Help Docs ↗</a>
+                            <a href="#" class="api-link-tag">API Docs ↗</a>
+                        </div>
+                        <div class="api-card-badge">
+                            <span class="api-badge-dot"></span>
+                            <span>Built inside <strong>Hyna Studio</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CENTER: Code Window -->
+                <div class="api-code-panel">
+                    <div class="api-code-header">
+                        <span class="api-code-dot red"></span>
+                        <span class="api-code-dot yellow"></span>
+                        <span class="api-code-dot green"></span>
+                        <span class="api-code-lang-label" id="apiLangLabel">cURL</span>
+                    </div>
+                    <div class="api-code-body">
+                        <pre class="api-code-pre" id="apiCodeDisplay"></pre>
+                        <span class="api-cursor" id="apiCursor">|</span>
+                    </div>
+                </div>
+
+                <!-- RIGHT: Language Selector -->
+                <div class="api-lang-list">
+                    <button class="api-lang-btn active" data-lang="cURL">cURL</button>
+                    <button class="api-lang-btn" data-lang="TypeScript">TypeScript</button>
+                    <button class="api-lang-btn" data-lang="Python">Python</button>
+                    <button class="api-lang-btn" data-lang="PHP">PHP</button>
+                    <button class="api-lang-btn" data-lang="Java">Java</button>
+                    <button class="api-lang-btn" data-lang="Ruby">Ruby</button>
+                    <button class="api-lang-btn" data-lang=".NET">.NET</button>
+                    <button class="api-lang-btn" data-lang="Go">Go</button>
+                </div>
+            </section>
 
             <style>
                 /* ── API DEV SECTION ── */
@@ -8140,13 +8235,13 @@
                     const snippets = {
                         cURL: [
                             '<span class="cm"># Initialize Hyna Studio API</span>',
-                            '<span class="kw">curl</span> -X POST https://api.hynastudio.com/v1/init \\',
-                            '  -H <span class="str">"Authorization: Bearer hyna_sk_live_xxxx"</span> \\',
-                            '  -H <span class="str">"Content-Type: application/json"</span> \\',
+                            '<span class="kw">curl</span> -X POST https://api.hynastudio.com/v1/init \',
+                            '  -H <span class="str">"Authorization: Bearer hyna_sk_live_xxxx"</span> \',
+                            '  -H <span class="str">"Content-Type: application/json"</span> \',
                             '  -d <span class="str">\'{"site": "my-site", "apiKey": "my-api-key"}\'</span>',
                             '',
                             '<span class="cm"># Create a subscription</span>',
-                            '<span class="kw">curl</span> -X POST https://api.hynastudio.com/v1/subscriptions \\',
+                            '<span class="kw">curl</span> -X POST https://api.hynastudio.com/v1/subscriptions \',
                             '  -d <span class="str">\'{"customerId": "cust_001", "planId": "pro"}\'</span>',
                         ],
                         TypeScript: [
@@ -8179,7 +8274,7 @@
                             '  <span class="str">"apiKey"</span> => <span class="str">"my-api-key"</span>,',
                             ']);',
                             '',
-                            '<span class="kw">$result</span> = HynaStudio\\Subscription',
+                            '<span class="kw">$result</span> = HynaStudio\Subscription',
                             '  ::<span class="fn">createWithItems</span>([',
                             '    <span class="str">"customerId"</span> => <span class="str">"cust_001"</span>',
                             '  ]);',
@@ -8250,7 +8345,8 @@
                     function animateCode(lang) {
                         if (typeTimer) clearTimeout(typeTimer);
                         const lines = snippets[lang];
-                        const fullHTML = lines.join('\n');
+                        const fullHTML = lines.join('
+');
                         display.innerHTML = '';
                         cursor.style.display = 'inline';
 
@@ -8303,101 +8399,6 @@
                     autoRotate = setInterval(rotateLang, 4000);
                 })();
             </script>
-
-            <script>
-                /* ─── Team card mouse-glow ─── */
-                document.querySelectorAll('.team-card').forEach(card => {
-                    card.addEventListener('mousemove', (e) => {
-                        const rect = card.getBoundingClientRect();
-                        const x = ((e.clientX - rect.left) / rect.width) * 100;
-                        const y = ((e.clientY - rect.top) / rect.height) * 100;
-                        card.style.setProperty('--x', `${x}%`);
-                        card.style.setProperty('--y', `${y}%`);
-                    });
-                });
-
-            </script>
-
-
-            <!-- SplitText Animation for About Section Title (React Bits Variant) -->
-            <style>
-                .about-section .section-title {
-                    opacity: 1;
-                }
-
-                .about-section .section-title .split-word {
-                    display: inline-block;
-                    white-space: nowrap;
-                }
-
-                .about-section .section-title .split-char {
-                    display: inline-block;
-                    will-change: transform, opacity;
-                }
-
-                .about-section .section-title .split-space {
-                    display: inline-block;
-                    white-space: pre;
-                }
-            </style>
-            <script>
-                (function () {
-                    document.addEventListener('DOMContentLoaded', function () {
-                        var titleEl = document.querySelector('#about .section-title');
-                        if (!titleEl) return;
-
-                        var text = titleEl.textContent.trim();
-                        titleEl.textContent = ''; // Clear original text
-
-                        var words = text.split(/\s+/);
-                        words.forEach(function (word, wordIdx) {
-                            var wordSpan = document.createElement('span');
-                            wordSpan.className = 'split-word';
-
-                            for (var i = 0; i < word.length; i++) {
-                                var charSpan = document.createElement('span');
-                                charSpan.className = 'split-char';
-                                charSpan.textContent = word[i];
-                                wordSpan.appendChild(charSpan);
-                            }
-
-                            titleEl.appendChild(wordSpan);
-
-                            // Add spaces between words
-                            if (wordIdx < words.length - 1) {
-                                var spaceSpan = document.createElement('span');
-                                spaceSpan.className = 'split-space';
-                                spaceSpan.textContent = ' ';
-                                titleEl.appendChild(spaceSpan);
-                            }
-                        });
-
-                        // Trigger the animation using GSAP & ScrollTrigger
-                        var chars = titleEl.querySelectorAll('.split-char');
-                        gsap.fromTo(chars,
-                            {
-                                opacity: 0,
-                                y: 40
-                            },
-                            {
-                                opacity: 1,
-                                y: 0,
-                                duration: 1.25,
-                                ease: 'power3.out',
-                                stagger: 0.05, // 50ms delay
-                                scrollTrigger: {
-                                    trigger: titleEl,
-                                    start: 'top 90%-=100px', // threshold: 0.1, rootMargin: -100px
-                                    once: true,
-                                    fastScrollEnd: true
-                                }
-                            }
-                        );
-                    });
-                })();
-            </script>
-
-
 
 
             <section id="faq" class="faq-section">
@@ -8931,7 +8932,6 @@
                 </script>
             </section>
 
-
             <!-- CTA -->
             <div class="cta-banner" id="contact">
                 <h2>Ready to build something great?</h2>
@@ -9037,9 +9037,7 @@
                 <p>
                     <strong>Hyna Studio Technologies LLP</strong> is an Indian technology and product innovation company
                     building digital products and platforms designed to help businesses manage, connect, grow, and
-                    operate more efficiently. Our ecosystem includes technology platforms and business solutions such as
-                    <strong>HynaBiz, HynaPay, HynaCRM, HynaQuote (Quotation Management Systems), Business Management
-                        Tools, and HynaConnect (Business Connection Platforms)</strong>.
+                    operate more efficiently.
                 </p>
                 <p>
                     <strong>Our Mission:</strong> Hyna Studio is working towards building an integrated business
