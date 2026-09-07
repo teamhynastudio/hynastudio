@@ -3051,8 +3051,8 @@
         #hyna-new-loader {
             position: fixed;
             inset: 0;
-            z-index: 2147483646;
-            background-color: transparent;
+            z-index: 2147483647;
+            background-color: #08080a;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -3182,17 +3182,36 @@
 
     <script>
         (function () {
-            window.addEventListener('load', function () {
+            function revealHero() {
                 var newLoader = document.getElementById('hyna-new-loader');
-                document.body.classList.add('hero-animate');
-                // Dismiss the loader after the letter animation finishes
+                if (!newLoader) {
+                    document.body.classList.add('hero-animate');
+                    return;
+                }
+                
+                // Allow the loader animation to complete its initial cycle
                 setTimeout(function () {
-                    if (newLoader) {
-                        newLoader.classList.add('loader-hidden');
-                        setTimeout(function () { newLoader.remove(); }, 800);
-                    }
-                }, 1600);
-            });
+                    newLoader.classList.add('loader-hidden');
+                    // Trigger hero section entrance animation as loader fades out
+                    setTimeout(function () {
+                        document.body.classList.add('hero-animate');
+                    }, 200);
+                    // Remove loader from DOM after transition
+                    setTimeout(function () {
+                        if (newLoader.parentNode) {
+                            newLoader.remove();
+                        }
+                    }, 900);
+                }, 1400);
+            }
+
+            if (document.readyState === 'complete') {
+                revealHero();
+            } else {
+                window.addEventListener('load', revealHero);
+                // Safety fallback timeout
+                setTimeout(revealHero, 2500);
+            }
         })();
     </script>
 
