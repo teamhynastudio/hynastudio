@@ -900,97 +900,185 @@
 
         /* ─── FOOTER ─── */
         footer {
-            background-color: #04050a;
-            border-top: 1px solid var(--border);
-            padding: 80px 8% 40px;
+            background: #000000;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 5rem 8% 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-family: var(--font-body, 'Inter', sans-serif);
             position: relative;
             z-index: 10;
         }
 
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
+        .footer-top-grid {
+            display: grid;
+            grid-template-columns: 2.2fr repeat(4, 1fr);
             gap: 40px;
+            padding-bottom: 3.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .footer-logo {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            max-width: 320px;
-        }
-
-        .footer-logo-title {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .footer-logo-title span {
-            font-family: var(--font-display);
-            font-size: 22px;
-            font-weight: 800;
-            color: var(--ink);
-        }
-
-        .footer-desc {
-            font-size: 14px;
-            color: var(--ink-dim);
-            line-height: 1.6;
-        }
-
-        .footer-links-group {
-            display: flex;
-            gap: 60px;
-        }
-
-        .footer-column {
+        .footer-col-brand {
             display: flex;
             flex-direction: column;
             gap: 16px;
         }
 
-        .footer-column h4 {
-            font-family: var(--font-mono);
-            font-size: 11px;
-            letter-spacing: 0.12em;
+        .footer-logo-link {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-logo-img {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+        }
+
+        .footer-logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-logo-main {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.02em;
+        }
+
+        .footer-logo-sub {
+            font-size: 0.72rem;
+            color: rgba(255, 255, 255, 0.5);
             text-transform: uppercase;
-            color: var(--blue-light);
+            letter-spacing: 0.06em;
+            font-weight: 700;
         }
 
-        .footer-column a {
-            font-size: 14px;
-            color: var(--ink-dim);
-            transition: color 0.25s;
+        .footer-copy-info {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.45);
+            line-height: 1.55;
+            margin: 4px 0 8px;
         }
 
-        .footer-column a:hover {
-            color: var(--ink);
-        }
-
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 60px auto 0;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        .footer-social-bar {
             display: flex;
-            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
             flex-wrap: wrap;
-            gap: 20px;
-            font-size: 13px;
-            color: var(--ink-dimmer);
+            margin-top: 4px;
         }
 
-        .footer-bottom-links {
+        .footer-social-bar a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.65);
             display: flex;
-            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: all 0.25s ease;
         }
 
-        .footer-bottom-links a:hover {
-            color: var(--ink);
+        .footer-social-bar a:hover {
+            background: #ffffff;
+            color: #000000;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(255, 255, 255, 0.2);
+        }
+
+        .footer-col-title {
+            font-family: var(--font-display);
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 1.25rem;
+            letter-spacing: 0.04em;
+        }
+
+        .footer-link-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .footer-link-list a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.55);
+            font-size: 0.84rem;
+            transition: color 0.2s ease, transform 0.2s ease;
+            display: inline-block;
+        }
+
+        .footer-link-list a:hover {
+            color: #ffffff;
+            transform: translateX(3px);
+        }
+
+        .footer-disclaimer-box {
+            padding: 1.5rem 0 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-disclaimer-box p {
+            font-size: 0.70rem;
+            line-height: 1.55;
+            color: rgba(255, 255, 255, 0.48);
+            margin: 0;
+        }
+
+        .footer-disclaimer-box strong {
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 600;
+        }
+
+        .footer-disclaimer-box a {
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: underline;
+        }
+
+        .footer-disclaimer-box a:hover {
+            color: #ffffff;
+        }
+
+        .footer-legal-bar {
+            padding-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .footer-legal-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .footer-legal-links a {
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.45);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-legal-links a:hover {
+            color: #ffffff;
         }
 
         @media (max-width: 768px) {
@@ -1293,34 +1381,122 @@
     <!-- FOOTER -->
     <footer>
         <div class="footer-container">
-            <div class="footer-logo">
-                <div class="footer-logo-title">
-                    <img src="./hyna-logo-new.png" alt="Logo" class="logo-img">
-                    <span>Hyna Studio</span>
+            <!-- TOP BRAND & MULTI-COLUMN NAVIGATION GRID -->
+            <div class="footer-top-grid">
+                <!-- COL 1: LOGO & BRAND DETAILS -->
+                <div class="footer-col-brand">
+                    <a href="index.html" class="footer-logo-link">
+                        <img src="./hyna-logo-new.png" class="footer-logo-img" alt="Hyna Studio Logo">
+                        <div class="footer-logo-text">
+                            <span class="footer-logo-main">Hyna Studio</span>
+                            <span class="footer-logo-sub">Business Platform</span>
+                        </div>
+                    </a>
+                    <p class="footer-copy-info">
+                        © 2010 - 2026, Hyna Studio Technologies LLP.<br>All rights reserved.
+                    </p>
+                    <div class="footer-social-bar">
+                        <a href="https://x.com/HynaStudio" target="_blank" rel="noopener" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/hyna-studio-089b33416/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://whatsapp.com" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="https://github.com/teamhynastudio" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    </div>
                 </div>
-                <p class="footer-desc">Designing and building exceptional digital experiences that empower businesses to
-                    scale, proudly crafted in Tamil Nadu.</p>
+
+                <!-- COL 2: PRODUCTS (Hyna Business Platform) -->
+                <div class="footer-col-links">
+                    <h5 class="footer-col-title">Products</h5>
+                    <ul class="footer-link-list">
+                        <li><a href="saas.html">HynaBiz</a></li>
+                        <li><a href="ai-product.html">HynaPay</a></li>
+                        <li><a href="ai-product.html">HynaCRM</a></li>
+                        <li><a href="saas-solutions.html">HynaQuote</a></li>
+                        <li><a href="data-ai.html">HynaConnect</a></li>
+                        <li><a href="launchpad.html">MVP Studio</a></li>
+                    </ul>
+                </div>
+
+                <!-- COL 3: SUPPORT -->
+                <div class="footer-col-links">
+                    <h5 class="footer-col-title">Support</h5>
+                    <ul class="footer-link-list">
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="touch.html">Support Portal</a></li>
+                        <li><a href="index.html#api-section">API Documentation</a></li>
+                        <li><a href="release.html">System Status</a></li>
+                        <li><a href="why-choose-us.html">Developer Guides</a></li>
+                        <li><a href="privacy-policy.html">Security Charter</a></li>
+                    </ul>
+                </div>
+
+                <!-- COL 4: COMPANY -->
+                <div class="footer-col-links">
+                    <h5 class="footer-col-title">Company</h5>
+                    <ul class="footer-link-list">
+                        <li><a href="index.html#why-we-exist">About Hyna</a></li>
+                        <li><a href="team.html">Our People (Team)</a></li>
+                        <li><a href="meet.html">Philosophy & Mission</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="press.html">Press & Media</a></li>
+                        <li><a href="open-source.html">Open Source</a></li>
+                    </ul>
+                </div>
+
+                <!-- COL 5: QUICK LINKS -->
+                <div class="footer-col-links">
+                    <h5 class="footer-col-title">Quick Links</h5>
+                    <ul class="footer-link-list">
+                        <li><a href="saas.html">SaaS Solutions</a></li>
+                        <li><a href="ai-product.html">AI & Data Products</a></li>
+                        <li><a href="mobile.html">Application Services</a></li>
+                        <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="sitemap.html">Sitemap</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="footer-links-group">
-                <div class="footer-column">
-                    <h4>Forge</h4>
-                    <a href="saas-solutions">MVP Studio</a>
-                    <a href="data-ai">AI Products</a>
-                    <a href="application-services">Mobile Apps</a>
-                </div>
-                <div class="footer-column">
-                    <h4>Company</h4>
-                    <a href="index.html#why-we-exist">Why Us</a>
-                    <a href="team.html">Team</a>
-                    <a href="careers">Careers</a>
-                </div>
+
+            <!-- COMPANY INFORMATION & IMPORTANT NOTICE -->
+            <div class="footer-disclaimer-box">
+                <p>
+                    <strong>Hyna Studio Technologies LLP</strong> is an Indian technology and product innovation company building digital products and platforms designed to help businesses manage, connect, grow, and operate more efficiently. Our ecosystem includes technology platforms and business solutions such as <strong>HynaBiz, HynaPay, HynaCRM, HynaQuote (Quotation Management Systems), Business Management Tools, and HynaConnect (Business Connection Platforms)</strong>.
+                </p>
+                <p>
+                    <strong>Our Mission:</strong> Hyna Studio is working towards building an integrated business ecosystem that helps entrepreneurs, startups, small businesses, and organizations access the tools, connections, services, and opportunities they need to grow — one unified ecosystem for managing your business and connecting with the people and opportunities that help it grow.
+                </p>
+                <p>
+                    <strong>HynaBiz:</strong> HynaBiz is a business-focused platform designed to help business owners manage and grow their businesses. Depending on the product version and available features, HynaBiz may provide tools for business management, customer relationship management (CRM), customer and business connections, quotation management, sales tracking, products and services management, business analytics, AI-powered assistance, growth opportunities, and professional connections. Features and services may change as the platform continues to develop.
+                </p>
+                <p>
+                    <strong>HynaPay &amp; Financial Notice:</strong> HynaPay is intended to support payment-related experiences within the Hyna ecosystem. Where payment processing is involved, transactions may be facilitated through authorized banks, regulated payment service providers, payment gateways, or other legally authorized financial partners. Hyna Studio does not represent itself as a bank, stock broker, investment advisor, or securities trading platform unless separately licensed or legally authorized to provide such services. Users should carefully review applicable payment terms and policies before completing transactions.
+                </p>
+
+                <p>
+                    <strong>Data, Privacy, AI &amp; Security Notice:</strong> Hyna Studio is committed to responsible technology development and data protection. Users should keep account credentials secure, avoid sharing passwords or OTPs, use accurate information, report suspicious activity, and review applicable privacy policies. While we work to maintain secure and reliable systems, no internet-based platform can guarantee absolute security. Some products may include Artificial Intelligence and automation features; AI-generated recommendations, insights, or responses should be independently reviewed before making important business, financial, legal, or operational decisions. Certain features may use third-party technologies or APIs subject to independent third-party terms.
+                </p>
+                <p>
+                    <strong>User Responsibility &amp; Fraud Prevention:</strong> Users and businesses using Hyna Studio platforms are responsible for their own business decisions, customer relationships, commercial agreements, product and service quality, pricing, legal compliance, tax obligations, and data entered into the platform. Hyna Studio does not authorize anyone to request your password, OTP, private account credentials, or sensitive information through unofficial channels. Always verify communications through official Hyna Studio channels. Hyna Studio may update its products, features, services, terms, policies, and technology from time to time.
+                </p>
+                <p style="font-weight: 600; color: rgba(255, 255, 255, 0.75);">
+                    Hyna Studio — Building India's Next-Generation Business Technology Ecosystem. 🇮🇳 &nbsp;|&nbsp; A unified ecosystem of technology products designed to help businesses manage, connect, transact, and grow.
+                </p>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <p> &copy; 2026 Hyna Studio. All rights reserved.</p>
-            <div class="footer-bottom-links">
-                <a href="privacy-policy.html">Privacy Policy</a>
-                <a href="terms-conditions.html">Terms & Conditions</a>
+
+            <!-- BOTTOM LEGAL BAR -->
+            <div class="footer-legal-bar">
+                <div class="footer-legal-links">
+                    <a href="terms-conditions.html">NSE</a>
+                    <a href="terms-conditions.html">BSE</a>
+                    <a href="terms-conditions.html">Terms & Conditions</a>
+                    <a href="privacy-policy.html">Policies & Procedures</a>
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="disclosure.html">Disclosure</a>
+                    <a href="security.html">Security</a>
+                    <a href="sitemap.html">Sitemap</a>
+                </div>
             </div>
         </div>
     </footer>
