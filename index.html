@@ -26,7 +26,7 @@
     <meta name="google-site-verification" content="abc123XYZtoken" />
     <meta name="description"
         content="Hyna Studio is a technology innovation company creating next-generation digital products that enable organizations to accelerate growth, improve efficiency, and embrace digital transformation.
-           Vignesh V L (thiruvithancode) Founder | Jashwin: Co-Founder & Project Management Lead | Dharshan: Co-Founder & CTO | Asthamil : Chief Product Officer | Tharun krishana : Chief Design Officer | Mohammad Zarif : Chief Operating Officer | Haajra Mufliha : Chief Marketing Officer">
+            Vignesh V L (thiruvithancode) Founder | Jashwin: Co-Founder & Project Management Lead | Dharshan: Co-Founder & CTO | Tharun krishana : Chief Design Officer">
     <title>Hyna Studio | SaaS Solutions & Digital Innovation Studio</title>
     <link rel="icon" href="favicon.ico" sizes="any">
     <link rel="icon" type="image/png" href="favicon-48x48.png" sizes="32x32">
@@ -5818,271 +5818,6 @@
             </div>
         </section>
 
-
-
-            <!-- ══════════ SIMPLE DIRECT FAIR SLIDE SECTION (PURE CODE) ══════════ -->
-        <style>
-            .sdf-slide-section {
-                width: 100%;
-                background: #000000;
-                padding: 70px 5% 90px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                position: relative;
-                overflow: hidden;
-                box-sizing: border-box;
-                font-family: 'Syne', 'Inter', sans-serif;
-            }
-
-            /* Ambient Glows */
-            .sdf-glow-ambient {
-                position: absolute;
-                top: 50%;
-                right: 15%;
-                transform: translateY(-50%);
-                width: 480px;
-                height: 480px;
-                background: radial-gradient(circle, rgba(255, 200, 0, 0.08) 0%, rgba(255, 200, 0, 0.02) 45%, transparent 70%);
-                pointer-events: none;
-                z-index: 1;
-            }
-
-            .sdf-slide-container {
-                width: 100%;
-                max-width: 1140px;
-                margin: 0 auto;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                position: relative;
-                z-index: 2;
-                gap: 40px;
-            }
-
-            /* ── Left Typography ── */
-            .sdf-text-wrap {
-                flex: 1;
-                max-width: 520px;
-            }
-
-            .sdf-heading {
-                font-family: 'Syne', sans-serif;
-                font-size: clamp(3.2rem, 6.8vw, 5.4rem);
-                font-weight: 800;
-                line-height: 1.1;
-                letter-spacing: -0.03em;
-                margin: 0;
-                display: flex;
-                flex-direction: column;
-            }
-
-            .sdf-word-simple {
-                color: #ffffff;
-            }
-
-            .sdf-word-direct {
-                color: #FFC800;
-                text-shadow: 0 0 40px rgba(255, 200, 0, 0.35);
-            }
-
-            .sdf-word-fair {
-                color: #ffffff;
-            }
-
-            /* ── Right Phone Mockup ── */
-            .sdf-phone-wrap {
-                flex: 1;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                perspective: 1400px;
-                padding: 30px 10px;
-            }
-
-            .sdf-phone-3d {
-                width: 270px;
-                height: 540px;
-                position: relative;
-                transform-style: preserve-3d;
-                transform: rotateY(-24deg) rotateX(15deg) rotateZ(14deg);
-                filter: drop-shadow(-30px 40px 60px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 35px rgba(255, 200, 0, 0.06));
-            }
-
-            /* Phone Chassis / Outer Rim */
-            .sdf-phone-body {
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(135deg, #1e1b29 0%, #0d0c13 50%, #15131f 100%);
-                border-radius: 46px;
-                padding: 10px;
-                box-sizing: border-box;
-                position: relative;
-                box-shadow:
-                    0 0 0 2px rgba(255, 255, 255, 0.18),
-                    0 0 0 4px rgba(20, 18, 28, 0.9),
-                    inset 0 1px 2px rgba(255, 255, 255, 0.3),
-                    inset 0 -2px 4px rgba(0, 0, 0, 0.8);
-            }
-
-            /* Side Buttons */
-            .sdf-phone-body::before {
-                content: '';
-                position: absolute;
-                left: -6px;
-                top: 110px;
-                width: 4px;
-                height: 48px;
-                background: #2b2839;
-                border-radius: 3px 0 0 3px;
-                box-shadow: 0 65px 0 #2b2839, 0 -45px 0 #2b2839;
-            }
-
-            .sdf-phone-body::after {
-                content: '';
-                position: absolute;
-                right: -6px;
-                top: 140px;
-                width: 4px;
-                height: 65px;
-                background: #2b2839;
-                border-radius: 0 3px 3px 0;
-            }
-
-            /* Phone Screen */
-            .sdf-phone-screen {
-                width: 100%;
-                height: 100%;
-                background: #ffffff;
-                border-radius: 38px;
-                position: relative;
-                overflow: hidden;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                border: 1px solid rgba(0, 0, 0, 0.06);
-            }
-
-            /* Screen Glass Gloss Reflection */
-            .sdf-screen-glare {
-                position: absolute;
-                inset: 0;
-                background: linear-gradient(125deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 35%, transparent 55%);
-                pointer-events: none;
-                z-index: 5;
-            }
-
-            /* Dynamic Island / Camera Notch */
-            .sdf-dynamic-island {
-                position: absolute;
-                top: 14px;
-                width: 76px;
-                height: 20px;
-                background: #000000;
-                border-radius: 20px;
-                z-index: 6;
-                box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 0 4px rgba(0, 0, 0, 0.8);
-            }
-
-            /* Emblem / Screen Logo */
-            .sdf-screen-logo-wrap {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                position: relative;
-                z-index: 4;
-            }
-
-            .sdf-screen-logo-img {
-                width: 105px;
-                height: 105px;
-                object-fit: contain;
-                border-radius: 20px;
-                filter: drop-shadow(0 0 25px rgba(0, 122, 255, 0.55)) drop-shadow(0 10px 20px rgba(0, 0, 0, 0.7));
-            }
-
-            /* Bottom Speaker Dots (Realistic Edge) */
-            .sdf-phone-bottom-edge {
-                position: absolute;
-                bottom: -4px;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 140px;
-                height: 3px;
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-                opacity: 0.6;
-            }
-
-            /* Responsive */
-            @media (max-width: 900px) {
-                .sdf-slide-container {
-                    flex-direction: column;
-                    text-align: center;
-                    gap: 30px;
-                }
-
-                .sdf-heading {
-                    align-items: center;
-                }
-
-                .sdf-phone-3d {
-                    width: 230px;
-                    height: 460px;
-                    transform: rotateY(-18deg) rotateX(12deg) rotateZ(10deg);
-                }
-            }
-
-            @media (max-width: 480px) {
-                .sdf-slide-section {
-                    padding: 50px 16px 60px;
-                }
-
-                .sdf-phone-3d {
-                    width: 200px;
-                    height: 400px;
-                    transform: rotateY(-14deg) rotateX(10deg) rotateZ(8deg);
-                }
-
-                .sdf-screen-logo-img {
-                    width: 85px;
-                    height: 85px;
-                }
-            }
-        </style>
-
-        <section class="sdf-slide-section" id="simple-direct-fair">
-            <div class="sdf-glow-ambient"></div>
-            <div class="sdf-slide-container">
-                <!-- Left Text -->
-                <div class="sdf-text-wrap">
-                    <h2 class="sdf-heading">
-                        <span class="sdf-word-simple">Simple.</span>
-                        <span class="sdf-word-direct">Direct.</span>
-                        <span class="sdf-word-fair">Fair.</span>
-                    </h2>
-                </div>
-
-                <!-- Right 3D Phone Mockup -->
-                <div class="sdf-phone-wrap">
-                    <div class="sdf-phone-3d">
-                        <div class="sdf-phone-body">
-                            <div class="sdf-phone-screen">
-                                <div class="sdf-dynamic-island"></div>
-                                <div class="sdf-screen-glare"></div>
-                                <div class="sdf-screen-logo-wrap">
-                                    <img src="hb-logo.png" alt="HB Logo" class="sdf-screen-logo-img">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- ══════════ END SIMPLE DIRECT FAIR SLIDE SECTION ══════════ -->
-
         <style>
             :root {
                 --bg-deep: #1a0f3d;
@@ -7813,239 +7548,137 @@
                     font-family: var(--font-body);
                 }
 
+                /* ─── FRONT ROW REFERENCE TEAM SECTION ─── */
                 .team-section {
-                    padding: 100px 8% 0;
-                    background: #ffffff;
+                    padding: 120px 8% 100px;
+                    background: #000000;
                 }
 
-                .team-header {
-                    max-width: 900px;
-                    margin: 0 auto 90px;
+                .team-header-wrapper {
+                    margin-bottom: 70px;
+                    text-align: center;
+                }
+
+                .team-eyebrow {
+                    font-family: var(--font-display);
+                    font-size: 0.85rem;
+                    font-weight: 700;
+                    letter-spacing: 0.14em;
+                    text-transform: uppercase;
+                    color: #a855f7;
+                    margin-bottom: 14px;
+                    display: block;
+                }
+
+                .team-title {
+                    font-family: var(--font-display);
+                    font-size: clamp(2.6rem, 4.5vw, 3.8rem);
+                    font-weight: 800;
+                    letter-spacing: -0.03em;
+                    color: #ffffff;
+                    line-height: 1.1;
+                    margin-bottom: 18px;
+                }
+
+                .team-subtitle {
+                    font-size: 1.1rem;
+                    color: rgba(255, 255, 255, 0.65);
+                    max-width: 620px;
+                    margin: 0 auto;
+                    line-height: 1.65;
+                }
+
+                .our-people-grid {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 64px 40px;
+                    justify-items: center;
+                    max-width: 1160px;
+                    margin: 0 auto;
+                }
+
+                .our-person-card {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
                     text-align: center;
-                    gap: 16px;
-                }
-
-                .team-header h2 {
-                    font-family: var(--font-display);
-                    font-size: clamp(2.2rem, 4.4vw, 3rem);
-                    font-weight: 800;
-                    line-height: 1.2;
-                    color: var(--ink);
-                    margin: 0;
-                }
-
-                .team-header p {
-                    max-width: 640px;
-                    color: var(--muted);
-                    font-size: 1rem;
-                    line-height: 1.6;
-                    margin: 0;
-                }
-
-                /* ── LEADERSHIP LIST ── */
-                .leadership-list {
-                    max-width: 980px;
-                    margin: 0 auto;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 70px;
-                    padding-bottom: 110px;
-                }
-
-                .leader-row {
-                    display: grid;
-                    grid-template-columns: 200px 1fr;
-                    gap: 48px;
-                    align-items: start;
-                }
-
-                .leader-row.reverse {
-                    grid-template-columns: 1fr 200px;
-                }
-
-                .leader-row.reverse .leader-photo {
-                    order: 2;
-                }
-
-                .leader-row.reverse .leader-info {
-                    order: 1;
-                }
-
-                .leader-photo img {
+                    cursor: pointer;
                     width: 100%;
-                    aspect-ratio: 1 / 1;
-                    object-fit: cover;
-                    border-radius: 14px;
-                    display: block;
+                    max-width: 320px;
+                    transition: transform 0.35s ease;
                 }
 
-                .leader-info h3 {
-                    font-family: var(--font-display);
-                    font-size: 1.5rem;
-                    font-weight: 800;
-                    color: var(--ink);
-                    margin: 0 0 6px;
-                    letter-spacing: -0.01em;
-                }
-
-                .leader-role {
-                    display: block;
-                    font-size: 0.76rem;
-                    font-weight: 700;
-                    letter-spacing: 0.1em;
-                    text-transform: uppercase;
-                    color: #000000;
-                    margin-bottom: 16px;
-                }
-
-                .leader-bio {
-                    color: var(--muted);
-                    font-size: 0.96rem;
-                    line-height: 1.7;
-                    margin: 0 0 16px;
-                    max-width: 640px;
-                }
-
-                .leader-links {
-                    display: flex;
-                    gap: 16px;
-                    flex-wrap: wrap;
-                }
-
-                .leader-links a {
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 6px;
-                    color: var(--ink);
-                    font-size: 0.84rem;
-                    font-weight: 600;
-                    text-decoration: none;
-                    border-bottom: 1px solid var(--line);
-                    padding-bottom: 2px;
-                    transition: color .25s ease, border-color .25s ease;
-                }
-
-                .leader-links a:hover {
-                    color: var(--accent);
-                    border-color: var(--accent);
-                }
-
-                @media (max-width: 700px) {
-
-                    .leader-row,
-                    .leader-row.reverse {
-                        grid-template-columns: 1fr;
-                        gap: 20px;
-                        text-align: center;
-                    }
-
-                    .leader-row.reverse .leader-photo {
-                        order: 1;
-                    }
-
-                    .leader-row.reverse .leader-info {
-                        order: 2;
-                    }
-
-                    .leader-photo img {
-                        max-width: 160px;
-                        margin: 0 auto;
-                    }
-
-                    .leader-links {
-                        justify-content: center;
-                    }
-                }
-
-                /* ── BOARD OF DIRECTORS ── */
-                .board-links {
-                    display: flex;
-                    align-items: center;
-                    gap: 12px;
-                    margin-top: 16px;
-                }
-
-                .board-links a {
-                    width: 42px;
-                    height: 42px;
+                .avatar-circle-box {
+                    position: relative;
+                    width: 220px;
+                    height: 220px;
+                    margin-bottom: 22px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     border-radius: 50%;
-                    background: #fff;
-                    border: 1px solid rgba(0, 0, 0, .08);
-                    color: #111;
-                    font-size: 13px;
-                    text-decoration: none;
-                    transition: all .35s ease;
-                    box-shadow: 0 6px 20px rgba(0, 0, 0, .06);
+                    background: #ffffff;
+                    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+                    overflow: hidden;
+                    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
                 }
 
-                .board-links a:hover {
-                    transform: translateY(-4px);
-                    background: #0077B5;
-                    color: #fff;
-                    border-color: #0077B5;
-                    box-shadow: 0 10px 28px rgba(0, 119, 181, .28);
+                .our-person-card:hover .avatar-circle-box {
+                    transform: translateY(-8px) scale(1.03);
+                    box-shadow: 0 24px 50px rgba(255, 200, 59, 0.25);
                 }
 
-                .board-links a:last-child:hover {
-                    background: #111;
-                    border-color: #111;
-                }
-
-                .board-section {
-                    max-width: 980px;
-                    margin: 0 auto;
-                    padding: 70px 0 120px;
-                    border-top: 1px solid var(--line);
-                }
-
-                .board-eyebrow {
-                    font-family: var(--font-display);
-                    font-size: 0.86rem;
-                    font-weight: 800;
-                    letter-spacing: 0.12em;
-                    text-transform: uppercase;
-                    color: var(--ink);
-                    margin-bottom: 40px;
-                }
-
-                .board-row {
-                    display: grid;
-                    grid-template-columns: repeat(4, 1fr);
-                    gap: 32px;
-                }
-
-                .board-member {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-start;
-                }
-
-                .board-avatar {
-                    width: 110px;
-                    height: 110px;
-                    border-radius: 50%;
+                .avatar-img {
+                    width: 100%;
+                    height: 100%;
                     object-fit: cover;
-                    object-position: center;
-                    margin-bottom: 16px;
+                    object-position: top center;
+                    filter: none;
+                    transition: filter 0.35s ease, transform 0.35s ease;
                 }
 
-                .board-avatar.linciya-avatar {
-                    object-position: center top;
+                .our-person-card:hover .avatar-img {
+                    filter: none;
+                    transform: scale(1.05);
                 }
 
-                .board-member h4 {
-                    font-size: 0.86rem;
-                    font-weight: 700;
-                    letter-spacing: 0.03em;
-                    text-transform: uppercase;
-                    color: var(--ink);
-                    margin: 0 0 4px;
+                .person-name {
+                    font-family: var(--font-display);
+                    font-size: 1.6rem;
+                    font-weight: 800;
+                    color: #ffffff;
+                    margin-bottom: 6px;
+                    letter-spacing: -0.02em;
+                    line-height: 1.25;
+                    white-space: nowrap;
+                }
+
+                .person-role {
+                    font-size: 0.92rem;
+                    font-weight: 500;
+                    color: rgba(255, 255, 255, 0.65);
+                    letter-spacing: -0.01em;
+                }
+
+                @media (max-width: 1024px) {
+                    .our-people-grid {
+                        grid-template-columns: repeat(2, 1fr);
+                        gap: 52px 30px;
+                    }
+                }
+
+                @media (max-width: 640px) {
+                    .our-people-grid {
+                        grid-template-columns: 1fr;
+                        gap: 44px;
+                    }
+                    .avatar-circle-box {
+                        width: 190px;
+                        height: 190px;
+                    }
+                    .person-name {
+                        font-size: 1.5rem;
+                    }
                 }
 
                 .board-member .board-role {
@@ -8175,160 +7808,83 @@
                     }
                 }
             </style>
-        </head>
-
-        <body>
 
             <section id="team" class="team-section">
 
-                <!-- Section header -->
-                <div class="team-header">
-                    <h2 class="t-anim" data-anim="fade-up">Our Leadership &amp; Innovation Team</h2>
-                    <p class="t-anim" data-anim="fade-up" data-delay="2">Passionate experts transforming ideas into
-                        impactful solutions through design, technology, and collaboration</p>
+                <!-- HEADER -->
+                <div class="team-header-wrapper lp-fade-up">
+                    <span class="team-eyebrow">WE ARE HYNA</span>
+                    <h2 class="team-title">Our People</h2>
+                    <p class="team-subtitle">
+                        Young innovators, architects, and designers crafting bold digital products, intelligent AI solutions, and scalable web experiences.
+                    </p>
                 </div>
 
-                <!-- Leadership: Vignesh, Jashwin, Dharshan -->
-                <div class="leadership-list">
+                <!-- OUR PEOPLE GRID -->
+                <div class="our-people-container">
+                    <div class="our-people-grid">
 
-                    <!-- Vignesh -->
-                    <div class="leader-row">
-                        <div class="leader-photo t-anim" data-anim="fade-left">
-                            <img src="https://i.postimg.cc/wjtYqBpS/IMG-33081.jpg" alt="Vignesh">
-                        </div>
-                        <div class="leader-info">
-                            <h3 class="t-anim" data-anim="fade-up" data-delay="1">Vignesh</h3>
-                            <span class="leader-role t-anim" data-anim="fade-up" data-delay="2">Founder &amp; Chief
-                                Executive Officer</span>
-                            <div class="leader-links t-anim" data-anim="fade-up" data-delay="3">
-                                <a href="https://vigneshvl-dev.github.io/PORTFOLIO/" target="_blank"><i
-                                        class="fas fa-globe"></i> Portfolio</a>
-                                <a href="https://www.linkedin.com/in/vigneshvl-dev/" target="_blank"><i
-                                        class="fab fa-linkedin-in"></i> LinkedIn</a>
+                        <!-- Vignesh -->
+                        <div class="our-person-card lp-fade-up" data-name="Vignesh" data-role="Founder & CEO"
+                            data-bio="&quot;Leadership is not about control, it is about building people who can lead without you.&quot; Vignesh drives the strategic vision and engineering standards at Hyna Studio."
+                            data-photo="./images/team/vignesh_new.png?v=2"
+                            data-portfolio="https://vigneshvl-dev.github.io/PORTFOLIO/"
+                            data-github="https://github.com/vigneshvl-dev"
+                            data-linkedin="https://www.linkedin.com/in/vigneshvl-dev/" data-college="Anna University"
+                            data-degree="B.E. Computer Science & Engineering">
+                            <div class="avatar-circle-box">
+                                <img src="./images/team/vignesh_new.png?v=2" alt="Vignesh" class="avatar-img">
                             </div>
+                            <h3 class="person-name">Vignesh VL</h3>
+                            <div class="person-role">Founder &amp; CEO</div>
                         </div>
-                    </div>
 
-                    <!-- Jashwin -->
-                    <div class="leader-row reverse">
-                        <div class="leader-photo t-anim" data-anim="fade-right">
-                            <img src="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" alt="Jashwin">
-                        </div>
-                        <div class="leader-info">
-                            <h3 class="t-anim" data-anim="fade-up" data-delay="1">Jashwin</h3>
-                            <span class="leader-role t-anim" data-anim="fade-up" data-delay="2">Co-Founder &amp; Project
-                                Management Lead</span>
-                            <div class="leader-links t-anim" data-anim="fade-up" data-delay="3">
-                                <a href="https://www.linkedin.com/in/jashwin-j-16b06240a" target="_blank"><i
-                                        class="fab fa-linkedin-in"></i> LinkedIn</a>
+                        <!-- Jashwin -->
+                        <div class="our-person-card lp-fade-up" data-name="Jashwin" data-role="Co-Founder & COO"
+                            data-bio="&quot;Deadlines don’t fail because of time, they fail because alignment is missing.&quot; Jashwin ensures that every project at Hyna Studio is aligned with stakeholder goals and delivered seamlessly."
+                            data-photo="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" data-portfolio="#"
+                            data-github="https://github.com/jashwinj2008"
+                            data-linkedin="https://www.linkedin.com/in/jashwin-j-16b06240a" data-college="Anna University"
+                            data-degree="B.E. Computer Science & Engineering">
+                            <div class="avatar-circle-box">
+                                <img src="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" alt="Jashwin" class="avatar-img">
                             </div>
+                            <h3 class="person-name">Jashwin J</h3>
+                            <div class="person-role">Co-Founder &amp; COO</div>
                         </div>
-                    </div>
 
-                    <!-- Dharshan -->
-                    <div class="leader-row">
-                        <div class="leader-photo t-anim" data-anim="fade-left">
-                            <img src="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg"
-                                alt="Dharshan">
-                        </div>
-                        <div class="leader-info">
-                            <h3 class="t-anim" data-anim="fade-up" data-delay="1">Dharshan</h3>
-                            <span class="leader-role t-anim" data-anim="fade-up" data-delay="2">Co-Founder &amp; Chief
-                                Technology Officer</span>
-                            <div class="leader-links t-anim" data-anim="fade-up" data-delay="3">
-                                <a href="https://portholio-zeta.vercel.app/" target="_blank"><i
-                                        class="fas fa-globe"></i>
-                                    Portfolio</a>
-                                <a href="https://www.linkedin.com/in/dharshan-jm" target="_blank"><i
-                                        class="fab fa-linkedin-in"></i> LinkedIn</a>
+                        <!-- Dharshan -->
+                        <div class="our-person-card lp-fade-up" data-name="Dharshan" data-role="Co-Founder & CTO"
+                            data-bio="&quot;A co-founder in tech doesn’t follow trends, he builds what will become the next standard.&quot; Dharshan leads our systems architecture, cloud infrastructure, and technical execution."
+                            data-photo="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg"
+                            data-portfolio="https://portholio-zeta.vercel.app/"
+                            data-github="https://github.com/dharshan00814"
+                            data-linkedin="https://www.linkedin.com/in/dharshan-jm" data-college="Anna University"
+                            data-degree="B.E. Computer Science & Engineering">
+                            <div class="avatar-circle-box">
+                                <img src="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg" alt="Dharshan" class="avatar-img">
                             </div>
+                            <h3 class="person-name">Dharshan JM</h3>
+                            <div class="person-role">Co-Founder &amp; CTO</div>
                         </div>
-                    </div>
 
+                        <!-- Tharun Krishna -->
+                        <div class="our-person-card lp-fade-up" data-name="Tharun Krishna" data-role="Chief Design Officer"
+                            data-bio="&quot;Good design is invisible, but its impact is impossible to ignore.&quot; Tharun translates brand visions into premium user interfaces, styling guidelines, and interactive experiences."
+                            data-photo="https://i.postimg.cc/TP5Jj9Th/Whats-App-Image-2026-06-11-at-11-26-46-AM.jpg"
+                            data-portfolio="#" data-github="#"
+                            data-linkedin="https://www.linkedin.com/in/tharun-krishna-347b123a0"
+                            data-college="Anna University" data-degree="B.E. Computer Science & Engineering">
+                            <div class="avatar-circle-box">
+                                <img src="https://i.postimg.cc/TP5Jj9Th/Whats-App-Image-2026-06-11-at-11-26-46-AM.jpg" alt="Tharun Krishna" class="avatar-img">
+                            </div>
+                            <h3 class="person-name">Tharun Krishna</h3>
+                            <div class="person-role">Chief Design Officer</div>
+                        </div>
+
+                    </div>
                 </div>
-
-                <!-- Board of Directors: Asthamil, Zarif -->
-                <div class="board-section">
-                    <div class="board-eyebrow t-anim" data-anim="fade-up">Board of Directors</div>
-                    <div class="board-row">
-
-                        <div class="board-member t-anim" data-anim="fade-scale" data-delay="1">
-                            <img class="board-avatar"
-                                src="https://i.postimg.cc/Jnwtf3ZZ/Whats-App-Image-2026-02-20-at-7-00-57-PM.jpg"
-                                alt="Asthamil">
-                            <h4>Asthamil</h4>
-                            <span class="board-role">Manager &amp; Director</span>
-                            <span class="board-org">Hyna Studio</span>
-                            <div class="board-links">
-                                <a href="https://www.linkedin.com/in/USERNAME" target="_blank" aria-label="LinkedIn">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-
-                                <a href="https://portfolio.yourdomain.com" target="_blank" aria-label="Portfolio">
-                                    <i class="fas fa-globe"></i>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="board-member t-anim" data-anim="fade-scale" data-delay="2">
-                            <img class="board-avatar" src="https://i.postimg.cc/1zWvJd1C/zarif.jpg"
-                                alt="Mohammad Zarif">
-                            <h4>Mohammad Zarif</h4>
-                            <span class="board-role">Chief Operating Officer</span>
-                            <span class="board-org">Hyna Studio</span>
-                            <div class="board-links">
-                                <a href="https://www.linkedin.com/in/USERNAME" target="_blank" aria-label="LinkedIn">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-
-                                <a href="https://portfolio.yourdomain.com" target="_blank" aria-label="Portfolio">
-                                    <i class="fas fa-globe"></i>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="board-member t-anim" data-anim="fade-scale" data-delay="3">
-                            <img class="board-avatar"
-                                src="https://i.postimg.cc/d3HPcdBJ/Screenshot-2026-08-02-233225.png"
-                                alt="Haajra Mufliha">
-                            <h4>Mohamed Arshiya</h4>
-                            <span class="board-role">Chief Product & Strategy Officer</span>
-                            <span class="board-org">Hyna Studio</span>
-                            <div class="board-links">
-                                <a href="https://www.linkedin.com/in/USERNAME" target="_blank" aria-label="LinkedIn">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-
-                                <a href="https://portfolio.yourdomain.com" target="_blank" aria-label="Portfolio">
-                                    <i class="fas fa-globe"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="board-member t-anim" data-anim="fade-scale" data-delay="3">
-                            <img class="board-avatar linciya-avatar" src="linciya.png" alt="Linciya">
-                            <h4>Linciya</h4>
-                            <span class="board-role">Chief Product Officer</span>
-                            <span class="board-org">Hyna Studio</span>
-                            <div class="board-links">
-                                <a href="https://www.linkedin.com/in/USERNAME" target="_blank" aria-label="LinkedIn">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-
-                                <a href="https://portfolio.yourdomain.com" target="_blank" aria-label="Portfolio">
-                                    <i class="fas fa-globe"></i>
-                                </a>
-                            </div>
-
-
-
-                        </div>
-
-                    </div>
-
             </section>
-
-        </body>
-
 
         <script>
             /* ── Team Section: Scroll-triggered fade-in via IntersectionObserver ── */
@@ -8349,9 +7905,6 @@
             })();
         </script>
 
-        </html>
-
-        </section>
         <!-- ── API DEVELOPER SECTION ── -->
         <section id="api-section" class="api-dev-section">
             <!-- LEFT: Info Card -->
