@@ -3102,12 +3102,15 @@
 
         @media (max-width: 900px) {
             .main-content-wrapper {
-                margin-bottom: var(--footer-height);
+                margin-bottom: 0 !important;
             }
 
             footer {
-                position: fixed !important;
-                z-index: 1;
+                position: relative !important;
+                bottom: auto !important;
+                left: auto !important;
+                z-index: auto !important;
+                transform: none !important;
             }
         }
 
@@ -9481,6 +9484,10 @@
             if (!footer) return;
 
             function setFooterHeight() {
+                if (window.innerWidth <= 900) {
+                    document.documentElement.style.setProperty('--footer-height', '0px');
+                    return;
+                }
                 var height = Math.ceil(footer.getBoundingClientRect().height);
                 document.documentElement.style.setProperty('--footer-height', height + 'px');
             }
