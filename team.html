@@ -1048,9 +1048,19 @@
 
         .our-people-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 64px 40px;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 64px 32px;
             justify-items: center;
+            max-width: 1240px;
+            margin: 0 auto;
+        }
+
+        .our-person-card.row-1 {
+            grid-column: span 4;
+        }
+
+        .our-person-card.row-2 {
+            grid-column: span 6;
         }
 
         .our-person-card {
@@ -1120,6 +1130,10 @@
             .our-people-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 52px 30px;
+            }
+            .our-person-card.row-1,
+            .our-person-card.row-2 {
+                grid-column: span 1;
             }
         }
 
@@ -1201,7 +1215,7 @@
             <div class="our-people-grid">
 
                 <!-- Vignesh -->
-                <div class="our-person-card lp-fade-up" data-name="Vignesh" data-role="Founder & CEO (Managing Director)"
+                <div class="our-person-card row-1 lp-fade-up" data-name="Vignesh" data-role="Founder & CEO (Managing Director)"
                     data-bio="&quot;Leadership is not about control, it is about building people who can lead without you.&quot; Vignesh drives the strategic vision and engineering standards at Hyna Studio."
                     data-photo="./images/team/vignesh_new.png?v=2"
                     data-portfolio="https://vigneshvl-dev.github.io/PORTFOLIO/"
@@ -1216,7 +1230,7 @@
                 </div>
 
                 <!-- Jashwin -->
-                <div class="our-person-card lp-fade-up" data-name="Jashwin" data-role="Co-Founder & COO"
+                <div class="our-person-card row-1 lp-fade-up" data-name="Jashwin" data-role="Co-Founder & COO"
                     data-bio="&quot;Deadlines don’t fail because of time, they fail because alignment is missing.&quot; Jashwin ensures that every project at Hyna Studio is aligned with stakeholder goals and delivered seamlessly."
                     data-photo="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" data-portfolio="#"
                     data-github="https://github.com/jashwinj2008"
@@ -1230,7 +1244,7 @@
                 </div>
 
                 <!-- Dharshan -->
-                <div class="our-person-card lp-fade-up" data-name="Dharshan" data-role="Co-Founder & CTO"
+                <div class="our-person-card row-1 lp-fade-up" data-name="Dharshan" data-role="Co-Founder & CTO"
                     data-bio="&quot;A co-founder in tech doesn’t follow trends, he builds what will become the next standard.&quot; Dharshan leads our systems architecture, cloud infrastructure, and technical execution."
                     data-photo="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg"
                     data-portfolio="https://portholio-zeta.vercel.app/"
@@ -1245,7 +1259,7 @@
                 </div>
 
                 <!-- Linciya -->
-                <div class="our-person-card lp-fade-up" data-name="Linciya" data-role="Chief Marketing Officer"
+                <div class="our-person-card row-2 lp-fade-up" data-name="Linciya" data-role="Chief Marketing Officer"
                     data-bio="&quot;Great marketing isn’t about telling people what you do, it’s about inspiring them with why you exist.&quot; Linciya leads market positioning, growth strategies, and brand expansion at Hyna Studio."
                     data-photo="./images/team/linciya.png?v=1"
                     data-portfolio="#" data-github="#"
@@ -1259,7 +1273,7 @@
                 </div>
 
                 <!-- Tharun Krishna -->
-                <div class="our-person-card lp-fade-up" data-name="Tharun Krishna" data-role="Chief Design Officer"
+                <div class="our-person-card row-2 lp-fade-up" data-name="Tharun Krishna" data-role="Chief Design Officer"
                     data-bio="&quot;Good design is invisible, but its impact is impossible to ignore.&quot; Tharun translates brand visions into premium user interfaces, styling guidelines, and interactive experiences."
                     data-photo="https://i.postimg.cc/TP5Jj9Th/Whats-App-Image-2026-06-11-at-11-26-46-AM.jpg"
                     data-portfolio="#" data-github="#"
