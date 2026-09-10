@@ -34,21 +34,16 @@
     <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
     <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <!-- Preconnect first for fastest font/CDN load -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <!-- Single merged Google Fonts request -->
     <link
         href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Sora:wght@700;800&family=Space+Grotesk:wght@500;600;700&family=Instrument+Serif:ital@0;1&display=swap"
         rel="stylesheet">
-    <!-- Icons (single load) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <!-- GSAP & Lenis deferred -->
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <!-- Lucide icons deferred -->
     <script defer src="https://unpkg.com/lucide@latest"></script>
     <style>
         *,
@@ -3332,6 +3327,14 @@
 
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
+
+            <li class="nav-item-dropdown">
+                <a href="#" class="nav-link-has-dropdown">Products <span class="nav-arrow">▾</span></a>
+                <div class="nav-dropdown">
+                    <a href="iiot.html">IIoT &amp; Industry 4.0</a>
+                    <a href="product.html">Product Updates</a>
+                </div>
+            </li>
 
             <li class="nav-item-dropdown">
                 <a href="#" class="nav-link-has-dropdown">Why Us <span class="nav-arrow">▾</span></a>
@@ -7478,8 +7481,9 @@
                         <div class="our-person-card row-2 lp-fade-up" data-name="Muhammed Arshiya"
                             data-role="Chief Product Officer"
                             data-bio="&quot;Exceptional products are born where user needs and innovative technology align.&quot; Muhammed Arshiya drives product strategy, roadmap planning, and user experience excellence at Hyna Studio."
-                            data-photo="./images/team/arshiya.jpg?v=1" data-portfolio="#" data-github="#" data-linkedin="#"
-                            data-college="Anna University" data-degree="B.E. Computer Science & Engineering">
+                            data-photo="./images/team/arshiya.jpg?v=1" data-portfolio="#" data-github="#"
+                            data-linkedin="#" data-college="Anna University"
+                            data-degree="B.E. Computer Science & Engineering">
                             <div class="avatar-circle-box">
                                 <img src="./images/team/arshiya.jpg?v=1" alt="Muhammed Arshiya" class="avatar-img"
                                     onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Muhammed+Arshiya&background=00e7b3&color=111';">
@@ -8403,7 +8407,36 @@
             <!-- COMPANY INFORMATION & IMPORTANT NOTICE -->
             <div class="footer-disclaimer-box">
                 <p>
-                    <strong>Hyna Studio Technologies LLP</strong> is an Indian technology and product company building next-generation <strong>Autonomous Business Infrastructure</strong>—intelligent, connected, and adaptive technology designed to help businesses understand, manage, operate, connect, transact, grow, and continuously evolve. Through the HYNA ecosystem, we are developing integrated software, AI, automation, data intelligence, financial technology experiences, and business platforms that bring critical business activities into one unified system. Our vision is to move beyond traditional software by creating technology that not only supports businesses but learns from their operations, adapts to their changing needs, and helps build a more intelligent and connected future for business. <strong>Hyna Studio is building the technology foundation for the Autonomous Business Era. 🇮🇳</strong> Our approach is centered on building technology that becomes increasingly valuable as a business grows. Rather than forcing every organization to adapt to rigid and disconnected software, we envision systems that understand the unique nature of each business and help create the tools, workflows, intelligence, and infrastructure it needs to operate effectively. From everyday operations and customer relationships to payments, business intelligence, automation, and future growth, the HYNA ecosystem is being designed to bring businesses closer to a future where technology does not simply serve as software—but becomes an intelligent foundation for how businesses operate, make decisions, and evolve. At the core of this vision is the belief that the future of business technology will be connected, intelligent, and adaptive. Businesses should not have to continuously move between disconnected applications, manually connect information, or rebuild their systems every time their needs change. We are working toward an ecosystem where technology can bring together critical business activities, transform information into intelligence, automate repetitive processes, and provide a stronger foundation for sustainable growth. Through products such as HYNA BIZ and future platforms within the HYNA ecosystem, Hyna Studio aims to create technology that can grow alongside businesses—from emerging entrepreneurs and startups to established organizations. Our long-term ambition is to help shape a new generation of business infrastructure where software becomes more than a collection of tools: it becomes an evolving system capable of supporting how businesses operate today while preparing them for what comes next. <strong>Hyna Studio Technologies LLP is building for a future where businesses are not limited by their technology, but empowered by it—through intelligent systems, connected infrastructure, and technology designed to continuously evolve. 🇮🇳</strong>
+                    <strong>Hyna Studio Technologies LLP</strong> is an Indian technology and product company building
+                    next-generation <strong>Autonomous Business Infrastructure</strong>—intelligent, connected, and
+                    adaptive technology designed to help businesses understand, manage, operate, connect, transact,
+                    grow, and continuously evolve. Through the HYNA ecosystem, we are developing integrated software,
+                    AI, automation, data intelligence, financial technology experiences, and business platforms that
+                    bring critical business activities into one unified system. Our vision is to move beyond traditional
+                    software by creating technology that not only supports businesses but learns from their operations,
+                    adapts to their changing needs, and helps build a more intelligent and connected future for
+                    business. <strong>Hyna Studio is building the technology foundation for the Autonomous Business Era.
+                        🇮🇳</strong> Our approach is centered on building technology that becomes increasingly valuable
+                    as a business grows. Rather than forcing every organization to adapt to rigid and disconnected
+                    software, we envision systems that understand the unique nature of each business and help create the
+                    tools, workflows, intelligence, and infrastructure it needs to operate effectively. From everyday
+                    operations and customer relationships to payments, business intelligence, automation, and future
+                    growth, the HYNA ecosystem is being designed to bring businesses closer to a future where technology
+                    does not simply serve as software—but becomes an intelligent foundation for how businesses operate,
+                    make decisions, and evolve. At the core of this vision is the belief that the future of business
+                    technology will be connected, intelligent, and adaptive. Businesses should not have to continuously
+                    move between disconnected applications, manually connect information, or rebuild their systems every
+                    time their needs change. We are working toward an ecosystem where technology can bring together
+                    critical business activities, transform information into intelligence, automate repetitive
+                    processes, and provide a stronger foundation for sustainable growth. Through products such as HYNA
+                    BIZ and future platforms within the HYNA ecosystem, Hyna Studio aims to create technology that can
+                    grow alongside businesses—from emerging entrepreneurs and startups to established organizations. Our
+                    long-term ambition is to help shape a new generation of business infrastructure where software
+                    becomes more than a collection of tools: it becomes an evolving system capable of supporting how
+                    businesses operate today while preparing them for what comes next. <strong>Hyna Studio Technologies
+                        LLP is building for a future where businesses are not limited by their technology, but empowered
+                        by it—through intelligent systems, connected infrastructure, and technology designed to
+                        continuously evolve. 🇮🇳</strong>
                 </p>
             </div>
 
