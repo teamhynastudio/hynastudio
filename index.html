@@ -243,9 +243,6 @@
 
 
         /* nav-hidden - disabled, nav always visible */
-        nav.nav-hidden {
-            /* no hide animation */
-        }
 
         @media (prefers-reduced-motion: reduce) {
 
@@ -2242,10 +2239,11 @@
             }
         }
 
-        font-size: 0.82rem;
-        color: #9ea4b5;
-        line-height: 1.4;
-        min-width: 0;
+        .footer-location-text {
+            font-size: 0.82rem;
+            color: #9ea4b5;
+            line-height: 1.4;
+            min-width: 0;
         }
 
         .footer-location-text strong {
@@ -3683,7 +3681,8 @@
 
             #tsparticles-trusted {
                 position: absolute;
-                inset-x: 0;
+                left: 0;
+                right: 0;
                 bottom: 0;
                 height: 100%;
                 width: 100%;
@@ -5469,7 +5468,7 @@
 
 
             /*---------container scr5roll---------*/
-            <style>.csa-wrapper {
+            .csa-wrapper {
                 width: 100%;
                 background: #000;
                 display: flex;
