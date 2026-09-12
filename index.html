@@ -7790,6 +7790,177 @@
 
 
 
+            <!-- FAQ -->
+            <section id="faq" class="cred-faq">
+                <style>
+                    .cred-faq {
+                        background: #0b0c10;
+                        position: relative;
+                        overflow: hidden;
+                        cursor: pointer;
+                        user-select: none;
+                    }
+
+                    .cred-faq-toggle {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 60px 8%;
+                        gap: 10px;
+                        transition: padding 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                    }
+
+                    .cred-faq.open .cred-faq-toggle {
+                        padding-bottom: 48px;
+                    }
+
+                    .cred-faq-title {
+                        font-size: 0.78rem;
+                        font-weight: 400;
+                        letter-spacing: 0.28em;
+                        text-transform: uppercase;
+                        color: rgba(255, 255, 255, 0.55);
+                        font-family: var(--font-display);
+                        transition: color 0.3s;
+                    }
+
+                    .cred-faq:hover .cred-faq-title {
+                        color: rgba(255, 255, 255, 0.8);
+                    }
+
+                    .cred-faq-arrow {
+                        font-size: 0.75rem;
+                        color: rgba(255, 255, 255, 0.4);
+                        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s;
+                        line-height: 1;
+                    }
+
+                    .cred-faq.open .cred-faq-arrow {
+                        transform: rotate(180deg);
+                    }
+
+                    .cred-faq:hover .cred-faq-arrow {
+                        color: rgba(255, 255, 255, 0.7);
+                    }
+
+                    .cred-faq-body {
+                        max-height: 0;
+                        overflow: hidden;
+                        transition: max-height 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+                    }
+
+                    .cred-faq-inner {
+                        max-width: 900px;
+                        margin: 0 auto;
+                        padding: 0 8% 80px 8%;
+                        cursor: default;
+                    }
+
+                    .cred-faq-qa {
+                        padding: 36px 0;
+                        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+                    }
+
+                    .cred-faq-qa:first-child {
+                        border-top: 1px solid rgba(255, 255, 255, 0.06);
+                    }
+
+                    .cred-faq-q {
+                        font-size: 1rem;
+                        font-weight: 600;
+                        color: rgba(255, 255, 255, 0.9);
+                        font-family: var(--font-display);
+                        margin-bottom: 14px;
+                        line-height: 1.4;
+                    }
+
+                    .cred-faq-a {
+                        font-size: 0.9rem;
+                        color: rgba(255, 255, 255, 0.38);
+                        line-height: 1.85;
+                        max-width: 820px;
+                        font-weight: 300;
+                    }
+
+                    .cred-faq-a strong {
+                        color: rgba(255, 255, 255, 0.6);
+                        font-weight: 500;
+                    }
+
+                    @media (max-width: 768px) {
+                        .cred-faq-toggle {
+                            padding: 48px 5%;
+                        }
+                        .cred-faq-inner {
+                            padding: 0 5% 60px 5%;
+                        }
+                        .cred-faq-q {
+                            font-size: 0.93rem;
+                        }
+                        .cred-faq-a {
+                            font-size: 0.85rem;
+                        }
+                    }
+                </style>
+
+                <div class="cred-faq-toggle" id="credFaqToggle" role="button" aria-expanded="false" aria-controls="credFaqBody">
+                    <span class="cred-faq-title">F A Q s</span>
+                    <span class="cred-faq-arrow">˅</span>
+                </div>
+
+                <div class="cred-faq-body" id="credFaqBody">
+                    <div class="cred-faq-inner">
+
+                        <div class="cred-faq-qa">
+                            <div class="cred-faq-q">What is Hyna Studio?</div>
+                            <div class="cred-faq-a">Hyna Studio is a product-focused technology company that builds digital products and solutions designed to simplify business operations and help businesses grow.</div>
+                        </div>
+
+                        <div class="cred-faq-qa">
+                            <div class="cred-faq-q">What products and solutions does Hyna Studio build?</div>
+                            <div class="cred-faq-a">Hyna Studio currently focuses on <strong>HynaBiz</strong>, our business platform designed to connect and support buyers, owners, manufacturers, and suppliers through a modern digital experience.</div>
+                        </div>
+
+                        <div class="cred-faq-qa">
+                            <div class="cred-faq-q">Who can work with Hyna Studio?</div>
+                            <div class="cred-faq-a">Hyna Studio can work with businesses, organizations, entrepreneurs, and technology partners who are looking to build, improve, or adopt practical digital solutions.</div>
+                        </div>
+
+                        <div class="cred-faq-qa">
+                            <div class="cred-faq-q">How does the project process work?</div>
+                            <div class="cred-faq-a">Our process typically starts with understanding the problem, followed by planning, product design, development, testing, and continuous improvement. We focus on building solutions that are practical, scalable, and easy to use.</div>
+                        </div>
+
+                        <div class="cred-faq-qa">
+                            <div class="cred-faq-q">How can I contact Hyna Studio?</div>
+                            <div class="cred-faq-a">You can contact Hyna Studio through our official contact channels. Share your idea, business requirement, or partnership opportunity, and our team can discuss the next steps with you.</div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <script>
+                    (function () {
+                        const section = document.getElementById('faq');
+                        const toggle = document.getElementById('credFaqToggle');
+                        const body = document.getElementById('credFaqBody');
+
+                        toggle.addEventListener('click', function () {
+                            const isOpen = section.classList.contains('open');
+                            if (isOpen) {
+                                section.classList.remove('open');
+                                toggle.setAttribute('aria-expanded', 'false');
+                                body.style.maxHeight = null;
+                            } else {
+                                section.classList.add('open');
+                                toggle.setAttribute('aria-expanded', 'true');
+                                body.style.maxHeight = body.scrollHeight + 'px';
+                            }
+                        });
+                    })();
+                </script>
+            </section>
+
             <!-- CTA -->
             <div class="cta-banner" id="contact">
                 <h2>Ready to build something great?</h2>
