@@ -1990,10 +1990,12 @@
 
         /* ── CTA BANNER ── */
         .cta-banner {
-            background: linear-gradient(135deg, var(--accent) 0%, #7C3AED 100%);
+            background: linear-gradient(to bottom, #ffffff 0%, #000000 100%);
             color: #fff;
             padding: 5rem 4rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
         .cta-banner h2 {
@@ -2001,13 +2003,14 @@
             font-size: clamp(2rem, 4vw, 3.2rem);
             font-weight: 800;
             letter-spacing: -0.025em;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
+            color: #0a0a0a;
         }
 
         .cta-banner p {
-            opacity: 0.8;
             font-size: 1.05rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1em;
+            color: rgba(0, 0, 0, 0.55);
         }
 
         .btn-white {
@@ -7891,19 +7894,23 @@
                         .cred-faq-toggle {
                             padding: 48px 5%;
                         }
+
                         .cred-faq-inner {
                             padding: 0 5% 60px 5%;
                         }
+
                         .cred-faq-q {
                             font-size: 0.93rem;
                         }
+
                         .cred-faq-a {
                             font-size: 0.85rem;
                         }
                     }
                 </style>
 
-                <div class="cred-faq-toggle" id="credFaqToggle" role="button" aria-expanded="false" aria-controls="credFaqBody">
+                <div class="cred-faq-toggle" id="credFaqToggle" role="button" aria-expanded="false"
+                    aria-controls="credFaqBody">
                     <span class="cred-faq-title">F A Q s</span>
                     <span class="cred-faq-arrow">˅</span>
                 </div>
@@ -7913,27 +7920,37 @@
 
                         <div class="cred-faq-qa">
                             <div class="cred-faq-q">What is Hyna Studio?</div>
-                            <div class="cred-faq-a">Hyna Studio is a product-focused technology company that builds digital products and solutions designed to simplify business operations and help businesses grow.</div>
+                            <div class="cred-faq-a">Hyna Studio is a product-focused technology company that builds
+                                digital products and solutions designed to simplify business operations and help
+                                businesses grow.</div>
                         </div>
 
                         <div class="cred-faq-qa">
                             <div class="cred-faq-q">What products and solutions does Hyna Studio build?</div>
-                            <div class="cred-faq-a">Hyna Studio currently focuses on <strong>HynaBiz</strong>, our business platform designed to connect and support buyers, owners, manufacturers, and suppliers through a modern digital experience.</div>
+                            <div class="cred-faq-a">Hyna Studio currently focuses on <strong>HynaBiz</strong>, our
+                                business platform designed to connect and support buyers, owners, manufacturers, and
+                                suppliers through a modern digital experience.</div>
                         </div>
 
                         <div class="cred-faq-qa">
                             <div class="cred-faq-q">Who can work with Hyna Studio?</div>
-                            <div class="cred-faq-a">Hyna Studio can work with businesses, organizations, entrepreneurs, and technology partners who are looking to build, improve, or adopt practical digital solutions.</div>
+                            <div class="cred-faq-a">Hyna Studio can work with businesses, organizations, entrepreneurs,
+                                and technology partners who are looking to build, improve, or adopt practical digital
+                                solutions.</div>
                         </div>
 
                         <div class="cred-faq-qa">
                             <div class="cred-faq-q">How does the project process work?</div>
-                            <div class="cred-faq-a">Our process typically starts with understanding the problem, followed by planning, product design, development, testing, and continuous improvement. We focus on building solutions that are practical, scalable, and easy to use.</div>
+                            <div class="cred-faq-a">Our process typically starts with understanding the problem,
+                                followed by planning, product design, development, testing, and continuous improvement.
+                                We focus on building solutions that are practical, scalable, and easy to use.</div>
                         </div>
 
                         <div class="cred-faq-qa">
                             <div class="cred-faq-q">How can I contact Hyna Studio?</div>
-                            <div class="cred-faq-a">You can contact Hyna Studio through our official contact channels. Share your idea, business requirement, or partnership opportunity, and our team can discuss the next steps with you.</div>
+                            <div class="cred-faq-a">You can contact Hyna Studio through our official contact channels.
+                                Share your idea, business requirement, or partnership opportunity, and our team can
+                                discuss the next steps with you.</div>
                         </div>
 
                     </div>
