@@ -3150,20 +3150,6 @@
             transform-origin: center bottom;
         }
 
-        @media (max-width: 900px) {
-            .main-content-wrapper {
-                margin-bottom: 0 !important;
-            }
-
-            footer {
-                position: relative !important;
-                bottom: auto !important;
-                left: auto !important;
-                z-index: auto !important;
-                transform: none !important;
-            }
-        }
-
         /* ── NEW LOADING SCREEN OVERLAY ── */
         #hyna-new-loader {
             position: fixed;
@@ -8497,10 +8483,6 @@
             if (!footer) return;
 
             function setFooterHeight() {
-                if (window.innerWidth <= 900) {
-                    document.documentElement.style.setProperty('--footer-height', '0px');
-                    return;
-                }
                 var height = Math.floor(footer.getBoundingClientRect().height);
                 document.documentElement.style.setProperty('--footer-height', height + 'px');
             }
