@@ -81,13 +81,13 @@
       }
 
       nav.nav-scrolled {
-        background: rgba(20, 20, 24, 0.96) !important;
-        border: 1px solid rgba(255, 255, 255, 0.22) !important;
-        border-top: 1.5px solid rgba(255, 255, 255, 0.55) !important;
+        background: rgba(18, 18, 22, 0.92) !important;
+        border: 1px solid rgba(255, 255, 255, 0.18) !important;
+        border-top: 1.5px solid rgba(255, 255, 255, 0.45) !important;
         box-shadow:
-          0 24px 48px rgba(0, 0, 0, 0.7),
-          inset 0 1px 1px rgba(255, 255, 255, 0.25),
-          inset 0 -1px 0 rgba(0, 0, 0, 0.5) !important;
+          0 20px 40px rgba(0, 0, 0, 0.6),
+          inset 0 1px 1px rgba(255, 255, 255, 0.2),
+          inset 0 -1px 0 rgba(0, 0, 0, 0.4) !important;
       }
 
       /* Keep logo consistent */
@@ -672,17 +672,17 @@
     }
 
 
-    /* Scrolled state */
-    nav.nav-scrolled {
-      max-width: 920px;
-      background: rgba(20, 20, 24, 0.95);
-      border: 1px solid rgba(255, 255, 255, 0.22);
-      border-top: 1.8px solid rgba(255, 255, 255, 0.65);
-      box-shadow:
-        0 30px 60px rgba(0, 0, 0, 0.85),
-        inset 0 1px 1px rgba(255, 255, 255, 0.3),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.6);
-    }
+    /* Scrolled state - kept identical to default nav so it does not change while scrolling */
+        nav.nav-scrolled {
+            max-width: 980px;
+            background: rgba(18, 18, 22, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-top: 5.8px solid rgba(255, 255, 255, 0.55);
+            box-shadow:
+                0 24px 48px rgba(0, 0, 0, 0.8),
+                inset 0 1px 1px rgba(255, 255, 255, 0.25),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.5);
+        }
 
     /* Logo styling */
     .nav-logo {
@@ -696,12 +696,12 @@
     }
 
 
-    /* Hide nav while user is actively scrolling */
-    nav.nav-hidden {
-      transform: translateX(-50%) translateY(-120%) translateZ(0);
-      opacity: 0;
-      pointer-events: none;
-    }
+    /* nav-hidden disabled so nav remains visible */
+        nav.nav-hidden {
+            transform: translateX(-50%) translateZ(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
 
     @media (prefers-reduced-motion: reduce) {
 
@@ -2139,27 +2139,29 @@
         });
       });
 
-      // Navbar hide/show while scrolling
-      const nav = document.querySelector("nav");
-      let lastScroll = 0;
+      // Navbar scroll effect - disabled so navbar remains completely constant while scrolling
+    /*
+    const nav = document.querySelector("nav");
+    let lastScroll = 0;
 
-      window.addEventListener("scroll", () => {
+    window.addEventListener("scroll", () => {
         const current = window.pageYOffset;
 
         if (current > 80) {
-          nav.classList.add("nav-scrolled");
+            nav.classList.add("nav-scrolled");
         } else {
-          nav.classList.remove("nav-scrolled");
+            nav.classList.remove("nav-scrolled");
         }
 
         if (current > lastScroll && current > 150) {
-          nav.classList.add("nav-hidden");
+            nav.classList.add("nav-hidden");
         } else {
-          nav.classList.remove("nav-hidden");
+            nav.classList.remove("nav-hidden");
         }
 
         lastScroll = current;
-      });
+    });
+    */
 
       // Hero animation class
       requestAnimationFrame(() => {

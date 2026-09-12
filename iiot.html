@@ -107,15 +107,16 @@
       transition: max-width 0.4s ease, background 0.4s ease, box-shadow 0.4s ease;
     }
 
+    /* Scrolled state - kept identical to default nav so it does not change while scrolling */
     nav.nav-scrolled {
-      max-width: 920px;
-      background: rgba(20, 20, 24, 0.95);
-      border: 1px solid rgba(255, 255, 255, 0.22);
-      border-top: 1.8px solid rgba(255, 255, 255, 0.65);
+      max-width: 980px;
+      background: rgba(18, 18, 22, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-top: 5.8px solid rgba(255, 255, 255, 0.55);
       box-shadow:
-        0 30px 60px rgba(0, 0, 0, 0.85),
-        inset 0 1px 1px rgba(255, 255, 255, 0.3),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.6);
+        0 24px 48px rgba(0, 0, 0, 0.8),
+        inset 0 1px 1px rgba(255, 255, 255, 0.25),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.5);
     }
 
     /* Logo styling */
@@ -2914,7 +2915,8 @@
   <!-- SCRIPT FOR NAVBAR & INTERACTIONS -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Navbar scroll effect
+      // Navbar scroll effect - disabled so navbar remains completely constant while scrolling
+      /*
       const navbar = document.querySelector('nav');
       if (navbar) {
         window.addEventListener('scroll', () => {
@@ -2925,6 +2927,7 @@
           }
         }, { passive: true });
       }
+      */
 
       // Mobile menu toggle
       const toggleBtn = document.getElementById('navMobileToggle');

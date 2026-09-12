@@ -218,16 +218,16 @@
         }
 
 
-        /* Scrolled state */
+        /* Scrolled state - kept identical to default nav so it does not change while scrolling */
         nav.nav-scrolled {
-            max-width: 920px;
-            background: rgba(20, 20, 24, 0.95);
-            border: 1px solid rgba(255, 255, 255, 0.22);
-            border-top: 1.8px solid rgba(255, 255, 255, 0.65);
+            max-width: 980px;
+            background: rgba(18, 18, 22, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-top: 5.8px solid rgba(255, 255, 255, 0.55);
             box-shadow:
-                0 30px 60px rgba(0, 0, 0, 0.85),
-                inset 0 1px 1px rgba(255, 255, 255, 0.3),
-                inset 0 -1px 0 rgba(0, 0, 0, 0.6);
+                0 24px 48px rgba(0, 0, 0, 0.8),
+                inset 0 1px 1px rgba(255, 255, 255, 0.25),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.5);
         }
 
         /* Logo styling */
@@ -2429,13 +2429,13 @@
             }
 
             nav.nav-scrolled {
-                background: rgba(20, 20, 24, 0.96) !important;
-                border: 1px solid rgba(255, 255, 255, 0.22) !important;
-                border-top: 1.5px solid rgba(255, 255, 255, 0.55) !important;
+                background: rgba(18, 18, 22, 0.92) !important;
+                border: 1px solid rgba(255, 255, 255, 0.18) !important;
+                border-top: 1.5px solid rgba(255, 255, 255, 0.45) !important;
                 box-shadow:
-                    0 24px 48px rgba(0, 0, 0, 0.7),
-                    inset 0 1px 1px rgba(255, 255, 255, 0.25),
-                    inset 0 -1px 0 rgba(0, 0, 0, 0.5) !important;
+                    0 20px 40px rgba(0, 0, 0, 0.6),
+                    inset 0 1px 1px rgba(255, 255, 255, 0.2),
+                    inset 0 -1px 0 rgba(0, 0, 0, 0.4) !important;
             }
 
             /* Keep logo consistent */
@@ -8727,19 +8727,8 @@
                 });
             }, 1500);
 
-            // Nav scroll - only styling changes, no hide/show animation
-            const navElement = document.querySelector('nav');
-            const handleScroll = () => {
-                if (navElement) {
-                    if (window.scrollY > 50) {
-                        navElement.classList.add('nav-scrolled');
-                    } else {
-                        navElement.classList.remove('nav-scrolled');
-                    }
-                }
-            };
-            window.addEventListener('scroll', handleScroll, { passive: true });
-            handleScroll();
+            // Nav scroll - disabled so navbar remains completely constant while scrolling
+            // (nav stays in its default liquid pill shape without resizing or shifting)
 
             // TiltedCard interactive mouse movement
             document.querySelectorAll('.tilted-card-figure').forEach(card => {
