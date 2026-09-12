@@ -69,14 +69,13 @@
 
         html {
             scroll-behavior: smooth;
-            background: #fcfcfc;
+            background: #030d1a;
             scrollbar-gutter: stable;
-
         }
 
         body {
             font-family: var(--font-body);
-            background: #ffffff;
+            background: #030d1a;
             color: var(--ink);
             line-height: 1.6;
             overflow-x: hidden;
@@ -3137,6 +3136,7 @@
             background: var(--paper);
             /* Push content down so footer is fully hidden under the wrapper by default */
             margin-bottom: var(--footer-height);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
         }
 
         /* Make footer sticky at bottom, peeking behind content */
@@ -8501,7 +8501,7 @@
                     document.documentElement.style.setProperty('--footer-height', '0px');
                     return;
                 }
-                var height = Math.ceil(footer.getBoundingClientRect().height);
+                var height = Math.floor(footer.getBoundingClientRect().height);
                 document.documentElement.style.setProperty('--footer-height', height + 'px');
             }
 
