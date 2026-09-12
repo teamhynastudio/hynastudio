@@ -1990,52 +1990,83 @@
 
         /* ── CTA BANNER ── */
         .cta-banner {
-            background: linear-gradient(to bottom, #ffffff 0%, #000000 100%);
+            background: #000000;
             color: #fff;
-            padding: 5rem 4rem;
+            padding: 8rem 4rem;
             text-align: center;
             position: relative;
             overflow: hidden;
         }
 
+        /* Spotlight cone from top-center */
+        .cta-banner::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 500px;
+            height: 120%;
+            background: conic-gradient(
+                from -12deg at 50% 0%,
+                transparent 0deg,
+                rgba(255,255,255,0.0) 8deg,
+                rgba(255,255,255,0.18) 18deg,
+                rgba(255,255,255,0.32) 24deg,
+                rgba(255,255,255,0.18) 30deg,
+                rgba(255,255,255,0.0) 40deg,
+                transparent 48deg
+            );
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .cta-banner > * {
+            position: relative;
+            z-index: 1;
+        }
+
         .cta-banner h2 {
             font-family: var(--font-display);
-            font-size: clamp(2rem, 4vw, 3.2rem);
-            font-weight: 800;
-            letter-spacing: -0.025em;
+            font-size: clamp(2.4rem, 5vw, 4rem);
+            font-weight: 900;
+            letter-spacing: -0.01em;
+            text-transform: uppercase;
+            line-height: 1.05;
             margin-bottom: 2rem;
-            color: #0a0a0a;
+            color: #ffffff;
         }
 
         .cta-banner p {
-            font-size: 1.05rem;
-            margin-bottom: 1em;
             color: rgba(0, 0, 0, 0.55);
         }
 
         .btn-white {
             display: inline-block;
-            background: #fff;
-            color: var(--accent);
-            padding: 0.9rem 2.2rem;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 0.95rem;
+            background: #ffffff;
+            color: #111111;
+            padding: 0.85rem 2.4rem;
+            border-radius: 100px;
+            font-weight: 500;
+            font-size: 0.92rem;
             text-decoration: none;
-            transition: transform 0.2s, box-shadow 0.2s;
+            letter-spacing: 0.01em;
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
         }
 
         .btn-white:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.15);
+            background: #f0f0f0;
         }
 
         /* ── ZERODHA-INSPIRED MULTI-COLUMN FOOTER ── */
         footer {
-            background: #000000;
-            color: rgba(255, 255, 255, 0.7);
+            background:
+                radial-gradient(ellipse 80% 70% at 10% 10%, #7ecfea 0%, #3fa8c8 25%, #1a6fa0 55%, #0a3352 80%, #030d1a 100%);
+            color: rgba(255, 255, 255, 0.85);
             padding: 5rem 8% 3rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: none;
             font-family: var(--font-body, 'Inter', sans-serif);
             position: relative;
         }
@@ -2062,8 +2093,8 @@
         }
 
         .footer-logo-img {
-            width: 36px;
-            height: 36px;
+            width: 72px;
+            height: 72px;
             object-fit: contain;
         }
 
@@ -7980,12 +8011,8 @@
 
             <!-- CTA -->
             <div class="cta-banner" id="contact">
-                <h2>Ready to build something great?</h2>
-                <p>Tell us about your project — we'll get back within 24 hours.</p>
-                <a href="mailto:team.hynastudio@gmail.com?subject=Project%20Inquiry%20-%20Hyna%20Studio&body=Hello%20Hyna%20Studio,%0D%0A%0D%0AI%20would%20like%20to%20discuss%20a%20project.%0D%0A%0D%0AName:%20%0D%0ACompany:%20%0D%0APhone:%20%0D%0AProject%20Details:%20"
-                    class="btn-white">
-                    Start a Conversation →
-                </a>
+                <h2>Let's Get<br>In Touch</h2>
+                <a href="contact.html" class="btn-white">Book a call</a>
             </div>
 
     </div><!-- /.main-content-wrapper -->
