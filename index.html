@@ -1990,74 +1990,88 @@
 
         /* ── CTA BANNER ── */
         .cta-banner {
-            background: #000000;
+            background-color: #04060a;
+            background-image: url('./cta-bg-exact.png');
+            background-position: center right;
+            background-size: cover;
+            background-repeat: no-repeat;
             color: #fff;
-            padding: 8rem 4rem;
-            text-align: center;
+            padding: 7rem 8%;
+            text-align: left;
             position: relative;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            min-height: 440px;
         }
 
-        /* Spotlight cone from top-center */
-        .cta-banner::before {
-            content: '';
-            position: absolute;
-            top: -20%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 500px;
-            height: 120%;
-            background: conic-gradient(
-                from -12deg at 50% 0%,
-                transparent 0deg,
-                rgba(255,255,255,0.0) 8deg,
-                rgba(255,255,255,0.18) 18deg,
-                rgba(255,255,255,0.32) 24deg,
-                rgba(255,255,255,0.18) 30deg,
-                rgba(255,255,255,0.0) 40deg,
-                transparent 48deg
-            );
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .cta-banner > * {
+        .cta-banner-content {
             position: relative;
-            z-index: 1;
+            z-index: 2;
+            max-width: 680px;
+        }
+
+        .cta-eyebrow {
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.55);
+            margin-bottom: 1.4rem;
+            font-family: var(--font-body, 'Inter', sans-serif);
         }
 
         .cta-banner h2 {
-            font-family: var(--font-display);
-            font-size: clamp(2.4rem, 5vw, 4rem);
-            font-weight: 900;
-            letter-spacing: -0.01em;
-            text-transform: uppercase;
-            line-height: 1.05;
-            margin-bottom: 2rem;
+            font-family: var(--font-display, 'Inter', -apple-system, sans-serif);
+            font-size: clamp(2.6rem, 5.5vw, 4.6rem);
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            line-height: 1.1;
+            margin-bottom: 2.2rem;
             color: #ffffff;
+            text-transform: none;
         }
 
-        .cta-banner p {
-            color: rgba(0, 0, 0, 0.55);
-        }
-
-        .btn-white {
+        .cta-gradient-accent {
+            background: linear-gradient(90deg, #60ccff 0%, #3598f5 42%, #79e3ff 75%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             display: inline-block;
-            background: #ffffff;
-            color: #111111;
-            padding: 0.85rem 2.4rem;
-            border-radius: 100px;
+        }
+
+        .btn-cta-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #000000;
+            color: #ffffff;
+            padding: 0.85rem 1.9rem;
+            border-radius: 9999px;
             font-weight: 500;
-            font-size: 0.92rem;
+            font-size: 0.95rem;
             text-decoration: none;
             letter-spacing: 0.01em;
-            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+            transition: all 0.25s ease;
         }
 
-        .btn-white:hover {
+        .btn-cta-pill:hover {
+            background: #0b0e14;
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.35);
+            box-shadow: 0 8px 30px rgba(60, 160, 255, 0.25), inset 0 1px 2px rgba(255, 255, 255, 0.3);
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.15);
-            background: #f0f0f0;
+        }
+
+        .btn-cta-pill .cta-arrow {
+            transition: transform 0.2s ease;
+            font-size: 1.1rem;
+            line-height: 1;
+        }
+
+        .btn-cta-pill:hover .cta-arrow {
+            transform: translateX(4px);
         }
 
         /* ── ZERODHA-INSPIRED MULTI-COLUMN FOOTER ── */
@@ -8011,8 +8025,11 @@
 
             <!-- CTA -->
             <div class="cta-banner" id="contact">
-                <h2>Let's Get<br>In Touch</h2>
-                <a href="contact.html" class="btn-white">Book a call</a>
+                <div class="cta-banner-content">
+                    <div class="cta-eyebrow">SPOTS FOR NEXT COHORT AVAILABLE NOW</div>
+                    <h2>Let's Get<br><span class="cta-gradient-accent">In Touch.</span></h2>
+                    <a href="contact.html" class="btn-cta-pill">Book a call <span class="cta-arrow">→</span></a>
+                </div>
             </div>
 
     </div><!-- /.main-content-wrapper -->
