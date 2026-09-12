@@ -1996,13 +1996,22 @@
             background-size: cover;
             background-repeat: no-repeat;
             color: #fff;
-            padding: 7rem 8%;
+            padding: 7.5rem 8%;
             text-align: left;
             position: relative;
             overflow: hidden;
             display: flex;
             align-items: center;
-            min-height: 440px;
+            min-height: 480px;
+        }
+
+        .cta-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(4, 6, 10, 0.8) 0%, rgba(4, 6, 10, 0.35) 45%, transparent 100%);
+            pointer-events: none;
+            z-index: 1;
         }
 
         .cta-banner-content {
