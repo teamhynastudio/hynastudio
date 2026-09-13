@@ -2,7 +2,7 @@ import os
 from PIL import Image
 
 def main():
-    img_path = '/Users/mac/.gemini/antigravity-ide/brain/75e0d686-6749-48b3-9ca0-107cf6d408de/.user_uploaded/media_1789242276533.png'
+    img_path = '/Users/mac/.gemini/antigravity-ide/brain/c9a96566-668f-4878-bc07-d918a071c86a/.user_uploaded/media_1789272608101.png'
     if not os.path.exists(img_path):
         # Fallback to local copy if available
         if os.path.exists('logo.png'):
