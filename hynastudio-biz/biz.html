@@ -54,31 +54,7 @@
             align-items: center;
         }
 
-        /* ── TOP NAVIGATION ── */
-        header {
-            width: 100%;
-            max-width: 1260px;
-            padding: 24px 32px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-            z-index: 20;
-        }
 
-        /* Forma Wavy Logo */
-        .logo-wrap {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .logo-svg {
-            width: 44px;
-            height: 24px;
-            fill: #FFFFFF;
-        }
 
         /* ── MAIN CONTENT AREA ── */
         main {
@@ -128,6 +104,7 @@
         .pricing-backdrop-title .l-p {
             background: linear-gradient(180deg, #0a1936 0%, #061024 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             filter: drop-shadow(0 0 8px rgba(10, 25, 54, 0.2));
         }
@@ -136,6 +113,7 @@
         .pricing-backdrop-title .l-r {
             background: linear-gradient(180deg, #0f2756 0%, #081736 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             filter: drop-shadow(0 0 10px rgba(15, 39, 86, 0.25));
         }
@@ -144,6 +122,7 @@
         .pricing-backdrop-title .l-i1 {
             background: linear-gradient(180deg, #173e80 0%, #0d2552 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             filter: drop-shadow(0 0 14px rgba(23, 62, 128, 0.35));
         }
@@ -152,6 +131,7 @@
         .pricing-backdrop-title .l-c {
             background: linear-gradient(180deg, #2564c7 0%, #15418a 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             filter: drop-shadow(0 0 20px rgba(37, 100, 199, 0.45));
         }
@@ -160,6 +140,7 @@
         .pricing-backdrop-title .l-i2 {
             background: linear-gradient(180deg, #4faaff 0%, #246ecc 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             filter: drop-shadow(0 0 28px rgba(79, 170, 255, 0.65));
         }
@@ -168,6 +149,7 @@
         .pricing-backdrop-title .l-n {
             background: linear-gradient(180deg, #9de2ff 0%, #479fff 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             filter: drop-shadow(0 0 38px rgba(130, 220, 255, 0.8));
         }
@@ -176,6 +158,7 @@
         .pricing-backdrop-title .l-g {
             background: linear-gradient(180deg, #7ed0fb 0%, #2972d8 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             filter: drop-shadow(0 0 28px rgba(110, 200, 255, 0.55));
         }
@@ -190,6 +173,7 @@
             letter-spacing: -0.02em;
             background: linear-gradient(180deg, #bae6fd 0%, #38bdf8 55%, #2563eb 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.45));
         }
@@ -326,6 +310,96 @@
             box-shadow: 0 6px 24px rgba(255, 255, 255, 0.2);
         }
 
+        /* ── BILLING TOGGLE ── */
+        .billing-toggle-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 38px;
+            position: relative;
+            z-index: 12;
+        }
+
+        .billing-toggle {
+            display: flex;
+            align-items: center;
+            background: rgba(15, 16, 22, 0.7);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 9999px;
+            padding: 4px;
+            position: relative;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .billing-toggle .toggle-option {
+            padding: 10px 28px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-muted);
+            border-radius: 9999px;
+            position: relative;
+            z-index: 2;
+            transition: color 0.35s ease;
+            cursor: pointer;
+            letter-spacing: -0.01em;
+        }
+
+        .billing-toggle .toggle-option.active {
+            color: #FFFFFF;
+        }
+
+        /* Sliding pill behind the active option */
+        .billing-toggle .toggle-pill {
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            height: calc(100% - 8px);
+            width: calc(50% - 4px);
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.18) 0%, rgba(26, 102, 255, 0.22) 100%);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            border-radius: 9999px;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 1;
+            box-shadow: 0 0 18px rgba(0, 240, 255, 0.15);
+        }
+
+        .billing-toggle.yearly .toggle-pill {
+            transform: translateX(100%);
+        }
+
+        /* Savings badge */
+        .savings-badge {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--accent-cyan);
+            background: rgba(0, 240, 255, 0.08);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            padding: 4px 14px;
+            border-radius: 9999px;
+            letter-spacing: 0.02em;
+            opacity: 0;
+            transform: translateY(-6px);
+            transition: opacity 0.35s ease, transform 0.35s ease;
+        }
+
+        .savings-badge.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Price transition */
+        .plan-price {
+            transition: opacity 0.25s ease;
+        }
+
+        .plan-price.switching {
+            opacity: 0;
+        }
+
         /* ── RESPONSIVE ALIGNMENT ── */
         @media (max-width: 1080px) {
             .pricing-cards-grid {
@@ -344,27 +418,18 @@
         }
 
         @media (max-width: 768px) {
-            header {
-                padding: 18px 20px;
-            }
-
             .pricing-backdrop-title {
                 font-size: 72px;
+            }
+
+            .billing-toggle .toggle-option {
+                padding: 9px 20px;
+                font-size: 13px;
             }
         }
     </style>
 </head>
 <body>
-
-    <!-- Header with Brand Logo -->
-    <header>
-        <!-- Wavy Logo -->
-        <a href="./image.png" class="logo-wrap" aria-label="Forma Logo">
-            <svg class="logo-svg" viewBox="0 0 44 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6 12C6 8.686 8.686 6 12 6C15.314 6 17.5 8.5 20.5 12C23.5 15.5 25.686 18 29 18C32.314 18 35 15.314 35 12C35 8.686 37.686 6 41 6" stroke="white" stroke-width="7" stroke-linecap="round" fill="none"/>
-            </svg>
-        </a>
-    </header>
 
     <!-- Main Pricing Section -->
     <main>
@@ -373,13 +438,23 @@
             <h1 class="pricing-backdrop-title" aria-label="Pricing"><span class="letter l-p">P</span><span class="letter l-r">r</span><span class="letter l-i1">i</span><span class="letter l-c">c</span><span class="letter l-i2">i</span><span class="letter l-n">n</span><span class="letter l-g">g</span></h1>
         </div>
 
+        <!-- Monthly / Yearly Toggle -->
+        <div class="billing-toggle-wrapper">
+            <div class="billing-toggle" id="billingToggle">
+                <div class="toggle-pill"></div>
+                <span class="toggle-option active" data-period="monthly">Monthly</span>
+                <span class="toggle-option" data-period="yearly">Yearly</span>
+            </div>
+            <span class="savings-badge" id="savingsBadge">Save ~17% with yearly billing</span>
+        </div>
+
         <!-- 3 Glassmorphic Pricing Cards -->
         <div class="pricing-cards-grid">
             
             <!-- 1. Free Plan -->
             <div class="card">
                 <div class="plan-name">Free</div>
-                <div class="plan-price">Free</div>
+                <div class="plan-price" data-monthly="Free" data-yearly="Free">Free</div>
                 <div class="plan-desc">For creators taking their first steps with Forma.</div>
                 <ul class="features-list">
                     <li>
@@ -419,7 +494,7 @@
             <!-- 2. Standard Plan -->
             <div class="card">
                 <div class="plan-name">Standard</div>
-                <div class="plan-price">$9,99/m</div>
+                <div class="plan-price" data-monthly="$9.99/m" data-yearly="$99.99/y">$9.99/m</div>
                 <div class="plan-desc">For freelancers and small teams who need more freedom and flexibility.</div>
                 <ul class="features-list">
                     <li>
@@ -459,7 +534,7 @@
             <!-- 3. Pro Plan (Glowing Cyan Border) -->
             <div class="card pro">
                 <div class="plan-name">Pro</div>
-                <div class="plan-price">$19,99/m</div>
+                <div class="plan-price" data-monthly="$19.99/m" data-yearly="$199.99/y">$19.99/m</div>
                 <div class="plan-desc">For studios, agencies, and professional creators working with brands.</div>
                 <ul class="features-list">
                     <li>
@@ -499,6 +574,42 @@
         </div>
 
     </main>
+
+    <!-- Billing Toggle Script -->
+    <script>
+        (function() {
+            const toggle = document.getElementById('billingToggle');
+            const badge = document.getElementById('savingsBadge');
+            const options = toggle.querySelectorAll('.toggle-option');
+            const prices = document.querySelectorAll('.plan-price');
+            let isYearly = false;
+
+            toggle.addEventListener('click', function() {
+                isYearly = !isYearly;
+
+                // Toggle active class on options
+                options.forEach(opt => opt.classList.remove('active'));
+                if (isYearly) {
+                    options[1].classList.add('active');
+                    toggle.classList.add('yearly');
+                    badge.classList.add('visible');
+                } else {
+                    options[0].classList.add('active');
+                    toggle.classList.remove('yearly');
+                    badge.classList.remove('visible');
+                }
+
+                // Animate price swap
+                prices.forEach(el => {
+                    el.classList.add('switching');
+                    setTimeout(() => {
+                        el.textContent = isYearly ? el.dataset.yearly : el.dataset.monthly;
+                        el.classList.remove('switching');
+                    }, 250);
+                });
+            });
+        })();
+    </script>
 
 </body>
 </html>
