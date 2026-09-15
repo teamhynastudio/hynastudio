@@ -7081,7 +7081,78 @@
             }
         </style>
 
-
+        <!-- ── 4TH SLIDE BANNER ── -->
+        <style>
+            .slide-banner-section {
+                background: #000000;
+                margin: 0;
+                padding: 0;
+                line-height: 0;
+                overflow: hidden;
+                position: relative;
+            }
+            .slide-banner-section img {
+                width: 100%;
+                height: auto;
+                display: block;
+                object-fit: cover;
+                opacity: 0;
+                transform: translateY(32px);
+                transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                            transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+            .slide-banner-section img.slide-banner-visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            /* Black gradient fades — top and bottom */
+            .slide-banner-section::before,
+            .slide-banner-section::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                right: 0;
+                height: 30%;
+                pointer-events: none;
+                z-index: 2;
+            }
+            .slide-banner-section::before {
+                top: 0;
+                background: linear-gradient(to bottom, #000000 0%, transparent 100%);
+            }
+            .slide-banner-section::after {
+                bottom: 0;
+                background: linear-gradient(to top, #000000 0%, transparent 100%);
+            }
+            @media (max-width: 768px) {
+                .slide-banner-section img {
+                    min-height: 200px;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+        </style>
+        <div class="slide-banner-section">
+            <img src="./images/4thslide.png"
+                 id="slideBannerImg"
+                 alt="Hyna Studio LLP — Democratizing Entrepreneurship"
+                 loading="lazy">
+        </div>
+        <script>
+            (function () {
+                var img = document.getElementById('slideBannerImg');
+                if (!img) return;
+                var io = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (e) {
+                        if (e.isIntersecting) {
+                            img.classList.add('slide-banner-visible');
+                            io.disconnect();
+                        }
+                    });
+                }, { threshold: 0.1 });
+                io.observe(img);
+            })();
+        </script>
 
 
 
