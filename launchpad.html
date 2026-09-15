@@ -2,19 +2,19 @@
 <html lang="en">
 
 <head>
-    <script>
-        // Clean URL file names (e.g. index.html) from address bar
-        if (window.location.protocol.startsWith('http')) {
-            var path = window.location.pathname;
-            if (path.endsWith('/index.html') || path.endsWith('/index')) {
-                var clean = path.replace(/\/index(\.html)?$/, '/');
-                window.history.replaceState(null, '', clean + window.location.search + window.location.hash);
-            } else if (path.endsWith('.html')) {
-                var clean = path.slice(0, -5);
-                window.history.replaceState(null, '', clean + window.location.search + window.location.hash);
-            }
-        }
-    </script>
+  <script>
+    // Clean URL file names (e.g. index.html) from address bar
+    if (window.location.protocol.startsWith('http')) {
+      var path = window.location.pathname;
+      if (path.endsWith('/index.html') || path.endsWith('/index')) {
+        var clean = path.replace(/\/index(\.html)?$/, '/');
+        window.history.replaceState(null, '', clean + window.location.search + window.location.hash);
+      } else if (path.endsWith('.html')) {
+        var clean = path.slice(0, -5);
+        window.history.replaceState(null, '', clean + window.location.search + window.location.hash);
+      }
+    }
+  </script>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -679,16 +679,16 @@
 
 
     /* Scrolled state - kept identical to default nav so it does not change while scrolling */
-        nav.nav-scrolled {
-            max-width: 980px;
-            background: rgba(18, 18, 22, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.16);
-            border-top: 5.8px solid rgba(255, 255, 255, 0.55);
-            box-shadow:
-                0 24px 48px rgba(0, 0, 0, 0.8),
-                inset 0 1px 1px rgba(255, 255, 255, 0.25),
-                inset 0 -1px 0 rgba(0, 0, 0, 0.5);
-        }
+    nav.nav-scrolled {
+      max-width: 980px;
+      background: rgba(18, 18, 22, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-top: 5.8px solid rgba(255, 255, 255, 0.55);
+      box-shadow:
+        0 24px 48px rgba(0, 0, 0, 0.8),
+        inset 0 1px 1px rgba(255, 255, 255, 0.25),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.5);
+    }
 
     /* Logo styling */
     .nav-logo {
@@ -703,11 +703,11 @@
 
 
     /* nav-hidden disabled so nav remains visible */
-        nav.nav-hidden {
-            transform: translateX(-50%) translateZ(0);
-            opacity: 1;
-            pointer-events: auto;
-        }
+    nav.nav-hidden {
+      transform: translateX(-50%) translateZ(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
 
     @media (prefers-reduced-motion: reduce) {
 
@@ -1941,10 +1941,7 @@
     <div class="pin-sticky">
       <div class="hero-img-wrap" id="heroImg">
 
-        <video id="heroVideo" class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto">
-          <source src="./motion graphics video.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
+        <img id="heroImage" class="hero-video" src="./hyna-launchpad.png" alt="Hyna Studio — Building the Future">
 
         <div class="zoom-scrim" id="zoomScrim"></div>
 
@@ -2097,28 +2094,28 @@
       });
 
       // Navbar scroll effect - disabled so navbar remains completely constant while scrolling
-    /*
-    const nav = document.querySelector("nav");
-    let lastScroll = 0;
-
-    window.addEventListener("scroll", () => {
-        const current = window.pageYOffset;
-
-        if (current > 80) {
-            nav.classList.add("nav-scrolled");
-        } else {
-            nav.classList.remove("nav-scrolled");
-        }
-
-        if (current > lastScroll && current > 150) {
-            nav.classList.add("nav-hidden");
-        } else {
-            nav.classList.remove("nav-hidden");
-        }
-
-        lastScroll = current;
-    });
-    */
+      /*
+      const nav = document.querySelector("nav");
+      let lastScroll = 0;
+  
+      window.addEventListener("scroll", () => {
+          const current = window.pageYOffset;
+  
+          if (current > 80) {
+              nav.classList.add("nav-scrolled");
+          } else {
+              nav.classList.remove("nav-scrolled");
+          }
+  
+          if (current > lastScroll && current > 150) {
+              nav.classList.add("nav-hidden");
+          } else {
+              nav.classList.remove("nav-hidden");
+          }
+  
+          lastScroll = current;
+      });
+      */
 
       // Hero animation class
       requestAnimationFrame(() => {
