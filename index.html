@@ -26,7 +26,7 @@
     <meta name="google-site-verification" content="abc123XYZtoken" />
     <meta name="description"
         content="Hyna Studio is a technology innovation company creating next-generation digital products that enable organizations to accelerate growth, improve efficiency, and embrace digital transformation.
-            Vignesh V L: Founder & CEO (Managing Director) | Jashwin: Co-Founder & COO | Dharshan: Co-Founder & CTO | Linciya: Chief Marketing Officer | Muhammed Zarif: Chief Growth Officer | Muhammed Arshiya: Chief Product Officer | Asthamil: HR & Manager">
+            Vignesh V L: Founder & CEO (Managing Director) | Jashwin: Co-Founder & COO | Dharshan: Co-Founder & CTO | Linciya: Chief Marketing Officer | Muhammed Zarif: Chief Growth Officer | Muhammed Arshiya: Chief Product Officer">
     <title>Hyna Studio | Autonomous Business Infrastructure</title>
     <link rel="icon" href="favicon.ico" sizes="any">
     <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
@@ -7167,145 +7167,6 @@
             })();
         </script>
 
-        <!-- ── PAYMENT FLOW HUB SECTION ── -->
-        <style>
-            .payment-hub-section {
-                background: #0c1122;
-                margin: 0;
-                padding: 80px 8%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                overflow: hidden;
-                position: relative;
-            }
-            .payment-hub-section::before {
-                content: '';
-                position: absolute;
-                top: 0; left: 0; right: 0;
-                height: 120px;
-                background: linear-gradient(to bottom, #000000 0%, transparent 100%);
-                pointer-events: none;
-                z-index: 1;
-            }
-            .payment-hub-section::after {
-                content: '';
-                position: absolute;
-                bottom: 0; left: 0; right: 0;
-                height: 120px;
-                background: linear-gradient(to top, #000000 0%, transparent 100%);
-                pointer-events: none;
-                z-index: 1;
-            }
-            .payment-hub-inner {
-                width: 100%;
-                max-width: 1400px;
-                position: relative;
-                z-index: 2;
-            }
-            .payment-hub-inner svg { width: 100%; height: auto; display: block; }
-            .ph-heading { fill: #ffffff; font-size: 38px; font-weight: 700; text-anchor: middle; font-family: 'Syne', sans-serif !important; }
-            .ph-label { fill: #a8b0c2; font-size: 21px; font-weight: 600; text-anchor: middle; letter-spacing: .2px; font-family: "Inter", sans-serif; }
-            .ph-amount { fill: #fff; font-size: 22px; font-weight: 700; text-anchor: middle; dominant-baseline: middle; font-family: "Inter", sans-serif; }
-            .ph-wire-in { fill: none; stroke: #9aa3b8; stroke-width: 3; stroke-linecap: round; stroke-dasharray: 2 11; opacity: .75; animation: ph-crawl 1.6s linear infinite; }
-            .ph-wire-out { fill: none; stroke-width: 7; stroke-linecap: round; }
-            @keyframes ph-crawl { to { stroke-dashoffset: -26; } }
-            .ph-spark { animation: ph-sparkFade 3.2s linear infinite; }
-            @keyframes ph-sparkFade { 0%,100%{opacity:0} 12%,88%{opacity:.95} }
-            .ph-ring { transform-origin: 693px 408px; }
-            .ph-ring-a { animation: ph-breathe 4.5s ease-in-out infinite; }
-            .ph-ring-b { animation: ph-breathe 4.5s ease-in-out infinite .6s; }
-            @keyframes ph-breathe { 0%,100%{ transform:scale(1); opacity:.55; } 50%{ transform:scale(1.045); opacity:.85; } }
-            @media (prefers-reduced-motion: reduce) {
-                .ph-wire-in,.ph-spark,.ph-ring-a,.ph-ring-b { animation: none; }
-                .ph-spark { opacity: .95; }
-            }
-        </style>
-
-        <div class="payment-hub-section">
-            <div class="payment-hub-inner">
-                <svg viewBox="0 0 1400 735" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Payment flow hub diagram.">
-                    <defs>
-                        <linearGradient id="ph-gDark" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#232c44"/><stop offset="1" stop-color="#151b2c"/></linearGradient>
-                        <linearGradient id="ph-gDocs" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6d5cf6"/><stop offset="1" stop-color="#4327e0"/></linearGradient>
-                        <linearGradient id="ph-gAnalytics" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8ed15a"/><stop offset="1" stop-color="#5aab2e"/></linearGradient>
-                        <linearGradient id="ph-gPayroll" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f9c06a"/><stop offset="1" stop-color="#ec8b3c"/></linearGradient>
-                        <linearGradient id="ph-gCollab" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d94ae8"/><stop offset="1" stop-color="#a51fc4"/></linearGradient>
-                        <linearGradient id="ph-gGlyph" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#dfe4f5"/></linearGradient>
-                        <radialGradient id="ph-gHub" cx="38%" cy="32%" r="75%"><stop offset="0" stop-color="#c4a9ff"/><stop offset="55%" stop-color="#9160ef"/><stop offset="1" stop-color="#6d35d6"/></radialGradient>
-                        <radialGradient id="ph-gHalo" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#7c3aed" stop-opacity=".55"/><stop offset="70%" stop-color="#6d28d9" stop-opacity=".16"/><stop offset="1" stop-color="#4c1d95" stop-opacity="0"/></radialGradient>
-                        <filter id="ph-soft" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="14"/></filter>
-                        <filter id="ph-tile" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000" flood-opacity=".45"/></filter>
-                        <path id="ph-pEmployee" d="M289,174 C350,178 370,205 395,240 C430,292 462,352 552,398"/>
-                        <path id="ph-pClient"   d="M139,320 L250,320 C310,320 340,332 400,360 C452,384 498,396 552,404"/>
-                        <path id="ph-pEmployer" d="M139,506 L340,506 C398,506 392,478 440,454 C486,431 512,420 552,412"/>
-                        <path id="ph-pGroups"   d="M289,665 C352,660 382,630 414,587 C452,536 484,468 552,420"/>
-                        <path id="ph-pDocs"      d="M846,402 C920,398 946,322 972,240 C988,190 1046,172 1112,172"/>
-                        <path id="ph-pAnalytics" d="M846,408 C892,412 924,414 966,414 C1056,414 1198,342 1262,321"/>
-                        <path id="ph-pPayroll"   d="M846,412 C948,420 1032,482 1133,503 C1182,513 1232,506 1262,503"/>
-                        <path id="ph-pCollab"    d="M846,416 C926,432 972,522 1016,637 C1032,679 1088,667 1112,667"/>
-                    </defs>
-                    <use href="#ph-pEmployee" class="ph-wire-in"/>
-                    <use href="#ph-pClient"   class="ph-wire-in" style="animation-delay:-.4s"/>
-                    <use href="#ph-pEmployer" class="ph-wire-in" style="animation-delay:-.8s"/>
-                    <use href="#ph-pGroups"   class="ph-wire-in" style="animation-delay:-1.2s"/>
-                    <use href="#ph-pDocs"      class="ph-wire-out" stroke="#4f3ae8"/>
-                    <use href="#ph-pAnalytics" class="ph-wire-out" stroke="#6cb43b"/>
-                    <use href="#ph-pPayroll"   class="ph-wire-out" stroke="#ec8b3c"/>
-                    <use href="#ph-pCollab"    class="ph-wire-out" stroke="#b62fd6"/>
-                    <g class="ph-spark"><circle r="6" fill="#fff" opacity=".9"><animateMotion dur="3.2s" repeatCount="indefinite"><mpath href="#ph-pDocs"/></animateMotion></circle></g>
-                    <g class="ph-spark" style="animation-delay:-.8s"><circle r="6" fill="#fff" opacity=".9"><animateMotion dur="3.2s" begin="-.8s" repeatCount="indefinite"><mpath href="#ph-pAnalytics"/></animateMotion></circle></g>
-                    <g class="ph-spark" style="animation-delay:-1.6s"><circle r="6" fill="#fff" opacity=".9"><animateMotion dur="3.2s" begin="-1.6s" repeatCount="indefinite"><mpath href="#ph-pPayroll"/></animateMotion></circle></g>
-                    <g class="ph-spark" style="animation-delay:-2.4s"><circle r="6" fill="#fff" opacity=".9"><animateMotion dur="3.2s" begin="-2.4s" repeatCount="indefinite"><mpath href="#ph-pCollab"/></animateMotion></circle></g>
-                    <circle cx="693" cy="408" r="250" fill="url(#ph-gHalo)"/>
-                    <circle class="ph-ring ph-ring-a" cx="693" cy="408" r="213" fill="#6d28d9" fill-opacity=".20" stroke="#a78bfa" stroke-opacity=".22" stroke-width="2"/>
-                    <circle class="ph-ring ph-ring-b" cx="693" cy="408" r="153" fill="#7c3aed" fill-opacity=".26" stroke="#c4b5fd" stroke-opacity=".18" stroke-width="2"/>
-                    <circle cx="693" cy="408" r="88" fill="#7c3aed" opacity=".35" filter="url(#ph-soft)"/>
-                    <circle cx="693" cy="408" r="84" fill="#000000"/>
-                    <circle cx="693" cy="408" r="84" fill="none" stroke="rgba(255, 255, 255, 0.25)" stroke-width="2"/>
-                    <circle cx="693" cy="408" r="76" fill="none" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
-                    <image href="./hyna-logo-new.png" xlink:href="./hyna-logo-new.png" x="641" y="356" width="104" height="104" preserveAspectRatio="xMidYMid meet"/>
-                    <g filter="url(#ph-tile)">
-                        <rect x="177" y="118" width="112" height="112" rx="17" fill="url(#ph-gDark)" stroke="#333c59"/>
-                        <rect x="26"  y="264" width="112" height="112" rx="17" fill="url(#ph-gDark)" stroke="#333c59"/>
-                        <rect x="26"  y="450" width="112" height="112" rx="17" fill="url(#ph-gDark)" stroke="#333c59"/>
-                        <rect x="177" y="609" width="112" height="112" rx="17" fill="url(#ph-gDark)" stroke="#333c59"/>
-                    </g>
-                    <g transform="translate(233,174)" fill="url(#ph-gGlyph)"><rect x="-24" y="-22" width="48" height="32" rx="5"/><rect x="-18" y="-16" width="36" height="20" rx="3" fill="#4a5470"/><rect x="-33" y="13" width="66" height="9" rx="4.5"/></g>
-                    <g transform="translate(82,320)" fill="url(#ph-gGlyph)"><circle cx="0" cy="-13" r="15"/><path d="M-27,26 a27,24 0 0 1 54,0 z"/></g>
-                    <g transform="translate(82,506)" fill="url(#ph-gGlyph)"><path d="M-11,-24 h22 a6,6 0 0 1 6,6 v6 h-9 v-3 h-16 v3 h-9 v-6 a6,6 0 0 1 6,-6 z"/><rect x="-32" y="-12" width="64" height="38" rx="7"/><rect x="-7" y="2" width="14" height="6" rx="3" fill="#4a5470"/></g>
-                    <g transform="translate(233,665)" fill="url(#ph-gGlyph)"><g opacity=".72"><circle cx="-24" cy="-6" r="12"/><path d="M-45,22 a21,18 0 0 1 42,0 z"/><circle cx="24" cy="-6" r="12"/><path d="M3,22 a21,18 0 0 1 42,0 z"/></g><circle cx="0" cy="-12" r="14"/><path d="M-24,22 a24,20 0 0 1 48,0 z"/></g>
-                    <text class="ph-heading" x="693" y="75" font-family="'Syne', sans-serif" font-weight="700">The Autonomous Coordination Layer</text>
-                    <text class="ph-label" x="233" y="100">Employee</text>
-                    <text class="ph-label" x="82"  y="246">Client</text>
-                    <text class="ph-label" x="82"  y="432">Employer</text>
-                    <text class="ph-label" x="233" y="591">Groups</text>
-                    <g filter="url(#ph-tile)">
-                        <rect x="1112" y="116" width="112" height="112" rx="19" fill="url(#ph-gDocs)"/>
-                        <rect x="1262" y="265" width="112" height="112" rx="19" fill="url(#ph-gAnalytics)"/>
-                        <rect x="1262" y="447" width="112" height="112" rx="19" fill="url(#ph-gPayroll)"/>
-                        <rect x="1112" y="611" width="112" height="112" rx="19" fill="url(#ph-gCollab)"/>
-                    </g>
-                    <g transform="translate(1168,172)" fill="url(#ph-gGlyph)"><path d="M-20,-30 h26 l18,18 v42 a4,4 0 0 1 -4,4 h-40 a4,4 0 0 1 -4,-4 v-56 a4,4 0 0 1 4,-4 z"/><path d="M6,-30 l18,18 h-18 z" fill="#c7cbf2"/><rect x="-11" y="4" width="22" height="5" rx="2.5" fill="#5b45e8"/><rect x="-11" y="16" width="22" height="5" rx="2.5" fill="#5b45e8"/></g>
-                    <g transform="translate(1318,321)"><circle r="30" fill="url(#ph-gGlyph)"/><path d="M0,-30 A30,30 0 0 1 21,21 L0,0 Z" fill="#79c247" transform="rotate(-14)"/><path d="M-3,-26 A26,26 0 0 0 -3,26" fill="none" stroke="#79c247" stroke-width="3.5" stroke-linecap="round"/></g>
-                    <g transform="translate(1318,503)"><circle r="30" fill="url(#ph-gGlyph)"/><circle r="30" fill="none" stroke="#e79a45" stroke-opacity=".4" stroke-width="2"/><text x="0" y="1" text-anchor="middle" dominant-baseline="central" font-size="38" font-weight="700" fill="#e08a33" font-family="Inter,sans-serif">$</text></g>
-                    <g transform="translate(1168,667)" fill="url(#ph-gGlyph)"><path d="M-28,-24 h56 a8,8 0 0 1 8,8 v30 a8,8 0 0 1 -8,8 h-30 l-16,14 v-14 h-10 a8,8 0 0 1 -8,-8 v-30 a8,8 0 0 1 8,-8 z"/><rect x="-16" y="-10" width="32" height="5" rx="2.5" fill="#b02fcf"/><rect x="-16" y="2" width="32" height="5" rx="2.5" fill="#b02fcf"/></g>
-                    <text class="ph-label" x="1168" y="98">Docs</text>
-                    <text class="ph-label" x="1318" y="247">Analytics</text>
-                    <text class="ph-label" x="1318" y="429">Payroll</text>
-                    <text class="ph-label" x="1168" y="593">Collaboration</text>
-                    <rect x="352" y="219" width="86" height="42" rx="9" fill="#273049" stroke="#3b4666"/><text class="ph-amount" x="395" y="241">$180</text>
-                    <rect x="219" y="299" width="80" height="42" rx="9" fill="#273049" stroke="#3b4666"/><text class="ph-amount" x="259" y="321">$90</text>
-                    <rect x="266" y="485" width="88" height="42" rx="9" fill="#273049" stroke="#3b4666"/><text class="ph-amount" x="310" y="507">$250</text>
-                    <rect x="370" y="566" width="88" height="42" rx="9" fill="#273049" stroke="#3b4666"/><text class="ph-amount" x="414" y="588">$310</text>
-                    <rect x="929" y="219" width="86" height="42" rx="9" fill="#4f3ae8"/><text class="ph-amount" x="972" y="241">$180</text>
-                    <rect x="926" y="393" width="80" height="42" rx="9" fill="#6cb43b"/><text class="ph-amount" x="966" y="415">$90</text>
-                    <rect x="1089" y="482" width="88" height="42" rx="9" fill="#ec8b3c"/><text class="ph-amount" x="1133" y="504">$250</text>
-                    <rect x="972" y="616" width="88" height="42" rx="9" fill="#b62fd6"/><text class="ph-amount" x="1016" y="638">$310</text>
-                </svg>
-            </div>
-        </div>
-        <!-- ── END PAYMENT FLOW HUB ── -->
 
 
 
@@ -7392,12 +7253,9 @@
                     margin: 0 auto;
                 }
 
-                .our-person-card.row-1 {
-                    grid-column: span 4;
-                }
-
+                .our-person-card.row-1,
                 .our-person-card.row-2 {
-                    grid-column: span 3;
+                    grid-column: span 4;
                 }
 
                 .our-person-card {
@@ -7744,19 +7602,7 @@
                             <div class="person-role">Chief Product Officer</div>
                         </div>
 
-                        <!-- Asthamil -->
-                        <div class="our-person-card row-2 lp-fade-up" data-name="Asthamil" data-role="HR &amp; Manager"
-                            data-bio="&quot;Great organizations are built on culture, empowerment, and seamless operations.&quot; Asthamil leads human resources and management initiatives at Hyna Studio."
-                            data-photo="./images/team/asthamil.jpg?v=1" data-portfolio="#" data-github="#"
-                            data-linkedin="#" data-college="Anna University"
-                            data-degree="B.E. Computer Science &amp; Engineering">
-                            <div class="avatar-circle-box">
-                                <img src="./images/team/asthamil.jpg?v=1" alt="Asthamil" class="avatar-img"
-                                    onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Asthamil&background=ec4899&color=fff';">
-                            </div>
-                            <h3 class="person-name">Asthamil</h3>
-                            <div class="person-role">HR &amp; Manager</div>
-                        </div>
+
 
 
 
