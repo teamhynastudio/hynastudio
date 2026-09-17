@@ -3490,6 +3490,415 @@
                 </div>
             </div>
         </section>
+        <!-- ── SECOND SLIDE: STARTUP FUNDING STAGES CHART ── -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+            rel="stylesheet">
+        <style>
+            .funding-slide-section {
+                --navy: #0d1b3e;
+                --bg: #f3f4f7;
+                background: #000000;
+                margin: 0;
+                padding: clamp(30px, 4vw, 60px) clamp(16px, 3vw, 40px);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                overflow: hidden;
+                box-sizing: border-box;
+                font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+                color: var(--navy);
+            }
+
+            .funding-slide-section * {
+                box-sizing: border-box;
+            }
+
+            .funding-slide-section .wrap {
+                width: 100%;
+                max-width: 1660px;
+                margin: 0 auto;
+                padding: clamp(16px, 2.5vw, 36px);
+                background: var(--bg);
+                border-radius: clamp(16px, 2vw, 28px);
+                box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.08);
+                position: relative;
+            }
+
+            .funding-slide-section svg {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+
+            .funding-slide-section .stage-title {
+                font-weight: 700;
+                font-size: 34px;
+                fill: #ffffff;
+                font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+            }
+
+            .funding-slide-section .bracket-label {
+                font-weight: 600;
+                font-size: 22px;
+                fill: var(--navy);
+                font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+            }
+
+            .funding-slide-section .axis-label {
+                font-weight: 700;
+                font-size: 24px;
+                fill: var(--navy);
+                letter-spacing: 1px;
+                font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+            }
+
+            .funding-slide-section .point-label {
+                font-weight: 700;
+                font-size: 20px;
+                fill: var(--navy);
+                font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+            }
+
+            .funding-slide-section .bar-label {
+                font-weight: 600;
+                font-size: 20px;
+                fill: var(--navy);
+                font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+            }
+
+            /* ---------- animations ---------- */
+            .funding-slide-section .stage-block {
+                opacity: 0;
+            }
+
+            .funding-slide-section.chart-animated .stage-block {
+                animation: fundingFadeIn 0.8s ease forwards;
+            }
+
+            .funding-slide-section.chart-animated #seedBlock {
+                animation-delay: 0.1s;
+            }
+
+            .funding-slide-section.chart-animated #earlyBlock {
+                animation-delay: 0.3s;
+            }
+
+            .funding-slide-section.chart-animated #laterBlock {
+                animation-delay: 0.5s;
+            }
+
+            @keyframes fundingFadeIn {
+                to {
+                    opacity: 1;
+                }
+            }
+
+            .funding-slide-section .bar {
+                transform-box: fill-box;
+                transform-origin: bottom;
+                transform: scaleY(0);
+            }
+
+            .funding-slide-section.chart-animated .bar {
+                animation: fundingGrowBar 0.7s cubic-bezier(.34, 1.56, .64, 1) forwards;
+            }
+
+            .funding-slide-section.chart-animated #bar1 {
+                animation-delay: 0.9s;
+            }
+
+            .funding-slide-section.chart-animated #bar2 {
+                animation-delay: 1.05s;
+            }
+
+            .funding-slide-section.chart-animated #bar3 {
+                animation-delay: 1.2s;
+            }
+
+            .funding-slide-section.chart-animated #bar4 {
+                animation-delay: 1.35s;
+            }
+
+            .funding-slide-section.chart-animated #bar5 {
+                animation-delay: 1.5s;
+            }
+
+            @keyframes fundingGrowBar {
+                to {
+                    transform: scaleY(1);
+                }
+            }
+
+            .funding-slide-section .curve {
+                stroke-dasharray: 2200;
+                stroke-dashoffset: 2200;
+            }
+
+            .funding-slide-section.chart-animated .curve {
+                animation: fundingDrawCurve 2.2s ease-in-out 0.6s forwards;
+            }
+
+            @keyframes fundingDrawCurve {
+                to {
+                    stroke-dashoffset: 0;
+                }
+            }
+
+            .funding-slide-section .dot {
+                opacity: 0;
+                transform-box: fill-box;
+                transform-origin: center;
+            }
+
+            .funding-slide-section.chart-animated .dot {
+                animation: fundingPopDot 0.5s ease forwards;
+            }
+
+            .funding-slide-section.chart-animated #valleyDot {
+                animation-delay: 1.1s;
+            }
+
+            .funding-slide-section.chart-animated #breakDot {
+                animation-delay: 2.4s;
+            }
+
+            @keyframes fundingPopDot {
+                from {
+                    opacity: 0;
+                    transform: scale(0);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+
+            .funding-slide-section .pulse-ring {
+                opacity: 0;
+                transform-box: fill-box;
+                transform-origin: center;
+            }
+
+            .funding-slide-section.chart-animated .pulse-ring {
+                animation: fundingPulse 2.4s ease-out infinite;
+            }
+
+            .funding-slide-section.chart-animated #valleyPulse {
+                animation-delay: 1.3s;
+            }
+
+            .funding-slide-section.chart-animated #breakPulse {
+                animation-delay: 2.6s;
+            }
+
+            @keyframes fundingPulse {
+                0% {
+                    transform: scale(1);
+                    opacity: 0.7;
+                }
+
+                100% {
+                    transform: scale(2.6);
+                    opacity: 0;
+                }
+            }
+
+            .funding-slide-section .bracket-group {
+                opacity: 0;
+            }
+
+            .funding-slide-section.chart-animated .bracket-group {
+                animation: fundingFadeIn 0.8s ease forwards;
+                animation-delay: 1.8s;
+            }
+
+            .funding-slide-section .arrow-tip {
+                transform-box: fill-box;
+                transform-origin: center;
+            }
+
+            .funding-slide-section.chart-animated .arrow-tip {
+                animation: fundingFloatArrow 1.6s ease-in-out infinite;
+                animation-delay: 2.8s;
+            }
+
+            @keyframes fundingFloatArrow {
+
+                0%,
+                100% {
+                    transform: translate(0, 0);
+                }
+
+                50% {
+                    transform: translate(6px, -6px);
+                }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+
+                .funding-slide-section .stage-block,
+                .funding-slide-section .bar,
+                .funding-slide-section .curve,
+                .funding-slide-section .dot,
+                .funding-slide-section .bracket-group {
+                    opacity: 1 !important;
+                    transform: none !important;
+                    stroke-dashoffset: 0 !important;
+                    animation: none !important;
+                }
+            }
+        </style>
+
+        <section class="funding-slide-section" id="fundingStagesSlide">
+            <div class="wrap">
+                <svg viewBox="0 0 1660 950" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="seedGrad" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#3b6bf5" />
+                            <stop offset="100%" stop-color="#5b8bf7" />
+                        </linearGradient>
+                        <linearGradient id="earlyGrad" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#29b6f6" />
+                            <stop offset="100%" stop-color="#4fc3f7" />
+                        </linearGradient>
+                        <linearGradient id="laterGrad" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#1fbf8f" />
+                            <stop offset="100%" stop-color="#3ed6a5" />
+                        </linearGradient>
+                        <marker id="arrowNavy" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto"
+                            markerUnits="strokeWidth">
+                            <path d="M0,0 L6,3 L0,6 Z" fill="var(--navy)" />
+                        </marker>
+                    </defs>
+
+                    <!-- ===================== BACKGROUND STAGE BLOCKS ===================== -->
+                    <!-- Seed Capital -->
+                    <g id="seedBlock" class="stage-block">
+                        <rect x="80" y="175" width="423" height="605" fill="url(#seedGrad)" />
+                        <text x="291" y="235" text-anchor="middle" class="stage-title">Seed Capital</text>
+                    </g>
+
+                    <!-- Early Stage -->
+                    <g id="earlyBlock" class="stage-block">
+                        <rect x="511" y="175" width="515" height="605" fill="url(#earlyGrad)" />
+                        <text x="768" y="235" text-anchor="middle" class="stage-title">Early Stage</text>
+                    </g>
+
+                    <!-- Later Stage -->
+                    <g id="laterBlock" class="stage-block">
+                        <rect x="1034" y="175" width="587" height="605" fill="url(#laterGrad)" />
+                        <text x="1327" y="235" text-anchor="middle" class="stage-title">Later Stage</text>
+                    </g>
+
+                    <!-- ===================== STEP BARS (funding rounds) ===================== -->
+                    <!-- Early stage bars -->
+                    <rect id="bar1" class="bar" x="511" y="690" width="259" height="90" fill="#ffffff" opacity="0.35" />
+                    <text x="640" y="672" text-anchor="middle" class="bar-label">1<tspan baseline-shift="super"
+                            font-size="12">st</tspan></text>
+
+                    <rect id="bar2" class="bar" x="770" y="590" width="256" height="190" fill="#ffffff"
+                        opacity="0.45" />
+                    <text x="898" y="572" text-anchor="middle" class="bar-label">2<tspan baseline-shift="super"
+                            font-size="12">nd</tspan></text>
+
+                    <!-- Later stage bars -->
+                    <rect id="bar3" class="bar" x="1034" y="530" width="172" height="250" fill="#ffffff"
+                        opacity="0.35" />
+                    <text x="1120" y="512" text-anchor="middle" class="bar-label">3<tspan baseline-shift="super"
+                            font-size="12">rd</tspan></text>
+
+                    <rect id="bar4" class="bar" x="1206" y="460" width="200" height="320" fill="#ffffff"
+                        opacity="0.45" />
+                    <text x="1306" y="442" text-anchor="middle" class="bar-label">Mezzanine</text>
+
+                    <rect id="bar5" class="bar" x="1406" y="382" width="215" height="398" fill="#ffffff"
+                        opacity="0.55" />
+                    <text x="1513" y="410" text-anchor="middle" class="bar-label">IPO / Public</text>
+                    <text x="1513" y="435" text-anchor="middle" class="bar-label">Markets</text>
+
+                    <!-- ===================== AXES ===================== -->
+                    <line x1="60" y1="780" x2="60" y2="150" stroke="var(--navy)" stroke-width="3"
+                        marker-end="url(#arrowNavy)" />
+                    <line x1="60" y1="780" x2="1630" y2="780" stroke="var(--navy)" stroke-width="3"
+                        marker-end="url(#arrowNavy)" />
+
+                    <text class="axis-label" transform="translate(28,490) rotate(-90)"
+                        text-anchor="middle">REVENUE</text>
+                    <text class="axis-label" x="845" y="845" text-anchor="middle">TIME</text>
+
+                    <!-- ===================== GROWTH CURVE ===================== -->
+                    <path class="curve" d="M 85,748
+                             C 160,772 220,772 275,768
+                             C 330,764 400,730 458,725
+                             C 560,715 700,600 850,500
+                             C 1000,400 1200,330 1400,300
+                             C 1480,290 1550,280 1595,270" fill="none" stroke="var(--navy)" stroke-width="6"
+                        stroke-linecap="round" marker-end="url(#arrowNavy)" />
+
+                    <!-- Valley of Death marker -->
+                    <circle id="valleyPulse" class="pulse-ring" cx="275" cy="768" r="9" fill="none" stroke="var(--navy)"
+                        stroke-width="3" />
+                    <circle id="valleyDot" class="dot" cx="275" cy="768" r="9" fill="#ffffff" stroke="var(--navy)"
+                        stroke-width="5" />
+                    <line x1="275" y1="778" x2="275" y2="815" stroke="var(--navy)" stroke-width="2" />
+                    <text x="275" y="845" text-anchor="middle" class="point-label">Valley Of</text>
+                    <text x="275" y="870" text-anchor="middle" class="point-label">Death</text>
+
+                    <!-- Break Even marker -->
+                    <circle id="breakPulse" class="pulse-ring" cx="458" cy="725" r="9" fill="none" stroke="var(--navy)"
+                        stroke-width="3" />
+                    <circle id="breakDot" class="dot" cx="458" cy="725" r="9" fill="#ffffff" stroke="var(--navy)"
+                        stroke-width="5" />
+                    <line x1="458" y1="715" x2="458" y2="655" stroke="var(--navy)" stroke-width="2" />
+                    <text x="458" y="615" text-anchor="middle" class="point-label">Break</text>
+                    <text x="458" y="640" text-anchor="middle" class="point-label">Even</text>
+
+                    <!-- ===================== BRACKETS + TOP LABELS ===================== -->
+                    <!-- Angels/FFF bracket -->
+                    <g class="bracket-group">
+                        <path d="M 85,148 L 85,120 L 497,120 L 497,148" fill="none" stroke="#3b4a8f" stroke-width="2" />
+                        <circle cx="291" cy="120" r="4" fill="#3b4a8f" />
+                        <text x="291" y="70" text-anchor="middle" class="bracket-label">Angels,</text>
+                        <text x="291" y="98" text-anchor="middle" class="bracket-label">FFF</text>
+                    </g>
+
+                    <!-- VCs bracket -->
+                    <g class="bracket-group">
+                        <path d="M 517,148 L 517,120 L 1620,120 L 1620,148" fill="none" stroke="#3b4a8f"
+                            stroke-width="2" />
+                        <circle cx="1068" cy="120" r="4" fill="#3b4a8f" />
+                        <text x="1068" y="70" text-anchor="middle" class="bracket-label">VCs, Acquisitions / Mergers
+                            &amp; Strategic</text>
+                        <text x="1068" y="98" text-anchor="middle" class="bracket-label">Alliances</text>
+                    </g>
+                </svg>
+            </div>
+        </section>
+
+        <script>
+            (function () {
+                var section = document.getElementById('fundingStagesSlide');
+                if (!section) return;
+                if (!('IntersectionObserver' in window)) {
+                    section.classList.add('chart-animated');
+                    return;
+                }
+                var io = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (e) {
+                        if (e.isIntersecting) {
+                            section.classList.add('chart-animated');
+                            io.disconnect();
+                        }
+                    });
+                }, { threshold: 0.15 });
+                io.observe(section);
+            })();
+        </script>
+
 
         <!-- ══════════ TRUSTED BY SECTION ══════════ -->
         <style>
@@ -7164,415 +7573,6 @@
                     });
                 }, { threshold: 0.1 });
                 io.observe(img);
-            })();
-        </script>
-
-        <!-- ── SECOND SLIDE: STARTUP FUNDING STAGES CHART ── -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
-            rel="stylesheet">
-        <style>
-            .funding-slide-section {
-                --navy: #0d1b3e;
-                --bg: #f3f4f7;
-                background: #000000;
-                margin: 0;
-                padding: clamp(30px, 4vw, 60px) clamp(16px, 3vw, 40px);
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                position: relative;
-                overflow: hidden;
-                box-sizing: border-box;
-                font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
-                color: var(--navy);
-            }
-
-            .funding-slide-section * {
-                box-sizing: border-box;
-            }
-
-            .funding-slide-section .wrap {
-                width: 100%;
-                max-width: 1660px;
-                margin: 0 auto;
-                padding: clamp(16px, 2.5vw, 36px);
-                background: var(--bg);
-                border-radius: clamp(16px, 2vw, 28px);
-                box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.08);
-                position: relative;
-            }
-
-            .funding-slide-section svg {
-                width: 100%;
-                height: auto;
-                display: block;
-            }
-
-            .funding-slide-section .stage-title {
-                font-weight: 700;
-                font-size: 34px;
-                fill: #ffffff;
-                font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
-            }
-
-            .funding-slide-section .bracket-label {
-                font-weight: 600;
-                font-size: 22px;
-                fill: var(--navy);
-                font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
-            }
-
-            .funding-slide-section .axis-label {
-                font-weight: 700;
-                font-size: 24px;
-                fill: var(--navy);
-                letter-spacing: 1px;
-                font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
-            }
-
-            .funding-slide-section .point-label {
-                font-weight: 700;
-                font-size: 20px;
-                fill: var(--navy);
-                font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
-            }
-
-            .funding-slide-section .bar-label {
-                font-weight: 600;
-                font-size: 20px;
-                fill: var(--navy);
-                font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
-            }
-
-            /* ---------- animations ---------- */
-            .funding-slide-section .stage-block {
-                opacity: 0;
-            }
-
-            .funding-slide-section.chart-animated .stage-block {
-                animation: fundingFadeIn 0.8s ease forwards;
-            }
-
-            .funding-slide-section.chart-animated #seedBlock {
-                animation-delay: 0.1s;
-            }
-
-            .funding-slide-section.chart-animated #earlyBlock {
-                animation-delay: 0.3s;
-            }
-
-            .funding-slide-section.chart-animated #laterBlock {
-                animation-delay: 0.5s;
-            }
-
-            @keyframes fundingFadeIn {
-                to {
-                    opacity: 1;
-                }
-            }
-
-            .funding-slide-section .bar {
-                transform-box: fill-box;
-                transform-origin: bottom;
-                transform: scaleY(0);
-            }
-
-            .funding-slide-section.chart-animated .bar {
-                animation: fundingGrowBar 0.7s cubic-bezier(.34, 1.56, .64, 1) forwards;
-            }
-
-            .funding-slide-section.chart-animated #bar1 {
-                animation-delay: 0.9s;
-            }
-
-            .funding-slide-section.chart-animated #bar2 {
-                animation-delay: 1.05s;
-            }
-
-            .funding-slide-section.chart-animated #bar3 {
-                animation-delay: 1.2s;
-            }
-
-            .funding-slide-section.chart-animated #bar4 {
-                animation-delay: 1.35s;
-            }
-
-            .funding-slide-section.chart-animated #bar5 {
-                animation-delay: 1.5s;
-            }
-
-            @keyframes fundingGrowBar {
-                to {
-                    transform: scaleY(1);
-                }
-            }
-
-            .funding-slide-section .curve {
-                stroke-dasharray: 2200;
-                stroke-dashoffset: 2200;
-            }
-
-            .funding-slide-section.chart-animated .curve {
-                animation: fundingDrawCurve 2.2s ease-in-out 0.6s forwards;
-            }
-
-            @keyframes fundingDrawCurve {
-                to {
-                    stroke-dashoffset: 0;
-                }
-            }
-
-            .funding-slide-section .dot {
-                opacity: 0;
-                transform-box: fill-box;
-                transform-origin: center;
-            }
-
-            .funding-slide-section.chart-animated .dot {
-                animation: fundingPopDot 0.5s ease forwards;
-            }
-
-            .funding-slide-section.chart-animated #valleyDot {
-                animation-delay: 1.1s;
-            }
-
-            .funding-slide-section.chart-animated #breakDot {
-                animation-delay: 2.4s;
-            }
-
-            @keyframes fundingPopDot {
-                from {
-                    opacity: 0;
-                    transform: scale(0);
-                }
-
-                to {
-                    opacity: 1;
-                    transform: scale(1);
-                }
-            }
-
-            .funding-slide-section .pulse-ring {
-                opacity: 0;
-                transform-box: fill-box;
-                transform-origin: center;
-            }
-
-            .funding-slide-section.chart-animated .pulse-ring {
-                animation: fundingPulse 2.4s ease-out infinite;
-            }
-
-            .funding-slide-section.chart-animated #valleyPulse {
-                animation-delay: 1.3s;
-            }
-
-            .funding-slide-section.chart-animated #breakPulse {
-                animation-delay: 2.6s;
-            }
-
-            @keyframes fundingPulse {
-                0% {
-                    transform: scale(1);
-                    opacity: 0.7;
-                }
-
-                100% {
-                    transform: scale(2.6);
-                    opacity: 0;
-                }
-            }
-
-            .funding-slide-section .bracket-group {
-                opacity: 0;
-            }
-
-            .funding-slide-section.chart-animated .bracket-group {
-                animation: fundingFadeIn 0.8s ease forwards;
-                animation-delay: 1.8s;
-            }
-
-            .funding-slide-section .arrow-tip {
-                transform-box: fill-box;
-                transform-origin: center;
-            }
-
-            .funding-slide-section.chart-animated .arrow-tip {
-                animation: fundingFloatArrow 1.6s ease-in-out infinite;
-                animation-delay: 2.8s;
-            }
-
-            @keyframes fundingFloatArrow {
-
-                0%,
-                100% {
-                    transform: translate(0, 0);
-                }
-
-                50% {
-                    transform: translate(6px, -6px);
-                }
-            }
-
-            @media (prefers-reduced-motion: reduce) {
-
-                .funding-slide-section .stage-block,
-                .funding-slide-section .bar,
-                .funding-slide-section .curve,
-                .funding-slide-section .dot,
-                .funding-slide-section .bracket-group {
-                    opacity: 1 !important;
-                    transform: none !important;
-                    stroke-dashoffset: 0 !important;
-                    animation: none !important;
-                }
-            }
-        </style>
-
-        <section class="funding-slide-section" id="fundingStagesSlide">
-            <div class="wrap">
-                <svg viewBox="0 0 1660 950" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="seedGrad" x1="0" y1="0" x2="1" y2="1">
-                            <stop offset="0%" stop-color="#3b6bf5" />
-                            <stop offset="100%" stop-color="#5b8bf7" />
-                        </linearGradient>
-                        <linearGradient id="earlyGrad" x1="0" y1="0" x2="1" y2="1">
-                            <stop offset="0%" stop-color="#29b6f6" />
-                            <stop offset="100%" stop-color="#4fc3f7" />
-                        </linearGradient>
-                        <linearGradient id="laterGrad" x1="0" y1="0" x2="1" y2="1">
-                            <stop offset="0%" stop-color="#1fbf8f" />
-                            <stop offset="100%" stop-color="#3ed6a5" />
-                        </linearGradient>
-                        <marker id="arrowNavy" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto"
-                            markerUnits="strokeWidth">
-                            <path d="M0,0 L6,3 L0,6 Z" fill="var(--navy)" />
-                        </marker>
-                    </defs>
-
-                    <!-- ===================== BACKGROUND STAGE BLOCKS ===================== -->
-                    <!-- Seed Capital -->
-                    <g id="seedBlock" class="stage-block">
-                        <rect x="80" y="175" width="423" height="605" fill="url(#seedGrad)" />
-                        <text x="291" y="235" text-anchor="middle" class="stage-title">Seed Capital</text>
-                    </g>
-
-                    <!-- Early Stage -->
-                    <g id="earlyBlock" class="stage-block">
-                        <rect x="511" y="175" width="515" height="605" fill="url(#earlyGrad)" />
-                        <text x="768" y="235" text-anchor="middle" class="stage-title">Early Stage</text>
-                    </g>
-
-                    <!-- Later Stage -->
-                    <g id="laterBlock" class="stage-block">
-                        <rect x="1034" y="175" width="587" height="605" fill="url(#laterGrad)" />
-                        <text x="1327" y="235" text-anchor="middle" class="stage-title">Later Stage</text>
-                    </g>
-
-                    <!-- ===================== STEP BARS (funding rounds) ===================== -->
-                    <!-- Early stage bars -->
-                    <rect id="bar1" class="bar" x="511" y="690" width="259" height="90" fill="#ffffff" opacity="0.35" />
-                    <text x="640" y="672" text-anchor="middle" class="bar-label">1<tspan baseline-shift="super"
-                            font-size="12">st</tspan></text>
-
-                    <rect id="bar2" class="bar" x="770" y="590" width="256" height="190" fill="#ffffff"
-                        opacity="0.45" />
-                    <text x="898" y="572" text-anchor="middle" class="bar-label">2<tspan baseline-shift="super"
-                            font-size="12">nd</tspan></text>
-
-                    <!-- Later stage bars -->
-                    <rect id="bar3" class="bar" x="1034" y="530" width="172" height="250" fill="#ffffff"
-                        opacity="0.35" />
-                    <text x="1120" y="512" text-anchor="middle" class="bar-label">3<tspan baseline-shift="super"
-                            font-size="12">rd</tspan></text>
-
-                    <rect id="bar4" class="bar" x="1206" y="460" width="200" height="320" fill="#ffffff"
-                        opacity="0.45" />
-                    <text x="1306" y="442" text-anchor="middle" class="bar-label">Mezzanine</text>
-
-                    <rect id="bar5" class="bar" x="1406" y="382" width="215" height="398" fill="#ffffff"
-                        opacity="0.55" />
-                    <text x="1513" y="410" text-anchor="middle" class="bar-label">IPO / Public</text>
-                    <text x="1513" y="435" text-anchor="middle" class="bar-label">Markets</text>
-
-                    <!-- ===================== AXES ===================== -->
-                    <line x1="60" y1="780" x2="60" y2="150" stroke="var(--navy)" stroke-width="3"
-                        marker-end="url(#arrowNavy)" />
-                    <line x1="60" y1="780" x2="1630" y2="780" stroke="var(--navy)" stroke-width="3"
-                        marker-end="url(#arrowNavy)" />
-
-                    <text class="axis-label" transform="translate(28,490) rotate(-90)"
-                        text-anchor="middle">REVENUE</text>
-                    <text class="axis-label" x="845" y="845" text-anchor="middle">TIME</text>
-
-                    <!-- ===================== GROWTH CURVE ===================== -->
-                    <path class="curve" d="M 85,748
-                             C 160,772 220,772 275,768
-                             C 330,764 400,730 458,725
-                             C 560,715 700,600 850,500
-                             C 1000,400 1200,330 1400,300
-                             C 1480,290 1550,280 1595,270" fill="none" stroke="var(--navy)" stroke-width="6"
-                        stroke-linecap="round" marker-end="url(#arrowNavy)" />
-
-                    <!-- Valley of Death marker -->
-                    <circle id="valleyPulse" class="pulse-ring" cx="275" cy="768" r="9" fill="none" stroke="var(--navy)"
-                        stroke-width="3" />
-                    <circle id="valleyDot" class="dot" cx="275" cy="768" r="9" fill="#ffffff" stroke="var(--navy)"
-                        stroke-width="5" />
-                    <line x1="275" y1="778" x2="275" y2="815" stroke="var(--navy)" stroke-width="2" />
-                    <text x="275" y="845" text-anchor="middle" class="point-label">Valley Of</text>
-                    <text x="275" y="870" text-anchor="middle" class="point-label">Death</text>
-
-                    <!-- Break Even marker -->
-                    <circle id="breakPulse" class="pulse-ring" cx="458" cy="725" r="9" fill="none" stroke="var(--navy)"
-                        stroke-width="3" />
-                    <circle id="breakDot" class="dot" cx="458" cy="725" r="9" fill="#ffffff" stroke="var(--navy)"
-                        stroke-width="5" />
-                    <line x1="458" y1="715" x2="458" y2="655" stroke="var(--navy)" stroke-width="2" />
-                    <text x="458" y="615" text-anchor="middle" class="point-label">Break</text>
-                    <text x="458" y="640" text-anchor="middle" class="point-label">Even</text>
-
-                    <!-- ===================== BRACKETS + TOP LABELS ===================== -->
-                    <!-- Angels/FFF bracket -->
-                    <g class="bracket-group">
-                        <path d="M 85,148 L 85,120 L 497,120 L 497,148" fill="none" stroke="#3b4a8f" stroke-width="2" />
-                        <circle cx="291" cy="120" r="4" fill="#3b4a8f" />
-                        <text x="291" y="70" text-anchor="middle" class="bracket-label">Angels,</text>
-                        <text x="291" y="98" text-anchor="middle" class="bracket-label">FFF</text>
-                    </g>
-
-                    <!-- VCs bracket -->
-                    <g class="bracket-group">
-                        <path d="M 517,148 L 517,120 L 1620,120 L 1620,148" fill="none" stroke="#3b4a8f"
-                            stroke-width="2" />
-                        <circle cx="1068" cy="120" r="4" fill="#3b4a8f" />
-                        <text x="1068" y="70" text-anchor="middle" class="bracket-label">VCs, Acquisitions / Mergers
-                            &amp; Strategic</text>
-                        <text x="1068" y="98" text-anchor="middle" class="bracket-label">Alliances</text>
-                    </g>
-                </svg>
-            </div>
-        </section>
-
-        <script>
-            (function () {
-                var section = document.getElementById('fundingStagesSlide');
-                if (!section) return;
-                if (!('IntersectionObserver' in window)) {
-                    section.classList.add('chart-animated');
-                    return;
-                }
-                var io = new IntersectionObserver(function (entries) {
-                    entries.forEach(function (e) {
-                        if (e.isIntersecting) {
-                            section.classList.add('chart-animated');
-                            io.disconnect();
-                        }
-                    });
-                }, { threshold: 0.15 });
-                io.observe(section);
             })();
         </script>
 
