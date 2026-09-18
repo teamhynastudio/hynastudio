@@ -1301,103 +1301,290 @@
             </div>
         </div>
 
-        <!-- OUR PEOPLE GRID -->
-        <div class="our-people-container">
-            <div class="our-people-grid">
+        
+                
+<style>
+  .team-quote-container {
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+      align-items: center;
+      width: 100%;
+      padding: 0 20px;
+  }
 
-                <!-- Vignesh -->
-                <div class="our-person-card row-1 lp-fade-up" data-name="Vignesh" data-role="Founder & CEO (Managing Director)"
-                    data-bio="&quot;Leadership is not about control, it is about building people who can lead without you.&quot; Vignesh drives the strategic vision and engineering standards at Hyna Studio."
-                    data-photo="./images/team/vignesh_new.png?v=2"
-                    data-portfolio="https://vigneshvl-dev.github.io/PORTFOLIO/"
-                    data-github="https://github.com/vigneshvl-dev"
-                    data-linkedin="https://www.linkedin.com/in/vigneshvl-dev/" data-college="Anna University"
-                    data-degree="B.E. Computer Science & Engineering">
-                    <div class="avatar-circle-box">
-                        <img src="./images/team/vignesh_new.png?v=2" alt="Vignesh" class="avatar-img">
+  .quote-card {
+    width: 100%;
+    max-width: 1000px;
+    background: #0a0a0a;
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(300px, 45%) 1fr;
+    grid-template-rows: auto 120px;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.18);
+  }
+
+  .quote-photo {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    position: relative;
+    background: linear-gradient(180deg,#1a1a1a 0%, #050505 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    min-height: 400px;
+    border-right: 1px solid rgba(255,255,255,0.18);
+  }
+  .quote-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .quote-area {
+    grid-column: 2;
+    grid-row: 1;
+    padding: clamp(30px, 5vw, 60px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px solid rgba(255,255,255,0.18);
+  }
+  .quote-text {
+    color: #f2f2f2;
+    font-size: clamp(24px, 3vw, 34px);
+    line-height: 1.28;
+    font-weight: 500;
+    letter-spacing: -0.3px;
+  }
+  .quote-note {
+    margin-top: clamp(30px, 4vw, 70px);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .quote-asterisk {
+    color: #8a8a8a;
+    font-size: 20px;
+    line-height: 1;
+  }
+  .quote-note-text {
+    color: #8a8a8a;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .quote-bio-area {
+    grid-column: 2;
+    grid-row: 2;
+    padding: clamp(20px, 3vw, 32px) clamp(30px, 5vw, 60px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .quote-bio-details {
+      display: flex;
+      flex-direction: column;
+  }
+  
+  .quote-bio-area .quote-name {
+    color: #f2f2f2;
+    font-size: 19px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    font-family: 'Sora', sans-serif;
+  }
+  .quote-bio-area .quote-role {
+    color: #9a9a9a;
+    font-size: 15px;
+    line-height: 1.4;
+  }
+  
+  .quote-socials {
+      display: flex;
+      gap: 12px;
+  }
+  
+  .quote-socials a {
+      color: #f2f2f2;
+      opacity: 0.6;
+      font-size: 16px;
+      transition: opacity 0.2s ease;
+      text-decoration: none;
+  }
+  
+  .quote-socials a:hover {
+      opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    .quote-card {
+        grid-template-columns: 1fr;
+        grid-template-rows: 350px auto auto;
+        max-width: 500px;
+    }
+    .quote-photo {
+        grid-column: 1;
+        grid-row: 1;
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.18);
+    }
+    .quote-area {
+        grid-column: 1;
+        grid-row: 2;
+        padding: 40px 30px;
+    }
+    .quote-bio-area {
+        grid-column: 1;
+        grid-row: 3;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        height: auto;
+        padding: 24px 30px;
+    }
+  }
+</style>
+
+<!-- OUR PEOPLE GRID -->
+                <div class="our-people-container">
+                    <div class="team-quote-container">
+
+        <div class="quote-card lp-fade-up">
+            <div class="quote-photo">
+                <img src="./images/team/vignesh_new.png?v=2" alt="Vignesh" onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Vignesh&background=333&color=fff';">
+            </div>
+            <div class="quote-area">
+                <div class="quote-text">&quot;Leadership is not about control, it is about building people who can lead without you.&quot; Vignesh drives the strategic vision and engineering standards at Hyna Studio.</div>
+                
+        <div class="quote-note">
+          <span class="quote-asterisk">*</span>
+          <span class="quote-note-text">B.E. Computer Science & Engineering<br>Anna University</span>
+        </div>
+            </div>
+            <div class="quote-bio-area">
+                <div class="quote-bio-details">
+                    <div class="quote-name">Vignesh</div>
+                    <div class="quote-role">Founder & CEO (Managing Director)</div>
+                </div>
+                <div class="quote-socials"><a href="https://vigneshvl-dev.github.io/PORTFOLIO/" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a><a href="https://github.com/vigneshvl-dev" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a><a href="https://www.linkedin.com/in/vigneshvl-dev/" target="_blank" aria-label="Portfolio"><i class="fa-solid fa-link"></i></a></div>
+            </div>
+        </div>
+
+        <div class="quote-card lp-fade-up">
+            <div class="quote-photo">
+                <img src="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" alt="Jashwin" onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Jashwin&background=333&color=fff';">
+            </div>
+            <div class="quote-area">
+                <div class="quote-text">&quot;Deadlines don’t fail because of time, they fail because alignment is missing.&quot; Jashwin ensures that every project at Hyna Studio is aligned with stakeholder goals and delivered seamlessly.</div>
+                
+        <div class="quote-note">
+          <span class="quote-asterisk">*</span>
+          <span class="quote-note-text">B.E. Computer Science & Engineering<br>Anna University</span>
+        </div>
+            </div>
+            <div class="quote-bio-area">
+                <div class="quote-bio-details">
+                    <div class="quote-name">Jashwin</div>
+                    <div class="quote-role">Co-Founder & COO</div>
+                </div>
+                <div class="quote-socials"><a href="https://github.com/jashwinj2008" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a><a href="https://www.linkedin.com/in/jashwin-j-16b06240a" target="_blank" aria-label="Portfolio"><i class="fa-solid fa-link"></i></a></div>
+            </div>
+        </div>
+
+        <div class="quote-card lp-fade-up">
+            <div class="quote-photo">
+                <img src="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg" alt="Dharshan" onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Dharshan&background=333&color=fff';">
+            </div>
+            <div class="quote-area">
+                <div class="quote-text">&quot;A co-founder in tech doesn’t follow trends, he builds what will become the next standard.&quot; Dharshan leads our systems architecture, cloud infrastructure, and technical execution.</div>
+                
+        <div class="quote-note">
+          <span class="quote-asterisk">*</span>
+          <span class="quote-note-text">B.E. Computer Science & Engineering<br>Anna University</span>
+        </div>
+            </div>
+            <div class="quote-bio-area">
+                <div class="quote-bio-details">
+                    <div class="quote-name">Dharshan</div>
+                    <div class="quote-role">Co-Founder & CTO</div>
+                </div>
+                <div class="quote-socials"><a href="https://portholio-zeta.vercel.app/" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a><a href="https://github.com/dharshan00814" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a><a href="https://www.linkedin.com/in/dharshan-jm" target="_blank" aria-label="Portfolio"><i class="fa-solid fa-link"></i></a></div>
+            </div>
+        </div>
+
+        <div class="quote-card lp-fade-up">
+            <div class="quote-photo">
+                <img src="./images/team/linciya.png?v=1" alt="Linciya" onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Linciya&background=333&color=fff';">
+            </div>
+            <div class="quote-area">
+                <div class="quote-text">&quot;Great marketing isn’t about telling people what you do, it’s about inspiring them with why you exist.&quot; Linciya leads market positioning, growth strategies, and brand expansion at Hyna Studio.</div>
+                
+        <div class="quote-note">
+          <span class="quote-asterisk">*</span>
+          <span class="quote-note-text">B.E. Computer Science & Engineering<br>Anna University</span>
+        </div>
+            </div>
+            <div class="quote-bio-area">
+                <div class="quote-bio-details">
+                    <div class="quote-name">Linciya</div>
+                    <div class="quote-role">Chief Marketing Officer</div>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="quote-card lp-fade-up">
+            <div class="quote-photo">
+                <img src="./images/team/zarif.jpg?v=1" alt="Muhammed Zarif" onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Muhammed+Zarif&background=333&color=fff';">
+            </div>
+            <div class="quote-area">
+                <div class="quote-text">&quot;True growth is about building scalable strategies that connect vision with market opportunities.&quot; Muhammed Zarif leads strategic partnerships, client acquisition, and growth initiatives at Hyna Studio.</div>
+                
+        <div class="quote-note">
+          <span class="quote-asterisk">*</span>
+          <span class="quote-note-text">B.E. Computer Science & Engineering<br>Anna University</span>
+        </div>
+            </div>
+            <div class="quote-bio-area">
+                <div class="quote-bio-details">
+                    <div class="quote-name">Muhammed Zarif</div>
+                    <div class="quote-role">Chief Growth Officer</div>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="quote-card lp-fade-up">
+            <div class="quote-photo">
+                <img src="./images/team/arshiya.jpg?v=1" alt="Muhammed Arshiya" onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Muhammed+Arshiya&background=333&color=fff';">
+            </div>
+            <div class="quote-area">
+                <div class="quote-text">&quot;Exceptional products are born where user needs and innovative technology align.&quot; Muhammed Arshiya drives product strategy, roadmap planning, and user experience excellence at Hyna Studio.</div>
+                
+        <div class="quote-note">
+          <span class="quote-asterisk">*</span>
+          <span class="quote-note-text">B.E. Computer Science & Engineering<br>Anna University</span>
+        </div>
+            </div>
+            <div class="quote-bio-area">
+                <div class="quote-bio-details">
+                    <div class="quote-name">Muhammed Arshiya</div>
+                    <div class="quote-role">Chief Product Officer</div>
+                </div>
+                
+            </div>
+        </div>
                     </div>
-                    <h3 class="person-name">Vignesh VL</h3>
-                    <div class="person-role">Founder &amp; CEO<br>(Managing Director)</div>
                 </div>
 
-                <!-- Jashwin -->
-                <div class="our-person-card row-1 lp-fade-up" data-name="Jashwin" data-role="Co-Founder & COO"
-                    data-bio="&quot;Deadlines don’t fail because of time, they fail because alignment is missing.&quot; Jashwin ensures that every project at Hyna Studio is aligned with stakeholder goals and delivered seamlessly."
-                    data-photo="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" data-portfolio="#"
-                    data-github="https://github.com/jashwinj2008"
-                    data-linkedin="https://www.linkedin.com/in/jashwin-j-16b06240a" data-college="Anna University"
-                    data-degree="B.E. Computer Science & Engineering">
-                    <div class="avatar-circle-box">
-                        <img src="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" alt="Jashwin" class="avatar-img">
-                    </div>
-                    <h3 class="person-name">Jashwin J</h3>
-                    <div class="person-role">Co-Founder &amp; COO</div>
-                </div>
-
-                <!-- Dharshan -->
-                <div class="our-person-card row-1 lp-fade-up" data-name="Dharshan" data-role="Co-Founder & CTO"
-                    data-bio="&quot;A co-founder in tech doesn’t follow trends, he builds what will become the next standard.&quot; Dharshan leads our systems architecture, cloud infrastructure, and technical execution."
-                    data-photo="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg"
-                    data-portfolio="https://portholio-zeta.vercel.app/"
-                    data-github="https://github.com/dharshan00814"
-                    data-linkedin="https://www.linkedin.com/in/dharshan-jm" data-college="Anna University"
-                    data-degree="B.E. Computer Science & Engineering">
-                    <div class="avatar-circle-box">
-                        <img src="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg" alt="Dharshan" class="avatar-img">
-                    </div>
-                    <h3 class="person-name">Dharshan JM</h3>
-                    <div class="person-role">Co-Founder &amp; CTO</div>
-                </div>
-
-                <!-- Linciya -->
-                <div class="our-person-card row-2 lp-fade-up" data-name="Linciya" data-role="Chief Marketing Officer"
-                    data-bio="&quot;Great marketing isn’t about telling people what you do, it’s about inspiring them with why you exist.&quot; Linciya leads market positioning, growth strategies, and brand expansion at Hyna Studio."
-                    data-photo="./images/team/linciya.png?v=1"
-                    data-portfolio="#" data-github="#"
-                    data-linkedin="#" data-college="Anna University"
-                    data-degree="B.E. Computer Science & Engineering">
-                    <div class="avatar-circle-box">
-                        <img src="./images/team/linciya.png?v=1" alt="Linciya" class="avatar-img">
-                    </div>
-                    <h3 class="person-name">Linciya</h3>
-                    <div class="person-role">Chief Marketing Officer</div>
-                </div>
-
-                <!-- Muhammed Zarif -->
-                <div class="our-person-card row-2 lp-fade-up" data-name="Muhammed Zarif" data-role="Chief Growth Officer"
-                    data-bio="&quot;True growth is about building scalable strategies that connect vision with market opportunities.&quot; Muhammed Zarif leads strategic partnerships, client acquisition, and growth initiatives at Hyna Studio."
-                    data-photo="./images/team/zarif.jpg?v=1"
-                    data-portfolio="#" data-github="#"
-                    data-linkedin="#" data-college="Anna University"
-                    data-degree="B.E. Computer Science & Engineering">
-                    <div class="avatar-circle-box">
-                        <img src="./images/team/zarif.jpg?v=1" alt="Muhammed Zarif" class="avatar-img" onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Muhammed+Zarif&background=7c3aed&color=fff';">
-                    </div>
-                    <h3 class="person-name">Muhammed<br>Zarif</h3>
-                    <div class="person-role">Chief Growth Officer</div>
-                </div>
-
-                <!-- Muhammed Arshiya -->
-                <div class="our-person-card row-2 lp-fade-up" data-name="Muhammed Arshiya" data-role="Chief Product Officer"
-                    data-bio="&quot;Exceptional products are born where user needs and innovative technology align.&quot; Muhammed Arshiya drives product strategy, roadmap planning, and user experience excellence at Hyna Studio."
-                    data-photo="./images/team/arshiya.jpg?v=1"
-                    data-portfolio="#" data-github="#"
-                    data-linkedin="#" data-college="Anna University"
-                    data-degree="B.E. Computer Science & Engineering">
-                    <div class="avatar-circle-box">
-                        <img src="./images/team/arshiya.jpg?v=1" alt="Muhammed Arshiya" class="avatar-img" onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Muhammed+Arshiya&background=00e7b3&color=111';">
-                    </div>
-                    <h3 class="person-name">Muhammed<br>Arshiya</h3>
-                    <div class="person-role">Chief Product Officer</div>
-                </div>
-
-
-
-
-
-
-
-    <!-- FOOTER -->
+        <!-- FOOTER -->
     <footer>
         <div class="footer-container">
             <!-- TOP BRAND & MULTI-COLUMN NAVIGATION GRID -->
