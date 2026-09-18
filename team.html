@@ -1222,6 +1222,7 @@
                 grid-template-columns: repeat(2, 1fr);
                 gap: 52px 30px;
             }
+
             .our-person-card.row-1,
             .our-person-card.row-2 {
                 grid-column: span 1;
@@ -1232,14 +1233,17 @@
             .team-page-container {
                 padding-top: 110px;
             }
+
             .our-people-grid {
                 grid-template-columns: 1fr;
                 gap: 44px;
             }
+
             .avatar-circle-box {
                 width: 190px;
                 height: 190px;
             }
+
             .person-name {
                 font-size: 1.5rem;
             }
@@ -1290,10 +1294,12 @@
 
                 <div class="story-grid">
                     <div class="story-col">
-                        <p>At Hyna Studio, we believe technology should solve real problems, create opportunities, and move people and businesses forward.</p>
+                        <p>At Hyna Studio, we believe technology should solve real problems, create opportunities, and
+                            move people and businesses forward.</p>
                     </div>
                     <div class="story-col">
-                        <p>Hyna Studio is powered by a team of students, builders, developers, designers, and innovators who believe that the future belongs to those who build it.</p>
+                        <p>Hyna Studio is powered by a team of students, builders, developers, designers, and innovators
+                            who believe that the future belongs to those who build it.</p>
                     </div>
                 </div>
 
@@ -1301,518 +1307,374 @@
             </div>
         </div>
 
-        
-                
-<style>
-  .team-quote-container {
-      display: flex;
-      flex-direction: column;
-      gap: 60px;
-      align-items: center;
-      width: 100%;
-      padding: 0 20px;
-  }
+        <!-- OUR PEOPLE GRID -->
+        <div class="our-people-container">
+            <div class="our-people-grid">
 
-  .quote-card {
-    width: 100%;
-    max-width: 1000px;
-    background: #0a0a0a;
-    position: relative;
-    display: grid;
-    grid-template-columns: minmax(300px, 45%) 1fr;
-    grid-template-rows: auto 120px;
-    margin: 0 auto;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.18);
-  }
-
-  .quote-photo {
-    grid-column: 1;
-    grid-row: 1 / span 2;
-    position: relative;
-    background: linear-gradient(180deg,#1a1a1a 0%, #050505 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    min-height: 400px;
-    border-right: 1px solid rgba(255,255,255,0.18);
-  }
-  .quote-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  .quote-area {
-    grid-column: 2;
-    grid-row: 1;
-    padding: clamp(30px, 5vw, 60px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-bottom: 1px solid rgba(255,255,255,0.18);
-  }
-  .quote-text {
-    color: #f2f2f2;
-    font-size: clamp(24px, 3vw, 34px);
-    line-height: 1.28;
-    font-weight: 500;
-    letter-spacing: -0.3px;
-  }
-  .quote-note {
-    margin-top: clamp(30px, 4vw, 70px);
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-  }
-  .quote-asterisk {
-    color: #8a8a8a;
-    font-size: 20px;
-    line-height: 1;
-  }
-  .quote-note-text {
-    color: #8a8a8a;
-    font-size: 15px;
-    line-height: 1.5;
-  }
-
-  .quote-bio-area {
-    grid-column: 2;
-    grid-row: 2;
-    padding: clamp(20px, 3vw, 32px) clamp(30px, 5vw, 60px);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .quote-bio-details {
-      display: flex;
-      flex-direction: column;
-  }
-  
-  .quote-bio-area .quote-name {
-    color: #f2f2f2;
-    font-size: 19px;
-    font-weight: 600;
-    margin-bottom: 4px;
-    font-family: 'Sora', sans-serif;
-  }
-  .quote-bio-area .quote-role {
-    color: #9a9a9a;
-    font-size: 15px;
-    line-height: 1.4;
-  }
-  
-  .quote-socials {
-      display: flex;
-      gap: 12px;
-  }
-  
-  .quote-socials a {
-      color: #f2f2f2;
-      opacity: 0.6;
-      font-size: 16px;
-      transition: opacity 0.2s ease;
-      text-decoration: none;
-  }
-  
-  .quote-socials a:hover {
-      opacity: 1;
-  }
-
-  @media (max-width: 768px) {
-    .quote-card {
-        grid-template-columns: 1fr;
-        grid-template-rows: 350px auto auto;
-        max-width: 500px;
-    }
-    .quote-photo {
-        grid-column: 1;
-        grid-row: 1;
-        border-right: none;
-        border-bottom: 1px solid rgba(255,255,255,0.18);
-    }
-    .quote-area {
-        grid-column: 1;
-        grid-row: 2;
-        padding: 40px 30px;
-    }
-    .quote-bio-area {
-        grid-column: 1;
-        grid-row: 3;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
-        height: auto;
-        padding: 24px 30px;
-    }
-  }
-</style>
-
-<!-- OUR PEOPLE GRID -->
-                <div class="our-people-container">
-                    <div class="team-quote-container">
-
-        <div class="quote-card lp-fade-up">
-            <div class="quote-photo">
-                <img src="./images/team/vignesh_new.png?v=2" alt="Vignesh" onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Vignesh&background=333&color=fff';">
-            </div>
-            <div class="quote-area">
-                <div class="quote-text">&quot;Leadership is not about control, it is about building people who can lead without you.&quot; Vignesh drives the strategic vision and engineering standards at Hyna Studio.</div>
-                
-        <div class="quote-note">
-          <span class="quote-asterisk">*</span>
-          <span class="quote-note-text">B.E. Computer Science & Engineering<br>Anna University</span>
-        </div>
-            </div>
-            <div class="quote-bio-area">
-                <div class="quote-bio-details">
-                    <div class="quote-name">Vignesh</div>
-                    <div class="quote-role">Founder & CEO (Managing Director)</div>
-                </div>
-                <div class="quote-socials"><a href="https://vigneshvl-dev.github.io/PORTFOLIO/" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a><a href="https://github.com/vigneshvl-dev" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a><a href="https://www.linkedin.com/in/vigneshvl-dev/" target="_blank" aria-label="Portfolio"><i class="fa-solid fa-link"></i></a></div>
-            </div>
-        </div>
-
-        <div class="quote-card lp-fade-up">
-            <div class="quote-photo">
-                <img src="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" alt="Jashwin" onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Jashwin&background=333&color=fff';">
-            </div>
-            <div class="quote-area">
-                <div class="quote-text">&quot;Deadlines don’t fail because of time, they fail because alignment is missing.&quot; Jashwin ensures that every project at Hyna Studio is aligned with stakeholder goals and delivered seamlessly.</div>
-                
-        <div class="quote-note">
-          <span class="quote-asterisk">*</span>
-          <span class="quote-note-text">B.E. Computer Science & Engineering<br>Anna University</span>
-        </div>
-            </div>
-            <div class="quote-bio-area">
-                <div class="quote-bio-details">
-                    <div class="quote-name">Jashwin</div>
-                    <div class="quote-role">Co-Founder & COO</div>
-                </div>
-                <div class="quote-socials"><a href="https://github.com/jashwinj2008" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a><a href="https://www.linkedin.com/in/jashwin-j-16b06240a" target="_blank" aria-label="Portfolio"><i class="fa-solid fa-link"></i></a></div>
-            </div>
-        </div>
-
-        <div class="quote-card lp-fade-up">
-            <div class="quote-photo">
-                <img src="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg" alt="Dharshan" onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Dharshan&background=333&color=fff';">
-            </div>
-            <div class="quote-area">
-                <div class="quote-text">&quot;A co-founder in tech doesn’t follow trends, he builds what will become the next standard.&quot; Dharshan leads our systems architecture, cloud infrastructure, and technical execution.</div>
-                
-        <div class="quote-note">
-          <span class="quote-asterisk">*</span>
-          <span class="quote-note-text">B.E. Computer Science & Engineering<br>Anna University</span>
-        </div>
-            </div>
-            <div class="quote-bio-area">
-                <div class="quote-bio-details">
-                    <div class="quote-name">Dharshan</div>
-                    <div class="quote-role">Co-Founder & CTO</div>
-                </div>
-                <div class="quote-socials"><a href="https://portholio-zeta.vercel.app/" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a><a href="https://github.com/dharshan00814" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a><a href="https://www.linkedin.com/in/dharshan-jm" target="_blank" aria-label="Portfolio"><i class="fa-solid fa-link"></i></a></div>
-            </div>
-        </div>
-
-        <div class="quote-card lp-fade-up">
-            <div class="quote-photo">
-                <img src="./images/team/linciya.png?v=1" alt="Linciya" onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Linciya&background=333&color=fff';">
-            </div>
-            <div class="quote-area">
-                <div class="quote-text">&quot;Great marketing isn’t about telling people what you do, it’s about inspiring them with why you exist.&quot; Linciya leads market positioning, growth strategies, and brand expansion at Hyna Studio.</div>
-                
-        <div class="quote-note">
-          <span class="quote-asterisk">*</span>
-          <span class="quote-note-text">B.E. Computer Science & Engineering<br>Anna University</span>
-        </div>
-            </div>
-            <div class="quote-bio-area">
-                <div class="quote-bio-details">
-                    <div class="quote-name">Linciya</div>
-                    <div class="quote-role">Chief Marketing Officer</div>
-                </div>
-                
-            </div>
-        </div>
-
-        <div class="quote-card lp-fade-up">
-            <div class="quote-photo">
-                <img src="./images/team/zarif.jpg?v=1" alt="Muhammed Zarif" onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Muhammed+Zarif&background=333&color=fff';">
-            </div>
-            <div class="quote-area">
-                <div class="quote-text">&quot;True growth is about building scalable strategies that connect vision with market opportunities.&quot; Muhammed Zarif leads strategic partnerships, client acquisition, and growth initiatives at Hyna Studio.</div>
-                
-        <div class="quote-note">
-          <span class="quote-asterisk">*</span>
-          <span class="quote-note-text">B.E. Computer Science & Engineering<br>Anna University</span>
-        </div>
-            </div>
-            <div class="quote-bio-area">
-                <div class="quote-bio-details">
-                    <div class="quote-name">Muhammed Zarif</div>
-                    <div class="quote-role">Chief Growth Officer</div>
-                </div>
-                
-            </div>
-        </div>
-
-        <div class="quote-card lp-fade-up">
-            <div class="quote-photo">
-                <img src="./images/team/arshiya.jpg?v=1" alt="Muhammed Arshiya" onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Muhammed+Arshiya&background=333&color=fff';">
-            </div>
-            <div class="quote-area">
-                <div class="quote-text">&quot;Exceptional products are born where user needs and innovative technology align.&quot; Muhammed Arshiya drives product strategy, roadmap planning, and user experience excellence at Hyna Studio.</div>
-                
-        <div class="quote-note">
-          <span class="quote-asterisk">*</span>
-          <span class="quote-note-text">B.E. Computer Science & Engineering<br>Anna University</span>
-        </div>
-            </div>
-            <div class="quote-bio-area">
-                <div class="quote-bio-details">
-                    <div class="quote-name">Muhammed Arshiya</div>
-                    <div class="quote-role">Chief Product Officer</div>
-                </div>
-                
-            </div>
-        </div>
+                <!-- Vignesh -->
+                <div class="our-person-card row-1 lp-fade-up" data-name="Vignesh"
+                    data-role="Founder & CEO (Managing Director)"
+                    data-bio="&quot;Leadership is not about control, it is about building people who can lead without you.&quot; Vignesh drives the strategic vision and engineering standards at Hyna Studio."
+                    data-photo="./images/team/vignesh_new.png?v=2"
+                    data-portfolio="https://vigneshvl-dev.github.io/PORTFOLIO/"
+                    data-github="https://github.com/vigneshvl-dev"
+                    data-linkedin="https://www.linkedin.com/in/vigneshvl-dev/" data-college="Anna University"
+                    data-degree="B.E. Computer Science & Engineering">
+                    <div class="avatar-circle-box">
+                        <img src="./images/team/vignesh_new.png?v=2" alt="Vignesh" class="avatar-img">
                     </div>
+                    <h3 class="person-name">Vignesh VL</h3>
+                    <div class="person-role">Founder &amp; CEO<br>(Managing Director)</div>
                 </div>
 
-        <!-- FOOTER -->
-    <footer>
-        <div class="footer-container">
-            <!-- TOP BRAND & MULTI-COLUMN NAVIGATION GRID -->
-            <div class="footer-top-grid">
-                <!-- COL 1: LOGO & BRAND DETAILS -->
-                <div class="footer-col-brand">
-                    <a href="index.html" class="footer-logo-link">
-                        <img src="./hyna-logo-new.png" class="footer-logo-img" alt="Hyna Studio Logo">
-                        <div class="footer-logo-text">
-                            <span class="footer-logo-main">Hyna Studio</span>
-                            <span class="footer-logo-sub">Business Platform</span>
+                <!-- Jashwin -->
+                <div class="our-person-card row-1 lp-fade-up" data-name="Jashwin" data-role="Co-Founder & COO"
+                    data-bio="&quot;Deadlines don’t fail because of time, they fail because alignment is missing.&quot; Jashwin ensures that every project at Hyna Studio is aligned with stakeholder goals and delivered seamlessly."
+                    data-photo="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" data-portfolio="#"
+                    data-github="https://github.com/jashwinj2008"
+                    data-linkedin="https://www.linkedin.com/in/jashwin-j-16b06240a" data-college="Anna University"
+                    data-degree="B.E. Computer Science & Engineering">
+                    <div class="avatar-circle-box">
+                        <img src="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" alt="Jashwin"
+                            class="avatar-img">
+                    </div>
+                    <h3 class="person-name">Jashwin J</h3>
+                    <div class="person-role">Co-Founder &amp; COO</div>
+                </div>
+
+                <!-- Dharshan -->
+                <div class="our-person-card row-1 lp-fade-up" data-name="Dharshan" data-role="Co-Founder & CTO"
+                    data-bio="&quot;A co-founder in tech doesn’t follow trends, he builds what will become the next standard.&quot; Dharshan leads our systems architecture, cloud infrastructure, and technical execution."
+                    data-photo="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg"
+                    data-portfolio="https://portholio-zeta.vercel.app/" data-github="https://github.com/dharshan00814"
+                    data-linkedin="https://www.linkedin.com/in/dharshan-jm" data-college="Anna University"
+                    data-degree="B.E. Computer Science & Engineering">
+                    <div class="avatar-circle-box">
+                        <img src="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg"
+                            alt="Dharshan" class="avatar-img">
+                    </div>
+                    <h3 class="person-name">Dharshan JM</h3>
+                    <div class="person-role">Co-Founder &amp; CTO</div>
+                </div>
+
+                <!-- Linciya -->
+                <div class="our-person-card row-2 lp-fade-up" data-name="Linciya" data-role="Chief Marketing Officer"
+                    data-bio="&quot;Great marketing isn’t about telling people what you do, it’s about inspiring them with why you exist.&quot; Linciya leads market positioning, growth strategies, and brand expansion at Hyna Studio."
+                    data-photo="./images/team/linciya.png?v=1" data-portfolio="#" data-github="#" data-linkedin="#"
+                    data-college="Anna University" data-degree="B.E. Computer Science & Engineering">
+                    <div class="avatar-circle-box">
+                        <img src="./images/team/linciya.png?v=1" alt="Linciya" class="avatar-img">
+                    </div>
+                    <h3 class="person-name">Linciya</h3>
+                    <div class="person-role">Chief Marketing Officer</div>
+                </div>
+
+                <!-- Muhammed Zarif -->
+                <div class="our-person-card row-2 lp-fade-up" data-name="Muhammed Zarif"
+                    data-role="Chief Growth Officer"
+                    data-bio="&quot;True growth is about building scalable strategies that connect vision with market opportunities.&quot; Muhammed Zarif leads strategic partnerships, client acquisition, and growth initiatives at Hyna Studio."
+                    data-photo="./images/team/zarif.jpg?v=1" data-portfolio="#" data-github="#" data-linkedin="#"
+                    data-college="Anna University" data-degree="B.E. Computer Science & Engineering">
+                    <div class="avatar-circle-box">
+                        <img src="./images/team/zarif.jpg?v=1" alt="Muhammed Zarif" class="avatar-img"
+                            onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Muhammed+Zarif&background=7c3aed&color=fff';">
+                    </div>
+                    <h3 class="person-name">Muhammed<br>Zarif</h3>
+                    <div class="person-role">Chief Growth Officer</div>
+                </div>
+
+                <!-- Muhammed Arshiya -->
+                <div class="our-person-card row-2 lp-fade-up" data-name="Muhammed Arshiya"
+                    data-role="Chief Product Officer"
+                    data-bio="&quot;Exceptional products are born where user needs and innovative technology align.&quot; Muhammed Arshiya drives product strategy, roadmap planning, and user experience excellence at Hyna Studio."
+                    data-photo="./images/team/arshiya.jpg?v=1" data-portfolio="#" data-github="#" data-linkedin="#"
+                    data-college="Anna University" data-degree="B.E. Computer Science & Engineering">
+                    <div class="avatar-circle-box">
+                        <img src="./images/team/arshiya.jpg?v=1" alt="Muhammed Arshiya" class="avatar-img"
+                            onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Muhammed+Arshiya&background=00e7b3&color=111';">
+                    </div>
+                    <h3 class="person-name">Muhammed<br>Arshiya</h3>
+                    <div class="person-role">Chief Product Officer</div>
+                </div>
+
+
+
+
+
+
+
+                <!-- FOOTER -->
+                <footer>
+                    <div class="footer-container">
+                        <!-- TOP BRAND & MULTI-COLUMN NAVIGATION GRID -->
+                        <div class="footer-top-grid">
+                            <!-- COL 1: LOGO & BRAND DETAILS -->
+                            <div class="footer-col-brand">
+                                <a href="index.html" class="footer-logo-link">
+                                    <img src="./hyna-logo-new.png" class="footer-logo-img" alt="Hyna Studio Logo">
+                                    <div class="footer-logo-text">
+                                        <span class="footer-logo-main">Hyna Studio</span>
+                                        <span class="footer-logo-sub">Business Platform</span>
+                                    </div>
+                                </a>
+                                <p class="footer-copy-info">
+                                    © 2026, Hyna Studio Technologies LLP.<br>All rights reserved.
+                                </p>
+                                <div class="footer-social-bar">
+                                    <a href="https://x.com/HynaStudio" target="_blank" rel="noopener"
+                                        aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                                    <a href="https://facebook.com" target="_blank" rel="noopener"
+                                        aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                    <a href="https://instagram.com" target="_blank" rel="noopener"
+                                        aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                                    <a href="https://www.linkedin.com/in/hyna-studio-089b33416/" target="_blank"
+                                        rel="noopener" aria-label="LinkedIn"><i
+                                            class="fa-brands fa-linkedin-in"></i></a>
+                                    <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><i
+                                            class="fa-brands fa-youtube"></i></a>
+                                    <a href="https://whatsapp.com" target="_blank" rel="noopener"
+                                        aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                                    <a href="https://github.com/teamhynastudio" target="_blank" rel="noopener"
+                                        aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                                </div>
+                            </div>
+
+                            <!-- COL 3: SUPPORT -->
+                            <div class="footer-col-links">
+                                <h5 class="footer-col-title">Support</h5>
+                                <ul class="footer-link-list">
+                                    <li><a href="contact.html">Contact Us</a></li>
+                                    <li><a href="touch.html">Support Portal</a></li>
+                                    <li><a href="release.html">System Status</a></li>
+                                    <li><a href="why-choose-us.html">Developer Guides</a></li>
+                                    <li><a href="privacy-policy.html">Security Charter</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- COL 4: COMPANY -->
+                            <div class="footer-col-links">
+                                <h5 class="footer-col-title">Company</h5>
+                                <ul class="footer-link-list">
+                                    <li><a href="index.html#why-we-exist">About Hyna</a></li>
+                                    <li><a href="team.html">Our People (Team)</a></li>
+                                    <li><a href="careers.html">Careers</a></li>
+                                    <li><a href="press.html">Press & Media</a></li>
+                                    <li><a href="open-source.html">Open Source</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- COL 5: QUICK LINKS -->
+                            <div class="footer-col-links">
+                                <h5 class="footer-col-title">Quick Links</h5>
+                                <ul class="footer-link-list">
+                                    <li><a href="saas.html">SaaS Solutions</a></li>
+                                    <li><a href="ai-product.html">AI & Data Products</a></li>
+                                    <li><a href="mobile.html">Application Services</a></li>
+                                    <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+                                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                                    <li><a href="sitemap.html">Sitemap</a></li>
+                                </ul>
+                            </div>
                         </div>
-                    </a>
-                    <p class="footer-copy-info">
-                        © 2026, Hyna Studio Technologies LLP.<br>All rights reserved.
-                    </p>
-                    <div class="footer-social-bar">
-                        <a href="https://x.com/HynaStudio" target="_blank" rel="noopener" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="https://www.linkedin.com/in/hyna-studio-089b33416/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-                        <a href="https://whatsapp.com" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-                        <a href="https://github.com/teamhynastudio" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+
+                        <!-- COMPANY INFORMATION & IMPORTANT NOTICE -->
+                        <div class="footer-disclaimer-box">
+                            <p>
+                                <strong>Hyna Studio Technologies LLP</strong> is an Indian technology and product
+                                company building next-generation <strong>Autonomous Business
+                                    Infrastructure</strong>—intelligent, connected, and adaptive technology designed to
+                                help businesses understand, manage, operate, connect, transact, grow, and continuously
+                                evolve. Through the HYNA ecosystem, we are developing integrated software, AI,
+                                automation, data intelligence, financial technology experiences, and business platforms
+                                that bring critical business activities into one unified system. Our vision is to move
+                                beyond traditional software by creating technology that not only supports businesses but
+                                learns from their operations, adapts to their changing needs, and helps build a more
+                                intelligent and connected future for business. <strong>Hyna Studio is building the
+                                    technology foundation for the Autonomous Business Era. 🇮🇳</strong> Our approach is
+                                centered on building technology that becomes increasingly valuable as a business grows.
+                                Rather than forcing every organization to adapt to rigid and disconnected software, we
+                                envision systems that understand the unique nature of each business and help create the
+                                tools, workflows, intelligence, and infrastructure it needs to operate effectively. From
+                                everyday operations and customer relationships to payments, business intelligence,
+                                automation, and future growth, the HYNA ecosystem is being designed to bring businesses
+                                closer to a future where technology does not simply serve as software—but becomes an
+                                intelligent foundation for how businesses operate, make decisions, and evolve. At the
+                                core of this vision is the belief that the future of business technology will be
+                                connected, intelligent, and adaptive. Businesses should not have to continuously move
+                                between disconnected applications, manually connect information, or rebuild their
+                                systems every time their needs change. We are working toward an ecosystem where
+                                technology can bring together critical business activities, transform information into
+                                intelligence, automate repetitive processes, and provide a stronger foundation for
+                                sustainable growth. Through products such as HYNA BIZ and future platforms within the
+                                HYNA ecosystem, Hyna Studio aims to create technology that can grow alongside
+                                businesses—from emerging entrepreneurs and startups to established organizations. Our
+                                long-term ambition is to help shape a new generation of business infrastructure where
+                                software becomes more than a collection of tools: it becomes an evolving system capable
+                                of supporting how businesses operate today while preparing them for what comes next.
+                                <strong>Hyna Studio Technologies LLP is building for a future where businesses are not
+                                    limited by their technology, but empowered by it—through intelligent systems,
+                                    connected infrastructure, and technology designed to continuously evolve.
+                                    🇮🇳</strong>
+                            </p>
+                        </div>
+
+                    </div>
+                </footer>
+
+                <!-- Team Modal -->
+                <div class="modal-overlay" id="teamModalOverlay" aria-hidden="true">
+                    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="teamModalName">
+                        <div class="modal-header">
+                            <div class="modal-title-box">
+                                <div class="modal-name" id="teamModalName">—</div>
+                                <div class="modal-role" id="teamModalRole">—</div>
+                            </div>
+                            <button class="modal-close" type="button" id="teamModalClose"
+                                aria-label="Close modal">✕</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="modal-grid">
+                                <div class="modal-photo" aria-hidden="true">
+                                    <img id="teamModalPhoto" alt="" src="">
+                                </div>
+                                <div>
+                                    <div class="modal-bio" id="teamModalBio">—</div>
+                                    <div class="modal-links" id="teamModalLinks"></div>
+                                    <div class="modal-education" id="teamModalEducation"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- COL 3: SUPPORT -->
-                <div class="footer-col-links">
-                    <h5 class="footer-col-title">Support</h5>
-                    <ul class="footer-link-list">
-                        <li><a href="contact.html">Contact Us</a></li>
-                        <li><a href="touch.html">Support Portal</a></li>
-                        <li><a href="release.html">System Status</a></li>
-                        <li><a href="why-choose-us.html">Developer Guides</a></li>
-                        <li><a href="privacy-policy.html">Security Charter</a></li>
-                    </ul>
-                </div>
+                <!-- JS SCRIPTS -->
+                <script>
+                    (function () {
+                        // Fade up animations
+                        const revealEls = document.querySelectorAll('.lp-fade-up');
+                        const io = new IntersectionObserver((entries) => {
+                            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('lp-in'); });
+                        }, { threshold: 0.14 });
+                        revealEls.forEach(el => io.observe(el));
 
-                <!-- COL 4: COMPANY -->
-                <div class="footer-col-links">
-                    <h5 class="footer-col-title">Company</h5>
-                    <ul class="footer-link-list">
-                        <li><a href="index.html#why-we-exist">About Hyna</a></li>
-                        <li><a href="team.html">Our People (Team)</a></li>
-                        <li><a href="careers.html">Careers</a></li>
-                        <li><a href="press.html">Press & Media</a></li>
-                        <li><a href="open-source.html">Open Source</a></li>
-                    </ul>
-                </div>
+                        /* ════════════════════════════════════════
+                           MODAL DRAWER JS
+                        ════════════════════════════════════════ */
+                        const cards = Array.from(document.querySelectorAll('.our-person-card'));
+                        const overlay = document.getElementById('teamModalOverlay');
+                        const closeBtn = document.getElementById('teamModalClose');
 
-                <!-- COL 5: QUICK LINKS -->
-                <div class="footer-col-links">
-                    <h5 class="footer-col-title">Quick Links</h5>
-                    <ul class="footer-link-list">
-                        <li><a href="saas.html">SaaS Solutions</a></li>
-                        <li><a href="ai-product.html">AI & Data Products</a></li>
-                        <li><a href="mobile.html">Application Services</a></li>
-                        <li><a href="terms-conditions.html">Terms & Conditions</a></li>
-                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                        <li><a href="sitemap.html">Sitemap</a></li>
-                    </ul>
-                </div>
-            </div>
+                        const nameEl = document.getElementById('teamModalName');
+                        const roleEl = document.getElementById('teamModalRole');
+                        const photoEl = document.getElementById('teamModalPhoto');
+                        const bioEl = document.getElementById('teamModalBio');
+                        const linksEl = document.getElementById('teamModalLinks');
+                        const educationEl = document.getElementById('teamModalEducation');
 
-            <!-- COMPANY INFORMATION & IMPORTANT NOTICE -->
-            <div class="footer-disclaimer-box">
-                <p>
-                    <strong>Hyna Studio Technologies LLP</strong> is an Indian technology and product company building next-generation <strong>Autonomous Business Infrastructure</strong>—intelligent, connected, and adaptive technology designed to help businesses understand, manage, operate, connect, transact, grow, and continuously evolve. Through the HYNA ecosystem, we are developing integrated software, AI, automation, data intelligence, financial technology experiences, and business platforms that bring critical business activities into one unified system. Our vision is to move beyond traditional software by creating technology that not only supports businesses but learns from their operations, adapts to their changing needs, and helps build a more intelligent and connected future for business. <strong>Hyna Studio is building the technology foundation for the Autonomous Business Era. 🇮🇳</strong> Our approach is centered on building technology that becomes increasingly valuable as a business grows. Rather than forcing every organization to adapt to rigid and disconnected software, we envision systems that understand the unique nature of each business and help create the tools, workflows, intelligence, and infrastructure it needs to operate effectively. From everyday operations and customer relationships to payments, business intelligence, automation, and future growth, the HYNA ecosystem is being designed to bring businesses closer to a future where technology does not simply serve as software—but becomes an intelligent foundation for how businesses operate, make decisions, and evolve. At the core of this vision is the belief that the future of business technology will be connected, intelligent, and adaptive. Businesses should not have to continuously move between disconnected applications, manually connect information, or rebuild their systems every time their needs change. We are working toward an ecosystem where technology can bring together critical business activities, transform information into intelligence, automate repetitive processes, and provide a stronger foundation for sustainable growth. Through products such as HYNA BIZ and future platforms within the HYNA ecosystem, Hyna Studio aims to create technology that can grow alongside businesses—from emerging entrepreneurs and startups to established organizations. Our long-term ambition is to help shape a new generation of business infrastructure where software becomes more than a collection of tools: it becomes an evolving system capable of supporting how businesses operate today while preparing them for what comes next. <strong>Hyna Studio Technologies LLP is building for a future where businesses are not limited by their technology, but empowered by it—through intelligent systems, connected infrastructure, and technology designed to continuously evolve. 🇮🇳</strong>
-                </p>
-            </div>
+                        let lastFocused = null;
 
-        </div>
-    </footer>
+                        function escapeHtml(str) {
+                            return String(str)
+                                .replaceAll('&', '&amp;')
+                                .replaceAll('<', '&lt;')
+                                .replaceAll('>', '&gt;')
+                                .replaceAll('"', '&quot;')
+                                .replaceAll("'", '&#039;');
+                        }
 
-    <!-- Team Modal -->
-    <div class="modal-overlay" id="teamModalOverlay" aria-hidden="true">
-        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="teamModalName">
-            <div class="modal-header">
-                <div class="modal-title-box">
-                    <div class="modal-name" id="teamModalName">—</div>
-                    <div class="modal-role" id="teamModalRole">—</div>
-                </div>
-                <button class="modal-close" type="button" id="teamModalClose" aria-label="Close modal">✕</button>
-            </div>
-            <div class="modal-body">
-                <div class="modal-grid">
-                    <div class="modal-photo" aria-hidden="true">
-                        <img id="teamModalPhoto" alt="" src="">
-                    </div>
-                    <div>
-                        <div class="modal-bio" id="teamModalBio">—</div>
-                        <div class="modal-links" id="teamModalLinks"></div>
-                        <div class="modal-education" id="teamModalEducation"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                        function buildLink(label, href) {
+                            return `<a class="modal-link" href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)} →</a>`;
+                        }
 
-    <!-- JS SCRIPTS -->
-    <script>
-        (function () {
-            // Fade up animations
-            const revealEls = document.querySelectorAll('.lp-fade-up');
-            const io = new IntersectionObserver((entries) => {
-                entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('lp-in'); });
-            }, { threshold: 0.14 });
-            revealEls.forEach(el => io.observe(el));
+                        function openModal(card) {
+                            lastFocused = document.activeElement;
 
-            /* ════════════════════════════════════════
-               MODAL DRAWER JS
-            ════════════════════════════════════════ */
-            const cards = Array.from(document.querySelectorAll('.our-person-card'));
-            const overlay = document.getElementById('teamModalOverlay');
-            const closeBtn = document.getElementById('teamModalClose');
+                            const name = card.getAttribute('data-name') || '';
+                            const role = card.getAttribute('data-role') || '';
+                            const bio = card.getAttribute('data-bio') || '';
+                            const photo = card.getAttribute('data-photo') || '';
+                            const portfolio = card.getAttribute('data-portfolio') || '#';
+                            const github = card.getAttribute('data-github') || '#';
+                            const linkedin = card.getAttribute('data-linkedin') || '#';
+                            const college = card.getAttribute('data-college') || '';
+                            const degree = card.getAttribute('data-degree') || '';
 
-            const nameEl = document.getElementById('teamModalName');
-            const roleEl = document.getElementById('teamModalRole');
-            const photoEl = document.getElementById('teamModalPhoto');
-            const bioEl = document.getElementById('teamModalBio');
-            const linksEl = document.getElementById('teamModalLinks');
-            const educationEl = document.getElementById('teamModalEducation');
+                            nameEl.textContent = name;
+                            roleEl.textContent = role;
+                            bioEl.textContent = bio;
 
-            let lastFocused = null;
+                            photoEl.style.display = '';
+                            photoEl.src = photo;
+                            photoEl.alt = name;
 
-            function escapeHtml(str) {
-                return String(str)
-                    .replaceAll('&', '&amp;')
-                    .replaceAll('<', '&lt;')
-                    .replaceAll('>', '&gt;')
-                    .replaceAll('"', '&quot;')
-                    .replaceAll("'", '&#039;');
-            }
+                            const items = [];
+                            if (portfolio && portfolio !== '#') items.push(buildLink('Portfolio', portfolio));
+                            if (github && github !== '#') items.push(buildLink('GitHub', github));
+                            if (linkedin && linkedin !== '#') items.push(buildLink('LinkedIn', linkedin));
 
-            function buildLink(label, href) {
-                return `<a class="modal-link" href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)} →</a>`;
-            }
+                            linksEl.innerHTML = items.join('');
 
-            function openModal(card) {
-                lastFocused = document.activeElement;
-
-                const name = card.getAttribute('data-name') || '';
-                const role = card.getAttribute('data-role') || '';
-                const bio = card.getAttribute('data-bio') || '';
-                const photo = card.getAttribute('data-photo') || '';
-                const portfolio = card.getAttribute('data-portfolio') || '#';
-                const github = card.getAttribute('data-github') || '#';
-                const linkedin = card.getAttribute('data-linkedin') || '#';
-                const college = card.getAttribute('data-college') || '';
-                const degree = card.getAttribute('data-degree') || '';
-
-                nameEl.textContent = name;
-                roleEl.textContent = role;
-                bioEl.textContent = bio;
-
-                photoEl.style.display = '';
-                photoEl.src = photo;
-                photoEl.alt = name;
-
-                const items = [];
-                if (portfolio && portfolio !== '#') items.push(buildLink('Portfolio', portfolio));
-                if (github && github !== '#') items.push(buildLink('GitHub', github));
-                if (linkedin && linkedin !== '#') items.push(buildLink('LinkedIn', linkedin));
-
-                linksEl.innerHTML = items.join('');
-
-                if (college) {
-                    educationEl.style.display = 'flex';
-                    educationEl.innerHTML = `
+                            if (college) {
+                                educationEl.style.display = 'flex';
+                                educationEl.innerHTML = `
                         <div class="modal-education-info">
                             <div class="modal-education-college">${escapeHtml(college)}</div>
                             <div class="modal-education-degree">${escapeHtml(degree)}</div>
                         </div>
                     `;
-                } else {
-                    educationEl.style.display = 'none';
-                    educationEl.innerHTML = '';
-                }
+                            } else {
+                                educationEl.style.display = 'none';
+                                educationEl.innerHTML = '';
+                            }
 
-                overlay.classList.add('is-open');
-                overlay.setAttribute('aria-hidden', 'false');
-                document.body.style.overflow = 'hidden';
-                closeBtn.focus();
-            }
+                            overlay.classList.add('is-open');
+                            overlay.setAttribute('aria-hidden', 'false');
+                            document.body.style.overflow = 'hidden';
+                            closeBtn.focus();
+                        }
 
-            function closeModal() {
-                overlay.classList.remove('is-open');
-                overlay.setAttribute('aria-hidden', 'true');
-                document.body.style.overflow = '';
-                if (lastFocused && typeof lastFocused.focus === 'function') {
-                    lastFocused.focus();
-                }
-            }
+                        function closeModal() {
+                            overlay.classList.remove('is-open');
+                            overlay.setAttribute('aria-hidden', 'true');
+                            document.body.style.overflow = '';
+                            if (lastFocused && typeof lastFocused.focus === 'function') {
+                                lastFocused.focus();
+                            }
+                        }
 
-            cards.forEach(card => {
-                card.addEventListener('click', (e) => {
-                    if (e.target.closest('.team-social-links') || e.target.closest('a')) {
-                        return;
-                    }
-                    openModal(card);
-                });
-            });
+                        cards.forEach(card => {
+                            card.addEventListener('click', (e) => {
+                                if (e.target.closest('.team-social-links') || e.target.closest('a')) {
+                                    return;
+                                }
+                                openModal(card);
+                            });
+                        });
 
-            closeBtn.addEventListener('click', closeModal);
-            overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeModal();
-            });
+                        closeBtn.addEventListener('click', closeModal);
+                        overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
+                        document.addEventListener('keydown', (e) => {
+                            if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeModal();
+                        });
 
-            // Mobile menu toggle script
-            const mobileToggle = document.getElementById('navMobileToggle');
-            const navLinksContainer = document.querySelector('.nav-links');
-            if (mobileToggle && navLinksContainer) {
-                mobileToggle.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    mobileToggle.classList.toggle('active');
-                    navLinksContainer.classList.toggle('active');
-                });
-                document.addEventListener('click', (e) => {
-                    if (!navLinksContainer.contains(e.target) && e.target !== mobileToggle) {
-                        mobileToggle.classList.remove('active');
-                        navLinksContainer.classList.remove('active');
-                    }
-                });
-            }
-        })();
-    </script>
+                        // Mobile menu toggle script
+                        const mobileToggle = document.getElementById('navMobileToggle');
+                        const navLinksContainer = document.querySelector('.nav-links');
+                        if (mobileToggle && navLinksContainer) {
+                            mobileToggle.addEventListener('click', (e) => {
+                                e.stopPropagation();
+                                mobileToggle.classList.toggle('active');
+                                navLinksContainer.classList.toggle('active');
+                            });
+                            document.addEventListener('click', (e) => {
+                                if (!navLinksContainer.contains(e.target) && e.target !== mobileToggle) {
+                                    mobileToggle.classList.remove('active');
+                                    navLinksContainer.classList.remove('active');
+                                }
+                            });
+                        }
+                    })();
+                </script>
 </body>
 
 </html>
