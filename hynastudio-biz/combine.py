@@ -29,10 +29,11 @@ for filename, section_class in files:
         if not css:
             continue
         
-        # Scope body, html and *
-        css = re.sub(r'\bhtml,body\b', f'.{section_class}', css)
-        css = re.sub(r'\bbody\b', f'.{section_class}', css)
-        css = re.sub(r'\bhtml\b', f'.{section_class}-html', css)
+        # Scope body, html and * WITHOUT breaking classes like .hero-body
+        css = css.replace('html,body{', f'.{section_class}{{')
+        css = css.replace('html, body {', f'.{section_class} {{')
+        css = re.sub(r'(?<![.\w-])body\s*\{', f'.{section_class} {{', css)
+        css = re.sub(r'(?<![.\w-])html\s*\{', f'.{section_class}-html {{', css)
         css = re.sub(r'\*\s*\{', f'.{section_class} * {{', css)
         
         combined_styles.append(f"/* Styles from {filename} */\n" + css)
