@@ -89,4 +89,7 @@ final_html = f"""<!DOCTYPE html>
 with open('index.html', 'w', encoding='utf-8') as f:
     f.write(final_html)
 
-print("Created index.html successfully!")
+with open('../hynabiz.html', 'w', encoding='utf-8') as f:
+    f.write(final_html)
+
+print("Created index.html and ../hynabiz.html successfully!")
