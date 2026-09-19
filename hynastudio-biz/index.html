@@ -7,11 +7,11 @@
     <meta name="description" content="HynaBiz by Hyna Studio — Connect businesses, create opportunities, and scale enterprise solutions.">
     <link rel="canonical" href="https://www.hynastudio.com/hynabiz">
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Krona+One&amp;display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
-    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-    <link href="https://fonts.googleapis.com" rel="preconnect"/>
     <link href="https://www.hynastudio.com/hynabiz" rel="canonical"/>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Krona+One&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
     
     <style>
         html, body { width: 100%; overflow-x: hidden; }
@@ -145,7 +145,6 @@
       width: auto;
       object-fit: contain;
       display: block;
-      filter: drop-shadow(0 2px 10px rgba(62, 168, 255, .40));
       transition: transform .18s ease;
     }
 
@@ -744,23 +743,7 @@
             100% { left: 140%; }
         }
 
-        .cursor-glow {
-            position: fixed;
-            width: 260px;
-            height: 260px;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 10;
-            background: radial-gradient(
-                circle,
-                rgba(255, 255, 255, 0.10) 0%,
-                rgba(100, 180, 255, 0.05) 30%,
-                transparent 70%
-            );
-            transform: translate(-50%, -50%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
+
 
         .page-label {
             position: absolute;
@@ -815,9 +798,7 @@
                 height: 350px;
             }
 
-            .cursor-glow {
-                display: none;
-            }
+
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -1366,11 +1347,10 @@
 <div class="shine"></div>
 </div>
 </main>
-<div class="cursor-glow" id="cursorGlow"></div>
 <script>
         const wrapper = document.getElementById("imageWrapper");
         const image = document.getElementById("pageImage");
-        const cursorGlow = document.getElementById("cursorGlow");
+
 
         document.addEventListener("mousemove", (event) => {
             if (window.innerWidth <= 768) return;
@@ -1386,20 +1366,11 @@
                 rotateX(${rotateX}deg)
                 rotateY(${rotateY}deg)
             `;
-
-            cursorGlow.style.left = `${event.clientX}px`;
-            cursorGlow.style.top = `${event.clientY}px`;
-            cursorGlow.style.opacity = "1";
         });
 
         document.addEventListener("mouseleave", () => {
             wrapper.style.transform =
                 "perspective(1200px) rotateX(0deg) rotateY(0deg)";
-            cursorGlow.style.opacity = "0";
-        });
-
-        document.addEventListener("touchstart", () => {
-            cursorGlow.style.opacity = "0";
         });
 
         image.addEventListener("dragstart", (event) => {

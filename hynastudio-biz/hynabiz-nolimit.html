@@ -184,23 +184,7 @@
             100% { left: 140%; }
         }
 
-        .cursor-glow {
-            position: fixed;
-            width: 260px;
-            height: 260px;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 10;
-            background: radial-gradient(
-                circle,
-                rgba(255, 255, 255, 0.10) 0%,
-                rgba(100, 180, 255, 0.05) 30%,
-                transparent 70%
-            );
-            transform: translate(-50%, -50%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
+
 
         .page-label {
             position: absolute;
@@ -255,9 +239,7 @@
                 height: 350px;
             }
 
-            .cursor-glow {
-                display: none;
-            }
+
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -295,12 +277,12 @@
         </div>
     </main>
 
-    <div class="cursor-glow" id="cursorGlow"></div>
+
 
     <script>
         const wrapper = document.getElementById("imageWrapper");
         const image = document.getElementById("pageImage");
-        const cursorGlow = document.getElementById("cursorGlow");
+
 
         document.addEventListener("mousemove", (event) => {
             if (window.innerWidth <= 768) return;
@@ -316,20 +298,11 @@
                 rotateX(${rotateX}deg)
                 rotateY(${rotateY}deg)
             `;
-
-            cursorGlow.style.left = `${event.clientX}px`;
-            cursorGlow.style.top = `${event.clientY}px`;
-            cursorGlow.style.opacity = "1";
         });
 
         document.addEventListener("mouseleave", () => {
             wrapper.style.transform =
                 "perspective(1200px) rotateX(0deg) rotateY(0deg)";
-            cursorGlow.style.opacity = "0";
-        });
-
-        document.addEventListener("touchstart", () => {
-            cursorGlow.style.opacity = "0";
         });
 
         image.addEventListener("dragstart", (event) => {
