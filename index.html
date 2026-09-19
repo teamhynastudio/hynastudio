@@ -7571,904 +7571,901 @@
         </script>
 
         <style>
-                :root {
-                    --ink: #111318;
-                    --muted: #6b6f79;
-                    --line: rgba(17, 19, 24, 0.08);
-                    --accent: #4f3ff0;
-                    --font-display: 'Sora', sans-serif;
-                    --font-body: 'Inter', sans-serif;
-                }
+            :root {
+                --ink: #111318;
+                --muted: #6b6f79;
+                --line: rgba(17, 19, 24, 0.08);
+                --accent: #4f3ff0;
+                --font-display: 'Sora', sans-serif;
+                --font-body: 'Inter', sans-serif;
+            }
 
-                /* ─── FRONT ROW REFERENCE TEAM SECTION ─── */
-                .team-section {
-                    padding: 45px 8% 100px;
-                    background: #000000;
-                }
+            /* ─── FRONT ROW REFERENCE TEAM SECTION ─── */
+            .team-section {
+                padding: 45px 8% 100px;
+                background: #000000;
+            }
 
-                .team-header-wrapper {
-                    margin-bottom: 40px;
-                    text-align: center;
-                }
+            .team-header-wrapper {
+                margin-bottom: 40px;
+                text-align: center;
+            }
 
-                .team-eyebrow {
-                    font-family: var(--font-display);
-                    font-size: 0.85rem;
-                    font-weight: 700;
-                    letter-spacing: 0.14em;
-                    text-transform: uppercase;
-                    color: #ffffff;
-                    margin-bottom: 14px;
-                    display: block;
-                }
+            .team-eyebrow {
+                font-family: var(--font-display);
+                font-size: 0.85rem;
+                font-weight: 700;
+                letter-spacing: 0.14em;
+                text-transform: uppercase;
+                color: #ffffff;
+                margin-bottom: 14px;
+                display: block;
+            }
 
-                .team-title {
-                    font-family: var(--font-display);
-                    font-size: clamp(2.6rem, 4.5vw, 3.8rem);
-                    font-weight: 800;
-                    letter-spacing: -0.03em;
-                    color: #ffffff;
-                    line-height: 1.1;
-                    margin-bottom: 18px;
-                }
+            .team-title {
+                font-family: var(--font-display);
+                font-size: clamp(2.6rem, 4.5vw, 3.8rem);
+                font-weight: 800;
+                letter-spacing: -0.03em;
+                color: #ffffff;
+                line-height: 1.1;
+                margin-bottom: 18px;
+            }
 
-                .team-subtitle {
-                    font-size: 1.1rem;
-                    color: rgba(255, 255, 255, 0.65);
-                    max-width: 620px;
-                    margin: 0 auto;
-                    line-height: 1.65;
-                }
+            .team-subtitle {
+                font-size: 1.1rem;
+                color: rgba(255, 255, 255, 0.65);
+                max-width: 620px;
+                margin: 0 auto;
+                line-height: 1.65;
+            }
 
+            .our-people-grid {
+                display: grid;
+                grid-template-columns: repeat(12, 1fr);
+                gap: 64px 32px;
+                justify-items: center;
+                max-width: 1240px;
+                margin: 0 auto;
+            }
+
+            .our-person-card.row-1,
+            .our-person-card.row-2 {
+                grid-column: span 4;
+            }
+
+            .our-person-card {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                cursor: pointer;
+                width: 100%;
+                max-width: 320px;
+                transition: transform 0.35s ease;
+            }
+
+            .avatar-circle-box {
+                position: relative;
+                width: 220px;
+                height: 220px;
+                margin-bottom: 22px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                background: #ffffff;
+                box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+                overflow: hidden;
+                transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+            }
+
+            .our-person-card:hover .avatar-circle-box {
+                transform: translateY(-8px) scale(1.03);
+                box-shadow: 0 24px 50px rgba(255, 200, 59, 0.25);
+            }
+
+            .avatar-img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: top center;
+                filter: none;
+                transition: filter 0.35s ease, transform 0.35s ease;
+            }
+
+            .our-person-card:hover .avatar-img {
+                filter: none;
+                transform: scale(1.05);
+            }
+
+            .person-name {
+                font-family: var(--font-display);
+                font-size: 1.6rem;
+                font-weight: 800;
+                color: #ffffff;
+                margin-bottom: 6px;
+                letter-spacing: -0.02em;
+                line-height: 1.25;
+                white-space: nowrap;
+            }
+
+            .person-role {
+                font-size: 0.92rem;
+                font-weight: 500;
+                color: rgba(255, 255, 255, 0.65);
+                letter-spacing: -0.01em;
+            }
+
+            @media (max-width: 1024px) {
                 .our-people-grid {
-                    display: grid;
-                    grid-template-columns: repeat(12, 1fr);
-                    gap: 64px 32px;
-                    justify-items: center;
-                    max-width: 1240px;
-                    margin: 0 auto;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 52px 30px;
                 }
 
                 .our-person-card.row-1,
                 .our-person-card.row-2 {
-                    grid-column: span 4;
+                    grid-column: span 1;
                 }
+            }
 
-                .our-person-card {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    text-align: center;
-                    cursor: pointer;
-                    width: 100%;
-                    max-width: 320px;
-                    transition: transform 0.35s ease;
+            @media (max-width: 640px) {
+                .our-people-grid {
+                    grid-template-columns: 1fr;
+                    gap: 44px;
                 }
 
                 .avatar-circle-box {
-                    position: relative;
-                    width: 220px;
-                    height: 220px;
-                    margin-bottom: 22px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    border-radius: 50%;
-                    background: #ffffff;
-                    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
-                    overflow: hidden;
-                    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
-                }
-
-                .our-person-card:hover .avatar-circle-box {
-                    transform: translateY(-8px) scale(1.03);
-                    box-shadow: 0 24px 50px rgba(255, 200, 59, 0.25);
-                }
-
-                .avatar-img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    object-position: top center;
-                    filter: none;
-                    transition: filter 0.35s ease, transform 0.35s ease;
-                }
-
-                .our-person-card:hover .avatar-img {
-                    filter: none;
-                    transform: scale(1.05);
+                    width: 190px;
+                    height: 190px;
                 }
 
                 .person-name {
-                    font-family: var(--font-display);
-                    font-size: 1.6rem;
-                    font-weight: 800;
-                    color: #ffffff;
-                    margin-bottom: 6px;
-                    letter-spacing: -0.02em;
-                    line-height: 1.25;
-                    white-space: nowrap;
+                    font-size: 1.5rem;
                 }
+            }
 
-                .person-role {
-                    font-size: 0.92rem;
-                    font-weight: 500;
-                    color: rgba(255, 255, 255, 0.65);
-                    letter-spacing: -0.01em;
+            .board-member .board-role {
+                display: block;
+                font-size: 0.82rem;
+                color: var(--muted);
+                line-height: 1.4;
+            }
+
+            .board-member .board-org {
+                display: block;
+                font-size: 0.82rem;
+                color: var(--muted);
+                line-height: 1.4;
+            }
+
+            @media (max-width: 700px) {
+                .board-row {
+                    grid-template-columns: repeat(2, 1fr);
+                    row-gap: 36px;
                 }
+            }
 
-                @media (max-width: 1024px) {
-                    .our-people-grid {
-                        grid-template-columns: repeat(2, 1fr);
-                        gap: 52px 30px;
-                    }
-
-                    .our-person-card.row-1,
-                    .our-person-card.row-2 {
-                        grid-column: span 1;
-                    }
-                }
-
-                @media (max-width: 640px) {
-                    .our-people-grid {
-                        grid-template-columns: 1fr;
-                        gap: 44px;
-                    }
-
-                    .avatar-circle-box {
-                        width: 190px;
-                        height: 190px;
-                    }
-
-                    .person-name {
-                        font-size: 1.5rem;
-                    }
-                }
-
-                .board-member .board-role {
-                    display: block;
-                    font-size: 0.82rem;
-                    color: var(--muted);
-                    line-height: 1.4;
-                }
-
-                .board-member .board-org {
-                    display: block;
-                    font-size: 0.82rem;
-                    color: var(--muted);
-                    line-height: 1.4;
-                }
-
-                @media (max-width: 700px) {
-                    .board-row {
-                        grid-template-columns: repeat(2, 1fr);
-                        row-gap: 36px;
-                    }
-                }
-
-                /* ══ FADE-IN ANIMATION SYSTEM ══ */
-                @keyframes team-fade-up {
-                    from {
-                        opacity: 0;
-                        transform: translateY(36px);
-                    }
-
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-                }
-
-                @keyframes team-fade-left {
-                    from {
-                        opacity: 0;
-                        transform: translateX(-40px);
-                    }
-
-                    to {
-                        opacity: 1;
-                        transform: translateX(0);
-                    }
-                }
-
-                @keyframes team-fade-right {
-                    from {
-                        opacity: 0;
-                        transform: translateX(40px);
-                    }
-
-                    to {
-                        opacity: 1;
-                        transform: translateX(0);
-                    }
-                }
-
-                @keyframes team-fade-scale {
-                    from {
-                        opacity: 0;
-                        transform: scale(0.88);
-                    }
-
-                    to {
-                        opacity: 1;
-                        transform: scale(1);
-                    }
-                }
-
-                /* Hidden initial state for all animate targets */
-                .t-anim {
+            /* ══ FADE-IN ANIMATION SYSTEM ══ */
+            @keyframes team-fade-up {
+                from {
                     opacity: 0;
-                    will-change: transform, opacity;
+                    transform: translateY(36px);
                 }
 
-                /* Triggered class — browser plays the animation */
-                .t-anim.t-in {
-                    animation-fill-mode: both;
-                    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-                    animation-duration: 0.75s;
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            @keyframes team-fade-left {
+                from {
+                    opacity: 0;
+                    transform: translateX(-40px);
                 }
 
-                .t-anim.t-in[data-anim="fade-up"] {
-                    animation-name: team-fade-up;
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+
+            @keyframes team-fade-right {
+                from {
+                    opacity: 0;
+                    transform: translateX(40px);
                 }
 
-                .t-anim.t-in[data-anim="fade-left"] {
-                    animation-name: team-fade-left;
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+
+            @keyframes team-fade-scale {
+                from {
+                    opacity: 0;
+                    transform: scale(0.88);
                 }
 
-                .t-anim.t-in[data-anim="fade-right"] {
-                    animation-name: team-fade-right;
+                to {
+                    opacity: 1;
+                    transform: scale(1);
                 }
+            }
 
-                .t-anim.t-in[data-anim="fade-scale"] {
-                    animation-name: team-fade-scale;
+            /* Hidden initial state for all animate targets */
+            .t-anim {
+                opacity: 0;
+                will-change: transform, opacity;
+            }
+
+            /* Triggered class — browser plays the animation */
+            .t-anim.t-in {
+                animation-fill-mode: both;
+                animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+                animation-duration: 0.75s;
+            }
+
+            .t-anim.t-in[data-anim="fade-up"] {
+                animation-name: team-fade-up;
+            }
+
+            .t-anim.t-in[data-anim="fade-left"] {
+                animation-name: team-fade-left;
+            }
+
+            .t-anim.t-in[data-anim="fade-right"] {
+                animation-name: team-fade-right;
+            }
+
+            .t-anim.t-in[data-anim="fade-scale"] {
+                animation-name: team-fade-scale;
+            }
+
+            .t-anim[data-delay="1"].t-in {
+                animation-delay: 0.08s;
+            }
+
+            .t-anim[data-delay="2"].t-in {
+                animation-delay: 0.18s;
+            }
+
+            .t-anim[data-delay="3"].t-in {
+                animation-delay: 0.28s;
+            }
+
+            .t-anim[data-delay="4"].t-in {
+                animation-delay: 0.40s;
+            }
+
+            .t-anim[data-delay="5"].t-in {
+                animation-delay: 0.52s;
+            }
+
+            /* Respect reduced-motion */
+            @media (prefers-reduced-motion: reduce) {
+                .t-anim {
+                    opacity: 1 !important;
+                    animation: none !important;
                 }
+            }
+        </style>
 
-                .t-anim[data-delay="1"].t-in {
-                    animation-delay: 0.08s;
-                }
+        <section id="team" class="team-section">
 
-                .t-anim[data-delay="2"].t-in {
-                    animation-delay: 0.18s;
-                }
-
-                .t-anim[data-delay="3"].t-in {
-                    animation-delay: 0.28s;
-                }
-
-                .t-anim[data-delay="4"].t-in {
-                    animation-delay: 0.40s;
-                }
-
-                .t-anim[data-delay="5"].t-in {
-                    animation-delay: 0.52s;
-                }
-
-                /* Respect reduced-motion */
-                @media (prefers-reduced-motion: reduce) {
-                    .t-anim {
-                        opacity: 1 !important;
-                        animation: none !important;
-                    }
-                }
-            </style>
-
-            <section id="team" class="team-section">
-
-                <!-- ── COMPANY STORY & TEAM SECTION ── -->
-                <div class="company-story-section">
-                    <div class="company-story-container">
-                        <!-- HEADER -->
-                        <div class="team-header-wrapper lp-fade-up" style="margin-bottom: 24px;">
-                            <span class="team-eyebrow">WE ARE HYNA</span>
-                            <h2 class="team-title" style="margin-bottom: 0;">Our People</h2>
-                        </div>
-
-                        <div class="story-header" style="margin-bottom: 40px;">
-                            <h3 class="story-title">We started with an idea. Today, we're building what comes next.</h3>
-                        </div>
-
-                        <div class="story-grid">
-                            <div class="story-col">
-                                <p>At Hyna Studio, we believe technology should solve real problems, create
-                                    opportunities, and move people and businesses forward.</p>
-                            </div>
-                            <div class="story-col">
-                                <p>Hyna Studio is powered by a team of students, builders, developers, designers, and
-                                    innovators who believe that the future belongs to those who build it.</p>
-                            </div>
-                        </div>
-
-                        <hr class="story-divider">
+            <!-- ── COMPANY STORY & TEAM SECTION ── -->
+            <div class="company-story-section">
+                <div class="company-story-container">
+                    <!-- HEADER -->
+                    <div class="team-header-wrapper lp-fade-up" style="margin-bottom: 24px;">
+                        <span class="team-eyebrow">WE ARE HYNA</span>
+                        <h2 class="team-title" style="margin-bottom: 0;">Our People</h2>
                     </div>
-                </div>
 
-                <!-- OUR PEOPLE GRID -->
-                <div class="our-people-container">
-                    <div class="our-people-grid">
-
-                        <!-- Vignesh -->
-                        <div class="our-person-card row-1 lp-fade-up" data-name="Vignesh"
-                            data-role="Founder & CEO (Managing Director)"
-                            data-bio="&quot;Leadership is not about control, it is about building people who can lead without you.&quot; Vignesh drives the strategic vision and engineering standards at Hyna Studio."
-                            data-photo="./images/team/vignesh_new.png?v=2"
-                            data-portfolio="https://vigneshvl-dev.github.io/PORTFOLIO/"
-                            data-github="https://github.com/vigneshvl-dev"
-                            data-linkedin="https://www.linkedin.com/in/vigneshvl-dev/" data-college="Anna University"
-                            data-degree="B.E. Computer Science & Engineering">
-                            <div class="avatar-circle-box">
-                                <img src="./images/team/vignesh_new.png?v=2" alt="Vignesh" class="avatar-img">
-                            </div>
-                            <h3 class="person-name">Vignesh VL</h3>
-                            <div class="person-role">Founder &amp; CEO<br>(Managing Director)</div>
-                        </div>
-
-                        <!-- Jashwin -->
-                        <div class="our-person-card row-1 lp-fade-up" data-name="Jashwin" data-role="Co-Founder & COO"
-                            data-bio="&quot;Deadlines don’t fail because of time, they fail because alignment is missing.&quot; Jashwin ensures that every project at Hyna Studio is aligned with stakeholder goals and delivered seamlessly."
-                            data-photo="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png"
-                            data-portfolio="#" data-github="https://github.com/jashwinj2008"
-                            data-linkedin="https://www.linkedin.com/in/jashwin-j-16b06240a"
-                            data-college="Anna University" data-degree="B.E. Computer Science & Engineering">
-                            <div class="avatar-circle-box">
-                                <img src="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" alt="Jashwin"
-                                    class="avatar-img">
-                            </div>
-                            <h3 class="person-name">Jashwin J</h3>
-                            <div class="person-role">Co-Founder &amp; COO</div>
-                        </div>
-
-                        <!-- Dharshan -->
-                        <div class="our-person-card row-1 lp-fade-up" data-name="Dharshan" data-role="Co-Founder & CTO"
-                            data-bio="&quot;A co-founder in tech doesn’t follow trends, he builds what will become the next standard.&quot; Dharshan leads our systems architecture, cloud infrastructure, and technical execution."
-                            data-photo="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg"
-                            data-portfolio="https://portholio-zeta.vercel.app/"
-                            data-github="https://github.com/dharshan00814"
-                            data-linkedin="https://www.linkedin.com/in/dharshan-jm" data-college="Anna University"
-                            data-degree="B.E. Computer Science & Engineering">
-                            <div class="avatar-circle-box">
-                                <img src="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg"
-                                    alt="Dharshan" class="avatar-img">
-                            </div>
-                            <h3 class="person-name">Dharshan JM</h3>
-                            <div class="person-role">Co-Founder &amp; CTO</div>
-                        </div>
-
-                        <!-- Linciya -->
-                        <div class="our-person-card row-2 lp-fade-up" data-name="Linciya"
-                            data-role="Chief Marketing Officer"
-                            data-bio="&quot;Great marketing isn’t about telling people what you do, it’s about inspiring them with why you exist.&quot; Linciya leads market positioning, growth strategies, and brand expansion at Hyna Studio."
-                            data-photo="./images/team/linciya.png?v=1" data-portfolio="#" data-github="#"
-                            data-linkedin="#" data-college="Anna University"
-                            data-degree="B.E. Computer Science & Engineering">
-                            <div class="avatar-circle-box">
-                                <img src="./images/team/linciya.png?v=1" alt="Linciya" class="avatar-img">
-                            </div>
-                            <h3 class="person-name">Linciya</h3>
-                            <div class="person-role">Chief Marketing Officer</div>
-                        </div>
-
-                        <!-- Muhammed Zarif -->
-                        <div class="our-person-card row-2 lp-fade-up" data-name="Muhammed Zarif"
-                            data-role="Chief Growth Officer"
-                            data-bio="&quot;True growth is about building scalable strategies that connect vision with market opportunities.&quot; Muhammed Zarif leads strategic partnerships, client acquisition, and growth initiatives at Hyna Studio."
-                            data-photo="./images/team/zarif.jpg?v=1" data-portfolio="#" data-github="#"
-                            data-linkedin="#" data-college="Anna University"
-                            data-degree="B.E. Computer Science &amp; Engineering">
-                            <div class="avatar-circle-box">
-                                <img src="./images/team/zarif.jpg?v=1" alt="Muhammed Zarif" class="avatar-img"
-                                    onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Muhammed+Zarif&background=7c3aed&color=fff';">
-                            </div>
-                            <h3 class="person-name">Muhammed<br>Zarif</h3>
-                            <div class="person-role">Chief Growth Officer</div>
-                        </div>
-
-                        <!-- Muhammed Arshiya -->
-                        <div class="our-person-card row-2 lp-fade-up" data-name="Muhammed Arshiya"
-                            data-role="Chief Product Officer"
-                            data-bio="&quot;Exceptional products are born where user needs and innovative technology align.&quot; Muhammed Arshiya drives product strategy, roadmap planning, and user experience excellence at Hyna Studio."
-                            data-photo="./images/team/arshiya.jpg?v=1" data-portfolio="#" data-github="#"
-                            data-linkedin="#" data-college="Anna University"
-                            data-degree="B.E. Computer Science & Engineering">
-                            <div class="avatar-circle-box">
-                                <img src="./images/team/arshiya.jpg?v=1" alt="Muhammed Arshiya" class="avatar-img"
-                                    onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Muhammed+Arshiya&background=00e7b3&color=111';">
-                            </div>
-                            <h3 class="person-name">Muhammed<br>Arshiya</h3>
-                            <div class="person-role">Chief Product Officer</div>
-                        </div>
-
-
-
-
-
+                    <div class="story-header" style="margin-bottom: 40px;">
+                        <h3 class="story-title">We started with an idea. Today, we're building what comes next.</h3>
                     </div>
-                </div>
-            </section>
 
-            <!-- ── COMPANY STORY SECTION (ZERODHA STYLE DARK MODE) ── -->
-            <style>
+                    <div class="story-grid">
+                        <div class="story-col">
+                            <p>At Hyna Studio, we believe technology should solve real problems, create
+                                opportunities, and move people and businesses forward.</p>
+                        </div>
+                        <div class="story-col">
+                            <p>Hyna Studio is powered by a team of students, builders, developers, designers, and
+                                innovators who believe that the future belongs to those who build it.</p>
+                        </div>
+                    </div>
+
+                    <hr class="story-divider">
+                </div>
+            </div>
+
+            <!-- OUR PEOPLE GRID -->
+            <div class="our-people-container">
+                <div class="our-people-grid">
+
+                    <!-- Vignesh -->
+                    <div class="our-person-card row-1 lp-fade-up" data-name="Vignesh"
+                        data-role="Founder & CEO (Managing Director)"
+                        data-bio="&quot;Leadership is not about control, it is about building people who can lead without you.&quot; Vignesh drives the strategic vision and engineering standards at Hyna Studio."
+                        data-photo="./images/team/vignesh_new.png?v=2"
+                        data-portfolio="https://vigneshvl-dev.github.io/PORTFOLIO/"
+                        data-github="https://github.com/vigneshvl-dev"
+                        data-linkedin="https://www.linkedin.com/in/vigneshvl-dev/" data-college="Anna University"
+                        data-degree="B.E. Computer Science & Engineering">
+                        <div class="avatar-circle-box">
+                            <img src="./images/team/vignesh_new.png?v=2" alt="Vignesh" class="avatar-img">
+                        </div>
+                        <h3 class="person-name">Vignesh VL</h3>
+                        <div class="person-role">Founder &amp; CEO<br>(Managing Director)</div>
+                    </div>
+
+                    <!-- Jashwin -->
+                    <div class="our-person-card row-1 lp-fade-up" data-name="Jashwin" data-role="Co-Founder & COO"
+                        data-bio="&quot;Deadlines don’t fail because of time, they fail because alignment is missing.&quot; Jashwin ensures that every project at Hyna Studio is aligned with stakeholder goals and delivered seamlessly."
+                        data-photo="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" data-portfolio="#"
+                        data-github="https://github.com/jashwinj2008"
+                        data-linkedin="https://www.linkedin.com/in/jashwin-j-16b06240a" data-college="Anna University"
+                        data-degree="B.E. Computer Science & Engineering">
+                        <div class="avatar-circle-box">
+                            <img src="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" alt="Jashwin"
+                                class="avatar-img">
+                        </div>
+                        <h3 class="person-name">Jashwin J</h3>
+                        <div class="person-role">Co-Founder &amp; COO</div>
+                    </div>
+
+                    <!-- Dharshan -->
+                    <div class="our-person-card row-1 lp-fade-up" data-name="Dharshan" data-role="Co-Founder & CTO"
+                        data-bio="&quot;A co-founder in tech doesn’t follow trends, he builds what will become the next standard.&quot; Dharshan leads our systems architecture, cloud infrastructure, and technical execution."
+                        data-photo="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg"
+                        data-portfolio="https://portholio-zeta.vercel.app/"
+                        data-github="https://github.com/dharshan00814"
+                        data-linkedin="https://www.linkedin.com/in/dharshan-jm" data-college="Anna University"
+                        data-degree="B.E. Computer Science & Engineering">
+                        <div class="avatar-circle-box">
+                            <img src="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg"
+                                alt="Dharshan" class="avatar-img">
+                        </div>
+                        <h3 class="person-name">Dharshan JM</h3>
+                        <div class="person-role">Co-Founder &amp; CTO</div>
+                    </div>
+
+                    <!-- Linciya -->
+                    <div class="our-person-card row-2 lp-fade-up" data-name="Linciya"
+                        data-role="Chief Marketing Officer"
+                        data-bio="&quot;Great marketing isn’t about telling people what you do, it’s about inspiring them with why you exist.&quot; Linciya leads market positioning, growth strategies, and brand expansion at Hyna Studio."
+                        data-photo="./images/team/linciya.png?v=1" data-portfolio="#" data-github="#" data-linkedin="#"
+                        data-college="Anna University" data-degree="B.E. Computer Science & Engineering">
+                        <div class="avatar-circle-box">
+                            <img src="./images/team/linciya.png?v=1" alt="Linciya" class="avatar-img">
+                        </div>
+                        <h3 class="person-name">Linciya</h3>
+                        <div class="person-role">Chief Marketing Officer</div>
+                    </div>
+
+                    <!-- Muhammed Zarif -->
+                    <div class="our-person-card row-2 lp-fade-up" data-name="Muhammed Zarif"
+                        data-role="Chief Growth Officer"
+                        data-bio="&quot;True growth is about building scalable strategies that connect vision with market opportunities.&quot; Muhammed Zarif leads strategic partnerships, client acquisition, and growth initiatives at Hyna Studio."
+                        data-photo="./images/team/zarif.jpg?v=1" data-portfolio="#" data-github="#" data-linkedin="#"
+                        data-college="Anna University" data-degree="B.E. Computer Science &amp; Engineering">
+                        <div class="avatar-circle-box">
+                            <img src="./images/team/zarif.jpg?v=1" alt="Muhammed Zarif" class="avatar-img"
+                                onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Muhammed+Zarif&background=7c3aed&color=fff';">
+                        </div>
+                        <h3 class="person-name">Muhammed<br>Zarif</h3>
+                        <div class="person-role">Chief Growth Officer</div>
+                    </div>
+
+                    <!-- Muhammed Arshiya -->
+                    <div class="our-person-card row-2 lp-fade-up" data-name="Muhammed Arshiya"
+                        data-role="Chief Product Officer"
+                        data-bio="&quot;Exceptional products are born where user needs and innovative technology align.&quot; Muhammed Arshiya drives product strategy, roadmap planning, and user experience excellence at Hyna Studio."
+                        data-photo="./images/team/arshiya.jpg?v=1" data-portfolio="#" data-github="#" data-linkedin="#"
+                        data-college="Anna University" data-degree="B.E. Computer Science & Engineering">
+                        <div class="avatar-circle-box">
+                            <img src="./images/team/arshiya.jpg?v=1" alt="Muhammed Arshiya" class="avatar-img"
+                                onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Muhammed+Arshiya&background=00e7b3&color=111';">
+                        </div>
+                        <h3 class="person-name">Muhammed<br>Arshiya</h3>
+                        <div class="person-role">Chief Product Officer</div>
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ── COMPANY STORY SECTION (ZERODHA STYLE DARK MODE) ── -->
+        <style>
+            .company-story-section {
+                background-color: #000000;
+                color: #ffffff;
+                padding: 40px 24px 50px;
+                font-family: var(--font-body, 'Inter', -apple-system, sans-serif);
+                position: relative;
+                z-index: 2;
+            }
+
+            .company-story-container {
+                max-width: 1040px;
+                margin: 0 auto;
+            }
+
+            .story-header {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .story-title {
+                font-family: var(--font-display, 'Sora', sans-serif);
+                font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+                font-weight: 600;
+                line-height: 1.35;
+                color: #ffffff;
+                letter-spacing: -0.02em;
+                margin: 0;
+            }
+
+            .story-divider {
+                border: none;
+                height: 1px;
+                background: rgba(255, 255, 255, 0.12);
+                margin: 50px 0 60px;
+            }
+
+            .story-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 50px;
+                line-height: 1.8;
+                font-size: 1.02rem;
+                color: rgba(255, 255, 255, 0.78);
+            }
+
+            .story-col p {
+                margin: 0 0 24px 0;
+            }
+
+            .story-col p strong {
+                color: #ffffff;
+            }
+
+            .story-col p:last-child {
+                margin-bottom: 0;
+            }
+
+            .story-footer-tagline {
+                text-align: center;
+                margin-top: 60px;
+                padding-top: 40px;
+                border-top: 1px dashed rgba(255, 255, 255, 0.15);
+                font-size: 1.05rem;
+                font-weight: 600;
+                color: #ffffff;
+                letter-spacing: -0.01em;
+            }
+
+            @media (max-width: 768px) {
                 .company-story-section {
-                    background-color: #000000;
-                    color: #ffffff;
-                    padding: 40px 24px 50px;
-                    font-family: var(--font-body, 'Inter', -apple-system, sans-serif);
-                    position: relative;
-                    z-index: 2;
-                }
-
-                .company-story-container {
-                    max-width: 1040px;
-                    margin: 0 auto;
-                }
-
-                .story-header {
-                    text-align: center;
-                    margin-bottom: 20px;
-                }
-
-                .story-title {
-                    font-family: var(--font-display, 'Sora', sans-serif);
-                    font-size: clamp(1.8rem, 3.2vw, 2.5rem);
-                    font-weight: 600;
-                    line-height: 1.35;
-                    color: #ffffff;
-                    letter-spacing: -0.02em;
-                    margin: 0;
-                }
-
-                .story-divider {
-                    border: none;
-                    height: 1px;
-                    background: rgba(255, 255, 255, 0.12);
-                    margin: 50px 0 60px;
+                    padding: 60px 20px 70px;
                 }
 
                 .story-grid {
-                    display: grid;
-                    grid-template-columns: 1fr 1fr;
-                    gap: 50px;
-                    line-height: 1.8;
-                    font-size: 1.02rem;
-                    color: rgba(255, 255, 255, 0.78);
+                    grid-template-columns: 1fr;
+                    gap: 24px;
                 }
 
-                .story-col p {
-                    margin: 0 0 24px 0;
+                .story-divider {
+                    margin: 35px 0 40px;
+                }
+            }
+        </style>
+
+
+
+        <script>
+            /* ── Team Section: Scroll-triggered fade-in via IntersectionObserver ── */
+            (function () {
+                var targets = document.querySelectorAll('#team .t-anim');
+                if (!targets.length) return;
+
+                var io = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('t-in');
+                            io.unobserve(entry.target); /* fire once */
+                        }
+                    });
+                }, { threshold: 0.15 });
+
+                targets.forEach(function (el) { io.observe(el); });
+            })();
+        </script>
+
+
+
+        <script>
+            (function () {
+                function initHWT() {
+                    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+                        setTimeout(initHWT, 80);
+                        return;
+                    }
+                    gsap.registerPlugin(ScrollTrigger);
+
+                    var startProject = document.getElementById('hyna-start-project');
+                    if (!startProject) return;
+
+                    ScrollTrigger.create({
+                        trigger: startProject,
+                        start: 'top 75%',
+                        onEnter: function () {
+                            startProject.classList.add('hyna-in-view');
+                        },
+                        onLeaveBack: function () {
+                            startProject.classList.remove('hyna-in-view');
+                        }
+                    });
                 }
 
-                .story-col p strong {
-                    color: #ffffff;
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', initHWT);
+                } else {
+                    initHWT();
+                }
+                window.addEventListener('resize', function () {
+                    if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+                });
+            })();
+        </script>
+
+        <!-- Lenis Smooth Scroll -->
+        <style>
+            html.lenis,
+            html.lenis body {
+                height: auto;
+            }
+
+            .lenis.lenis-smooth {
+                scroll-behavior: auto !important;
+            }
+
+            .lenis.lenis-smooth [data-lenis-prevent] {
+                overscroll-behavior: contain;
+            }
+
+            .lenis.lenis-stopped {
+                overflow: hidden;
+            }
+
+            .lenis.lenis-smooth iframe {
+                pointer-events: none;
+            }
+        </style>
+        <script src="https://unpkg.com/lenis@1.1.11/dist/lenis.min.js"></script>
+        <script>
+            (function () {
+                var ss = getComputedStyle(document.body).getPropertyValue('--smooth-scroll');
+                if (ss && ss.trim() === 'true') {
+                    var lenis = new Lenis({ lerp: 0.08, smoothWheel: true }); window.lenis = lenis;
+                    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+                    requestAnimationFrame(raf);
+                }
+            })();
+        </script>
+        <!-- ══════════ END HAND-WRITING SECTION ══════════ -->
+
+
+
+
+        <script>
+            /* ─── Team card mouse-glow ─── */
+            document.querySelectorAll('.team-card').forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = ((e.clientX - rect.left) / rect.width) * 100;
+                    const y = ((e.clientY - rect.top) / rect.height) * 100;
+                    card.style.setProperty('--x', `${x}%`);
+                    card.style.setProperty('--y', `${y}%`);
+                });
+            });
+
+        </script>
+
+
+        <!-- SplitText Animation for About Section Title (React Bits Variant) -->
+        <style>
+            .about-section .section-title {
+                opacity: 1;
+            }
+
+            .about-section .section-title .split-word {
+                display: inline-block;
+                white-space: nowrap;
+            }
+
+            .about-section .section-title .split-char {
+                display: inline-block;
+                will-change: transform, opacity;
+            }
+
+            .about-section .section-title .split-space {
+                display: inline-block;
+                white-space: pre;
+            }
+        </style>
+        <script>
+            (function () {
+                document.addEventListener('DOMContentLoaded', function () {
+                    var titleEl = document.querySelector('#about .section-title');
+                    if (!titleEl) return;
+
+                    var text = titleEl.textContent.trim();
+                    titleEl.textContent = ''; // Clear original text
+
+                    var words = text.split(/\s+/);
+                    words.forEach(function (word, wordIdx) {
+                        var wordSpan = document.createElement('span');
+                        wordSpan.className = 'split-word';
+
+                        for (var i = 0; i < word.length; i++) {
+                            var charSpan = document.createElement('span');
+                            charSpan.className = 'split-char';
+                            charSpan.textContent = word[i];
+                            wordSpan.appendChild(charSpan);
+                        }
+
+                        titleEl.appendChild(wordSpan);
+
+                        // Add spaces between words
+                        if (wordIdx < words.length - 1) {
+                            var spaceSpan = document.createElement('span');
+                            spaceSpan.className = 'split-space';
+                            spaceSpan.textContent = ' ';
+                            titleEl.appendChild(spaceSpan);
+                        }
+                    });
+
+                    // Trigger the animation using GSAP & ScrollTrigger
+                    var chars = titleEl.querySelectorAll('.split-char');
+                    gsap.fromTo(chars,
+                        {
+                            opacity: 0,
+                            y: 40
+                        },
+                        {
+                            opacity: 1,
+                            y: 0,
+                            duration: 1.25,
+                            ease: 'power3.out',
+                            stagger: 0.05, // 50ms delay
+                            scrollTrigger: {
+                                trigger: titleEl,
+                                start: 'top 90%-=100px', // threshold: 0.1, rootMargin: -100px
+                                once: true,
+                                fastScrollEnd: true
+                            }
+                        }
+                    );
+                });
+            })();
+        </script>
+
+
+
+
+
+        <!-- FAQ -->
+        <section id="faq" class="cred-faq">
+            <style>
+                .cred-faq {
+                    background: #0b0c10;
+                    position: relative;
+                    overflow: hidden;
+                    cursor: pointer;
+                    user-select: none;
                 }
 
-                .story-col p:last-child {
-                    margin-bottom: 0;
+                .cred-faq-toggle {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 24px 8%;
+                    gap: 10px;
+                    transition: padding 0.5s cubic-bezier(0.4, 0, 0.2, 1);
                 }
 
-                .story-footer-tagline {
-                    text-align: center;
-                    margin-top: 60px;
-                    padding-top: 40px;
-                    border-top: 1px dashed rgba(255, 255, 255, 0.15);
-                    font-size: 1.05rem;
+                .cred-faq.open .cred-faq-toggle {
+                    padding-bottom: 20px;
+                }
+
+                .cred-faq-title {
+                    font-size: 0.78rem;
+                    font-weight: 400;
+                    letter-spacing: 0.28em;
+                    text-transform: uppercase;
+                    color: rgba(255, 255, 255, 0.55);
+                    font-family: var(--font-display);
+                    transition: color 0.3s;
+                }
+
+                .cred-faq:hover .cred-faq-title {
+                    color: rgba(255, 255, 255, 0.8);
+                }
+
+                .cred-faq-arrow {
+                    font-size: 0.75rem;
+                    color: rgba(255, 255, 255, 0.4);
+                    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s;
+                    line-height: 1;
+                }
+
+                .cred-faq.open .cred-faq-arrow {
+                    transform: rotate(180deg);
+                }
+
+                .cred-faq:hover .cred-faq-arrow {
+                    color: rgba(255, 255, 255, 0.7);
+                }
+
+                .cred-faq-body {
+                    max-height: 0;
+                    overflow: hidden;
+                    transition: max-height 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+                }
+
+                .cred-faq-inner {
+                    max-width: 900px;
+                    margin: 0 auto;
+                    padding: 0 8% 36px 8%;
+                    cursor: default;
+                }
+
+                .cred-faq-qa {
+                    padding: 22px 0;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+                }
+
+                .cred-faq-qa:first-child {
+                    border-top: 1px solid rgba(255, 255, 255, 0.06);
+                }
+
+                .cred-faq-q {
+                    font-size: 1rem;
                     font-weight: 600;
-                    color: #ffffff;
-                    letter-spacing: -0.01em;
+                    color: rgba(255, 255, 255, 0.9);
+                    font-family: var(--font-display);
+                    margin-bottom: 12px;
+                    line-height: 1.4;
+                }
+
+                .cred-faq-a {
+                    font-size: 0.9rem;
+                    color: rgba(255, 255, 255, 0.38);
+                    line-height: 1.75;
+                    max-width: 820px;
+                    font-weight: 300;
+                }
+
+                .cred-faq-a strong {
+                    color: rgba(255, 255, 255, 0.6);
+                    font-weight: 500;
                 }
 
                 @media (max-width: 768px) {
-                    .company-story-section {
-                        padding: 60px 20px 70px;
-                    }
-
-                    .story-grid {
-                        grid-template-columns: 1fr;
-                        gap: 24px;
-                    }
-
-                    .story-divider {
-                        margin: 35px 0 40px;
-                    }
-                }
-            </style>
-
-
-
-            <script>
-                /* ── Team Section: Scroll-triggered fade-in via IntersectionObserver ── */
-                (function () {
-                    var targets = document.querySelectorAll('#team .t-anim');
-                    if (!targets.length) return;
-
-                    var io = new IntersectionObserver(function (entries) {
-                        entries.forEach(function (entry) {
-                            if (entry.isIntersecting) {
-                                entry.target.classList.add('t-in');
-                                io.unobserve(entry.target); /* fire once */
-                            }
-                        });
-                    }, { threshold: 0.15 });
-
-                    targets.forEach(function (el) { io.observe(el); });
-                })();
-            </script>
-
-
-
-            <script>
-                (function () {
-                    function initHWT() {
-                        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-                            setTimeout(initHWT, 80);
-                            return;
-                        }
-                        gsap.registerPlugin(ScrollTrigger);
-
-                        var startProject = document.getElementById('hyna-start-project');
-                        if (!startProject) return;
-
-                        ScrollTrigger.create({
-                            trigger: startProject,
-                            start: 'top 75%',
-                            onEnter: function () {
-                                startProject.classList.add('hyna-in-view');
-                            },
-                            onLeaveBack: function () {
-                                startProject.classList.remove('hyna-in-view');
-                            }
-                        });
-                    }
-
-                    if (document.readyState === 'loading') {
-                        document.addEventListener('DOMContentLoaded', initHWT);
-                    } else {
-                        initHWT();
-                    }
-                    window.addEventListener('resize', function () {
-                        if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
-                    });
-                })();
-            </script>
-
-            <!-- Lenis Smooth Scroll -->
-            <style>
-                html.lenis,
-                html.lenis body {
-                    height: auto;
-                }
-
-                .lenis.lenis-smooth {
-                    scroll-behavior: auto !important;
-                }
-
-                .lenis.lenis-smooth [data-lenis-prevent] {
-                    overscroll-behavior: contain;
-                }
-
-                .lenis.lenis-stopped {
-                    overflow: hidden;
-                }
-
-                .lenis.lenis-smooth iframe {
-                    pointer-events: none;
-                }
-            </style>
-            <script src="https://unpkg.com/lenis@1.1.11/dist/lenis.min.js"></script>
-            <script>
-                (function () {
-                    var ss = getComputedStyle(document.body).getPropertyValue('--smooth-scroll');
-                    if (ss && ss.trim() === 'true') {
-                        var lenis = new Lenis({ lerp: 0.08, smoothWheel: true }); window.lenis = lenis;
-                        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-                        requestAnimationFrame(raf);
-                    }
-                })();
-            </script>
-            <!-- ══════════ END HAND-WRITING SECTION ══════════ -->
-
-
-
-
-            <script>
-                /* ─── Team card mouse-glow ─── */
-                document.querySelectorAll('.team-card').forEach(card => {
-                    card.addEventListener('mousemove', (e) => {
-                        const rect = card.getBoundingClientRect();
-                        const x = ((e.clientX - rect.left) / rect.width) * 100;
-                        const y = ((e.clientY - rect.top) / rect.height) * 100;
-                        card.style.setProperty('--x', `${x}%`);
-                        card.style.setProperty('--y', `${y}%`);
-                    });
-                });
-
-            </script>
-
-
-            <!-- SplitText Animation for About Section Title (React Bits Variant) -->
-            <style>
-                .about-section .section-title {
-                    opacity: 1;
-                }
-
-                .about-section .section-title .split-word {
-                    display: inline-block;
-                    white-space: nowrap;
-                }
-
-                .about-section .section-title .split-char {
-                    display: inline-block;
-                    will-change: transform, opacity;
-                }
-
-                .about-section .section-title .split-space {
-                    display: inline-block;
-                    white-space: pre;
-                }
-            </style>
-            <script>
-                (function () {
-                    document.addEventListener('DOMContentLoaded', function () {
-                        var titleEl = document.querySelector('#about .section-title');
-                        if (!titleEl) return;
-
-                        var text = titleEl.textContent.trim();
-                        titleEl.textContent = ''; // Clear original text
-
-                        var words = text.split(/\s+/);
-                        words.forEach(function (word, wordIdx) {
-                            var wordSpan = document.createElement('span');
-                            wordSpan.className = 'split-word';
-
-                            for (var i = 0; i < word.length; i++) {
-                                var charSpan = document.createElement('span');
-                                charSpan.className = 'split-char';
-                                charSpan.textContent = word[i];
-                                wordSpan.appendChild(charSpan);
-                            }
-
-                            titleEl.appendChild(wordSpan);
-
-                            // Add spaces between words
-                            if (wordIdx < words.length - 1) {
-                                var spaceSpan = document.createElement('span');
-                                spaceSpan.className = 'split-space';
-                                spaceSpan.textContent = ' ';
-                                titleEl.appendChild(spaceSpan);
-                            }
-                        });
-
-                        // Trigger the animation using GSAP & ScrollTrigger
-                        var chars = titleEl.querySelectorAll('.split-char');
-                        gsap.fromTo(chars,
-                            {
-                                opacity: 0,
-                                y: 40
-                            },
-                            {
-                                opacity: 1,
-                                y: 0,
-                                duration: 1.25,
-                                ease: 'power3.out',
-                                stagger: 0.05, // 50ms delay
-                                scrollTrigger: {
-                                    trigger: titleEl,
-                                    start: 'top 90%-=100px', // threshold: 0.1, rootMargin: -100px
-                                    once: true,
-                                    fastScrollEnd: true
-                                }
-                            }
-                        );
-                    });
-                })();
-            </script>
-
-
-
-
-
-            <!-- FAQ -->
-            <section id="faq" class="cred-faq">
-                <style>
-                    .cred-faq {
-                        background: #0b0c10;
-                        position: relative;
-                        overflow: hidden;
-                        cursor: pointer;
-                        user-select: none;
-                    }
-
                     .cred-faq-toggle {
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        padding: 24px 8%;
-                        gap: 10px;
-                        transition: padding 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                        padding: 16px 5%;
                     }
 
                     .cred-faq.open .cred-faq-toggle {
-                        padding-bottom: 20px;
-                    }
-
-                    .cred-faq-title {
-                        font-size: 0.78rem;
-                        font-weight: 400;
-                        letter-spacing: 0.28em;
-                        text-transform: uppercase;
-                        color: rgba(255, 255, 255, 0.55);
-                        font-family: var(--font-display);
-                        transition: color 0.3s;
-                    }
-
-                    .cred-faq:hover .cred-faq-title {
-                        color: rgba(255, 255, 255, 0.8);
-                    }
-
-                    .cred-faq-arrow {
-                        font-size: 0.75rem;
-                        color: rgba(255, 255, 255, 0.4);
-                        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s;
-                        line-height: 1;
-                    }
-
-                    .cred-faq.open .cred-faq-arrow {
-                        transform: rotate(180deg);
-                    }
-
-                    .cred-faq:hover .cred-faq-arrow {
-                        color: rgba(255, 255, 255, 0.7);
-                    }
-
-                    .cred-faq-body {
-                        max-height: 0;
-                        overflow: hidden;
-                        transition: max-height 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+                        padding-bottom: 12px;
                     }
 
                     .cred-faq-inner {
-                        max-width: 900px;
-                        margin: 0 auto;
-                        padding: 0 8% 36px 8%;
-                        cursor: default;
+                        padding: 0 5% 24px 5%;
                     }
 
                     .cred-faq-qa {
-                        padding: 22px 0;
-                        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-                    }
-
-                    .cred-faq-qa:first-child {
-                        border-top: 1px solid rgba(255, 255, 255, 0.06);
+                        padding: 16px 0;
                     }
 
                     .cred-faq-q {
-                        font-size: 1rem;
-                        font-weight: 600;
-                        color: rgba(255, 255, 255, 0.9);
-                        font-family: var(--font-display);
-                        margin-bottom: 12px;
-                        line-height: 1.4;
+                        font-size: 0.93rem;
+                        margin-bottom: 8px;
                     }
 
                     .cred-faq-a {
-                        font-size: 0.9rem;
-                        color: rgba(255, 255, 255, 0.38);
-                        line-height: 1.75;
-                        max-width: 820px;
-                        font-weight: 300;
+                        font-size: 0.85rem;
+                        line-height: 1.65;
                     }
+                }
+            </style>
 
-                    .cred-faq-a strong {
-                        color: rgba(255, 255, 255, 0.6);
-                        font-weight: 500;
-                    }
+            <div class="cred-faq-toggle" id="credFaqToggle" role="button" aria-expanded="false"
+                aria-controls="credFaqBody">
+                <span class="cred-faq-title">F A Q s</span>
+                <span class="cred-faq-arrow">˅</span>
+            </div>
 
-                    @media (max-width: 768px) {
-                        .cred-faq-toggle {
-                            padding: 16px 5%;
-                        }
+            <div class="cred-faq-body" id="credFaqBody">
+                <div class="cred-faq-inner">
 
-                        .cred-faq.open .cred-faq-toggle {
-                            padding-bottom: 12px;
-                        }
-
-                        .cred-faq-inner {
-                            padding: 0 5% 24px 5%;
-                        }
-
-                        .cred-faq-qa {
-                            padding: 16px 0;
-                        }
-
-                        .cred-faq-q {
-                            font-size: 0.93rem;
-                            margin-bottom: 8px;
-                        }
-
-                        .cred-faq-a {
-                            font-size: 0.85rem;
-                            line-height: 1.65;
-                        }
-                    }
-                </style>
-
-                <div class="cred-faq-toggle" id="credFaqToggle" role="button" aria-expanded="false"
-                    aria-controls="credFaqBody">
-                    <span class="cred-faq-title">F A Q s</span>
-                    <span class="cred-faq-arrow">˅</span>
-                </div>
-
-                <div class="cred-faq-body" id="credFaqBody">
-                    <div class="cred-faq-inner">
-
-                        <div class="cred-faq-qa">
-                            <div class="cred-faq-q">What is Hyna Studio?</div>
-                            <div class="cred-faq-a">Hyna Studio is a product-focused technology company that builds
-                                digital products and solutions designed to simplify business operations and help
-                                businesses grow.</div>
-                        </div>
-
-                        <div class="cred-faq-qa">
-                            <div class="cred-faq-q">What products and solutions does Hyna Studio build?</div>
-                            <div class="cred-faq-a">Hyna Studio currently focuses on <strong>HynaBiz</strong>, our
-                                business platform designed to connect and support buyers, owners, manufacturers, and
-                                suppliers through a modern digital experience.</div>
-                        </div>
-
-                        <div class="cred-faq-qa">
-                            <div class="cred-faq-q">Who can work with Hyna Studio?</div>
-                            <div class="cred-faq-a">Hyna Studio can work with businesses, organizations, entrepreneurs,
-                                and technology partners who are looking to build, improve, or adopt practical digital
-                                solutions.</div>
-                        </div>
-
-                        <div class="cred-faq-qa">
-                            <div class="cred-faq-q">How does the project process work?</div>
-                            <div class="cred-faq-a">Our process typically starts with understanding the problem,
-                                followed by planning, product design, development, testing, and continuous improvement.
-                                We focus on building solutions that are practical, scalable, and easy to use.</div>
-                        </div>
-
-                        <div class="cred-faq-qa">
-                            <div class="cred-faq-q">How can I contact Hyna Studio?</div>
-                            <div class="cred-faq-a">You can contact Hyna Studio through our official contact channels.
-                                Share your idea, business requirement, or partnership opportunity, and our team can
-                                discuss the next steps with you.</div>
-                        </div>
-
+                    <div class="cred-faq-qa">
+                        <div class="cred-faq-q">What is Hyna Studio?</div>
+                        <div class="cred-faq-a">Hyna Studio is a product-focused technology company that builds
+                            digital products and solutions designed to simplify business operations and help
+                            businesses grow.</div>
                     </div>
-                </div>
 
-                <script>
-                    (function () {
-                        const section = document.getElementById('faq');
-                        const toggle = document.getElementById('credFaqToggle');
-                        const body = document.getElementById('credFaqBody');
+                    <div class="cred-faq-qa">
+                        <div class="cred-faq-q">What products and solutions does Hyna Studio build?</div>
+                        <div class="cred-faq-a">Hyna Studio currently focuses on <strong>HynaBiz</strong>, our
+                            business platform designed to connect and support buyers, owners, manufacturers, and
+                            suppliers through a modern digital experience.</div>
+                    </div>
 
-                        toggle.addEventListener('click', function () {
-                            const isOpen = section.classList.contains('open');
-                            if (isOpen) {
-                                section.classList.remove('open');
-                                toggle.setAttribute('aria-expanded', 'false');
-                                body.style.maxHeight = null;
-                            } else {
-                                section.classList.add('open');
-                                toggle.setAttribute('aria-expanded', 'true');
-                                body.style.maxHeight = body.scrollHeight + 'px';
-                            }
-                        });
-                    })();
-                </script>
-            </section>
+                    <div class="cred-faq-qa">
+                        <div class="cred-faq-q">Who can work with Hyna Studio?</div>
+                        <div class="cred-faq-a">Hyna Studio can work with businesses, organizations, entrepreneurs,
+                            and technology partners who are looking to build, improve, or adopt practical digital
+                            solutions.</div>
+                    </div>
 
-            <!-- CTA -->
-            <div class="cta-banner" id="contact">
-                <div class="cta-banner-content">
-                    <div class="cta-eyebrow">SPOTS FOR NEXT COHORT AVAILABLE NOW</div>
-                    <h2>Let's Get<br><span class="cta-gradient-accent">In Touch.</span></h2>
-                    <a href="contact.html" class="btn-cta-pill">Book a call <span class="cta-arrow">→</span></a>
+                    <div class="cred-faq-qa">
+                        <div class="cred-faq-q">How does the project process work?</div>
+                        <div class="cred-faq-a">Our process typically starts with understanding the problem,
+                            followed by planning, product design, development, testing, and continuous improvement.
+                            We focus on building solutions that are practical, scalable, and easy to use.</div>
+                    </div>
+
+                    <div class="cred-faq-qa">
+                        <div class="cred-faq-q">How can I contact Hyna Studio?</div>
+                        <div class="cred-faq-a">You can contact Hyna Studio through our official contact channels.
+                            Share your idea, business requirement, or partnership opportunity, and our team can
+                            discuss the next steps with you.</div>
+                    </div>
+
                 </div>
             </div>
+
+            <script>
+                (function () {
+                    const section = document.getElementById('faq');
+                    const toggle = document.getElementById('credFaqToggle');
+                    const body = document.getElementById('credFaqBody');
+
+                    toggle.addEventListener('click', function () {
+                        const isOpen = section.classList.contains('open');
+                        if (isOpen) {
+                            section.classList.remove('open');
+                            toggle.setAttribute('aria-expanded', 'false');
+                            body.style.maxHeight = null;
+                        } else {
+                            section.classList.add('open');
+                            toggle.setAttribute('aria-expanded', 'true');
+                            body.style.maxHeight = body.scrollHeight + 'px';
+                        }
+                    });
+                })();
+            </script>
+        </section>
+
+        <!-- CTA -->
+        <div class="cta-banner" id="contact">
+            <div class="cta-banner-content">
+                <div class="cta-eyebrow">SPOTS FOR NEXT COHORT AVAILABLE NOW</div>
+                <h2>Let's Get<br><span class="cta-gradient-accent">In Touch.</span></h2>
+                <a href="contact.html" class="btn-cta-pill">Book a call <span class="cta-arrow">→</span></a>
+            </div>
+        </div>
 
     </div><!-- /.main-content-wrapper -->
 
@@ -8923,10 +8920,7 @@
             }
 
             window.addEventListener('resize', setFooterHeight, { passive: true });
-
-            // Initialize immediately
             setFooterHeight();
-
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', setFooterHeight);
             } else {
@@ -8945,7 +8939,6 @@
                 "software with impact.",
                 "the future of software.",
                 "the next gen of products.",
-
             ];
             var currentIndex = 0;
             setInterval(function () {
@@ -8954,7 +8947,7 @@
                     currentIndex = (currentIndex + 1) % phrases.length;
                     textElement.textContent = phrases[currentIndex];
                     textElement.classList.remove("fade-out");
-                }, 400); // 400ms match transition time
+                }, 400);
             }, 2000);
         })();
     </script>
