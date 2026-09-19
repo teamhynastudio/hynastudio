@@ -118,7 +118,7 @@
       justify-self: start;
       display: inline-flex;
       align-items: center;
-      gap: 2px;
+      gap: 10px;
       font-size: 22px;
       letter-spacing: -.02em;
       text-decoration: none;
@@ -130,6 +130,25 @@
 
     .brand:hover {
       opacity: .92;
+    }
+
+    .brand-logo {
+      height: 30px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 2px 8px rgba(62, 168, 255, .35));
+      transition: transform .18s ease;
+    }
+
+    .brand:hover .brand-logo {
+      transform: scale(1.05);
+    }
+
+    .brand-text {
+      display: inline-flex;
+      align-items: center;
+      gap: 1px;
     }
 
     .brand b {
@@ -323,7 +342,7 @@
     }
 
     .cta-row {
-      margin-top: clamp(8px, 1.8vh, 24px);
+      margin-top: auto;
       width: 100%;
       display: flex;
       align-items: center;
@@ -539,7 +558,10 @@
 
     <!-- ============ NAVBAR ============ -->
     <header class="nav">
-      <a class="brand" href="#hero"><b>HYNA</b><span>BIZ</span><i>.</i></a>
+      <a class="brand" href="#hero">
+        <img class="brand-logo" src="Screenshot_2026-09-19_at_5.25.50_PM-removebg-preview.png" alt="HynaBiz Logo" />
+        <span class="brand-text"><b>HYNA</b><span>BIZ</span><i>.</i></span>
+      </a>
 
       <nav class="nav-menu" aria-label="Main">
         <ul class="nav-links">
@@ -586,8 +608,6 @@
 
     <!-- ============ HERO CONTENT ============ -->
     <div class="hero-body">
-      <h1 class="wordmark">HYNABIZ</h1>
-
       <div class="cta-row">
         <a class="btn-pill" href="#">
           Explore HynaBiz
