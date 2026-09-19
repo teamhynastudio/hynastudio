@@ -15,11 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // 1. Scroll effect for floating capsule
   window.addEventListener('scroll', () => {
     if (window.scrollY > 20) {
-      navCapsule.style.borderColor = '#CBD5E1';
-      navCapsule.style.boxShadow = '0 8px 30px -4px rgba(10, 17, 40, 0.08), 0 2px 6px -1px rgba(10, 17, 40, 0.03)';
+      navCapsule.classList.add('scrolled');
     } else {
-      navCapsule.style.borderColor = 'var(--border-light)';
-      navCapsule.style.boxShadow = 'var(--shadow-capsule)';
+      navCapsule.classList.remove('scrolled');
     }
   }, { passive: true });
 
