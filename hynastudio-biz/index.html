@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HynaBiz</title>
     
-    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Krona+One&amp;display=swap" rel="stylesheet"/>
     
     <style>
         html, body { width: 100%; overflow-x: hidden; }
@@ -153,20 +153,26 @@
     .brand-text {
       display: inline-flex;
       align-items: center;
-      gap: 1px;
+      gap: 1.5px;
+      font-family: 'Krona One', sans-serif;
+      font-size: 19px;
+      letter-spacing: -0.01em;
     }
 
-    .brand b {
-      font-weight: 700;
+    .brand-text b {
+      font-family: 'Krona One', sans-serif;
+      font-weight: 400;
       color: #ffffff;
     }
 
-    .brand span {
-      font-weight: 300;
-      color: rgba(233, 243, 255, .90);
+    .brand-text > span {
+      font-family: 'Krona One', sans-serif;
+      font-weight: 400;
+      color: rgba(220, 235, 255, .78);
     }
 
-    .brand i {
+    .brand-text i {
+      font-family: 'Krona One', sans-serif;
       font-style: normal;
       color: var(--glow);
     }

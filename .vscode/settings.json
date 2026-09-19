@@ -1,3 +1,8 @@
 {
-    "liveServer.settings.port": 5523
+    "liveServer.settings.port": 5523,
+    "python.testing.pytestArgs": [
+        "hynainvoice"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
 }
