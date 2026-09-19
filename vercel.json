@@ -1,3 +1,7 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/hynabiz", "destination": "/hynastudio-biz/index.html" },
+    { "source": "/hynabiz/(.*)", "destination": "/hynastudio-biz/$1" }
+  ]
 }

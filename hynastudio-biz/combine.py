@@ -67,7 +67,9 @@ final_html = f"""<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HynaBiz</title>
+    <title>HynaBiz — Hyna Studio</title>
+    <meta name="description" content="HynaBiz by Hyna Studio — Connect businesses, create opportunities, and scale enterprise solutions.">
+    <link rel="canonical" href="https://www.hynastudio.com/hynabiz">
     
     {links_str}
     
