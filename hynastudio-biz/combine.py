@@ -34,7 +34,7 @@ for filename, section_class in files:
         css = css.replace('html, body {', f'.{section_class} {{')
         css = re.sub(r'(?<![.\w-])body\s*\{', f'.{section_class} {{', css)
         css = re.sub(r'(?<![.\w-])html\s*\{', f'.{section_class}-html {{', css)
-        css = re.sub(r'\*\s*\{', f'.{section_class} * {{', css)
+        css = re.sub(r'(\n\s*)\*\s*\{', r'\1.' + section_class + r' * {', css)
         
         combined_styles.append(f"/* Styles from {filename} */\n" + css)
         
@@ -72,7 +72,6 @@ final_html = f"""<!DOCTYPE html>
     {links_str}
     
     <style>
-        * {{ margin: 0; padding: 0; box-sizing: border-box; }}
         html, body {{ width: 100%; overflow-x: hidden; }}
         {styles_str}
     </style>
