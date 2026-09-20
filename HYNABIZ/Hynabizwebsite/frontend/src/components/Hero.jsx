@@ -51,7 +51,7 @@ const Hero = () => {
         </h1>
         
         <p className="hero-supporting text-muted">
-          Say goodbye to manual workflows and inefficient processes. SaasCN streamlines your business operations, making work intuitive, efficient, and tailored to your needs.
+          Run your entire business from one powerful platform.
         </p>
         
         <div className="hero-actions">
