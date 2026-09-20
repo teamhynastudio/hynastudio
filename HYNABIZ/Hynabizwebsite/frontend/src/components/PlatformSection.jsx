@@ -131,22 +131,15 @@ function PlatformSection() {
 
   const handleTabClick = (tab) => {
     if (tab.id === activeTab.id) return;
-    
-    // Animate out
-    gsap.to(contentRef.current, {
-      opacity: 0,
-      y: 10,
-      duration: 0.2,
-      onComplete: () => {
-        setActiveTab(tab);
-        // Animate in
-        gsap.fromTo(contentRef.current, 
-          { opacity: 0, y: -10 },
-          { opacity: 1, y: 0, duration: 0.3, ease: 'power2.out' }
-        );
-      }
-    });
+    setActiveTab(tab);
   };
+
+  const activeIndex = platformData.findIndex(t => t.id === activeTab.id);
+  const prevIndex = (activeIndex - 1 + platformData.length) % platformData.length;
+  const nextIndex = (activeIndex + 1) % platformData.length;
+
+  const prevTab = platformData[prevIndex];
+  const nextTab = platformData[nextIndex];
 
   return (
     <section className="platform-section" ref={sectionRef}>
@@ -172,8 +165,29 @@ function PlatformSection() {
               <p className="platform-content-desc">{activeTab.desc}</p>
             </div>
             
-            <div className="platform-ui-mockup" style={activeTab.id === 'business' ? { padding: 0, alignItems: 'flex-start' } : {}}>
-              {activeTab.id === 'business' ? <BusinessMockup /> : activeTab.mockupText}
+            <div className="platform-carousel">
+              <div 
+                className="platform-ui-mockup mockup-prev"
+                onClick={() => handleTabClick(prevTab)}
+                style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+              >
+                {prevTab.id === 'business' ? <BusinessMockup /> : prevTab.mockupText}
+              </div>
+              
+              <div 
+                className="platform-ui-mockup mockup-active"
+                style={activeTab.id === 'business' ? { padding: 0, alignItems: 'flex-start' } : { display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+              >
+                {activeTab.id === 'business' ? <BusinessMockup /> : activeTab.mockupText}
+              </div>
+              
+              <div 
+                className="platform-ui-mockup mockup-next"
+                onClick={() => handleTabClick(nextTab)}
+                style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+              >
+                {nextTab.id === 'business' ? <BusinessMockup /> : nextTab.mockupText}
+              </div>
             </div>
           </div>
         </div>
