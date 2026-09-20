@@ -86,6 +86,53 @@ const BusinessMockup = () => (
   </div>
 );
 
+const ConnectionsMockup = () => (
+  <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', padding: '20px', gap: '20px', textAlign: 'left', fontSize: '14px', color: '#fff' }}>
+    <div style={{ display: 'flex', gap: '12px', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '16px', overflowX: 'auto' }}>
+      <button style={{ padding: '6px 12px', background: 'var(--hyna-blue)', color: '#000', border: 'none', borderRadius: '16px', fontWeight: '600', cursor: 'pointer' }}>All Industries</button>
+      <button style={{ padding: '6px 12px', background: 'rgba(255,255,255,0.05)', color: '#fff', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '16px', cursor: 'pointer' }}>Manufacturing</button>
+      <button style={{ padding: '6px 12px', background: 'rgba(255,255,255,0.05)', color: '#fff', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '16px', cursor: 'pointer' }}>Technology</button>
+      <button style={{ padding: '6px 12px', background: 'rgba(255,255,255,0.05)', color: '#fff', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '16px', cursor: 'pointer' }}>Retail</button>
+    </div>
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', flex: 1 }}>
+      <div style={{ background: 'rgba(255,255,255,0.02)', padding: '16px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <div style={{ width: '32px', height: '32px', backgroundColor: '#444', borderRadius: '4px' }}></div>
+          <div>
+            <div style={{ fontWeight: '600' }}>Global Suppliers Ltd.</div>
+            <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '12px' }}>Wholesale &middot; New York</div>
+          </div>
+        </div>
+        <div style={{ display: 'flex', gap: '8px' }}>
+          <span style={{ fontSize: '10px', background: 'rgba(255,255,255,0.1)', padding: '2px 6px', borderRadius: '4px' }}>Electronics</span>
+          <span style={{ fontSize: '10px', background: 'rgba(255,255,255,0.1)', padding: '2px 6px', borderRadius: '4px' }}>Logistics</span>
+        </div>
+        <div style={{ marginTop: 'auto', display: 'flex', gap: '8px' }}>
+          <button style={{ flex: 1, padding: '6px', background: 'var(--hyna-blue)', color: '#000', border: 'none', borderRadius: '4px', fontWeight: '600', cursor: 'pointer' }}>Connect</button>
+          <button style={{ flex: 1, padding: '6px', background: 'rgba(255,255,255,0.1)', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Profile</button>
+        </div>
+      </div>
+      <div style={{ background: 'rgba(255,255,255,0.02)', padding: '16px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <div style={{ width: '32px', height: '32px', backgroundColor: '#555', borderRadius: '4px' }}></div>
+          <div>
+            <div style={{ fontWeight: '600' }}>BuildRite Construction</div>
+            <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '12px' }}>Construction &middot; Chicago</div>
+          </div>
+        </div>
+        <div style={{ display: 'flex', gap: '8px' }}>
+          <span style={{ fontSize: '10px', background: 'rgba(255,255,255,0.1)', padding: '2px 6px', borderRadius: '4px' }}>Materials</span>
+          <span style={{ fontSize: '10px', background: 'rgba(255,255,255,0.1)', padding: '2px 6px', borderRadius: '4px' }}>Contractor</span>
+        </div>
+        <div style={{ marginTop: 'auto', display: 'flex', gap: '8px' }}>
+          <button style={{ flex: 1, padding: '6px', background: 'var(--hyna-blue)', color: '#000', border: 'none', borderRadius: '4px', fontWeight: '600', cursor: 'pointer' }}>Connect</button>
+          <button style={{ flex: 1, padding: '6px', background: 'rgba(255,255,255,0.1)', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Profile</button>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
 function PlatformSection() {
   const [activeTab, setActiveTab] = useState(platformData[0]);
   const sectionRef = useRef(null);
@@ -137,9 +184,8 @@ function PlatformSection() {
   const activeIndex = platformData.findIndex(t => t.id === activeTab.id);
   const prevIndex = (activeIndex - 1 + platformData.length) % platformData.length;
   const nextIndex = (activeIndex + 1) % platformData.length;
-
-  const prevTab = platformData[prevIndex];
-  const nextTab = platformData[nextIndex];
+  const farPrevIndex = (activeIndex - 2 + platformData.length) % platformData.length;
+  const farNextIndex = (activeIndex + 2) % platformData.length;
 
   return (
     <section className="platform-section" ref={sectionRef}>
@@ -166,28 +212,30 @@ function PlatformSection() {
             </div>
             
             <div className="platform-carousel">
-              <div 
-                className="platform-ui-mockup mockup-prev"
-                onClick={() => handleTabClick(prevTab)}
-                style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-              >
-                {prevTab.id === 'business' ? <BusinessMockup /> : prevTab.mockupText}
-              </div>
-              
-              <div 
-                className="platform-ui-mockup mockup-active"
-                style={activeTab.id === 'business' ? { padding: 0, alignItems: 'flex-start' } : { display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-              >
-                {activeTab.id === 'business' ? <BusinessMockup /> : activeTab.mockupText}
-              </div>
-              
-              <div 
-                className="platform-ui-mockup mockup-next"
-                onClick={() => handleTabClick(nextTab)}
-                style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-              >
-                {nextTab.id === 'business' ? <BusinessMockup /> : nextTab.mockupText}
-              </div>
+              {platformData.map((tab, index) => {
+                let positionClass = 'mockup-hidden';
+                if (index === activeIndex) positionClass = 'mockup-active';
+                else if (index === prevIndex) positionClass = 'mockup-prev';
+                else if (index === nextIndex) positionClass = 'mockup-next';
+                else if (index === farPrevIndex) positionClass = 'mockup-far-prev';
+                else if (index === farNextIndex) positionClass = 'mockup-far-next';
+
+                return (
+                  <div 
+                    key={tab.id}
+                    className={`platform-ui-mockup ${positionClass}`}
+                    onClick={() => {
+                      if (positionClass !== 'mockup-active' && positionClass !== 'mockup-hidden') {
+                        handleTabClick(tab);
+                      }
+                    }}
+                  >
+                    <div className="platform-ui-mockup-inner" style={(tab.id === 'business' || tab.id === 'connections') ? { padding: 0, alignItems: 'flex-start' } : { display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      {tab.id === 'business' ? <BusinessMockup /> : tab.id === 'connections' ? <ConnectionsMockup /> : tab.mockupText}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
