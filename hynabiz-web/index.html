@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HYNA BIZ — Global Business & Trade Network</title>
+  <meta name="description" content="From Local Business to Global Trade. Discover verified businesses, build trade connections, and explore cross-border opportunities." />
+  
+  <!-- Fonts: Inter for editorial body, Sora for authoritative titles, JetBrains Mono for cartographic telemetry -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Krona+One&family=Sora:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ==========================================================================
+       TECHNICAL BUSINESS ATLAS DESIGN SYSTEM
+       Tone: Serious, Institutional, Technical, Cartographic Trade Infrastructure
+       Palette: White / #F5FAFF / #0B1220 / Slate #64748B / Hyna Blue #00C2FF
+       ========================================================================== */
+    :root {
+      --bg-main: #f5faff;
+      --bg-surface: #ffffff;
+      --navy-deep: #0b1220;
+      --navy-muted: #1e293b;
+      --text-muted: #64748b;
+      --text-light: #94a3b8;
+      --border-subtle: #e2e8f0;
+      --border-strong: #cbd5e1;
+      --blue-accent: #00a8e8;
+      --blue-hyna: #00c2ff;
+      --blue-soft: rgba(0, 194, 255, 0.08);
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-display: 'Sora', 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      background-color: var(--bg-main);
+      color: var(--navy-deep);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    /* Subtle Technical Blueprint Millimeter Grid */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, rgba(11, 18, 32, 0.025) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(11, 18, 32, 0.025) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Global Container */
+    .app-wrapper {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ==========================================================================
+       TOP STATUS & NAVIGATION BAR
+       ========================================================================== */
+    .top-telemetry-bar {
+      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      padding: 6px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      letter-spacing: 0.02em;
+    }
+
+    .telemetry-group {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .telemetry-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #10b981;
+    }
+
+    .nav-header {
+      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0 48px;
+    }
+
+    .nav-container {
+      max-width: 1720px;
+      margin: 0 auto;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand-block {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-logo-img {
+      height: 38px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .brand-title {
+      font-family: 'Krona One', var(--font-display);
+      font-size: 18px;
+      letter-spacing: -0.01em;
+      color: var(--navy-deep);
+    }
+
+    .brand-title span {
+      color: var(--blue-accent);
+    }
+
+    .brand-tag {
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      border-left: 1px solid var(--border-strong);
+      padding-left: 10px;
+      margin-left: 4px;
+    }
+
+    .nav-items {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-items a {
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--navy-muted);
+      letter-spacing: -0.01em;
+      transition: color 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-items a:hover {
+      color: var(--blue-accent);
+    }
+
+    .nav-items a.active {
+      color: var(--navy-deep);
+      font-weight: 600;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn-login {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--navy-muted);
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+
+    .btn-login:hover {
+      background: var(--border-subtle);
+      color: var(--navy-deep);
+    }
+
+    .btn-primary-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #ffffff;
+      background: var(--navy-deep);
+      text-decoration: none;
+      padding: 9px 18px;
+      border-radius: 4px;
+      box-shadow: 0 1px 2px rgba(11, 18, 32, 0.12);
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+
+    .btn-primary-action:hover {
+      background: #172338;
+      transform: translateY(-1px);
+    }
+
+    /* ==========================================================================
+       HERO MAIN SPLIT SECTION
+       ========================================================================== */
+    .hero-section {
+      max-width: 1720px;
+      margin: 0 auto;
+      padding: 36px 48px 48px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 520px 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    @media (max-width: 1380px) {
+      .hero-section {
+        grid-template-columns: 480px 1fr;
+        gap: 32px;
+        padding: 24px 28px 40px;
+      }
+    }
+
+    @media (max-width: 1120px) {
+      .hero-section {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+    }
+
+    /* ==========================================================================
+       LEFT COLUMN: EDITORIAL TYPOGRAPHY & INTERACTION
+       ========================================================================== */
+    .hero-editorial {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .badge-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue-accent);
+      background: var(--blue-soft);
+      border: 1px solid rgba(0, 168, 232, 0.22);
+      padding: 5px 12px;
+      border-radius: 3px;
+      width: fit-content;
+    }
+
+    .badge-eyebrow::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 1px;
+      background: var(--blue-accent);
+    }
+
+    .main-headline {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 3.8vw, 54px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      color: var(--navy-deep);
+    }
+
+    .supporting-text {
+      font-size: 16.5px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      max-width: 480px;
+    }
+
+    .differentiation-callout {
+      border-left: 2px solid var(--blue-accent);
+      padding-left: 14px;
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--navy-muted);
+      background: rgba(255, 255, 255, 0.6);
+      padding-top: 4px;
+      padding-bottom: 4px;
+    }
+
+    .differentiation-callout strong {
+      font-weight: 600;
+      color: var(--navy-deep);
+    }
+
+    .cta-button-cluster {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
+
+    .btn-solid-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--navy-deep);
+      color: #ffffff;
+      font-size: 14.5px;
+      font-weight: 600;
+      padding: 13px 24px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.2s ease, transform 0.15s ease;
+      box-shadow: 0 2px 8px rgba(11, 18, 32, 0.14);
+    }
+
+    .btn-solid-cta:hover {
+      background: #172338;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline-cta {
+      display: inline-flex;
+      align-items: center;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-strong);
+      color: var(--navy-deep);
+      font-size: 14.5px;
+      font-weight: 600;
+      padding: 13px 22px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn-outline-cta:hover {
+      background: #f8fafc;
+      border-color: var(--navy-muted);
+    }
+
+    /* ==========================================================================
+       GLOBAL TRADE SEARCH INTERFACE
+       ========================================================================== */
+    .trade-search-card {
+      margin-top: 14px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      padding: 22px 24px;
+      box-shadow:
+        0 1px 3px rgba(11, 18, 32, 0.04),
+        0 10px 24px -8px rgba(11, 18, 32, 0.06);
+    }
+
+    .search-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .search-card-title {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--navy-deep);
+      letter-spacing: -0.01em;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .search-card-title svg {
+      width: 15px;
+      height: 15px;
+      color: var(--blue-accent);
+    }
+
+    .search-tag-meta {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .search-field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .input-field {
+      width: 100%;
+      height: 42px;
+      background: #f8fafc;
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      padding: 0 14px;
+      font-family: var(--font-body);
+      font-size: 13.5px;
+      color: var(--navy-deep);
+      outline: none;
+      transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .input-field:focus {
+      background: #ffffff;
+      border-color: var(--blue-accent);
+      box-shadow: 0 0 0 3px rgba(0, 168, 232, 0.12);
+    }
+
+    select.input-field {
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+    }
+
+    .route-inputs-row {
+      display: grid;
+      grid-template-columns: 1fr 28px 1fr;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .route-arrow-symbol {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-light);
+      font-size: 14px;
+    }
+
+    .btn-search-trade {
+      width: 100%;
+      height: 42px;
+      margin-top: 4px;
+      background: var(--blue-accent);
+      color: #ffffff;
+      border: none;
+      border-radius: 4px;
+      font-size: 13.5px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+
+    .btn-search-trade:hover {
+      background: #0096d1;
+      transform: translateY(-1px);
+    }
+
+    /* Enterprise Metric Ribbons */
+    .metric-ribbon {
+      margin-top: 8px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 18px;
+    }
+
+    .metric-block {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .metric-value {
+      font-family: var(--font-mono);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--navy-deep);
+    }
+
+    .metric-label {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      letter-spacing: -0.01em;
+    }
+
+    /* ==========================================================================
+       RIGHT COLUMN: REALISTIC INTERNATIONAL TRADE MAP & ATLAS
+       ========================================================================== */
+    .trade-atlas-stage {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      padding: 16px;
+      position: relative;
+      box-shadow:
+        0 1px 3px rgba(11, 18, 32, 0.04),
+        0 16px 36px -12px rgba(11, 18, 32, 0.08);
+      overflow: hidden;
+    }
+
+    .atlas-header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px 14px;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 12px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .atlas-title {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--navy-deep);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .atlas-title::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border: 1.5px solid var(--blue-accent);
+      background: transparent;
+    }
+
+    .atlas-legend {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 10.5px;
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .legend-line-solid {
+      width: 18px;
+      height: 1.5px;
+      background: var(--blue-accent);
+    }
+
+    .legend-line-dashed {
+      width: 18px;
+      height: 0;
+      border-top: 1.5px dashed var(--navy-muted);
+    }
+
+    .legend-marker-pin {
+      width: 6px;
+      height: 6px;
+      border-radius: 1px;
+      background: var(--navy-deep);
+    }
+
+    /* Map Viewport */
+    .map-canvas-container {
+      position: relative;
+      width: 100%;
+      height: 570px;
+      background: #f8fafc;
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    @media (max-width: 1380px) {
+      .map-canvas-container {
+        height: 520px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .map-canvas-container {
+        height: 400px;
+      }
+    }
+
+    .map-svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: crosshair;
+    }
+
+    /* Map Topographic / Vector Elements */
+    .graticule-line {
+      stroke: rgba(100, 116, 139, 0.14);
+      stroke-width: 0.75;
+      stroke-dasharray: 2 4;
+    }
+
+    .graticule-prime {
+      stroke: rgba(100, 116, 139, 0.24);
+      stroke-width: 1;
+    }
+
+    .graticule-label {
+      font-family: var(--font-mono);
+      font-size: 8.5px;
+      fill: #94a3b8;
+      letter-spacing: 0.04em;
+    }
+
+    .continent-base {
+      fill: #e9f0f8;
+      stroke: #c8d8e8;
+      stroke-width: 1;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+      transition: fill 0.2s ease;
+    }
+
+    .continent-contour {
+      fill: #dde8f3;
+      stroke: rgba(160, 185, 210, 0.4);
+      stroke-width: 0.7;
+    }
+
+    .continent-boundary {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.6);
+      stroke-width: 0.8;
+      stroke-dasharray: 2 2;
+    }
+
+    /* Trade Route Lines */
+    .trade-route {
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: stroke-width 0.2s ease, stroke 0.2s ease;
+    }
+
+    .trade-route-ocean {
+      stroke: #00a8e8;
+      stroke-width: 1.4;
+      stroke-dasharray: 5 4;
+      animation: tradeFlow 30s linear infinite;
+    }
+
+    .trade-route-air {
+      stroke: #334155;
+      stroke-width: 1.1;
+      stroke-dasharray: 2 4;
+      animation: tradeFlow 22s linear infinite;
+    }
+
+    .trade-route-primary {
+      stroke: #0284c7;
+      stroke-width: 1.8;
+      stroke-dasharray: 6 3;
+      animation: tradeFlow 25s linear infinite;
+    }
+
+    @keyframes tradeFlow {
+      from { stroke-dashoffset: 100; }
+      to { stroke-dashoffset: 0; }
+    }
+
+    /* Cartographic Business Map Pins */
+    .carto-marker {
+      cursor: pointer;
+    }
+
+    .carto-marker:hover .marker-symbol {
+      transform: scale(1.25);
+      stroke: var(--blue-accent);
+    }
+
+    .marker-symbol {
+      transition: transform 0.15s ease, stroke 0.15s ease;
+      transform-origin: center;
+    }
+
+    .marker-pin-supplier { fill: #0284c7; stroke: #ffffff; stroke-width: 1.2; }
+    .marker-pin-manufacturer { fill: #0f172a; stroke: #38bdf8; stroke-width: 1.2; }
+    .marker-pin-distributor { fill: #0369a1; stroke: #ffffff; stroke-width: 1.2; }
+    .marker-pin-buyer { fill: #0284c7; stroke: #ffffff; stroke-width: 1.2; }
+    .marker-pin-partner { fill: #0f172a; stroke: #ffffff; stroke-width: 1.2; }
+    .marker-pin-opportunity { fill: #00a8e8; stroke: #ffffff; stroke-width: 1.2; }
+
+    .carto-label-box {
+      font-family: var(--font-mono);
+      font-size: 8.5px;
+      font-weight: 500;
+      fill: #1e293b;
+      letter-spacing: 0.02em;
+      pointer-events: none;
+    }
+
+    .carto-label-bg {
+      fill: rgba(255, 255, 255, 0.92);
+      stroke: var(--border-subtle);
+      stroke-width: 0.75;
+      rx: 2;
+    }
+
+    /* Technical Map Footer: Coordinate Telemetry & Scale */
+    .atlas-footer-bar {
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 10px;
+    }
+
+    .scale-bar-unit {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .scale-graphic {
+      width: 90px;
+      height: 4px;
+      border: 1px solid var(--navy-muted);
+      border-top: none;
+      position: relative;
+    }
+
+    .scale-graphic::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      height: 4px;
+      width: 1px;
+      background: var(--navy-muted);
+    }
+
+    /* Active Node Detail Card */
+    .node-inspector-badge {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid var(--border-strong);
+      border-radius: 4px;
+      padding: 10px 14px;
+      box-shadow: 0 4px 14px rgba(11, 18, 32, 0.08);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      pointer-events: none;
+      z-index: 10;
+      max-width: 260px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .badge-hub-name {
+      font-weight: 600;
+      color: var(--navy-deep);
+      font-size: 12px;
+    }
+
+    .badge-hub-stats {
+      color: var(--text-muted);
+      font-size: 10px;
+    }
+
+    /* Mobile Adaptations */
+    @media (max-width: 768px) {
+      .top-telemetry-bar {
+        display: none;
+      }
+      .nav-header {
+        padding: 0 20px;
+      }
+      .nav-items {
+        display: none;
+      }
+      .hero-section {
+        padding: 20px;
+      }
+      .metric-ribbon {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app-wrapper">
+    
+    <!-- Top System Telemetry Bar -->
+    <div class="top-telemetry-bar">
+      <div class="telemetry-group">
+        <span class="telemetry-item"><span class="status-dot"></span> GLOBAL ROUTING ACTIVE</span>
+        <span class="telemetry-item">STANDARD TRADE ATLAS PROTOCOL: WGS-84</span>
+        <span class="telemetry-item">MERCATOR CORRIDOR 0° MERIDIAN</span>
+      </div>
+      <div class="telemetry-group">
+        <span class="telemetry-item">CONNECTED HUBS: 486</span>
+        <span class="telemetry-item">SECURITY: VERIFIED ENTERPRISE</span>
+      </div>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <header class="nav-header">
+      <div class="nav-container">
+        <a class="brand-block" href="#hero">
+          <img class="brand-logo-img" src="Screenshot_2026-09-19_at_5.25.50_PM-removebg-preview.png" alt="HYNA BIZ" />
+          <span class="brand-title">HYNA<span>BIZ</span></span>
+          <span class="brand-tag">GLOBAL TRADE</span>
+        </a>
+
+        <ul class="nav-items">
+          <li><a href="#network" class="active">Directory &amp; Network</a></li>
+          <li><a href="#routes">Trade Routes</a></li>
+          <li><a href="#suppliers">Suppliers</a></li>
+          <li><a href="#compliance">Customs &amp; Compliance</a></li>
+          <li><a href="#enterprise">Enterprise</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <a class="btn-login" href="#login">Log in</a>
+          <a class="btn-primary-action" href="#signup">Create Your Business</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Hero Split Section -->
+    <main class="hero-section" id="hero">
+      
+      <!-- Left Column: Editorial Content & Global Search -->
+      <section class="hero-editorial">
+        <div class="badge-eyebrow">Global Business &amp; Trade Network</div>
+        
+        <h1 class="main-headline">From Local Business<br />to Global Trade.</h1>
+        
+        <p class="supporting-text">
+          Discover businesses, build connections and explore trade opportunities across borders.
+        </p>
+
+        <div class="differentiation-callout">
+          <strong>More than business listings.</strong> Built for business connections and global trade.
+        </div>
+
+        <div class="cta-button-cluster">
+          <a class="btn-solid-cta" href="#explore">
+            Explore Global Trade
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"></path>
+              <path d="m12 5 7 7-7 7"></path>
+            </svg>
+          </a>
+          <a class="btn-outline-cta" href="#create">Create Your Business</a>
+        </div>
+
+        <!-- Global Trade Search Widget -->
+        <div class="trade-search-card">
+          <div class="search-card-header">
+            <span class="search-card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              What are you looking for?
+            </span>
+            <span class="search-tag-meta">CROSS-BORDER ROUTING</span>
+          </div>
+
+          <form class="search-field-group" onsubmit="event.preventDefault(); highlightSelectedRoute();">
+            <select class="input-field" id="needSelect">
+              <option value="" disabled selected>Product / Business / Trade Opportunity</option>
+              <option value="mfg">Precision Manufacturing &amp; Industrial Equipment</option>
+              <option value="textiles">Textiles, Apparel &amp; Raw Cotton</option>
+              <option value="electronics">Semiconductors &amp; Electronic Components</option>
+              <option value="agri">Agricultural Commodities &amp; Food Exports</option>
+              <option value="freight">Freight Forwarding &amp; Maritime Logistics</option>
+              <option value="digital">Enterprise SaaS &amp; Business Services</option>
+            </select>
+
+            <div class="route-inputs-row">
+              <select class="input-field" id="originSelect">
+                <option value="" disabled selected>FROM Region</option>
+                <option value="na">North America</option>
+                <option value="eu">Europe</option>
+                <option value="me">Middle East</option>
+                <option value="asia">East / South Asia</option>
+                <option value="sa">South America</option>
+                <option value="afr">Africa</option>
+                <option value="oc">Australia &amp; Oceania</option>
+              </select>
+
+              <div class="route-arrow-symbol">→</div>
+
+              <select class="input-field" id="destSelect">
+                <option value="" disabled selected>TO Region</option>
+                <option value="eu">Europe</option>
+                <option value="na">North America</option>
+                <option value="me">Middle East</option>
+                <option value="asia">East / South Asia</option>
+                <option value="sa">South America</option>
+                <option value="afr">Africa</option>
+                <option value="oc">Australia &amp; Oceania</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn-search-trade">
+              <span>Explore Trade</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </form>
+
+          <!-- Micro Metric Indicators -->
+          <div class="metric-ribbon">
+            <div class="metric-block">
+              <span class="metric-value">12,480</span>
+              <span class="metric-label">Verified Businesses</span>
+            </div>
+            <div class="metric-block">
+              <span class="metric-value">142</span>
+              <span class="metric-label">Trade Corridors</span>
+            </div>
+            <div class="metric-block">
+              <span class="metric-value">94</span>
+              <span class="metric-label">Member Nations</span>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Right Column: Realistic International Trade Atlas Map -->
+      <section class="trade-atlas-stage">
+        
+        <div class="atlas-header-bar">
+          <div class="atlas-title">
+            International Trade Routes &amp; Business Infrastructure Map
+          </div>
+          <div class="atlas-legend">
+            <span class="legend-item"><span class="legend-line-solid"></span> Maritime Sea Lanes</span>
+            <span class="legend-item"><span class="legend-line-dashed"></span> Air &amp; Rail Freight</span>
+            <span class="legend-item"><span class="legend-marker-pin"></span> Verified Hubs</span>
+          </div>
+        </div>
+
+        <div class="map-canvas-container" id="mapContainer">
+          
+          <svg class="map-svg" viewBox="0 0 1000 520" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <!-- Technical Map Patterns & Gradients -->
+              <pattern id="dotGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+                <circle cx="10" cy="10" r="0.6" fill="#94a3b8" opacity="0.35" />
+              </pattern>
+              
+              <!-- Subtle Paper Texture Filter -->
+              <filter id="mapPaper" x="0" y="0" width="100%" height="100%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+                <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.015 0" />
+                <feComposite in2="SourceGraphic" in="gl" operator="over" />
+              </filter>
+            </defs>
+
+            <!-- Map Background Ocean Basin -->
+            <rect width="1000" height="520" fill="#f8fafc" />
+            <rect width="1000" height="520" fill="url(#dotGrid)" />
+
+            <!-- ==========================================================
+                 GRATICULE (TECHNICAL LATITUDE & LONGITUDE LINES)
+                 ========================================================== -->
+            <g class="graticules" opacity="0.85">
+              <!-- Parallels of Latitude -->
+              <line x1="40" y1="80" x2="960" y2="80" class="graticule-line" />
+              <text x="44" y="77" class="graticule-label">60°N ARCTIC</text>
+
+              <line x1="40" y1="160" x2="960" y2="160" class="graticule-line" />
+              <text x="44" y="157" class="graticule-label">30°N TROPIC OF CANCER</text>
+
+              <!-- Equator (Emphasized) -->
+              <line x1="40" y1="260" x2="960" y2="260" class="graticule-prime" />
+              <text x="44" y="256" class="graticule-label" font-weight="600" fill="#64748b">0° EQUATOR</text>
+
+              <line x1="40" y1="360" x2="960" y2="360" class="graticule-line" />
+              <text x="44" y="357" class="graticule-label">30°S TROPIC OF CAPRICORN</text>
+
+              <line x1="40" y1="440" x2="960" y2="440" class="graticule-line" />
+              <text x="44" y="437" class="graticule-label">60°S ANTARCTIC</text>
+
+              <!-- Meridians of Longitude -->
+              <line x1="180" y1="40" x2="180" y2="480" class="graticule-line" />
+              <text x="183" y="50" class="graticule-label">120°W</text>
+
+              <line x1="340" y1="40" x2="340" y2="480" class="graticule-line" />
+              <text x="343" y="50" class="graticule-label">60°W</text>
+
+              <!-- Prime Meridian (Emphasized) -->
+              <line x1="500" y1="40" x2="500" y2="480" class="graticule-prime" />
+              <text x="503" y="50" class="graticule-label" font-weight="600" fill="#64748b">0° MERIDIAN</text>
+
+              <line x1="660" y1="40" x2="660" y2="480" class="graticule-line" />
+              <text x="663" y="50" class="graticule-label">60°E</text>
+
+              <line x1="820" y1="40" x2="820" y2="480" class="graticule-line" />
+              <text x="823" y="50" class="graticule-label">120°E</text>
+            </g>
+
+            <!-- ==========================================================
+                 REALISTIC CONTINENT GEOGRAPHY (DETAILED COASTLINES & CONTOURS)
+                 Accurate global proportions, not centered on any single nation.
+                 ========================================================== -->
+            <g class="world-landmasses">
+              <!-- NORTH AMERICA (Alaska, Canada, US, Mexico, Greenland, Caribbean) -->
+              <!-- Greenland -->
+              <path class="continent-base" d="M 370 50 L 410 45 L 435 60 L 430 85 L 395 105 L 375 90 Z" />
+              <!-- Canada & Alaska -->
+              <path class="continent-base" d="M 90 70 L 130 65 L 180 60 L 230 62 L 290 60 L 330 80 L 340 105 L 305 115 L 295 130 L 270 120 L 250 135 L 220 125 L 180 130 L 140 115 L 105 100 L 80 85 Z" />
+              <!-- Continental United States -->
+              <path class="continent-contour" d="M 150 130 L 210 130 L 260 132 L 295 140 L 320 155 L 305 185 L 285 200 L 245 205 L 220 220 L 180 190 L 155 170 Z" />
+              <path class="continent-base" d="M 140 125 L 215 125 L 265 128 L 305 138 L 325 155 L 310 188 L 290 202 L 240 208 L 220 225 L 185 195 L 150 175 L 140 135 Z" />
+              <!-- Mexico & Central America -->
+              <path class="continent-base" d="M 185 195 L 220 225 L 240 230 L 255 260 L 275 270 L 280 280 L 265 275 L 245 250 L 210 235 L 185 205 Z" />
+              <!-- Caribbean Islands -->
+              <circle cx="310" cy="225" r="3" class="continent-base" />
+              <circle cx="325" cy="232" r="2.5" class="continent-base" />
+
+              <!-- SOUTH AMERICA (Colombia, Brazil, Andes, Argentina) -->
+              <path class="continent-contour" d="M 285 285 L 330 280 L 375 320 L 360 365 L 330 430 L 310 435 L 300 370 L 280 320 Z" />
+              <path class="continent-base" d="M 278 280 L 325 275 L 365 295 L 385 325 L 370 370 L 340 435 L 320 450 L 305 440 L 295 380 L 275 330 L 270 300 Z" />
+
+              <!-- EUROPE (Scandinavia, UK, Western & Eastern Europe, Mediterranean) -->
+              <!-- UK & Ireland -->
+              <path class="continent-base" d="M 470 120 L 485 110 L 490 130 L 478 140 L 468 130 Z" />
+              <path class="continent-base" d="M 458 122 L 465 122 L 464 134 L 458 132 Z" />
+              <!-- Scandinavia -->
+              <path class="continent-base" d="M 515 75 L 540 70 L 555 90 L 535 125 L 515 115 L 505 95 Z" />
+              <!-- Continental Europe -->
+              <path class="continent-contour" d="M 480 145 L 530 135 L 580 135 L 575 170 L 535 180 L 495 175 L 480 160 Z" />
+              <path class="continent-base" d="M 472 145 L 525 135 L 585 130 L 590 165 L 555 185 L 525 182 L 495 190 L 470 185 L 465 160 Z" />
+              <!-- Iberian Peninsula & Italy -->
+              <path class="continent-base" d="M 465 170 L 485 170 L 480 195 L 460 195 Z" />
+              <path class="continent-base" d="M 515 175 L 525 175 L 532 198 L 522 202 Z" />
+
+              <!-- AFRICA (North Africa, Sahara, Gulf of Guinea, South Africa, Horn of Africa) -->
+              <path class="continent-contour" d="M 470 205 L 550 200 L 585 240 L 555 310 L 530 375 L 500 370 L 470 290 L 450 240 Z" />
+              <path class="continent-base" d="M 460 200 L 555 195 L 595 240 L 590 270 L 560 325 L 535 390 L 510 388 L 475 295 L 440 245 L 455 210 Z" />
+              <!-- Madagascar -->
+              <path class="continent-base" d="M 610 335 L 620 340 L 612 375 L 602 365 Z" />
+
+              <!-- ASIA (Russia/Siberia, Central Asia, Middle East, South Asia, East Asia, SE Asia) -->
+              <!-- Middle East -->
+              <path class="continent-base" d="M 565 190 L 610 190 L 625 225 L 595 245 L 575 225 Z" />
+              <!-- Central & North Asia (Siberia) -->
+              <path class="continent-contour" d="M 590 120 L 700 95 L 820 90 L 890 100 L 850 145 L 750 150 L 650 155 Z" />
+              <path class="continent-base" d="M 585 115 L 710 85 L 835 80 L 905 95 L 880 135 L 840 145 L 760 155 L 660 160 L 595 150 Z" />
+              <!-- East Asia (China, Korea) -->
+              <path class="continent-contour" d="M 740 160 L 820 160 L 850 195 L 810 230 L 750 230 L 720 195 Z" />
+              <path class="continent-base" d="M 730 155 L 825 155 L 860 190 L 855 215 L 815 245 L 765 240 L 725 195 Z" />
+              <!-- Japan -->
+              <path class="continent-base" d="M 875 160 L 890 165 L 885 190 L 870 185 Z" />
+              <!-- South Asia (India / Subcontinent) -->
+              <path class="continent-base" d="M 660 195 L 715 195 L 725 245 L 690 280 L 665 235 Z" />
+              <!-- Southeast Asia & Indochina -->
+              <path class="continent-base" d="M 770 220 L 805 220 L 815 255 L 785 275 L 765 245 Z" />
+              <!-- Indonesia / Philippines / Archipelagos -->
+              <path class="continent-base" d="M 780 295 L 820 290 L 850 305 L 800 315 Z" />
+              <circle cx="850" cy="250" r="3" class="continent-base" />
+              <circle cx="865" cy="270" r="2.5" class="continent-base" />
+
+              <!-- AUSTRALIA & OCEANIA -->
+              <path class="continent-contour" d="M 810 340 L 890 335 L 910 385 L 875 425 L 820 415 L 800 375 Z" />
+              <path class="continent-base" d="M 800 335 L 895 330 L 920 385 L 885 430 L 825 420 L 795 375 Z" />
+              <!-- New Zealand -->
+              <path class="continent-base" d="M 945 420 L 955 420 L 945 450 L 938 440 Z" />
+            </g>
+
+            <!-- ==========================================================
+                 REALISTIC INTERNATIONAL TRADE ROUTES
+                 Thin cyan/dark-blue vector lanes, dashed/dotted, non-neon.
+                 ========================================================== -->
+            <g class="trade-routes-group">
+              <!-- Route 1: Transatlantic Core Corridor (Rotterdam/London ↔ New York/Savannah) -->
+              <path d="M 480 135 C 410 120, 350 130, 290 150" class="trade-route trade-route-primary" id="route-na-eu" />
+
+              <!-- Route 2: Europe ↔ Middle East (Rotterdam/Gibraltar ↔ Suez ↔ Dubai) -->
+              <path d="M 485 140 C 510 180, 545 200, 600 215" class="trade-route trade-route-ocean" id="route-eu-me" />
+
+              <!-- Route 3: Middle East ↔ South Asia (Dubai ↔ Mumbai/Colombo) -->
+              <path d="M 600 215 C 630 225, 655 235, 680 245" class="trade-route trade-route-ocean" id="route-me-asia" />
+
+              <!-- Route 4: Maritime Silk Road (Colombo ↔ Malacca Strait ↔ Singapore ↔ Shanghai) -->
+              <path d="M 680 245 C 720 280, 770 290, 835 200" class="trade-route trade-route-primary" id="route-asia-core" />
+
+              <!-- Route 5: Transpacific Container Highway (Shanghai/Busan/Tokyo ↔ Los Angeles/Long Beach) -->
+              <!-- Split across projection edge for realistic round-the-globe connectivity -->
+              <path d="M 865 180 C 920 160, 960 150, 990 145" class="trade-route trade-route-ocean" />
+              <path d="M 40 145 C 80 150, 110 160, 160 170" class="trade-route trade-route-ocean" id="route-asia-na" />
+
+              <!-- Route 6: North America ↔ South America (Houston/Miami ↔ Panama ↔ Santos/Buenos Aires) -->
+              <path d="M 260 190 C 275 235, 305 270, 360 340" class="trade-route trade-route-ocean" id="route-na-sa" />
+
+              <!-- Route 7: Europe ↔ Africa (Rotterdam/Marseille ↔ Lagos ↔ Cape Town) -->
+              <path d="M 480 160 C 450 220, 480 310, 520 380" class="trade-route trade-route-ocean" id="route-eu-afr" />
+
+              <!-- Route 8: Asia ↔ Australia (Singapore/Hong Kong ↔ Sydney/Melbourne) -->
+              <path d="M 780 285 C 800 320, 840 370, 885 400" class="trade-route trade-route-ocean" id="route-asia-oc" />
+
+              <!-- Route 9: Trans-Eurasian Air & Rail Freight (Frankfurt ↔ Central Asia ↔ Shanghai/Tokyo) -->
+              <path d="M 505 145 C 600 130, 720 135, 830 195" class="trade-route trade-route-air" id="route-eurasia-air" />
+
+              <!-- Route 10: South America ↔ Europe (Santos ↔ Lisbon/Rotterdam) -->
+              <path d="M 365 330 C 400 260, 440 200, 475 160" class="trade-route trade-route-air" />
+            </g>
+
+            <!-- ==========================================================
+                 BUSINESS MAP MARKERS & CARTOGRAPHIC LABELS
+                 Real cartographic symbols: Suppliers, Manufacturers, Buyers,
+                 Distribution Hubs, Trade Opportunities.
+                 ========================================================== -->
+            <g class="business-markers-group">
+              
+              <!-- 1. NEW YORK (Buyer Network / Financial Trade Center) -->
+              <g class="carto-marker" transform="translate(290, 150)" onmouseenter="showHubDossier('New York Commercial Hub', 'Buyer Network / Import Terminal', 'Volume: 124,000 TEU | Clearance: Priority')" onmouseleave="hideHubDossier()">
+                <circle cx="0" cy="0" r="4.5" class="marker-pin-buyer marker-symbol" />
+                <rect x="7" y="-8" width="84" height="15" class="carto-label-bg" />
+                <text x="11" y="3" class="carto-label-box">BUYER NETWORK</text>
+              </g>
+
+              <!-- 2. SHANGHAI (Manufacturing & Export Mega-Hub) -->
+              <g class="carto-marker" transform="translate(835, 200)" onmouseenter="showHubDossier('Shanghai Maritime Terminal', 'Global Manufacturer & Export Base', 'Volume: 340,000 TEU | Active Lanes: 62')" onmouseleave="hideHubDossier()">
+                <rect x="-4" y="-4" width="8" height="8" class="marker-pin-manufacturer marker-symbol" />
+                <rect x="8" y="-8" width="82" height="15" class="carto-label-bg" />
+                <text x="12" y="3" class="carto-label-box">MANUFACTURER</text>
+              </g>
+
+              <!-- 3. ROTTERDAM / HAMBURG (European Distribution Center) -->
+              <g class="carto-marker" transform="translate(495, 140)" onmouseenter="showHubDossier('Rotterdam Gateway', 'Central Continental Distribution Hub', 'Capacity: 14.8M TEU | Intermodal: Rail/Barge')" onmouseleave="hideHubDossier()">
+                <polygon points="0,-5 5,0 0,5 -5,0" class="marker-pin-distributor marker-symbol" />
+                <rect x="8" y="-8" width="98" height="15" class="carto-label-bg" />
+                <text x="12" y="3" class="carto-label-box">DISTRIBUTION HUB</text>
+              </g>
+
+              <!-- 4. DUBAI / JEBEL ALI (Transshipment & Trade Opportunity) -->
+              <g class="carto-marker" transform="translate(600, 215)" onmouseenter="showHubDossier('Dubai Cross-Trade Center', 'Middle East Re-Export Terminal', 'Free-Zone Enterprises: 8,400+ | Clearance: 24h')" onmouseleave="hideHubDossier()">
+                <circle cx="0" cy="0" r="4.5" class="marker-pin-opportunity marker-symbol" />
+                <rect x="8" y="-8" width="102" height="15" class="carto-label-bg" />
+                <text x="12" y="3" class="carto-label-box">TRADE OPPORTUNITY</text>
+              </g>
+
+              <!-- 5. MUMBAI / NHAVA SHEVA (Supplier Network / Industrial Goods) -->
+              <g class="carto-marker" transform="translate(675, 235)" onmouseenter="showHubDossier('Nhava Sheva Industrial Port', 'Chemical, Textile & Engineering Supplier Base', 'Registered Exporters: 3,210 | ISO: Certified')" onmouseleave="hideHubDossier()">
+                <circle cx="0" cy="0" r="4" class="marker-pin-supplier marker-symbol" />
+                <rect x="8" y="-8" width="94" height="15" class="carto-label-bg" />
+                <text x="12" y="3" class="carto-label-box">SUPPLIER NETWORK</text>
+              </g>
+
+              <!-- 6. SINGAPORE (Intercontinental Transshipment Hub) -->
+              <g class="carto-marker" transform="translate(780, 285)" onmouseenter="showHubDossier('Singapore Logistics Corridor', 'Global Transshipment Gateway', 'Connectivity: 600+ Ports in 120 Countries')" onmouseleave="hideHubDossier()">
+                <polygon points="0,-4.5 4.5,0 0,4.5 -4.5,0" class="marker-pin-distributor marker-symbol" />
+                <rect x="8" y="-8" width="80" height="15" class="carto-label-bg" />
+                <text x="12" y="3" class="carto-label-box">DISTRIBUTION</text>
+              </g>
+
+              <!-- 7. SÃO PAULO / SANTOS (Agricultural & Commodity Exporter) -->
+              <g class="carto-marker" transform="translate(360, 340)" onmouseenter="showHubDossier('Santos Bulk & Container Terminal', 'Agri-Commodities & Raw Materials Exporter', 'Annual Export Value: $42.6B USD')" onmouseleave="hideHubDossier()">
+                <circle cx="0" cy="0" r="4" class="marker-pin-supplier marker-symbol" />
+                <rect x="8" y="-8" width="86" height="15" class="carto-label-bg" />
+                <text x="12" y="3" class="carto-label-box">SUPPLIER BASE</text>
+              </g>
+
+              <!-- 8. SYDNEY (Trade Partner / Asia-Pacific Terminal) -->
+              <g class="carto-marker" transform="translate(885, 400)" onmouseenter="showHubDossier('Sydney Port Botany', 'Oceania Business Partner Network', 'Mining, Dairy & Premium Goods Inward/Outward')" onmouseleave="hideHubDossier()">
+                <rect x="-3.5" y="-3.5" width="7" height="7" class="marker-pin-partner marker-symbol" />
+                <rect x="8" y="-8" width="98" height="15" class="carto-label-bg" />
+                <text x="12" y="3" class="carto-label-box">BUSINESS PARTNER</text>
+              </g>
+
+              <!-- 9. LAGOS (West African Import/Distribution Terminal) -->
+              <g class="carto-marker" transform="translate(485, 260)" onmouseenter="showHubDossier('Lagos Apapa Port', 'West African Commercial Distribution', 'Regional Distribution Reach: 200M+ Consumers')" onmouseleave="hideHubDossier()">
+                <circle cx="0" cy="0" r="4" class="marker-pin-opportunity marker-symbol" />
+                <rect x="8" y="-8" width="82" height="15" class="carto-label-bg" />
+                <text x="12" y="3" class="carto-label-box">DISTRIBUTOR</text>
+              </g>
+
+              <!-- 10. CHICAGO (North American Intermodal Rail & Distribution) -->
+              <g class="carto-marker" transform="translate(235, 145)" onmouseenter="showHubDossier('Chicago Inland Logistics Center', 'Intermodal Distribution & Warehousing', 'Cross-Docking Facilities: 420+ Locations')" onmouseleave="hideHubDossier()">
+                <polygon points="0,-4 4,0 0,4 -4,0" class="marker-pin-distributor marker-symbol" />
+                <rect x="7" y="-8" width="92" height="15" class="carto-label-bg" />
+                <text x="11" y="3" class="carto-label-box">RETAIL NETWORK</text>
+              </g>
+            </g>
+
+            <!-- ==========================================================
+                 CARTOGRAPHIC INSTRUMENT MARKS: COMPASS & ATLAS BADGES
+                 ========================================================== -->
+            <g class="carto-instruments" transform="translate(930, 460)">
+              <!-- Minimal Technical Compass Rose -->
+              <circle cx="0" cy="0" r="16" fill="none" stroke="#cbd5e1" stroke-width="0.8" />
+              <line x1="0" y1="-16" x2="0" y2="16" stroke="#94a3b8" stroke-width="0.8" />
+              <line x1="-16" y1="0" x2="16" y2="0" stroke="#94a3b8" stroke-width="0.8" />
+              <polygon points="0,-16 2.5,-7 -2.5,-7" fill="#0b1220" />
+              <text x="-3" y="-19" font-family="'JetBrains Mono'" font-size="8" font-weight="600" fill="#0b1220">N</text>
+            </g>
+
+          </svg>
+
+          <!-- Interactive Active Hub Telemetry Dossier -->
+          <div class="node-inspector-badge" id="hubDossier">
+            <span class="badge-hub-name" id="dossierName">Global Trade Atlas</span>
+            <span class="badge-hub-stats" id="dossierType">Hover over any location marker to inspect verified trade route parameters.</span>
+            <span class="badge-hub-stats" id="dossierMetrics" style="color: var(--blue-accent);">Cross-Border Routing: Synchronized</span>
+          </div>
+
+        </div>
+
+        <!-- Technical Map Footer -->
+        <div class="atlas-footer-bar">
+          <div class="scale-bar-unit">
+            <span>GRAPHIC SCALE:</span>
+            <div class="scale-graphic"></div>
+            <span>0 — 2,500 — 5,000 KM</span>
+          </div>
+          <div>PROJECTION: CYLINDRICAL EQUIDISTANT • DATUM: WGS-84 INTERNATIONAL</div>
+          <div>DATA: VERIFIED ENTERPRISE LEDGER</div>
+        </div>
+
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Interactive Search & Map Routing Engine -->
+  <script>
+    function showHubDossier(name, type, metrics) {
+      const badge = document.getElementById('hubDossier');
+      document.getElementById('dossierName').textContent = name;
+      document.getElementById('dossierType').textContent = type;
+      document.getElementById('dossierMetrics').textContent = metrics;
+      badge.style.display = 'flex';
+    }
+
+    function hideHubDossier() {
+      // Revert to standby overview
+      document.getElementById('dossierName').textContent = 'Global Trade Atlas';
+      document.getElementById('dossierType').textContent = 'Hover over any location marker to inspect verified trade route parameters.';
+      document.getElementById('dossierMetrics').textContent = 'Cross-Border Routing: Synchronized';
+    }
+
+    function highlightSelectedRoute() {
+      const origin = document.getElementById('originSelect').value;
+      const dest = document.getElementById('destSelect').value;
+      const need = document.getElementById('needSelect').value;
+
+      if (!origin || !dest) {
+        alert('Please select both Origin and Destination regions to compute the active trade corridor.');
+        return;
+      }
+
+      // Reset all route styles
+      const routes = document.querySelectorAll('.trade-route');
+      routes.forEach(r => {
+        r.style.stroke = '#94a3b8';
+        r.style.strokeWidth = '1';
+        r.style.opacity = '0.35';
+      });
+
+      // Highlight active match
+      let targetId = '';
+      if ((origin === 'na' && dest === 'eu') || (origin === 'eu' && dest === 'na')) targetId = 'route-na-eu';
+      else if ((origin === 'eu' && dest === 'me') || (origin === 'me' && dest === 'eu')) targetId = 'route-eu-me';
+      else if ((origin === 'me' && dest === 'asia') || (origin === 'asia' && dest === 'me')) targetId = 'route-me-asia';
+      else if ((origin === 'asia' && dest === 'na') || (origin === 'na' && dest === 'asia')) targetId = 'route-asia-na';
+      else if ((origin === 'na' && dest === 'sa') || (origin === 'sa' && dest === 'na')) targetId = 'route-na-sa';
+      else if ((origin === 'eu' && dest === 'afr') || (origin === 'afr' && dest === 'eu')) targetId = 'route-eu-afr';
+      else if ((origin === 'asia' && dest === 'oc') || (origin === 'oc' && dest === 'asia')) targetId = 'route-asia-oc';
+      else targetId = 'route-asia-core';
+
+      const matchedRoute = document.getElementById(targetId);
+      if (matchedRoute) {
+        matchedRoute.style.stroke = '#00a8e8';
+        matchedRoute.style.strokeWidth = '3';
+        matchedRoute.style.opacity = '1';
+      }
+
+      // Update Dossier with live query
+      const dossier = document.getElementById('hubDossier');
+      document.getElementById('dossierName').textContent = 'Corridor Computed: ' + origin.toUpperCase() + ' ↔ ' + dest.toUpperCase();
+      document.getElementById('dossierType').textContent = 'Status: Active Trade Lane • Customs Pre-Clearance Available';
+      document.getElementById('dossierMetrics').textContent = 'Matched Verified Partners: 342 Firms in Directory';
+    }
+  </script>
+</body>
+
+</html>

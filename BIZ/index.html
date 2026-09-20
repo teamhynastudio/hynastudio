@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HYNA BIZ — Global Business Operating System</title>
+  <meta name="description" content="HYNA BIZ — Enterprise software platform combining Business Management, CRM, Business Connections, Sales, Quotations, Orders, Global Trade, and Business Intelligence.">
+  <link rel="icon" type="image/png" href="assets/images/hb-logo.png">
+
+  <!-- Inter, Plus Jakarta Sans, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Core & Component Stylesheets -->
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/views.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- ====================================================================
+         PERSISTENT LEFT SIDEBAR
+         ==================================================================== -->
+    <aside class="app-sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-brand">
+          <img src="assets/images/hb-logo.png" alt="HB Logo" class="sidebar-logo">
+          <span class="sidebar-brand-name">HYNA <span>BIZ</span></span>
+          <span class="sidebar-brand-badge">B2B OS</span>
+        </div>
+      </div>
+
+      <div class="sidebar-scroll-content">
+        <!-- Main Platform Modules -->
+        <div class="sidebar-nav-group">
+          <div class="sidebar-nav-item active" data-view="overview">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            <span>Overview</span>
+          </div>
+          <div class="sidebar-nav-item" data-view="business">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span>Business</span>
+          </div>
+          <div class="sidebar-nav-item" data-view="crm">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span>CRM</span>
+            <span class="sidebar-item-badge">24</span>
+          </div>
+          <div class="sidebar-nav-item" data-view="connections">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+            <span>Connections</span>
+          </div>
+          <div class="sidebar-nav-item" data-view="sales">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg>
+            <span>Sales & Quotes</span>
+          </div>
+          <div class="sidebar-nav-item" data-view="trade">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <span>Global Trade</span>
+          </div>
+          <div class="sidebar-nav-item" data-view="bizai">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/></svg>
+            <span>BizAI Utility</span>
+          </div>
+        </div>
+
+        <div class="sidebar-divider"></div>
+
+        <!-- Workspace Management Entities -->
+        <div class="sidebar-nav-group">
+          <div class="sidebar-group-title">Operations</div>
+          <div class="sidebar-nav-item" data-view="business">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            <span>My Business</span>
+          </div>
+          <div class="sidebar-nav-item" data-view="products">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            <span>Products</span>
+          </div>
+          <div class="sidebar-nav-item" data-view="customers">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>Customers</span>
+          </div>
+          <div class="sidebar-nav-item" data-view="suppliers">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            <span>Suppliers</span>
+          </div>
+          <div class="sidebar-nav-item" data-view="orders">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            <span>Orders</span>
+          </div>
+          <div class="sidebar-nav-item" data-view="team">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-3-3.87"/><path d="M7 21v-2a4 4 0 0 1 3-3.87"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>Team</span>
+          </div>
+        </div>
+
+        <div class="sidebar-divider"></div>
+
+        <!-- Utility & Communications -->
+        <div class="sidebar-nav-group">
+          <div class="sidebar-nav-item" data-view="messages">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span>Messages</span>
+            <span class="sidebar-item-badge" style="background:var(--color-brand);color:var(--color-primary);font-weight:700;">2</span>
+          </div>
+          <div class="sidebar-nav-item" data-view="settings">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <span>Settings</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar User Footer -->
+      <div class="sidebar-footer">
+        <div class="sidebar-user-brief">
+          <div class="sidebar-avatar">V</div>
+          <div class="sidebar-user-info">
+            <span class="sidebar-user-name">Vignesh</span>
+            <span class="sidebar-user-role">Managing Partner • Admin</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ====================================================================
+         MAIN APPLICATION STAGE
+         ==================================================================== -->
+    <main class="app-main">
+      <!-- Top Utility Header -->
+      <header class="app-topbar">
+        <div class="topbar-left">
+          <button class="topbar-icon-btn" onclick="App.toggleSidebar()" style="display:none;" id="mobile-sidebar-toggle">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <div class="topbar-breadcrumbs">
+            <span>HynaBiz</span>
+            <span>/</span>
+            <span class="topbar-crumb-active" id="topbar-active-crumb">Overview</span>
+          </div>
+          <div class="topbar-workspace-pill">
+            <span class="badge badge-success" style="padding:1px 4px;font-size:0.65rem;">Active</span>
+            <span>Hyna Precision Technologies Ltd.</span>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <!-- Global Search Input -->
+          <button class="global-search-btn" onclick="App.openGlobalSearchModal()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <span>Search businesses, deals, SKUs...</span>
+            <span class="search-kbd">⌘K</span>
+          </button>
+
+          <!-- Notifications Button -->
+          <button class="topbar-icon-btn" onclick="App.toggleNotifications()" title="Notifications">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <span class="notif-badge-dot"></span>
+          </button>
+
+          <!-- Help Button -->
+          <button class="topbar-icon-btn" onclick="App.showToast('Documentation: System operational under Hyna Protocol 4.2', 'info')" title="Help & Documentation">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </button>
+
+          <!-- User Menu -->
+          <div class="topbar-user-btn" onclick="App.switchView('settings')">
+            <span style="font-weight:600;font-size:0.84rem;">Vignesh</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+
+        <!-- Notifications Dropdown -->
+        <div class="notifications-dropdown" id="notifications-dropdown">
+          <div class="notif-header">
+            <span>Notifications</span>
+            <span class="mono-num" style="font-size:0.75rem;color:var(--text-muted);">2 Unread</span>
+          </div>
+          <div class="notif-list" id="notifications-dropdown-list">
+            <!-- Rendered by App.initNotifications -->
+          </div>
+        </div>
+      </header>
+
+      <!-- Scrollable Main Viewport -->
+      <div class="app-view-container">
+
+        <!-- ================================================================
+             1. OVERVIEW DASHBOARD VIEW
+             ================================================================ -->
+        <div class="view-pane active" id="view-overview">
+          <div class="view-header">
+            <div class="view-title-group">
+              <h1>Good morning, Vignesh</h1>
+              <p>Here's what is happening across your business operations today.</p>
+            </div>
+            <div class="view-actions-group">
+              <button class="btn btn-secondary btn-sm" onclick="Sales.openNewQuotation('')">+ New Quotation</button>
+              <button class="btn btn-primary btn-sm" onclick="App.switchView('connections')">Discover Network</button>
+            </div>
+          </div>
+
+          <!-- 4 Compact Metric Blocks -->
+          <div class="metrics-row">
+            <div class="metric-card">
+              <div class="metric-label">
+                <span>Active Leads</span>
+                <span class="badge badge-neutral">CRM</span>
+              </div>
+              <div class="metric-value mono-num">128</div>
+              <div class="metric-sub">
+                <span class="metric-trend-up">▲ +12</span> from last week
+              </div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">
+                <span>Open Deals</span>
+                <span class="badge badge-info">Pipeline</span>
+              </div>
+              <div class="metric-value mono-num">24</div>
+              <div class="metric-sub">
+                <span>$2.12M Weighted Value</span>
+              </div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">
+                <span>Customers</span>
+                <span class="badge badge-success">Accounts</span>
+              </div>
+              <div class="metric-value mono-num">86</div>
+              <div class="metric-sub">
+                <span>Across 14 Countries</span>
+              </div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">
+                <span>Pending Quotations</span>
+                <span class="badge badge-warning">Commercial</span>
+              </div>
+              <div class="metric-value mono-num">17</div>
+              <div class="metric-sub">
+                <span>3 Awaiting Sign-off</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sales Performance Simple Professional Chart -->
+          <div class="chart-container-card">
+            <div class="chart-header">
+              <div>
+                <h3 style="font-family:var(--font-heading);font-size:0.95rem;font-weight:700;">SALES PERFORMANCE</h3>
+                <p style="font-size:0.75rem;color:var(--text-muted);">Invoiced Monthly Revenue (Jan - Sep 2026 in USD)</p>
+              </div>
+              <div style="font-family:var(--font-mono);font-size:0.8rem;font-weight:700;color:var(--color-primary);">
+                YTD Total: $2,840,000 (+24.8% YoY)
+              </div>
+            </div>
+            <div class="chart-canvas-area">
+              <canvas id="sales-performance-chart"></canvas>
+            </div>
+          </div>
+
+          <!-- Recent Activity Table -->
+          <div class="table-card">
+            <div class="table-card-header">
+              <div class="table-card-title">RECENT ACTIVITY</div>
+              <button class="btn btn-subtle btn-xs" onclick="App.showToast('Activity stream updated', 'info')">Refresh</button>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Company</th>
+                    <th>Activity</th>
+                    <th>Type</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody id="overview-activity-tbody">
+                  <!-- Populated by App.renderOverviewTables -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Open Deals Table -->
+          <div class="table-card">
+            <div class="table-card-header">
+              <div class="table-card-title">OPEN DEALS</div>
+              <button class="btn btn-secondary btn-xs" onclick="App.switchView('crm')">View CRM Pipeline →</button>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Company</th>
+                    <th>Deal Name</th>
+                    <th>Value</th>
+                    <th>Stage</th>
+                    <th>Next Action</th>
+                  </tr>
+                </thead>
+                <tbody id="overview-deals-tbody">
+                  <!-- Populated by App.renderOverviewTables -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Trade Opportunities Table -->
+          <div class="table-card">
+            <div class="table-card-header">
+              <div class="table-card-title">TRADE OPPORTUNITIES</div>
+              <button class="btn btn-secondary btn-xs" onclick="App.switchView('trade')">Open Trade Desk →</button>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Opportunity</th>
+                    <th>Buyer</th>
+                    <th>Supplier</th>
+                    <th>Value</th>
+                    <th>Type</th>
+                  </tr>
+                </thead>
+                <tbody id="overview-trade-tbody">
+                  <!-- Populated by App.renderOverviewTables -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================================================================
+             2. BUSINESS MANAGEMENT VIEW
+             ================================================================ -->
+        <div class="view-pane" id="view-business">
+          <div class="view-header">
+            <div class="view-title-group">
+              <h1>Business Management</h1>
+              <p>Corporate profile, capabilities, operating licenses, and master entity documents.</p>
+            </div>
+            <div class="view-actions-group">
+              <button class="btn btn-secondary btn-sm" onclick="App.showToast('Exported company verification dossier', 'info')">Export Dossier</button>
+              <button class="btn btn-primary btn-sm" onclick="App.showToast('Profile changes saved', 'success')">Save Changes</button>
+            </div>
+          </div>
+
+          <div class="view-subnav-tabs">
+            <div class="subnav-tab-item active" data-subnav="biz-overview">Overview</div>
+            <div class="subnav-tab-item" data-subnav="biz-products">Products</div>
+            <div class="subnav-tab-item" data-subnav="biz-capabilities">Capabilities</div>
+            <div class="subnav-tab-item" data-subnav="biz-markets">Markets</div>
+            <div class="subnav-tab-item" data-subnav="biz-documents">Documents</div>
+            <div class="subnav-tab-item" data-subnav="biz-team">Team</div>
+          </div>
+
+          <!-- Tab 1: Overview -->
+          <div class="subnav-content" data-subnav-target="biz-overview">
+            <div class="card" style="padding:24px;background:var(--bg-surface);border:1px solid var(--border-light);border-radius:var(--radius-sm);margin-bottom:20px;">
+              <div style="display:flex;gap:20px;align-items:flex-start;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--border-light);">
+                <div style="width:64px;height:64px;background:var(--color-primary);color:#FFF;font-family:var(--font-heading);font-size:1.5rem;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:4px;">
+                  HB
+                </div>
+                <div style="flex:1;">
+                  <h2 style="font-size:1.25rem;color:var(--text-main);display:flex;align-items:center;gap:8px;">
+                    Hyna Precision Technologies Ltd. <span class="badge badge-success">Verified Enterprise</span>
+                  </h2>
+                  <p style="color:var(--text-muted);font-size:0.85rem;margin-top:2px;">
+                    Industrial Machinery & Precision Engineering • Headquartered in Pune, India 🇮🇳
+                  </p>
+                  <p class="mono-num" style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">
+                    Trade License: INT-IND-88419 | GSTIN: 27AAACH8842P1Z4 | IEC: 0310088921
+                  </p>
+                </div>
+              </div>
+
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+                <div>
+                  <div style="font-size:0.75rem;font-weight:600;margin-bottom:4px;color:var(--text-muted);">WEBSITE</div>
+                  <input type="text" class="search-input" value="https://hynatech.com" readonly>
+                </div>
+                <div>
+                  <div style="font-size:0.75rem;font-weight:600;margin-bottom:4px;color:var(--text-muted);">BUSINESS TYPE</div>
+                  <input type="text" class="search-input" value="Manufacturer & Direct Exporter" readonly>
+                </div>
+                <div style="grid-column:1 / -1;">
+                  <div style="font-size:0.75rem;font-weight:600;margin-bottom:4px;color:var(--text-muted);">COMPANY DESCRIPTION</div>
+                  <textarea class="search-input" style="height:70px;line-height:1.5;" readonly>State-of-the-art precision machining, turbine shaft manufacturing, and cryogenic fluid control systems. Certified ISO 9001:2015 and CE compliant with direct export clearing out of JNPT Mumbai.</textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 2: Products -->
+          <div class="subnav-content" data-subnav-target="biz-products" style="display:none;">
+            <div class="table-card">
+              <div class="table-card-header">
+                <div class="table-card-title">REGISTERED PRODUCT LINES</div>
+                <button class="btn btn-primary btn-xs" onclick="App.switchView('products')">Manage Full Catalog</button>
+              </div>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Product</th>
+                      <th>SKU</th>
+                      <th>HS Code</th>
+                      <th>Category</th>
+                      <th>Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="cell-primary">CNC 5-Axis Precision Turbine Shaft Assemblies</td>
+                      <td class="mono-num">HB-ENG-8820</td>
+                      <td class="mono-num">8406.81</td>
+                      <td>Industrial Machinery</td>
+                      <td class="mono-num">$1,250.00</td>
+                    </tr>
+                    <tr>
+                      <td class="cell-primary">Cryogenic Flow Control Valves (DN 80 / Class 600)</td>
+                      <td class="mono-num">HB-VAL-4102</td>
+                      <td class="mono-num">8481.80</td>
+                      <td>Fluid Systems</td>
+                      <td class="mono-num">$175.00</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 3: Capabilities -->
+          <div class="subnav-content" data-subnav-target="biz-capabilities" style="display:none;">
+            <div class="card" style="padding:20px;background:var(--bg-surface);border:1px solid var(--border-light);border-radius:var(--radius-sm);">
+              <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:12px;">Audited Manufacturing Capabilities</h3>
+              <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                <span class="badge badge-info" style="padding:6px 12px;font-size:0.8rem;">5-Axis CNC Precision Milling</span>
+                <span class="badge badge-info" style="padding:6px 12px;font-size:0.8rem;">Cryogenic Pressure Testing (up to 600 bar)</span>
+                <span class="badge badge-info" style="padding:6px 12px;font-size:0.8rem;">Inconel 718 & Superalloy Machining</span>
+                <span class="badge badge-info" style="padding:6px 12px;font-size:0.8rem;">Cleanroom Class 100 Packing</span>
+                <span class="badge badge-success" style="padding:6px 12px;font-size:0.8rem;">ISO 9001:2015 Verified</span>
+                <span class="badge badge-success" style="padding:6px 12px;font-size:0.8rem;">CE Conformity Mark</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 4: Markets -->
+          <div class="subnav-content" data-subnav-target="biz-markets" style="display:none;">
+            <div class="card" style="padding:20px;background:var(--bg-surface);border:1px solid var(--border-light);border-radius:var(--radius-sm);">
+              <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:12px;">Primary Export Markets Served</h3>
+              <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:16px;">
+                <div style="background:var(--bg-subtle);padding:12px;border-radius:4px;">
+                  <div style="font-weight:700;">European Union 🇪🇺</div>
+                  <div style="font-size:0.8rem;color:var(--text-muted);margin-top:2px;">Germany, Netherlands, Norway, Switzerland</div>
+                </div>
+                <div style="background:var(--bg-subtle);padding:12px;border-radius:4px;">
+                  <div style="font-weight:700;">Gulf Cooperation Council (GCC) 🇦🇪</div>
+                  <div style="font-size:0.8rem;color:var(--text-muted);margin-top:2px;">UAE (JAFZA), Saudi Arabia, Oman</div>
+                </div>
+                <div style="background:var(--bg-subtle);padding:12px;border-radius:4px;">
+                  <div style="font-weight:700;">North America 🇺🇸</div>
+                  <div style="font-size:0.8rem;color:var(--text-muted);margin-top:2px;">United States Midwest, Gulf Coast</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 5: Documents -->
+          <div class="subnav-content" data-subnav-target="biz-documents" style="display:none;">
+            <div class="table-card">
+              <div class="table-card-header">
+                <div class="table-card-title">CORPORATE DOCUMENT VAULT</div>
+                <button class="btn btn-secondary btn-xs" onclick="App.showToast('Upload document modal opened', 'info')">+ Upload Document</button>
+              </div>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Document</th>
+                      <th>Issued Authority</th>
+                      <th>Validity</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="cell-primary">Certificate of Incorporation (MCA India)</td>
+                      <td>Registrar of Companies</td>
+                      <td class="mono-num">Perpetual</td>
+                      <td><span class="badge badge-success">Verified</span></td>
+                    </tr>
+                    <tr>
+                      <td class="cell-primary">DGFT Import Export Code (IEC) License</td>
+                      <td>Directorate General of Foreign Trade</td>
+                      <td class="mono-num">Active</td>
+                      <td><span class="badge badge-success">Verified</span></td>
+                    </tr>
+                    <tr>
+                      <td class="cell-primary">ISO 9001:2015 Quality Management Cert</td>
+                      <td>Bureau Veritas</td>
+                      <td class="mono-num">Aug 2027</td>
+                      <td><span class="badge badge-success">Audited</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 6: Team -->
+          <div class="subnav-content" data-subnav-target="biz-team" style="display:none;">
+            <div class="table-card">
+              <div class="table-card-header">
+                <div class="table-card-title">INTERNAL EXECUTIVE ROSTER</div>
+                <button class="btn btn-secondary btn-xs" onclick="App.switchView('team')">Open Team Management →</button>
+              </div>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Employee</th>
+                      <th>Department</th>
+                      <th>Role</th>
+                      <th>Email</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="cell-primary">Vignesh</td>
+                      <td>Executive Desk</td>
+                      <td>Managing Partner</td>
+                      <td class="mono-num">vignesh@hynabiz.com</td>
+                    </tr>
+                    <tr>
+                      <td class="cell-primary">Sarah Jenkins</td>
+                      <td>Commercial Sales</td>
+                      <td>VP Commercial</td>
+                      <td class="mono-num">sarah.j@hynabiz.com</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================================================================
+             3. PRODUCTS MANAGEMENT VIEW
+             ================================================================ -->
+        <div class="view-pane" id="view-products">
+          <div class="view-header">
+            <div class="view-title-group">
+              <h1>Products</h1>
+              <p>Manage product catalog, SKUs, inventory tiers, and export specifications.</p>
+            </div>
+            <div class="view-actions-group">
+              <button class="btn btn-primary btn-sm" onclick="App.showToast('Add Product modal', 'info')">+ Add Product</button>
+            </div>
+          </div>
+
+          <div class="filter-toolbar">
+            <div class="filter-group-left">
+              <div class="search-input-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="text" class="search-input" placeholder="Search products or SKUs..." oninput="App.renderProductsTable(this.value)">
+              </div>
+              <select class="select-filter" onchange="App.renderProductsTable('', this.value)">
+                <option value="all">All Categories</option>
+                <option value="Industrial Machinery">Industrial Machinery</option>
+                <option value="Fluid Systems">Fluid Systems</option>
+                <option value="Polymers & Seals">Polymers & Seals</option>
+                <option value="Hydraulics">Hydraulics</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="table-card">
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Product</th>
+                    <th>Category</th>
+                    <th>SKU</th>
+                    <th>Price (USD)</th>
+                    <th>Availability</th>
+                    <th>Markets</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="products-table-tbody">
+                  <!-- Rendered by App.renderProductsTable -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================================================================
+             4. CRM VIEW (LEADS & PIPELINE DEALS)
+             ================================================================ -->
+        <div class="view-pane" id="view-crm">
+          <div class="view-header">
+            <div class="view-title-group">
+              <h1>CRM</h1>
+              <p>Manage leads, contacts, customer accounts, and active negotiation stages.</p>
+            </div>
+            <div class="view-actions-group">
+              <button class="btn btn-primary btn-sm" onclick="App.showToast('New deal dialog', 'info')">+ Add Deal</button>
+            </div>
+          </div>
+
+          <div class="view-subnav-tabs">
+            <div class="subnav-tab-item active" data-subnav="crm-deals">Deals Pipeline</div>
+            <div class="subnav-tab-item" data-subnav="crm-leads">Leads Table</div>
+            <div class="subnav-tab-item" data-subnav="crm-activities">Activities</div>
+          </div>
+
+          <!-- CRM Subnav: Deals Kanban Pipeline -->
+          <div class="subnav-content" data-subnav-target="crm-deals">
+            <div class="kanban-board" id="deals-kanban-board">
+              <!-- Rendered by CRM.renderDealsKanban -->
+            </div>
+          </div>
+
+          <!-- CRM Subnav: Leads Table -->
+          <div class="subnav-content" data-subnav-target="crm-leads" style="display:none;">
+            <div class="filter-toolbar">
+              <div class="filter-group-left">
+                <div class="search-input-wrap">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  <input type="text" class="search-input" placeholder="Search leads by name or company..." oninput="CRM.renderLeadsTable(this.value)">
+                </div>
+                <select class="select-filter" onchange="CRM.renderLeadsTable('', this.value)">
+                  <option value="all">All Stages</option>
+                  <option value="New">New</option>
+                  <option value="Qualified">Qualified</option>
+                  <option value="Proposal">Proposal</option>
+                  <option value="Negotiation">Negotiation</option>
+                  <option value="Won">Won</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="table-card">
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Lead</th>
+                      <th>Company</th>
+                      <th>Country</th>
+                      <th>Source</th>
+                      <th>Owner</th>
+                      <th>Est. Value</th>
+                      <th>Stage</th>
+                      <th>Next Follow-up</th>
+                    </tr>
+                  </thead>
+                  <tbody id="leads-table-tbody">
+                    <!-- Rendered by CRM.renderLeadsTable -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- CRM Subnav: Activities -->
+          <div class="subnav-content" data-subnav-target="crm-activities" style="display:none;">
+            <div class="table-card">
+              <div class="table-card-header">
+                <div class="table-card-title">SCHEDULED CRM ACTIVITIES & FOLLOW-UPS</div>
+              </div>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Company</th>
+                      <th>Activity Task</th>
+                      <th>Type</th>
+                      <th>Status</th>
+                      <th>Due Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="cell-primary">Apex Industrial GmbH</td>
+                      <td>Contract markup review on CIF Hamburg delivery clauses</td>
+                      <td><span class="badge badge-warning">Negotiation</span></td>
+                      <td><span class="badge badge-info">Scheduled</span></td>
+                      <td class="mono-num cell-muted">Sep 22, 2026</td>
+                    </tr>
+                    <tr>
+                      <td class="cell-primary">Nordic CleanEnergy ASA</td>
+                      <td>Preliminary tender briefing & technical clarification call</td>
+                      <td><span class="badge badge-info">Proposal</span></td>
+                      <td><span class="badge badge-info">Scheduled</span></td>
+                      <td class="mono-num cell-muted">Sep 23, 2026</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================================================================
+             5. CONNECTIONS VIEW (BUSINESS DISCOVERY NETWORK)
+             ================================================================ -->
+        <div class="view-pane" id="view-connections">
+          <div class="view-header">
+            <div class="view-title-group">
+              <h1>Discover Businesses</h1>
+              <p>Find verified manufacturers, distributors, buyers and partners across the global network.</p>
+            </div>
+          </div>
+
+          <!-- Search & Multi-Faceted Filters -->
+          <div class="filter-toolbar">
+            <div class="filter-group-left">
+              <div class="search-input-wrap" style="flex:1;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="text" class="search-input" placeholder="Search companies, products, suppliers, buyers..." oninput="Network.setFilter('keyword', this.value)">
+              </div>
+              <select class="select-filter" onchange="Network.setFilter('industry', this.value)">
+                <option value="all">All Industries</option>
+                <option value="Office & Custom Furniture">Furniture Manufacturing</option>
+                <option value="Wholesale Distribution">Wholesale Distribution</option>
+                <option value="Optoelectronics">Optoelectronics</option>
+                <option value="Heavy Metallurgy">Heavy Metallurgy</option>
+                <option value="Freight & Bonded Storage">Freight & Logistics</option>
+              </select>
+              <select class="select-filter" onchange="Network.setFilter('country', this.value)">
+                <option value="all">All Countries</option>
+                <option value="Germany">Germany 🇩🇪</option>
+                <option value="UAE">UAE 🇦🇪</option>
+                <option value="India">India 🇮🇳</option>
+                <option value="Japan">Japan 🇯🇵</option>
+                <option value="Netherlands">Netherlands 🇳🇱</option>
+              </select>
+              <select class="select-filter" onchange="Network.setFilter('type', this.value)">
+                <option value="all">All Types</option>
+                <option value="Manufacturer">Manufacturer</option>
+                <option value="Distributor">Distributor</option>
+                <option value="OEM/ODM">OEM/ODM</option>
+                <option value="Trading House">Trading House</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Connections Results Grid -->
+          <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:16px;" id="connections-grid-container">
+            <!-- Rendered by Network.renderConnectionsGrid -->
+          </div>
+        </div>
+
+        <!-- ================================================================
+             6. PUBLIC BUSINESS PROFILE VIEW
+             ================================================================ -->
+        <div class="view-pane" id="view-public-profile">
+          <div class="view-header">
+            <div class="view-title-group">
+              <h1>Business Profile</h1>
+              <p>Verified public enterprise credentials and commercial profile.</p>
+            </div>
+            <div class="view-actions-group">
+              <button class="btn btn-secondary btn-sm" onclick="App.switchView('connections')">← Back to Network</button>
+            </div>
+          </div>
+
+          <div class="public-profile-card" id="public-profile-content">
+            <!-- Rendered dynamically by Network.viewPublicProfile -->
+          </div>
+        </div>
+
+        <!-- ================================================================
+             7. SALES & QUOTATIONS VIEW
+             ================================================================ -->
+        <div class="view-pane" id="view-sales">
+          <div class="view-header">
+            <div class="view-title-group">
+              <h1>Sales & Quotations</h1>
+              <p>Generate legally structured commercial quotations, manage customer price sheets, and track orders.</p>
+            </div>
+            <div class="view-actions-group">
+              <button class="btn btn-primary btn-sm" onclick="Sales.openNewQuotation('')">+ Create Quotation</button>
+            </div>
+          </div>
+
+          <div class="view-subnav-tabs">
+            <div class="subnav-tab-item active" data-subnav="quotes-list">All Quotations</div>
+            <div class="subnav-tab-item" data-subnav="builder">Quotation Builder</div>
+            <div class="subnav-tab-item" data-subnav="sales-orders">Orders Queue</div>
+          </div>
+
+          <!-- Subnav 1: Quotations Table -->
+          <div class="subnav-content" data-subnav-target="quotes-list">
+            <div class="table-card">
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Quotation No.</th>
+                      <th>Customer</th>
+                      <th>Date</th>
+                      <th>Amount</th>
+                      <th>Status</th>
+                      <th>Valid Until</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="quotations-table-tbody">
+                    <!-- Rendered by Sales.renderQuotationsTable -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Subnav 2: Quotation Builder & Document Preview -->
+          <div class="subnav-content" data-subnav-target="builder" style="display:none;">
+            <div class="quotation-builder-container">
+              <!-- Builder Form on Left -->
+              <div class="quotation-form-card">
+                <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:14px;border-bottom:1px solid var(--border-light);padding-bottom:8px;">
+                  Quotation Specifications
+                </h3>
+
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;">
+                  <div>
+                    <label style="font-size:0.75rem;font-weight:600;color:var(--text-muted);display:block;margin-bottom:4px;">Customer</label>
+                    <input type="text" id="quote-customer-input" class="search-input" value="Gulf Axis General Trading LLC" oninput="Sales.updateDocPreview()">
+                  </div>
+                  <div>
+                    <label style="font-size:0.75rem;font-weight:600;color:var(--text-muted);display:block;margin-bottom:4px;">Quotation Number</label>
+                    <input type="text" id="quote-number-input" class="search-input mono-num" value="QT-2026-8850" oninput="Sales.updateDocPreview()">
+                  </div>
+                </div>
+
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+                  <div>
+                    <label style="font-size:0.75rem;font-weight:600;color:var(--text-muted);display:block;margin-bottom:4px;">Delivery Terms (Incoterms 2020)</label>
+                    <input type="text" id="quote-incoterms-input" class="search-input" value="CIF Dubai Port" oninput="Sales.updateDocPreview()">
+                  </div>
+                  <div>
+                    <label style="font-size:0.75rem;font-weight:600;color:var(--text-muted);display:block;margin-bottom:4px;">Payment Terms</label>
+                    <input type="text" id="quote-payment-input" class="search-input" value="Irrevocable LC 60 Days at sight" oninput="Sales.updateDocPreview()">
+                  </div>
+                </div>
+
+                <!-- Line Items Table -->
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                  <span style="font-size:0.8rem;font-weight:700;">Line Items</span>
+                  <button class="btn btn-secondary btn-xs" onclick="Sales.addBuilderItem()">+ Add Line</button>
+                </div>
+
+                <div class="table-responsive" style="margin-bottom:16px;">
+                  <table class="data-table" style="font-size:0.8rem;">
+                    <thead>
+                      <tr>
+                        <th>Product</th>
+                        <th style="text-align:center;">Qty</th>
+                        <th style="text-align:right;">Price</th>
+                        <th style="text-align:center;">Disc%</th>
+                        <th style="text-align:right;">Total</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody id="builder-items-tbody">
+                      <!-- Populated by Sales.renderBuilderItems -->
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- Totals Box -->
+                <div style="background:var(--bg-subtle);padding:12px;border-radius:4px;margin-bottom:16px;">
+                  <div style="display:flex;justify-content:space-between;font-size:0.82rem;margin-bottom:4px;">
+                    <span>Subtotal:</span>
+                    <span class="mono-num" id="builder-subtotal">$0.00</span>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;font-size:0.82rem;margin-bottom:4px;">
+                    <span>Estimated Export Handling & Tax:</span>
+                    <span class="mono-num" id="builder-tax">$0.00</span>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;font-weight:700;font-size:0.95rem;border-top:1px solid var(--border-light);padding-top:6px;color:var(--color-primary);">
+                    <span>Grand Total:</span>
+                    <span class="mono-num" id="builder-grand-total">$0.00</span>
+                  </div>
+                </div>
+
+                <!-- Actions Toolbar -->
+                <div style="display:flex;gap:8px;justify-content:flex-end;">
+                  <button class="btn btn-secondary btn-sm" onclick="Sales.saveDraft()">Save Draft</button>
+                  <button class="btn btn-primary btn-sm" onclick="Sales.sendQuotation()">Send Quotation</button>
+                  <button class="btn btn-brand btn-sm" onclick="Sales.convertQuotationToOrder()">Convert to Order</button>
+                </div>
+              </div>
+
+              <!-- Genuine Document Preview on Right -->
+              <div class="doc-preview-card" id="quotation-preview-target">
+                <!-- Rendered by Sales.updateDocPreview -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Subnav 3: Orders Queue -->
+          <div class="subnav-content" data-subnav-target="sales-orders" style="display:none;">
+            <div class="table-card">
+              <div class="table-card-header">
+                <div class="table-card-title">SALES ORDERS GENERATED FROM QUOTATIONS</div>
+                <button class="btn btn-secondary btn-xs" onclick="App.switchView('orders')">Manage in Orders Desk →</button>
+              </div>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Order No.</th>
+                      <th>Customer</th>
+                      <th>Products</th>
+                      <th>Amount</th>
+                      <th>Status</th>
+                      <th>Payment</th>
+                      <th>Delivery</th>
+                    </tr>
+                  </thead>
+                  <tbody id="sales-orders-tbody">
+                    <tr>
+                      <td class="mono-num" style="font-weight:700;">PO-2026-9921</td>
+                      <td><strong>Gulf Axis General Trading LLC</strong></td>
+                      <td>Turbine Shafts & Flow Control Valves</td>
+                      <td class="mono-num" style="font-weight:700;">$78,120.00</td>
+                      <td><span class="badge badge-info">Confirmed</span></td>
+                      <td class="cell-muted">LC 60 Days (Confirmed)</td>
+                      <td class="cell-muted">CIF Dubai Port</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================================================================
+             8. ORDERS VIEW
+             ================================================================ -->
+        <div class="view-pane" id="view-orders">
+          <div class="view-header">
+            <div class="view-title-group">
+              <h1>Orders</h1>
+              <p>Confirmed sales orders, production tracking, and fulfillment dispatches.</p>
+            </div>
+          </div>
+
+          <div class="table-card">
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Order No.</th>
+                    <th>Customer</th>
+                    <th>Products</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Payment</th>
+                    <th>Delivery</th>
+                  </tr>
+                </thead>
+                <tbody id="orders-table-tbody">
+                  <!-- Rendered by Sales.renderOrdersTable -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================================================================
+             9. GLOBAL TRADE VIEW
+             ================================================================ -->
+        <div class="view-pane" id="view-trade">
+          <div class="view-header">
+            <div class="view-title-group">
+              <h1>Global Trade</h1>
+              <p>Cross-border commercial opportunities, maritime lanes, and import/export clearing.</p>
+            </div>
+          </div>
+
+          <!-- 2D Trade Map -->
+          <div class="trade-map-wrapper">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+              <span style="font-family:var(--font-mono);font-size:0.75rem;color:#00C2FF;font-weight:600;text-transform:uppercase;">
+                ACTIVE MARITIME & AIR CARGO LANES
+              </span>
+              <span class="mono-num" style="font-size:0.75rem;color:#94A3B8;">GEOSPATIAL GRID v2.1</span>
+            </div>
+            <div id="trade-map-canvas-container">
+              <!-- SVG map injected by Trade.render2DMap -->
+            </div>
+          </div>
+
+          <!-- Trade Opportunities List -->
+          <div style="margin-bottom:16px;">
+            <h3 style="font-family:var(--font-heading);font-size:1.05rem;font-weight:700;color:var(--text-main);margin-bottom:4px;">
+              Cross-Border Trade Opportunities
+            </h3>
+            <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:12px;">
+              Direct buyer and supplier tenders ready to move into your CRM and Quotation Desk.
+            </p>
+            <div id="trade-opportunities-list">
+              <!-- Rendered by Trade.renderTradeOpportunities -->
+            </div>
+          </div>
+        </div>
+
+        <!-- ================================================================
+             10. BIZAI UTILITY VIEW
+             ================================================================ -->
+        <div class="view-pane" id="view-bizai">
+          <div class="view-header">
+            <div class="view-title-group">
+              <h1>BizAI Utility</h1>
+              <p>Executive query interface analyzing CRM records, product inventory, and trade routes.</p>
+            </div>
+          </div>
+
+          <div class="bizai-command-container">
+            <div class="bizai-input-bar">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input type="text" id="bizai-input" placeholder="Ask BizAI across your business records..." onkeydown="if(event.key==='Enter') BizAI.runQuery('custom')">
+              <button class="btn btn-primary btn-sm" onclick="BizAI.runQuery('custom')">Run Analysis</button>
+            </div>
+
+            <div class="bizai-presets-row">
+              <span style="font-size:0.75rem;font-family:var(--font-mono);color:var(--text-muted);">SUGGESTED QUERIES:</span>
+              <div class="bizai-preset-chip" onclick="BizAI.runQuery('distributors')">
+                “Find distributors for my furniture products in Germany.”
+              </div>
+              <div class="bizai-preset-chip" onclick="BizAI.runQuery('followup')">
+                “Which leads need follow-up?”
+              </div>
+            </div>
+
+            <div class="bizai-results-grid" id="bizai-results-container">
+              <!-- Populated by BizAI.runQuery -->
+            </div>
+          </div>
+        </div>
+
+        <!-- ================================================================
+             11. CUSTOMERS VIEW
+             ================================================================ -->
+        <div class="view-pane" id="view-customers">
+          <div class="view-header">
+            <div class="view-title-group">
+              <h1>Customers</h1>
+              <p>Institutional buyer accounts, historical order volume, and active agreements.</p>
+            </div>
+            <div class="view-actions-group">
+              <button class="btn btn-primary btn-sm" onclick="App.showToast('Add customer modal', 'info')">+ Add Customer</button>
+            </div>
+          </div>
+
+          <div class="table-card">
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Customer</th>
+                    <th>Country</th>
+                    <th>Contact</th>
+                    <th>Total Orders</th>
+                    <th>Last Activity</th>
+                    <th style="text-align:center;">Open Deals</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="customers-table-tbody">
+                  <!-- Rendered by App.renderCustomersTable -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================================================================
+             12. SUPPLIERS VIEW
+             ================================================================ -->
+        <div class="view-pane" id="view-suppliers">
+          <div class="view-header">
+            <div class="view-title-group">
+              <h1>Suppliers</h1>
+              <p>Raw material vendors, component sub-tier producers, and master service agreements.</p>
+            </div>
+            <div class="view-actions-group">
+              <button class="btn btn-primary btn-sm" onclick="App.showToast('Add supplier modal', 'info')">+ Add Supplier</button>
+            </div>
+          </div>
+
+          <div class="table-card">
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Supplier</th>
+                    <th>Company</th>
+                    <th>Country</th>
+                    <th>Products</th>
+                    <th>Category</th>
+                    <th>Last Order</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="suppliers-table-tbody">
+                  <!-- Rendered by App.renderSuppliersTable -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================================================================
+             13. TEAM VIEW
+             ================================================================ -->
+        <div class="view-pane" id="view-team">
+          <div class="view-header">
+            <div class="view-title-group">
+              <h1>Team Management</h1>
+              <p>Internal personnel, department roles, and task responsibilities.</p>
+            </div>
+            <div class="view-actions-group">
+              <button class="btn btn-primary btn-sm" onclick="App.showToast('Invite employee modal', 'info')">+ Add Member</button>
+            </div>
+          </div>
+
+          <div class="table-card">
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Employee</th>
+                    <th>Department</th>
+                    <th>Role</th>
+                    <th>Email</th>
+                    <th style="text-align:center;">Tasks</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="team-table-tbody">
+                  <!-- Rendered by App.renderTeamTable -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================================================================
+             14. MESSAGES SPLIT-PANE VIEW
+             ================================================================ -->
+        <div class="view-pane" id="view-messages">
+          <div class="view-header">
+            <div class="view-title-group">
+              <h1>Messages</h1>
+              <p>Direct communication with verified network counterparties referencing live deals and quotes.</p>
+            </div>
+          </div>
+
+          <div class="messages-split-pane">
+            <div class="messages-sidebar-list">
+              <div class="messages-search-head">
+                <input type="text" class="search-input" placeholder="Filter conversations...">
+              </div>
+              <div class="messages-conv-items" id="messages-conv-list">
+                <!-- Rendered by Messaging.renderConversationsList -->
+              </div>
+            </div>
+
+            <div class="messages-chat-pane" id="messages-chat-pane">
+              <!-- Rendered by Messaging.renderChatPane -->
+            </div>
+          </div>
+        </div>
+
+        <!-- ================================================================
+             15. SETTINGS VIEW
+             ================================================================ -->
+        <div class="view-pane" id="view-settings">
+          <div class="view-header">
+            <div class="view-title-group">
+              <h1>Settings</h1>
+              <p>Configure entity preferences, security authentication, and API integrations.</p>
+            </div>
+          </div>
+
+          <div class="view-subnav-tabs">
+            <div class="subnav-tab-item active" data-subnav="set-biz">Business</div>
+            <div class="subnav-tab-item" data-subnav="set-profile">Profile</div>
+            <div class="subnav-tab-item" data-subnav="set-sec">Security</div>
+            <div class="subnav-tab-item" data-subnav="set-integrations">Integrations</div>
+          </div>
+
+          <div class="card" style="padding:24px;background:var(--bg-surface);border:1px solid var(--border-light);border-radius:var(--radius-sm);max-width:700px;">
+            <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:16px;">Platform Configuration</h3>
+            
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+              <div>
+                <label style="font-size:0.75rem;font-weight:600;display:block;margin-bottom:4px;">Primary Operating Currency</label>
+                <select class="select-filter" style="width:100%;">
+                  <option value="USD" selected>USD — United States Dollar ($)</option>
+                  <option value="EUR">EUR — Euro (€)</option>
+                  <option value="AED">AED — UAE Dirham (AED)</option>
+                  <option value="INR">INR — Indian Rupee (₹)</option>
+                </select>
+              </div>
+              <div>
+                <label style="font-size:0.75rem;font-weight:600;display:block;margin-bottom:4px;">Default Incoterms 2020</label>
+                <select class="select-filter" style="width:100%;">
+                  <option value="CIF" selected>CIF (Cost, Insurance & Freight)</option>
+                  <option value="FOB">FOB (Free On Board)</option>
+                  <option value="EXW">EXW (Ex Works)</option>
+                  <option value="DAP">DAP (Delivered at Place)</option>
+                </select>
+              </div>
+            </div>
+
+            <div style="margin-bottom:20px;">
+              <label style="font-size:0.75rem;font-weight:600;display:block;margin-bottom:4px;">Two-Factor Authentication (2FA)</label>
+              <div style="display:flex;align-items:center;gap:10px;">
+                <span class="badge badge-success">Enforced via TOTP</span>
+                <span style="font-size:0.8rem;color:var(--text-muted);">Required for all export contracts exceeding $50,000 USD.</span>
+              </div>
+            </div>
+
+            <button class="btn btn-primary btn-sm" onclick="App.showToast('Settings saved successfully', 'success')">Save Preferences</button>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- ======================================================================
+       GLOBAL SLIDE-OVER DRAWER FOR RECORD INSPECTION
+       ====================================================================== -->
+  <div class="app-drawer" id="app-drawer">
+    <div class="drawer-header">
+      <h3 style="font-size:0.95rem;font-weight:700;" id="drawer-title">Record Details</h3>
+      <button class="btn btn-subtle btn-xs" onclick="App.closeDrawer()">✕</button>
+    </div>
+    <div class="drawer-body" id="drawer-body"></div>
+  </div>
+
+  <!-- ======================================================================
+       GLOBAL SEARCH MODAL (CMD + K)
+       ====================================================================== -->
+  <div class="app-modal-overlay" id="global-search-modal" onclick="if(event.target===this) App.closeModals()">
+    <div class="app-modal-content" style="max-width:540px;">
+      <div class="app-modal-header">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <span class="app-modal-title">Global Enterprise Search</span>
+        </div>
+        <span style="cursor:pointer;" onclick="App.closeModals()">&times;</span>
+      </div>
+      <div class="app-modal-body" style="padding:16px;">
+        <input type="text" 
+               id="search-modal-input" 
+               class="search-input" 
+               placeholder="Search businesses, products, deals, SKUs, quotations..." 
+               style="font-size:0.95rem;padding:8px 12px;margin-bottom:12px;"
+               oninput="App.handleSearchQuery(this.value)">
+
+        <div id="search-modal-results">
+          <!-- Populated by App.handleSearchQuery -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Application Scripts -->
+  <script src="js/store.js"></script>
+  <script src="js/crm.js"></script>
+  <script src="js/sales.js"></script>
+  <script src="js/network.js"></script>
+  <script src="js/trade.js"></script>
+  <script src="js/bizai.js"></script>
+  <script src="js/messaging.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

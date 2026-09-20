@@ -1,0 +1,448 @@
+/* ==========================================================================
+   HYNA BIZ — View-Specific Styles
+   Quotation Builder, 2D Trade Map, Messages Split-Pane, Public Profile, BizAI
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Quotation Builder & Document Preview
+   -------------------------------------------------------------------------- */
+.quotation-builder-container {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.quotation-form-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  box-shadow: var(--shadow-subtle);
+}
+
+.doc-preview-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-xs);
+  padding: 32px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  font-size: 0.84rem;
+  line-height: 1.45;
+  color: var(--text-main);
+  position: relative;
+}
+
+.doc-preview-watermark {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-30deg);
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: rgba(11, 18, 32, 0.03);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.doc-preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--color-primary);
+  margin-bottom: 20px;
+}
+
+.doc-preview-parties {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.doc-preview-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.doc-preview-table th {
+  background-color: var(--bg-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 8px 10px;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  text-align: left;
+}
+
+.doc-preview-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.doc-preview-totals {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.doc-totals-list {
+  width: 260px;
+}
+
+.doc-total-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  font-size: 0.82rem;
+}
+
+.doc-total-row.grand {
+  border-top: 2px solid var(--color-primary);
+  font-weight: 700;
+  font-size: 1rem;
+  padding-top: 8px;
+  color: var(--color-primary);
+}
+
+/* --------------------------------------------------------------------------
+   2D Global Trade Map
+   -------------------------------------------------------------------------- */
+.trade-map-wrapper {
+  background-color: #081120;
+  border: 1px solid #1E293B;
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.trade-map-svg {
+  width: 100%;
+  height: auto;
+  max-height: 440px;
+}
+
+.trade-map-overlay-stats {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  display: flex;
+  gap: 12px;
+}
+
+.trade-map-stat-chip {
+  background-color: rgba(11, 18, 32, 0.85);
+  border: 1px solid #334155;
+  padding: 6px 12px;
+  border-radius: var(--radius-xs);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #E2E8F0;
+}
+
+/* --------------------------------------------------------------------------
+   BizAI Command Utility (Command & Search Interface, NOT Chatbot)
+   -------------------------------------------------------------------------- */
+.bizai-command-container {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 24px;
+  box-shadow: var(--shadow-subtle);
+  margin-bottom: 24px;
+}
+
+.bizai-input-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-sm);
+  padding: 10px 16px;
+  margin-bottom: 14px;
+}
+
+.bizai-input-bar input {
+  flex: 1;
+  font-size: 0.95rem;
+  color: var(--text-main);
+}
+
+.bizai-presets-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.bizai-preset-chip {
+  font-size: 0.78rem;
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-xs);
+  padding: 4px 10px;
+  cursor: pointer;
+  color: var(--text-body);
+  transition: all var(--transition-fast);
+}
+
+.bizai-preset-chip:hover {
+  background-color: var(--color-brand-subtle);
+  border-color: var(--color-brand);
+  color: var(--color-primary);
+}
+
+.bizai-results-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.bizai-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* --------------------------------------------------------------------------
+   Messages Split-Pane
+   -------------------------------------------------------------------------- */
+.messages-split-pane {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  height: calc(100vh - var(--topbar-height) - 48px);
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.messages-sidebar-list {
+  border-right: 1px solid var(--border-light);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.messages-search-head {
+  padding: 12px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.messages-conv-items {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.conv-item {
+  padding: 12px 14px;
+  border-bottom: 1px solid #F1F5F9;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.conv-item:hover {
+  background-color: var(--bg-subtle);
+}
+
+.conv-item.active {
+  background-color: #F8FAFC;
+  border-left: 3px solid var(--color-primary);
+}
+
+.conv-item-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.conv-company-name {
+  font-weight: 600;
+  font-size: 0.84rem;
+  color: var(--text-main);
+}
+
+.conv-last-msg {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.messages-chat-pane {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #F8FAFC;
+}
+
+.chat-header-bar {
+  height: 56px;
+  padding: 0 20px;
+  background-color: var(--bg-surface);
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chat-context-banner {
+  background-color: var(--status-info-bg);
+  border-bottom: 1px solid var(--status-info-border);
+  padding: 6px 16px;
+  font-size: 0.78rem;
+  color: var(--status-info-text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chat-messages-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.chat-msg-row {
+  display: flex;
+  flex-direction: column;
+  max-width: 70%;
+}
+
+.chat-msg-row.outbound {
+  align-self: flex-end;
+}
+
+.chat-bubble {
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
+.chat-msg-row.outbound .chat-bubble {
+  background-color: var(--color-primary);
+  color: var(--text-inverse);
+}
+
+.chat-msg-row.inbound .chat-bubble {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  color: var(--text-main);
+}
+
+.chat-msg-time {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.chat-input-bar {
+  padding: 14px 20px;
+  background-color: var(--bg-surface);
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chat-input-field {
+  flex: 1;
+  padding: 8px 12px;
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+}
+
+/* --------------------------------------------------------------------------
+   Public Company Profile View
+   -------------------------------------------------------------------------- */
+.public-profile-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-subtle);
+}
+
+.public-profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-light);
+  margin-bottom: 20px;
+}
+
+.profile-avatar-box {
+  width: 52px;
+  height: 52px;
+  background-color: var(--color-primary);
+  color: var(--text-inverse);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+}
+
+.profile-info-col h2 {
+  font-size: 1.3rem;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.profile-info-col p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Adaptations
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .quotation-builder-container {
+    grid-template-columns: 1fr;
+  }
+  .bizai-results-grid {
+    grid-template-columns: 1fr;
+  }
+  .messages-split-pane {
+    grid-template-columns: 240px 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .messages-split-pane {
+    grid-template-columns: 1fr;
+  }
+  .messages-sidebar-list {
+    display: none; /* Can toggle on mobile */
+  }
+}
