@@ -52,7 +52,7 @@ const Navbar = () => {
     <nav ref={navbarRef} className={`navbar ${isScrolled ? 'navbar-scrolled' : ''}`}>
       <div className="container navbar-container">
         <div className="navbar-logo">
-          <img src="/hynabiz-logo.jpg" alt="HynaBiz Logo" className="logo-img" />
+          <img src="/hynabiz-logo.png" alt="HynaBiz Logo" className="logo-img" />
           <span className="logo-hyna">HYNA</span><span className="logo-biz">Biz</span>
         </div>
 

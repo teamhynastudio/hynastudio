@@ -1,7 +1,6 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import PlatformSection from './components/PlatformSection';
 
 function App() {
   return (
@@ -10,7 +9,6 @@ function App() {
       
       <main>
         <Hero />
-        <PlatformSection />
       </main>
       
     </div>

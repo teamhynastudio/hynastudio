@@ -36,7 +36,7 @@ const ProductPreview = () => {
         <div className="dash-inner-screen">
           <div className="dash-sidebar">
             <div className="dash-logo">
-              <img src="/hynabiz-logo.jpg" alt="HynaBiz Logo" className="dash-logo-img" />
+              <img src="/hynabiz-logo.png" alt="HynaBiz Logo" className="dash-logo-img" />
               <span className="logo-hyna">HYNA</span><span className="logo-biz text-blue">Biz</span>
             </div>
             
