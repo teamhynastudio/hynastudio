@@ -29,7 +29,6 @@ const Hero = () => {
       .from('.hero-eyebrow', { opacity: 0, y: 15, duration: 0.6 }, '-=0.8')
       .from('.hero-supporting', { opacity: 0, y: 15, duration: 0.6 }, '-=0.6')
       .from('.hero-actions', { opacity: 0, y: 15, duration: 0.6 }, '-=0.4')
-      .from('.hero-features', { opacity: 0, duration: 0.6 }, '-=0.2')
       .from('.product-preview-container', { opacity: 0, scale: 0.95, y: 40, duration: 1 }, '-=0.3');
     }, containerRef);
     
@@ -42,13 +41,13 @@ const Hero = () => {
       
       <div className="container hero-content">
         <div className="hero-eyebrow">
-          BUSINESS MANAGEMENT & CONNECTION PLATFORM
+          Business Management &middot; CRM &middot; Connections &middot; Trade &middot; Automation
         </div>
         
         <h1 className="hero-headline">
           <span>The Future of</span><br/>
           <span>Business Starts</span><br/>
-          <span className="text-blue">Here</span>
+          <span>Here</span>
         </h1>
         
         <p className="hero-supporting text-muted">
@@ -62,10 +61,6 @@ const Hero = () => {
           <button className="btn btn-secondary">
             <Play size={16} style={{ marginRight: '8px' }} /> Explore HynaBiz
           </button>
-        </div>
-        
-        <div className="hero-features text-muted">
-          Business Management &middot; CRM &middot; Connections &middot; Trade &middot; Automation
         </div>
       </div>
       
