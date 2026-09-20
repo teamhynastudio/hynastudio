@@ -16,11 +16,15 @@ const Navbar = () => {
         gsap.to(navbarRef.current, {
           backgroundColor: 'rgba(255, 255, 255, 0.95)',
           backdropFilter: 'blur(10px)',
-          boxShadow: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
+          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
           borderBottom: '1px solid rgba(11, 18, 32, 0.05)',
-          padding: '15px 0',
-          duration: 0.3,
-          ease: 'power2.out'
+          padding: '10px 24px',
+          width: '90%',
+          maxWidth: '1200px',
+          top: '20px',
+          borderRadius: '50px',
+          duration: 0.4,
+          ease: 'power3.out'
         });
       } else if (scrollY <= 50 && isScrolled) {
         setIsScrolled(false);
@@ -30,8 +34,12 @@ const Navbar = () => {
           boxShadow: 'none',
           borderBottom: '1px solid transparent',
           padding: '25px 0',
-          duration: 0.3,
-          ease: 'power2.out'
+          width: '100%',
+          maxWidth: '100%',
+          top: '0',
+          borderRadius: '0px',
+          duration: 0.4,
+          ease: 'power3.out'
         });
       }
     };
@@ -41,7 +49,7 @@ const Navbar = () => {
   }, [isScrolled]);
 
   return (
-    <nav ref={navbarRef} className="navbar">
+    <nav ref={navbarRef} className={`navbar ${isScrolled ? 'navbar-scrolled' : ''}`}>
       <div className="container navbar-container">
         <div className="navbar-logo">
           <span className="logo-hyna">HYNA</span>

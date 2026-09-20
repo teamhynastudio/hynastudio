@@ -1,8 +1,10 @@
 .navbar {
   position: fixed;
   top: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
+  max-width: 100%;
   padding: 25px 0;
   z-index: 100;
   border-bottom: 1px solid transparent;
@@ -15,19 +17,20 @@
 }
 
 .navbar-logo {
-  font-size: 22px;
-  font-weight: 700;
+  font-family: 'Krona One', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
   display: flex;
   align-items: center;
   gap: 2px;
 }
 
 .logo-hyna {
-  color: var(--deep-navy);
+  color: var(--white);
 }
 
 .logo-biz {
-  color: var(--hyna-blue);
+  color: var(--white);
 }
 
 .navbar-links {
@@ -39,7 +42,7 @@
 .nav-item {
   font-size: 14px;
   font-weight: 500;
-  color: var(--deep-navy);
+  color: var(--white);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -64,11 +67,28 @@
 .btn-text {
   font-size: 14px;
   font-weight: 500;
-  color: var(--deep-navy);
+  color: var(--white);
+  transition: color 0.2s ease;
 }
 
 .btn-text:hover {
   color: var(--hyna-blue);
+}
+
+.navbar-scrolled .logo-hyna {
+  color: var(--deep-navy);
+}
+
+.navbar-scrolled .logo-biz {
+  color: var(--deep-navy);
+}
+
+.navbar-scrolled .nav-item {
+  color: var(--deep-navy);
+}
+
+.navbar-scrolled .btn-text {
+  color: var(--deep-navy);
 }
 
 .mobile-only {

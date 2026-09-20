@@ -1,6 +1,6 @@
 .problem-section {
   padding: 120px 0;
-  background-color: var(--white);
+  background-color: var(--deep-navy);
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -13,7 +13,7 @@
 
 .section-title {
   font-size: 42px;
-  color: var(--deep-navy);
+  color: var(--white);
   margin-bottom: 24px;
 }
 
@@ -51,14 +51,14 @@
   position: absolute;
   width: 64px;
   height: 64px;
-  background-color: var(--white);
+  background-color: #1a273b;
   border-radius: 16px;
   box-shadow: var(--shadow-md);
   display: flex;
   justify-content: center;
   align-items: center;
   color: var(--muted);
-  border: 1px solid rgba(11, 18, 32, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .floating-icon-1 { top: 10%; left: 20%; }

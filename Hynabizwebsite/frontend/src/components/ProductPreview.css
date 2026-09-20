@@ -1,5 +1,5 @@
 .product-preview {
-  margin-top: 20px;
+  margin-top: 40px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -8,30 +8,44 @@
 
 .dashboard-wrapper {
   width: 100%;
-  max-width: 1000px;
-  height: 600px;
-  background-color: var(--white);
-  border-radius: var(--radius-lg);
-  box-shadow: 0 25px 50px -12px rgba(11, 18, 32, 0.25), 0 0 0 1px rgba(11, 18, 32, 0.05);
+  max-width: 1050px;
+  height: 650px;
+  background-color: #ffffff; /* White iPad outer bezel color */
+  border-radius: 40px;
+  padding: 16px; /* Bezel thickness */
+  box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(0, 0, 0, 0.05);
   display: flex;
+}
+
+.dash-inner-screen {
+  flex: 1;
+  display: flex;
+  background-color: #09090b; /* Deep dark background */
+  border-radius: 28px;
   overflow: hidden;
-  transform-style: preserve-3d;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .dash-sidebar {
   width: 240px;
-  background-color: #f8fafc;
-  border-right: 1px solid rgba(11, 18, 32, 0.05);
+  background-color: #09090b;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
   padding: 24px 16px;
   display: flex;
   flex-direction: column;
 }
 
 .dash-logo {
+  font-family: 'Krona One', sans-serif;
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 400;
   margin-bottom: 40px;
   padding: 0 12px;
+}
+
+.dash-logo .logo-hyna,
+.dash-logo .logo-biz {
+  color: #ffffff;
 }
 
 .dash-nav {
@@ -48,14 +62,14 @@
   border-radius: var(--radius-md);
   font-size: 14px;
   font-weight: 500;
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.6);
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .dash-nav-item:hover {
-  background-color: rgba(11, 18, 32, 0.03);
-  color: var(--deep-navy);
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
 }
 
 .dash-nav-item.active {
@@ -67,12 +81,12 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  background-color: var(--white);
+  background-color: #09090b;
 }
 
 .dash-header {
   padding: 24px 32px;
-  border-bottom: 1px solid rgba(11, 18, 32, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -81,6 +95,11 @@
 .dash-greeting h3 {
   font-size: 20px;
   margin-bottom: 4px;
+  color: #ffffff;
+}
+
+.dash-greeting p {
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .dash-header-actions {
@@ -93,19 +112,20 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  background-color: #f1f5f9;
+  background-color: rgba(255, 255, 255, 0.05);
   padding: 8px 16px;
   border-radius: 20px;
   font-size: 13px;
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.6);
   width: 200px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .dash-avatar {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background-color: var(--deep-navy);
+  background-color: #333;
 }
 
 .dash-content {
@@ -122,17 +142,17 @@
 }
 
 .metric-card {
-  background-color: var(--white);
-  border: 1px solid rgba(11, 18, 32, 0.08);
+  background-color: #121214;
+  border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: var(--radius-md);
   padding: 20px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   text-align: left;
 }
 
 .metric-title {
   font-size: 13px;
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.5);
   margin-bottom: 8px;
   font-weight: 500;
 }
@@ -140,21 +160,23 @@
 .metric-value {
   font-size: 28px;
   font-weight: 600;
-  color: var(--deep-navy);
+  color: #ffffff;
 }
 
 .dash-timeline {
-  background-color: var(--white);
-  border: 1px solid rgba(11, 18, 32, 0.08);
+  background-color: #121214;
+  border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: var(--radius-md);
   padding: 24px;
   text-align: left;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .dash-panel-title {
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 24px;
+  color: #ffffff;
 }
 
 .timeline-item {
@@ -171,7 +193,7 @@
   top: 14px;
   bottom: -20px;
   width: 2px;
-  background-color: rgba(11, 18, 32, 0.05);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .timeline-dot {
@@ -186,22 +208,32 @@
 .timeline-content p {
   font-size: 14px;
   margin-bottom: 4px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.timeline-content p strong {
+  color: #ffffff;
 }
 
 .timeline-time {
   font-size: 12px;
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.4);
 }
 
 @media (max-width: 992px) {
   .dashboard-wrapper {
     height: auto;
+    padding: 12px;
+    border-radius: 24px;
+  }
+  .dash-inner-screen {
     flex-direction: column;
+    border-radius: 16px;
   }
   .dash-sidebar {
     width: 100%;
     border-right: none;
-    border-bottom: 1px solid rgba(11, 18, 32, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     padding: 16px;
   }
   .dash-nav {
