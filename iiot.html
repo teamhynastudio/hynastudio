@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
   <script>
     if (window.location.protocol.startsWith('http')) {
@@ -16,10 +17,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Industrial IoT & Industry 4.0 Platform | Hyna Studio Technologies LLP</title>
-  <meta name="description" content="Hyna Studio Technologies LLP builds intelligent Industrial IoT, AI automation, edge telemetry, and connected business platforms for the next era of smart industry.">
+  <meta name="description"
+    content="Hyna Studio Technologies LLP builds intelligent Industrial IoT, AI automation, edge telemetry, and connected business platforms for the next era of smart industry.">
 
   <link rel="icon" href="favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" href="favicon-48x48.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
   <link rel="icon" type="image/png" href="favicon-48x48.png" sizes="48x48">
   <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -27,7 +29,9 @@
   <!-- Fonts: Instrument Serif, Inter, Space Grotesk, JetBrains Mono, Syne -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@600;700;800&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
   <style>
@@ -54,7 +58,9 @@
       --font-tech: 'Space Grotesk', sans-serif;
     }
 
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -107,15 +113,16 @@
       transition: max-width 0.4s ease, background 0.4s ease, box-shadow 0.4s ease;
     }
 
+    /* Scrolled state - kept identical to default nav so it does not change while scrolling */
     nav.nav-scrolled {
-      max-width: 920px;
-      background: rgba(20, 20, 24, 0.95);
-      border: 1px solid rgba(255, 255, 255, 0.22);
-      border-top: 1.8px solid rgba(255, 255, 255, 0.65);
+      max-width: 980px;
+      background: rgba(18, 18, 22, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-top: 5.8px solid rgba(255, 255, 255, 0.55);
       box-shadow:
-        0 30px 60px rgba(0, 0, 0, 0.85),
-        inset 0 1px 1px rgba(255, 255, 255, 0.3),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.6);
+        0 24px 48px rgba(0, 0, 0, 0.8),
+        inset 0 1px 1px rgba(255, 255, 255, 0.25),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.5);
     }
 
     /* Logo styling */
@@ -777,8 +784,15 @@
     }
 
     @keyframes bounceDown {
-      0% { transform: translateY(-2px); opacity: 0.5; }
-      100% { transform: translateY(4px); opacity: 1; }
+      0% {
+        transform: translateY(-2px);
+        opacity: 0.5;
+      }
+
+      100% {
+        transform: translateY(4px);
+        opacity: 1;
+      }
     }
 
     /* ─── SECTION 4: WHAT HYNA CONNECTS ─── */
@@ -1597,18 +1611,27 @@
 
     /* ─── RESPONSIVE BREAKPOINTS ─── */
     @media (max-width: 1024px) {
-      .feature-grid-4, .connect-grid, .industry-grid {
+
+      .feature-grid-4,
+      .connect-grid,
+      .industry-grid {
         grid-template-columns: repeat(2, 1fr);
       }
-      .ai-grid, .eco-products-grid, .why-grid {
+
+      .ai-grid,
+      .eco-products-grid,
+      .why-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+
       .ops-stepper {
         grid-template-columns: repeat(3, 1fr);
       }
+
       .metrics-grid-live {
         grid-template-columns: repeat(2, 1fr);
       }
+
       .footer-top {
         grid-template-columns: 1fr 1fr;
       }
@@ -1675,7 +1698,13 @@
         display: block;
       }
 
-      .feature-grid-4, .connect-grid, .ai-grid, .industry-grid, .workflows-grid, .eco-products-grid, .why-grid {
+      .feature-grid-4,
+      .connect-grid,
+      .ai-grid,
+      .industry-grid,
+      .workflows-grid,
+      .eco-products-grid,
+      .why-grid {
         grid-template-columns: 1fr;
       }
 
@@ -1687,7 +1716,8 @@
         grid-template-columns: 1fr;
       }
 
-      .mockup-kpi-row, .metrics-grid-live {
+      .mockup-kpi-row,
+      .metrics-grid-live {
         grid-template-columns: 1fr;
       }
 
@@ -1758,19 +1788,29 @@
 
       <!-- Mobile-only CTA items at bottom of dropdown -->
       <li class="mobile-cta-item start-proj-mobile">
-        <a href="mailto:team.hynastudio@gmail.com?subject=Project%20Inquiry%20-%20Hyna%20Studio&body=Hello%20Hyna%20Studio,%0D%0A%0D%0AI%20would%20like%20to%20discuss%20a%20project.%0D%0A%0D%0AName:%20%0D%0ACompany:%20%0D%0APhone:%20%0D%0AProject%20Details:%20">
+        <a
+          href="mailto:team.hynastudio@gmail.com?subject=Project%20Inquiry%20-%20Hyna%20Studio&body=Hello%20Hyna%20Studio,%0D%0A%0D%0AI%20would%20like%20to%20discuss%20a%20project.%0D%0A%0D%0AName:%20%0D%0ACompany:%20%0D%0APhone:%20%0D%0AProject%20Details:%20">
           Start your project →
         </a>
       </li>
-
+      <li class="mobile-cta-item connect-mobile">
+        <a href="schedule.html">
+          Schedule
+        </a>
+      </li>
     </ul>
 
-
+    <!-- Desktop Book a Call CTA -->
+    <a href="schedule.html" class="nav-cta hide-mobile" id="nav-cta-btn">
+      Schedule
+    </a>
 
     <!-- Mobile Menu Toggle (Uiverse.io by vinodjangid07) -->
     <button class="nav-power-switch" id="navMobileToggle" aria-label="Toggle menu" type="button">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="nav-power-icon">
-        <path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V256c0 17.7 14.3 32 32 32s32-14.3 32-32V32zM143.5 120.6c13.6-11.3 15.4-31.5 4.1-45.1s-31.5-15.4-45.1-4.1C49.7 115.4 16 181.8 16 256c0 132.5 107.5 240 240 240s240-107.5 240-240c0-74.2-33.8-140.6-86.6-184.6c-13.6-11.3-33.8-9.4-45.1 4.1s-9.4 33.8 4.1 45.1c38.9 32.3 63.5 81 63.5 135.4c0 97.2-78.8 176-176 176s-176-78.8-176-176c0-54.4 24.7-103.1 63.5-135.4z"></path>
+        <path
+          d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V256c0 17.7 14.3 32 32 32s32-14.3 32-32V32zM143.5 120.6c13.6-11.3 15.4-31.5 4.1-45.1s-31.5-15.4-45.1-4.1C49.7 115.4 16 181.8 16 256c0 132.5 107.5 240 240 240s240-107.5 240-240c0-74.2-33.8-140.6-86.6-184.6c-13.6-11.3-33.8-9.4-45.1 4.1s-9.4 33.8 4.1 45.1c38.9 32.3 63.5 81 63.5 135.4c0 97.2-78.8 176-176 176s-176-78.8-176-176c0-54.4 24.7-103.1 63.5-135.4z">
+        </path>
       </svg>
     </button>
   </nav>
@@ -1789,11 +1829,13 @@
       </h1>
 
       <p class="hero-sub">
-        Connecting AI, automation, industrial systems, business intelligence, and real-time data to create smarter, faster, and more connected operations.
+        Connecting AI, automation, industrial systems, business intelligence, and real-time data to create smarter,
+        faster, and more connected operations.
       </p>
 
       <p class="hero-support-text">
-        Hyna Studio is building the next generation of intelligent technology platforms for businesses and industries — turning operational data into decisions, automation, and measurable business intelligence.
+        Hyna Studio is building the next generation of intelligent technology platforms for businesses and industries —
+        turning operational data into decisions, automation, and measurable business intelligence.
       </p>
 
       <div class="hero-actions">
@@ -1845,7 +1887,10 @@
           From Connected Machines <em>to Intelligent Operations</em>
         </h2>
         <p class="section-desc">
-          Industry 4.0 is moving beyond simple machine connectivity. The next generation of industrial technology combines IoT, artificial intelligence, automation, cloud platforms, analytics, and business systems into one intelligent ecosystem. Hyna Studio is developing technology that helps transform disconnected operational data into a connected digital intelligence layer.
+          Industry 4.0 is moving beyond simple machine connectivity. The next generation of industrial technology
+          combines IoT, artificial intelligence, automation, cloud platforms, analytics, and business systems into one
+          intelligent ecosystem. Hyna Studio is developing technology that helps transform disconnected operational data
+          into a connected digital intelligence layer.
         </p>
       </div>
 
@@ -1854,7 +1899,8 @@
           <div class="feature-num">01</div>
           <h3 class="feature-title">REAL-TIME INTELLIGENCE</h3>
           <p class="feature-text">
-            Monitor operational data continuously and transform raw telemetry into live, actionable operational insight across the entire facility.
+            Monitor operational data continuously and transform raw telemetry into live, actionable operational insight
+            across the entire facility.
           </p>
         </div>
 
@@ -1862,7 +1908,8 @@
           <div class="feature-num">02</div>
           <h3 class="feature-title">AI-POWERED DECISIONS</h3>
           <p class="feature-text">
-            Deploy self-learning algorithms to detect operational patterns, forecast critical conditions, and provide high-confidence recommendations.
+            Deploy self-learning algorithms to detect operational patterns, forecast critical conditions, and provide
+            high-confidence recommendations.
           </p>
         </div>
 
@@ -1870,7 +1917,8 @@
           <div class="feature-num">03</div>
           <h3 class="feature-title">CONNECTED OPERATIONS</h3>
           <p class="feature-text">
-            Bridge machines, staff, supply networks, inventory nodes, and ERP systems under a singular, coherent digital nervous system.
+            Bridge machines, staff, supply networks, inventory nodes, and ERP systems under a singular, coherent digital
+            nervous system.
           </p>
         </div>
 
@@ -1878,7 +1926,8 @@
           <div class="feature-num">04</div>
           <h3 class="feature-title">AUTOMATION</h3>
           <p class="feature-text">
-            Minimize repetitive operational friction through trigger-driven workflows, closed-loop orchestrations, and intelligent system actions.
+            Minimize repetitive operational friction through trigger-driven workflows, closed-loop orchestrations, and
+            intelligent system actions.
           </p>
         </div>
       </div>
@@ -1894,7 +1943,8 @@
           One Intelligent Layer <em>for the Modern Industry</em>
         </h2>
         <p class="section-desc">
-          Hyna Studio's Industry 4.0 vision combines connected devices, data infrastructure, AI, automation, and enterprise software into an intelligent technology ecosystem.
+          Hyna Studio's Industry 4.0 vision combines connected devices, data infrastructure, AI, automation, and
+          enterprise software into an intelligent technology ecosystem.
         </p>
       </div>
 
@@ -2013,7 +2063,8 @@
           Connect Every Part <em>of the Operation</em>
         </h2>
         <p class="section-desc">
-          A truly modern industrial ecosystem eliminates organizational silos by integrating machines, supply pipelines, physical assets, and personnel workflows.
+          A truly modern industrial ecosystem eliminates organizational silos by integrating machines, supply pipelines,
+          physical assets, and personnel workflows.
         </p>
       </div>
 
@@ -2022,7 +2073,8 @@
           <div class="connect-icon-box"><i class="fa-solid fa-industry"></i></div>
           <h3 class="connect-card-title">MACHINES</h3>
           <p class="connect-card-desc">
-            Real-time machine data, utilization metrics, continuous condition monitoring, and predictive operational intelligence.
+            Real-time machine data, utilization metrics, continuous condition monitoring, and predictive operational
+            intelligence.
           </p>
         </div>
 
@@ -2030,7 +2082,8 @@
           <div class="connect-icon-box"><i class="fa-solid fa-boxes-stacked"></i></div>
           <h3 class="connect-card-title">INVENTORY</h3>
           <p class="connect-card-desc">
-            Track raw materials, work-in-progress products, facility locations, movement velocities, batches, and critical stock conditions.
+            Track raw materials, work-in-progress products, facility locations, movement velocities, batches, and
+            critical stock conditions.
           </p>
         </div>
 
@@ -2038,7 +2091,8 @@
           <div class="connect-icon-box"><i class="fa-solid fa-route"></i></div>
           <h3 class="connect-card-title">SUPPLY CHAIN</h3>
           <p class="connect-card-desc">
-            Synchronize external suppliers, transport logistics, regional warehouses, and multi-tier fulfillment data into a unified stream.
+            Synchronize external suppliers, transport logistics, regional warehouses, and multi-tier fulfillment data
+            into a unified stream.
           </p>
         </div>
 
@@ -2046,7 +2100,8 @@
           <div class="connect-icon-box"><i class="fa-solid fa-diagram-next"></i></div>
           <h3 class="connect-card-title">PRODUCTION</h3>
           <p class="connect-card-desc">
-            Monitor shop-floor execution throughput, line balancing, quality inspection checkpoints, bottlenecks, and overall equipment efficiency.
+            Monitor shop-floor execution throughput, line balancing, quality inspection checkpoints, bottlenecks, and
+            overall equipment efficiency.
           </p>
         </div>
 
@@ -2054,7 +2109,8 @@
           <div class="connect-icon-box"><i class="fa-solid fa-truck-ramp-box"></i></div>
           <h3 class="connect-card-title">ASSETS</h3>
           <p class="connect-card-desc">
-            Track physical equipment, vehicles, precision tooling, calibration schedules, and heavy industrial machinery across facilities.
+            Track physical equipment, vehicles, precision tooling, calibration schedules, and heavy industrial machinery
+            across facilities.
           </p>
         </div>
 
@@ -2062,7 +2118,8 @@
           <div class="connect-icon-box"><i class="fa-solid fa-user-gear"></i></div>
           <h3 class="connect-card-title">PEOPLE</h3>
           <p class="connect-card-desc">
-            Create intelligent workforce coordination, safety protocols, task dispatching, and ergonomics without invasive employee surveillance.
+            Create intelligent workforce coordination, safety protocols, task dispatching, and ergonomics without
+            invasive employee surveillance.
           </p>
         </div>
 
@@ -2070,7 +2127,8 @@
           <div class="connect-icon-box"><i class="fa-solid fa-bolt-lightning"></i></div>
           <h3 class="connect-card-title">ENERGY</h3>
           <p class="connect-card-desc">
-            Monitor real-time power draw, thermal loads, peak demand penalties, carbon metrics, and holistic utility optimization.
+            Monitor real-time power draw, thermal loads, peak demand penalties, carbon metrics, and holistic utility
+            optimization.
           </p>
         </div>
 
@@ -2078,7 +2136,8 @@
           <div class="connect-icon-box"><i class="fa-solid fa-tag"></i></div>
           <h3 class="connect-card-title">PRODUCTS</h3>
           <p class="connect-card-desc">
-            Engineer smart, connected physical products that generate operational feedback and telemetry throughout their entire lifecycle.
+            Engineer smart, connected physical products that generate operational feedback and telemetry throughout
+            their entire lifecycle.
           </p>
         </div>
       </div>
@@ -2094,7 +2153,9 @@
           Turn Industrial Data <em>into Intelligence</em>
         </h2>
         <p class="section-desc">
-          AI becomes exponentially more valuable when it understands the physical operational environment. Hyna Studio explores intelligent systems capable of interpreting sensor data, identifying anomalies, forecasting demand, and continuously optimizing operations.
+          AI becomes exponentially more valuable when it understands the physical operational environment. Hyna Studio
+          explores intelligent systems capable of interpreting sensor data, identifying anomalies, forecasting demand,
+          and continuously optimizing operations.
         </p>
       </div>
 
@@ -2103,7 +2164,8 @@
           <span class="ai-badge">Core Capability</span>
           <h3 class="ai-card-title">Predictive Intelligence</h3>
           <p class="ai-card-desc">
-            Identify subtle high-frequency telemetry anomalies and thermal patterns that indicate mechanical stress or imminent failure before unplanned downtime occurs.
+            Identify subtle high-frequency telemetry anomalies and thermal patterns that indicate mechanical stress or
+            imminent failure before unplanned downtime occurs.
           </p>
         </div>
 
@@ -2111,7 +2173,8 @@
           <span class="ai-badge">Optical QA</span>
           <h3 class="ai-card-title">Computer Vision</h3>
           <p class="ai-card-desc">
-            Analyze micro-surface defects, dimensional tolerances, component alignment, and packaging integrity directly on high-speed production lines.
+            Analyze micro-surface defects, dimensional tolerances, component alignment, and packaging integrity directly
+            on high-speed production lines.
           </p>
         </div>
 
@@ -2119,7 +2182,8 @@
           <span class="ai-badge">Pattern Recognition</span>
           <h3 class="ai-card-title">Anomaly Detection</h3>
           <p class="ai-card-desc">
-            Detect irregular deviations in power draw, vibration signatures, batch cycle times, and operational behavior across disparate factory assets.
+            Detect irregular deviations in power draw, vibration signatures, batch cycle times, and operational behavior
+            across disparate factory assets.
           </p>
         </div>
 
@@ -2127,7 +2191,8 @@
           <span class="ai-badge">Planning Intelligence</span>
           <h3 class="ai-card-title">Demand Forecasting</h3>
           <p class="ai-card-desc">
-            Harmonize historical trends, seasonal demand shifts, live order books, and supply disruptions to dynamically optimize production schedules.
+            Harmonize historical trends, seasonal demand shifts, live order books, and supply disruptions to dynamically
+            optimize production schedules.
           </p>
         </div>
 
@@ -2135,7 +2200,8 @@
           <span class="ai-badge">Prescriptive Logic</span>
           <h3 class="ai-card-title">Intelligent Recommendations</h3>
           <p class="ai-card-desc">
-            Translate complex multidimensional telemetry into clear, high-priority actions for operations managers and frontline maintenance technicians.
+            Translate complex multidimensional telemetry into clear, high-priority actions for operations managers and
+            frontline maintenance technicians.
           </p>
         </div>
 
@@ -2143,7 +2209,8 @@
           <span class="ai-badge">Autonomous Execution</span>
           <h3 class="ai-card-title">AI Automation</h3>
           <p class="ai-card-desc">
-            Connect trained inference models directly with automated PLC controllers and ERP systems to instantly execute routine operational adjustments.
+            Connect trained inference models directly with automated PLC controllers and ERP systems to instantly
+            execute routine operational adjustments.
           </p>
         </div>
       </div>
@@ -2159,7 +2226,8 @@
           A Factory That Can See, <em>Understand, and Respond</em>
         </h2>
         <p class="section-desc">
-          Moving from static reporting to responsive physical intelligence. Observe how sensor telemetry transforms into continuous automated action.
+          Moving from static reporting to responsive physical intelligence. Observe how sensor telemetry transforms into
+          continuous automated action.
         </p>
       </div>
 
@@ -2283,7 +2351,8 @@
           From Monitoring <em>to Decisive Action</em>
         </h2>
         <p class="section-desc">
-          Transforming passive data capture into a continuous feedback loop of sensing, understanding, predicting, deciding, acting, and self-learning.
+          Transforming passive data capture into a continuous feedback loop of sensing, understanding, predicting,
+          deciding, acting, and self-learning.
         </p>
       </div>
 
@@ -2348,7 +2417,8 @@
           Connect Industrial Intelligence <em>with Business Intelligence</em>
         </h2>
         <p class="section-desc">
-          Industrial technology should not operate in an isolated control room. Hyna Studio integrates physical plant telemetry directly into enterprise planning, financials, and CRM workflows for total operational clarity.
+          Industrial technology should not operate in an isolated control room. Hyna Studio integrates physical plant
+          telemetry directly into enterprise planning, financials, and CRM workflows for total operational clarity.
         </p>
       </div>
 
@@ -2370,7 +2440,8 @@
         <span class="bi-operator">+</span>
         <span class="bi-chip">HynaBiz</span>
         <span class="bi-operator">→</span>
-        <span class="bi-chip" style="background: #FFFFFF; color: #000000; font-weight: 700;">Unified Business Intelligence</span>
+        <span class="bi-chip" style="background: #FFFFFF; color: #000000; font-weight: 700;">Unified Business
+          Intelligence</span>
       </div>
 
       <!-- Dashboard Mockup in Pitch Black Glass -->
@@ -2382,7 +2453,8 @@
             <span class="mockup-dot"></span>
           </div>
           <span class="mockup-title">HYNA BUSINESS INTELLIGENCE PLATFORM &bull; ENTERPRISE OVERVIEW</span>
-          <span class="eyebrow-pill" style="font-size: 0.65rem; margin-bottom: 0; padding: 2px 8px;">Concept Mockup</span>
+          <span class="eyebrow-pill" style="font-size: 0.65rem; margin-bottom: 0; padding: 2px 8px;">Concept
+            Mockup</span>
         </div>
 
         <div class="mockup-body">
@@ -2405,7 +2477,8 @@
             <div class="mockup-chart-placeholder">
               <i class="fa-solid fa-chart-area" style="font-size: 2.2rem; color: var(--cyan-tech); opacity: 0.6;"></i>
               <span style="color: #FFFFFF;">Multi-Facility Telemetry vs. Revenue Realization</span>
-              <span style="font-size: 0.74rem; color: var(--gray-dim);">Visualizing correlation between shop-floor OEE and supply deliveries</span>
+              <span style="font-size: 0.74rem; color: var(--gray-dim);">Visualizing correlation between shop-floor OEE
+                and supply deliveries</span>
             </div>
           </div>
 
@@ -2441,7 +2514,8 @@
           When Data <em>Becomes Action</em>
         </h2>
         <p class="section-desc">
-          Automated event execution bridges the gap between signal detection and operational resolution, saving critical hours across every shift.
+          Automated event execution bridges the gap between signal detection and operational resolution, saving critical
+          hours across every shift.
         </p>
       </div>
 
@@ -2574,7 +2648,8 @@
           Engineered as a Connected <em>Technology Ecosystem</em>
         </h2>
         <p class="section-desc">
-          Architected across physical device layers, ultra-low-latency transport, edge inference nodes, and distributed enterprise platforms.
+          Architected across physical device layers, ultra-low-latency transport, edge inference nodes, and distributed
+          enterprise platforms.
         </p>
       </div>
 
@@ -2670,7 +2745,8 @@
           Intelligence Across <em>Modern Industries</em>
         </h2>
         <p class="section-desc">
-          Engineered to adapt to distinct operational physical requirements, regulatory standards, and machinery protocols.
+          Engineered to adapt to distinct operational physical requirements, regulatory standards, and machinery
+          protocols.
         </p>
       </div>
 
@@ -2690,61 +2766,71 @@
         <div class="ind-card">
           <div class="ind-icon"><i class="fa-solid fa-tree"></i></div>
           <h3 class="ind-title">Wood &amp; Furniture</h3>
-          <p class="ind-desc">Cutting yield optimization, lumber moisture tracking, and automated CNC tooling alerts.</p>
+          <p class="ind-desc">Cutting yield optimization, lumber moisture tracking, and automated CNC tooling alerts.
+          </p>
         </div>
 
         <div class="ind-card">
           <div class="ind-icon"><i class="fa-solid fa-truck-fast"></i></div>
           <h3 class="ind-title">Logistics</h3>
-          <p class="ind-desc">Fleet real-time location telemetry, cold-chain temperature verification, and route optimization.</p>
+          <p class="ind-desc">Fleet real-time location telemetry, cold-chain temperature verification, and route
+            optimization.</p>
         </div>
 
         <div class="ind-card">
           <div class="ind-icon"><i class="fa-solid fa-warehouse"></i></div>
           <h3 class="ind-title">Warehousing</h3>
-          <p class="ind-desc">Smart storage density mapping, automated stock replenishment, and AGV fleet coordination.</p>
+          <p class="ind-desc">Smart storage density mapping, automated stock replenishment, and AGV fleet coordination.
+          </p>
         </div>
 
         <div class="ind-card">
           <div class="ind-icon"><i class="fa-solid fa-shop"></i></div>
           <h3 class="ind-title">Retail</h3>
-          <p class="ind-desc">In-store shelf inventory detection, foot traffic analysis, and dynamic supply synchronization.</p>
+          <p class="ind-desc">In-store shelf inventory detection, foot traffic analysis, and dynamic supply
+            synchronization.</p>
         </div>
 
         <div class="ind-card">
           <div class="ind-icon"><i class="fa-solid fa-heart-pulse"></i></div>
           <h3 class="ind-title">Healthcare</h3>
-          <p class="ind-desc">Hospital asset tracking, biomedical equipment calibration status, and medication climate control.</p>
+          <p class="ind-desc">Hospital asset tracking, biomedical equipment calibration status, and medication climate
+            control.</p>
         </div>
 
         <div class="ind-card">
           <div class="ind-icon"><i class="fa-solid fa-seedling"></i></div>
           <h3 class="ind-title">Agriculture</h3>
-          <p class="ind-desc">Soil condition IoT telemetry, micro-climate automation, and automated irrigation management.</p>
+          <p class="ind-desc">Soil condition IoT telemetry, micro-climate automation, and automated irrigation
+            management.</p>
         </div>
 
         <div class="ind-card">
           <div class="ind-icon"><i class="fa-solid fa-solar-panel"></i></div>
           <h3 class="ind-title">Energy</h3>
-          <p class="ind-desc">Substation monitoring, renewable generation forecasting, and distribution grid load management.</p>
+          <p class="ind-desc">Substation monitoring, renewable generation forecasting, and distribution grid load
+            management.</p>
         </div>
 
         <div class="ind-card">
           <div class="ind-icon"><i class="fa-solid fa-car"></i></div>
           <h3 class="ind-title">Automotive</h3>
-          <p class="ind-desc">Tier-1 assembly line sequencing, component traceability, and robotic welding inspection.</p>
+          <p class="ind-desc">Tier-1 assembly line sequencing, component traceability, and robotic welding inspection.
+          </p>
         </div>
 
         <div class="ind-card">
           <div class="ind-icon"><i class="fa-solid fa-laptop-code"></i></div>
           <h3 class="ind-title">IT &amp; Technology</h3>
-          <p class="ind-desc">Datacenter server environmental telemetry, power utilization efficiency, and thermal mitigation.</p>
+          <p class="ind-desc">Datacenter server environmental telemetry, power utilization efficiency, and thermal
+            mitigation.</p>
         </div>
 
         <div class="ind-card">
           <div class="ind-icon"><i class="fa-solid fa-boxes-packing"></i></div>
           <h3 class="ind-title">Wholesale</h3>
-          <p class="ind-desc">Bulk inventory turnover forecasting, multi-warehouse dispatching, and consignment tracking.</p>
+          <p class="ind-desc">Bulk inventory turnover forecasting, multi-warehouse dispatching, and consignment
+            tracking.</p>
         </div>
       </div>
     </div>
@@ -2759,7 +2845,10 @@
           <em>Automate. Intelligently.</em>
         </h2>
         <p class="vision-text">
-          We believe the future of technology is not a collection of disconnected applications. It is an intelligent ecosystem where data moves seamlessly between systems, AI understands real-world operations, automation executes workflows autonomously, and people make faster, higher-confidence decisions. Hyna Studio is building toward that future.
+          We believe the future of technology is not a collection of disconnected applications. It is an intelligent
+          ecosystem where data moves seamlessly between systems, AI understands real-world operations, automation
+          executes workflows autonomously, and people make faster, higher-confidence decisions. Hyna Studio is building
+          toward that future.
         </p>
       </div>
     </div>
@@ -2774,7 +2863,8 @@
           Why Hyna Studio <em>Technologies</em>
         </h2>
         <p class="section-desc">
-          We reject brittle legacy custom service models in favor of scalable, reusable technology platforms built to outlast changing market cycles.
+          We reject brittle legacy custom service models in favor of scalable, reusable technology platforms built to
+          outlast changing market cycles.
         </p>
       </div>
 
@@ -2791,7 +2881,8 @@
           <div class="why-card-icon"><i class="fa-solid fa-brain"></i></div>
           <h3 class="why-card-title">AI-NATIVE</h3>
           <p class="why-card-desc">
-            Artificial intelligence is designed natively into our system architecture, never glued on as an afterthought.
+            Artificial intelligence is designed natively into our system architecture, never glued on as an
+            afterthought.
           </p>
         </div>
 
@@ -2815,7 +2906,8 @@
           <div class="why-card-icon"><i class="fa-solid fa-rocket"></i></div>
           <h3 class="why-card-title">BUILT FOR FUTURE</h3>
           <p class="why-card-desc">
-            Our technology stacks are engineered to evolve effortlessly as business scale and industrial paradigms advance.
+            Our technology stacks are engineered to evolve effortlessly as business scale and industrial paradigms
+            advance.
           </p>
         </div>
       </div>
@@ -2830,7 +2922,8 @@
           The Next Industrial Era <em>is Being Built Now.</em>
         </h2>
         <p class="final-cta-subtext">
-          Explore how intelligent technology can connect operations, data, AI, and automation into one digital ecosystem.
+          Explore how intelligent technology can connect operations, data, AI, and automation into one digital
+          ecosystem.
         </p>
         <div class="final-cta-actions">
           <button class="btn-build-pill" onclick="window.location.href='launchpad.html'">
@@ -2854,7 +2947,8 @@
           <div class="footer-brand-title">Hyna Studio Technologies LLP</div>
           <div class="footer-brand-sub">Technology &amp; Product Innovation</div>
           <p class="footer-brand-text">
-            Building intelligent software platforms, AI systems, automation engines, and connected Industry 4.0 infrastructure for enterprises worldwide.
+            Building intelligent software platforms, AI systems, automation engines, and connected Industry 4.0
+            infrastructure for enterprises worldwide.
           </p>
         </div>
 
@@ -2907,7 +3001,8 @@
   <!-- SCRIPT FOR NAVBAR & INTERACTIONS -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Navbar scroll effect
+      // Navbar scroll effect - disabled so navbar remains completely constant while scrolling
+      /*
       const navbar = document.querySelector('nav');
       if (navbar) {
         window.addEventListener('scroll', () => {
@@ -2918,6 +3013,7 @@
           }
         }, { passive: true });
       }
+      */
 
       // Mobile menu toggle
       const toggleBtn = document.getElementById('navMobileToggle');
@@ -2967,4 +3063,5 @@
     });
   </script>
 </body>
+
 </html>
