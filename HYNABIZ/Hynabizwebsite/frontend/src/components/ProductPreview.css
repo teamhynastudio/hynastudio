@@ -11,8 +11,8 @@
 .preview-stage {
   position: relative;
   width: 100%;
-  max-width: 1050px;
-  height: 560px;
+  max-width: 1040px;
+  height: 530px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,63 +25,61 @@
   top: 50%;
   left: 50%;
   width: 100%;
-  max-width: 1050px;
-  height: 560px;
-  transition: transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1),
-              opacity 0.65s ease,
-              filter 0.65s ease,
-              box-shadow 0.65s ease;
-  transform-style: preserve-3d;
+  max-width: 860px;
+  height: 530px;
+  transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+              filter 0.75s ease,
+              box-shadow 0.75s ease;
+  will-change: transform, filter;
 }
 
-/* Center Active Tablet */
+/* Center Active Tablet (Always on Top) */
 .device-center {
-  z-index: 5;
+  z-index: 30 !important;
   transform: translate(-50%, -50%) scale(1) rotateY(0deg);
-  opacity: 1;
+  opacity: 1 !important;
+  filter: brightness(1);
   pointer-events: auto;
 }
 
 .device-center .dashboard-wrapper {
-  box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.8), 0 0 50px rgba(0, 194, 255, 0.16);
+  box-shadow: 0 35px 90px -15px rgba(0, 0, 0, 0.95), 0 0 50px rgba(0, 194, 255, 0.25);
 }
 
-/* Left Nearby Tablet */
+/* Left Nearby Tablet (Behind on Left Flank) */
 .device-left {
-  z-index: 2;
-  transform: translate(calc(-50% - 220px), -50%) scale(0.86) rotateY(9deg);
-  opacity: 0.68;
-  filter: brightness(0.85);
+  z-index: 10 !important;
+  transform: translate(calc(-50% - 290px), -50%) scale(0.82) rotateY(8deg);
+  opacity: 1 !important; /* 100% OPAQUE - NO TEXT BLEED */
+  filter: brightness(0.65);
   cursor: pointer;
 }
 
 .device-left .dashboard-wrapper {
-  box-shadow: -15px 25px 60px rgba(0, 0, 0, 0.7);
+  box-shadow: -20px 30px 60px rgba(0, 0, 0, 0.85);
 }
 
 .device-left:hover {
-  opacity: 0.95;
-  filter: brightness(1);
-  transform: translate(calc(-50% - 200px), -50%) scale(0.88) rotateY(7deg);
+  filter: brightness(0.9);
+  transform: translate(calc(-50% - 270px), -50%) scale(0.84) rotateY(6deg);
 }
 
-/* Right Nearby Tablet */
+/* Right Nearby Tablet (Behind on Right Flank) */
 .device-right {
-  z-index: 2;
-  transform: translate(calc(-50% + 220px), -50%) scale(0.86) rotateY(-9deg);
-  opacity: 0.68;
-  filter: brightness(0.85);
+  z-index: 10 !important;
+  transform: translate(calc(-50% + 290px), -50%) scale(0.82) rotateY(-8deg);
+  opacity: 1 !important; /* 100% OPAQUE - NO TEXT BLEED */
+  filter: brightness(0.65);
   cursor: pointer;
 }
 
 .device-right .dashboard-wrapper {
-  box-shadow: 15px 25px 60px rgba(0, 0, 0, 0.7);
+  box-shadow: 20px 30px 60px rgba(0, 0, 0, 0.85);
 }
 
 .device-right:hover {
-  opacity: 0.95;
-  filter: brightness(1);
-  transform: translate(calc(-50% + 200px), -50%) scale(0.88) rotateY(-7deg);
+  filter: brightness(0.9);
+  transform: translate(calc(-50% + 270px), -50%) scale(0.84) rotateY(-6deg);
 }
 
 /* White iPad Tablet Chassis */
@@ -572,40 +570,46 @@
 /* Responsive Adaptations */
 @media (max-width: 1200px) {
   .preview-stage {
-    max-width: 920px;
-    height: 540px;
+    max-width: 900px;
+    height: 490px;
   }
   .preview-device {
-    max-width: 920px;
-    height: 540px;
+    max-width: 780px;
+    height: 490px;
   }
   .device-left {
-    transform: translate(calc(-50% - 190px), -50%) scale(0.84) rotateY(8deg);
+    transform: translate(calc(-50% - 240px), -50%) scale(0.8) rotateY(6deg);
+    opacity: 1 !important;
+    filter: brightness(0.65);
   }
   .device-right {
-    transform: translate(calc(-50% + 190px), -50%) scale(0.84) rotateY(-8deg);
+    transform: translate(calc(-50% + 240px), -50%) scale(0.8) rotateY(-6deg);
+    opacity: 1 !important;
+    filter: brightness(0.65);
   }
 }
 
 @media (max-width: 992px) {
   .preview-stage {
-    max-width: 720px;
-    height: 480px;
+    max-width: 740px;
+    height: 460px;
   }
   .preview-device {
-    max-width: 720px;
-    height: 480px;
+    max-width: 650px;
+    height: 460px;
   }
   .device-left {
-    transform: translate(calc(-50% - 140px), -50%) scale(0.8) rotateY(6deg);
-    opacity: 0.55;
+    transform: translate(calc(-50% - 180px), -50%) scale(0.78) rotateY(5deg);
+    opacity: 1 !important;
+    filter: brightness(0.65);
   }
   .device-right {
-    transform: translate(calc(-50% + 140px), -50%) scale(0.8) rotateY(-6deg);
-    opacity: 0.55;
+    transform: translate(calc(-50% + 180px), -50%) scale(0.78) rotateY(-5deg);
+    opacity: 1 !important;
+    filter: brightness(0.65);
   }
   .dash-sidebar {
-    width: 180px;
+    width: 170px;
   }
   .dash-metrics {
     grid-template-columns: repeat(2, 1fr);
@@ -614,27 +618,28 @@
 
 @media (max-width: 768px) {
   .preview-stage {
+    max-width: 94vw;
     height: 440px;
   }
   .preview-device {
+    max-width: 94vw;
     height: 440px;
   }
-  .device-left {
-    transform: translate(calc(-50% - 110px), -50%) scale(0.76) rotateY(5deg);
-    opacity: 0.45;
+  .device-left, .device-right {
+    display: none !important;
   }
-  .device-right {
-    transform: translate(calc(-50% + 110px), -50%) scale(0.76) rotateY(-5deg);
-    opacity: 0.45;
+  .device-center {
+    transform: translate(-50%, -50%) scale(1) !important;
+    opacity: 1 !important;
   }
 }
 
 @media (max-width: 540px) {
-  .device-left, .device-right {
-    display: none;
+  .preview-stage {
+    height: 420px;
   }
-  .device-center {
-    transform: translate(-50%, -50%) scale(1);
+  .preview-device {
+    height: 420px;
   }
   .dash-sidebar {
     display: none;

@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import { ArrowRight, Play } from 'lucide-react';
 import ProductPreview from './ProductPreview';
 import './Hero.css';
 
@@ -28,8 +27,8 @@ const Hero = () => {
       }, '-=0.5')
       .from('.hero-eyebrow', { opacity: 0, y: 15, duration: 0.6 }, '-=0.8')
       .from('.hero-supporting', { opacity: 0, y: 15, duration: 0.6 }, '-=0.6')
-      .from('.hero-actions', { opacity: 0, y: 15, duration: 0.6 }, '-=0.4')
-      .from('.product-preview-container', { opacity: 0, scale: 0.95, y: 40, duration: 1 }, '-=0.3');
+      .from('.hero-app-section', { opacity: 0, y: 15, duration: 0.6 }, '-=0.4')
+      .from('.product-preview-container', { opacity: 0, scale: 0.95, y: 30, duration: 1 }, '-=0.3');
     }, containerRef);
     
     return () => ctx.revert(); // cleanup
@@ -53,14 +52,17 @@ const Hero = () => {
         <p className="hero-supporting text-muted">
           HynaBiz unifies business intelligence, operations, relationships, trade, and automation in one connected platform.
         </p>
-        
-        <div className="hero-actions">
-          <button className="btn btn-primary">
-            Get Started <ArrowRight size={16} style={{ marginLeft: '8px' }} />
-          </button>
-          <button className="btn btn-secondary">
-            <Play size={16} style={{ marginRight: '8px' }} /> Explore HynaBiz
-          </button>
+
+        <div className="hero-app-section">
+          <span className="hero-app-label">AVAILABLE IN</span>
+          <div className="hero-app-badges">
+            <a href="#download" className="app-badge-link" aria-label="Get it on Google Play">
+              <img src="/google-play-badge.svg" alt="Get it on Google Play" className="app-badge-img google-play-badge" />
+            </a>
+            <a href="#download" className="app-badge-link" aria-label="Download on the App Store">
+              <img src="/app-store-badge.svg" alt="Download on the App Store" className="app-badge-img app-store-badge" />
+            </a>
+          </div>
         </div>
       </div>
       

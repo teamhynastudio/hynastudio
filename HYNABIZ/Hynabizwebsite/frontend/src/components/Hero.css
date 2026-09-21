@@ -67,20 +67,49 @@
   letter-spacing: -0.01em;
 }
 
-.hero-actions {
+.hero-app-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 32px;
+  margin-bottom: 24px;
+}
+
+.hero-app-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 12px;
+}
+
+.hero-app-badges {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 16px;
-  margin-top: 36px;
-  margin-bottom: 32px;
 }
 
-.hero-actions .btn {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 600;
-  font-size: 15px;
-  letter-spacing: -0.01em;
+.app-badge-link {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 10px;
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.25s ease;
+}
+
+.app-badge-link:hover {
+  transform: translateY(-3px) scale(1.02);
+  filter: brightness(1.1);
+}
+
+.app-badge-img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 9px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 
 .hero-features {
@@ -95,8 +124,8 @@
 
 .product-preview-container {
   max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 24px;
+  margin: 36px auto 0 auto;
+  padding: 0 24px 60px 24px;
   perspective: 1000px;
   position: relative;
   z-index: 2;
@@ -109,11 +138,11 @@
   .hero-supporting {
     font-size: 16px;
   }
-  .hero-actions {
-    flex-direction: column;
+  .hero-app-badges {
+    gap: 12px;
   }
-  .hero-actions .btn {
-    width: 100%;
+  .app-badge-img {
+    height: 42px;
   }
   .hero {
     padding-top: calc(var(--navbar-height) + 60px);

@@ -347,6 +347,7 @@ const ProductPreview = () => {
             <div
               key={tab.id}
               className={`preview-device ${posClass}`}
+              style={{ zIndex: isCenter ? 30 : 10 }}
               onClick={() => {
                 if (!isCenter) setActiveTab(tab.id);
               }}
