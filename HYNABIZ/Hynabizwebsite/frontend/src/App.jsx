@@ -1,7 +1,6 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import HynaBizAI from './components/HynaBizAI';
 
 function App() {
   return (
@@ -10,7 +9,6 @@ function App() {
       
       <main>
         <Hero />
-        <HynaBizAI />
       </main>
       
     </div>

@@ -41,7 +41,7 @@ const Hero = () => {
       
       <div className="container hero-content">
         <div className="hero-eyebrow">
-          Business Management &middot; CRM &middot; Connections &middot; Trade &middot; Automation
+          Business Management &middot; CRM &middot; Connections &middot; Trade &middot; AI Intelligence &middot; Automation
         </div>
         
         <h1 className="hero-headline">
@@ -49,7 +49,7 @@ const Hero = () => {
         </h1>
         
         <p className="hero-supporting text-muted">
-          HynaBiz unifies business intelligence, operations, relationships, trade, and automation in one connected platform.
+          HynaBiz unifies AI intelligence, operations, relationships, trade, and automation in one connected platform.
         </p>
 
         <div className="hero-actions">

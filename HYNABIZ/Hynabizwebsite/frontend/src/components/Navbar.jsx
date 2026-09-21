@@ -38,7 +38,7 @@ const PLATFORM_SECTIONS = [
     ]
   },
   {
-    title: 'Intelligence & Automation',
+    title: 'AI Intelligence & Automation',
     icon: Workflow,
     items: [
       { name: 'HynaBiz AI', badge: 'AI' },
