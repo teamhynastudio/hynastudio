@@ -10,41 +10,49 @@ import {
   Workflow, 
   Search, 
   Bell, 
-  Settings
+  Settings,
+  Zap,
+  Building2
 } from 'lucide-react';
 import './ProductPreview.css';
 
 const Sidebar = ({ activeItem }) => (
   <div className="dash-sidebar">
-    <div className="dash-logo">
-      <img src="/hynabiz-logo.png" alt="HynaBiz Logo" className="dash-logo-img" />
-      <span className="logo-hyna">HYNA</span><span className="logo-biz text-blue">Biz</span>
+    <div className="dash-brand-block">
+      <div className="dash-logo-box">
+        <Building2 size={16} />
+        <span className="dash-logo-text">Your Logo</span>
+      </div>
+      <div className="dash-company-info">
+        <span className="dash-company-name">Your Company Name</span>
+        <span className="dash-company-sub">Business Workspace</span>
+      </div>
     </div>
     
     <div className="dash-nav">
       <div className={`dash-nav-item ${activeItem === 'overview' ? 'active' : ''}`}>
-        <LayoutDashboard size={16} /> Overview
+        <LayoutDashboard size={15} /> Overview
       </div>
       <div className={`dash-nav-item ${activeItem === 'business' ? 'active' : ''}`}>
-        <Briefcase size={16} /> Business
+        <Briefcase size={15} /> Business
       </div>
       <div className={`dash-nav-item ${activeItem === 'connections' ? 'active' : ''}`}>
-        <Users size={16} /> Connections
+        <Users size={15} /> Connections
       </div>
       <div className={`dash-nav-item ${activeItem === 'crm' ? 'active' : ''}`}>
-        <UserSquare2 size={16} /> CRM
+        <UserSquare2 size={15} /> CRM
       </div>
       <div className={`dash-nav-item ${activeItem === 'enquiries' ? 'active' : ''}`}>
-        <MessageSquare size={16} /> Enquiries
+        <MessageSquare size={15} /> Enquiries
       </div>
       <div className={`dash-nav-item ${activeItem === 'quotations' ? 'active' : ''}`}>
-        <FileText size={16} /> Quotations
+        <FileText size={15} /> Quotations
       </div>
       <div className={`dash-nav-item ${activeItem === 'orders' ? 'active' : ''}`}>
-        <ShoppingCart size={16} /> Orders
+        <ShoppingCart size={15} /> Orders
       </div>
       <div className={`dash-nav-item ${activeItem === 'automation' ? 'active' : ''}`}>
-        <Workflow size={16} /> Automation
+        <Workflow size={15} /> Automation
       </div>
     </div>
   </div>
@@ -295,10 +303,115 @@ const TradeScreen = () => (
   </div>
 );
 
+const AutomationsScreen = () => (
+  <div className="dash-main">
+    <div className="dash-header">
+      <div className="dash-greeting">
+        <h3>Workflows &amp; Automations</h3>
+        <p style={{ fontSize: '13px' }}>Smart triggers, automated pipelines &amp; instant execution.</p>
+      </div>
+      
+      <div className="dash-header-actions">
+        <div className="dash-search">
+          <Search size={14} />
+          <span>Search automations...</span>
+        </div>
+        <Bell size={18} style={{ color: 'rgba(255, 255, 255, 0.6)' }} />
+        <Settings size={18} style={{ color: 'rgba(255, 255, 255, 0.6)' }} />
+        <div className="dash-avatar"></div>
+      </div>
+    </div>
+    
+    <div className="dash-content">
+      <div className="dash-metrics">
+        <div className="metric-card">
+          <div className="metric-title">Active Rules</div>
+          <div className="metric-value">18</div>
+        </div>
+        <div className="metric-card">
+          <div className="metric-title">Automated Tasks</div>
+          <div className="metric-value">2,840</div>
+        </div>
+        <div className="metric-card">
+          <div className="metric-title">Time Saved / Mo</div>
+          <div className="metric-value">142 hrs</div>
+        </div>
+        <div className="metric-card">
+          <div className="metric-title">Execution Rate</div>
+          <div className="metric-value">99.9%</div>
+        </div>
+      </div>
+      
+      <div className="dash-timeline">
+        <div className="dash-panel-title">Active Business Automations</div>
+        <div className="automation-list">
+          <div className="automation-row">
+            <div className="automation-icon bg-blue-glow">
+              <Zap size={16} />
+            </div>
+            <div className="automation-col-main">
+              <div className="automation-title-row">
+                <strong>Instant Quotation Auto-Follow-Up</strong>
+                <span className="automation-badge bg-green">Active</span>
+              </div>
+              <p className="automation-sub">When quotation unopened &gt; 48 hrs &rarr; Send automated WhatsApp &amp; Email reminder</p>
+            </div>
+            <div className="automation-meta">
+              <span className="automation-runs">428 runs</span>
+              <div className="automation-toggle active">
+                <span className="toggle-thumb"></span>
+              </div>
+            </div>
+          </div>
+
+          <div className="automation-row">
+            <div className="automation-icon bg-green-glow">
+              <Workflow size={16} />
+            </div>
+            <div className="automation-col-main">
+              <div className="automation-title-row">
+                <strong>High-Value RFQ Routing &amp; CRM Sync</strong>
+                <span className="automation-badge bg-green">Active</span>
+              </div>
+              <p className="automation-sub">When inbound inquiry &gt; $10k &rarr; Auto-assign senior rep, notify Slack &amp; tag VIP</p>
+            </div>
+            <div className="automation-meta">
+              <span className="automation-runs">892 runs</span>
+              <div className="automation-toggle active">
+                <span className="toggle-thumb"></span>
+              </div>
+            </div>
+          </div>
+
+          <div className="automation-row">
+            <div className="automation-icon bg-purple-glow">
+              <FileText size={16} />
+            </div>
+            <div className="automation-col-main">
+              <div className="automation-title-row">
+                <strong>Low Inventory Restock Trigger</strong>
+                <span className="automation-badge bg-green">Active</span>
+              </div>
+              <p className="automation-sub">When stock level &lt; 15% &rarr; Generate Purchase Order draft to Tier-1 supplier</p>
+            </div>
+            <div className="automation-meta">
+              <span className="automation-runs">215 runs</span>
+              <div className="automation-toggle active">
+                <span className="toggle-thumb"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
 const TABS = [
   { id: 'connections', label: 'Connections & Network', icon: Users, component: ConnectionsScreen, activeNav: 'connections' },
   { id: 'overview', label: 'Business Overview', icon: LayoutDashboard, component: OverviewScreen, activeNav: 'overview' },
   { id: 'trade', label: 'Trade & Quotations', icon: ShoppingCart, component: TradeScreen, activeNav: 'quotations' },
+  { id: 'automation', label: 'Automations', icon: Workflow, component: AutomationsScreen, activeNav: 'automation' },
 ];
 
 const ProductPreview = () => {
@@ -328,7 +441,9 @@ const ProductPreview = () => {
     const currentIndex = TABS.findIndex(t => t.id === activeTab);
     const tabIndex = TABS.findIndex(t => t.id === tabId);
     const diff = (tabIndex - currentIndex + TABS.length) % TABS.length;
-    return diff === 1 ? 'device-right' : 'device-left';
+    if (diff === 1) return 'device-right';
+    if (diff === TABS.length - 1) return 'device-left';
+    return 'device-hidden';
   };
 
   return (
