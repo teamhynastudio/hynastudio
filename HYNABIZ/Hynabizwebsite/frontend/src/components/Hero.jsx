@@ -11,25 +11,69 @@ const Hero = () => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
       
-      // Planet comes from top to center
+      // 1. Planet (curve circle) comes from top to bottom
       tl.fromTo('.hero-planet', 
         { y: '-100vh', x: '-50%' }, 
-        { y: '0%', x: '-50%', duration: 1.5, ease: 'power2.out' }
+        { y: '0%', x: '-50%', duration: 1.4, ease: 'power2.out' }
       )
-      // Text starts as shadow/blurred, then brightens
-      .from('.hero-headline span', { 
-        opacity: 0, 
-        y: 25, 
-        filter: 'blur(16px)',
-        color: 'rgba(255,255,255,0)',
-        textShadow: '0 10px 20px rgba(0,0,0,0.8)',
-        duration: 1.2,
-      }, '-=0.5')
-      .from('.hero-eyebrow', { opacity: 0, y: 15, duration: 0.6 }, '-=0.8')
-      .from('.hero-supporting', { opacity: 0, y: 15, duration: 0.6 }, '-=0.6')
-      .from('.hero-actions', { opacity: 0, y: 15, duration: 0.6 }, '-=0.5')
-      .from('.hero-app-section', { opacity: 0, y: 15, duration: 0.6 }, '-=0.4')
-      .from('.product-preview-container', { opacity: 0, scale: 0.95, y: 30, duration: 1 }, '-=0.3');
+      // 2. WHEN that curve circle comes from top to bottom, THEN ONLY navbar first shows
+      .fromTo('.navbar', 
+        { opacity: 0, y: -25 }, 
+        { 
+          opacity: 1, 
+          y: 0, 
+          duration: 0.65, 
+          ease: 'power2.out',
+          onComplete: () => {
+            gsap.set('.navbar', { clearProps: 'y' });
+          }
+        }
+      )
+      // 3. THEN all the rest want to show
+      .fromTo('.hero-eyebrow', 
+        { opacity: 0, y: 15 }, 
+        { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' },
+        '+=0.05'
+      )
+      .fromTo('.hero-headline span', 
+        { 
+          opacity: 0, 
+          y: 25, 
+          filter: 'blur(16px)',
+          color: 'rgba(255,255,255,0)',
+          textShadow: '0 10px 20px rgba(0,0,0,0.8)'
+        }, 
+        { 
+          opacity: 1, 
+          y: 0, 
+          filter: 'blur(0px)',
+          color: '#ffffff',
+          textShadow: 'none',
+          duration: 0.9, 
+          ease: 'power2.out' 
+        }, 
+        '-=0.2'
+      )
+      .fromTo('.hero-supporting', 
+        { opacity: 0, y: 15 }, 
+        { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, 
+        '-=0.4'
+      )
+      .fromTo('.hero-actions', 
+        { opacity: 0, y: 15 }, 
+        { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, 
+        '-=0.3'
+      )
+      .fromTo('.hero-app-section', 
+        { opacity: 0, y: 15 }, 
+        { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, 
+        '-=0.3'
+      )
+      .fromTo('.product-preview-container', 
+        { opacity: 0, scale: 0.96, y: 30 }, 
+        { opacity: 1, scale: 1, y: 0, duration: 0.9, ease: 'power2.out' }, 
+        '-=0.2'
+      );
     }, containerRef);
     
     return () => ctx.revert(); // cleanup

@@ -30,6 +30,10 @@
   z-index: 2;
 }
 
+.hero-content > * {
+  opacity: 0;
+}
+
 .hero-eyebrow {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 13px;
@@ -228,6 +232,7 @@
 }
 
 .product-preview-container {
+  opacity: 0;
   max-width: 1100px;
   margin: 96px auto 0 auto;
   padding: 0 24px 60px 24px;
