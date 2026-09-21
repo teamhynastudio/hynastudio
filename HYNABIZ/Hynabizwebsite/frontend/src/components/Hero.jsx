@@ -27,8 +27,7 @@ const Hero = () => {
         stagger: 0.15 
       }, '-=0.5')
       .from('.hero-eyebrow', { opacity: 0, y: 15, duration: 0.6 }, '-=0.8')
-      .from('.hero-supporting', { opacity: 0, y: 15, duration: 0.6 }, '-=0.6')
-      .from('.hero-founder-badge', { opacity: 0, y: 15, duration: 0.6 }, '-=0.5')
+      .from('.hero-quotes', { opacity: 0, y: 15, duration: 0.6 }, '-=0.6')
       .from('.hero-actions', { opacity: 0, y: 15, duration: 0.6 }, '-=0.4')
       .from('.product-preview-container', { opacity: 0, scale: 0.95, y: 40, duration: 1 }, '-=0.3');
     }, containerRef);
@@ -51,17 +50,13 @@ const Hero = () => {
           <span>Here</span>
         </h1>
         
-        <p className="hero-supporting text-muted">
-          <strong>HynaBiz</strong> is a unified business infrastructure platform built to transform how modern businesses connect, operate, trade, and grow. It brings business intelligence, relationships, operations, commerce, and automation into one connected ecosystem, giving businesses the infrastructure to move from fragmented processes to intelligent, connected operations. Built by Hyna Studio, HynaBiz is designed to become a digital foundation for the next generation of businesses.
-        </p>
-
-        <div className="hero-founder-badge">
-          <a href="https://www.hynastudio.com/vignesh" target="_blank" rel="noopener noreferrer" className="founder-link">
-            <span className="founder-dot"></span>
-            <span className="founder-name">Vignesh V. L.</span>
-            <span className="founder-sep">&bull;</span>
-            <span className="founder-role">Founder, Hyna Studio | Creator of HynaBiz</span>
-          </a>
+        <div className="hero-quotes">
+          <p className="hero-quote-lead">
+            “The digital foundation for the next generation of businesses.”
+          </p>
+          <p className="hero-quote-tagline">
+            “Built to transform how modern businesses connect, operate, trade, and grow.”
+          </p>
         </div>
         
         <div className="hero-actions">
