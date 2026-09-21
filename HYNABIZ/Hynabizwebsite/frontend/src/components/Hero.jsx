@@ -8,6 +8,11 @@ const Hero = () => {
   const containerRef = useRef(null);
   
   useEffect(() => {
+    const navbarEl = document.querySelector('.navbar');
+    if (navbarEl) {
+      gsap.set(navbarEl, { opacity: 0, y: -20 });
+    }
+
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
       
@@ -15,22 +20,23 @@ const Hero = () => {
       tl.fromTo('.hero-planet', 
         { y: '-100vh', x: '-50%' }, 
         { y: '0%', x: '-50%', duration: 1.4, ease: 'power2.out' }
-      )
+      );
+
       // 2. WHEN that curve circle comes from top to bottom, THEN ONLY navbar first shows
-      .fromTo('.navbar', 
-        { opacity: 0, y: -25 }, 
-        { 
+      if (navbarEl) {
+        tl.to(navbarEl, { 
           opacity: 1, 
           y: 0, 
           duration: 0.65, 
           ease: 'power2.out',
           onComplete: () => {
-            gsap.set('.navbar', { clearProps: 'y' });
+            gsap.set(navbarEl, { clearProps: 'y,transform' });
           }
-        }
-      )
+        });
+      }
+
       // 3. THEN all the rest want to show
-      .fromTo('.hero-eyebrow', 
+      tl.fromTo('.hero-eyebrow', 
         { opacity: 0, y: 15 }, 
         { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' },
         '+=0.05'
@@ -76,7 +82,12 @@ const Hero = () => {
       );
     }, containerRef);
     
-    return () => ctx.revert(); // cleanup
+    return () => {
+      ctx.revert();
+      if (navbarEl) {
+        gsap.set(navbarEl, { clearProps: 'all' });
+      }
+    };
   }, []);
 
   return (

@@ -10,7 +10,6 @@
   border-bottom: 1px solid transparent;
   transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
   box-sizing: border-box;
-  opacity: 0;
 }
 
 .navbar-scrolled {
