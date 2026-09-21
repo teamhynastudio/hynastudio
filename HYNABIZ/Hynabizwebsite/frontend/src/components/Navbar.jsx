@@ -1,52 +1,127 @@
 import React, { useEffect, useRef, useState } from 'react';
-import gsap from 'gsap';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, Briefcase, Users, ShoppingCart, Sparkles, ArrowRight } from 'lucide-react';
 import './Navbar.css';
+
+const PLATFORM_SECTIONS = [
+  {
+    title: 'Business Management',
+    icon: Briefcase,
+    items: [
+      { name: 'CRM' },
+      { name: 'Sales' },
+      { name: 'Quotations' },
+      { name: 'Inventory' },
+      { name: 'Finance' },
+      { name: 'Business Operations' },
+    ]
+  },
+  {
+    title: 'Business Network',
+    icon: Users,
+    items: [
+      { name: 'Discover Businesses' },
+      { name: 'Suppliers' },
+      { name: 'Manufacturers' },
+      { name: 'Distributors' },
+      { name: 'Customers' },
+      { name: 'Business Partners' },
+    ]
+  },
+  {
+    title: 'Trade & Commerce',
+    icon: ShoppingCart,
+    items: [
+      { name: 'Product Discovery' },
+      { name: 'Trade Opportunities' },
+      { name: 'Business Enquiries' },
+      { name: 'Orders & Deals' },
+    ]
+  },
+  {
+    title: 'Intelligence & Automation',
+    icon: Sparkles,
+    items: [
+      { name: 'HynaBiz AI', badge: 'AI' },
+      { name: 'Business Insights' },
+      { name: 'Smart Workflows' },
+      { name: 'Reports & Analytics' },
+    ]
+  }
+];
 
 const Navbar = () => {
   const navbarRef = useRef(null);
+  const platformButtonRef = useRef(null);
+  const platformMenuRef = useRef(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isPlatformOpen, setIsPlatformOpen] = useState(false);
+
+  const timeoutRef = useRef(null);
+
+  const handleMouseEnter = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+    setIsPlatformOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    timeoutRef.current = setTimeout(() => {
+      setIsPlatformOpen(false);
+    }, 180);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      if (scrollY > 50 && !isScrolled) {
-        setIsScrolled(true);
-        gsap.to(navbarRef.current, {
-          backgroundColor: 'rgba(255, 255, 255, 0.95)',
-          backdropFilter: 'blur(10px)',
-          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
-          borderBottom: '1px solid rgba(11, 18, 32, 0.05)',
-          padding: '10px 24px',
-          width: '90%',
-          maxWidth: '1200px',
-          top: '20px',
-          borderRadius: '50px',
-          duration: 0.4,
-          ease: 'power3.out'
-        });
-      } else if (scrollY <= 50 && isScrolled) {
-        setIsScrolled(false);
-        gsap.to(navbarRef.current, {
-          backgroundColor: 'transparent',
-          backdropFilter: 'none',
-          boxShadow: 'none',
-          borderBottom: '1px solid transparent',
-          padding: '25px 0',
-          width: '100%',
-          maxWidth: '100%',
-          top: '0',
-          borderRadius: '0px',
-          duration: 0.4,
-          ease: 'power3.out'
-        });
+      setIsScrolled(scrollY > 25);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Close dropdown on outside click or Escape key
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (
+        platformMenuRef.current &&
+        !platformMenuRef.current.contains(e.target) &&
+        platformButtonRef.current &&
+        !platformButtonRef.current.contains(e.target)
+      ) {
+        setIsPlatformOpen(false);
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [isScrolled]);
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setIsPlatformOpen(false);
+      }
+    };
+
+    if (isPlatformOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('keydown', handleKeyDown);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isPlatformOpen]);
 
   return (
     <nav ref={navbarRef} className={`navbar ${isScrolled ? 'navbar-scrolled' : ''}`}>
@@ -57,8 +132,17 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-links desktop-only">
-          <div className="nav-item">
-            Platform <ChevronDown size={14} className="nav-icon" />
+          <div 
+            ref={platformButtonRef}
+            className={`nav-item ${isPlatformOpen ? 'active' : ''}`}
+            onClick={() => setIsPlatformOpen(!isPlatformOpen)}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            role="button"
+            tabIndex={0}
+            aria-expanded={isPlatformOpen}
+          >
+            Platform <ChevronDown size={14} className={`nav-icon ${isPlatformOpen ? 'rotated' : ''}`} />
           </div>
           <div className="nav-item">
             Connections <ChevronDown size={14} className="nav-icon" />
@@ -72,7 +156,7 @@ const Navbar = () => {
 
         <div className="navbar-actions desktop-only">
           <button className="btn-text">Sign in</button>
-          <button className="btn btn-primary">Get Started</button>
+          <button className="btn btn-primary">Sign up</button>
         </div>
 
         <button 
@@ -82,6 +166,89 @@ const Navbar = () => {
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
+
+      {/* Platform Mega Menu Dropdown */}
+      <div 
+        ref={platformMenuRef} 
+        className={`platform-dropdown-menu ${isPlatformOpen ? 'open' : ''}`}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <div className="platform-dropdown-grid">
+            {PLATFORM_SECTIONS.map((section, idx) => {
+              const SectionIcon = section.icon;
+              return (
+                <div key={idx} className="platform-dropdown-col">
+                  <div className="platform-col-header">
+                    <div className="platform-col-icon">
+                      <SectionIcon size={15} />
+                    </div>
+                    <span className="platform-col-title">{section.title}</span>
+                  </div>
+
+                  <ul className="platform-col-list">
+                    {section.items.map((item, itemIdx) => (
+                      <li 
+                        key={itemIdx} 
+                        className="platform-col-item"
+                        onClick={() => setIsPlatformOpen(false)}
+                      >
+                        <span className="platform-item-name">{item.name}</span>
+                        {item.badge && <span className="platform-item-badge">{item.badge}</span>}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="platform-dropdown-footer">
+            <div className="platform-footer-brand">
+              <span className="platform-footer-dot"></span>
+              <span>One platform. Every part of your business connected.</span>
+            </div>
+            <a href="#explore" className="platform-footer-action" onClick={() => setIsPlatformOpen(false)}>
+              Explore Platform <ArrowRight size={14} />
+            </a>
+          </div>
+        </div>
+
+      {/* Mobile Drawer Menu */}
+      {isMobileMenuOpen && (
+        <div className="navbar-mobile-drawer">
+          <div 
+            className="mobile-nav-item"
+            onClick={() => setIsPlatformOpen(!isPlatformOpen)}
+          >
+            <span>Platform</span>
+            <ChevronDown size={16} className={`nav-icon ${isPlatformOpen ? 'rotated' : ''}`} />
+          </div>
+          {isPlatformOpen && (
+            <div className="mobile-platform-accordion">
+              <div className="mobile-platform-tagline">One platform. Every part of your business connected.</div>
+              {PLATFORM_SECTIONS.map((sec, i) => (
+                <div key={i} className="mobile-sec">
+                  <div className="mobile-sec-title">{sec.title}</div>
+                  <div className="mobile-sec-items">
+                    {sec.items.map((it, j) => (
+                      <span key={j} className="mobile-sec-item">{it.name}</span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+          <div className="mobile-nav-item">Connections</div>
+          <div className="mobile-nav-item">CRM</div>
+          <div className="mobile-nav-item">Trade</div>
+          <div className="mobile-nav-item">Automation</div>
+          <div className="mobile-nav-actions">
+            <button className="btn-text" style={{ width: '100%', textAlign: 'center', padding: '10px' }}>Sign in</button>
+            <button className="btn btn-primary" style={{ width: '100%' }}>Sign up</button>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
