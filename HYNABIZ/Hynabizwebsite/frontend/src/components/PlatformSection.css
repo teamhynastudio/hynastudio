@@ -1,0 +1,268 @@
+/* ==========================================================================
+   PLATFORM SECTION (3rd Slide)
+   Modern SaaS Feature Grid: 3 × 2
+   Card Theme: Premium White / Dark Navy (#0B1220) / Hyna Cyan (#00C2FF)
+   ========================================================================== */
+
+.platform-section {
+  position: relative;
+  background-color: #000000;
+  padding: 130px 0 150px;
+  overflow: hidden;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.platform-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+
+.platform-header {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 64px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.platform-main-heading {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: #FFFFFF;
+  margin-bottom: 20px;
+}
+
+.platform-subheading {
+  font-size: clamp(16px, 1.8vw, 18px);
+  line-height: 1.6;
+  color: #94A3B8;
+  font-weight: 400;
+  max-width: 720px;
+}
+
+/* ==========================================================================
+   3 × 2 GRID
+   ========================================================================== */
+
+.platform-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+/* ==========================================================================
+   FEATURE CARD (MINI-PRODUCT MODULE)
+   ========================================================================== */
+
+.platform-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 22px;
+  padding: 32px 28px 26px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 440px;
+  box-shadow: 
+    0 10px 30px -10px rgba(0, 0, 0, 0.35),
+    0 2px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.platform-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 194, 255, 0.6);
+  box-shadow: 
+    0 20px 40px -12px rgba(0, 0, 0, 0.45),
+    0 0 24px rgba(0, 194, 255, 0.18);
+}
+
+/* Card Top: Icon & Category */
+.platform-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.platform-icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #F1F5F9;
+  border: 1px solid #E2E8F0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0B1220;
+  transition: all 0.25s ease;
+}
+
+.platform-card:hover .platform-icon-box {
+  background: rgba(0, 194, 255, 0.1);
+  border-color: rgba(0, 194, 255, 0.3);
+  color: #0099CC;
+}
+
+.platform-category-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #0099CC;
+  background: rgba(0, 194, 255, 0.08);
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+/* Card Body */
+.platform-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.platform-card-title {
+  font-size: 20px;
+  font-weight: 750;
+  color: #0B1220;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin-bottom: 10px;
+}
+
+.platform-card-desc {
+  font-size: 14px;
+  line-height: 1.55;
+  color: #475569;
+  margin-bottom: 20px;
+  min-height: 44px;
+}
+
+.platform-divider {
+  height: 1px;
+  background: #F1F5F9;
+  margin-bottom: 18px;
+}
+
+/* Details Checklist */
+.platform-details-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  flex: 1;
+}
+
+.platform-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.platform-check-wrap {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(0, 194, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0099CC;
+  flex-shrink: 0;
+}
+
+.platform-detail-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1E293B;
+  letter-spacing: -0.01em;
+}
+
+/* Card Footer: Action */
+.platform-card-footer {
+  padding-top: 14px;
+  border-top: 1px solid #F1F5F9;
+}
+
+.platform-explore-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0B1220;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.platform-explore-arrow {
+  color: #0099CC;
+  transition: transform 0.2s ease;
+}
+
+.platform-card:hover .platform-explore-btn {
+  color: #0099CC;
+}
+
+.platform-card:hover .platform-explore-arrow {
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (Desktop, Tablet, Mobile)
+   ========================================================================== */
+
+@media (max-width: 1120px) {
+  .platform-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .platform-section {
+    padding: 90px 0 110px;
+  }
+
+  .platform-header {
+    margin-bottom: 44px;
+  }
+
+  .platform-main-heading {
+    font-size: 29px;
+  }
+
+  .platform-subheading {
+    font-size: 15px;
+  }
+
+  .platform-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .platform-card {
+    min-height: auto;
+    padding: 26px 22px 22px 22px;
+  }
+
+  .platform-card-desc {
+    min-height: auto;
+  }
+}
