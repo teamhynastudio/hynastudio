@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Menu, X, ChevronDown, Briefcase, Users, ShoppingCart, Sparkles, ArrowRight } from 'lucide-react';
+import { Menu, X, ChevronDown, Briefcase, Users, ShoppingCart, Workflow, ArrowRight } from 'lucide-react';
 import './Navbar.css';
 
 const PLATFORM_SECTIONS = [
@@ -39,7 +39,7 @@ const PLATFORM_SECTIONS = [
   },
   {
     title: 'Intelligence & Automation',
-    icon: Sparkles,
+    icon: Workflow,
     items: [
       { name: 'HynaBiz AI', badge: 'AI' },
       { name: 'Business Insights' },

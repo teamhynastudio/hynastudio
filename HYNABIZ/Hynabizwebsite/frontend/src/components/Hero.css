@@ -236,6 +236,12 @@
   z-index: 2;
 }
 
+@media (max-width: 1024px) {
+  .hero-headline {
+    white-space: normal;
+  }
+}
+
 @media (max-width: 768px) {
   .hero-headline {
     font-size: 32px;

@@ -45,7 +45,7 @@ const Hero = () => {
         </div>
         
         <h1 className="hero-headline">
-          <span>The Future of Business Starts Here</span>
+          <span>Where Business Connects, Operates & Grows.</span>
         </h1>
         
         <p className="hero-supporting text-muted">
