@@ -1,5 +1,5 @@
 .hero {
-  padding-top: calc(var(--navbar-height) + 20px);
+  padding-top: calc(var(--navbar-height) + 40px);
   padding-bottom: 24px;
   text-align: center;
   position: relative;
@@ -24,7 +24,7 @@
 
 .hero-content {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  max-width: 820px;
+  max-width: 1100px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
@@ -42,12 +42,13 @@
 
 .hero-headline {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 60px;
-  line-height: 1.08;
+  font-size: clamp(32px, 4.3vw, 54px);
+  line-height: 1.15;
   font-weight: 800;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.025em;
   color: var(--white);
-  margin-bottom: 24px;
+  margin-bottom: 20px;
+  white-space: nowrap;
   filter: blur(0px); /* For GSAP animation */
 }
 
@@ -67,11 +68,27 @@
   letter-spacing: -0.01em;
 }
 
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 28px;
+}
+
+.hero-actions .btn {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+  padding: 12px 28px;
+  border-radius: 12px;
+}
+
 .hero-app-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 32px;
+  margin-top: 28px;
   margin-bottom: 24px;
 }
 
@@ -133,7 +150,8 @@
 
 @media (max-width: 768px) {
   .hero-headline {
-    font-size: 40px;
+    font-size: 32px;
+    white-space: normal;
   }
   .hero-supporting {
     font-size: 16px;

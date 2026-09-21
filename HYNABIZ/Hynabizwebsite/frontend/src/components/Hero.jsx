@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import { ArrowRight } from 'lucide-react';
 import ProductPreview from './ProductPreview';
 import './Hero.css';
 
@@ -18,15 +19,15 @@ const Hero = () => {
       // Text starts as shadow/blurred, then brightens
       .from('.hero-headline span', { 
         opacity: 0, 
-        y: 30, 
-        filter: 'blur(20px)',
+        y: 25, 
+        filter: 'blur(16px)',
         color: 'rgba(255,255,255,0)',
         textShadow: '0 10px 20px rgba(0,0,0,0.8)',
-        duration: 1.2, 
-        stagger: 0.15 
+        duration: 1.2,
       }, '-=0.5')
       .from('.hero-eyebrow', { opacity: 0, y: 15, duration: 0.6 }, '-=0.8')
       .from('.hero-supporting', { opacity: 0, y: 15, duration: 0.6 }, '-=0.6')
+      .from('.hero-actions', { opacity: 0, y: 15, duration: 0.6 }, '-=0.5')
       .from('.hero-app-section', { opacity: 0, y: 15, duration: 0.6 }, '-=0.4')
       .from('.product-preview-container', { opacity: 0, scale: 0.95, y: 30, duration: 1 }, '-=0.3');
     }, containerRef);
@@ -44,14 +45,18 @@ const Hero = () => {
         </div>
         
         <h1 className="hero-headline">
-          <span>The Future of</span><br/>
-          <span>Business Starts</span><br/>
-          <span>Here</span>
+          <span>The Future of Business Starts Here</span>
         </h1>
         
         <p className="hero-supporting text-muted">
           HynaBiz unifies business intelligence, operations, relationships, trade, and automation in one connected platform.
         </p>
+
+        <div className="hero-actions">
+          <button className="btn btn-primary">
+            Get Started <ArrowRight size={16} style={{ marginLeft: '8px' }} />
+          </button>
+        </div>
 
         <div className="hero-app-section">
           <span className="hero-app-label">AVAILABLE IN</span>

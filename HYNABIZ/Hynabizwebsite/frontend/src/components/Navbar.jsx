@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import gsap from 'gsap';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import './Navbar.css';
 
@@ -11,42 +10,12 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      if (scrollY > 50 && !isScrolled) {
-        setIsScrolled(true);
-        gsap.to(navbarRef.current, {
-          backgroundColor: 'rgba(255, 255, 255, 0.95)',
-          backdropFilter: 'blur(10px)',
-          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
-          borderBottom: '1px solid rgba(11, 18, 32, 0.05)',
-          padding: '10px 24px',
-          width: '90%',
-          maxWidth: '1200px',
-          top: '20px',
-          borderRadius: '50px',
-          duration: 0.4,
-          ease: 'power3.out'
-        });
-      } else if (scrollY <= 50 && isScrolled) {
-        setIsScrolled(false);
-        gsap.to(navbarRef.current, {
-          backgroundColor: 'transparent',
-          backdropFilter: 'none',
-          boxShadow: 'none',
-          borderBottom: '1px solid transparent',
-          padding: '25px 0',
-          width: '100%',
-          maxWidth: '100%',
-          top: '0',
-          borderRadius: '0px',
-          duration: 0.4,
-          ease: 'power3.out'
-        });
-      }
+      setIsScrolled(scrollY > 25);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isScrolled]);
+  }, []);
 
   return (
     <nav ref={navbarRef} className={`navbar ${isScrolled ? 'navbar-scrolled' : ''}`}>
