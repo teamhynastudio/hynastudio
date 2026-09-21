@@ -7884,105 +7884,414 @@
                 </div>
             </div>
 
-            <!-- OUR PEOPLE GRID -->
-            <div class="our-people-container">
-                <div class="our-people-grid">
-
-                    <!-- Vignesh -->
-                    <div class="our-person-card row-1 lp-fade-up" data-name="Vignesh"
-                        data-role="Founder & CEO (Managing Director)"
-                        data-bio="&quot;Leadership is not about control, it is about building people who can lead without you.&quot; Vignesh drives the strategic vision and engineering standards at Hyna Studio."
-                        data-photo="./images/team/vignesh_new.png?v=2"
-                        data-portfolio="https://vigneshvl-dev.github.io/PORTFOLIO/"
-                        data-github="https://github.com/vigneshvl-dev"
-                        data-linkedin="https://www.linkedin.com/in/vigneshvl-dev/" data-college="Anna University"
-                        data-degree="B.E. Computer Science & Engineering">
-                        <div class="avatar-circle-box">
-                            <img src="./images/team/vignesh_new.png?v=2" alt="Vignesh" class="avatar-img">
+            <!-- IMMERSIVE CAROUSEL SECTION -->
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap');
+                .immersive-team-section {
+                    background: #000000;
+                    color: #ffffff;
+                    padding: 80px 5% 100px;
+                    position: relative;
+                    z-index: 2;
+                }
+                .immersive-team-container {
+                    max-width: 1100px;
+                    margin: 0 auto;
+                }
+                .immersive-team-header {
+                    text-align: center;
+                    margin-bottom: 60px;
+                }
+                .immersive-eyebrow {
+                    font-family: 'Plus Jakarta Sans', sans-serif;
+                    font-size: 0.72rem;
+                    color: rgba(255, 255, 255, 0.5);
+                    text-transform: uppercase;
+                    letter-spacing: 0.15em;
+                    font-weight: 700;
+                    display: block;
+                    margin-bottom: 12px;
+                }
+                .immersive-title {
+                    font-family: 'Plus Jakarta Sans', sans-serif;
+                    font-size: clamp(2rem, 4vw, 3rem);
+                    font-weight: 800;
+                    letter-spacing: -0.02em;
+                    margin: 0;
+                }
+                .immersive-team-grid {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    border: 1px solid rgba(255, 255, 255, 0.08);
+                    position: relative;
+                    min-height: 520px;
+                    background: #050505;
+                }
+                .immersive-team-grid::after {
+                    content: '';
+                    position: absolute;
+                    left: 50%;
+                    top: 0;
+                    bottom: 0;
+                    width: 1px;
+                    background: rgba(255, 255, 255, 0.08);
+                }
+                .carousel-left {
+                    position: relative;
+                    overflow: hidden;
+                    background: #0a0a0a;
+                }
+                .carousel-right {
+                    position: relative;
+                    display: flex;
+                    flex-direction: column;
+                    overflow: hidden;
+                }
+                .carousel-slide-img, .carousel-slide-text {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.4s;
+                }
+                .carousel-slide-img.active, .carousel-slide-text.active {
+                    opacity: 1;
+                    visibility: visible;
+                }
+                .carousel-image {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: center top;
+                    filter: grayscale(100%) contrast(1.1);
+                    transition: transform 7s ease-out;
+                    transform: scale(1.05);
+                }
+                .carousel-slide-img.active .carousel-image {
+                    transform: scale(1);
+                    filter: grayscale(40%) contrast(1.05);
+                }
+                .text-slide-content {
+                    padding: 60px 50px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    height: 100%;
+                    transform: translateY(15px);
+                    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+                }
+                .carousel-slide-text.active .text-slide-content {
+                    transform: translateY(0);
+                }
+                .member-quote {
+                    font-family: 'Plus Jakarta Sans', sans-serif;
+                    font-size: clamp(1.4rem, 2.5vw, 2.1rem);
+                    font-style: normal;
+                    font-weight: 300;
+                    line-height: 1.45;
+                    color: #e0e0e0;
+                    margin-top: 20px;
+                }
+                .quote-mark {
+                    font-size: 3rem;
+                    line-height: 0;
+                    color: var(--accent, #4F3FF0);
+                    display: block;
+                    margin-bottom: 10px;
+                }
+                .member-meta {
+                    text-align: right;
+                }
+                .member-name {
+                    font-family: 'Plus Jakarta Sans', sans-serif;
+                    font-size: 1.6rem;
+                    font-weight: 700;
+                    letter-spacing: 0.02em;
+                    color: #ffffff;
+                    margin-bottom: 6px;
+                }
+                .member-role {
+                    font-family: 'Plus Jakarta Sans', sans-serif;
+                    font-size: 0.85rem;
+                    color: #888888;
+                    text-transform: uppercase;
+                    letter-spacing: 0.12em;
+                }
+                .carousel-indicators {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    display: flex;
+                    height: 3px;
+                    background: rgba(255, 255, 255, 0.05);
+                    z-index: 10;
+                }
+                .indicator-bar {
+                    flex: 1;
+                    height: 100%;
+                    background: transparent;
+                    position: relative;
+                }
+                .indicator-bar::after {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    height: 100%;
+                    width: 0;
+                    background: var(--accent, #ffffff);
+                    transition: width 0s linear;
+                }
+                .indicator-bar.active::after {
+                    width: 100%;
+                    transition: width 2s linear;
+                }
+                .indicator-bar.passed::after {
+                    width: 100%;
+                    background: rgba(255, 255, 255, 0.3);
+                }
+                .immersive-cta-wrapper {
+                    text-align: center;
+                    margin-top: 60px;
+                }
+                .btn-immersive-meet {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 12px;
+                    padding: 16px 36px;
+                    background: #000000;
+                    color: #ffffff;
+                    border: 1px solid rgba(255, 255, 255, 0.2);
+                    font-family: 'Plus Jakarta Sans', sans-serif;
+                    font-weight: 600;
+                    font-size: 0.85rem;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    text-decoration: none;
+                    transition: border-color 0.3s ease, background 0.3s ease;
+                }
+                .btn-immersive-meet:hover {
+                    border-color: #ffffff;
+                    background: #0a0a0a;
+                }
+                @media (max-width: 900px) {
+                    .immersive-team-grid {
+                        grid-template-columns: 1fr;
+                        min-height: auto;
+                    }
+                    .immersive-team-grid::after { display: none; }
+                    .carousel-left { height: 350px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+                    .carousel-right { height: 400px; }
+                    .text-slide-content { padding: 40px 30px; }
+                }
+            </style>
+            
+            <section id="team" class="immersive-team-section">
+                <div class="immersive-team-container">
+                    <div class="immersive-team-header">
+                        <span class="immersive-eyebrow">WE ARE HYNA</span>
+                        <h2 class="immersive-title">Leadership Core</h2>
+                    </div>
+                    
+                    <div class="immersive-team-grid" id="immersiveCarousel">
+                        <!-- Left: Images -->
+                        <div class="carousel-left">
+                            <div class="carousel-slide-img active">
+                                <img src="./images/team/vignesh_new.png?v=2" alt="Vignesh VL" class="carousel-image">
+                            </div>
+                            <div class="carousel-slide-img">
+                                <img src="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" alt="Jashwin J" class="carousel-image">
+                            </div>
+                            <div class="carousel-slide-img">
+                                <img src="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg" alt="Dharshan JM" class="carousel-image">
+                            </div>
+                            <div class="carousel-slide-img">
+                                <img src="./images/team/linciya.png?v=1" alt="Linciya" class="carousel-image">
+                            </div>
+                            <div class="carousel-slide-img">
+                                <img src="./images/team/zarif.jpg?v=1" alt="Muhammed Zarif" class="carousel-image">
+                            </div>
+                            <div class="carousel-slide-img">
+                                <img src="./images/team/arshiya.jpg?v=1" alt="Muhammed Arshiya" class="carousel-image">
+                            </div>
                         </div>
-                        <h3 class="person-name">Vignesh VL</h3>
-                        <div class="person-role">Founder &amp; CEO<br>(Managing Director)</div>
+
+                        <!-- Right: Content -->
+                        <div class="carousel-right">
+                            <div class="carousel-slide-text active">
+                                <div class="text-slide-content">
+                                    <div class="member-quote">
+                                        <span class="quote-mark">"</span>
+                                        Leadership is not about control, it is about building people who can lead without you.
+                                    </div>
+                                    <div class="member-meta">
+                                        <div class="member-name">Vignesh VL</div>
+                                        <div class="member-role">Founder & CEO</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-slide-text">
+                                <div class="text-slide-content">
+                                    <div class="member-quote">
+                                        <span class="quote-mark">"</span>
+                                        Deadlines don't fail because of time, they fail because alignment is missing.
+                                    </div>
+                                    <div class="member-meta">
+                                        <div class="member-name">Jashwin J</div>
+                                        <div class="member-role">Co-Founder & COO</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-slide-text">
+                                <div class="text-slide-content">
+                                    <div class="member-quote">
+                                        <span class="quote-mark">"</span>
+                                        A co-founder in tech doesn't follow trends, he builds what will become the next standard.
+                                    </div>
+                                    <div class="member-meta">
+                                        <div class="member-name">Dharshan JM</div>
+                                        <div class="member-role">Co-Founder & CTO</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-slide-text">
+                                <div class="text-slide-content">
+                                    <div class="member-quote">
+                                        <span class="quote-mark">"</span>
+                                        Great marketing isn't about telling people what you do, it's about inspiring them with why you exist.
+                                    </div>
+                                    <div class="member-meta">
+                                        <div class="member-name">Linciya</div>
+                                        <div class="member-role">Chief Marketing Officer</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-slide-text">
+                                <div class="text-slide-content">
+                                    <div class="member-quote">
+                                        <span class="quote-mark">"</span>
+                                        True growth is about building scalable strategies that connect vision with market opportunities.
+                                    </div>
+                                    <div class="member-meta">
+                                        <div class="member-name">Muhammed Zarif</div>
+                                        <div class="member-role">Chief Growth Officer</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-slide-text">
+                                <div class="text-slide-content">
+                                    <div class="member-quote">
+                                        <span class="quote-mark">"</span>
+                                        Exceptional products are born where user needs and innovative technology align.
+                                    </div>
+                                    <div class="member-meta">
+                                        <div class="member-name">Muhammed Arshiya</div>
+                                        <div class="member-role">Chief Product Officer</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Indicators inside right column at the bottom -->
+                            <div class="carousel-indicators">
+                                <div class="indicator-bar active"></div>
+                                <div class="indicator-bar"></div>
+                                <div class="indicator-bar"></div>
+                                <div class="indicator-bar"></div>
+                                <div class="indicator-bar"></div>
+                                <div class="indicator-bar"></div>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Jashwin -->
-                    <div class="our-person-card row-1 lp-fade-up" data-name="Jashwin" data-role="Co-Founder & COO"
-                        data-bio="&quot;Deadlines don’t fail because of time, they fail because alignment is missing.&quot; Jashwin ensures that every project at Hyna Studio is aligned with stakeholder goals and delivered seamlessly."
-                        data-photo="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" data-portfolio="#"
-                        data-github="https://github.com/jashwinj2008"
-                        data-linkedin="https://www.linkedin.com/in/jashwin-j-16b06240a" data-college="Anna University"
-                        data-degree="B.E. Computer Science & Engineering">
-                        <div class="avatar-circle-box">
-                            <img src="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" alt="Jashwin"
-                                class="avatar-img">
-                        </div>
-                        <h3 class="person-name">Jashwin J</h3>
-                        <div class="person-role">Co-Founder &amp; COO</div>
+                    <div class="immersive-cta-wrapper">
+                        <a href="team.html" class="btn-immersive-meet">
+                            Meet the Core Team
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
                     </div>
-
-                    <!-- Dharshan -->
-                    <div class="our-person-card row-1 lp-fade-up" data-name="Dharshan" data-role="Co-Founder & CTO"
-                        data-bio="&quot;A co-founder in tech doesn’t follow trends, he builds what will become the next standard.&quot; Dharshan leads our systems architecture, cloud infrastructure, and technical execution."
-                        data-photo="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg"
-                        data-portfolio="https://portholio-zeta.vercel.app/"
-                        data-github="https://github.com/dharshan00814"
-                        data-linkedin="https://www.linkedin.com/in/dharshan-jm" data-college="Anna University"
-                        data-degree="B.E. Computer Science & Engineering">
-                        <div class="avatar-circle-box">
-                            <img src="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg"
-                                alt="Dharshan" class="avatar-img">
-                        </div>
-                        <h3 class="person-name">Dharshan JM</h3>
-                        <div class="person-role">Co-Founder &amp; CTO</div>
-                    </div>
-
-                    <!-- Linciya -->
-                    <div class="our-person-card row-2 lp-fade-up" data-name="Linciya"
-                        data-role="Chief Marketing Officer"
-                        data-bio="&quot;Great marketing isn’t about telling people what you do, it’s about inspiring them with why you exist.&quot; Linciya leads market positioning, growth strategies, and brand expansion at Hyna Studio."
-                        data-photo="./images/team/linciya.png?v=1" data-portfolio="#" data-github="#" data-linkedin="#"
-                        data-college="Anna University" data-degree="B.E. Computer Science & Engineering">
-                        <div class="avatar-circle-box">
-                            <img src="./images/team/linciya.png?v=1" alt="Linciya" class="avatar-img">
-                        </div>
-                        <h3 class="person-name">Linciya</h3>
-                        <div class="person-role">Chief Marketing Officer</div>
-                    </div>
-
-                    <!-- Muhammed Zarif -->
-                    <div class="our-person-card row-2 lp-fade-up" data-name="Muhammed Zarif"
-                        data-role="Chief Growth Officer"
-                        data-bio="&quot;True growth is about building scalable strategies that connect vision with market opportunities.&quot; Muhammed Zarif leads strategic partnerships, client acquisition, and growth initiatives at Hyna Studio."
-                        data-photo="./images/team/zarif.jpg?v=1" data-portfolio="#" data-github="#" data-linkedin="#"
-                        data-college="Anna University" data-degree="B.E. Computer Science &amp; Engineering">
-                        <div class="avatar-circle-box">
-                            <img src="./images/team/zarif.jpg?v=1" alt="Muhammed Zarif" class="avatar-img"
-                                onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Muhammed+Zarif&background=7c3aed&color=fff';">
-                        </div>
-                        <h3 class="person-name">Muhammed<br>Zarif</h3>
-                        <div class="person-role">Chief Growth Officer</div>
-                    </div>
-
-                    <!-- Muhammed Arshiya -->
-                    <div class="our-person-card row-2 lp-fade-up" data-name="Muhammed Arshiya"
-                        data-role="Chief Product Officer"
-                        data-bio="&quot;Exceptional products are born where user needs and innovative technology align.&quot; Muhammed Arshiya drives product strategy, roadmap planning, and user experience excellence at Hyna Studio."
-                        data-photo="./images/team/arshiya.jpg?v=1" data-portfolio="#" data-github="#" data-linkedin="#"
-                        data-college="Anna University" data-degree="B.E. Computer Science & Engineering">
-                        <div class="avatar-circle-box">
-                            <img src="./images/team/arshiya.jpg?v=1" alt="Muhammed Arshiya" class="avatar-img"
-                                onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Muhammed+Arshiya&background=00e7b3&color=111';">
-                        </div>
-                        <h3 class="person-name">Muhammed<br>Arshiya</h3>
-                        <div class="person-role">Chief Product Officer</div>
-                    </div>
-
-
-
-
-
                 </div>
-            </div>
-        </section>
+            </section>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const carousel = document.getElementById('immersiveCarousel');
+                    if (!carousel) return;
+                    
+                    const imgSlides = carousel.querySelectorAll('.carousel-slide-img');
+                    const textSlides = carousel.querySelectorAll('.carousel-slide-text');
+                    const indicators = carousel.querySelectorAll('.indicator-bar');
+                    
+                    let currentIndex = 0;
+                    const totalSlides = imgSlides.length;
+                    let slideInterval;
+                    let isPaused = false;
+                    
+                    const showSlide = (index) => {
+                        // Reset all
+                        imgSlides.forEach(s => s.classList.remove('active'));
+                        textSlides.forEach(s => s.classList.remove('active'));
+                        indicators.forEach((ind, i) => {
+                            ind.classList.remove('active', 'passed');
+                            if (i < index) ind.classList.add('passed');
+                        });
+                        
+                        // Set active
+                        imgSlides[index].classList.add('active');
+                        textSlides[index].classList.add('active');
+                        indicators[index].classList.add('active');
+                    };
+                    
+                    const nextSlide = () => {
+                        if (!isPaused) {
+                            currentIndex = (currentIndex + 1) % totalSlides;
+                            
+                            // If looping back to 0, need a small timeout to reset transitions on indicators
+                            if(currentIndex === 0) {
+                                indicators.forEach(ind => ind.classList.remove('passed', 'active'));
+                                // Force reflow
+                                void carousel.offsetWidth; 
+                            }
+                            
+                            showSlide(currentIndex);
+                        }
+                    };
+                    
+                    const startCarousel = () => {
+                        if(slideInterval) clearInterval(slideInterval);
+                        slideInterval = setInterval(nextSlide, 2000);
+                        
+                        // To trigger the CSS animation of the first indicator immediately
+                        indicators[currentIndex].classList.remove('active');
+                        void carousel.offsetWidth;
+                        indicators[currentIndex].classList.add('active');
+                    };
+                    
+                    // Pause on hover
+                    carousel.addEventListener('mouseenter', () => {
+                        isPaused = true;
+                    });
+                    
+                    carousel.addEventListener('mouseleave', () => {
+                        isPaused = false;
+                    });
+                    
+                    // Allow clicking indicators
+                    indicators.forEach((indicator, index) => {
+                        indicator.addEventListener('click', () => {
+                            currentIndex = index;
+                            showSlide(currentIndex);
+                            startCarousel(); // reset timer
+                        });
+                    });
+                    
+                    startCarousel();
+                });
+            </script>
+
 
         <!-- ── COMPANY STORY SECTION (ZERODHA STYLE DARK MODE) ── -->
         <style>
