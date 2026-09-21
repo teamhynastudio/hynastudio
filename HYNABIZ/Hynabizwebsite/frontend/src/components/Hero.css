@@ -51,10 +51,67 @@
 }
 
 .hero-supporting {
-  font-size: 20px;
-  max-width: 600px;
+  font-size: 16px;
+  max-width: 720px;
   margin: 20px auto 0 auto;
-  line-height: 1.6;
+  line-height: 1.7;
+  color: #a0aec0;
+}
+
+.hero-supporting strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.hero-founder-badge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.founder-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #e2e8f0;
+  text-decoration: none;
+  font-size: 13px;
+  transition: all 0.25s ease;
+}
+
+.founder-link:hover {
+  background: rgba(0, 194, 255, 0.12);
+  border-color: rgba(0, 194, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+.founder-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #00c2ff;
+  box-shadow: 0 0 10px #00c2ff;
+}
+
+.founder-name {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.founder-sep {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.founder-role {
+  color: #94a3b8;
+  font-size: 12px;
 }
 
 .hero-actions {
@@ -62,7 +119,7 @@
   align-items: center;
   justify-content: center;
   gap: 16px;
-  margin-top: 48px;
+  margin-top: 36px;
   margin-bottom: 32px;
 }
 
