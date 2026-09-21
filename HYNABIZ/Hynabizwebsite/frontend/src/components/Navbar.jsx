@@ -41,7 +41,7 @@ const Navbar = () => {
 
         <div className="navbar-actions desktop-only">
           <button className="btn-text">Sign in</button>
-          <button className="btn btn-primary">Get Started</button>
+          <button className="btn btn-primary">Sign up</button>
         </div>
 
         <button 
