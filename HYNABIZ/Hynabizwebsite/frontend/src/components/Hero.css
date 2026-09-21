@@ -50,29 +50,11 @@
   display: inline-block;
 }
 
-.hero-quotes {
-  max-width: 760px;
-  margin: 18px auto 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.hero-quote-lead {
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 1.5;
-  color: #f1f5f9;
-  letter-spacing: -0.01em;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
-}
-
-.hero-quote-tagline {
-  font-size: 15px;
-  font-weight: 400;
+.hero-supporting {
+  font-size: 19px;
+  max-width: 620px;
+  margin: 20px auto 0 auto;
   line-height: 1.6;
-  color: #94a3b8;
-  letter-spacing: 0.01em;
 }
 
 .hero-actions {
@@ -107,11 +89,8 @@
   .hero-headline {
     font-size: 40px;
   }
-  .hero-quote-lead {
-    font-size: 17px;
-  }
-  .hero-quote-tagline {
-    font-size: 13.5px;
+  .hero-supporting {
+    font-size: 16px;
   }
   .hero-actions {
     flex-direction: column;

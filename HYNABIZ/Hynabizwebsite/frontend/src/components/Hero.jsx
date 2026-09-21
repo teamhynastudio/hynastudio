@@ -27,7 +27,7 @@ const Hero = () => {
         stagger: 0.15 
       }, '-=0.5')
       .from('.hero-eyebrow', { opacity: 0, y: 15, duration: 0.6 }, '-=0.8')
-      .from('.hero-quotes', { opacity: 0, y: 15, duration: 0.6 }, '-=0.6')
+      .from('.hero-supporting', { opacity: 0, y: 15, duration: 0.6 }, '-=0.6')
       .from('.hero-actions', { opacity: 0, y: 15, duration: 0.6 }, '-=0.4')
       .from('.product-preview-container', { opacity: 0, scale: 0.95, y: 40, duration: 1 }, '-=0.3');
     }, containerRef);
@@ -50,14 +50,9 @@ const Hero = () => {
           <span>Here</span>
         </h1>
         
-        <div className="hero-quotes">
-          <p className="hero-quote-lead">
-            “The digital foundation for the next generation of businesses.”
-          </p>
-          <p className="hero-quote-tagline">
-            “Built to transform how modern businesses connect, operate, trade, and grow.”
-          </p>
-        </div>
+        <p className="hero-supporting text-muted">
+          HynaBiz unifies business intelligence, operations, relationships, trade, and automation in one connected platform.
+        </p>
         
         <div className="hero-actions">
           <button className="btn btn-primary">
