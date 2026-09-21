@@ -53,8 +53,9 @@ const Hero = () => {
         </p>
 
         <div className="hero-actions">
-          <button className="btn btn-primary">
-            Get Started <ArrowRight size={16} style={{ marginLeft: '8px' }} />
+          <button className="uiverse-btn">
+            <span className="uiverse-btn-text">Get Started</span>
+            <ArrowRight size={18} className="uiverse-btn-icon" />
           </button>
         </div>
 
