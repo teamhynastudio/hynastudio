@@ -147,10 +147,6 @@ const Navbar = () => {
           <div className="nav-item">
             Connections <ChevronDown size={14} className="nav-icon" />
           </div>
-          <div className="nav-item">CRM</div>
-          <div className="nav-item">
-            Trade <ChevronDown size={14} className="nav-icon" />
-          </div>
           <div className="nav-item">Automation</div>
         </div>
 
@@ -240,8 +236,6 @@ const Navbar = () => {
             </div>
           )}
           <div className="mobile-nav-item">Connections</div>
-          <div className="mobile-nav-item">CRM</div>
-          <div className="mobile-nav-item">Trade</div>
           <div className="mobile-nav-item">Automation</div>
           <div className="mobile-nav-actions">
             <button className="btn-text" style={{ width: '100%', textAlign: 'center', padding: '10px' }}>Sign in</button>

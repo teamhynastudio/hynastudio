@@ -50,13 +50,37 @@
 }
 
 /* ==========================================================================
-   3 × 2 GRID
+   INFINITE RIGHT-TO-LEFT MARQUEE
    ========================================================================== */
 
-.platform-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+.platform-marquee-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 16px 0 36px;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+}
+
+.platform-marquee-track {
+  display: flex;
   gap: 28px;
+  width: max-content;
+  will-change: transform;
+  animation: platformMarqueeScroll 34s linear infinite;
+}
+
+.platform-marquee-wrapper:hover .platform-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes platformMarqueeScroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
 }
 
 /* ==========================================================================
@@ -64,6 +88,10 @@
    ========================================================================== */
 
 .platform-card {
+  width: 375px;
+  min-width: 375px;
+  max-width: 375px;
+  flex-shrink: 0;
   background: #FFFFFF;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 22px;
@@ -83,7 +111,7 @@
 }
 
 .platform-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
   border-color: rgba(0, 194, 255, 0.6);
   box-shadow: 
     0 20px 40px -12px rgba(0, 0, 0, 0.45),
@@ -228,13 +256,6 @@
    RESPONSIVE DESIGN (Desktop, Tablet, Mobile)
    ========================================================================== */
 
-@media (max-width: 1120px) {
-  .platform-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-  }
-}
-
 @media (max-width: 768px) {
   .platform-section {
     padding: 90px 0 110px;
@@ -252,14 +273,23 @@
     font-size: 15px;
   }
 
-  .platform-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
+  .platform-marquee-wrapper {
+    padding: 12px 0 24px;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+  }
+
+  .platform-marquee-track {
+    gap: 18px;
+    animation-duration: 26s;
   }
 
   .platform-card {
-    min-height: auto;
-    padding: 26px 22px 22px 22px;
+    width: 300px;
+    min-width: 300px;
+    max-width: 300px;
+    min-height: 410px;
+    padding: 24px 20px 20px 20px;
   }
 
   .platform-card-desc {

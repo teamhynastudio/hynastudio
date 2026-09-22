@@ -108,41 +108,52 @@ const PlatformSection = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Header entrance animation
-      gsap.fromTo('.platform-header > *',
-        { opacity: 0, y: 24 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.7,
-          stagger: 0.12,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: '.platform-header',
-            start: 'top 85%'
-          }
+      // Timeline for smooth bottom-to-top entrance animation on scroll
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 80%',
+          toggleActions: 'play none none reverse'
         }
-      );
+      });
 
-      // Cards staggered reveal
-      gsap.fromTo('.platform-card',
-        { opacity: 0, y: 32 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.65,
-          stagger: 0.1,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: '.platform-grid',
-            start: 'top 80%'
-          }
+      tl.fromTo('.platform-main-heading',
+        { opacity: 0, y: 65 },
+        { 
+          opacity: 1, 
+          y: 0, 
+          duration: 1.0, 
+          ease: 'power3.out' 
         }
+      )
+      .fromTo('.platform-subheading',
+        { opacity: 0, y: 50 },
+        { 
+          opacity: 1, 
+          y: 0, 
+          duration: 1.0, 
+          ease: 'power3.out' 
+        },
+        '-=0.75'
+      )
+      .fromTo('.platform-marquee-wrapper',
+        { opacity: 0, y: 90, scale: 0.96 },
+        { 
+          opacity: 1, 
+          y: 0, 
+          scale: 1, 
+          duration: 1.25, 
+          ease: 'power3.out' 
+        },
+        '-=0.7'
       );
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
+
+  // Duplicate the 6 features to create an unbroken seamless right-to-left marquee
+  const marqueeFeatures = [...FEATURES, ...FEATURES];
 
   return (
     <section className="platform-section" id="platform" ref={sectionRef}>
@@ -158,12 +169,15 @@ const PlatformSection = () => {
           </p>
         </div>
 
-        {/* 3 x 2 Feature Cards Grid */}
-        <div className="platform-grid">
-          {FEATURES.map((feature) => {
+      </div>
+
+      {/* Full-width Single-line Right-to-Left Marquee */}
+      <div className="platform-marquee-wrapper">
+        <div className="platform-marquee-track">
+          {marqueeFeatures.map((feature, idx) => {
             const Icon = feature.icon;
             return (
-              <div key={feature.id} className="platform-card">
+              <div key={`${feature.id}-${idx}`} className="platform-card">
                 <div className="platform-card-top">
                   <div className="platform-icon-box">
                     <Icon size={18} strokeWidth={1.75} />
@@ -180,8 +194,8 @@ const PlatformSection = () => {
                   <div className="platform-divider"></div>
 
                   <ul className="platform-details-list">
-                    {feature.details.map((item, idx) => (
-                      <li key={idx} className="platform-detail-item">
+                    {feature.details.map((item, dIdx) => (
+                      <li key={dIdx} className="platform-detail-item">
                         <span className="platform-check-wrap">
                           <Check size={13} strokeWidth={2.5} />
                         </span>
@@ -201,7 +215,6 @@ const PlatformSection = () => {
             );
           })}
         </div>
-
       </div>
     </section>
   );
