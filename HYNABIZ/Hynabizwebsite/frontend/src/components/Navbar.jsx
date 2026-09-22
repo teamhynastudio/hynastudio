@@ -148,6 +148,7 @@ const Navbar = () => {
             Connections <ChevronDown size={14} className="nav-icon" />
           </div>
           <div className="nav-item">Automation</div>
+          <a href="#pricing" className="nav-item">Pricing</a>
         </div>
 
         <div className="navbar-actions desktop-only">
@@ -237,6 +238,7 @@ const Navbar = () => {
           )}
           <div className="mobile-nav-item">Connections</div>
           <div className="mobile-nav-item">Automation</div>
+          <a href="#pricing" className="mobile-nav-item" onClick={() => setIsMobileMenuOpen(false)}>Pricing</a>
           <div className="mobile-nav-actions">
             <button className="btn-text" style={{ width: '100%', textAlign: 'center', padding: '10px' }}>Sign in</button>
             <button className="btn btn-primary" style={{ width: '100%' }}>Sign up</button>
