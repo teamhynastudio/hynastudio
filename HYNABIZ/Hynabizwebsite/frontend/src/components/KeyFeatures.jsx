@@ -1,9 +1,66 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './KeyFeatures.css';
 
+gsap.registerPlugin(ScrollTrigger);
+
 const KeyFeatures = () => {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Header smooth reveal on scroll
+      const headerTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.kf-header',
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+          once: true
+        }
+      });
+
+      headerTl
+        .fromTo('.kf-badge',
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', clearProps: 'all' }
+        )
+        .fromTo('.kf-headline',
+          { opacity: 0, y: 25 },
+          { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out', clearProps: 'all' },
+          '-=0.4'
+        )
+        .fromTo('.kf-subtext',
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out', clearProps: 'all' },
+          '-=0.5'
+        );
+
+      // 6 Feature Cards staggered smooth reveal on scroll
+      gsap.fromTo('.kf-card',
+        { opacity: 0, y: 35 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.65,
+          stagger: 0.1,
+          ease: 'power2.out',
+          clearProps: 'all',
+          scrollTrigger: {
+            trigger: '.kf-grid-6',
+            start: 'top 82%',
+            toggleActions: 'play none none none',
+            once: true
+          }
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="kf-section" id="features">
+    <section className="kf-section" id="features" ref={sectionRef}>
       <div className="kf-container">
         
         {/* Top Header */}

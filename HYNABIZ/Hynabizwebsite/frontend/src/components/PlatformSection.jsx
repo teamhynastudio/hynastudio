@@ -108,44 +108,46 @@ const PlatformSection = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Timeline for smooth bottom-to-top entrance animation on scroll
+      // Timeline for smooth entrance animation on scroll (stays fully visible once revealed)
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse'
+          trigger: '.platform-header',
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+          once: true
         }
       });
 
       tl.fromTo('.platform-main-heading',
-        { opacity: 0, y: 65 },
+        { opacity: 0, y: 30 },
         { 
           opacity: 1, 
           y: 0, 
-          duration: 1.0, 
-          ease: 'power3.out' 
+          duration: 0.7, 
+          ease: 'power2.out',
+          clearProps: 'all'
         }
       )
       .fromTo('.platform-subheading',
-        { opacity: 0, y: 50 },
+        { opacity: 0, y: 20 },
         { 
           opacity: 1, 
           y: 0, 
-          duration: 1.0, 
-          ease: 'power3.out' 
+          duration: 0.7, 
+          ease: 'power2.out',
+          clearProps: 'all'
         },
-        '-=0.75'
+        '-=0.45'
       )
       .fromTo('.platform-marquee-wrapper',
-        { opacity: 0, y: 90, scale: 0.96 },
+        { opacity: 0, y: 35 },
         { 
           opacity: 1, 
           y: 0, 
-          scale: 1, 
-          duration: 1.25, 
-          ease: 'power3.out' 
+          duration: 0.8, 
+          ease: 'power2.out' 
         },
-        '-=0.7'
+        '-=0.4'
       );
     }, sectionRef);
 
