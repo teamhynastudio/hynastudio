@@ -7966,13 +7966,15 @@
                     height: 100%;
                     object-fit: cover;
                     object-position: center top;
-                    filter: grayscale(100%) contrast(1.1);
+                    filter: none !important;
+                    -webkit-filter: none !important;
                     transition: transform 7s ease-out;
                     transform: scale(1.05);
                 }
                 .carousel-slide-img.active .carousel-image {
                     transform: scale(1);
-                    filter: grayscale(40%) contrast(1.05);
+                    filter: none !important;
+                    -webkit-filter: none !important;
                 }
                 .text-slide-content {
                     padding: 60px 50px;
