@@ -2080,131 +2080,216 @@
             transform: translateX(4px);
         }
 
-        /* ── FOOTER (INDUSCORE STYLE) ── */
+        /* ── ZERODHA-INSPIRED MULTI-COLUMN FOOTER ── */
         footer {
-            background: #000000;
-            color: #94A3B8;
-            padding: 60px 0 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            font-size: 0.88rem;
+            background:
+                radial-gradient(ellipse 80% 70% at 10% 10%, #7ecfea 0%, #3fa8c8 25%, #1a6fa0 55%, #0a3352 80%, #030d1a 100%);
+            color: rgba(255, 255, 255, 0.85);
+            padding: 5rem 8% 3rem;
+            border-top: none;
             font-family: var(--font-body, 'Inter', sans-serif);
             position: relative;
         }
 
-        footer .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .footer-top {
+        .footer-top-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
+            grid-template-columns: 2.2fr repeat(4, 1fr);
             gap: 40px;
-            margin-bottom: 40px;
+            padding-bottom: 3.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .footer-brand {
-            max-width: 340px;
+        .footer-col-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
-        .footer-brand-title {
-            font-size: 1.05rem;
+        .footer-logo-link {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-logo-img {
+            width: 72px;
+            height: 72px;
+            object-fit: contain;
+        }
+
+        .footer-logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-logo-main {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.02em;
+        }
+
+        .footer-logo-sub {
+            font-size: 0.72rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
             font-weight: 700;
-            color: #FFFFFF;
-            margin-bottom: 6px;
-            font-family: var(--font-display, 'Sora', sans-serif);
         }
 
-        .footer-brand-sub {
-            font-family: var(--font-mono, monospace);
-            font-size: 0.75rem;
-            color: #00e5ff;
-            margin-bottom: 14px;
+        .footer-copy-info {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.45);
+            line-height: 1.55;
+            margin: 4px 0 8px;
         }
 
-        .footer-brand-text {
-            font-size: 0.84rem;
-            line-height: 1.6;
-            color: #94A3B8;
+        .footer-social-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 4px;
+        }
+
+        .footer-social-bar a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.65);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+
+        .footer-social-bar a:hover {
+            background: #ffffff;
+            color: #000000;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(255, 255, 255, 0.2);
         }
 
         .footer-col-title {
-            font-family: var(--font-display, 'Sora', sans-serif);
-            font-size: 0.95rem;
+            font-family: var(--font-display);
+            font-size: 0.88rem;
             font-weight: 700;
-            color: #FFFFFF;
-            margin-bottom: 16px;
+            color: #ffffff;
+            margin-bottom: 1.25rem;
+            letter-spacing: 0.04em;
         }
 
-        .footer-links {
+        .footer-link-list {
             list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .footer-link-list a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.55);
+            font-size: 0.84rem;
+            transition: color 0.2s ease, transform 0.2s ease;
+            display: inline-block;
+        }
+
+        .footer-link-list a:hover {
+            color: #ffffff;
+            transform: translateX(3px);
+        }
+
+        .footer-disclaimer-box {
+            padding: 1.5rem 0 1.2rem;
             display: flex;
             flex-direction: column;
             gap: 10px;
-            padding: 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-disclaimer-box p {
+            font-size: 0.70rem;
+            line-height: 1.55;
+            color: rgba(255, 255, 255, 0.48);
             margin: 0;
         }
 
-        .footer-links a {
-            color: #94A3B8;
-            text-decoration: none;
-            font-size: 0.84rem;
-            transition: color 0.2s ease;
+        .footer-disclaimer-box strong {
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 600;
         }
 
-        .footer-links a:hover {
-            color: #FFFFFF;
+        .footer-disclaimer-box a {
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: underline;
         }
 
-        .footer-bottom {
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        .footer-disclaimer-box a:hover {
+            color: #ffffff;
+        }
+
+        .footer-legal-bar {
+            padding-top: 1.5rem;
             display: flex;
+            justify-content: center;
             align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 16px;
-            font-size: 0.8rem;
-            color: #94A3B8;
         }
 
         .footer-legal-links {
             display: flex;
-            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
         }
 
         .footer-legal-links a {
-            color: #94A3B8;
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.45);
             text-decoration: none;
             transition: color 0.2s ease;
         }
 
         .footer-legal-links a:hover {
-            color: #FFFFFF;
+            color: #ffffff;
         }
 
         @media (max-width: 1024px) {
-            .footer-top {
-                grid-template-columns: 1fr 1fr;
+            .footer-top-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 32px;
+            }
+
+            .footer-col-brand {
+                grid-column: span 3;
             }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 640px) {
             footer {
-                padding: 40px 0 30px;
+                padding: 3.5rem 5% 2rem;
             }
 
-            .footer-top {
-                grid-template-columns: 1fr;
-                gap: 30px;
+            .footer-top-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 28px;
             }
 
-            .footer-bottom {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 14px;
+            .footer-col-brand {
+                grid-column: span 2;
+            }
+
+            .footer-legal-links {
+                gap: 1rem;
             }
         }
 
@@ -7447,7 +7532,12 @@
 
                     <div class="cred-faq-qa">
                         <div class="cred-faq-q">What products and solutions does Hyna Studio build?</div>
-                        <div class="cred-faq-a">Hyna Studio currently focuses on <a href="hynabiz" style="color: var(--accent-light, #00c2ff); text-decoration: underline;"><strong>HynaBiz</strong></a>, a unified business infrastructure platform built to transform how modern businesses connect, operate, trade, and grow. It brings business intelligence, relationships, operations, commerce, and automation into one connected ecosystem, giving businesses the infrastructure to move from fragmented processes to intelligent, connected operations.</div>
+                        <div class="cred-faq-a">Hyna Studio currently focuses on <a href="hynabiz"
+                                style="color: var(--accent-light, #00c2ff); text-decoration: underline;"><strong>HynaBiz</strong></a>,
+                            a unified business infrastructure platform built to transform how modern businesses connect,
+                            operate, trade, and grow. It brings business intelligence, relationships, operations,
+                            commerce, and automation into one connected ecosystem, giving businesses the infrastructure
+                            to move from fragmented processes to intelligent, connected operations.</div>
                     </div>
 
                     <div class="cred-faq-qa">
@@ -7509,59 +7599,73 @@
 
     <!-- FOOTER -->
     <footer>
-        <div class="container">
-            <div class="footer-top">
-                <div class="footer-brand">
-                    <div class="footer-brand-title">Hyna Studio Technologies LLP</div>
-                    <div class="footer-brand-sub">Technology &amp; Product Innovation</div>
-                    <p class="footer-brand-text">
-                        Building intelligent software platforms, AI systems, automation engines, and connected Industry 4.0
-                        infrastructure for enterprises worldwide.
+        <div class="footer-container">
+            <!-- TOP BRAND & MULTI-COLUMN NAVIGATION GRID -->
+            <div class="footer-top-grid">
+                <!-- COL 1: LOGO & BRAND DETAILS -->
+                <div class="footer-col-brand">
+                    <a href="index.html" class="footer-logo-link">
+                        <img src="./hyna-logo-new.png" class="footer-logo-img" alt="Hyna Studio Logo">
+                        <div class="footer-logo-text">
+                            <span class="footer-logo-main">Hyna Studio</span>
+                            <span class="footer-logo-sub">Business Platform</span>
+                        </div>
+                    </a>
+                    <p class="footer-copy-info">
+                        © 2026, Hyna Studio Technologies LLP.<br>All rights reserved.
                     </p>
+                    <div class="footer-social-bar">
+                        <a href="https://x.com/HynaStudio" target="_blank" rel="noopener" aria-label="X / Twitter"><i
+                                class="fa-brands fa-x-twitter"></i></a>
+                        <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i
+                                class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/hyna-studio-089b33416/" target="_blank" rel="noopener"
+                            aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><i
+                                class="fa-brands fa-youtube"></i></a>
+                        <a href="https://whatsapp.com" target="_blank" rel="noopener" aria-label="WhatsApp"><i
+                                class="fa-brands fa-whatsapp"></i></a>
+                        <a href="https://github.com/teamhynastudio" target="_blank" rel="noopener"
+                            aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    </div>
                 </div>
 
-                <div>
-                    <div class="footer-col-title">Products</div>
-                    <ul class="footer-links">
-                        <li><a href="iiot.html">InduScore 4.0</a></li>
-                        <li><a href="product.html">Product Ecosystem</a></li>
-                        <li><a href="#technology">Industrial Intelligence</a></li>
-                        <li><a href="#smart-factory">Smart Factory Hub</a></li>
+                <!-- COL 3: SUPPORT -->
+                <div class="footer-col-links">
+                    <h5 class="footer-col-title">Support</h5>
+                    <ul class="footer-link-list">
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="touch.html">Support Portal</a></li>
+                        <li><a href="release.html">System Status</a></li>
+                        <li><a href="why-choose-us.html">Developer Guides</a></li>
+                        <li><a href="privacy-policy.html">Security Charter</a></li>
                     </ul>
                 </div>
 
-                <div>
-                    <div class="footer-col-title">Company</div>
-                    <ul class="footer-links">
-                        <li><a href="why-choose-us.html">Why Choose Us</a></li>
-                        <li><a href="advantage.html">Advantages</a></li>
-                        <li><a href="what.html">Our Differentiation</a></li>
-                        <li><a href="process.html">Process Architecture</a></li>
+                <!-- COL 4: COMPANY -->
+                <div class="footer-col-links">
+                    <h5 class="footer-col-title">Company</h5>
+                    <ul class="footer-link-list">
+                        <li><a href="index.html#why-we-exist">About Hyna</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="press.html">Press & Media</a></li>
+                        <li><a href="open-source.html">Open Source</a></li>
                     </ul>
                 </div>
 
-                <div>
-                    <div class="footer-col-title">Connect</div>
-                    <ul class="footer-links">
-                        <li><a href="contact.html">Contact Engineering</a></li>
+                <!-- COL 5: QUICK LINKS -->
+                <div class="footer-col-links">
+                    <h5 class="footer-col-title">Quick Links</h5>
+                    <ul class="footer-link-list">
+                        <li><a href="terms-conditions.html">Terms & Conditions</a></li>
                         <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                        <li><a href="terms-conditions.html">Terms &amp; Conditions</a></li>
-                        <li><a href="articles.html">Technical Articles</a></li>
+                        <li><a href="sitemap.html">Sitemap</a></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="footer-bottom">
-                <div>
-                    &copy; 2026 Hyna Studio Technologies LLP. All rights reserved.
-                </div>
-                <div class="footer-legal-links">
-                    <a href="privacy-policy.html">Privacy</a>
-                    <a href="terms-conditions.html">Terms</a>
-                    <a href="shipping-policy.html">Policies</a>
-                    <a href="contact.html">Support</a>
-                </div>
-            </div>
         </div>
     </footer>
 
