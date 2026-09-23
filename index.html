@@ -7571,340 +7571,7 @@
             })();
         </script>
 
-        <style>
-            :root {
-                --ink: #111318;
-                --muted: #6b6f79;
-                --line: rgba(17, 19, 24, 0.08);
-                --accent: #4f3ff0;
-                --font-display: 'Sora', sans-serif;
-                --font-body: 'Inter', sans-serif;
-            }
 
-            /* ─── FRONT ROW REFERENCE TEAM SECTION ─── */
-            .team-section {
-                padding: 45px 8% 100px;
-                background: #000000;
-            }
-
-            .team-header-wrapper {
-                margin-bottom: 40px;
-                text-align: center;
-            }
-
-            .team-eyebrow {
-                font-family: var(--font-display);
-                font-size: 0.85rem;
-                font-weight: 700;
-                letter-spacing: 0.14em;
-                text-transform: uppercase;
-                color: #ffffff;
-                margin-bottom: 14px;
-                display: block;
-            }
-
-            .team-title {
-                font-family: var(--font-display);
-                font-size: clamp(2.6rem, 4.5vw, 3.8rem);
-                font-weight: 800;
-                letter-spacing: -0.03em;
-                color: #ffffff;
-                line-height: 1.1;
-                margin-bottom: 18px;
-            }
-
-            .team-subtitle {
-                font-size: 1.1rem;
-                color: rgba(255, 255, 255, 0.65);
-                max-width: 620px;
-                margin: 0 auto;
-                line-height: 1.65;
-            }
-
-            .our-people-grid {
-                display: grid;
-                grid-template-columns: repeat(12, 1fr);
-                gap: 64px 32px;
-                justify-items: center;
-                max-width: 1240px;
-                margin: 0 auto;
-            }
-
-            .our-person-card.row-1,
-            .our-person-card.row-2 {
-                grid-column: span 4;
-            }
-
-            .our-person-card {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                cursor: pointer;
-                width: 100%;
-                max-width: 320px;
-                transition: transform 0.35s ease;
-            }
-
-            .avatar-circle-box {
-                position: relative;
-                width: 220px;
-                height: 220px;
-                margin-bottom: 22px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border-radius: 50%;
-                background: #ffffff;
-                box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
-                overflow: hidden;
-                transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
-            }
-
-            .our-person-card:hover .avatar-circle-box {
-                transform: translateY(-8px) scale(1.03);
-                box-shadow: 0 24px 50px rgba(255, 200, 59, 0.25);
-            }
-
-            .avatar-img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                object-position: top center;
-                filter: none;
-                transition: filter 0.35s ease, transform 0.35s ease;
-            }
-
-            .our-person-card:hover .avatar-img {
-                filter: none;
-                transform: scale(1.05);
-            }
-
-            .person-name {
-                font-family: var(--font-display);
-                font-size: 1.6rem;
-                font-weight: 800;
-                color: #ffffff;
-                margin-bottom: 6px;
-                letter-spacing: -0.02em;
-                line-height: 1.25;
-                white-space: nowrap;
-            }
-
-            .person-role {
-                font-size: 0.92rem;
-                font-weight: 500;
-                color: rgba(255, 255, 255, 0.65);
-                letter-spacing: -0.01em;
-            }
-
-            @media (max-width: 1024px) {
-                .our-people-grid {
-                    grid-template-columns: repeat(2, 1fr);
-                    gap: 52px 30px;
-                }
-
-                .our-person-card.row-1,
-                .our-person-card.row-2 {
-                    grid-column: span 1;
-                }
-            }
-
-            @media (max-width: 640px) {
-                .our-people-grid {
-                    grid-template-columns: 1fr;
-                    gap: 44px;
-                }
-
-                .avatar-circle-box {
-                    width: 190px;
-                    height: 190px;
-                }
-
-                .person-name {
-                    font-size: 1.5rem;
-                }
-            }
-
-            .board-member .board-role {
-                display: block;
-                font-size: 0.82rem;
-                color: var(--muted);
-                line-height: 1.4;
-            }
-
-            .board-member .board-org {
-                display: block;
-                font-size: 0.82rem;
-                color: var(--muted);
-                line-height: 1.4;
-            }
-
-            @media (max-width: 700px) {
-                .board-row {
-                    grid-template-columns: repeat(2, 1fr);
-                    row-gap: 36px;
-                }
-            }
-
-            /* ══ FADE-IN ANIMATION SYSTEM ══ */
-            @keyframes team-fade-up {
-                from {
-                    opacity: 0;
-                    transform: translateY(36px);
-                }
-
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-
-            @keyframes team-fade-left {
-                from {
-                    opacity: 0;
-                    transform: translateX(-40px);
-                }
-
-                to {
-                    opacity: 1;
-                    transform: translateX(0);
-                }
-            }
-
-            @keyframes team-fade-right {
-                from {
-                    opacity: 0;
-                    transform: translateX(40px);
-                }
-
-                to {
-                    opacity: 1;
-                    transform: translateX(0);
-                }
-            }
-
-            @keyframes team-fade-scale {
-                from {
-                    opacity: 0;
-                    transform: scale(0.88);
-                }
-
-                to {
-                    opacity: 1;
-                    transform: scale(1);
-                }
-            }
-
-            /* Hidden initial state for all animate targets */
-            .t-anim {
-                opacity: 0;
-                will-change: transform, opacity;
-            }
-
-            /* Triggered class — browser plays the animation */
-            .t-anim.t-in {
-                animation-fill-mode: both;
-                animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-                animation-duration: 0.75s;
-            }
-
-            .t-anim.t-in[data-anim="fade-up"] {
-                animation-name: team-fade-up;
-            }
-
-            .t-anim.t-in[data-anim="fade-left"] {
-                animation-name: team-fade-left;
-            }
-
-            .t-anim.t-in[data-anim="fade-right"] {
-                animation-name: team-fade-right;
-            }
-
-            .t-anim.t-in[data-anim="fade-scale"] {
-                animation-name: team-fade-scale;
-            }
-
-            .t-anim[data-delay="1"].t-in {
-                animation-delay: 0.08s;
-            }
-
-            .t-anim[data-delay="2"].t-in {
-                animation-delay: 0.18s;
-            }
-
-            .t-anim[data-delay="3"].t-in {
-                animation-delay: 0.28s;
-            }
-
-            .t-anim[data-delay="4"].t-in {
-                animation-delay: 0.40s;
-            }
-
-            .t-anim[data-delay="5"].t-in {
-                animation-delay: 0.52s;
-            }
-
-            /* Respect reduced-motion */
-            @media (prefers-reduced-motion: reduce) {
-                .t-anim {
-                    opacity: 1 !important;
-                    animation: none !important;
-                }
-            }
-        </style>
-
-        <section id="team" class="team-section">
-
-            <!-- ── COMPANY STORY & TEAM SECTION ── -->
-            <div class="company-story-section">
-                <div class="company-story-container">
-                    <!-- HEADER -->
-                    <div class="team-header-wrapper lp-fade-up" style="margin-bottom: 24px;">
-                        <span class="team-eyebrow">WE ARE HYNA</span>
-                        <h2 class="team-title" style="margin-bottom: 0;">Our People</h2>
-                    </div>
-
-                    <div class="story-header" style="margin-bottom: 40px;">
-                        <h3 class="story-title">We started with an idea. Today, we're building what comes next.</h3>
-                    </div>
-
-                    <div class="story-grid">
-                        <div class="story-col">
-                            <p>At Hyna Studio, we believe technology should solve real problems, create
-                                opportunities, and move people and businesses forward.</p>
-                        </div>
-                        <div class="story-col">
-                            <p>Hyna Studio is powered by a team of students, builders, developers, designers, and
-                                innovators who believe that the future belongs to those who build it.</p>
-                        </div>
-                    </div>
-
-                    <hr class="story-divider">
-                </div>
-            </div>
-        </section>
-
-
-
-        <script>
-            /* ── Team Section: Scroll-triggered fade-in via IntersectionObserver ── */
-            (function () {
-                var targets = document.querySelectorAll('#team .t-anim');
-                if (!targets.length) return;
-
-                var io = new IntersectionObserver(function (entries) {
-                    entries.forEach(function (entry) {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('t-in');
-                            io.unobserve(entry.target); /* fire once */
-                        }
-                    });
-                }, { threshold: 0.15 });
-
-                targets.forEach(function (el) { io.observe(el); });
-            })();
-        </script>
 
 
 
@@ -7982,19 +7649,7 @@
 
 
 
-        <script>
-            /* ─── Team card mouse-glow ─── */
-            document.querySelectorAll('.team-card').forEach(card => {
-                card.addEventListener('mousemove', (e) => {
-                    const rect = card.getBoundingClientRect();
-                    const x = ((e.clientX - rect.left) / rect.width) * 100;
-                    const y = ((e.clientY - rect.top) / rect.height) * 100;
-                    card.style.setProperty('--x', `${x}%`);
-                    card.style.setProperty('--y', `${y}%`);
-                });
-            });
 
-        </script>
 
 
         <!-- SplitText Animation for About Section Title (React Bits Variant) -->
@@ -8335,7 +7990,6 @@
                     <h5 class="footer-col-title">Company</h5>
                     <ul class="footer-link-list">
                         <li><a href="index.html#why-we-exist">About Hyna</a></li>
-                        <li><a href="team.html">Our People (Team)</a></li>
                         <li><a href="careers.html">Careers</a></li>
                         <li><a href="press.html">Press & Media</a></li>
                         <li><a href="open-source.html">Open Source</a></li>
@@ -8346,6 +8000,9 @@
                 <div class="footer-col-links">
                     <h5 class="footer-col-title">Quick Links</h5>
                     <ul class="footer-link-list">
+                        <li><a href="saas.html">SaaS Solutions</a></li>
+                        <li><a href="ai-product.html">AI & Data Products</a></li>
+                        <li><a href="mobile.html">Application Services</a></li>
                         <li><a href="terms-conditions.html">Terms & Conditions</a></li>
                         <li><a href="privacy-policy.html">Privacy Policy</a></li>
                         <li><a href="sitemap.html">Sitemap</a></li>
@@ -8353,286 +8010,52 @@
                 </div>
             </div>
 
-
+            <!-- COMPANY INFORMATION & IMPORTANT NOTICE -->
+            <div class="footer-disclaimer-box">
+                <p>
+                    <strong>Hyna Studio Technologies LLP</strong> is an Indian technology and product
+                    company building next-generation <strong>Autonomous Business
+                        Infrastructure</strong>—intelligent, connected, and adaptive technology designed to
+                    help businesses understand, manage, operate, connect, transact, grow, and continuously
+                    evolve. Through the HYNA ecosystem, we are developing integrated software, AI,
+                    automation, data intelligence, financial technology experiences, and business platforms
+                    that bring critical business activities into one unified system. Our vision is to move
+                    beyond traditional software by creating technology that not only supports businesses but
+                    learns from their operations, adapts to their changing needs, and helps build a more
+                    intelligent and connected future for business. <strong>Hyna Studio is building the
+                        technology foundation for the Autonomous Business Era. 🇮🇳</strong> Our approach is
+                    centered on building technology that becomes increasingly valuable as a business grows.
+                    Rather than forcing every organization to adapt to rigid and disconnected software, we
+                    envision systems that understand the unique nature of each business and help create the
+                    tools, workflows, intelligence, and infrastructure it needs to operate effectively. From
+                    everyday operations and customer relationships to payments, business intelligence,
+                    automation, and future growth, the HYNA ecosystem is being designed to bring businesses
+                    closer to a future where technology does not simply serve as software—but becomes an
+                    intelligent foundation for how businesses operate, make decisions, and evolve. At the
+                    core of this vision is the belief that the future of business technology will be
+                    connected, intelligent, and adaptive. Businesses should not have to continuously move
+                    between disconnected applications, manually connect information, or rebuild their
+                    systems every time their needs change. We are working toward an ecosystem where
+                    technology can bring together critical business activities, transform information into
+                    intelligence, automate repetitive processes, and provide a stronger foundation for
+                    sustainable growth. Through products such as HYNA BIZ and future platforms within the
+                    HYNA ecosystem, Hyna Studio aims to create technology that can grow alongside
+                    businesses—from emerging entrepreneurs and startups to established organizations. Our
+                    long-term ambition is to help shape a new generation of business infrastructure where
+                    software becomes more than a collection of tools: it becomes an evolving system capable
+                    of supporting how businesses operate today while preparing them for what comes next.
+                    <strong>Hyna Studio Technologies LLP is building for a future where businesses are not
+                        limited by their technology, but empowered by it—through intelligent systems,
+                        connected infrastructure, and technology designed to continuously evolve.
+                        🇮🇳</strong>
+                </p>
+            </div>
 
         </div>
     </footer>
 
-    <!-- Team Modal -->
-
-    <div class="modal-overlay" id="teamModalOverlay" aria-hidden="true">
-        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="teamModalName">
-            <div class="modal-header">
-                <div class="modal-title">
-                    <div class="modal-name" id="teamModalName">—</div>
-                    <div class="modal-role" id="teamModalRole">—</div>
-                </div>
-                <button class="modal-close" type="button" id="teamModalClose" aria-label="Close modal">✕</button>
-            </div>
-            <div class="modal-body">
-                <div class="modal-grid">
-                    <div class="modal-photo" aria-hidden="true">
-                        <img id="teamModalPhoto" alt="" src=""
-                            onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend', '<div class=\'member-photo-placeholder\'>👤</div>')">
-                    </div>
-                    <div>
-                        <div class="modal-bio" id="teamModalBio">—</div>
-                        <div class="modal-links" id="teamModalLinks"></div>
-                        <div class="modal-education" id="teamModalEducation"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <script>
         (function () {
-            const overlay = document.getElementById('teamModalOverlay');
-            const closeBtn = document.getElementById('teamModalClose');
-
-            const nameEl = document.getElementById('teamModalName');
-            const roleEl = document.getElementById('teamModalRole');
-            const photoEl = document.getElementById('teamModalPhoto');
-            const bioEl = document.getElementById('teamModalBio');
-            const linksEl = document.getElementById('teamModalLinks');
-            const educationEl = document.getElementById('teamModalEducation');
-
-            const cards = Array.from(document.querySelectorAll('#team .team-card[role="button"]'));
-
-            let lastFocused = null;
-
-            function escapeHtml(str) {
-                return String(str)
-                    .replaceAll('&', '&amp;')
-                    .replaceAll('<', '&lt;')
-                    .replaceAll('>', '&gt;')
-                    .replaceAll('"', '&quot;')
-                    .replaceAll("'", '&#039;');
-            }
-
-            function buildLink(label, href) {
-                const safeLabel = escapeHtml(label);
-                const safeHref = escapeHtml(href);
-                return `
-                    <a class="modal-link" href="${safeHref}" target="_blank" rel="noopener noreferrer">
-                        ${safeLabel} →
-                    </a>
-                `;
-            }
-
-            function openModal(card) {
-                lastFocused = document.activeElement;
-
-                const name = card.getAttribute('data-name') || '';
-                const role = card.getAttribute('data-role') || '';
-                const bio = card.getAttribute('data-bio') || '';
-                const photo = card.getAttribute('data-photo') || '';
-                const portfolio = card.getAttribute('data-portfolio') || '#';
-                const github = card.getAttribute('data-github') || '#';
-                const linkedin = card.getAttribute('data-linkedin') || '#';
-                const college = card.getAttribute('data-college') || '';
-                const degree = card.getAttribute('data-degree') || '';
-                const collegeLogo = card.getAttribute('data-college-logo') || '';
-
-                nameEl.textContent = name;
-                roleEl.textContent = role;
-                bioEl.textContent = bio;
-
-                // Reset photo
-                photoEl.style.display = '';
-                photoEl.src = photo;
-                photoEl.alt = name;
-
-                // Reset placeholder if previous error inserted it
-                const photoContainer = photoEl.parentElement;
-                Array.from(photoContainer.querySelectorAll('.member-photo-placeholder')).forEach(n => n.remove());
-
-                // Links
-                const items = [];
-                if (portfolio && portfolio !== '#') items.push(buildLink('Portfolio', portfolio));
-                if (github && github !== '#') items.push(buildLink('GitHub', github));
-                if (linkedin && linkedin !== '#') items.push(buildLink('LinkedIn', linkedin));
-
-                linksEl.innerHTML = items.join('');
-
-                // Render Education Details
-                if (college) {
-                    educationEl.style.display = 'flex';
-                    educationEl.innerHTML = `
-                        ${collegeLogo ? `<img class="modal-education-logo" src="${escapeHtml(collegeLogo)}" alt="${escapeHtml(college)} Logo">` : ''}
-                        <div class="modal-education-info">
-                            <div class="modal-education-college">${escapeHtml(college)}</div>
-                            <div class="modal-education-degree">${escapeHtml(degree)}</div>
-                        </div>
-                    `;
-                } else {
-                    educationEl.style.display = 'none';
-                    educationEl.innerHTML = '';
-                }
-
-                overlay.classList.add('is-open');
-                overlay.setAttribute('aria-hidden', 'false');
-                document.body.style.overflow = 'hidden';
-
-                // Focus close button for accessibility
-                closeBtn.focus();
-            }
-
-            function closeModal() {
-                overlay.classList.remove('is-open');
-                overlay.setAttribute('aria-hidden', 'true');
-                document.body.style.overflow = '';
-
-                if (lastFocused && typeof lastFocused.focus === 'function') {
-                    lastFocused.focus();
-                }
-            }
-
-            // Open handlers
-            cards.forEach(card => {
-                card.addEventListener('click', (e) => {
-                    // Prevent modal opening when clicking social links/icons
-                    if (e.target.closest('.team-social') || e.target.closest('a')) {
-                        return;
-                    }
-                    openModal(card);
-                });
-                card.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        openModal(card);
-                    }
-                });
-            });
-
-            // Close handlers
-            closeBtn.addEventListener('click', closeModal);
-
-            overlay.addEventListener('click', (e) => {
-                if (e.target === overlay) closeModal();
-            });
-
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && overlay.classList.contains('is-open')) {
-                    closeModal();
-                }
-            });
-
-            // ─── TEAM SCROLL STACK ANIMATION ───
-            (function initTeamScrollStack() {
-                const teamSection = document.getElementById('team');
-                const teamCards = Array.from(document.querySelectorAll('#team .team-card[role="button"]'));
-                if (!teamCards.length) return;
-
-                const TOTAL = teamCards.length;
-
-                // Progress bar and counter elements removed
-
-                // Track which cards have had their entrance played
-                const revealed = new Set();
-
-                // ── 1. Entrance: reveal cards as they enter viewport ──
-                const entranceObs = new IntersectionObserver((entries) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting && !revealed.has(entry.target)) {
-                            revealed.add(entry.target);
-                            const idx = teamCards.indexOf(entry.target);
-                            const delay = Math.max(0, idx) * 60;
-                            setTimeout(() => {
-                                entry.target.classList.add('is-visible');
-                                // After entrance anim completes, let JS control transform
-                                setTimeout(() => {
-                                    entry.target.classList.add('tc-stacking');
-                                }, 700);
-                            }, delay);
-                            entranceObs.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.08 });
-
-                teamCards.forEach(c => entranceObs.observe(c));
-
-                // ── 2. Scroll: drive stack-back transforms directly ──
-                let rafId = null;
-                let activeIdx = 0;
-
-                function easeOutCubic(t) {
-                    return 1 - Math.pow(1 - t, 3);
-                }
-
-                function applyStackFrame() {
-                    rafId = null;
-
-                    let bestIdx = 0;
-                    let bestDist = Infinity;
-
-                    teamCards.forEach((card, i) => {
-                        if (!revealed.has(card)) return;
-
-                        const cardRect = card.getBoundingClientRect();
-                        const nextCard = teamCards[i + 1];
-
-                        const mid = cardRect.top + cardRect.height / 2;
-                        const dist = Math.abs(mid - window.innerHeight / 2);
-                        if (dist < bestDist) { bestDist = dist; bestIdx = i; }
-
-                        if (!card.classList.contains('tc-stacking')) return;
-
-                        if (nextCard && revealed.has(nextCard)) {
-                            const nextRect = nextCard.getBoundingClientRect();
-                            const overlapPx = Math.max(0, cardRect.bottom - nextRect.top);
-                            const rawP = Math.min(1, overlapPx / (cardRect.height * 0.7));
-                            const p = easeOutCubic(rawP);
-
-                            if (p > 0.001) {
-                                const sc = 1 - p * 0.045;
-                                const ty = -p * 12;
-                                const br = 1 - p * 0.12;
-                                const rot = -p * 0.4;
-                                card.style.transform = `translateY(${ty.toFixed(2)}px) scale(${sc.toFixed(4)}) rotate(${rot.toFixed(3)}deg)`;
-                                card.style.filter = `brightness(${br.toFixed(4)})`;
-                                card.style.boxShadow = `0 2px 8px rgba(0,0,0,0.04), 0 ${(p * 12).toFixed(1)}px 24px rgba(0,0,0,${(0.06 + p * 0.08).toFixed(3)})`;
-                            } else {
-                                card.style.transform = '';
-                                card.style.filter = '';
-                                card.style.boxShadow = '';
-                            }
-                        } else {
-                            card.style.transform = '';
-                            card.style.filter = '';
-                            card.style.boxShadow = '';
-                        }
-                    });
-
-                    activeIdx = bestIdx;
-
-                    teamCards.forEach((card, i) => {
-                        card.querySelectorAll('.team-dot').forEach((dot, di) => {
-                            dot.classList.toggle('active', di === activeIdx);
-                        });
-                    });
-                }
-
-                function onScroll() {
-                    if (!rafId) rafId = requestAnimationFrame(applyStackFrame);
-                }
-
-                window.addEventListener('scroll', onScroll, { passive: true });
-                // Initial run
-                requestAnimationFrame(applyStackFrame);
-
-            })();
-
-            setTimeout(() => {
-                document.querySelectorAll('#team .team-card:not(.is-visible)').forEach(c => {
-                    c.classList.add('is-visible');
-                    setTimeout(() => c.classList.add('tc-stacking'), 700);
-                });
-            }, 1500);
-
-            // Nav scroll - disabled so navbar remains completely constant while scrolling
-            // (nav stays in its default liquid pill shape without resizing or shifting)
-
             // TiltedCard interactive mouse movement
             document.querySelectorAll('.tilted-card-figure').forEach(card => {
                 const inner = card.querySelector('.tilted-card-inner');
@@ -8662,7 +8085,6 @@
                 lucide.createIcons();
             }
         })();
-
     </script>
 
     <script>
