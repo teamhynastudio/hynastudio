@@ -577,90 +577,60 @@
         .team-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 48px 34px;
+            row-gap: 80px;
+            column-gap: 34px;
             max-width: 1180px;
             margin: 0 auto;
             padding: 10px 28px 100px;
             align-items: start;
         }
 
-        /* Responsive Wave Staggering matching uploaded reference */
+        /* Responsive Wave Staggering without transforms so cards never overlap */
         @media (min-width: 1024px) {
-            /* Vignesh (Card 1) shifted down below that */
-            .team-card:nth-child(1) {
-                transform: translateY(48px);
-            }
-            .team-card:nth-child(1):hover {
-                transform: translateY(38px);
-            }
-
-            .team-card:nth-child(2) {
-                transform: translateY(88px);
-            }
-            .team-card:nth-child(2):hover {
-                transform: translateY(78px);
-            }
-
-            .team-card:nth-child(3) {
-                transform: translateY(0px);
-            }
-            .team-card:nth-child(3):hover {
-                transform: translateY(-10px);
-            }
-
+            /* Column 1 (Vignesh & Linciya) - Middle tier */
+            .team-card:nth-child(1),
             .team-card:nth-child(4) {
-                transform: translateY(88px);
-            }
-            .team-card:nth-child(4):hover {
-                transform: translateY(78px);
+                margin-top: 36px;
             }
 
+            /* Column 2 (Jashwin & Zarif) - Lower valley */
+            .team-card:nth-child(2),
             .team-card:nth-child(5) {
-                transform: translateY(0px);
-            }
-            .team-card:nth-child(5):hover {
-                transform: translateY(-10px);
+                margin-top: 72px;
             }
 
+            /* Column 3 (Dharshan & Arshiya) - Top peak */
+            .team-card:nth-child(3),
             .team-card:nth-child(6) {
-                transform: translateY(48px);
-            }
-            .team-card:nth-child(6):hover {
-                transform: translateY(38px);
+                margin-top: 0px;
             }
         }
 
         @media (min-width: 680px) and (max-width: 1023px) {
             .team-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 40px 24px;
+                row-gap: 60px;
+                column-gap: 24px;
             }
 
             .team-card:nth-child(odd) {
-                transform: translateY(40px);
-            }
-
-            .team-card:nth-child(odd):hover {
-                transform: translateY(30px);
+                margin-top: 36px;
             }
 
             .team-card:nth-child(even) {
-                transform: translateY(0px);
-            }
-
-            .team-card:nth-child(even):hover {
-                transform: translateY(-10px);
+                margin-top: 0px;
             }
         }
 
         @media (max-width: 679px) {
             .team-grid {
                 grid-template-columns: 1fr;
-                gap: 32px;
+                gap: 28px;
                 padding-bottom: 60px;
             }
 
             .team-card {
+                margin-top: 0 !important;
                 transform: none !important;
             }
         }
