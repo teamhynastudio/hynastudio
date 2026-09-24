@@ -586,14 +586,45 @@
 
         /* Responsive Wave Staggering matching uploaded reference */
         @media (min-width: 1024px) {
-            .team-card:nth-child(2),
-            .team-card:nth-child(4),
+            /* Vignesh (Card 1) shifted down below that */
+            .team-card:nth-child(1) {
+                transform: translateY(48px);
+            }
+            .team-card:nth-child(1):hover {
+                transform: translateY(38px);
+            }
+
+            .team-card:nth-child(2) {
+                transform: translateY(88px);
+            }
+            .team-card:nth-child(2):hover {
+                transform: translateY(78px);
+            }
+
+            .team-card:nth-child(3) {
+                transform: translateY(0px);
+            }
+            .team-card:nth-child(3):hover {
+                transform: translateY(-10px);
+            }
+
+            .team-card:nth-child(4) {
+                transform: translateY(88px);
+            }
+            .team-card:nth-child(4):hover {
+                transform: translateY(78px);
+            }
+
+            .team-card:nth-child(5) {
+                transform: translateY(0px);
+            }
+            .team-card:nth-child(5):hover {
+                transform: translateY(-10px);
+            }
+
             .team-card:nth-child(6) {
                 transform: translateY(48px);
             }
-
-            .team-card:nth-child(2):hover,
-            .team-card:nth-child(4):hover,
             .team-card:nth-child(6):hover {
                 transform: translateY(38px);
             }
@@ -605,12 +636,20 @@
                 gap: 40px 24px;
             }
 
+            .team-card:nth-child(odd) {
+                transform: translateY(40px);
+            }
+
+            .team-card:nth-child(odd):hover {
+                transform: translateY(30px);
+            }
+
             .team-card:nth-child(even) {
-                transform: translateY(36px);
+                transform: translateY(0px);
             }
 
             .team-card:nth-child(even):hover {
-                transform: translateY(26px);
+                transform: translateY(-10px);
             }
         }
 
