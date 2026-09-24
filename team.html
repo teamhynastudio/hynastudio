@@ -530,582 +530,414 @@
             }
         }
 
-        /* ─── TEAM SECTION MAIN ─── */
-        .team-container-section {
-            padding: 180px 0 120px;
+        /* ─── TEAM SECTION MAIN (Pure Black Theme + Staggered Wave Layout) ─── */
+        .team-page-container {
+            padding-top: 160px;
+            padding-bottom: 60px;
             position: relative;
-            z-index: 2;
-            max-width: 1220px;
-            margin: 0 auto;
+            z-index: 1;
+            min-height: 100vh;
+            background: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.16) 0%, rgba(0, 0, 0, 0) 65%);
         }
 
         .team-head-wrapper {
-            padding: 0 28px;
-            margin-bottom: 80px;
+            padding: 0 24px;
+            margin-bottom: 70px;
             text-align: center;
         }
 
         .team-eyebrow {
-            font-family: var(--font-mono);
-            font-size: 12px;
-            letter-spacing: .14em;
-            text-transform: uppercase;
-            color: #ffffff;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 16px;
-            font-weight: 700;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            letter-spacing: 0.04em;
+            color: #94a3b8;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 12px;
         }
 
-        .team-eyebrow::before {
-            content: "";
-            width: 16px;
-            height: 2px;
-            background: var(--blue-light);
-        }
-
-        .team-head-wrapper h1 {
+        .team-head-title {
             font-family: var(--font-display);
-            font-size: clamp(32px, 5vw, 56px);
+            font-size: clamp(2.4rem, 5vw, 3.8rem);
             font-weight: 800;
-            margin-bottom: 20px;
+            color: #ffffff;
+            margin: 0;
             line-height: 1.15;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.025em;
         }
 
-        .team-head-wrapper p {
-            max-width: 680px;
+        .team-head-title .accent-blue {
+            color: #3b82f6;
+            background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ─── TEAM GRID & WAVE STAGGER ─── */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 48px 34px;
+            max-width: 1180px;
             margin: 0 auto;
-            color: var(--ink-dim);
-            font-size: clamp(16px, 2.5vw, 18px);
+            padding: 10px 28px 100px;
+            align-items: start;
         }
 
-        /* ─── SCROLL STACK EFFECT (Same Animation as Launchpad) ─── */
-        .team-stack-pin {
-            position: relative;
-            height: 600vh;
-            /* 7 cards × ~85vh space */
+        /* Responsive Wave Staggering matching uploaded reference */
+        @media (min-width: 1024px) {
+            .team-card:nth-child(2),
+            .team-card:nth-child(4),
+            .team-card:nth-child(6) {
+                transform: translateY(48px);
+            }
+
+            .team-card:nth-child(2):hover,
+            .team-card:nth-child(4):hover,
+            .team-card:nth-child(6):hover {
+                transform: translateY(38px);
+            }
         }
 
-        .team-stack-sticky {
-            position: sticky;
-            top: 0;
-            height: 80vh;
+        @media (min-width: 680px) and (max-width: 1023px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px 24px;
+            }
+
+            .team-card:nth-child(even) {
+                transform: translateY(36px);
+            }
+
+            .team-card:nth-child(even):hover {
+                transform: translateY(26px);
+            }
+        }
+
+        @media (max-width: 679px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+                padding-bottom: 60px;
+            }
+
+            .team-card {
+                transform: none !important;
+            }
+        }
+
+        /* ─── TEAM CARD ─── */
+        .team-card {
+            background: rgba(14, 17, 26, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-top: 1.5px solid rgba(255, 255, 255, 0.22);
+            border-radius: 36px;
+            padding: 44px 24px 38px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .team-stack-cards {
+            text-align: center;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+            cursor: pointer;
             position: relative;
-            width: min(720px, 92%);
-            height: min(480px, 62vh);
-            overflow: hidden;
+            user-select: none;
         }
 
-        /* Card styles matching Launchpad */
-        .team-stack-card {
-            position: absolute;
-            inset: 0;
-            border-radius: 24px;
-            padding: 44px;
+        .team-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(59, 130, 246, 0.45);
+            box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.85), 0 0 40px rgba(59, 130, 246, 0.2);
+        }
+
+        /* ─── CONCENTRIC AVATAR RINGS ─── */
+        .avatar-concentric-container {
+            position: relative;
+            width: 174px;
+            height: 174px;
+            margin-bottom: 24px;
             display: flex;
             align-items: center;
-            gap: 36px;
-            border: 1px solid var(--border);
-            will-change: transform, opacity;
-            transform: translateX(110%) scale(1);
-            opacity: 0;
-            cursor: pointer;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            justify-content: center;
+        }
+
+        .concentric-ring-outer {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 1.5px solid rgba(255, 255, 255, 0.12);
+            border-bottom: 2px solid rgba(59, 130, 246, 0.55);
+            pointer-events: none;
+            transition: border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .concentric-ring-mid {
+            position: absolute;
+            inset: 12px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(255, 255, 255, 0.08);
+            pointer-events: none;
+            transition: border-color 0.4s ease;
+        }
+
+        .avatar-photo-circle {
+            width: 126px;
+            height: 126px;
+            border-radius: 50%;
             overflow: hidden;
+            background: #111422;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
         }
 
-        .team-stack-card:hover {
-            border-color: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 25px 60px rgba(79, 63, 240, 0.15);
-        }
-
-        .team-card-image {
-            width: 180px;
-            height: 180px;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 3px solid rgba(255, 255, 255, 0.05);
-            flex-shrink: 0;
-            background: #0f111a;
-        }
-
-        .team-card-image img {
+        .avatar-photo-circle img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
         }
 
-        .team-card-detail {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
+        .team-card:hover .avatar-photo-circle img {
+            transform: scale(1.06);
         }
 
-        .team-stack-card .lp-slide-num {
+        .team-card:hover .concentric-ring-outer {
+            border-color: rgba(59, 130, 246, 0.45);
+            border-bottom-color: #3b82f6;
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.25);
+        }
+
+        .team-card:hover .concentric-ring-mid {
+            border-color: rgba(255, 255, 255, 0.18);
+        }
+
+        /* ─── BLUE PLAY BADGE ─── */
+        .avatar-play-btn {
             position: absolute;
-            top: 24px;
-            right: 32px;
-            font-family: var(--font-display);
-            font-size: 80px;
-            font-weight: 800;
-            opacity: .05;
-        }
-
-        .team-stack-card h3 {
-            font-size: clamp(22px, 3.2vw, 30px);
-            font-weight: 700;
-            margin-bottom: 6px;
-            color: var(--ink);
-        }
-
-        .team-card-role {
-            font-family: var(--font-mono);
-            font-size: 12px;
-            color: var(--blue-light);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 18px;
-            font-weight: 700;
-        }
-
-        .team-stack-card p {
-            color: var(--ink-dim);
-            font-size: 15px;
-            line-height: 1.6;
-            margin-bottom: 24px;
-            border-left: 2px solid rgba(255, 255, 255, 0.06);
-            padding-left: 14px;
-        }
-
-        .team-social-links {
-            display: flex;
-            gap: 12px;
-        }
-
-        .team-social-icon {
+            top: 4px;
+            right: 4px;
             width: 38px;
             height: 38px;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-            background: rgba(255, 255, 255, 0.02);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            transition: background 0.25s, border-color 0.25s, color 0.25s;
-        }
-
-        .team-social-icon:hover {
-            background: rgba(255, 255, 255, 0.06);
-            border-color: var(--blue-light);
-            color: var(--blue-light);
-        }
-
-        /* Card themes */
-        .team-stack-card.lp-s1 {
-            background: linear-gradient(135deg, #0e101f 0%, #06070c 100%);
-        }
-
-        .team-stack-card.lp-s2 {
-            background: linear-gradient(135deg, #0a171f 0%, #04080c 100%);
-        }
-
-        .team-stack-card.lp-s3 {
-            background: linear-gradient(135deg, #120e24 0%, #06050d 100%);
-        }
-
-        .team-stack-card.lp-s4 {
-            background: linear-gradient(135deg, #0f1816 0%, #050807 100%);
-        }
-
-        .team-stack-card.lp-s5 {
-            background: linear-gradient(135deg, #170d1e 0%, #08040a 100%);
-        }
-
-        .team-stack-card.lp-s6 {
-            background: linear-gradient(135deg, #0f111a 0%, #07080d 100%);
-        }
-
-        .team-stack-card.lp-s7 {
-            background: linear-gradient(135deg, #19140e 0%, #0a0805 100%);
-        }
-
-        /* hint */
-        .team-stack-hint {
-            margin-top: 32px;
-            font-family: var(--font-mono);
-            font-size: 12px;
-            color: var(--ink-dimmer);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .team-stack-hint .lp-arrow {
-            display: inline-block;
-            animation: lp-nudge 1.6s ease-in-out infinite;
-        }
-
-        /* dots */
-        .team-slider-dots {
-            display: flex;
-            gap: 8px;
-            justify-content: center;
-            margin-top: 24px;
-        }
-
-        .team-slider-dots button {
-            width: 9px;
-            height: 9px;
             border-radius: 50%;
-            border: none;
-            background: var(--border);
-            transition: background .3s, width .3s;
+            background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
+            border: 3.5px solid #0e111a;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.5);
+            z-index: 3;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, background 0.3s ease;
         }
 
-        .team-slider-dots button.lp-active {
-            background: var(--blue-light);
-            width: 24px;
-            border-radius: 6px;
+        .avatar-play-btn svg {
+            width: 13px;
+            height: 13px;
+            fill: #ffffff;
+            margin-left: 2px;
         }
 
-        /* ─── MOBILE overrides (≤ 760px) ─── */
-        @media (max-width: 760px) {
-            .team-container-section {
-                padding: 130px 12px 80px;
-            }
-
-            .team-head-wrapper {
-                margin-bottom: 40px;
-                padding: 0 8px;
-            }
-
-            .team-stack-pin {
-                height: 700vh;
-            }
-
-            .team-stack-sticky {
-                padding: 0 12px;
-                box-sizing: border-box;
-            }
-
-            .team-stack-cards {
-                width: calc(100vw - 24px);
-                max-width: 480px;
-                height: auto;
-                min-height: 460px;
-                overflow: hidden;
-            }
-
-            .team-stack-card {
-                padding: 28px 20px 24px;
-                flex-direction: column;
-                align-items: center;
-                gap: 16px;
-                height: auto;
-                min-height: 460px;
-                text-align: center;
-                overflow: hidden;
-            }
-
-            .team-card-image {
-                width: 100px;
-                height: 100px;
-                border-radius: 50%;
-                margin: 0 auto;
-                flex-shrink: 0;
-            }
-
-            .team-card-detail {
-                align-items: center;
-                text-align: center;
-                width: 100%;
-                min-width: 0;
-            }
-
-            .team-stack-card h3 {
-                font-size: clamp(18px, 5vw, 24px);
-                word-break: break-word;
-                overflow-wrap: break-word;
-                hyphens: auto;
-                width: 100%;
-            }
-
-            .team-card-role {
-                font-size: 11px;
-                word-break: break-word;
-            }
-
-            .team-stack-card p {
-                border-left: none;
-                padding-left: 0;
-                font-size: 13.5px;
-                margin-bottom: 14px;
-                word-break: break-word;
-            }
-
-            .team-social-links {
-                justify-content: center;
-            }
-
-            .team-stack-card .lp-slide-num {
-                font-size: 44px;
-                top: 10px;
-                right: 14px;
-                opacity: 0.04;
-            }
+        .team-card:hover .avatar-play-btn,
+        .avatar-play-btn:hover {
+            transform: scale(1.15);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.8);
+            background: linear-gradient(135deg, #2563eb 0%, #60a5fa 100%);
         }
 
-        /* ─── TEAM MODAL DRAWER ─── */
-        .modal-overlay {
+        /* ─── CARD DETAILS ─── */
+        .team-name {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 6px;
+            letter-spacing: -0.015em;
+        }
+
+        .team-role {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #3b82f6;
+            margin: 0;
+        }
+
+        /* ─── TEAM MEMBER MODAL DRAWER ─── */
+        .team-modal-backdrop {
             position: fixed;
             inset: 0;
-            background: rgba(5, 5, 8, 0.85);
-            backdrop-filter: blur(12px) saturate(160%);
-            -webkit-backdrop-filter: blur(12px) saturate(160%);
+            background: rgba(0, 0, 0, 0.82);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             z-index: 2000;
-            display: none;
+            display: flex;
             align-items: center;
             justify-content: center;
-            padding: 1.25rem;
-        }
-
-        .modal-overlay.is-open {
-            display: flex;
-        }
-
-        .modal {
-            width: 100%;
-            max-width: 920px;
-            border-radius: 18px;
-            overflow: hidden;
-            background: rgba(12, 15, 29, 0.96);
-            border: 1px solid var(--border);
-            box-shadow: 0 40px 90px rgba(0, 0, 0, 0.8);
-            transform: translateY(10px);
+            padding: 20px;
             opacity: 0;
-            transition: transform 0.22s ease, opacity 0.22s ease;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
         }
 
-        .modal-overlay.is-open .modal {
-            transform: translateY(0);
+        .team-modal-backdrop.active {
             opacity: 1;
+            pointer-events: auto;
         }
 
-        .modal-header {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 1rem;
-            padding: 1.5rem 1.5rem 0.75rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            background: linear-gradient(135deg, rgba(79, 63, 240, 0.15) 0%, rgba(0, 217, 163, 0.08) 100%);
+        .team-modal-box {
+            background: #0e111a;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-top: 1.5px solid rgba(255, 255, 255, 0.25);
+            border-radius: 32px;
+            padding: 40px 32px 36px;
+            max-width: 520px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 0 50px rgba(59, 130, 246, 0.15);
+            transform: scale(0.92) translateY(20px);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            text-align: center;
         }
 
-        .modal-title-box {
+        .team-modal-backdrop.active .team-modal-box {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #ffffff;
             display: flex;
-            flex-direction: column;
-            gap: 0.35rem;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .modal-close-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.08);
+        }
+
+        .modal-photo-wrap {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            position: relative;
+            border: 3px solid #3b82f6;
+            padding: 4px;
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+        }
+
+        .modal-photo-wrap img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
         }
 
         .modal-name {
             font-family: var(--font-display);
-            font-size: 1.35rem;
+            font-size: 1.6rem;
             font-weight: 800;
-            color: var(--ink);
+            color: #ffffff;
+            margin-bottom: 4px;
         }
 
         .modal-role {
-            font-family: var(--font-mono);
-            font-size: 0.85rem;
-            color: var(--blue-light);
-            font-weight: 700;
-            letter-spacing: 0.04em;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 600;
+            color: #3b82f6;
+            margin-bottom: 18px;
         }
 
-        .modal-close {
-            appearance: none;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--ink);
+        .modal-quote {
+            font-style: italic;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.04);
+            border-left: 3px solid #3b82f6;
+            padding: 14px 18px;
             border-radius: 12px;
-            width: 40px;
-            height: 40px;
-            display: grid;
-            place-items: center;
-            cursor: pointer;
-            transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
-            flex-shrink: 0;
+            margin-bottom: 20px;
+            text-align: left;
+            line-height: 1.6;
         }
 
-        .modal-close:hover {
-            transform: translateY(-1px);
-            background: rgba(255, 255, 255, 0.1);
-            border-color: var(--blue-light);
+        .modal-details-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 14px;
+            padding: 14px 18px;
+            margin-bottom: 24px;
+            text-align: left;
+            font-size: 0.88rem;
         }
 
-        .modal-body {
-            padding: 1.5rem;
+        .modal-detail-row {
+            display: flex;
+            justify-content: space-between;
+            color: rgba(255, 255, 255, 0.6);
         }
 
-        .modal-grid {
-            display: grid;
-            grid-template-columns: 240px 1fr;
-            gap: 1.5rem;
-            align-items: start;
+        .modal-detail-row span:last-child {
+            color: #ffffff;
+            font-weight: 600;
         }
 
-        .modal-photo {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 4px solid rgba(79, 63, 240, 0.3);
-            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
-            background: linear-gradient(135deg, rgba(79, 63, 240, 0.15), rgba(0, 217, 163, 0.15));
-            margin: 0 auto;
+        .modal-socials {
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 14px;
         }
 
-        .modal-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center top;
-        }
-
-        .modal-bio {
-            color: var(--ink-dim);
-            line-height: 1.8;
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .modal-links {
+        .modal-social-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #ffffff;
             display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            margin-top: 0.5rem;
-        }
-
-        .modal-link {
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: all 0.25s ease;
             text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.55rem;
-            padding: 0.7rem 1.2rem;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            background: rgba(255, 255, 255, 0.02);
-            color: var(--ink);
-            font-weight: 700;
-            font-size: 0.9rem;
-            transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease, background 0.15s ease;
         }
 
-        .modal-link:hover {
-            transform: translateY(-1px);
-            border-color: var(--blue-light);
-            background: rgba(79, 63, 240, 0.15);
-            box-shadow: 0 10px 22px rgba(79, 63, 240, 0.15);
-        }
-
-        .modal-education {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-top: 1.5rem;
-            padding: 0.85rem 1rem;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border);
-            backdrop-filter: blur(8px);
-        }
-
-        .modal-education-logo {
-            width: 40px;
-            height: 40px;
-            object-fit: contain;
-            flex-shrink: 0;
-            border-radius: 6px;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 3px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .modal-education-info {
-            display: flex;
-            flex-direction: column;
-            gap: 0.15rem;
-        }
-
-        .modal-education-college {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--ink);
-            line-height: 1.25;
-        }
-
-        .modal-education-degree {
-            font-size: 0.75rem;
-            color: var(--ink-dimmer);
-            font-family: var(--font-mono);
-            font-weight: 500;
-        }
-
-        @media(max-width:900px) {
-            .modal-grid {
-                grid-template-columns: 200px 1fr;
-            }
-        }
-
-        @media(max-width:540px) {
-            .modal {
-                max-width: 100%;
-            }
-
-            .modal-header {
-                padding: 1rem 1rem 0.75rem;
-            }
-
-            .modal-body {
-                padding: 1rem;
-            }
-
-            .modal-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .modal-photo {
-                width: 160px;
-                height: 160px;
-            }
-
-            .modal-close {
-                width: 38px;
-                height: 38px;
-            }
+        .modal-social-btn:hover {
+            background: #3b82f6;
+            color: #ffffff;
+            border-color: #3b82f6;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
         }
 
         /* ─── FOOTER ─── */
         footer {
-            background: #000000;
-            color: rgba(255, 255, 255, 0.7);
+            background: radial-gradient(ellipse 80% 70% at 10% 10%, #7ecfea 0%, #3fa8c8 25%, #1a6fa0 55%, #0a3352 80%, #030d1a 100%);
+            color: rgba(255, 255, 255, 0.85);
             padding: 5rem 8% 3rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: none;
             font-family: var(--font-body, 'Inter', sans-serif);
             position: relative;
             z-index: 10;
@@ -1113,7 +945,7 @@
 
         .footer-top-grid {
             display: grid;
-            grid-template-columns: 2.2fr repeat(4, 1fr);
+            grid-template-columns: 2.2fr repeat(3, 1fr);
             gap: 40px;
             padding-bottom: 3.5rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -1133,8 +965,8 @@
         }
 
         .footer-logo-img {
-            width: 36px;
-            height: 36px;
+            width: 72px;
+            height: 72px;
             object-fit: contain;
         }
 
@@ -1227,265 +1059,20 @@
             transform: translateX(3px);
         }
 
-        .footer-disclaimer-box {
-            padding: 1.5rem 0 1.2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .footer-disclaimer-box p {
-            font-size: 0.70rem;
-            line-height: 1.55;
-            color: rgba(255, 255, 255, 0.48);
-            margin: 0;
-        }
-
-        .footer-disclaimer-box strong {
-            color: rgba(255, 255, 255, 0.85);
-            font-weight: 600;
-        }
-
-        .footer-disclaimer-box a {
-            color: rgba(255, 255, 255, 0.75);
-            text-decoration: underline;
-        }
-
-        .footer-disclaimer-box a:hover {
-            color: #ffffff;
-        }
-
-        .footer-legal-bar {
-            padding-top: 1.5rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .footer-legal-links {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-        }
-
-        .footer-legal-links a {
-            font-size: 0.78rem;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.45);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        .footer-legal-links a:hover {
-            color: #ffffff;
-        }
-
-        @media (max-width: 768px) {
-            .footer-container {
-                flex-direction: column;
-            }
-
-            .footer-links-group {
-                gap: 40px;
-                justify-content: space-between;
-                width: 100%;
+        @media (max-width: 900px) {
+            .footer-top-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
             }
         }
 
-        /* ─── FRONT ROW REFERENCE TEAM SECTION ─── */
-        .team-page-container {
-            max-width: 1160px;
-            margin: 0 auto;
-            padding: 140px 24px 100px;
-        }
-
-        .team-header-wrapper {
-            margin-bottom: 70px;
-            text-align: center;
-        }
-
-        .team-eyebrow {
-            font-family: var(--font-display);
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: #ffffff;
-            margin-bottom: 14px;
-            display: block;
-        }
-
-        .team-title {
-            font-family: var(--font-display);
-            font-size: clamp(2.8rem, 5vw, 4.2rem);
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            color: #ffffff;
-            line-height: 1.1;
-            margin-bottom: 18px;
-        }
-
-        .team-subtitle {
-            font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.65);
-            max-width: 620px;
-            margin: 0 auto;
-            line-height: 1.65;
-        }
-
-        .our-people-grid {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 64px 32px;
-            justify-items: center;
-            max-width: 1240px;
-            margin: 0 auto;
-        }
-
-        .our-person-card.row-1,
-        .our-person-card.row-2 {
-            grid-column: span 4;
-        }
-
-        .our-person-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            cursor: pointer;
-            width: 100%;
-            max-width: 320px;
-            transition: transform 0.35s ease;
-        }
-
-        /* ─── FADE UP ANIMATION (for lp-fade-up / lp-in) ─── */
-        .lp-fade-up {
-            opacity: 0;
-            transform: translateY(28px);
-            transition: opacity 0.65s ease, transform 0.65s ease;
-        }
-
-        .lp-fade-up.lp-in {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ─── TEAM PHOTO STYLES ─── */
-        .avatar-img,
-        .core-team-photo {
-            width: 220px;
-            height: 220px;
-            border-radius: 50%;
-            object-fit: cover;
-            object-position: top center;
-            display: block;
-            margin: 0 auto 22px;
-            flex-shrink: 0;
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
-            border: 3px solid rgba(255, 255, 255, 0.1);
-            filter: none !important;
-            -webkit-filter: none !important;
-            transition: transform 0.35s ease, box-shadow 0.35s ease;
-        }
-
-        .our-person-card:hover .avatar-img,
-        .our-person-card:hover .core-team-photo {
-            filter: none !important;
-            -webkit-filter: none !important;
-            transform: scale(1.04) translateY(-4px);
-            box-shadow: 0 24px 50px rgba(255, 200, 59, 0.2);
-        }
-
-        .person-name,
-        .core-team-name {
-            font-family: var(--font-display);
-            font-size: 1.55rem;
-            font-weight: 800;
-            color: #ffffff;
-            margin-bottom: 6px;
-            letter-spacing: -0.02em;
-            line-height: 1.25;
-            white-space: nowrap;
-        }
-
-        .person-role,
-        .core-team-role {
-            font-size: 0.92rem;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.65);
-            letter-spacing: -0.01em;
-            margin-bottom: 12px;
-        }
-
-        .core-team-socials {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 4px;
-        }
-
-        .social-btn {
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(255, 255, 255, 0.7);
-            transition: all 0.25s ease;
-            text-decoration: none;
-        }
-
-        .social-btn:hover {
-            background: rgba(255, 255, 255, 0.18);
-            color: #ffffff;
-            border-color: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-        }
-
-        .social-btn svg {
-            width: 15px;
-            height: 15px;
-            fill: currentColor;
-        }
-
-        @media (max-width: 1024px) {
-            .our-people-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 52px 30px;
-            }
-
-            .our-person-card.row-1,
-            .our-person-card.row-2 {
-                grid-column: span 1;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .team-page-container {
-                padding-top: 110px;
-            }
-
-            .our-people-grid {
+        @media (max-width: 600px) {
+            .footer-top-grid {
                 grid-template-columns: 1fr;
-                gap: 44px;
+                gap: 26px;
             }
-
-            .avatar-img,
-            .core-team-photo {
-                width: 190px;
-                height: 190px;
-            }
-
-            .person-name,
-            .core-team-name {
-                font-size: 1.4rem;
+            footer {
+                padding: 3.5rem 1.5rem 2rem;
             }
         }
     </style>
@@ -1555,23 +1142,275 @@
 
     <!-- MAIN CONTENT -->
     <div class="team-page-container">
+        <!-- HEADER -->
+        <div class="team-head-wrapper">
+            <span class="team-eyebrow">Experts Team</span>
+            <h1 class="team-head-title">Team Perfection <span class="accent-blue">At It's Finest</span></h1>
+        </div>
+
+        <!-- STAGGERED WAVE GRID -->
+        <div class="team-grid">
+            <!-- 1. Vignesh VL -->
+            <div class="team-card" data-member="vignesh">
+                <div class="avatar-concentric-container">
+                    <div class="concentric-ring-outer"></div>
+                    <div class="concentric-ring-mid"></div>
+                    <div class="avatar-photo-circle">
+                        <img src="./images/team/vignesh_new.png" alt="Vignesh VL" onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Vignesh+VL&background=2563eb&color=fff';">
+                    </div>
+                    <div class="avatar-play-btn" aria-label="View Profile">
+                        <svg viewBox="0 0 24 24"><polygon points="7,4 20,12 7,20"/></svg>
+                    </div>
+                </div>
+                <h3 class="team-name">Vignesh VL</h3>
+                <p class="team-role">Founder &amp; CEO (Managing Director)</p>
+            </div>
+
+            <!-- 2. Jashwin J -->
+            <div class="team-card" data-member="jashwin">
+                <div class="avatar-concentric-container">
+                    <div class="concentric-ring-outer"></div>
+                    <div class="concentric-ring-mid"></div>
+                    <div class="avatar-photo-circle">
+                        <img src="https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png" alt="Jashwin J" onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Jashwin+J&background=2563eb&color=fff';">
+                    </div>
+                    <div class="avatar-play-btn" aria-label="View Profile">
+                        <svg viewBox="0 0 24 24"><polygon points="7,4 20,12 7,20"/></svg>
+                    </div>
+                </div>
+                <h3 class="team-name">Jashwin J</h3>
+                <p class="team-role">Co-Founder &amp; COO</p>
+            </div>
+
+            <!-- 3. Dharshan JM -->
+            <div class="team-card" data-member="dharshan">
+                <div class="avatar-concentric-container">
+                    <div class="concentric-ring-outer"></div>
+                    <div class="concentric-ring-mid"></div>
+                    <div class="avatar-photo-circle">
+                        <img src="https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg" alt="Dharshan JM" onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Dharshan+JM&background=2563eb&color=fff';">
+                    </div>
+                    <div class="avatar-play-btn" aria-label="View Profile">
+                        <svg viewBox="0 0 24 24"><polygon points="7,4 20,12 7,20"/></svg>
+                    </div>
+                </div>
+                <h3 class="team-name">Dharshan JM</h3>
+                <p class="team-role">Co-Founder &amp; CTO</p>
+            </div>
+
+            <!-- 4. Linciya -->
+            <div class="team-card" data-member="linciya">
+                <div class="avatar-concentric-container">
+                    <div class="concentric-ring-outer"></div>
+                    <div class="concentric-ring-mid"></div>
+                    <div class="avatar-photo-circle">
+                        <img src="./images/team/linciya.png" alt="Linciya" onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Linciya&background=2563eb&color=fff';">
+                    </div>
+                    <div class="avatar-play-btn" aria-label="View Profile">
+                        <svg viewBox="0 0 24 24"><polygon points="7,4 20,12 7,20"/></svg>
+                    </div>
+                </div>
+                <h3 class="team-name">Linciya</h3>
+                <p class="team-role">Chief Marketing Officer</p>
+            </div>
+
+            <!-- 5. Muhammed Zarif -->
+            <div class="team-card" data-member="zarif">
+                <div class="avatar-concentric-container">
+                    <div class="concentric-ring-outer"></div>
+                    <div class="concentric-ring-mid"></div>
+                    <div class="avatar-photo-circle">
+                        <img src="./images/team/zarif.jpg" alt="Muhammed Zarif" onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Muhammed+Zarif&background=2563eb&color=fff';">
+                    </div>
+                    <div class="avatar-play-btn" aria-label="View Profile">
+                        <svg viewBox="0 0 24 24"><polygon points="7,4 20,12 7,20"/></svg>
+                    </div>
+                </div>
+                <h3 class="team-name">Muhammed Zarif</h3>
+                <p class="team-role">Chief Growth Officer</p>
+            </div>
+
+            <!-- 6. Muhammed Arshiya -->
+            <div class="team-card" data-member="arshiya">
+                <div class="avatar-concentric-container">
+                    <div class="concentric-ring-outer"></div>
+                    <div class="concentric-ring-mid"></div>
+                    <div class="avatar-photo-circle">
+                        <img src="./images/team/arshiya.jpg" alt="Muhammed Arshiya" onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Muhammed+Arshiya&background=2563eb&color=fff';">
+                    </div>
+                    <div class="avatar-play-btn" aria-label="View Profile">
+                        <svg viewBox="0 0 24 24"><polygon points="7,4 20,12 7,20"/></svg>
+                    </div>
+                </div>
+                <h3 class="team-name">Muhammed Arshiya</h3>
+                <p class="team-role">Chief Product Officer</p>
+            </div>
+        </div>
     </div>
+
+    <!-- PROFILE MODAL -->
+    <div class="team-modal-backdrop" id="teamModal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="team-modal-box">
+            <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">&times;</button>
+            <div class="modal-photo-wrap">
+                <img src="" id="modalPhoto" alt="Team Member">
+            </div>
+            <h3 class="modal-name" id="modalName"></h3>
+            <div class="modal-role" id="modalRole"></div>
+            <div class="modal-quote" id="modalQuote"></div>
+            <div class="modal-details-grid">
+                <div class="modal-detail-row">
+                    <span>Institution</span>
+                    <span id="modalCollege">Anna University</span>
+                </div>
+                <div class="modal-detail-row">
+                    <span>Degree</span>
+                    <span id="modalDegree">B.E. Computer Science &amp; Engineering</span>
+                </div>
+            </div>
+            <div class="modal-socials" id="modalSocials"></div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-top-grid">
+                <!-- COL 1: LOGO & BRAND DETAILS -->
+                <div class="footer-col-brand">
+                    <a href="index.html" class="footer-logo-link">
+                        <img src="./hyna-logo-new.png" class="footer-logo-img" alt="Hyna Studio Logo">
+                        <div class="footer-logo-text">
+                            <span class="footer-logo-main">Hyna Studio</span>
+                            <span class="footer-logo-sub">Democratizing Entrepreneurship</span>
+                        </div>
+                    </a>
+                    <p class="footer-copy-info">
+                        &copy; 2026, Hyna Studio Technologies.<br>All rights reserved.
+                    </p>
+                    <div class="footer-social-bar">
+                        <a href="https://x.com/HynaStudio" target="_blank" rel="noopener" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/hyna-studio-089b33416/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://github.com/teamhynastudio" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+
+                <!-- COL 2: SUPPORT -->
+                <div class="footer-col-links">
+                    <h5 class="footer-col-title">Support</h5>
+                    <ul class="footer-link-list">
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="touch.html">Support Portal</a></li>
+                        <li><a href="release.html">System Status</a></li>
+                        <li><a href="why-choose-us.html">Developer Guides</a></li>
+                        <li><a href="privacy-policy.html">Security Charter</a></li>
+                    </ul>
+                </div>
+
+                <!-- COL 3: COMPANY -->
+                <div class="footer-col-links">
+                    <h5 class="footer-col-title">Company</h5>
+                    <ul class="footer-link-list">
+                        <li><a href="index.html#why-we-exist">About Hyna</a></li>
+                        <li><a href="team.html">Team</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="press.html">Press &amp; Media</a></li>
+                        <li><a href="open-source.html">Open Source</a></li>
+                    </ul>
+                </div>
+
+                <!-- COL 4: QUICK LINKS -->
+                <div class="footer-col-links">
+                    <h5 class="footer-col-title">Quick Links</h5>
+                    <ul class="footer-link-list">
+                        <li><a href="terms-conditions.html">Terms &amp; Conditions</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="sitemap.html">Sitemap</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <!-- JS SCRIPTS -->
     <script>
+        // Team member database
+        const teamData = {
+            vignesh: {
+                name: 'Vignesh VL',
+                role: 'Founder & CEO (Managing Director)',
+                photo: './images/team/vignesh_new.png',
+                quote: '"Leadership is not about control, it is about building people who can lead without you." Vignesh drives the strategic vision and engineering standards at Hyna Studio.',
+                college: 'Anna University',
+                degree: 'B.E. Computer Science & Engineering',
+                linkedin: 'https://www.linkedin.com/in/vigneshvl-dev/',
+                github: 'https://github.com/vigneshvl-dev',
+                portfolio: 'https://vigneshvl-dev.github.io/PORTFOLIO/'
+            },
+            jashwin: {
+                name: 'Jashwin J',
+                role: 'Co-Founder & COO',
+                photo: 'https://i.postimg.cc/QtwL4S7M/Screenshot-2026-06-11-112412.png',
+                quote: '"Deadlines don’t fail because of time, they fail because alignment is missing." Jashwin ensures that every project at Hyna Studio is aligned with stakeholder goals and delivered seamlessly.',
+                college: 'Anna University',
+                degree: 'B.E. Computer Science & Engineering',
+                linkedin: 'https://www.linkedin.com/in/jashwin-j-16b06240a',
+                github: 'https://github.com/jashwinj2008'
+            },
+            dharshan: {
+                name: 'Dharshan JM',
+                role: 'Co-Founder & CTO',
+                photo: 'https://i.postimg.cc/YS0y5YMG/Whats-App-Image-2026-06-11-at-11-21-13-AM.jpg',
+                quote: '"A co-founder in tech doesn’t follow trends, he builds what will become the next standard." Dharshan leads our systems architecture, cloud infrastructure, and technical execution.',
+                college: 'Anna University',
+                degree: 'B.E. Computer Science & Engineering',
+                linkedin: 'https://www.linkedin.com/in/dharshan-jm',
+                github: 'https://github.com/dharshan00814',
+                portfolio: 'https://portholio-zeta.vercel.app/'
+            },
+            linciya: {
+                name: 'Linciya',
+                role: 'Chief Marketing Officer',
+                photo: './images/team/linciya.png',
+                quote: '"Great marketing isn’t about telling people what you do, it’s about inspiring them with why you exist." Linciya leads market positioning, growth strategies, and brand expansion at Hyna Studio.',
+                college: 'Anna University',
+                degree: 'B.E. Computer Science & Engineering',
+                linkedin: 'https://www.linkedin.com'
+            },
+            zarif: {
+                name: 'Muhammed Zarif',
+                role: 'Chief Growth Officer',
+                photo: './images/team/zarif.jpg',
+                quote: '"True growth is about building scalable strategies that connect vision with market opportunities." Muhammed Zarif leads strategic partnerships, client acquisition, and growth initiatives at Hyna Studio.',
+                college: 'Anna University',
+                degree: 'B.E. Computer Science & Engineering',
+                linkedin: 'https://www.linkedin.com'
+            },
+            arshiya: {
+                name: 'Muhammed Arshiya',
+                role: 'Chief Product Officer',
+                photo: './images/team/arshiya.jpg',
+                quote: '"Exceptional products are born where user needs and innovative technology align." Muhammed Arshiya drives product strategy, roadmap planning, and user experience excellence at Hyna Studio.',
+                college: 'Anna University',
+                degree: 'B.E. Computer Science & Engineering',
+                linkedin: 'https://www.linkedin.com'
+            }
+        };
+
         document.addEventListener('DOMContentLoaded', () => {
+            // Navbar mobile toggle
             const toggleBtn = document.getElementById('navMobileToggle');
             const navLinks = document.querySelector('.nav-links');
 
             if (toggleBtn && navLinks) {
-                // Toggle menu open/closed
                 toggleBtn.addEventListener('click', (e) => {
                     e.stopPropagation();
                     const isOpen = toggleBtn.classList.toggle('open');
                     navLinks.classList.toggle('active', isOpen);
                 });
 
-                // Close menu when clicking outside
                 document.addEventListener('click', (e) => {
                     if (!navLinks.contains(e.target) && !toggleBtn.contains(e.target)) {
                         toggleBtn.classList.remove('open');
@@ -1579,7 +1418,6 @@
                     }
                 });
 
-                // Mobile dropdown toggle
                 document.querySelectorAll('.nav-link-has-dropdown').forEach(link => {
                     link.addEventListener('click', (e) => {
                         if (window.innerWidth <= 768) {
@@ -1594,9 +1432,8 @@
                     });
                 });
 
-                // Close menu when clicking a nav link
                 navLinks.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', (e) => {
+                    link.addEventListener('click', () => {
                         if (link.classList.contains('nav-link-has-dropdown') && window.innerWidth <= 768) {
                             return;
                         }
@@ -1605,6 +1442,79 @@
                     });
                 });
             }
+
+            // Modal functionality
+            const modal = document.getElementById('teamModal');
+            const modalCloseBtn = document.getElementById('modalCloseBtn');
+            const modalPhoto = document.getElementById('modalPhoto');
+            const modalName = document.getElementById('modalName');
+            const modalRole = document.getElementById('modalRole');
+            const modalQuote = document.getElementById('modalQuote');
+            const modalCollege = document.getElementById('modalCollege');
+            const modalDegree = document.getElementById('modalDegree');
+            const modalSocials = document.getElementById('modalSocials');
+
+            function openModal(memberKey) {
+                const data = teamData[memberKey];
+                if (!data) return;
+
+                modalPhoto.src = data.photo;
+                modalPhoto.onerror = function() {
+                    this.src = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(data.name) + '&background=2563eb&color=fff';
+                };
+                modalName.textContent = data.name;
+                modalRole.textContent = data.role;
+                modalQuote.textContent = data.quote;
+                modalCollege.textContent = data.college || 'Anna University';
+                modalDegree.textContent = data.degree || 'B.E. Computer Science & Engineering';
+
+                modalSocials.innerHTML = '';
+                if (data.linkedin) {
+                    modalSocials.innerHTML += `<a href="${data.linkedin}" target="_blank" class="modal-social-btn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>`;
+                }
+                if (data.github) {
+                    modalSocials.innerHTML += `<a href="${data.github}" target="_blank" class="modal-social-btn" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>`;
+                }
+                if (data.portfolio) {
+                    modalSocials.innerHTML += `<a href="${data.portfolio}" target="_blank" class="modal-social-btn" aria-label="Portfolio"><i class="fa-solid fa-globe"></i></a>`;
+                }
+
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            document.querySelectorAll('.team-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const memberKey = card.getAttribute('data-member');
+                    openModal(memberKey);
+                });
+            });
+
+            if (modalCloseBtn) {
+                modalCloseBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    closeModal();
+                });
+            }
+
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        closeModal();
+                    }
+                });
+            }
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.classList.contains('active')) {
+                    closeModal();
+                }
+            });
         });
     </script>
 </body>
