@@ -24,11 +24,6 @@ const PageHero = ({ title, subtitle, accentColor = '#00C2FF' }) => {
       <div className="container page-hero-content">
         <h1 className="page-hero-title">{title}</h1>
         <p className="page-hero-subtitle text-muted">{subtitle}</p>
-        <div className="page-hero-placeholder">
-          <div className="placeholder-box">
-            <span className="placeholder-text">Module Content Placeholder</span>
-          </div>
-        </div>
       </div>
     </section>
   );
