@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, X, ChevronDown, Briefcase, Users, ShoppingCart, Workflow, ArrowRight } from 'lucide-react';
 import './Navbar.css';
 
@@ -7,44 +8,44 @@ const PLATFORM_SECTIONS = [
     title: 'Business Management',
     icon: Briefcase,
     items: [
-      { name: 'CRM' },
-      { name: 'Sales' },
-      { name: 'Quotations' },
-      { name: 'Inventory' },
-      { name: 'Finance' },
-      { name: 'Business Operations' },
+      { name: 'CRM', path: '/crm' },
+      { name: 'Sales', path: '/sales' },
+      { name: 'Quotations', path: '/quotations' },
+      { name: 'Inventory', path: '/inventory' },
+      { name: 'Finance', path: '/finance' },
+      { name: 'Business Operations', path: '/business-operations' },
     ]
   },
   {
     title: 'Business Network',
     icon: Users,
     items: [
-      { name: 'Discover Businesses' },
-      { name: 'Suppliers' },
-      { name: 'Manufacturers' },
-      { name: 'Distributors' },
-      { name: 'Customers' },
-      { name: 'Business Partners' },
+      { name: 'Discover Businesses', path: '/discover-businesses' },
+      { name: 'Suppliers', path: '/suppliers' },
+      { name: 'Manufacturers', path: '/manufacturers' },
+      { name: 'Distributors', path: '/distributors' },
+      { name: 'Customers', path: '/customers' },
+      { name: 'Business Partners', path: '/business-partners' },
     ]
   },
   {
     title: 'Trade & Commerce',
     icon: ShoppingCart,
     items: [
-      { name: 'Product Discovery' },
-      { name: 'Trade Opportunities' },
-      { name: 'Business Enquiries' },
-      { name: 'Orders & Deals' },
+      { name: 'Product Discovery', path: '/product-discovery' },
+      { name: 'Trade Opportunities', path: '/trade-opportunities' },
+      { name: 'Business Enquiries', path: '/business-enquiries' },
+      { name: 'Orders & Deals', path: '/orders-deals' },
     ]
   },
   {
     title: 'AI Intelligence & Automation',
     icon: Workflow,
     items: [
-      { name: 'HynaBiz AI', badge: 'AI' },
-      { name: 'Business Insights' },
-      { name: 'Smart Workflows' },
-      { name: 'Reports & Analytics' },
+      { name: 'HynaBiz AI', badge: 'AI', path: '/hynabiz-ai' },
+      { name: 'Business Insights', path: '/business-insights' },
+      { name: 'Smart Workflows', path: '/smart-workflows' },
+      { name: 'Reports & Analytics', path: '/reports-analytics' },
     ]
   }
 ];
@@ -180,7 +181,25 @@ const Navbar = () => {
                   <div className="platform-col-icon">
                     <SectionIcon size={15} />
                   </div>
+<<<<<<< HEAD
                   <span className="platform-col-title">{section.title}</span>
+=======
+
+                  <ul className="platform-col-list">
+                    {section.items.map((item, itemIdx) => (
+                      <li 
+                        key={itemIdx} 
+                        className="platform-col-item"
+                        onClick={() => setIsPlatformOpen(false)}
+                      >
+                        <Link to={item.path} style={{ textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center', width: '100%', gap: '8px' }}>
+                          <span className="platform-item-name">{item.name}</span>
+                          {item.badge && <span className="platform-item-badge">{item.badge}</span>}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+>>>>>>> ff969fde341096b5564772d10f1bbde95b631e59
                 </div>
 
                 <ul className="platform-col-list">
@@ -229,7 +248,18 @@ const Navbar = () => {
                   <div className="mobile-sec-title">{sec.title}</div>
                   <div className="mobile-sec-items">
                     {sec.items.map((it, j) => (
-                      <span key={j} className="mobile-sec-item">{it.name}</span>
+                      <Link 
+                        key={j} 
+                        to={it.path}
+                        className="mobile-sec-item"
+                        style={{ textDecoration: 'none', display: 'block', color: 'inherit' }}
+                        onClick={() => {
+                          setIsPlatformOpen(false);
+                          setIsMobileMenuOpen(false);
+                        }}
+                      >
+                        {it.name}
+                      </Link>
                     ))}
                   </div>
                 </div>
