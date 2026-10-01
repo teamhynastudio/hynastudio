@@ -182,21 +182,6 @@ const Navbar = () => {
                     <SectionIcon size={15} />
                   </div>
                   <span className="platform-col-title">{section.title}</span>
-
-                  <ul className="platform-col-list">
-                    {section.items.map((item, itemIdx) => (
-                      <li
-                        key={itemIdx}
-                        className="platform-col-item"
-                        onClick={() => setIsPlatformOpen(false)}
-                      >
-                        <Link to={item.path} style={{ textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center', width: '100%', gap: '8px' }}>
-                          <span className="platform-item-name">{item.name}</span>
-                          {item.badge && <span className="platform-item-badge">{item.badge}</span>}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
                 </div>
 
                 <ul className="platform-col-list">
@@ -206,8 +191,10 @@ const Navbar = () => {
                       className="platform-col-item"
                       onClick={() => setIsPlatformOpen(false)}
                     >
-                      <span className="platform-item-name">{item.name}</span>
-                      {item.badge && <span className="platform-item-badge">{item.badge}</span>}
+                      <Link to={item.path} style={{ textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center', width: '100%', gap: '8px' }}>
+                        <span className="platform-item-name">{item.name}</span>
+                        {item.badge && <span className="platform-item-badge">{item.badge}</span>}
+                      </Link>
                     </li>
                   ))}
                 </ul>
