@@ -133,7 +133,7 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-links desktop-only">
-          <div 
+          <div
             ref={platformButtonRef}
             className={`nav-item ${isPlatformOpen ? 'active' : ''}`}
             onClick={() => setIsPlatformOpen(!isPlatformOpen)}
@@ -157,7 +157,7 @@ const Navbar = () => {
           <button className="btn btn-primary">Sign up</button>
         </div>
 
-        <button 
+        <button
           className="mobile-menu-btn mobile-only"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
@@ -166,8 +166,8 @@ const Navbar = () => {
       </div>
 
       {/* Platform Mega Menu Dropdown */}
-      <div 
-        ref={platformMenuRef} 
+      <div
+        ref={platformMenuRef}
         className={`platform-dropdown-menu ${isPlatformOpen ? 'open' : ''}`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -181,14 +181,12 @@ const Navbar = () => {
                   <div className="platform-col-icon">
                     <SectionIcon size={15} />
                   </div>
-<<<<<<< HEAD
                   <span className="platform-col-title">{section.title}</span>
-=======
 
                   <ul className="platform-col-list">
                     {section.items.map((item, itemIdx) => (
-                      <li 
-                        key={itemIdx} 
+                      <li
+                        key={itemIdx}
                         className="platform-col-item"
                         onClick={() => setIsPlatformOpen(false)}
                       >
@@ -199,13 +197,12 @@ const Navbar = () => {
                       </li>
                     ))}
                   </ul>
->>>>>>> ff969fde341096b5564772d10f1bbde95b631e59
                 </div>
 
                 <ul className="platform-col-list">
                   {section.items.map((item, itemIdx) => (
-                    <li 
-                      key={itemIdx} 
+                    <li
+                      key={itemIdx}
                       className="platform-col-item"
                       onClick={() => setIsPlatformOpen(false)}
                     >
@@ -233,7 +230,7 @@ const Navbar = () => {
       {/* Mobile Drawer Menu */}
       {isMobileMenuOpen && (
         <div className="navbar-mobile-drawer">
-          <div 
+          <div
             className="mobile-nav-item"
             onClick={() => setIsPlatformOpen(!isPlatformOpen)}
           >
@@ -248,8 +245,8 @@ const Navbar = () => {
                   <div className="mobile-sec-title">{sec.title}</div>
                   <div className="mobile-sec-items">
                     {sec.items.map((it, j) => (
-                      <Link 
-                        key={j} 
+                      <Link
+                        key={j}
                         to={it.path}
                         className="mobile-sec-item"
                         style={{ textDecoration: 'none', display: 'block', color: 'inherit' }}
