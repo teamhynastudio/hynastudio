@@ -133,7 +133,7 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-links desktop-only">
-          <div 
+          <div
             ref={platformButtonRef}
             className={`nav-item ${isPlatformOpen ? 'active' : ''}`}
             onClick={() => setIsPlatformOpen(!isPlatformOpen)}
@@ -157,7 +157,7 @@ const Navbar = () => {
           <button className="btn btn-primary">Sign up</button>
         </div>
 
-        <button 
+        <button
           className="mobile-menu-btn mobile-only"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
@@ -166,58 +166,58 @@ const Navbar = () => {
       </div>
 
       {/* Platform Mega Menu Dropdown */}
-      <div 
-        ref={platformMenuRef} 
+      <div
+        ref={platformMenuRef}
         className={`platform-dropdown-menu ${isPlatformOpen ? 'open' : ''}`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
         <div className="platform-dropdown-grid">
-            {PLATFORM_SECTIONS.map((section, idx) => {
-              const SectionIcon = section.icon;
-              return (
-                <div key={idx} className="platform-dropdown-col">
-                  <div className="platform-col-header">
-                    <div className="platform-col-icon">
-                      <SectionIcon size={15} />
-                    </div>
-                    <span className="platform-col-title">{section.title}</span>
+          {PLATFORM_SECTIONS.map((section, idx) => {
+            const SectionIcon = section.icon;
+            return (
+              <div key={idx} className="platform-dropdown-col">
+                <div className="platform-col-header">
+                  <div className="platform-col-icon">
+                    <SectionIcon size={15} />
                   </div>
-
-                  <ul className="platform-col-list">
-                    {section.items.map((item, itemIdx) => (
-                      <li 
-                        key={itemIdx} 
-                        className="platform-col-item"
-                        onClick={() => setIsPlatformOpen(false)}
-                      >
-                        <Link to={item.path} style={{ textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center', width: '100%', gap: '8px' }}>
-                          <span className="platform-item-name">{item.name}</span>
-                          {item.badge && <span className="platform-item-badge">{item.badge}</span>}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
+                  <span className="platform-col-title">{section.title}</span>
                 </div>
-              );
-            })}
-          </div>
 
-          <div className="platform-dropdown-footer">
-            <div className="platform-footer-brand">
-              <span className="platform-footer-dot"></span>
-              <span>One platform. Every part of your business connected.</span>
-            </div>
-            <a href="#explore" className="platform-footer-action" onClick={() => setIsPlatformOpen(false)}>
-              Explore Platform <ArrowRight size={14} />
-            </a>
-          </div>
+                <ul className="platform-col-list">
+                  {section.items.map((item, itemIdx) => (
+                    <li
+                      key={itemIdx}
+                      className="platform-col-item"
+                      onClick={() => setIsPlatformOpen(false)}
+                    >
+                      <Link to={item.path} style={{ textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center', width: '100%', gap: '8px' }}>
+                        <span className="platform-item-name">{item.name}</span>
+                        {item.badge && <span className="platform-item-badge">{item.badge}</span>}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
         </div>
+
+        <div className="platform-dropdown-footer">
+          <div className="platform-footer-brand">
+            <span className="platform-footer-dot"></span>
+            <span>One platform. Every part of your business connected.</span>
+          </div>
+          <a href="#explore" className="platform-footer-action" onClick={() => setIsPlatformOpen(false)}>
+            Explore Platform <ArrowRight size={14} />
+          </a>
+        </div>
+      </div>
 
       {/* Mobile Drawer Menu */}
       {isMobileMenuOpen && (
         <div className="navbar-mobile-drawer">
-          <div 
+          <div
             className="mobile-nav-item"
             onClick={() => setIsPlatformOpen(!isPlatformOpen)}
           >
@@ -232,8 +232,8 @@ const Navbar = () => {
                   <div className="mobile-sec-title">{sec.title}</div>
                   <div className="mobile-sec-items">
                     {sec.items.map((it, j) => (
-                      <Link 
-                        key={j} 
+                      <Link
+                        key={j}
                         to={it.path}
                         className="mobile-sec-item"
                         style={{ textDecoration: 'none', display: 'block', color: 'inherit' }}

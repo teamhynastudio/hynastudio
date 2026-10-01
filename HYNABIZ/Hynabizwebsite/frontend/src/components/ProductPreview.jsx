@@ -12,7 +12,13 @@ import {
   Bell, 
   Settings,
   Zap,
-  Building2
+  Building2,
+  BarChart3,
+  TrendingUp,
+  DollarSign,
+  Package,
+  CreditCard,
+  ClipboardList
 } from 'lucide-react';
 import './ProductPreview.css';
 
@@ -407,7 +413,132 @@ const AutomationsScreen = () => (
   </div>
 );
 
+const BusinessManagementScreen = () => {
+  const bars = [
+    { label: 'Jan', value: 62, color: '#3F3F46' },
+    { label: 'Feb', value: 75, color: '#3F3F46' },
+    { label: 'Mar', value: 58, color: '#3F3F46' },
+    { label: 'Apr', value: 84, color: '#3F3F46' },
+    { label: 'May', value: 91, color: '#00C2FF' },
+    { label: 'Jun', value: 79, color: '#3F3F46' },
+    { label: 'Jul', value: 95, color: '#00C2FF' },
+    { label: 'Aug', value: 88, color: '#3F3F46' },
+  ];
+
+  const modules = [
+    { icon: UserSquare2, label: 'CRM', color: '#00C2FF', stat: '348 contacts' },
+    { icon: TrendingUp, label: 'Sales', color: '#22C55E', stat: '$428.5k' },
+    { icon: FileText, label: 'Quotations', color: '#FACC15', stat: '14 pending' },
+    { icon: Package, label: 'Inventory', color: '#A78BFA', stat: '1,240 SKUs' },
+    { icon: CreditCard, label: 'Finance', color: '#F97316', stat: '$2.1M ledger' },
+    { icon: ClipboardList, label: 'Operations', color: '#34D399', stat: '18 active ops' },
+  ];
+
+  return (
+    <div className="dash-main">
+      <div className="dash-header">
+        <div className="dash-greeting">
+          <h3>Business Management</h3>
+          <p style={{ fontSize: '13px' }}>Revenue, operations & performance at a glance.</p>
+        </div>
+        <div className="dash-header-actions">
+          <div className="dash-search">
+            <Search size={14} />
+            <span>Search modules...</span>
+          </div>
+          <Bell size={18} style={{ color: 'rgba(255, 255, 255, 0.6)' }} />
+          <Settings size={18} style={{ color: 'rgba(255, 255, 255, 0.6)' }} />
+          <div className="dash-avatar"></div>
+        </div>
+      </div>
+
+      <div className="dash-content">
+        {/* KPI Metrics */}
+        <div className="dash-metrics">
+          <div className="metric-card">
+            <div className="metric-title">Monthly Revenue</div>
+            <div className="metric-value">$184.2k</div>
+          </div>
+          <div className="metric-card">
+            <div className="metric-title">Deals Won</div>
+            <div className="metric-value">67</div>
+          </div>
+          <div className="metric-card">
+            <div className="metric-title">Pipeline</div>
+            <div className="metric-value">$612k</div>
+          </div>
+          <div className="metric-card">
+            <div className="metric-title">Active Customers</div>
+            <div className="metric-value">1,284</div>
+          </div>
+        </div>
+
+        {/* Revenue Bar Chart */}
+        <div className="dash-timeline" style={{ paddingBottom: '10px' }}>
+          <div className="dash-panel-title" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <span>Revenue Overview</span>
+            <span style={{ fontSize: '11px', color: '#22C55E', fontWeight: 600 }}>↑ 24.8% vs last period</span>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'flex-end', gap: '8px', height: '80px', padding: '0 4px 0 0', marginTop: '10px' }}>
+            {bars.map((bar, i) => (
+              <div key={i} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', height: '100%', justifyContent: 'flex-end' }}>
+                <div style={{
+                  width: '100%',
+                  height: `${bar.value}%`,
+                  background: bar.color === '#00C2FF'
+                    ? 'linear-gradient(180deg, #00C2FF 0%, rgba(0,194,255,0.5) 100%)'
+                    : 'rgba(63,63,70,0.8)',
+                  borderRadius: '4px 4px 2px 2px',
+                  transition: 'height 0.4s ease',
+                  boxShadow: bar.color === '#00C2FF' ? '0 0 10px rgba(0,194,255,0.4)' : 'none'
+                }} />
+                <span style={{ fontSize: '9px', color: 'rgba(255,255,255,0.4)', lineHeight: 1 }}>{bar.label}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* 6-Module Grid */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '7px', marginTop: '12px' }}>
+            {modules.map((mod, i) => {
+              const ModIcon = mod.icon;
+              return (
+                <div key={i} style={{
+                  background: 'rgba(255,255,255,0.03)',
+                  border: '1px solid rgba(255,255,255,0.07)',
+                  borderRadius: '8px',
+                  padding: '8px 10px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  cursor: 'pointer',
+                  transition: 'border-color 0.2s'
+                }}>
+                  <div style={{
+                    width: '28px', height: '28px',
+                    borderRadius: '7px',
+                    background: `${mod.color}18`,
+                    border: `1px solid ${mod.color}40`,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    flexShrink: 0
+                  }}>
+                    <ModIcon size={13} color={mod.color} />
+                  </div>
+                  <div>
+                    <div style={{ fontSize: '11px', fontWeight: 600, color: '#fff', lineHeight: 1.2 }}>{mod.label}</div>
+                    <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.4)', marginTop: '2px' }}>{mod.stat}</div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const TABS = [
+  { id: 'business', label: 'Business Management', icon: Briefcase, component: BusinessManagementScreen, activeNav: 'business' },
   { id: 'connections', label: 'Connections & Network', icon: Users, component: ConnectionsScreen, activeNav: 'connections' },
   { id: 'overview', label: 'Business Overview', icon: LayoutDashboard, component: OverviewScreen, activeNav: 'overview' },
   { id: 'trade', label: 'Trade & Quotations', icon: ShoppingCart, component: TradeScreen, activeNav: 'quotations' },
@@ -415,7 +546,7 @@ const TABS = [
 ];
 
 const ProductPreview = () => {
-  const [activeTab, setActiveTab] = useState('overview');
+  const [activeTab, setActiveTab] = useState('business');
   const [isPaused, setIsPaused] = useState(false);
   const timerRef = useRef(null);
 
