@@ -78,7 +78,7 @@
             background: #030d1a;
             color: var(--ink);
             line-height: 1.6;
-            overflow-x: hidden;
+            overflow-x: clip;
         }
 
         @media (max-width: 768px) {
@@ -144,9 +144,8 @@
                 z-index: 10011;
             }
 
-            html,
             body {
-                overflow-x: hidden;
+                overflow-x: clip;
             }
 
             .nav-item-dropdown {
@@ -3164,17 +3163,26 @@
             top: 14px;
             margin: 14px;
             height: calc(100vh - 28px);
+            height: calc(100dvh - 28px);
             overflow: hidden;
             border-radius: 32px;
             background: #000000;
             border: 1px solid rgba(255, 255, 255, 0.08);
+            touch-action: pan-y;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
         }
 
         @media (max-width: 768px) {
+            .track {
+                height: 250vh;
+            }
+
             .stage {
                 top: 8px;
                 margin: 8px;
                 height: calc(100vh - 16px);
+                height: calc(100dvh - 16px);
                 border-radius: 22px;
             }
         }
@@ -3185,10 +3193,12 @@
             width: 100%;
             height: 100%;
             display: block;
+            pointer-events: none;
         }
 
         #fx {
             z-index: 0;
+            pointer-events: none;
         }
 
         .txt {
@@ -3242,26 +3252,27 @@
 
         @media (max-width: 768px) {
             #t1 {
-                font-size: clamp(44px, 12.5vw, 68px) !important;
-                line-height: 0.92 !important;
-                padding: 0 14px;
+                font-size: clamp(40px, 11vw, 62px) !important;
+                line-height: 0.94 !important;
+                padding: 0 16px;
+                box-sizing: border-box;
             }
 
             #t2 {
-                left: 6vw !important;
-                right: 6vw !important;
+                left: 7vw !important;
+                right: 7vw !important;
                 bottom: 18vh !important;
-                font-size: clamp(20px, 5.8vw, 30px) !important;
+                font-size: clamp(19px, 5.4vw, 28px) !important;
                 white-space: normal !important;
                 line-height: 1.15 !important;
-                max-width: 88vw !important;
+                max-width: 86vw !important;
             }
 
             #t3 {
                 left: auto !important;
-                right: 6vw !important;
+                right: 7vw !important;
                 top: 20vh !important;
-                font-size: clamp(20px, 5.8vw, 30px) !important;
+                font-size: clamp(19px, 5.4vw, 28px) !important;
                 line-height: 1.05 !important;
                 text-align: right !important;
                 max-width: 75vw !important;
@@ -3275,16 +3286,16 @@
 
         @media (max-width: 480px) {
             #t1 {
-                font-size: clamp(38px, 11.5vw, 56px) !important;
+                font-size: clamp(36px, 10.5vw, 52px) !important;
             }
 
             #t2 {
-                font-size: clamp(18px, 5.2vw, 24px) !important;
+                font-size: clamp(17px, 5vw, 22px) !important;
                 bottom: 16vh !important;
             }
 
             #t3 {
-                font-size: clamp(18px, 5.2vw, 24px) !important;
+                font-size: clamp(17px, 5vw, 22px) !important;
                 top: 18vh !important;
             }
         }
@@ -3297,6 +3308,7 @@
             /* Push content down so footer is fully hidden under the wrapper by default */
             margin-bottom: var(--footer-height);
             box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+            overflow-x: clip;
         }
 
         /* Make footer sticky at bottom, peeking behind content */
@@ -3601,7 +3613,7 @@
                     return x * x * (3 - 2 * x);
                 };
                 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-                let P = 0, PT = 0, mx = 0, my = 0, tmx = 0, tmy = 0;
+                let P = 0, PT = 0;
 
                 function readScroll() {
                     const maxScroll = track.offsetHeight - window.innerHeight;
@@ -3614,15 +3626,11 @@
                 }
                 window.addEventListener('scroll', readScroll, { passive: true });
                 readScroll();
-                window.addEventListener('pointermove', e => {
-                    tmx = e.clientX / window.innerWidth - .5;
-                    tmy = e.clientY / window.innerHeight - .5;
-                });
 
                 /* ---------- gradient background (WebGL shader) ---------- */
                 const fx = document.getElementById('fx');
                 if (!fx) return;
-                const g = fx.getContext('webgl');
+                const g = fx.getContext('webgl', { powerPreference: 'low-power', alpha: false });
                 if (!g) return;
 
                 const vs = 'attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}';
@@ -3672,11 +3680,18 @@ void main(){
                       uT = g.getUniformLocation(pg, 't'),
                       uP = g.getUniformLocation(pg, 'p');
 
+                let lastW = 0, lastH = 0;
                 function resize() {
                     const w = stage.clientWidth, h = stage.clientHeight, d = Math.min(window.devicePixelRatio || 1, 2);
-                    fx.width = w * d;
-                    fx.height = h * d;
-                    g.viewport(0, 0, fx.width, fx.height);
+                    const targetW = Math.round(w * d);
+                    const targetH = Math.round(h * d);
+                    if (Math.abs(targetW - lastW) > 2 || Math.abs(targetH - lastH) > 40) {
+                        lastW = targetW;
+                        lastH = targetH;
+                        fx.width = targetW;
+                        fx.height = targetH;
+                        g.viewport(0, 0, targetW, targetH);
+                    }
                 }
                 window.addEventListener('resize', resize);
                 resize();
@@ -3684,10 +3699,11 @@ void main(){
                 const t0 = performance.now();
                 function frame(now) {
                     const t = (now - t0) / 1000;
-                    P += (PT - P) * (reduce ? 1 : .07);
-                    mx += (tmx - mx) * .06;
-                    my += (tmy - my) * .06;
-                    const intro = ss(0, 1.6, t);
+                    readScroll();
+                    const isMobile = window.innerWidth <= 768;
+                    const lerpSpeed = reduce ? 1 : (isMobile ? 0.22 : 0.08);
+                    P += (PT - P) * lerpSpeed;
+                    const intro = ss(0, 1.4, t);
 
                     /* background */
                     g.uniform2f(uR, fx.width, fx.height);
@@ -3697,19 +3713,24 @@ void main(){
 
                     /* text choreography */
                     if (t1) {
-                        const out = ss(.12, .42, P);
+                        const out = ss(.10, .40, P);
                         t1.style.opacity = (1 - out) * intro;
-                        t1.style.transform = `translateY(calc(-50% + ${-out * 60}px)) scale(${1.08 + out * .16})`;
-                        t1.style.filter = `blur(${out * 14}px)`;
+                        t1.style.transform = `translateY(calc(-50% + ${-out * 50}px)) scale(${1.06 + out * .14})`;
+                        if (out > 0.02) {
+                            t1.style.filter = isMobile ? 'none' : `blur(${out * 12}px)`;
+                        } else {
+                            t1.style.filter = 'none';
+                        }
                     }
-                    const inn = ss(.58, .9, P);
+                    const inn = ss(.52, .88, P);
+                    const shift = isMobile ? 6 : 18;
                     if (t2) {
                         t2.style.opacity = inn;
-                        t2.style.transform = `translateX(${(1 - inn) * -18}vw)`;
+                        t2.style.transform = `translateX(${(1 - inn) * -shift}vw)`;
                     }
                     if (t3) {
                         t3.style.opacity = inn;
-                        t3.style.transform = `translateX(${(1 - inn) * 18}vw)`;
+                        t3.style.transform = `translateX(${(1 - inn) * shift}vw)`;
                     }
                     if (hint) {
                         hint.style.opacity = P < .04 ? .85 : 0;
