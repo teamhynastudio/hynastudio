@@ -3211,6 +3211,10 @@
             color: rgba(240, 240, 240, .98);
             will-change: transform, opacity;
             pointer-events: none;
+            /* Force GPU compositing layer — prevents jitter/vibration */
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
         }
 
         #t1 {
@@ -3614,6 +3618,8 @@
                 };
                 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
                 let P = 0, PT = 0;
+                // Cache isMobile — only recheck on resize, not every frame
+                let isMobile = window.innerWidth <= 768;
 
                 function readScroll() {
                     const maxScroll = track.offsetHeight - window.innerHeight;
@@ -3693,15 +3699,14 @@ void main(){
                         g.viewport(0, 0, targetW, targetH);
                     }
                 }
-                window.addEventListener('resize', resize);
+                window.addEventListener('resize', () => { isMobile = window.innerWidth <= 768; resize(); });
                 resize();
 
                 const t0 = performance.now();
                 function frame(now) {
                     const t = (now - t0) / 1000;
-                    readScroll();
-                    const isMobile = window.innerWidth <= 768;
-                    const lerpSpeed = reduce ? 1 : (isMobile ? 0.22 : 0.08);
+                    // lerpSpeed: lower = smoother. Do NOT call readScroll() here — scroll event handles it.
+                    const lerpSpeed = reduce ? 1 : (isMobile ? 0.10 : 0.07);
                     P += (PT - P) * lerpSpeed;
                     const intro = ss(0, 1.4, t);
 
@@ -3711,16 +3716,12 @@ void main(){
                     g.uniform1f(uP, P);
                     g.drawArrays(g.TRIANGLE_STRIP, 0, 4);
 
-                    /* text choreography */
+                    /* text choreography — no scale(), no blur() to prevent jitter */
                     if (t1) {
                         const out = ss(.10, .40, P);
                         t1.style.opacity = (1 - out) * intro;
-                        t1.style.transform = `translateY(calc(-50% + ${-out * 50}px)) scale(${1.06 + out * .14})`;
-                        if (out > 0.02) {
-                            t1.style.filter = isMobile ? 'none' : `blur(${out * 12}px)`;
-                        } else {
-                            t1.style.filter = 'none';
-                        }
+                        t1.style.transform = `translateY(calc(-50% + ${-out * 50}px))`;
+                        t1.style.filter = 'none';
                     }
                     const inn = ss(.52, .88, P);
                     const shift = isMobile ? 6 : 18;
