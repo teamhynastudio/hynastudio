@@ -3928,9 +3928,9 @@ void main(){
                         s.appendChild(l);
                         letters.push({
                             el: l,
-                            dx: 70 + rnd() * 60,
-                            dy: (rnd() - .5) * 50,
-                            rot: (rnd() - .5) * 70
+                            dx: 55 + rnd() * 40,
+                            dy: (rnd() - 0.5) * 12,
+                            rot: (rnd() - 0.5) * 14
                         });
                     });
                     h.appendChild(s);
@@ -3944,7 +3944,7 @@ void main(){
                 var maxScroll = 0;
 
                 function clamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
-                function ease(t) { return 1 - Math.pow(1 - t, 3); }
+                function ease(t) { return 1 - Math.pow(1 - t, 4); } // Smooth quartic deceleration
 
                 function cacheMetrics() {
                     var rect = track.getBoundingClientRect();
@@ -3985,7 +3985,7 @@ void main(){
                     // Only update DOM transforms if cur actually changed
                     if (Math.abs(cur - lastCur) > 0.0002) {
                         lastCur = cur;
-                        var span = 0.35;
+                        var span = 0.28;
                         for (var i = 0; i < N; i++) {
                             var start = (i / N) * (1 - span);
                             var p = clamp((cur - start) / span);
@@ -3993,9 +3993,10 @@ void main(){
                             var k = 1 - e;
                             var L = letters[i];
                             // Only fade in as the scroll progress activates this letter
-                            var op = (cur <= 0.005 || p <= 0) ? 0 : clamp(p * 2.8);
+                            var op = (cur <= 0.005 || p <= 0) ? 0 : clamp(p * 3.5);
                             L.el.style.opacity = op.toFixed(2);
-                            L.el.style.transform = "translate3d(" + (-k * L.dx).toFixed(2) + "vw," + (k * L.dy).toFixed(2) + "vh,0) rotate(" + (-k * L.rot).toFixed(2) + "deg)";
+                            // Travel from RIGHT (+dx) to LEFT (0) and join smoothly
+                            L.el.style.transform = "translate3d(" + (k * L.dx).toFixed(2) + "vw," + (k * L.dy).toFixed(2) + "vh,0) rotate(" + (k * L.rot).toFixed(2) + "deg)";
                         }
                         if (hint) {
                             hint.style.opacity = cur > 0.02 ? "0" : "0.5";
