@@ -3838,8 +3838,9 @@ void main(){
 
             .uncommon-l {
                 display: inline-block;
-                will-change: transform;
+                will-change: transform, opacity;
                 color: #ffffff;
+                opacity: 0; /* Hidden initially so no stray letters show before scrolling */
                 transition: color 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), text-shadow 0.3s ease;
                 cursor: default;
                 pointer-events: auto;
