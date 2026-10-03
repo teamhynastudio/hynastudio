@@ -3601,7 +3601,7 @@
                 <div class="txt" id="t1">Hyna<br>Studio</div>
                 <div class="txt" id="t2">digital design studio</div>
                 <div class="txt" id="t3">creative<br>developers</div>
-                <div class="hint" id="hint">Scroll</div>
+
             </div>
         </div>
 
@@ -3768,9 +3768,6 @@ void main(){
                     if (t3) {
                         t3.style.opacity = inn;
                         t3.style.transform = 'translateX(' + ((1 - inn) * shiftPx).toFixed(2) + 'px)';
-                    }
-                    if (hint) {
-                        hint.style.opacity = P < .04 ? .85 : 0;
                     }
 
                     rafId = requestAnimationFrame(frame);
