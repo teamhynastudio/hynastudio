@@ -3156,7 +3156,6 @@
             height: 420vh;
             position: relative;
             background: #000000;
-            contain: layout style;
         }
 
         .stage {
@@ -3616,53 +3615,57 @@
                 const t2 = document.getElementById('t2');
                 const t3 = document.getElementById('t3');
                 const hint = document.getElementById('hint');
+
                 const ss = (a, b, x) => {
                     x = Math.min(1, Math.max(0, (x - a) / (b - a)));
                     return x * x * (3 - 2 * x);
                 };
+
                 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
                 let P = 0, PT = 0;
-                // Cache isMobile — only recheck on resize, not every frame
                 let isMobile = window.innerWidth <= 768;
+                let rafId = null;
+                let isVisible = true;
 
-                // Cache track's top offset — avoids getBoundingClientRect on every scroll (prevents reflow jitter)
+                // ── Scroll position using scrollY + cached offset (no getBoundingClientRect on scroll)
                 let trackOffsetTop = 0;
                 let maxScroll = 0;
-                function cacheTrackMetrics() {
-                    trackOffsetTop = track.getBoundingClientRect().top + window.scrollY;
+
+                function cacheMetrics() {
+                    // One-time layout read — safe to call on load/resize only
+                    const rect = track.getBoundingClientRect();
+                    trackOffsetTop = rect.top + window.scrollY;
                     maxScroll = track.offsetHeight - window.innerHeight;
+                    isMobile = window.innerWidth <= 768;
                 }
 
                 function readScroll() {
                     if (maxScroll > 0) {
-                        const current = Math.max(0, window.scrollY - trackOffsetTop);
-                        PT = Math.min(1, Math.max(0, current / maxScroll));
+                        PT = Math.min(1, Math.max(0, (window.scrollY - trackOffsetTop) / maxScroll));
                     } else {
                         PT = 0;
                     }
                 }
-                window.addEventListener('scroll', readScroll, { passive: true });
-                // Recalculate metrics on resize and once on load
-                window.addEventListener('resize', cacheTrackMetrics, { passive: true });
-                // Use rAF so DOM is fully laid out before measuring
-                requestAnimationFrame(() => { cacheTrackMetrics(); readScroll(); });
 
-                /* ---------- gradient background (WebGL shader) ---------- */
+                window.addEventListener('scroll', readScroll, { passive: true });
+                window.addEventListener('resize', () => { cacheMetrics(); resize(); }, { passive: true });
+
+                /* ---------- WebGL shader ---------- */
                 const fx = document.getElementById('fx');
                 if (!fx) return;
-                const g = fx.getContext('webgl', { powerPreference: 'low-power', alpha: false });
+                // high-performance context prevents GPU throttling
+                const g = fx.getContext('webgl', { powerPreference: 'high-performance', alpha: false, antialias: false });
                 if (!g) return;
 
-                const vs = 'attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}';
-                const fs = `precision highp float;uniform vec2 r;uniform float t,p;
+                const vs = 'attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}'
+                const fs = `precision mediump float;uniform vec2 r;uniform float t,p;
 vec3 pal(float x){
  vec3 c0=vec3(.91,.22,.16),c1=vec3(.93,.48,.18),c2=vec3(.93,.31,.46),c3=vec3(.70,.32,.72),c4=vec3(.56,.31,.80);
  x=clamp(x,0.,1.)*4.;
  if(x<1.)return mix(c0,c1,x);if(x<2.)return mix(c1,c2,x-1.);if(x<3.)return mix(c2,c3,x-2.);return mix(c3,c4,x-3.);}
 float h(vec2 s){return fract(sin(dot(s,vec2(12.9898,78.233)))*43758.5453);}
 void main(){
- vec2 uv=(gl_FragCoord.xy/r - 0.5)*0.85 + 0.5;uv.y=1.-uv.y;
- float a=r.x/r.y;
+ vec2 uv=(gl_FragCoord.xy/r-0.5)*0.85+0.5;uv.y=1.-uv.y;
  vec2 q=uv;
  q.x+=.07*sin(uv.y*3.+t*.5+p*6.)+.04*sin(uv.y*7.-t*.7);
  q.y+=.08*sin(uv.x*2.5-t*.4+p*4.);
@@ -3675,7 +3678,7 @@ void main(){
  float k=p<.5?mix(t0,tm,smoothstep(0.,.5,p)):mix(tm,t1,smoothstep(.5,1.,p));
  vec3 c=pal(k);
  c+=(h(gl_FragCoord.xy+t)-.5)*.045;
- gl_FragColor=vec4(c,1.);}`;
+ gl_FragColor=vec4(c,1.);}` ;
 
                 function sh(type, src) {
                     const s = g.createShader(type);
@@ -3691,7 +3694,7 @@ void main(){
 
                 const buf = g.createBuffer();
                 g.bindBuffer(g.ARRAY_BUFFER, buf);
-                g.bufferData(g.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), g.STATIC_DRAW);
+                g.bufferData(g.ARRAY_BUFFER, new Float32Array([-1,-1,1,-1,-1,1,1,1]), g.STATIC_DRAW);
                 const loc = g.getAttribLocation(pg, 'a');
                 g.enableVertexAttribArray(loc);
                 g.vertexAttribPointer(loc, 2, g.FLOAT, false, 0, 0);
@@ -3702,62 +3705,85 @@ void main(){
 
                 let lastW = 0, lastH = 0;
                 function resize() {
-                    const w = stage.clientWidth, h = stage.clientHeight, d = Math.min(window.devicePixelRatio || 1, 2);
-                    const targetW = Math.round(w * d);
-                    const targetH = Math.round(h * d);
-                    if (Math.abs(targetW - lastW) > 2 || Math.abs(targetH - lastH) > 40) {
-                        lastW = targetW;
-                        lastH = targetH;
-                        fx.width = targetW;
-                        fx.height = targetH;
-                        g.viewport(0, 0, targetW, targetH);
+                    const w = stage.clientWidth, h = stage.clientHeight;
+                    // Cap DPR at 1 on mobile to halve GPU workload
+                    const d = isMobile ? 1 : Math.min(window.devicePixelRatio || 1, 2);
+                    const tw = Math.round(w * d), th = Math.round(h * d);
+                    if (tw !== lastW || th !== lastH) {
+                        lastW = tw; lastH = th;
+                        fx.width = tw; fx.height = th;
+                        g.viewport(0, 0, tw, th);
                     }
                 }
+
+                // ── Pause/resume rAF based on visibility (saves CPU/GPU when scrolled past)
+                function startLoop() {
+                    if (!rafId) rafId = requestAnimationFrame(frame);
+                }
+                function stopLoop() {
+                    if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+                }
+
+                if ('IntersectionObserver' in window) {
+                    new IntersectionObserver((entries) => {
+                        isVisible = entries[0].isIntersecting;
+                        isVisible ? startLoop() : stopLoop();
+                    }, { threshold: 0 }).observe(track);
+                }
+
+                // Pre-compute pixel shifts so we don't use vw strings in transform (avoids reflow)
+                let shiftPx = isMobile ? Math.round(window.innerWidth * 0.06) : Math.round(window.innerWidth * 0.18);
                 window.addEventListener('resize', () => {
-                    isMobile = window.innerWidth <= 768;
-                    resize();
-                    cacheTrackMetrics();
+                    shiftPx = isMobile ? Math.round(window.innerWidth * 0.06) : Math.round(window.innerWidth * 0.18);
                 }, { passive: true });
-                resize();
 
                 const t0 = performance.now();
                 function frame(now) {
+                    rafId = null; // allow restart
+                    if (!isVisible) return;
+
                     const t = (now - t0) / 1000;
-                    // lerpSpeed: lower = smoother. Do NOT call readScroll() here — scroll event handles it.
-                    const lerpSpeed = reduce ? 1 : (isMobile ? 0.10 : 0.07);
+                    // Smooth lerp — lower value = smoother
+                    const lerpSpeed = reduce ? 1 : (isMobile ? 0.09 : 0.07);
                     P += (PT - P) * lerpSpeed;
                     const intro = ss(0, 1.4, t);
 
-                    /* background */
+                    /* WebGL background */
                     g.uniform2f(uR, fx.width, fx.height);
                     g.uniform1f(uT, t);
                     g.uniform1f(uP, P);
                     g.drawArrays(g.TRIANGLE_STRIP, 0, 4);
 
-                    /* text choreography — no scale(), no blur() to prevent jitter */
+                    /* Text — only translateY + opacity, no scale/blur/vw */
                     if (t1) {
                         const out = ss(.10, .40, P);
                         t1.style.opacity = (1 - out) * intro;
-                        t1.style.transform = `translateY(calc(-50% + ${-out * 50}px))`;
-                        t1.style.filter = 'none';
+                        t1.style.transform = 'translateY(calc(-50% + ' + (-out * 50).toFixed(2) + 'px))';
                     }
                     const inn = ss(.52, .88, P);
-                    const shift = isMobile ? 6 : 18;
                     if (t2) {
                         t2.style.opacity = inn;
-                        t2.style.transform = `translateX(${(1 - inn) * -shift}vw)`;
+                        t2.style.transform = 'translateX(' + ((1 - inn) * -shiftPx).toFixed(2) + 'px)';
                     }
                     if (t3) {
                         t3.style.opacity = inn;
-                        t3.style.transform = `translateX(${(1 - inn) * shift}vw)`;
+                        t3.style.transform = 'translateX(' + ((1 - inn) * shiftPx).toFixed(2) + 'px)';
                     }
                     if (hint) {
                         hint.style.opacity = P < .04 ? .85 : 0;
                     }
-                    requestAnimationFrame(frame);
+
+                    rafId = requestAnimationFrame(frame);
                 }
-                requestAnimationFrame(frame);
-            })();
+
+                // Init: wait for layout, then cache metrics and start
+                requestAnimationFrame(() => {
+                    cacheMetrics();
+                    readScroll();
+                    resize();
+                    rafId = requestAnimationFrame(frame);
+                });
+            })()
         </script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
