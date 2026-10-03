@@ -25,7 +25,7 @@ import ReportsAndAnalytics from './pages/ReportsAndAnalytics';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/hynabiz">
       <div className="app-container">
         <Navbar />
         <Routes>
