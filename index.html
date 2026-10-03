@@ -3995,8 +3995,8 @@ void main(){
                             // Only fade in as the scroll progress activates this letter
                             var op = (cur <= 0.005 || p <= 0) ? 0 : clamp(p * 3.5);
                             L.el.style.opacity = op.toFixed(2);
-                            // Travel from RIGHT (+dx) to LEFT (0) and join smoothly
-                            L.el.style.transform = "translate3d(" + (k * L.dx).toFixed(2) + "vw," + (k * L.dy).toFixed(2) + "vh,0) rotate(" + (k * L.rot).toFixed(2) + "deg)";
+                            // Travel from LEFT (-dx) to RIGHT (0) and join smoothly
+                            L.el.style.transform = "translate3d(" + (-k * L.dx).toFixed(2) + "vw," + (k * L.dy).toFixed(2) + "vh,0) rotate(" + (-k * L.rot).toFixed(2) + "deg)";
                         }
                         if (hint) {
                             hint.style.opacity = cur > 0.02 ? "0" : "0.5";
