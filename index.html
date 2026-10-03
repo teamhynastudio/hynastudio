@@ -68,9 +68,9 @@
         }
 
         html {
-            scroll-behavior: smooth;
             background: #030d1a;
-            scrollbar-gutter: stable;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         body {
@@ -3156,36 +3156,32 @@
             height: 420vh;
             position: relative;
             background: #000000;
+            padding: 14px;
+            box-sizing: border-box;
         }
 
         .stage {
             position: sticky;
             top: 14px;
-            margin: 14px;
+            width: 100%;
             height: calc(100vh - 28px);
-            height: calc(100dvh - 28px);
             overflow: hidden;
             border-radius: 32px;
             background: #000000;
             border: 1px solid rgba(255, 255, 255, 0.08);
+            box-sizing: border-box;
             touch-action: pan-y;
-            -webkit-transform: translateZ(0);
-            transform: translateZ(0);
-            will-change: transform;
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
         }
 
         @media (max-width: 768px) {
             .track {
                 height: 250vh;
+                padding: 8px;
             }
 
             .stage {
                 top: 8px;
-                margin: 8px;
                 height: calc(100vh - 16px);
-                height: calc(100dvh - 16px);
                 border-radius: 22px;
             }
         }
@@ -3325,7 +3321,6 @@
             left: 0;
             width: 100%;
             z-index: 1;
-            will-change: transform;
             transform-origin: center bottom;
         }
 
