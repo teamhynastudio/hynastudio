@@ -3627,18 +3627,21 @@
                 let maxScroll = 0;
 
                 function cacheMetrics() {
-                    // One-time layout read — safe to call on load/resize only
-                    const rect = track.getBoundingClientRect();
-                    trackOffsetTop = rect.top + window.scrollY;
+                    trackOffsetTop = track.offsetTop || 0;
                     maxScroll = track.offsetHeight - window.innerHeight;
                     isMobile = window.innerWidth <= 768;
                 }
 
                 function readScroll() {
+                    const sy = window.scrollY;
                     if (maxScroll > 0) {
-                        PT = Math.min(1, Math.max(0, (window.scrollY - trackOffsetTop) / maxScroll));
+                        PT = Math.min(1, Math.max(0, (sy - trackOffsetTop) / maxScroll));
                     } else {
                         PT = 0;
+                    }
+                    if (!isVisible && sy <= (trackOffsetTop + track.offsetHeight + 100)) {
+                        isVisible = true;
+                        startLoop();
                     }
                 }
 
@@ -3702,7 +3705,7 @@ void main(){
                 function resize() {
                     const w = stage.clientWidth, h = stage.clientHeight;
                     // Cap DPR at 1 on mobile to halve GPU workload
-                    const d = isMobile ? 1 : Math.min(window.devicePixelRatio || 1, 2);
+                    const d = isMobile ? 1 : Math.min(window.devicePixelRatio || 1, 1.5);
                     const tw = Math.round(w * d), th = Math.round(h * d);
                     if (tw !== lastW || th !== lastH) {
                         lastW = tw; lastH = th;
@@ -3733,14 +3736,19 @@ void main(){
                 }, { passive: true });
 
                 const t0 = performance.now();
+                let lastP = -1, lastIntro = -1;
                 function frame(now) {
                     rafId = null; // allow restart
                     if (!isVisible) return;
 
                     const t = (now - t0) / 1000;
-                    // Smooth lerp — lower value = smoother
-                    const lerpSpeed = reduce ? 1 : (isMobile ? 0.09 : 0.07);
-                    P += (PT - P) * lerpSpeed;
+                    const lerpSpeed = reduce ? 1 : 0.14;
+                    const diff = PT - P;
+                    if (Math.abs(diff) < 0.0005) {
+                        P = PT;
+                    } else {
+                        P += diff * lerpSpeed;
+                    }
                     const intro = ss(0, 1.4, t);
 
                     /* WebGL background */
@@ -3749,20 +3757,25 @@ void main(){
                     g.uniform1f(uP, P);
                     g.drawArrays(g.TRIANGLE_STRIP, 0, 4);
 
-                    /* Text — only translateY + opacity, no scale/blur/vw */
-                    if (t1) {
-                        const out = ss(.10, .40, P);
-                        t1.style.opacity = (1 - out) * intro;
-                        t1.style.transform = 'translateY(calc(-50% + ' + (-out * 50).toFixed(2) + 'px))';
-                    }
-                    const inn = ss(.52, .88, P);
-                    if (t2) {
-                        t2.style.opacity = inn;
-                        t2.style.transform = 'translateX(' + ((1 - inn) * -shiftPx).toFixed(2) + 'px)';
-                    }
-                    if (t3) {
-                        t3.style.opacity = inn;
-                        t3.style.transform = 'translateX(' + ((1 - inn) * shiftPx).toFixed(2) + 'px)';
+                    /* Only mutate DOM styles when values actually change */
+                    if (Math.abs(P - lastP) > 0.0002 || Math.abs(intro - lastIntro) > 0.001) {
+                        lastP = P;
+                        lastIntro = intro;
+
+                        if (t1) {
+                            const out = ss(.10, .40, P);
+                            t1.style.opacity = ((1 - out) * intro).toFixed(3);
+                            t1.style.transform = 'translateY(calc(-50% + ' + (-out * 50).toFixed(1) + 'px))';
+                        }
+                        const inn = ss(.52, .88, P);
+                        if (t2) {
+                            t2.style.opacity = inn.toFixed(3);
+                            t2.style.transform = 'translateX(' + ((1 - inn) * -shiftPx).toFixed(1) + 'px)';
+                        }
+                        if (t3) {
+                            t3.style.opacity = inn.toFixed(3);
+                            t3.style.transform = 'translateX(' + ((1 - inn) * shiftPx).toFixed(1) + 'px)';
+                        }
                     }
 
                     rafId = requestAnimationFrame(frame);
@@ -3775,8 +3788,223 @@ void main(){
                     resize();
                     rafId = requestAnimationFrame(frame);
                 });
-            })()
+            })();
         </script>
+
+        <!-- ══════════ SECOND SLIDE: UNCOMMON INSTITUTE OF DESIGN ══════════ -->
+        <style>
+            .uncommon-track {
+                height: 400vh;
+                position: relative;
+                background: #000000;
+            }
+
+            .uncommon-stage {
+                position: sticky;
+                top: 0;
+                height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+                padding: 0 5vw;
+                background: #000000;
+                box-sizing: border-box;
+            }
+
+            .uncommon-title {
+                font-family: "Helvetica Neue", Helvetica, Arial, -apple-system, BlinkMacSystemFont, sans-serif;
+                font-weight: 800;
+                font-size: clamp(44px, 10.5vw, 190px);
+                letter-spacing: -.045em;
+                line-height: .95;
+                text-align: center;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                column-gap: .28em;
+                color: #ffffff;
+                margin: 0;
+                padding: 0;
+                user-select: none;
+            }
+
+            .uncommon-w {
+                display: inline-block;
+                white-space: nowrap;
+            }
+
+            .uncommon-l {
+                display: inline-block;
+                will-change: transform;
+                color: #ffffff;
+            }
+
+            .uncommon-l.r {
+                color: #e83a27;
+            }
+
+            .uncommon-hint {
+                position: absolute;
+                left: 50%;
+                bottom: 4vh;
+                transform: translateX(-50%);
+                font-size: 12px;
+                letter-spacing: .2em;
+                text-transform: uppercase;
+                color: rgba(255, 255, 255, 0.5);
+                opacity: .5;
+                transition: opacity .4s ease;
+                pointer-events: none;
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            }
+
+            @media (max-width: 768px) {
+                .uncommon-track {
+                    height: 280vh;
+                }
+                .uncommon-title {
+                    font-size: clamp(38px, 11vw, 76px);
+                    line-height: 1.02;
+                    column-gap: .2em;
+                }
+            }
+        </style>
+
+        <div class="uncommon-track" id="uncommonTrack">
+            <div class="uncommon-stage">
+                <h1 class="uncommon-title" id="uncommonT" aria-label="uncommon institute of design"></h1>
+                <div class="uncommon-hint" id="uncommonHint">Scroll</div>
+            </div>
+        </div>
+
+        <script>
+            (function () {
+                var words = ["uncommon", "institute", "of", "design"];
+                var h = document.getElementById("uncommonT");
+                var track = document.getElementById("uncommonTrack");
+                var hint = document.getElementById("uncommonHint");
+                if (!h || !track) return;
+
+                var letters = [];
+                var seed = 7;
+                function rnd() {
+                    seed = (seed * 16807) % 2147483647;
+                    return (seed - 1) / 2147483646;
+                }
+
+                words.forEach(function (w, wi) {
+                    var s = document.createElement("span");
+                    s.className = "uncommon-w";
+                    w.split("").forEach(function (ch, ci) {
+                        var l = document.createElement("span");
+                        l.className = "uncommon-l";
+                        l.textContent = ch;
+                        // red accent: 2nd 'm' in uncommon, last 'n' in design
+                        if ((wi === 0 && ci === 5) || (wi === 3 && ci === 5)) {
+                            l.classList.add("r");
+                        }
+                        s.appendChild(l);
+                        letters.push({
+                            el: l,
+                            dx: 70 + rnd() * 60,
+                            dy: (rnd() - .5) * 50,
+                            rot: (rnd() - .5) * 70
+                        });
+                    });
+                    h.appendChild(s);
+                });
+
+                var N = letters.length;
+                var cur = 0, target = 0;
+                var rafId = null;
+                var isVisible = false;
+                var trackTop = 0;
+                var maxScroll = 0;
+
+                function clamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+                function ease(t) { return 1 - Math.pow(1 - t, 3); }
+
+                function cacheMetrics() {
+                    var rect = track.getBoundingClientRect();
+                    trackTop = rect.top + window.scrollY;
+                    maxScroll = track.offsetHeight - window.innerHeight;
+                }
+
+                function read() {
+                    if (maxScroll > 0) {
+                        var relY = window.scrollY - trackTop;
+                        target = clamp((relY / maxScroll) / 0.8); // finishes assembling at 80% of track
+                    }
+                    if (!isVisible && window.scrollY >= trackTop - 100 && window.scrollY <= trackTop + track.offsetHeight + 100) {
+                        isVisible = true;
+                        startLoop();
+                    }
+                }
+
+                function startLoop() {
+                    if (!rafId) rafId = requestAnimationFrame(frame);
+                }
+
+                function stopLoop() {
+                    if (rafId) {
+                        cancelAnimationFrame(rafId);
+                        rafId = null;
+                    }
+                }
+
+                var lastCur = -1;
+                function frame() {
+                    rafId = null;
+                    if (!isVisible) return;
+
+                    cur += (target - cur) * 0.12; // smooth follow
+                    if (Math.abs(target - cur) < 0.0004) cur = target;
+
+                    // Only update DOM transforms if cur actually changed
+                    if (Math.abs(cur - lastCur) > 0.0002) {
+                        lastCur = cur;
+                        var span = 0.35;
+                        for (var i = 0; i < N; i++) {
+                            var start = (i / N) * (1 - span);
+                            var e = ease(clamp((cur - start) / span));
+                            var k = 1 - e;
+                            var L = letters[i];
+                            L.el.style.transform = "translate3d(" + (-k * L.dx).toFixed(2) + "vw," + (k * L.dy).toFixed(2) + "vh,0) rotate(" + (-k * L.rot).toFixed(2) + "deg)";
+                        }
+                        if (hint) {
+                            hint.style.opacity = cur > 0.02 ? "0" : "0.5";
+                        }
+                    }
+
+                    rafId = requestAnimationFrame(frame);
+                }
+
+                if ('IntersectionObserver' in window) {
+                    new IntersectionObserver(function (entries) {
+                        isVisible = entries[0].isIntersecting;
+                        if (isVisible) {
+                            startLoop();
+                        } else {
+                            stopLoop();
+                        }
+                    }, { threshold: 0 }).observe(track);
+                }
+
+                window.addEventListener("scroll", read, { passive: true });
+                window.addEventListener("resize", function () {
+                    cacheMetrics();
+                    read();
+                }, { passive: true });
+
+                requestAnimationFrame(function () {
+                    cacheMetrics();
+                    read();
+                    startLoop();
+                });
+            })();
+        </script>
+        <!-- ══════════ END SECOND SLIDE ══════════ -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
@@ -7606,14 +7834,13 @@ void main(){
             var footer = document.querySelector('footer');
             if (!footer) return;
 
+            var lastFooterH = -1;
             function setFooterHeight() {
-                var height = Math.floor(footer.getBoundingClientRect().height);
-                document.documentElement.style.setProperty('--footer-height', height + 'px');
-            }
-
-            if (typeof ResizeObserver !== 'undefined') {
-                var ro = new ResizeObserver(setFooterHeight);
-                ro.observe(footer);
+                var height = Math.round(footer.getBoundingClientRect().height);
+                if (Math.abs(height - lastFooterH) >= 2) {
+                    lastFooterH = height;
+                    document.documentElement.style.setProperty('--footer-height', height + 'px');
+                }
             }
 
             window.addEventListener('resize', setFooterHeight, { passive: true });
@@ -7622,9 +7849,27 @@ void main(){
                 document.addEventListener('DOMContentLoaded', setFooterHeight);
             } else {
                 setFooterHeight();
-                setTimeout(setFooterHeight, 50);
+                setTimeout(setFooterHeight, 100);
             }
             window.addEventListener('load', setFooterHeight);
+
+            // Smooth scroll for internal anchor clicks only (keeps physical wheel/touch scroll 100% native and vibration-free)
+            document.addEventListener('click', function (e) {
+                var a = e.target.closest('a[href*="#"]');
+                if (!a) return;
+                var href = a.getAttribute('href');
+                if (!href) return;
+                var hashIdx = href.indexOf('#');
+                if (hashIdx === -1) return;
+                var hash = href.substring(hashIdx);
+                if (hash.length <= 1) return;
+                var target = document.querySelector(hash);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    if (history.pushState) history.pushState(null, '', hash);
+                }
+            });
         })();
     </script>
     <script>
