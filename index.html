@@ -3715,12 +3715,9 @@ void main(){
                     if (t1) {
                         const out = ss(.10, .40, P);
                         t1.style.opacity = (1 - out) * intro;
-                        t1.style.transform = `translateY(calc(-50% + ${-out * 50}px)) scale(${1.06 + out * .14})`;
-                        if (out > 0.02) {
-                            t1.style.filter = isMobile ? 'none' : `blur(${out * 12}px)`;
-                        } else {
-                            t1.style.filter = 'none';
-                        }
+                        // Move DOWN when scrolling out (positive Y = downward), no blur
+                        t1.style.transform = `translateY(calc(-50% + ${out * 80}px))`;
+                        t1.style.filter = 'none';
                     }
                     const inn = ss(.52, .88, P);
                     const shift = isMobile ? 6 : 18;
