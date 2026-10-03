@@ -7594,47 +7594,6 @@ void main(){
                 font-family: inherit;
             }
 
-            /* nav pill (end state) */
-            .rrr-nav {
-                position: absolute;
-                top: 4vh;
-                left: 50%;
-                transform: translate(-50%, -30px);
-                display: flex;
-                gap: clamp(12px, 2.4vw, 40px);
-                align-items: center;
-                background: rgba(250, 250, 250, .96);
-                color: #1c1b19;
-                padding: 14px 22px;
-                border-radius: 999px;
-                font-size: clamp(11px, 1.1vw, 18px);
-                opacity: 0;
-                transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1);
-                box-shadow: 0 10px 40px rgba(0, 0, 0, .12);
-                white-space: nowrap;
-                max-width: 94vw;
-                overflow: hidden;
-                z-index: 10;
-                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            }
-
-            .rrr-nav.show {
-                opacity: 1;
-                transform: translate(-50%, 0);
-            }
-
-            .rrr-nav b {
-                font-weight: 700;
-                letter-spacing: -.02em;
-            }
-
-            .rrr-nav span.btn {
-                background: #8d8d8d;
-                color: #fff;
-                padding: 10px 20px;
-                border-radius: 999px;
-            }
-
             .rrr-hint {
                 position: absolute;
                 left: 50%;
@@ -7657,9 +7616,6 @@ void main(){
                 <div class="rrr-bg" id="rrrBgL"></div>
                 <div class="rrr-bg" id="rrrBgR"></div>
                 <div class="rrr-word" id="rrrWord"></div>
-                <div class="rrr-nav" id="rrrNav">
-                    <b>UID</b><span>Why UID</span><span>Programs</span><span>D.Tour</span><span>Mentors</span><span>Details</span><span>Community</span><span class="btn">Contact Us</span>
-                </div>
                 <div class="rrr-hint" id="rrrHint">Scroll</div>
             </div>
         </div>
@@ -7672,7 +7628,6 @@ void main(){
                 var stage = document.getElementById("rrrStage");
                 var bgL = document.getElementById("rrrBgL");
                 var bgR = document.getElementById("rrrBgR");
-                var nav = document.getElementById("rrrNav");
                 var hint = document.getElementById("rrrHint");
                 if (!word || !track || !bgL || !bgR) return;
 
@@ -7776,7 +7731,6 @@ void main(){
                         cls = c;
                         word.className = "rrr-word " + c;
                     }
-                    if (nav) nav.classList.toggle("show", q > 0.95);
                     if (hint) hint.style.opacity = q > 0.02 ? 0 : .5;
 
                     rafId = requestAnimationFrame(frame);
