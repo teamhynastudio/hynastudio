@@ -3842,15 +3842,8 @@ void main(){
                 will-change: transform, opacity;
                 color: #ffffff;
                 opacity: 0; /* Hidden initially so no stray letters show before scrolling */
-                transition: color 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), text-shadow 0.3s ease;
                 cursor: default;
-                pointer-events: auto;
-            }
-
-            .uncommon-l:hover,
-            .uncommon-l.sky-active {
-                color: #38bdf8 !important; /* Sky Blue */
-                text-shadow: 0 0 16px rgba(56, 189, 248, 0.85), 0 0 32px rgba(56, 189, 248, 0.45);
+                user-select: none;
             }
 
             .uncommon-hint {
@@ -3915,22 +3908,12 @@ void main(){
                         l.className = "uncommon-l";
                         l.textContent = ch;
 
-                        // Cursor movement sky blue effect with smooth trail
-                        l.addEventListener("mouseenter", function () {
-                            l.classList.add("sky-active");
-                        });
-                        l.addEventListener("mouseleave", function () {
-                            setTimeout(function () {
-                                l.classList.remove("sky-active");
-                            }, 350);
-                        });
-
                         s.appendChild(l);
                         letters.push({
                             el: l,
-                            dx: 55 + rnd() * 40,
-                            dy: (rnd() - 0.5) * 12,
-                            rot: (rnd() - 0.5) * 14
+                            dx: 45 + rnd() * 25,
+                            dy: (rnd() - 0.5) * 6,
+                            rot: (rnd() - 0.5) * 8
                         });
                     });
                     h.appendChild(s);
@@ -3944,7 +3927,7 @@ void main(){
                 var maxScroll = 0;
 
                 function clamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
-                function ease(t) { return 1 - Math.pow(1 - t, 4); } // Smooth quartic deceleration
+                function ease(t) { return 1 - Math.pow(1 - t, 3.5); } // Silky smooth deceleration
 
                 function cacheMetrics() {
                     var rect = track.getBoundingClientRect();
@@ -3955,9 +3938,9 @@ void main(){
                 function read() {
                     if (maxScroll > 0) {
                         var relY = window.scrollY - trackTop;
-                        target = clamp((relY / maxScroll) / 0.8); // finishes assembling at 80% of track
+                        target = clamp((relY / maxScroll) / 0.82); // finishes assembling at 82% of track
                     }
-                    if (!isVisible && window.scrollY >= trackTop - 100 && window.scrollY <= trackTop + track.offsetHeight + 100) {
+                    if (!isVisible && window.scrollY >= trackTop - 150 && window.scrollY <= trackTop + track.offsetHeight + 150) {
                         isVisible = true;
                         startLoop();
                     }
@@ -3979,13 +3962,13 @@ void main(){
                     rafId = null;
                     if (!isVisible) return;
 
-                    cur += (target - cur) * 0.12; // smooth follow
-                    if (Math.abs(target - cur) < 0.0004) cur = target;
+                    cur += (target - cur) * 0.10; // silky smooth follow
+                    if (Math.abs(target - cur) < 0.0003) cur = target;
 
                     // Only update DOM transforms if cur actually changed
                     if (Math.abs(cur - lastCur) > 0.0002) {
                         lastCur = cur;
-                        var span = 0.28;
+                        var span = 0.32;
                         for (var i = 0; i < N; i++) {
                             var start = (i / N) * (1 - span);
                             var p = clamp((cur - start) / span);
