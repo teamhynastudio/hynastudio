@@ -1,10 +1,34 @@
-import React, { useRef, useEffect } from 'react';
+import os
+import re
+
+targets = [
+  "BusinessEnquiries.jsx",
+  "BusinessInsights.jsx",
+  "BusinessOperations.jsx",
+  "BusinessPartners.jsx",
+  "Customers.jsx",
+  "DiscoverBusinesses.jsx",
+  "Distributors.jsx",
+  "Finance.jsx",
+  "HynaBizAI.jsx",
+  "Inventory.jsx",
+  "Manufacturers.jsx",
+  "OrdersAndDeals.jsx",
+  "ProductDiscovery.jsx",
+  "Quotations.jsx",
+  "ReportsAndAnalytics.jsx",
+  "SmartWorkflows.jsx",
+  "Suppliers.jsx",
+  "TradeOpportunities.jsx"
+]
+
+blueprint_imports = """import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ArrowRight } from 'lucide-react';
 import InternalPageCurve from '../components/InternalPageCurve';
+"""
 
-
-const Finance = () => {
+blueprint_hooks = """
   // Animation Refs
   const headlineRef = useRef(null);
   const subheadlineRef = useRef(null);
@@ -70,10 +94,9 @@ const Finance = () => {
       }
     };
   }, []);
+"""
 
-  return (
-    <div className="bg-black text-gray-300 min-h-screen font-sans selection:bg-cyan-500/30">
-                  <style>{`
+blueprint_hero_style = """      <style>{`
         /* Uiverse.io Get Started Button by Javierrocadev - Compact & Proportional */
         .uiverse-btn {
           position: relative;
@@ -170,26 +193,69 @@ const Finance = () => {
         .uiverse-btn:hover::after {
           right: -16px;
         }
-      `}</style>
+      `}</style>"""
+
+def build_hero_section(title, subtitle):
+    return f"""      {blueprint_hero_style}
       <section className="relative pt-[calc(var(--navbar-height,80px)+40px)] pb-64 px-6 overflow-hidden min-h-screen flex flex-col justify-start items-center text-center">
         <InternalPageCurve />
         <div className="max-w-[1100px] w-full mx-auto flex flex-col items-center relative z-10 font-sans">
-          <h1 ref={headlineRef} className="text-[clamp(32px,4.3vw,54px)] leading-[1.15] font-[800] tracking-[-0.025em] text-white mb-[20px] whitespace-normal lg:whitespace-nowrap">
-            Finance & Accounting
+          <h1 ref={{headlineRef}} className="text-[clamp(32px,4.3vw,54px)] leading-[1.15] font-[800] tracking-[-0.025em] text-white mb-[20px] whitespace-normal lg:whitespace-nowrap">
+            {title}
           </h1>
-          <p ref={subheadlineRef} className="text-[19px] font-normal max-w-[640px] leading-[1.6] text-[#94a3b8] tracking-[-0.01em] mx-auto mt-0 mb-0">
-            Streamline your financial operations with intelligent tracking and comprehensive reporting.
+          <p ref={{subheadlineRef}} className="text-[19px] font-normal max-w-[640px] leading-[1.6] text-[#94a3b8] tracking-[-0.01em] mx-auto mt-0 mb-0">
+            {subtitle}
           </p>
-          <div ref={actionsRef} className="flex justify-center w-full mt-[28px]">
+          <div ref={{actionsRef}} className="flex justify-center w-full mt-[28px]">
             <button className="uiverse-btn">
               <span className="uiverse-btn-text">Get Started</span>
-              <ArrowRight size={18} className="uiverse-btn-icon" />
+              <ArrowRight size={{18}} className="uiverse-btn-icon" />
             </button>
           </div>
         </div>
-      </section>
-    </div>
-  );
-};
+      </section>"""
 
-export default Finance;
+def process_file(file_path):
+    with open(file_path, 'r') as f:
+        content = f.read()
+
+    # Find the title and subtitle
+    title_match = re.search(r'title\s*=\s*["\'](.*?)["\']', content)
+    subtitle_match = re.search(r'subtitle\s*=\s*["\'](.*?)["\']', content)
+
+    if not title_match or not subtitle_match:
+        print(f"Skipping {file_path} - couldn't find PageHero props")
+        return
+
+    title = title_match.group(1)
+    subtitle = subtitle_match.group(1)
+
+    # 1. Fix imports
+    # Replace the existing react import and PageHero import
+    content = re.sub(r"import React[^;]*;\n", "", content)
+    content = re.sub(r"import PageHero[^;]*;\n", "", content)
+    content = blueprint_imports + "\n" + content
+
+    # 2. Find the component start to inject hooks
+    comp_name_match = re.search(r'const (\w+)\s*=\s*\([^)]*\)\s*=>\s*{', content)
+    if not comp_name_match:
+        print(f"Skipping {file_path} - couldn't find component definition")
+        return
+
+    comp_name = comp_name_match.group(1)
+    # Inject hooks right after component definition
+    content = content.replace(f"const {comp_name} = () => {{", f"const {comp_name} = () => {{{blueprint_hooks}")
+
+    # 3. Replace the PageHero and wrapping div
+    content = re.sub(r'<PageHero[^>]*/>', build_hero_section(title, subtitle), content, flags=re.DOTALL)
+    
+    # 4. Also, change "page-container" to have "bg-black text-gray-300 min-h-screen font-sans selection:bg-cyan-500/30" to match Sales.jsx
+    content = content.replace('className="page-container"', 'className="bg-black text-gray-300 min-h-screen font-sans selection:bg-cyan-500/30"')
+
+    with open(file_path, 'w') as f:
+        f.write(content)
+
+    print(f"Processed {file_path}")
+
+for target in targets:
+    process_file('/home/jashwin/HynaBiz/HynaBiz_Web/hynastudio/HYNABIZ/Hynabizwebsite/frontend/src/pages/' + target)
