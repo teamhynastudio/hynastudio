@@ -7669,6 +7669,7 @@ void main(){
                 var tails = ["set.", "wire.", "lease."], prefix = "Re";
                 var word = document.getElementById("rrrWord");
                 var track = document.getElementById("rrrTrack");
+                var stage = document.getElementById("rrrStage");
                 var bgL = document.getElementById("rrrBgL");
                 var bgR = document.getElementById("rrrBgR");
                 var nav = document.getElementById("rrrNav");
@@ -7747,15 +7748,26 @@ void main(){
                     q += (target - q) * 0.08;
                     if (Math.abs(target - q) < 0.0001) q = target;
 
-                    var W = window.innerWidth, H = window.innerHeight;
+                    var W = (stage && stage.clientWidth) ? stage.clientWidth : (document.documentElement.clientWidth || window.innerWidth);
+                    var H = (stage && stage.clientHeight) ? stage.clientHeight : window.innerHeight;
 
                     // panels: edges close in from the sides, then expand to fill the screen
                     var d = lerp(0.56 * W, 0, inOut(clamp((q - 0.06) / 0.56)));
+                    if (d < 0.001) d = 0;
                     var e = out3(clamp((q - 0.66) / 0.22));
                     var h = lerp(W * 0.14, H, e), r = lerp(28, 0, e), T = Math.max(0, (H - h) / 2);
-                    var R = W / 2 + d;
-                    bgL.style.clipPath = "inset(" + T + "px " + R + "px " + T + "px 0 round " + r + "px)";
-                    bgR.style.clipPath = "inset(" + T + "px 0 " + T + "px " + R + "px round " + r + "px)";
+
+                    if (e >= 0.999 && d === 0) {
+                        bgL.style.clipPath = "none";
+                        bgR.style.clipPath = "none";
+                    } else {
+                        var overlap = (d <= 1) ? 2 : Math.max(0, 2 - d);
+                        var RL = Math.max(0, W / 2 + d - overlap);
+                        var RR = Math.max(0, W / 2 + d - overlap);
+                        var rInner = Math.min(r, Math.max(0, d * 1.5));
+                        bgL.style.clipPath = "inset(" + T.toFixed(1) + "px " + RL.toFixed(1) + "px " + T.toFixed(1) + "px 0 round " + r.toFixed(1) + "px " + rInner.toFixed(1) + "px " + rInner.toFixed(1) + "px " + r.toFixed(1) + "px)";
+                        bgR.style.clipPath = "inset(" + T.toFixed(1) + "px 0 " + T.toFixed(1) + "px " + RR.toFixed(1) + "px round " + rInner.toFixed(1) + "px " + r.toFixed(1) + "px " + r.toFixed(1) + "px " + rInner.toFixed(1) + "px)";
+                    }
 
                     // word state
                     setTail(q < 0.28 ? 0 : q < 0.5 ? 1 : 2);
