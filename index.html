@@ -3861,26 +3861,30 @@ void main(){
 
             @media (max-width: 768px) {
                 .uncommon-track {
-                    height: 280vh;
+                    height: 320vh;
+                }
+                .uncommon-stage {
+                    padding: 0 5vw;
                 }
                 .uncommon-title {
-                    font-size: clamp(38px, 11vw, 76px);
-                    line-height: 1.02;
-                    column-gap: .2em;
+                    font-size: clamp(26px, 7vw, 44px);
+                    line-height: 1.2;
+                    column-gap: .22em;
+                    row-gap: .12em;
                 }
             }
         </style>
 
         <div class="uncommon-track" id="uncommonTrack">
             <div class="uncommon-stage">
-                <h1 class="uncommon-title" id="uncommonT" aria-label="uncommon institute of design"></h1>
+                <h1 class="uncommon-title" id="uncommonT" aria-label="Building the technology foundation for the Autonomous Business Era."></h1>
                 <div class="uncommon-hint" id="uncommonHint">Scroll</div>
             </div>
         </div>
 
         <script>
             (function () {
-                var words = ["uncommon", "institute", "of", "design"];
+                var words = ["Building", "the", "technology", "foundation", "for", "the", "Autonomous", "Business", "Era."];
                 var h = document.getElementById("uncommonT");
                 var track = document.getElementById("uncommonTrack");
                 var hint = document.getElementById("uncommonHint");
@@ -3900,8 +3904,8 @@ void main(){
                         var l = document.createElement("span");
                         l.className = "uncommon-l";
                         l.textContent = ch;
-                        // red accent: 2nd 'm' in uncommon, last 'n' in design
-                        if ((wi === 0 && ci === 5) || (wi === 3 && ci === 5)) {
+                        // Accent highlight on "Autonomous Business Era."
+                        if (wi >= 6) {
                             l.classList.add("r");
                         }
                         s.appendChild(l);
