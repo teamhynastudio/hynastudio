@@ -1,275 +1,408 @@
-import React from 'react';
-import PageHero from '../components/PageHero';
-import { 
-  Users, 
-  Search, 
-  Filter, 
-  CheckCircle2, 
-  Clock, 
-  ChevronRight,
-  FileText,
-  Calculator,
-  Percent,
-  Plus,
-  Trash2,
-  TrendingUp,
-  Shield,
+import React, { useState, useRef, useEffect } from 'react';
+import gsap from 'gsap';
+import {
+  ArrowRight,
   Zap,
-  MoreHorizontal
+  Shield,
+  Settings,
+  TrendingUp,
+  Link,
+  Users,
+  FileText,
+  Lock,
+  Layers,
+  ChevronRight,
+  Plus
 } from 'lucide-react';
+import InternalPageCurve from '../components/InternalPageCurve';
 
 const Sales = () => {
-  const connections = [
-    { id: 1, name: 'Acme Corp', type: 'Vendor', status: 'Active', match: '98%' },
-    { id: 2, name: 'Global Tech', type: 'Buyer', status: 'Pending', match: '85%' },
-    { id: 3, name: 'Stark Industries', type: 'Partner', status: 'Active', match: '92%' }
-  ];
+  const [activeTab, setActiveTab] = useState('quote');
 
-  const quoteItems = [
-    { id: 1, name: 'Enterprise License', qty: 50, price: 120, discount: 10 },
-    { id: 2, name: 'Implementation Services', qty: 1, price: 5000, discount: 0 }
-  ];
+  // Animation Refs
+  const headlineRef = useRef(null);
+  const subheadlineRef = useRef(null);
+  const actionsRef = useRef(null);
 
-  const calculateTotal = () => {
-    return quoteItems.reduce((acc, item) => {
-      const subtotal = item.qty * item.price;
-      const discountAmount = subtotal * (item.discount / 100);
-      return acc + (subtotal - discountAmount);
-    }, 0);
-  };
+  useEffect(() => {
+    const navbarEl = document.querySelector('.navbar');
+    if (navbarEl) {
+      gsap.set(navbarEl, { opacity: 0, y: -20 });
+    }
+
+    const ctx = gsap.context(() => {
+      // Delay 1.4s waits for the InternalPageCurve to finish its 1.4s drop
+      const tl = gsap.timeline({ delay: 1.4, defaults: { ease: 'power3.out' } });
+
+      if (navbarEl) {
+        tl.to(navbarEl, { 
+          opacity: 1, 
+          y: 0, 
+          duration: 0.65, 
+          ease: 'power2.out',
+          onComplete: () => {
+            gsap.set(navbarEl, { clearProps: 'y,transform' });
+          }
+        });
+      }
+
+      tl.fromTo(headlineRef.current, 
+        { 
+          opacity: 0, 
+          y: 25, 
+          filter: 'blur(16px)',
+          color: 'rgba(255,255,255,0)',
+          textShadow: '0 10px 20px rgba(0,0,0,0.8)'
+        }, 
+        { 
+          opacity: 1, 
+          y: 0, 
+          filter: 'blur(0px)',
+          color: '#ffffff',
+          textShadow: 'none',
+          duration: 0.9, 
+          ease: 'power2.out' 
+        },
+        navbarEl ? '+=0.05' : 0
+      )
+      .fromTo(subheadlineRef.current, 
+        { opacity: 0, y: 15 }, 
+        { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, 
+        '-=0.4'
+      )
+      .fromTo(actionsRef.current, 
+        { opacity: 0, y: 15 }, 
+        { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, 
+        '-=0.3'
+      );
+    });
+
+    return () => {
+      ctx.revert();
+      if (navbarEl) {
+        gsap.set(navbarEl, { clearProps: 'all' });
+      }
+    };
+  }, []);
+
+
+  const benefits = [
+    { icon: <Zap className="text-cyan-400" size={24} />, tag: "SPEED", title: "AI Match Scoring", desc: "Instantly identify the best-fit vendors and buyers with intelligent percentage scoring." },
+    { icon: <FileText className="text-emerald-400" size={24} />, tag: "SCALE", title: "Instant Quotations", desc: "Generate professional, data-backed proposals in minutes, not hours." },
+    { icon: <Shield className="text-indigo-400" size={24} />, tag: "SECURE", title: "High Security", desc: "Enterprise-grade encryption and secure deal rooms for peace of mind." },
+    { icon: <Settings className="text-purple-400" size={24} />, tag: "ADAPT", title: "Flexible Workflows", desc: "Automate your approval pipelines and tailor routing to your team's needs." },
+    { icon: <TrendingUp className="text-pink-400" size={24} />, tag: "PROFIT", title: "Real-time Margins", desc: "Dynamic pricing models give you live margin insights before you send a quote." },
+    { icon: <Link className="text-amber-400" size={24} />, tag: "CONNECT", title: "Seamless Integrations", desc: "Connect effortlessly with your existing CRM, ERP, and payment systems." }
+  ];
 
   return (
-    <div className="page-container bg-[#0B0F17] text-slate-200 min-h-screen font-sans">
-      <PageHero accentColor="#00D09C" subtitle="Accelerate your sales pipeline with AI-driven insights and automated workflows." title="Sales Management"/>
-      
-      <div className="py-12">
-        <div className="max-w-7xl mx-auto px-6 space-y-12">
-          
-          {/* Header Section */}
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-            <div>
-              <h2 className="text-3xl font-bold text-white">
-                Sales & B2B Hub
-              </h2>
-              <p className="text-slate-400 mt-2">Manage partners, pipelines, and complex quotes in real-time.</p>
-            </div>
-            <button className="bg-cyan-600 hover:bg-cyan-500 text-white px-5 py-2.5 rounded-lg font-medium transition-colors flex items-center gap-2">
-              <Plus size={18} /> New Deal
+    <div className="bg-black text-gray-300 min-h-screen font-sans selection:bg-cyan-500/30">
+
+      {/* 1. Centered Hero Section */}
+      <style>{`
+        /* Uiverse.io Get Started Button by Javierrocadev - Compact & Proportional */
+        .uiverse-btn {
+          position: relative;
+          background-color: #262626;
+          height: 48px;
+          width: 170px;
+          border: 1px solid rgba(255, 255, 255, 0.16);
+          border-radius: 12px;
+          padding: 0 16px;
+          color: #f9fafb;
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-size: 15px;
+          font-weight: 700;
+          letter-spacing: -0.01em;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          cursor: pointer;
+          overflow: hidden;
+          text-decoration: underline;
+          text-underline-offset: 3px;
+          transition: all 0.4s ease;
+          box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.5);
+        }
+
+        .uiverse-btn-text {
+          position: relative;
+          z-index: 20;
+          transition: color 0.4s ease;
+        }
+
+        .uiverse-btn-icon {
+          position: relative;
+          z-index: 20;
+          transition: transform 0.4s ease, color 0.4s ease;
+        }
+
+        /* Violet Glowing Orb (Before) */
+        .uiverse-btn::before {
+          content: '';
+          position: absolute;
+          width: 28px;
+          height: 28px;
+          right: 2px;
+          top: 2px;
+          z-index: 10;
+          background-color: #8b5cf6;
+          border-radius: 50%;
+          filter: blur(10px);
+          transition: all 0.4s ease;
+          pointer-events: none;
+        }
+
+        /* Rose Glowing Orb (After) */
+        .uiverse-btn::after {
+          content: '';
+          position: absolute;
+          width: 44px;
+          height: 44px;
+          right: 14px;
+          top: 6px;
+          z-index: 10;
+          background-color: #fda4af;
+          border-radius: 50%;
+          filter: blur(12px);
+          transition: all 0.4s ease;
+          pointer-events: none;
+        }
+
+        /* Hover States */
+        .uiverse-btn:hover {
+          border-color: #fda4af;
+          color: #fda4af;
+          text-decoration: underline;
+          text-underline-offset: 4px;
+          text-decoration-thickness: 2px;
+          box-shadow: 0 8px 25px -4px rgba(162, 28, 175, 0.45);
+        }
+
+        .uiverse-btn:hover .uiverse-btn-icon {
+          transform: translateX(3px);
+          color: #fda4af;
+        }
+
+        .uiverse-btn:hover::before {
+          right: 22px;
+          top: auto;
+          bottom: -16px;
+          box-shadow: 12px 12px 16px 18px #a21caf;
+          filter: blur(14px);
+        }
+
+        .uiverse-btn:hover::after {
+          right: -16px;
+        }
+      `}</style>
+      <section className="relative pt-[calc(var(--navbar-height,80px)+40px)] pb-64 px-6 overflow-hidden min-h-screen flex flex-col justify-start items-center text-center">
+        <InternalPageCurve />
+        <div className="max-w-[1100px] w-full mx-auto flex flex-col items-center relative z-10 font-sans">
+          <h1 ref={headlineRef} className="text-[clamp(32px,4.3vw,54px)] leading-[1.15] font-[800] tracking-[-0.025em] text-white mb-[20px] whitespace-normal lg:whitespace-nowrap">
+            Empower Your B2B <br className="hidden md:block" /> Sales & Smart Quotations
+          </h1>
+          <p ref={subheadlineRef} className="text-[19px] font-normal max-w-[640px] leading-[1.6] text-[#94a3b8] tracking-[-0.01em] mx-auto mt-0 mb-0">
+            Connect seamlessly with vendors and buyers, generate accurate proposals instantly, and manage your entire B2B sales pipeline in one unified platform.
+          </p>
+          <div ref={actionsRef} className="flex justify-center w-full mt-[28px]">
+            <button className="uiverse-btn">
+              <span className="uiverse-btn-text">Get Started</span>
+              <ArrowRight size={18} className="uiverse-btn-icon" />
             </button>
           </div>
+        </div>
+      </section>
 
-          {/* 1. Value Proposition / Metrics Row */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-slate-900/50 border border-slate-800 rounded-xl p-6 hover:border-cyan-500/30 transition-colors">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="p-3 bg-slate-800 rounded-lg text-yellow-400">
-                  <Zap size={24} />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-slate-200">Automated Workflows</h3>
-                  <p className="text-2xl font-bold text-white mt-1">Reduce time by 60%</p>
-                </div>
-              </div>
-              <p className="text-slate-400 text-sm">Streamline approvals and routing</p>
-            </div>
+      {/* 2. Trust / Social Proof Banner */}
+      <section className="border-y border-gray-800/50 bg-gray-900/20 py-20 px-6">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 opacity-60">
+          <p className="text-sm font-semibold text-gray-400 tracking-wider uppercase whitespace-nowrap">Trusted by growing B2B enterprises</p>
+          <div className="flex flex-wrap justify-center md:justify-end items-center gap-8 md:gap-12">
+            <span className="text-2xl font-bold font-serif tracking-tight text-white">AcmeCorp</span>
+            <span className="text-2xl font-bold tracking-tighter flex items-center gap-1 text-white"><Zap size={24} /> STARK</span>
+            <span className="text-2xl font-black italic tracking-widest text-white">GLOBALTECH</span>
+            <span className="text-2xl font-bold text-white">WayneEnt</span>
+            <span className="text-2xl font-medium tracking-wide text-white">OSCORP</span>
+          </div>
+        </div>
+      </section>
 
-            <div className="bg-slate-900/50 border border-slate-800 rounded-xl p-6 hover:border-cyan-500/30 transition-colors">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="p-3 bg-slate-800 rounded-lg text-cyan-400">
-                  <TrendingUp size={24} />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-slate-200">Margin Analysis</h3>
-                  <p className="text-2xl font-bold text-white mt-1">+15% Profitability</p>
-                </div>
-              </div>
-              <p className="text-slate-400 text-sm">Dynamic CPQ pricing models</p>
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-800 rounded-xl p-6 hover:border-cyan-500/30 transition-colors">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="p-3 bg-slate-800 rounded-lg text-purple-400">
-                  <Shield size={24} />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-slate-200">Secure Deal Rooms</h3>
-                  <p className="text-2xl font-bold text-white mt-1">100% Audit-ready</p>
-                </div>
-              </div>
-              <p className="text-slate-400 text-sm">Encrypted partner collaborations</p>
-            </div>
+      {/* 3. Feature Showcase (Split Layout) */}
+      <section className="py-20 px-6 relative">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">The right tools for expert B2B commerce</h2>
+            <p className="text-lg text-gray-400 max-w-2xl mx-auto">Everything you need to source partners, quote accurately, and close deals faster.</p>
           </div>
 
-          {/* 2. B2B Connection Hub */}
-          <div className="bg-slate-900/50 border border-slate-800 rounded-xl overflow-hidden">
-            <div className="p-6 border-b border-slate-800 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-              <h3 className="text-xl font-semibold text-white flex items-center gap-2">
-                <Users className="text-cyan-400" size={20} />
-                B2B Connection Hub
-              </h3>
-              <div className="flex items-center gap-3 w-full sm:w-auto">
-                <div className="relative w-full sm:w-64">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" size={16} />
-                  <input 
-                    type="text" 
-                    placeholder="Find vendors, buyers..." 
-                    className="w-full bg-slate-950 border border-slate-800 rounded-lg pl-9 pr-4 py-2 text-sm focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 text-slate-200"
-                  />
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Left Column: Feature Tabs */}
+            <div className="lg:col-span-5 space-y-3">
+              <button
+                onClick={() => setActiveTab('connect')}
+                className={`w-full text-left p-6 rounded-2xl transition-all ${activeTab === 'connect' ? 'bg-slate-800/80 border border-slate-700 shadow-xl' : 'hover:bg-slate-800/30 border border-transparent'}`}
+              >
+                <div className="flex items-center gap-4 mb-2">
+                  <div className={`p-2 rounded-lg ${activeTab === 'connect' ? 'bg-cyan-500/20 text-cyan-400' : 'bg-slate-800 text-slate-400'}`}>
+                    <Users size={20} />
+                  </div>
+                  <h3 className={`text-xl font-semibold ${activeTab === 'connect' ? 'text-white' : 'text-slate-300'}`}>B2B Connection Hub</h3>
                 </div>
-                <button className="p-2 bg-slate-800 border border-slate-700 rounded-lg hover:bg-slate-700 text-slate-400">
-                  <Filter size={18} />
-                </button>
-              </div>
-            </div>
-            <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse">
-                <thead>
-                  <tr className="bg-slate-900/80 text-slate-400 text-sm border-b border-slate-800">
-                    <th className="px-6 py-4 font-medium">Partner Name</th>
-                    <th className="px-6 py-4 font-medium">Type</th>
-                    <th className="px-6 py-4 font-medium">Match Score</th>
-                    <th className="px-6 py-4 font-medium">Status</th>
-                    <th className="px-6 py-4 font-medium">Action</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-800">
-                  {connections.map((conn) => (
-                    <tr key={conn.id} className="hover:bg-slate-800/30 transition-colors group">
-                      <td className="px-6 py-4 font-medium text-white">{conn.name}</td>
-                      <td className="px-6 py-4 text-slate-400">{conn.type}</td>
-                      <td className="px-6 py-4">
-                        <div className="flex items-center gap-2">
-                          <div className="w-16 h-2 bg-slate-800 rounded-full overflow-hidden">
-                            <div className="h-full bg-cyan-500 rounded-full" style={{ width: conn.match }} />
-                          </div>
-                          <span className="text-xs text-cyan-400 font-medium">{conn.match}</span>
-                        </div>
-                      </td>
-                      <td className="px-6 py-4">
-                        <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${
-                          conn.status === 'Active' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 
-                          'bg-amber-500/10 text-amber-400 border border-amber-500/20'
-                        }`}>
-                          {conn.status === 'Active' ? <CheckCircle2 size={12} /> : <Clock size={12} />}
-                          {conn.status}
-                        </span>
-                      </td>
-                      <td className="px-6 py-4">
-                        <button className="text-cyan-400 hover:text-cyan-300 text-sm font-medium flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                          Connect <ChevronRight size={14} />
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
+                <p className="text-slate-400 ml-14">Discover and verify trusted vendors and buyers with AI-driven match scoring.</p>
+              </button>
 
-          {/* 3. Interactive Quoting CRM (CPQ) Feature Block */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-            <div className="lg:col-span-4 bg-slate-900/50 border border-slate-800 rounded-xl p-6 relative overflow-hidden">
-              <h3 className="text-xl font-semibold mb-6 text-white flex items-center gap-2">
-                <FileText className="text-cyan-400" size={20} />
-                Smart Quote Builder
-              </h3>
-              <div className="space-y-5 relative z-10">
-                <div>
-                  <label className="block text-xs font-medium text-slate-500 mb-1">Client Name</label>
-                  <div className="text-slate-200 font-medium bg-slate-950/50 p-3 rounded-lg border border-slate-800">
-                    Global Tech Industries
+              <button
+                onClick={() => setActiveTab('quote')}
+                className={`w-full text-left p-6 rounded-2xl transition-all ${activeTab === 'quote' ? 'bg-slate-800/80 border border-slate-700 shadow-xl' : 'hover:bg-slate-800/30 border border-transparent'}`}
+              >
+                <div className="flex items-center gap-4 mb-2">
+                  <div className={`p-2 rounded-lg ${activeTab === 'quote' ? 'bg-cyan-500/20 text-cyan-400' : 'bg-slate-800 text-slate-400'}`}>
+                    <FileText size={20} />
                   </div>
+                  <h3 className={`text-xl font-semibold ${activeTab === 'quote' ? 'text-white' : 'text-slate-300'}`}>Smart Quote Builder</h3>
                 </div>
-                <div>
-                  <label className="block text-xs font-medium text-slate-500 mb-1">RFP / Opportunity ID</label>
-                  <div className="text-slate-400 text-sm bg-slate-950/50 p-3 rounded-lg border border-slate-800 font-mono">
-                    #RFP-2026-8992
+                <p className="text-slate-400 ml-14">Construct detailed proposals with dynamic pricing, discounts, and real-time margin tracking.</p>
+              </button>
+
+              <button
+                onClick={() => setActiveTab('secure')}
+                className={`w-full text-left p-6 rounded-2xl transition-all ${activeTab === 'secure' ? 'bg-slate-800/80 border border-slate-700 shadow-xl' : 'hover:bg-slate-800/30 border border-transparent'}`}
+              >
+                <div className="flex items-center gap-4 mb-2">
+                  <div className={`p-2 rounded-lg ${activeTab === 'secure' ? 'bg-cyan-500/20 text-cyan-400' : 'bg-slate-800 text-slate-400'}`}>
+                    <Lock size={20} />
                   </div>
+                  <h3 className={`text-xl font-semibold ${activeTab === 'secure' ? 'text-white' : 'text-slate-300'}`}>Secure Deal Rooms</h3>
                 </div>
-                <div className="flex gap-4">
-                  <div className="flex-1">
-                    <label className="block text-xs font-medium text-slate-500 mb-1">Status</label>
-                    <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-blue-500/10 text-blue-400 border border-blue-500/20">
-                      Drafting
-                    </span>
+                <p className="text-slate-400 ml-14">Negotiate and collaborate in dedicated, encrypted environments for every deal.</p>
+              </button>
+
+              <button
+                onClick={() => setActiveTab('invoice')}
+                className={`w-full text-left p-6 rounded-2xl transition-all ${activeTab === 'invoice' ? 'bg-slate-800/80 border border-slate-700 shadow-xl' : 'hover:bg-slate-800/30 border border-transparent'}`}
+              >
+                <div className="flex items-center gap-4 mb-2">
+                  <div className={`p-2 rounded-lg ${activeTab === 'invoice' ? 'bg-cyan-500/20 text-cyan-400' : 'bg-slate-800 text-slate-400'}`}>
+                    <Layers size={20} />
                   </div>
-                  <div className="flex-1">
-                    <label className="block text-xs font-medium text-slate-500 mb-1">Validity</label>
-                    <div className="text-slate-300 text-sm">30 Days</div>
-                  </div>
+                  <h3 className={`text-xl font-semibold ${activeTab === 'invoice' ? 'text-white' : 'text-slate-300'}`}>Automated Invoicing</h3>
                 </div>
-              </div>
+                <p className="text-slate-400 ml-14">Convert winning quotes directly into professional invoices with zero manual data entry.</p>
+              </button>
             </div>
 
-            <div className="lg:col-span-8 bg-slate-900/50 border border-slate-800 rounded-xl p-6 flex flex-col">
-              <div className="flex justify-between items-center mb-6">
-                <h4 className="font-medium text-slate-200">Line Items & Pricing</h4>
-                <button className="text-sm text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
-                  <Plus size={16} /> Add Product
-                </button>
-              </div>
-
-              <div className="flex-1 overflow-x-auto">
-                <table className="w-full text-left">
-                  <thead>
-                    <tr className="text-xs text-slate-500 uppercase tracking-wider border-b border-slate-800">
-                      <th className="pb-3 font-medium">Product / Service</th>
-                      <th className="pb-3 font-medium text-right">Qty</th>
-                      <th className="pb-3 font-medium text-right">Unit Price</th>
-                      <th className="pb-3 font-medium text-right">Discount</th>
-                      <th className="pb-3 font-medium text-right">Total</th>
-                      <th className="pb-3"></th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-800/50">
-                    {quoteItems.map((item) => (
-                      <tr key={item.id} className="text-sm">
-                        <td className="py-4 text-slate-300">{item.name}</td>
-                        <td className="py-4 text-right text-slate-300">{item.qty}</td>
-                        <td className="py-4 text-right text-slate-400">${item.price.toLocaleString()}</td>
-                        <td className="py-4 text-right">
-                          <span className="inline-flex items-center gap-1 text-slate-400">
-                            {item.discount}<Percent size={12} />
-                          </span>
-                        </td>
-                        <td className="py-4 text-right font-medium text-white">
-                          ${((item.qty * item.price) * (1 - item.discount / 100)).toLocaleString()}
-                        </td>
-                        <td className="py-4 text-right">
-                          <button className="text-slate-600 hover:text-red-400 transition-colors">
-                            <Trash2 size={16} />
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-
-              <div className="mt-6 pt-6 border-t border-slate-800 flex justify-between items-center">
-                <div className="flex items-center gap-4 bg-slate-950/50 border border-slate-800 p-3 rounded-lg">
-                  <Calculator className="text-cyan-400" size={20} />
-                  <div>
-                    <div className="text-xs text-slate-500">Estimated Margin</div>
-                    <div className="text-lg font-bold text-emerald-400">42.5%</div>
+            {/* Right Column: Visual Mockup */}
+            <div className="lg:col-span-7 relative">
+              <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/10 to-blue-500/10 blur-3xl rounded-full" />
+              <div className="relative bg-[#111827] border border-slate-700/60 rounded-2xl shadow-2xl overflow-hidden p-6 md:p-8">
+                {/* Mockup Header */}
+                <div className="flex justify-between items-center mb-8 pb-6 border-b border-slate-800">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-cyan-900/50 rounded-lg flex items-center justify-center text-cyan-400">
+                      <FileText size={20} />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-white">Smart Quote Builder</h4>
+                      <p className="text-xs text-slate-400">Editing #RFP-2026-8992</p>
+                    </div>
                   </div>
-                </div>
-                
-                <div className="flex items-center gap-6">
-                  <div className="text-right">
-                    <div className="text-sm text-slate-500">Total Quote Value</div>
-                    <div className="text-2xl font-bold text-white">${calculateTotal().toLocaleString()}</div>
-                  </div>
-                  <button className="bg-cyan-600 hover:bg-cyan-500 text-white px-6 py-3 rounded-lg font-medium transition-colors">
-                    Generate Proposal
+                  <button className="bg-cyan-600/20 text-cyan-400 px-4 py-2 rounded-lg text-sm font-medium border border-cyan-500/20">
+                    Preview
                   </button>
                 </div>
+
+                {/* Mockup Body */}
+                <div className="space-y-6">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="bg-slate-900 rounded-xl p-4 border border-slate-800/50">
+                      <p className="text-xs text-slate-500 mb-1">Client Name</p>
+                      <p className="font-medium text-slate-200">Global Tech Industries</p>
+                    </div>
+                    <div className="bg-slate-900 rounded-xl p-4 border border-slate-800/50">
+                      <p className="text-xs text-slate-500 mb-1">Estimated Margin</p>
+                      <p className="font-bold text-emerald-400 text-lg">42.5%</p>
+                    </div>
+                  </div>
+
+                  <div className="bg-slate-900 rounded-xl border border-slate-800/50 overflow-hidden">
+                    <div className="px-4 py-3 border-b border-slate-800/50 flex justify-between items-center bg-slate-800/20">
+                      <h5 className="text-sm font-medium text-slate-300">Line Items</h5>
+                      <span className="text-xs text-slate-500 flex items-center gap-1 cursor-pointer hover:text-cyan-400"><Plus size={14} /> Add</span>
+                    </div>
+                    <div className="p-4 space-y-4">
+                      <div className="flex justify-between items-center pb-3 border-b border-slate-800/50">
+                        <div>
+                          <p className="text-sm font-medium text-slate-200">Enterprise License</p>
+                          <p className="text-xs text-slate-500 mt-1">Qty: 50 × $120.00 (10% Off)</p>
+                        </div>
+                        <p className="text-sm font-bold text-white">$5,400.00</p>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <div>
+                          <p className="text-sm font-medium text-slate-200">Implementation Services</p>
+                          <p className="text-xs text-slate-500 mt-1">Qty: 1 × $5,000.00</p>
+                        </div>
+                        <p className="text-sm font-bold text-white">$5,000.00</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex justify-between items-center pt-2">
+                    <p className="text-slate-400 text-sm">Total Value</p>
+                    <p className="text-2xl font-bold text-white">$10,400.00</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-
         </div>
-      </div>
+      </section>
+
+      {/* 4. Benefits Grid */}
+      <section className="py-20 px-6 border-y border-gray-800/50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Why choose HynaBiz for your business?</h2>
+            <p className="text-lg text-gray-400 max-w-2xl mx-auto">Designed from the ground up for the complexities of modern B2B transactions.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {benefits.map((benefit, idx) => (
+              <div key={idx} className="bg-white p-8 rounded-3xl hover:-translate-y-1 transition-all duration-300 group flex flex-col items-start shadow-xl">
+                <span className="inline-block px-3 py-1 mb-4 bg-cyan-50 text-cyan-600 font-bold text-xs uppercase tracking-wider rounded-full">
+                  {benefit.tag}
+                </span>
+                <div className="w-14 h-14 rounded-xl bg-gray-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  {benefit.icon}
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{benefit.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{benefit.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Bottom CTA Section */}
+      <section className="py-20 px-6 relative overflow-hidden flex flex-col items-center">
+        {/* Dynamic Gradient Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/40 via-black to-blue-900/20" />
+
+        <div className="max-w-4xl mx-auto text-center relative z-10 pt-10">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Experience how HynaBiz can set your sales team up for success today.
+          </h2>
+          <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+            Join thousands of modern B2B enterprises that are already closing deals faster and smarter.
+          </p>
+          <button className="px-10 py-5 bg-white text-gray-900 hover:bg-gray-200 rounded-xl font-bold text-lg transition-all shadow-xl shadow-white/10 flex items-center justify-center gap-2 mx-auto">
+            Start your free trial <ChevronRight size={20} />
+          </button>
+          <p className="mt-6 text-sm text-gray-500">No credit card required. 14-day free trial.</p>
+        </div>
+      </section>
     </div>
   );
 };
