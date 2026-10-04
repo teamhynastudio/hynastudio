@@ -4074,10 +4074,10 @@ void main(){
                 position: relative;
                 background: #000000;
                 --grey: #000000;
-                --orange: #ff4a12;
-                --ink: #2a120c;
+                --orange: #000000;
+                --ink: #ffffff;
                 --hud: rgba(255, 255, 255, .72);
-                --hud-o: rgba(42, 18, 12, .6);
+                --hud-o: rgba(255, 255, 255, .72);
             }
 
             .reel-stage {
@@ -4269,9 +4269,9 @@ void main(){
                 /* extruded 3D text */
                 var sh = [];
                 for (var i = 1; i <= 16; i++) {
-                    sh.push((i * .6) + "px " + (i * .6) + "px 0 " + (i < 9 ? "#a63008" : "#7a2208"));
+                    sh.push((i * .6) + "px " + (i * .6) + "px 0 rgba(255,255,255,0.08)");
                 }
-                sh.push("14px 22px 30px rgba(60,10,0,.45)");
+                sh.push("0 0 40px rgba(255,255,255,0.15)");
                 var reelH = id("reelH");
                 if (reelH) reelH.style.textShadow = sh.join(",");
 
@@ -4316,7 +4316,7 @@ void main(){
                 function frame(t) {
                     ctx.setTransform(D, 0, 0, D, 0, 0);
                     if (t >= 6.1) {
-                        ctx.fillStyle = "#ff4a12";
+                        ctx.fillStyle = "#000000";
                         ctx.fillRect(0, 0, W, H);
                         return;
                     }
@@ -4369,9 +4369,9 @@ void main(){
                     if (t > 5) {
                         var o = clamp((t - 5) / .5);
                         var g2 = ctx.createRadialGradient(W / 2, H / 2, 0, W / 2, H / 2, Math.max(W, H) * .7);
-                        g2.addColorStop(0, "#ffd02a");
-                        g2.addColorStop(.35, "#ff7a14");
-                        g2.addColorStop(1, "#ff3d0a");
+                        g2.addColorStop(0, "#1a1a1a");
+                        g2.addColorStop(.35, "#0d0d0d");
+                        g2.addColorStop(1, "#000000");
                         ctx.globalAlpha = o;
                         ctx.fillStyle = g2;
                         ctx.fillRect(0, 0, W, H);
@@ -4389,8 +4389,8 @@ void main(){
                                 ctx.stroke();
                             });
                             ctx.setLineDash([]);
-                            ctx.globalAlpha = u * .6;
-                            ctx.fillStyle = "#7a1d08";
+                            ctx.globalAlpha = u * .8;
+                            ctx.fillStyle = "#ffffff";
                             ctx.font = '400 ' + (W * .2) + 'px "Archivo Black",Impact,sans-serif';
                             ctx.textAlign = "center";
                             ctx.textBaseline = "middle";
