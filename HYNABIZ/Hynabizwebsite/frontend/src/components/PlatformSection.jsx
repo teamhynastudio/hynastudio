@@ -160,16 +160,6 @@ const PlatformSection = () => {
   return (
     <section className="platform-section" id="platform" ref={sectionRef}>
       <div className="container platform-container">
-        
-        {/* Header */}
-        <div className="platform-header">
-          <h2 className="platform-main-heading">
-            Everything your business needs, connected in one system.
-          </h2>
-          <p className="platform-subheading">
-            From discovering opportunities to building relationships, trading, and growing — HynaBiz brings the complete business journey together.
-          </p>
-        </div>
 
       </div>
 
