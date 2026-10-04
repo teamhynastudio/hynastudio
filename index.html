@@ -4287,7 +4287,7 @@ void main(){
                         ctx.fillRect(0, 0, W, H);
                         return;
                     }
-                    ctx.fillStyle = t < .1 ? "#2e2e30" : (t < 5 ? "rgba(46,46,48,.3)" : "#2e2e30");
+                    ctx.fillStyle = t < .1 ? "#000000" : (t < 5 ? "rgba(0,0,0,.3)" : "#000000");
                     ctx.fillRect(0, 0, W, H);
                     var tilt = eio((t - 3.9) / .8);
                     spin = t > 4.05 ? .9 * Math.pow(t - 4.05, 2) : 0;
