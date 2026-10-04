@@ -4098,35 +4098,6 @@ void main(){
                 pointer-events: none;
             }
 
-            .reel-hud {
-                position: absolute;
-                left: 0;
-                right: 0;
-                display: flex;
-                justify-content: space-between;
-                padding: 0 24px;
-                font-size: 11px;
-                letter-spacing: .22em;
-                color: var(--hud);
-                text-transform: uppercase;
-                transition: color .3s;
-                pointer-events: none;
-                z-index: 3;
-                font-family: "Archivo Black", Impact, "Arial Black", sans-serif;
-            }
-
-            .reel-stage.o .reel-hud {
-                color: var(--hud-o);
-            }
-
-            .reel-hud.reel-top {
-                top: calc(20px + env(safe-area-inset-top, 0px));
-            }
-
-            .reel-hud.reel-bot {
-                bottom: calc(20px + env(safe-area-inset-bottom, 0px));
-            }
-
             .reel-slide-content {
                 position: absolute;
                 inset: 0;
@@ -4202,15 +4173,8 @@ void main(){
                 .reel-track {
                     height: 480vh;
                 }
-                .reel-hud.reel-top {
-                    top: calc(72px + env(safe-area-inset-top, 0px));
-                }
                 .reel-h1 {
                     font-size: clamp(32px, 12vw, 60px);
-                }
-                .reel-hud {
-                    padding: 0 14px;
-                    font-size: 9px;
                 }
             }
         </style>
@@ -4219,14 +4183,6 @@ void main(){
             <div class="reel-stage" id="reelStage">
                 <canvas id="reelCanvas" class="reel-cv"></canvas>
                 <div class="reel-hint" id="reelHint">Scroll ↓</div>
-                <div class="reel-hud reel-top">
-                    <span>Motion Reel 2026</span>
-                    <span id="reelBar">▢▢▢▢ BAR 1/8 128</span>
-                </div>
-                <div class="reel-hud reel-bot">
-                    <span>Scroll to play</span>
-                    <span id="reelTc">F0000 00:00:00:00</span>
-                </div>
                 <div class="reel-slide-content" id="reelSlide">
                     <div class="reel-rig" id="reelRig">
                         <h1 class="reel-h1" id="reelH">
@@ -4341,14 +4297,6 @@ void main(){
 
                     ctx.save();
                     ctx.translate(W / 2, H / 2);
-                    if (t > 1.5 && t < 5) {
-                        ctx.strokeStyle = "rgba(255,255,255,.55)";
-                        ctx.lineWidth = 1.2;
-                        ctx.beginPath();
-                        ctx.moveTo(-7, 0); ctx.lineTo(7, 0);
-                        ctx.moveTo(0, -7); ctx.lineTo(0, 7);
-                        ctx.stroke();
-                    }
                     if (t > 3.9 && t < 5.3) {
                         var arc = clamp((t - 3.9) / .7) * Math.PI * 2;
                         ctx.beginPath();
@@ -4449,8 +4397,6 @@ void main(){
                 var w1 = id("reelW1");
                 var w2 = id("reelW2");
                 var bs = [].slice.call(track.querySelectorAll(".reel-b"));
-                var barEl = id("reelBar");
-                var tcEl = id("reelTc");
                 var hintEl = id("reelHint");
 
                 var mx = 0, my = 0, smx = 0, smy = 0;
@@ -4461,12 +4407,6 @@ void main(){
 
                 function ui(t) {
                     stage.classList.toggle("o", t >= 6);
-                    var bar = Math.floor(t / 1.875) + 1, beat = Math.floor((t % 1.875) / .469), bx = "";
-                    for (var i = 0; i < 4; i++) bx += i <= beat ? "▣" : "▢";
-                    if (barEl) barEl.textContent = bx + " BAR " + bar + "/8 128";
-
-                    var f = Math.floor(t * 30), p = function (n) { return (n < 10 ? "0" : "") + n; };
-                    if (tcEl) tcEl.textContent = "F" + ("0000" + f).slice(-4) + " 00:00:" + p(Math.floor(t)) + ":" + p(f % 30);
 
                     var vis = t >= 5.95 && t < T;
                     if (slide) slide.style.visibility = vis ? "visible" : "hidden";
