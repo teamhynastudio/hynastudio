@@ -38,7 +38,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link
-        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&family=Sora:wght@700;800&family=Space+Grotesk:wght@500;600;700&family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@500;600;700;800;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&family=Sora:wght@700;800&family=Space+Grotesk:wght@500;600;700&family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@500;600;700;800;900&family=Archivo+Black&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
@@ -4059,6 +4059,522 @@ void main(){
             })();
         </script>
         <!-- ══════════ END SECOND SLIDE ══════════ -->
+
+        <!-- ══════════ THIRD SLIDE: MOTION REEL 2026 ══════════ -->
+        <style>
+            .reel-track {
+                height: 600vh;
+                position: relative;
+                background: #2e2e30;
+                --grey: #2e2e30;
+                --orange: #ff4a12;
+                --ink: #2a120c;
+                --hud: rgba(255, 255, 255, .72);
+                --hud-o: rgba(42, 18, 12, .6);
+            }
+
+            .reel-stage {
+                position: sticky;
+                top: 0;
+                width: 100%;
+                height: 100vh;
+                overflow: hidden;
+                background: var(--grey);
+                font-family: "Archivo Black", Impact, "Arial Black", sans-serif;
+                transition: background-color .3s;
+                box-sizing: border-box;
+            }
+
+            .reel-stage.o {
+                background: var(--orange);
+            }
+
+            .reel-stage canvas.reel-cv {
+                position: absolute;
+                inset: 0;
+                width: 100%;
+                height: 100%;
+                display: block;
+                pointer-events: none;
+            }
+
+            .reel-hud {
+                position: absolute;
+                left: 0;
+                right: 0;
+                display: flex;
+                justify-content: space-between;
+                padding: 0 24px;
+                font-size: 11px;
+                letter-spacing: .22em;
+                color: var(--hud);
+                text-transform: uppercase;
+                transition: color .3s;
+                pointer-events: none;
+                z-index: 3;
+                font-family: "Archivo Black", Impact, "Arial Black", sans-serif;
+            }
+
+            .reel-stage.o .reel-hud {
+                color: var(--hud-o);
+            }
+
+            .reel-hud.reel-top {
+                top: calc(20px + env(safe-area-inset-top, 0px));
+            }
+
+            .reel-hud.reel-bot {
+                bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+            }
+
+            .reel-slide-content {
+                position: absolute;
+                inset: 0;
+                display: grid;
+                place-items: center;
+                perspective: 1300px;
+                visibility: hidden;
+                z-index: 2;
+                pointer-events: none;
+            }
+
+            .reel-rig {
+                transform-style: preserve-3d;
+                will-change: transform;
+            }
+
+            .reel-h1 {
+                margin: 0;
+                font-weight: 400;
+                font-size: clamp(48px, 9.2vw, 9rem);
+                line-height: 1;
+                color: var(--ink);
+                white-space: nowrap;
+                transform-style: preserve-3d;
+                letter-spacing: -.01em;
+                font-family: "Archivo Black", Impact, "Arial Black", sans-serif;
+            }
+
+            .reel-w {
+                display: inline-block;
+                transform-style: preserve-3d;
+                opacity: 0;
+                position: relative;
+            }
+
+            .reel-f {
+                margin-left: .22em;
+            }
+
+            .reel-b {
+                position: absolute;
+                width: .18em;
+                height: .18em;
+                border: max(2px, .025em) solid var(--ink);
+                opacity: 0;
+            }
+
+            .reel-tl { left: -.14em; top: -.12em; border-right: 0; border-bottom: 0; }
+            .reel-tr { right: -.14em; top: -.12em; border-left: 0; border-bottom: 0; }
+            .reel-bl { left: -.14em; bottom: -.12em; border-right: 0; border-top: 0; }
+            .reel-br { right: -.14em; bottom: -.12em; border-left: 0; border-top: 0; }
+
+            .reel-hint {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: calc(44px + env(safe-area-inset-bottom, 0px));
+                font-size: 11px;
+                letter-spacing: .2em;
+                color: var(--hud);
+                opacity: .55;
+                z-index: 3;
+                pointer-events: none;
+                transition: opacity .4s;
+                font-family: "Archivo Black", Impact, "Arial Black", sans-serif;
+            }
+
+            .reel-stage.o .reel-hint {
+                color: var(--hud-o);
+            }
+
+            @media (max-width: 768px) {
+                .reel-track {
+                    height: 480vh;
+                }
+                .reel-hud.reel-top {
+                    top: calc(72px + env(safe-area-inset-top, 0px));
+                }
+                .reel-h1 {
+                    font-size: clamp(32px, 12vw, 60px);
+                }
+                .reel-hud {
+                    padding: 0 14px;
+                    font-size: 9px;
+                }
+            }
+        </style>
+
+        <div class="reel-track" id="reelTrack">
+            <div class="reel-stage" id="reelStage">
+                <canvas id="reelCanvas" class="reel-cv"></canvas>
+                <div class="reel-hint" id="reelHint">Scroll ↓</div>
+                <div class="reel-hud reel-top">
+                    <span>Motion Reel 2026</span>
+                    <span id="reelBar">▢▢▢▢ BAR 1/8 128</span>
+                </div>
+                <div class="reel-hud reel-bot">
+                    <span>Scroll to play</span>
+                    <span id="reelTc">F0000 00:00:00:00</span>
+                </div>
+                <div class="reel-slide-content" id="reelSlide">
+                    <div class="reel-rig" id="reelRig">
+                        <h1 class="reel-h1" id="reelH">
+                            <span class="reel-w" id="reelW1">EVERY</span><span class="reel-w reel-f" id="reelW2">FRAME<i class="reel-b reel-tl"></i><i class="reel-b reel-tr"></i><i class="reel-b reel-bl"></i><i class="reel-b reel-br"></i></span>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            (function () {
+                var cv = document.getElementById("reelCanvas");
+                var track = document.getElementById("reelTrack");
+                var stage = document.getElementById("reelStage");
+                if (!cv || !track || !stage) return;
+
+                var ctx = cv.getContext("2d");
+                var tmp = document.createElement("canvas");
+                var tx = tmp.getContext("2d");
+                var W = 0, H = 0, D = 1, R = 100, M = 100, T = 11;
+
+                var id = function (x) { return document.getElementById(x); };
+                var clamp = function (x, a, b) {
+                    a = a === undefined ? 0 : a;
+                    b = b === undefined ? 1 : b;
+                    return Math.min(b, Math.max(a, x));
+                };
+                var eob = function (x) {
+                    x = clamp(x);
+                    var c = 1.4;
+                    return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2);
+                };
+                var eio = function (x) {
+                    x = clamp(x);
+                    return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+                };
+
+                function size() {
+                    D = Math.min(window.devicePixelRatio || 1, 2);
+                    W = stage.clientWidth || window.innerWidth;
+                    H = stage.clientHeight || window.innerHeight;
+                    cv.width = W * D;
+                    cv.height = H * D;
+                    ctx.setTransform(D, 0, 0, D, 0, 0);
+                    M = Math.min(W, H);
+                    R = M * .15;
+                }
+                size();
+
+                /* extruded 3D text */
+                var sh = [];
+                for (var i = 1; i <= 16; i++) {
+                    sh.push((i * .6) + "px " + (i * .6) + "px 0 " + (i < 9 ? "#a63008" : "#7a2208"));
+                }
+                sh.push("14px 22px 30px rgba(60,10,0,.45)");
+                var reelH = id("reelH");
+                if (reelH) reelH.style.textShadow = sh.join(",");
+
+                /* dot layouts: 1 -> 2 -> 4 -> 8 (ring) */
+                function layout(l, i) {
+                    if (l === 0) return [0, 0];
+                    if (l === 1) {
+                        var a = (i >> 2) ? 0 : Math.PI;
+                        return [Math.cos(a + .5) * R * .55, Math.sin(a + .5) * R * .55];
+                    }
+                    if (l === 2) {
+                        var b = (i >> 1) * Math.PI / 2 + .4;
+                        return [Math.cos(b) * R * .7, Math.sin(b) * R * .7];
+                    }
+                    var c = i * Math.PI / 4;
+                    return [Math.cos(c) * R, Math.sin(c) * R];
+                }
+
+                var ts = [1.1, 2.2, 3.3];
+                function pos(t, i) {
+                    var p = layout(0, i);
+                    for (var k = 0; k < 3; k++) {
+                        var u = eob((t - ts[k]) / .75);
+                        if (u <= 0) break;
+                        var a = layout(k, i), b = layout(k + 1, i);
+                        p = [a[0] + (b[0] - a[0]) * u, a[1] + (b[1] - a[1]) * u];
+                    }
+                    return p;
+                }
+
+                var spin = 0, rx = 0, ry = 0, Z = 1;
+                function proj(x, y) {
+                    var c = Math.cos(spin), s = Math.sin(spin);
+                    var X = x * c - y * s, Y = x * s + y * c;
+                    var y2 = Y * Math.cos(rx), z = Y * Math.sin(rx);
+                    var x2 = X * Math.cos(ry) + z * Math.sin(ry);
+                    var z2 = -X * Math.sin(ry) + z * Math.cos(ry);
+                    var f = 1 / (1 + z2 / (R * 7));
+                    return { x: x2 * f * Z, y: y2 * f * Z, f: f, z: z2 };
+                }
+
+                function frame(t) {
+                    ctx.setTransform(D, 0, 0, D, 0, 0);
+                    if (t >= 6.1) {
+                        ctx.fillStyle = "#ff4a12";
+                        ctx.fillRect(0, 0, W, H);
+                        return;
+                    }
+                    ctx.fillStyle = t < .1 ? "#2e2e30" : (t < 5 ? "rgba(46,46,48,.3)" : "#2e2e30");
+                    ctx.fillRect(0, 0, W, H);
+                    var tilt = eio((t - 3.9) / .8);
+                    spin = t > 4.05 ? .9 * Math.pow(t - 4.05, 2) : 0;
+                    rx = .95 * tilt;
+                    ry = tilt * (.25 + .35 * Math.sin(t * 1.3));
+                    Z = t > 4.9 ? Math.exp((t - 4.9) * 4.6) : 1;
+
+                    ctx.save();
+                    ctx.translate(W / 2, H / 2);
+                    if (t > 1.5 && t < 5) {
+                        ctx.strokeStyle = "rgba(255,255,255,.55)";
+                        ctx.lineWidth = 1.2;
+                        ctx.beginPath();
+                        ctx.moveTo(-7, 0); ctx.lineTo(7, 0);
+                        ctx.moveTo(0, -7); ctx.lineTo(0, 7);
+                        ctx.stroke();
+                    }
+                    if (t > 3.9 && t < 5.3) {
+                        var arc = clamp((t - 3.9) / .7) * Math.PI * 2;
+                        ctx.beginPath();
+                        for (var k = 0; k <= 72; k++) {
+                            var th = k / 72 * arc, p = proj(Math.cos(th) * R, Math.sin(th) * R);
+                            k ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y);
+                        }
+                        ctx.strokeStyle = "rgba(255,255,255,.5)";
+                        ctx.lineWidth = 1.5;
+                        ctx.stroke();
+                    }
+                    var dots = [];
+                    for (var i = 0; i < 8; i++) {
+                        var q = pos(t, i);
+                        var pr = proj(q[0], q[1]);
+                        pr.i = i;
+                        dots.push(pr);
+                    }
+                    dots.sort(function (a, b) { return b.z - a.z; });
+                    var pulse = t < 1.1 ? 1 + .12 * Math.sin(t * 9) : 1;
+                    dots.forEach(function (d) {
+                        var r = R * .1 * d.f * Z * pulse * (1 + .07 * Math.sin(t * 28 + d.i * 2));
+                        var g = ctx.createRadialGradient(d.x - r * .25, d.y - r * .25, 0, d.x, d.y, r);
+                        g.addColorStop(0, "#fff3b0");
+                        g.addColorStop(.45, "#ffc22e");
+                        g.addColorStop(1, "#ff6a14");
+                        ctx.shadowColor = "rgba(255,140,20,.9)";
+                        ctx.shadowBlur = Math.min(26 * d.f * Z, 90);
+                        ctx.fillStyle = g;
+                        ctx.beginPath();
+                        ctx.arc(d.x, d.y, r, 0, 7);
+                        ctx.fill();
+                    });
+                    ctx.restore();
+                    ctx.shadowBlur = 0;
+
+                    if (t > 5) {
+                        var o = clamp((t - 5) / .5);
+                        var g2 = ctx.createRadialGradient(W / 2, H / 2, 0, W / 2, H / 2, Math.max(W, H) * .7);
+                        g2.addColorStop(0, "#ffd02a");
+                        g2.addColorStop(.35, "#ff7a14");
+                        g2.addColorStop(1, "#ff3d0a");
+                        ctx.globalAlpha = o;
+                        ctx.fillStyle = g2;
+                        ctx.fillRect(0, 0, W, H);
+                        ctx.globalAlpha = 1;
+
+                        var u = clamp((t - 5.2) / .6);
+                        if (u > 0) {
+                            ctx.lineWidth = Math.max(2, M * .006);
+                            ctx.strokeStyle = "rgba(255,255,255,.92)";
+                            [.2, .62, .95].forEach(function (r, j) {
+                                ctx.beginPath();
+                                ctx.setLineDash([M * .9, M * .12]);
+                                ctx.lineDashOffset = -t * 180 * (j % 2 ? -1 : 1);
+                                ctx.ellipse(W / 2, H / 2, M * r * eob(u), M * r * eob(u) * .92, t * .4 * (j % 2 ? -1 : 1), 0, 7);
+                                ctx.stroke();
+                            });
+                            ctx.setLineDash([]);
+                            ctx.globalAlpha = u * .6;
+                            ctx.fillStyle = "#7a1d08";
+                            ctx.font = '400 ' + (W * .2) + 'px "Archivo Black",Impact,sans-serif';
+                            ctx.textAlign = "center";
+                            ctx.textBaseline = "middle";
+                            ctx.fillText("EVERY", W / 2, H / 2);
+                            ctx.globalAlpha = 1;
+                        }
+
+                        /* pixelate burst */
+                        var pix = Math.max(1, Math.round(64 * Math.pow(1 - clamp((t - 5) / 1.1), 2)));
+                        if (pix > 2) {
+                            var tw = Math.ceil(cv.width / pix), th2 = Math.ceil(cv.height / pix);
+                            tmp.width = tw;
+                            tmp.height = th2;
+                            tx.drawImage(cv, 0, 0, tw, th2);
+                            ctx.save();
+                            ctx.setTransform(1, 0, 0, 1, 0, 0);
+                            ctx.imageSmoothingEnabled = false;
+                            ctx.drawImage(tmp, 0, 0, tw, th2, 0, 0, cv.width, cv.height);
+                            ctx.restore();
+                        }
+                        if (t > 5.3) {
+                            ctx.save();
+                            ctx.setTransform(1, 0, 0, 1, 0, 0);
+                            for (var s = 0; s < 5; s++) {
+                                var y = Math.random() * cv.height,
+                                    h = 8 + Math.random() * 60 * D,
+                                    dx = (Math.random() - .5) * 80 * D;
+                                ctx.drawImage(cv, 0, y, cv.width, h, dx, y, cv.width, h);
+                            }
+                            ctx.restore();
+                        }
+                    }
+                }
+
+                var slide = id("reelSlide");
+                var rig = id("reelRig");
+                var w1 = id("reelW1");
+                var w2 = id("reelW2");
+                var bs = [].slice.call(track.querySelectorAll(".reel-b"));
+                var barEl = id("reelBar");
+                var tcEl = id("reelTc");
+                var hintEl = id("reelHint");
+
+                var mx = 0, my = 0, smx = 0, smy = 0;
+                window.addEventListener("pointermove", function (e) {
+                    mx = e.clientX / window.innerWidth - .5;
+                    my = e.clientY / window.innerHeight - .5;
+                }, { passive: true });
+
+                function ui(t) {
+                    stage.classList.toggle("o", t >= 6);
+                    var bar = Math.floor(t / 1.875) + 1, beat = Math.floor((t % 1.875) / .469), bx = "";
+                    for (var i = 0; i < 4; i++) bx += i <= beat ? "▣" : "▢";
+                    if (barEl) barEl.textContent = bx + " BAR " + bar + "/8 128";
+
+                    var f = Math.floor(t * 30), p = function (n) { return (n < 10 ? "0" : "") + n; };
+                    if (tcEl) tcEl.textContent = "F" + ("0000" + f).slice(-4) + " 00:00:" + p(Math.floor(t)) + ":" + p(f % 30);
+
+                    var vis = t >= 5.95 && t < T;
+                    if (slide) slide.style.visibility = vis ? "visible" : "hidden";
+                    if (!vis) return;
+
+                    smx += (mx - smx) * .08;
+                    smy += (my - smy) * .08;
+                    var p1 = eob((t - 6) / .8), p2 = eob((t - 6.25) / .8), q = eob((t - 7) / .55), out = 1 - clamp((t - 10) / .8);
+                    if (w1) {
+                        w1.style.opacity = clamp((t - 6) / .2) * out;
+                        w1.style.transform = "rotateX(" + ((1 - p1) * -95) + "deg) translateY(" + ((1 - p1) * -80) + "px) translateZ(" + ((1 - p1) * 220) + "px)";
+                    }
+                    if (w2) {
+                        w2.style.opacity = clamp((t - 6.25) / .2) * out;
+                        w2.style.transform = "rotateY(" + ((1 - p2) * 95) + "deg) translateX(" + ((1 - p2) * 140) + "px) translateZ(" + ((1 - p2) * 160) + "px)";
+                    }
+                    bs.forEach(function (b) {
+                        b.style.opacity = clamp(q * 2) * out;
+                        b.style.transform = "scale(" + (1 + (1 - q) * 1.1) + ")";
+                    });
+                    var jit = (t > 6.95 && t < 7.1) ? (Math.random() - .5) * 14 : 0;
+                    if (rig) {
+                        rig.style.transform = "translateX(" + jit + "px) rotateY(" + (Math.sin(t * .8) * 7 + smx * 18) + "deg) rotateX(" + (Math.cos(t * .6) * 4 - smy * 14) + "deg)";
+                    }
+                }
+
+                var t = 0, END = 9.9;
+                var trackTop = 0, maxScroll = 0;
+                var isVisible = false;
+                var rafId = null;
+
+                function cacheMetrics() {
+                    var rect = track.getBoundingClientRect();
+                    trackTop = rect.top + window.scrollY;
+                    maxScroll = track.offsetHeight - window.innerHeight;
+                }
+
+                function getTarget() {
+                    if (maxScroll <= 0) return 0;
+                    var relY = window.scrollY - trackTop;
+                    return clamp(relY / maxScroll, 0, 1) * END;
+                }
+
+                function startLoop() {
+                    if (!rafId) rafId = requestAnimationFrame(tick);
+                }
+
+                function stopLoop() {
+                    if (rafId) {
+                        cancelAnimationFrame(rafId);
+                        rafId = null;
+                    }
+                }
+
+                function tick() {
+                    rafId = null;
+                    var g = getTarget();
+                    t += (g - t) * .12;
+                    if (Math.abs(g - t) < .002) t = g;
+
+                    var relY = window.scrollY - trackTop;
+                    if (hintEl) {
+                        hintEl.style.opacity = (relY > 40 || relY < -20) ? "0" : "0.55";
+                    }
+
+                    frame(t);
+                    ui(t);
+
+                    if (isVisible) {
+                        rafId = requestAnimationFrame(tick);
+                    }
+                }
+
+                if ('IntersectionObserver' in window) {
+                    new IntersectionObserver(function (entries) {
+                        isVisible = entries[0].isIntersecting;
+                        if (isVisible) {
+                            cacheMetrics();
+                            startLoop();
+                        } else {
+                            stopLoop();
+                        }
+                    }, { threshold: 0 }).observe(track);
+                }
+
+                window.addEventListener("scroll", function () {
+                    if (!isVisible) {
+                        var sy = window.scrollY;
+                        if (sy >= trackTop - 200 && sy <= trackTop + track.offsetHeight + 200) {
+                            isVisible = true;
+                            startLoop();
+                        }
+                    }
+                }, { passive: true });
+
+                window.addEventListener("resize", function () {
+                    cacheMetrics();
+                    size();
+                }, { passive: true });
+
+                requestAnimationFrame(function () {
+                    cacheMetrics();
+                    size();
+                    startLoop();
+                });
+            })();
+        </script>
+        <!-- ══════════ END THIRD SLIDE ══════════ -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
