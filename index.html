@@ -633,10 +633,10 @@
         /* ── HERO (Dark Dot-Grid — Mercury style) ── */
 
         :root {
-            --hero-bg: #030d1a;
+            --hero-bg: #2b3ab7;
             --hero-ink: #ffffff;
-            --hero-ink-dim: rgba(255, 255, 255, 0.75);
-            --hero-ink-faint: rgba(255, 255, 255, 0.5);
+            --hero-ink-dim: rgba(255, 255, 255, 0.85);
+            --hero-ink-faint: rgba(255, 255, 255, 0.6);
         }
 
         .hero {
@@ -648,7 +648,9 @@
             position: relative;
             overflow: hidden;
             background:
-                radial-gradient(ellipse 80% 70% at 10% 10%, #7ecfea 0%, #3fa8c8 25%, #1a6fa0 55%, #0a3352 80%, #030d1a 100%);
+                radial-gradient(ellipse 55% 60% at 95% 95%, #e8f55a 0%, #6ee86e 20%, #2dd4bf 45%, #3b82f6 65%, transparent 80%),
+                radial-gradient(ellipse 70% 60% at 50% 40%, #6fa8f5 0%, #4a6fe8 30%, transparent 70%),
+                linear-gradient(135deg, #3a4ad4 0%, #2b3ab7 40%, #1e2d9e 70%, #1a2580 100%);
             color: var(--hero-ink);
         }
 
@@ -656,7 +658,7 @@
             position: absolute;
             inset: 0;
             z-index: 1;
-            background: linear-gradient(180deg, rgba(3,13,26,0.35) 0%, rgba(0,0,0,0) 18%, rgba(0,0,0,0) 72%, #030d1a 100%);
+            background: linear-gradient(180deg, rgba(27,37,180,0.2) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 75%, rgba(26,37,128,0.4) 100%);
             pointer-events: none;
         }
 
