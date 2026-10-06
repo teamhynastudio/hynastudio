@@ -1,4 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
+import FeatureShowcase from '../components/FeatureShowcase';
+import SalesEngineNode from '../components/SalesEngineNode';
 import gsap from 'gsap';
 import {
   ArrowRight,
@@ -12,7 +14,10 @@ import {
   Lock,
   Layers,
   ChevronRight,
-  Plus
+  Plus,
+  CheckCircle,
+  Download,
+  File
 } from 'lucide-react';
 import InternalPageCurve from '../components/InternalPageCurve';
 
@@ -196,6 +201,74 @@ const Sales = () => {
         .uiverse-btn:hover::after {
           right: -16px;
         }
+
+        /* Animated Rotating Border Card */
+        .animated-border-card {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          background: #0B0F17; 
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          padding: 32px;
+          border-radius: 20px;
+          overflow: hidden;
+          z-index: 1;
+        }
+
+        /* The rotating gradient layer */
+        .animated-border-card::before {
+          content: '';
+          position: absolute;
+          width: 150%;
+          height: 150%;
+          background-image: linear-gradient(180deg, #40c9ff, #e81cff);
+          top: -25%;
+          left: -25%;
+          animation: spinBorder 4s linear infinite;
+          z-index: -2;
+        }
+
+        @keyframes spinBorder {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+
+        /* The inner dark cover to mask the center */
+        .animated-border-card::after {
+          content: '';
+          position: absolute;
+          background: #0B0F17;
+          inset: 3px; /* This controls the thickness of the border */
+          border-radius: 17px; 
+          z-index: -1;
+        }
+
+        /* Elevate inner content above the pseudo-elements */
+        .animated-border-card > * {
+          z-index: 2;
+          position: relative;
+        }
+
+        /* Right Mockup Wrapper (Spacious74 Adapted) */
+        .spacious-wrapper {
+          background: linear-gradient(135deg, rgba(255,255,255,0.9), #3a4b8a, rgba(255,255,255,0.4));
+          padding: 1px; /* Creates the crisp metallic border */
+          border-radius: 1.25rem;
+          box-shadow: 0px 1.5rem 2.5rem -0.5rem rgba(0,0,0,0.8);
+          width: 100%;
+          height: 100%;
+        }
+
+        .spacious-card {
+          background: linear-gradient(135deg, #0B0F17 0%, #1e2a5e 43%, #0B0F17 100%);
+          border-radius: 1.25rem;
+          padding: 1.5rem;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+        }
       `}</style>
       <section className="relative pt-[calc(var(--navbar-height,80px)+40px)] pb-64 px-6 overflow-hidden min-h-screen flex flex-col justify-start items-center text-center">
         <InternalPageCurve />
@@ -230,135 +303,10 @@ const Sales = () => {
       </section>
 
       {/* 3. Feature Showcase (Split Layout) */}
-      <section className="py-20 px-6 relative">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">The right tools for expert B2B commerce</h2>
-            <p className="text-lg text-gray-400 max-w-2xl mx-auto">Everything you need to source partners, quote accurately, and close deals faster.</p>
-          </div>
+      <FeatureShowcase />
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left Column: Feature Tabs */}
-            <div className="lg:col-span-5 space-y-3">
-              <button
-                onClick={() => setActiveTab('connect')}
-                className={`w-full text-left p-6 rounded-2xl transition-all ${activeTab === 'connect' ? 'bg-slate-800/80 border border-slate-700 shadow-xl' : 'hover:bg-slate-800/30 border border-transparent'}`}
-              >
-                <div className="flex items-center gap-4 mb-2">
-                  <div className={`p-2 rounded-lg ${activeTab === 'connect' ? 'bg-cyan-500/20 text-cyan-400' : 'bg-slate-800 text-slate-400'}`}>
-                    <Users size={20} />
-                  </div>
-                  <h3 className={`text-xl font-semibold ${activeTab === 'connect' ? 'text-white' : 'text-slate-300'}`}>B2B Connection Hub</h3>
-                </div>
-                <p className="text-slate-400 ml-14">Discover and verify trusted vendors and buyers with AI-driven match scoring.</p>
-              </button>
-
-              <button
-                onClick={() => setActiveTab('quote')}
-                className={`w-full text-left p-6 rounded-2xl transition-all ${activeTab === 'quote' ? 'bg-slate-800/80 border border-slate-700 shadow-xl' : 'hover:bg-slate-800/30 border border-transparent'}`}
-              >
-                <div className="flex items-center gap-4 mb-2">
-                  <div className={`p-2 rounded-lg ${activeTab === 'quote' ? 'bg-cyan-500/20 text-cyan-400' : 'bg-slate-800 text-slate-400'}`}>
-                    <FileText size={20} />
-                  </div>
-                  <h3 className={`text-xl font-semibold ${activeTab === 'quote' ? 'text-white' : 'text-slate-300'}`}>Smart Quote Builder</h3>
-                </div>
-                <p className="text-slate-400 ml-14">Construct detailed proposals with dynamic pricing, discounts, and real-time margin tracking.</p>
-              </button>
-
-              <button
-                onClick={() => setActiveTab('secure')}
-                className={`w-full text-left p-6 rounded-2xl transition-all ${activeTab === 'secure' ? 'bg-slate-800/80 border border-slate-700 shadow-xl' : 'hover:bg-slate-800/30 border border-transparent'}`}
-              >
-                <div className="flex items-center gap-4 mb-2">
-                  <div className={`p-2 rounded-lg ${activeTab === 'secure' ? 'bg-cyan-500/20 text-cyan-400' : 'bg-slate-800 text-slate-400'}`}>
-                    <Lock size={20} />
-                  </div>
-                  <h3 className={`text-xl font-semibold ${activeTab === 'secure' ? 'text-white' : 'text-slate-300'}`}>Secure Deal Rooms</h3>
-                </div>
-                <p className="text-slate-400 ml-14">Negotiate and collaborate in dedicated, encrypted environments for every deal.</p>
-              </button>
-
-              <button
-                onClick={() => setActiveTab('invoice')}
-                className={`w-full text-left p-6 rounded-2xl transition-all ${activeTab === 'invoice' ? 'bg-slate-800/80 border border-slate-700 shadow-xl' : 'hover:bg-slate-800/30 border border-transparent'}`}
-              >
-                <div className="flex items-center gap-4 mb-2">
-                  <div className={`p-2 rounded-lg ${activeTab === 'invoice' ? 'bg-cyan-500/20 text-cyan-400' : 'bg-slate-800 text-slate-400'}`}>
-                    <Layers size={20} />
-                  </div>
-                  <h3 className={`text-xl font-semibold ${activeTab === 'invoice' ? 'text-white' : 'text-slate-300'}`}>Automated Invoicing</h3>
-                </div>
-                <p className="text-slate-400 ml-14">Convert winning quotes directly into professional invoices with zero manual data entry.</p>
-              </button>
-            </div>
-
-            {/* Right Column: Visual Mockup */}
-            <div className="lg:col-span-7 relative">
-              <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/10 to-blue-500/10 blur-3xl rounded-full" />
-              <div className="relative bg-[#111827] border border-slate-700/60 rounded-2xl shadow-2xl overflow-hidden p-6 md:p-8">
-                {/* Mockup Header */}
-                <div className="flex justify-between items-center mb-8 pb-6 border-b border-slate-800">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-cyan-900/50 rounded-lg flex items-center justify-center text-cyan-400">
-                      <FileText size={20} />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-white">Smart Quote Builder</h4>
-                      <p className="text-xs text-slate-400">Editing #RFP-2026-8992</p>
-                    </div>
-                  </div>
-                  <button className="bg-cyan-600/20 text-cyan-400 px-4 py-2 rounded-lg text-sm font-medium border border-cyan-500/20">
-                    Preview
-                  </button>
-                </div>
-
-                {/* Mockup Body */}
-                <div className="space-y-6">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-slate-900 rounded-xl p-4 border border-slate-800/50">
-                      <p className="text-xs text-slate-500 mb-1">Client Name</p>
-                      <p className="font-medium text-slate-200">Global Tech Industries</p>
-                    </div>
-                    <div className="bg-slate-900 rounded-xl p-4 border border-slate-800/50">
-                      <p className="text-xs text-slate-500 mb-1">Estimated Margin</p>
-                      <p className="font-bold text-emerald-400 text-lg">42.5%</p>
-                    </div>
-                  </div>
-
-                  <div className="bg-slate-900 rounded-xl border border-slate-800/50 overflow-hidden">
-                    <div className="px-4 py-3 border-b border-slate-800/50 flex justify-between items-center bg-slate-800/20">
-                      <h5 className="text-sm font-medium text-slate-300">Line Items</h5>
-                      <span className="text-xs text-slate-500 flex items-center gap-1 cursor-pointer hover:text-cyan-400"><Plus size={14} /> Add</span>
-                    </div>
-                    <div className="p-4 space-y-4">
-                      <div className="flex justify-between items-center pb-3 border-b border-slate-800/50">
-                        <div>
-                          <p className="text-sm font-medium text-slate-200">Enterprise License</p>
-                          <p className="text-xs text-slate-500 mt-1">Qty: 50 × $120.00 (10% Off)</p>
-                        </div>
-                        <p className="text-sm font-bold text-white">$5,400.00</p>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <div>
-                          <p className="text-sm font-medium text-slate-200">Implementation Services</p>
-                          <p className="text-xs text-slate-500 mt-1">Qty: 1 × $5,000.00</p>
-                        </div>
-                        <p className="text-sm font-bold text-white">$5,000.00</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex justify-between items-center pt-2">
-                    <p className="text-slate-400 text-sm">Total Value</p>
-                    <p className="text-2xl font-bold text-white">$10,400.00</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* 3.5 Data Flow Infographic */}
+      <SalesEngineNode />
 
       {/* 4. Benefits Grid */}
       <section className="py-20 px-6 border-y border-gray-800/50">
@@ -370,15 +318,15 @@ const Sales = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {benefits.map((benefit, idx) => (
-              <div key={idx} className="bg-white p-8 rounded-3xl hover:-translate-y-1 transition-all duration-300 group flex flex-col items-start shadow-xl">
-                <span className="inline-block px-3 py-1 mb-4 bg-cyan-50 text-cyan-600 font-bold text-xs uppercase tracking-wider rounded-full">
+              <div key={idx} className="animated-border-card group">
+                <span className="inline-block px-3 py-1 mb-4 bg-gray-800/50 text-cyan-400 font-bold text-xs uppercase tracking-wider rounded-full border border-gray-700">
                   {benefit.tag}
                 </span>
-                <div className="w-14 h-14 rounded-xl bg-gray-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <div className="w-14 h-14 rounded-xl bg-gray-900/50 border border-gray-800 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
                   {benefit.icon}
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{benefit.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{benefit.desc}</p>
+                <h3 className="text-xl font-bold text-white mb-3">{benefit.title}</h3>
+                <p className="text-gray-400 leading-relaxed">{benefit.desc}</p>
               </div>
             ))}
           </div>
