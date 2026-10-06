@@ -3694,7 +3694,7 @@
                 const vs = 'attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}'
                 const fs = `precision mediump float;uniform vec2 r;uniform float t,p;
 vec3 pal(float x){
- vec3 c0=vec3(.91,.22,.16),c1=vec3(.93,.48,.18),c2=vec3(.93,.31,.46),c3=vec3(.70,.32,.72),c4=vec3(.56,.31,.80);
+ vec3 c0=vec3(.18,.35,.95),c1=vec3(.30,.63,1.),c2=vec3(.0,.75,1.),c3=vec3(.0,.85,.64),c4=vec3(.70,1.,.36);
  x=clamp(x,0.,1.)*4.;
  if(x<1.)return mix(c0,c1,x);if(x<2.)return mix(c1,c2,x-1.);if(x<3.)return mix(c2,c3,x-2.);return mix(c3,c4,x-3.);}
 float h(vec2 s){return fract(sin(dot(s,vec2(12.9898,78.233)))*43758.5453);}
@@ -8032,11 +8032,11 @@ void main(){
                 inset: 0;
                 will-change: clip-path;
                 background:
-                    radial-gradient(60% 70% at 15% 40%, #e2432b 0%, transparent 70%),
-                    radial-gradient(55% 60% at 85% 20%, #7a5ad8 0%, transparent 70%),
-                    radial-gradient(40% 40% at 35% 100%, #7b55c4 0%, transparent 70%),
-                    radial-gradient(35% 35% at 100% 100%, #e9967e 0%, transparent 70%),
-                    linear-gradient(100deg, #e2432b, #a14f8a 55%, #7a5ad8);
+                    radial-gradient(60% 70% at 15% 40%, #2e59f2 0%, transparent 70%),
+                    radial-gradient(55% 60% at 85% 20%, #4ca1ff 0%, transparent 70%),
+                    radial-gradient(40% 40% at 35% 100%, #00bfff 0%, transparent 70%),
+                    radial-gradient(35% 35% at 100% 100%, #b2ff5c 0%, transparent 70%),
+                    linear-gradient(100deg, #2e59f2, #00d9a3 55%, #4ca1ff);
                 pointer-events: none;
             }
 
