@@ -4,15 +4,25 @@
   text-align: center;
   position: relative;
   overflow: hidden;
-  min-height: 100vh; /* Make sure it takes up screen for the background */
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  /* Blue-purple gradient background matching the reference image */
+  background: linear-gradient(
+    135deg,
+    #3a5bd9 0%,
+    #4b6fe8 20%,
+    #5b6ff0 40%,
+    #6a5de8 60%,
+    #7b5ce0 80%,
+    #6d55d4 100%
+  );
 }
 
 .hero-planet {
   position: absolute;
-  bottom: 55%; /* Moved higher up the screen */
+  bottom: 55%;
   left: 50%;
   width: 300vw;
   height: 300vw;
@@ -20,6 +30,41 @@
   background-color: #000000;
   box-shadow: 0 20px 100px 20px rgba(100, 50, 255, 0.5), 0 2px 15px 5px rgba(255, 255, 255, 0.8);
   z-index: 1;
+}
+
+/* Green-yellow glow in bottom-right corner — matches reference image */
+.hero::before {
+  content: '';
+  position: absolute;
+  bottom: -60px;
+  right: -60px;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(180, 230, 80, 0.55) 0%,
+    rgba(120, 220, 130, 0.35) 35%,
+    rgba(80, 200, 180, 0.15) 65%,
+    transparent 100%
+  );
+  z-index: 0;
+  pointer-events: none;
+  filter: blur(18px);
+}
+
+/* Subtle noise/star texture overlay */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 15% 80%, rgba(255,255,255,0.04) 1px, transparent 1px),
+    radial-gradient(circle at 75% 20%, rgba(255,255,255,0.05) 1px, transparent 1px),
+    radial-gradient(circle at 45% 55%, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 120px 120px, 90px 90px, 150px 150px;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .hero-content {
