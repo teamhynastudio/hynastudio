@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './CRM.css';
 
 // SVG Definitions for bump filters and pattern hatches
@@ -22,9 +22,7 @@ const CrmSvgDefs = () => (
 );
 
 const CRM = () => {
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [isNavScrolled, setIsNavScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   const [activePlatformIndex, setActivePlatformIndex] = useState(0);
   const [selectedPricingIndex, setSelectedPricingIndex] = useState(2); // Growth popular selected by default
   const [isSocOpen, setIsSocOpen] = useState(false);
@@ -50,21 +48,6 @@ const CRM = () => {
     link.href = '/hynabiz-logo.png';
   }, []);
 
-  // Handle Scroll Progress & Nav Shrink
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      setIsNavScrolled(scrollY > 40);
-
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      if (totalHeight > 0) {
-        setScrollProgress((scrollY / totalHeight) * 100);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   // Stats Intersection Observer Count-Up
   useEffect(() => {
@@ -127,7 +110,6 @@ const CRM = () => {
   // Smooth Scroll Helper
   const scrollToSection = (e, id) => {
     e.preventDefault();
-    setIsMobileMenuOpen(false);
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -174,128 +156,15 @@ const CRM = () => {
     <div className="crm-page-wrapper">
       <CrmSvgDefs />
 
-      {/* Sticky CRM Navbar */}
-      <nav id="nav" className={`crm-sticky-nav ${isNavScrolled ? 'scrolled' : ''}`}>
-        <a className="crm-nav-logo" href="#intro" onClick={(e) => scrollToSection(e, 'intro')}>
-          <img src="/hynabiz-logo.png" alt="HYNA Biz Logo" style={{ height: '30px', width: 'auto' }} />
-          HYNA <span>Biz</span>
-        </a>
-
-        <div className={`crm-nav-links ${isMobileMenuOpen ? 'open' : ''}`}>
-          <div className="crm-dd">
-            <a className="crm-nl" href="#features" onClick={(e) => scrollToSection(e, 'features')}>
-              Platform
-            </a>
-            <div className="crm-dd-panel">
-              <a href="#features" onClick={(e) => scrollToSection(e, 'features')} className="crm-dd-item">
-                <span className="crm-dd-icon">👥</span>
-                <div>
-                  <b>Lead tracking</b>
-                  <div style={{ color: 'var(--mute)', fontSize: '12px' }}>Capture every lead</div>
-                </div>
-              </a>
-              <a href="#features" onClick={(e) => scrollToSection(e, 'features')} className="crm-dd-item">
-                <span className="crm-dd-icon">📊</span>
-                <div>
-                  <b>Deal pipeline</b>
-                  <div style={{ color: 'var(--mute)', fontSize: '12px' }}>Drag and close deals</div>
-                </div>
-              </a>
-              <a href="#features" onClick={(e) => scrollToSection(e, 'features')} className="crm-dd-item">
-                <span className="crm-dd-icon">📈</span>
-                <div>
-                  <b>Reports</b>
-                  <div style={{ color: 'var(--mute)', fontSize: '12px' }}>Live analytics</div>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <a className="crm-nl" href="#how" onClick={(e) => scrollToSection(e, 'how')}>
-            Automation
-          </a>
-          <a className="crm-nl" href="#customers" onClick={(e) => scrollToSection(e, 'customers')}>
-            Customers
-          </a>
-          <a className="crm-nl" href="#pricing" onClick={(e) => scrollToSection(e, 'pricing')}>
-            Pricing
-          </a>
-        </div>
-
-        <div className="crm-nav-auth">
-          <button className="crm-btn-si">Sign in</button>
-          <a className="crm-btn-su" href="#pricing" onClick={(e) => scrollToSection(e, 'pricing')}>
-            Sign up
-          </a>
-          <button
-            className="crm-burger"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle Menu"
-            aria-expanded={isMobileMenuOpen}
-          >
-            <span />
-            <span />
-            <span />
-          </button>
-        </div>
-
-        <i className="crm-scroll-prog" style={{ width: `${scrollProgress}%` }} />
-      </nav>
-
-      {/* Top Initial Dashboard Showcase (from CRM.jsx output) */}
-      <section className="crm-dash-showcase">
-        <div className="crm-dash-card">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', flexWrap: 'wrap', gap: '12px' }}>
-            <div>
-              <span style={{ color: 'var(--c)', fontSize: '12px', fontWeight: '800', letterSpacing: '0.1em', textTransform: 'uppercase' }}>CRM Dashboard Output</span>
-              <h2 style={{ margin: '4px 0 0', fontSize: '22px', fontWeight: '700', color: '#fff' }}>Live B2B Sales & Pipeline Overview</h2>
-            </div>
-            <div style={{ display: 'flex', gap: '8px' }}>
-              <button style={{ background: '#14171B', color: 'var(--c)', border: '1px solid var(--line)', padding: '6px 14px', borderRadius: '8px', fontSize: '13px', fontWeight: '600' }}>Live Pipeline</button>
-              <button style={{ background: 'var(--c)', color: '#04141C', border: 'none', padding: '6px 14px', borderRadius: '8px', fontSize: '13px', fontWeight: '700' }}>+ New Deal</button>
-            </div>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '14px', marginBottom: '20px' }}>
-            <div style={{ background: '#0E1114', border: '1px solid var(--line)', padding: '16px', borderRadius: '14px' }}>
-              <span style={{ color: 'var(--mute)', fontSize: '12px', display: 'block' }}>Total Leads</span>
-              <b style={{ fontSize: '26px', color: '#fff', display: 'block', margin: '4px 0' }}>1,284</b>
-              <span style={{ fontSize: '11px', color: '#3DDC97', background: '#3DDC9722', padding: '2px 7px', borderRadius: '6px', fontWeight: '700' }}>+24% vs last mo</span>
-            </div>
-            <div style={{ background: '#0E1114', border: '1px solid var(--line)', padding: '16px', borderRadius: '14px' }}>
-              <span style={{ color: 'var(--mute)', fontSize: '12px', display: 'block' }}>Active Pipeline</span>
-              <b style={{ fontSize: '26px', color: '#fff', display: 'block', margin: '4px 0' }}>₹42.8 Lakh</b>
-              <span style={{ fontSize: '11px', color: '#3DDC97', background: '#3DDC9722', padding: '2px 7px', borderRadius: '6px', fontWeight: '700' }}>18 Deals Closing</span>
-            </div>
-            <div style={{ background: '#0E1114', border: '1px solid var(--line)', padding: '16px', borderRadius: '14px' }}>
-              <span style={{ color: 'var(--mute)', fontSize: '12px', display: 'block' }}>Follow-up Rate</span>
-              <b style={{ fontSize: '26px', color: '#fff', display: 'block', margin: '4px 0' }}>98.4%</b>
-              <span style={{ fontSize: '11px', color: '#3DDC97', background: '#3DDC9722', padding: '2px 7px', borderRadius: '6px', fontWeight: '700' }}>Autopilot On</span>
-            </div>
-            <div style={{ background: '#0E1114', border: '1px solid var(--line)', padding: '16px', borderRadius: '14px' }}>
-              <span style={{ color: 'var(--mute)', fontSize: '12px', display: 'block' }}>Avg. Closure Time</span>
-              <b style={{ fontSize: '26px', color: '#fff', display: 'block', margin: '4px 0' }}>4.2 Days</b>
-              <span style={{ fontSize: '11px', color: '#00C2FF', background: 'rgba(0,194,255,0.15)', padding: '2px 7px', borderRadius: '6px', fontWeight: '700' }}>40% Faster</span>
-            </div>
-          </div>
-
-          <div style={{ textAlign: 'center', paddingTop: '10px' }}>
-            <a href="#intro" onClick={(e) => scrollToSection(e, 'intro')} style={{ color: 'var(--c)', fontSize: '14px', fontWeight: '600', textDecoration: 'underline' }}>
-              Scroll down to explore full CRM features & platform details ↓
-            </a>
-          </div>
-        </div>
-      </section>
-
       {/* Intro / Hero Section (#intro) */}
       <section className="crm-intro-sec" id="intro" data-aos="fade-up">
         <div>
-          <span className="crm-in-kick">Meet HYNA Biz CRM</span>
+          <span className="crm-in-kick">Meet HYNBIZ CRM</span>
           <h2 className="crm-in-h">
             Your whole sales <em>pipeline</em>, in one connected place
           </h2>
           <p className="crm-in-p">
-            HYNA Biz brings leads, deals, follow-ups and reports together, so your team always knows who to call next and what to close this week.
+            HYNABIZ brings leads, deals, follow-ups and reports together, so your team always knows who to call next and what to close this week.
           </p>
           {/* NO BUTTONS or feature pills here */}
         </div>
@@ -356,9 +225,18 @@ const CRM = () => {
       </section>
 
       {/* Trust Strip Section with Comic Dock Tooltips */}
-      <section className="crm-trust-strip" data-aos="fade-up">
-        <p>Trusted by growing B2B teams across India</p>
-        <div className="crm-mq">
+      <section
+        className="crm-trust-strip"
+        data-aos="fade-up"
+        style={{
+          marginTop: '50px',
+          paddingTop: '60px',
+          position: 'relative',
+          zIndex: 10
+        }}
+      >
+        <p style={{ marginBottom: '40px' }}>Trusted by growing B2B teams across India</p>
+        <div className="crm-mq" style={{ paddingTop: '100px', paddingBottom: '30px', marginTop: '15px' }}>
           <div className="crm-mqt">
             {[...marqueeCustomers, ...marqueeCustomers].map((cust, idx) => (
               <div
@@ -484,7 +362,7 @@ const CRM = () => {
       <section className="crm-sec" id="customers">
         <div className="crm-hd" data-aos="fade-up">
           <span>Customers</span>
-          <h2>Teams love working in HYNA Biz</h2>
+          <h2>Teams love working in HYNABIZ</h2>
         </div>
 
         <div className={`crm-cwrap ${customersLoaded ? 'done' : ''}`} ref={customersRef}>
