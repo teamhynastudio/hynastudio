@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import FeatureShowcase from '../components/FeatureShowcase';
 import SalesEngineNode from '../components/SalesEngineNode';
+import FeatureCardsReveal from '../components/FeatureCardsReveal';
 import gsap from 'gsap';
 import {
   ArrowRight,
@@ -91,14 +92,7 @@ const Sales = () => {
   }, []);
 
 
-  const benefits = [
-    { icon: <Zap className="text-cyan-400" size={24} />, tag: "SPEED", title: "AI Match Scoring", desc: "Instantly identify the best-fit vendors and buyers with intelligent percentage scoring." },
-    { icon: <FileText className="text-emerald-400" size={24} />, tag: "SCALE", title: "Instant Quotations", desc: "Generate professional, data-backed proposals in minutes, not hours." },
-    { icon: <Shield className="text-indigo-400" size={24} />, tag: "SECURE", title: "High Security", desc: "Enterprise-grade encryption and secure deal rooms for peace of mind." },
-    { icon: <Settings className="text-purple-400" size={24} />, tag: "ADAPT", title: "Flexible Workflows", desc: "Automate your approval pipelines and tailor routing to your team's needs." },
-    { icon: <TrendingUp className="text-pink-400" size={24} />, tag: "PROFIT", title: "Real-time Margins", desc: "Dynamic pricing models give you live margin insights before you send a quote." },
-    { icon: <Link className="text-amber-400" size={24} />, tag: "CONNECT", title: "Seamless Integrations", desc: "Connect effortlessly with your existing CRM, ERP, and payment systems." }
-  ];
+
 
   return (
     <div className="bg-black text-gray-300 min-h-screen font-sans selection:bg-cyan-500/30">
@@ -202,54 +196,7 @@ const Sales = () => {
           right: -16px;
         }
 
-        /* Animated Rotating Border Card */
-        .animated-border-card {
-          position: relative;
-          width: 100%;
-          height: 100%;
-          background: #0B0F17; 
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-start;
-          padding: 32px;
-          border-radius: 20px;
-          overflow: hidden;
-          z-index: 1;
-        }
 
-        /* The rotating gradient layer */
-        .animated-border-card::before {
-          content: '';
-          position: absolute;
-          width: 150%;
-          height: 150%;
-          background-image: linear-gradient(180deg, #40c9ff, #e81cff);
-          top: -25%;
-          left: -25%;
-          animation: spinBorder 4s linear infinite;
-          z-index: -2;
-        }
-
-        @keyframes spinBorder {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-        }
-
-        /* The inner dark cover to mask the center */
-        .animated-border-card::after {
-          content: '';
-          position: absolute;
-          background: #0B0F17;
-          inset: 3px; /* This controls the thickness of the border */
-          border-radius: 17px; 
-          z-index: -1;
-        }
-
-        /* Elevate inner content above the pseudo-elements */
-        .animated-border-card > * {
-          z-index: 2;
-          position: relative;
-        }
 
         /* Right Mockup Wrapper (Spacious74 Adapted) */
         .spacious-wrapper {
@@ -288,53 +235,26 @@ const Sales = () => {
         </div>
       </section>
 
-      {/* 2. Trust / Social Proof Banner */}
-      <section className="border-y border-gray-800/50 bg-gray-900/20 py-20 px-6">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 opacity-60">
-          <p className="text-sm font-semibold text-gray-400 tracking-wider uppercase whitespace-nowrap">Trusted by growing B2B enterprises</p>
-          <div className="flex flex-wrap justify-center md:justify-end items-center gap-8 md:gap-12">
-            <span className="text-2xl font-bold font-serif tracking-tight text-white">AcmeCorp</span>
-            <span className="text-2xl font-bold tracking-tighter flex items-center gap-1 text-white"><Zap size={24} /> STARK</span>
-            <span className="text-2xl font-black italic tracking-widest text-white">GLOBALTECH</span>
-            <span className="text-2xl font-bold text-white">WayneEnt</span>
-            <span className="text-2xl font-medium tracking-wide text-white">OSCORP</span>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. Feature Showcase (Split Layout) */}
+      {/* 2. Feature Showcase (Split Layout) */}
       <FeatureShowcase />
 
       {/* 3.5 Data Flow Infographic */}
       <SalesEngineNode />
 
       {/* 4. Benefits Grid */}
-      <section className="py-20 px-6 border-y border-gray-800/50">
+      <section className="py-20 px-6 border-y border-gray-800/50 font-sans">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Why choose HynaBiz for your business?</h2>
             <p className="text-lg text-gray-400 max-w-2xl mx-auto">Designed from the ground up for the complexities of modern B2B transactions.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {benefits.map((benefit, idx) => (
-              <div key={idx} className="animated-border-card group">
-                <span className="inline-block px-3 py-1 mb-4 bg-gray-800/50 text-cyan-400 font-bold text-xs uppercase tracking-wider rounded-full border border-gray-700">
-                  {benefit.tag}
-                </span>
-                <div className="w-14 h-14 rounded-xl bg-gray-900/50 border border-gray-800 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
-                  {benefit.icon}
-                </div>
-                <h3 className="text-xl font-bold text-white mb-3">{benefit.title}</h3>
-                <p className="text-gray-400 leading-relaxed">{benefit.desc}</p>
-              </div>
-            ))}
-          </div>
+          <FeatureCardsReveal />
         </div>
       </section>
 
       {/* 5. Bottom CTA Section */}
-      <section className="py-20 px-6 relative overflow-hidden flex flex-col items-center">
+      <section className="py-20 px-6 relative overflow-hidden flex flex-col items-center font-sans">
         {/* Dynamic Gradient Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/40 via-black to-blue-900/20" />
 
@@ -345,7 +265,7 @@ const Sales = () => {
           <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
             Join thousands of modern B2B enterprises that are already closing deals faster and smarter.
           </p>
-          <button className="px-10 py-5 bg-white text-gray-900 hover:bg-gray-200 rounded-xl font-bold text-lg transition-all shadow-xl shadow-white/10 flex items-center justify-center gap-2 mx-auto">
+          <button className="px-10 py-5 bg-white text-gray-900 hover:bg-gray-200 rounded-xl font-bold font-sans text-lg transition-all shadow-xl shadow-white/10 flex items-center justify-center gap-2 mx-auto">
             Start your free trial <ChevronRight size={20} />
           </button>
           <p className="mt-6 text-sm text-gray-500">No credit card required. 14-day free trial.</p>
