@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import CRM from './pages/CRM';
 import CrmPage from './pages/CrmPage';
+import CRMUnified from './pages/CRMUnified';
 import Sales from './pages/Sales';
 import Quotations from './pages/Quotations';
 import Inventory from './pages/Inventory';
@@ -32,7 +33,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/crm" element={<CrmPage />} />
+          <Route path="/crm-page" element={<CrmPage />} />
           <Route path="/hynabiz/crm" element={<CrmPage />} />
+          <Route path="/hynabiz/crm-page" element={<CrmPage />} />
+          <Route path="/crm-workspace" element={<CRM />} />
           <Route path="/sales" element={<Sales />} />
           <Route path="/quotations" element={<Quotations />} />
           <Route path="/inventory" element={<Inventory />} />
