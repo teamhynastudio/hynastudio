@@ -45,6 +45,26 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+.app-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: clip;
+}
+
+.main-content-flow {
+  z-index: 1;
+  background-color: var(--deep-navy, #000000);
+  will-change: transform, opacity;
+  transform-origin: bottom center;
+  width: 100%;
+  position: relative;
+  flex: 1 0 auto;
 }
 
 h1,

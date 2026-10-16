@@ -166,10 +166,10 @@
   border-radius: inherit;
   background-color: #fff;
   mask: radial-gradient(circle at 50% 0, #fff0 calc(var(--perforation-size) - 5px), #000 calc(var(--perforation-size) - 4px)),
-        radial-gradient(circle at 50% 100%, #fff0 calc(var(--perforation-size) - 5px), #000 calc(var(--perforation-size) - 4px)),
-        radial-gradient(circle 8px at left center, #000 98%, #0000 100%),
-        radial-gradient(circle 8px at right center, #000 98%, #0000 100%),
-        repeating-linear-gradient(90deg, #000 10px, #000 15px, #0000 16px, #0000 24px);
+    radial-gradient(circle at 50% 100%, #fff0 calc(var(--perforation-size) - 5px), #000 calc(var(--perforation-size) - 4px)),
+    radial-gradient(circle 8px at left center, #000 98%, #0000 100%),
+    radial-gradient(circle 8px at right center, #000 98%, #0000 100%),
+    repeating-linear-gradient(90deg, #000 10px, #000 15px, #0000 16px, #0000 24px);
   mask-repeat: repeat-x, repeat-x, no-repeat, no-repeat, repeat-x;
   mask-size: calc(var(--perforation-size) * 2) 100%, calc(var(--perforation-size) * 2) 100%, 16px 16px, 16px 16px, 10px 2px;
   mask-position: calc(0.5 * var(--perforation-size)) top, calc(0.5 * var(--perforation-size)) bottom, left var(--cutouts-adjust), right var(--cutouts-adjust), 0 calc(var(--cutouts-adjust) + 7px);
@@ -177,7 +177,7 @@
 }
 
 .crm-holo {
-  background-image: linear-gradient(to bottom, rgba(254, 85, 136, 0.5), 90%, rgba(0, 0, 0, 0.13)), conic-gradient(at 60% 50%, #ccc, #ff6bfe, #00f9f8, #ddd, #0081fd, #eef0bc, #0081fd, #ff6bfe, rgba(0,0,0,0.13), #0081fd, #ddd, #01fefb, #ccc);
+  background-image: linear-gradient(to bottom, rgba(254, 85, 136, 0.5), 90%, rgba(0, 0, 0, 0.13)), conic-gradient(at 60% 50%, #ccc, #ff6bfe, #00f9f8, #ddd, #0081fd, #eef0bc, #0081fd, #ff6bfe, rgba(0, 0, 0, 0.13), #0081fd, #ddd, #01fefb, #ccc);
 }
 
 .crm-holo::after {
@@ -193,7 +193,9 @@
 }
 
 @keyframes crmTkPos {
-  to { background-position: 0 500px; }
+  to {
+    background-position: 0 500px;
+  }
 }
 
 .crm-tk-h {
@@ -240,6 +242,7 @@
 }
 
 .crm-tk-n .bold {
+  color: white;
   font-weight: 700;
 }
 
@@ -287,7 +290,9 @@
 }
 
 @keyframes crmMq {
-  to { transform: translateX(-50%); }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .crm-lg {
@@ -458,29 +463,35 @@
     flex-direction: column;
     height: auto;
   }
+
   .crm-ac {
     flex: none;
     height: 64px;
   }
+
   .crm-ac.open {
     flex: none;
     height: 230px;
   }
+
   .crm-vi {
     left: 22px;
     top: 19px;
     transform: none;
   }
+
   .crm-vl {
     left: 62px;
     top: 32px;
     transform: translateY(-50%);
   }
+
   .crm-bd {
     min-width: 0;
     padding: 72px 22px 22px;
     justify-content: flex-start;
   }
+
   .crm-bd .no {
     display: none;
   }
@@ -589,6 +600,7 @@
     gap: 16px;
     min-height: 0;
   }
+
   .crm-gc,
   .crm-gfan:hover .crm-gc {
     width: min(340px, 100%);
@@ -633,7 +645,9 @@
 }
 
 @keyframes crmBob {
-  50% { transform: translateY(-9px); }
+  50% {
+    transform: translateY(-9px);
+  }
 }
 
 .crm-st b {
@@ -688,11 +702,35 @@
   box-shadow: 1px 1px 0 rgba(255, 255, 255, 0.15);
 }
 
-.crm-loader__bar:nth-child(1) { left: 0; transform: scale(1, 0.2); animation: crmBarUp1 4s infinite; }
-.crm-loader__bar:nth-child(2) { left: 15px; transform: scale(1, 0.4); animation: crmBarUp2 4s infinite; }
-.crm-loader__bar:nth-child(3) { left: 30px; transform: scale(1, 0.6); animation: crmBarUp3 4s infinite; }
-.crm-loader__bar:nth-child(4) { left: 45px; transform: scale(1, 0.8); animation: crmBarUp4 4s infinite; }
-.crm-loader__bar:nth-child(5) { left: 60px; transform: scale(1, 1); animation: crmBarUp5 4s infinite; }
+.crm-loader__bar:nth-child(1) {
+  left: 0;
+  transform: scale(1, 0.2);
+  animation: crmBarUp1 4s infinite;
+}
+
+.crm-loader__bar:nth-child(2) {
+  left: 15px;
+  transform: scale(1, 0.4);
+  animation: crmBarUp2 4s infinite;
+}
+
+.crm-loader__bar:nth-child(3) {
+  left: 30px;
+  transform: scale(1, 0.6);
+  animation: crmBarUp3 4s infinite;
+}
+
+.crm-loader__bar:nth-child(4) {
+  left: 45px;
+  transform: scale(1, 0.8);
+  animation: crmBarUp4 4s infinite;
+}
+
+.crm-loader__bar:nth-child(5) {
+  left: 60px;
+  transform: scale(1, 1);
+  animation: crmBarUp5 4s infinite;
+}
 
 .crm-loader__ball {
   position: absolute;
@@ -707,24 +745,126 @@
 }
 
 @keyframes crmBall {
-  0% { transform: translate(0, 0); }
-  10% { transform: translate(15px, -10px); }
-  20% { transform: translate(30px, -20px); }
-  30% { transform: translate(45px, -30px); }
-  40% { transform: translate(60px, -40px); }
-  50% { transform: translate(60px, 0); }
-  60% { transform: translate(45px, -10px); }
-  70% { transform: translate(30px, -20px); }
-  80% { transform: translate(15px, -30px); }
-  90% { transform: translate(0, -40px); }
-  100% { transform: translate(0, 0); }
+  0% {
+    transform: translate(0, 0);
+  }
+
+  10% {
+    transform: translate(15px, -10px);
+  }
+
+  20% {
+    transform: translate(30px, -20px);
+  }
+
+  30% {
+    transform: translate(45px, -30px);
+  }
+
+  40% {
+    transform: translate(60px, -40px);
+  }
+
+  50% {
+    transform: translate(60px, 0);
+  }
+
+  60% {
+    transform: translate(45px, -10px);
+  }
+
+  70% {
+    transform: translate(30px, -20px);
+  }
+
+  80% {
+    transform: translate(15px, -30px);
+  }
+
+  90% {
+    transform: translate(0, -40px);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
 }
 
-@keyframes crmBarUp1 { 0%, 40% { transform: scale(1, 0.2); } 50%, 90% { transform: scale(1, 1); } 100% { transform: scale(1, 0.2); } }
-@keyframes crmBarUp2 { 0%, 40% { transform: scale(1, 0.4); } 50%, 90% { transform: scale(1, 0.8); } 100% { transform: scale(1, 0.4); } }
-@keyframes crmBarUp3 { 0%, 100% { transform: scale(1, 0.6); } }
-@keyframes crmBarUp4 { 0%, 40% { transform: scale(1, 0.8); } 50%, 90% { transform: scale(1, 0.4); } 100% { transform: scale(1, 0.8); } }
-@keyframes crmBarUp5 { 0%, 40% { transform: scale(1, 1); } 50%, 90% { transform: scale(1, 0.2); } 100% { transform: scale(1, 1); } }
+@keyframes crmBarUp1 {
+
+  0%,
+  40% {
+    transform: scale(1, 0.2);
+  }
+
+  50%,
+  90% {
+    transform: scale(1, 1);
+  }
+
+  100% {
+    transform: scale(1, 0.2);
+  }
+}
+
+@keyframes crmBarUp2 {
+
+  0%,
+  40% {
+    transform: scale(1, 0.4);
+  }
+
+  50%,
+  90% {
+    transform: scale(1, 0.8);
+  }
+
+  100% {
+    transform: scale(1, 0.4);
+  }
+}
+
+@keyframes crmBarUp3 {
+
+  0%,
+  100% {
+    transform: scale(1, 0.6);
+  }
+}
+
+@keyframes crmBarUp4 {
+
+  0%,
+  40% {
+    transform: scale(1, 0.8);
+  }
+
+  50%,
+  90% {
+    transform: scale(1, 0.4);
+  }
+
+  100% {
+    transform: scale(1, 0.8);
+  }
+}
+
+@keyframes crmBarUp5 {
+
+  0%,
+  40% {
+    transform: scale(1, 1);
+  }
+
+  50%,
+  90% {
+    transform: scale(1, 0.2);
+  }
+
+  100% {
+    transform: scale(1, 1);
+  }
+}
 
 /* Customer Testimonials Fanned Stack */
 .crm-cstack {
@@ -818,14 +958,89 @@
   color: #fff;
 }
 
-.crm-rc:nth-child(1) { --ac: #f6ad20; --z1: 3; --t1: 0; --l1: var(--ctr); --tr1: rotate(0deg); --d1: 0; --z2: 1; --t2: var(--tc); --l2: var(--x1); --tr2: var(--L); --d2: .55; --z3: 1; --t3: var(--tc); --l3: var(--x2); --tr3: var(--R); --d3: .55; }
-.crm-rc:nth-child(2) { --ac: #20a4f6; --z1: 1; --t1: var(--tc); --l1: var(--x2); --tr1: var(--R); --d1: .55; --z2: 3; --t2: 0; --l2: var(--ctr); --tr2: rotate(0deg); --d2: 0; --z3: 1; --t3: var(--tc); --l3: var(--x1); --tr3: var(--L); --d3: .55; }
-.crm-rc:nth-child(3) { --ac: #d520f6; --z1: 1; --t1: var(--tc); --l1: var(--x1); --tr1: var(--L); --d1: .55; --z2: 1; --t2: var(--tc); --l2: var(--x2); --tr2: var(--R); --d2: .55; --z3: 3; --t3: 0; --l3: var(--ctr); --tr3: rotate(0deg); --d3: 0; }
+.crm-rc:nth-child(1) {
+  --ac: #f6ad20;
+  --z1: 3;
+  --t1: 0;
+  --l1: var(--ctr);
+  --tr1: rotate(0deg);
+  --d1: 0;
+  --z2: 1;
+  --t2: var(--tc);
+  --l2: var(--x1);
+  --tr2: var(--L);
+  --d2: .55;
+  --z3: 1;
+  --t3: var(--tc);
+  --l3: var(--x2);
+  --tr3: var(--R);
+  --d3: .55;
+}
+
+.crm-rc:nth-child(2) {
+  --ac: #20a4f6;
+  --z1: 1;
+  --t1: var(--tc);
+  --l1: var(--x2);
+  --tr1: var(--R);
+  --d1: .55;
+  --z2: 3;
+  --t2: 0;
+  --l2: var(--ctr);
+  --tr2: rotate(0deg);
+  --d2: 0;
+  --z3: 1;
+  --t3: var(--tc);
+  --l3: var(--x1);
+  --tr3: var(--L);
+  --d3: .55;
+}
+
+.crm-rc:nth-child(3) {
+  --ac: #d520f6;
+  --z1: 1;
+  --t1: var(--tc);
+  --l1: var(--x1);
+  --tr1: var(--L);
+  --d1: .55;
+  --z2: 1;
+  --t2: var(--tc);
+  --l2: var(--x2);
+  --tr2: var(--R);
+  --d2: .55;
+  --z3: 3;
+  --t3: 0;
+  --l3: var(--ctr);
+  --tr3: rotate(0deg);
+  --d3: 0;
+}
 
 @keyframes crmRcRot {
-  0%, 99.99% { z-index: var(--z1); top: var(--t1); left: var(--l1); transform: var(--tr1); --dim: var(--d1); }
-  33.33% { z-index: var(--z2); top: var(--t2); left: var(--l2); transform: var(--tr2); --dim: var(--d2); }
-  66.66% { z-index: var(--z3); top: var(--t3); left: var(--l3); transform: var(--tr3); --dim: var(--d3); }
+
+  0%,
+  99.99% {
+    z-index: var(--z1);
+    top: var(--t1);
+    left: var(--l1);
+    transform: var(--tr1);
+    --dim: var(--d1);
+  }
+
+  33.33% {
+    z-index: var(--z2);
+    top: var(--t2);
+    left: var(--l2);
+    transform: var(--tr2);
+    --dim: var(--d2);
+  }
+
+  66.66% {
+    z-index: var(--z3);
+    top: var(--t3);
+    left: var(--l3);
+    transform: var(--tr3);
+    --dim: var(--d3);
+  }
 }
 
 .crm-cwrap.done .crm-rc {
@@ -1066,10 +1281,41 @@
   transition: transform 0.75s cubic-bezier(0.2, 0.9, 0.2, 1), background 0.3s, visibility 0s;
 }
 
-.crm-soc .p1 { width: 62%; height: 66%; z-index: 1; background: linear-gradient(140deg, rgba(10,102,194,0.7), rgba(10,102,194,0.22)); border-color: #4C9BEA; }
-.crm-soc .p2 { width: 46%; height: 50%; z-index: 2; background: linear-gradient(140deg, rgba(150,47,191,0.7), rgba(214,41,118,0.6)); border-color: #E4568F; transition-delay: .09s, 0s, .84s; }
-.crm-soc .p3 { width: 31%; height: 34%; z-index: 3; background: linear-gradient(140deg, rgba(255,0,0,0.66), rgba(184,0,0,0.25)); border-color: #FF5A5A; transition-delay: .18s, 0s, .93s; }
-.crm-soc .p4 { width: 17%; height: 17%; z-index: 4; background: linear-gradient(140deg, #3A3A40, #0A0A0C); border-color: rgba(255,255,255,0.6); transition-delay: .27s, 0s, 1s; border-top-right-radius: 22px; }
+.crm-soc .p1 {
+  width: 62%;
+  height: 66%;
+  z-index: 1;
+  background: linear-gradient(140deg, rgba(10, 102, 194, 0.7), rgba(10, 102, 194, 0.22));
+  border-color: #4C9BEA;
+}
+
+.crm-soc .p2 {
+  width: 46%;
+  height: 50%;
+  z-index: 2;
+  background: linear-gradient(140deg, rgba(150, 47, 191, 0.7), rgba(214, 41, 118, 0.6));
+  border-color: #E4568F;
+  transition-delay: .09s, 0s, .84s;
+}
+
+.crm-soc .p3 {
+  width: 31%;
+  height: 34%;
+  z-index: 3;
+  background: linear-gradient(140deg, rgba(255, 0, 0, 0.66), rgba(184, 0, 0, 0.25));
+  border-color: #FF5A5A;
+  transition-delay: .18s, 0s, .93s;
+}
+
+.crm-soc .p4 {
+  width: 17%;
+  height: 17%;
+  z-index: 4;
+  background: linear-gradient(140deg, #3A3A40, #0A0A0C);
+  border-color: rgba(255, 255, 255, 0.6);
+  transition-delay: .27s, 0s, 1s;
+  border-top-right-radius: 22px;
+}
 
 .crm-soc .sp svg {
   position: absolute;

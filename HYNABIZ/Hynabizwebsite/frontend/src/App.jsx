@@ -1,6 +1,9 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React, { useEffect, useRef } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import Home from './pages/Home';
 import CRM from './pages/CRM';
 import CrmPage from './pages/CrmPage';
@@ -25,11 +28,69 @@ import BusinessInsights from './pages/BusinessInsights';
 import SmartWorkflows from './pages/SmartWorkflows';
 import ReportsAndAnalytics from './pages/ReportsAndAnalytics';
 
-function App() {
+gsap.registerPlugin(ScrollTrigger);
+
+function AppContent() {
+  const mainContentRef = useRef(null);
+  const footerRef = useRef(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (!mainContentRef.current || !footerRef.current) return;
+
+    const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (isReducedMotion) return;
+
+    let ctx;
+    const timer = setTimeout(() => {
+      const mainEl = mainContentRef.current;
+      const footerEl = footerRef.current;
+
+      if (mainEl && footerEl) {
+        ctx = gsap.context(() => {
+          gsap.timeline({
+            scrollTrigger: {
+              trigger: mainEl,
+              start: 'bottom bottom',
+              end: () => `+=${footerEl.offsetHeight}`,
+              pin: true,
+              pinSpacing: false,
+              scrub: true,
+              invalidateOnRefresh: true,
+            },
+          }).fromTo(
+            mainEl,
+            { scale: 1, opacity: 1 },
+            { scale: 0.88, opacity: 0.5, ease: 'none' }
+          );
+        });
+
+        ScrollTrigger.refresh();
+
+        mainEl.querySelectorAll('img').forEach((img) => {
+          if (!img.complete) {
+            img.addEventListener('load', () => ScrollTrigger.refresh(), { once: true });
+          }
+        });
+      }
+    }, 250);
+
+    const handleResize = () => {
+      ScrollTrigger.refresh();
+    };
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', handleResize);
+      if (ctx) ctx.revert();
+    };
+  }, [location.pathname]);
+
   return (
-    <BrowserRouter basename="/hynabiz">
-      <div className="app-container">
-        <Navbar />
+    <div className="app-container">
+      <Navbar />
+      <main className="main-content-flow" ref={mainContentRef}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/crm" element={<CrmPage />} />
@@ -57,7 +118,18 @@ function App() {
           <Route path="/smart-workflows" element={<SmartWorkflows />} />
           <Route path="/reports-analytics" element={<ReportsAndAnalytics />} />
         </Routes>
+      </main>
+      <div className="footer-stack-panel" ref={footerRef}>
+        <Footer />
       </div>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter basename="/hynabiz">
+      <AppContent />
     </BrowserRouter>
   );
 }

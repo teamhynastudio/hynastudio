@@ -191,14 +191,13 @@ const CRM = () => {
         <div>
           <span className="crm-in-kick">Meet HYNBIZ CRM</span>
           <h2 className="crm-in-h">
-            Your whole sales <em>pipeline</em>, in one connected place
+            Your whole sales pipeline, in one connected place
           </h2>
           <p className="crm-in-p">
-            HYNABIZ brings leads, deals, follow-ups and reports together, so your team always knows who to call next and what to close this week.
+            <b>HYNABIZ</b> brings leads, deals, follow-ups and reports together, so your team always knows who to call next and what to close this week.
           </p>
           {/* NO BUTTONS or feature pills here */}
         </div>
-
         {/* 3 Holographic Fanned Ticket Cards */}
         <div className="crm-tks" data-aos="zoom-in">
           {/* Card 1 */}
