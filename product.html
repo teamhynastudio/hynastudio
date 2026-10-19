@@ -127,7 +127,7 @@
 
       /* Add top padding to the first section so it isn't covered by the fixed navigation bar */
       body {
-        padding-top: 96px !important;
+        padding: 96px 16px 48px !important;
       }
 
       /* Prevent horizontal scroll only */
@@ -604,6 +604,32 @@
         line-height: 1.6 !important;
         margin: 16px auto 0 !important;
         padding: 0 4px !important;
+      }
+
+      /* ── Mobile content list fit ── */
+      .list {
+        margin-top: 36px !important;
+      }
+      .entry {
+        grid-template-columns: 70px 1fr !important;
+        gap: 14px !important;
+        padding: 16px 14px !important;
+      }
+      .cover {
+        width: 70px !important;
+        height: 98px !important;
+      }
+      .entry-body h3 {
+        font-size: 15px !important;
+      }
+      .entry-body p {
+        font-size: 12.5px !important;
+        line-height: 1.55 !important;
+      }
+      .entry-body .meta {
+        margin-top: 10px !important;
+        font-size: 11px !important;
+        flex-wrap: wrap !important;
       }
     }
 
