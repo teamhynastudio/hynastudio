@@ -4106,8 +4106,9 @@ void main(){
                 --bg: #000000;
                 background: #000000;
                 margin: 0;
-                padding: clamp(30px, 4vw, 60px) clamp(16px, 3vw, 40px);
+                padding: clamp(20px, 3vw, 50px) 0;
                 display: flex;
+                flex-direction: column;
                 justify-content: center;
                 align-items: center;
                 position: relative;
@@ -4115,6 +4116,7 @@ void main(){
                 box-sizing: border-box;
                 font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
                 color: var(--navy);
+                width: 100%;
             }
 
             .funding-slide-section * {
@@ -4125,15 +4127,56 @@ void main(){
                 width: 100%;
                 max-width: 1660px;
                 margin: 0 auto;
-                padding: clamp(16px, 2.5vw, 36px);
+                padding: clamp(12px, 2.5vw, 36px) clamp(16px, 3vw, 40px);
                 background: var(--bg);
                 position: relative;
+                overflow-x: auto;
+                overflow-y: hidden;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: thin;
+                scrollbar-color: rgba(41, 182, 246, 0.4) transparent;
+            }
+
+            .funding-slide-section .wrap::-webkit-scrollbar {
+                height: 6px;
+            }
+
+            .funding-slide-section .wrap::-webkit-scrollbar-thumb {
+                background: rgba(41, 182, 246, 0.4);
+                border-radius: 99px;
             }
 
             .funding-slide-section svg {
                 width: 100%;
+                min-width: 820px;
                 height: auto;
                 display: block;
+            }
+
+            .funding-hint {
+                display: none;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                font-size: 13px;
+                color: rgba(255, 255, 255, 0.6);
+                margin-top: 10px;
+                letter-spacing: 0.04em;
+                user-select: none;
+            }
+
+            .funding-hint svg {
+                width: 16px;
+                height: 16px;
+                fill: currentColor;
+                min-width: unset;
+                display: inline-block;
+            }
+
+            @media (max-width: 768px) {
+                .funding-slide-section {
+                    display: none !important;
+                }
             }
 
             .funding-slide-section .stage-title {
@@ -4980,151 +5023,62 @@ void main(){
             }
             .hyno-stage {
                 position: relative;
-                aspect-ratio: 1/1.05;
-                max-width: 520px;
+                max-width: 480px;
                 width: 100%;
                 margin-inline: auto;
-                display: grid;
-                place-items: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
-            .hyno-stage .aura {
-                position: absolute;
-                inset: 12% 8% 14%;
-                border-radius: 50%;
-                background: radial-gradient(circle, rgba(19, 212, 255, .28), transparent 68%);
-                animation: hyno-pulse 1.2s ease-in-out infinite;
-                pointer-events: none;
-            }
-            .hyno-stage .floor {
-                position: absolute;
-                bottom: 9%;
-                left: 20%;
-                right: 20%;
-                height: 26px;
-                border-radius: 50%;
-                background: radial-gradient(ellipse, rgba(19, 212, 255, .75), transparent 70%);
-                filter: blur(4px);
-                animation: hyno-floor 1.2s ease-in-out infinite;
-                pointer-events: none;
-            }
-            svg.hyno-svg {
-                width: 100%;
-                height: 100%;
+            .hyno-mascot-img-wrap {
                 position: relative;
-                overflow: visible;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
-            .hyno-dance .all {
-                animation: hyno-groove 1.2s ease-in-out infinite;
-                transform-origin: 200px 415px;
-            }
-            .hyno-dance.m2 .all {
-                animation: hyno-spin 2.4s ease-in-out infinite;
-            }
-            .hyno-dance.m3 .all {
-                animation: hyno-hop .6s ease-in-out infinite;
-            }
-            .hyno-dance .armL {
-                transform-origin: 116px 238px;
-                animation: hyno-armL 1.2s ease-in-out infinite;
-            }
-            .hyno-dance .armR {
-                transform-origin: 284px 238px;
-                animation: hyno-armR 1.2s ease-in-out infinite;
-            }
-            .hyno-dance.m3 .armL,
-            .hyno-dance.m3 .armR {
-                animation-duration: .6s;
-            }
-            .hyno-dance .legL {
-                animation: hyno-legL 1.2s ease-in-out infinite;
-                transform-origin: 160px 365px;
-            }
-            .hyno-dance .legR {
-                animation: hyno-legR 1.2s ease-in-out infinite;
-                transform-origin: 240px 365px;
-            }
-            .hyno-dance .eyes {
-                animation: hyno-blink 4s infinite;
-                transform-origin: 200px 152px;
-            }
-            .hyno-dance .mouth {
-                opacity: 0;
-                animation: hyno-mouth 4.8s steps(1) infinite;
-            }
-            .hyno-dance .mouth.a { animation-delay: 0s; }
-            .hyno-dance .mouth.b { animation-delay: -3.2s; }
-            .hyno-dance .mouth.c { animation-delay: -1.6s; }
-
-            .hyno-stage .note {
+            .hyno-mascot-glow {
                 position: absolute;
-                font-size: 2rem;
-                color: var(--hyno-cyan);
-                opacity: 0;
-                animation: hyno-note 3s ease-in infinite;
-                text-shadow: 0 0 12px var(--hyno-cyan);
+                width: 320px;
+                height: 320px;
+                border-radius: 50%;
+                background: radial-gradient(circle, rgba(19, 212, 255, 0.35) 0%, rgba(19, 212, 255, 0.08) 50%, transparent 70%);
+                filter: blur(25px);
                 pointer-events: none;
-                user-select: none;
+                animation: hyno-glow-pulse 3s ease-in-out infinite alternate;
             }
-            .hyno-stage .n1 { left: 12%; bottom: 40%; }
-            .hyno-stage .n2 { right: 10%; bottom: 46%; animation-delay: 1s; }
-            .hyno-stage .n3 { left: 26%; bottom: 56%; animation-delay: 2s; font-size: 1.5rem; }
-
-            @keyframes hyno-groove {
-                0%, 100% { transform: translateY(0) rotate(-5deg); }
-                25% { transform: translateY(-22px) rotate(0); }
-                50% { transform: translateY(0) rotate(5deg); }
-                75% { transform: translateY(-22px) rotate(0); }
+            .hyno-mascot-img {
+                position: relative;
+                z-index: 2;
+                width: 100%;
+                max-width: 440px;
+                height: auto;
+                object-fit: contain;
+                filter: drop-shadow(0 12px 35px rgba(19, 212, 255, 0.45));
+                animation: hyno-float 4s ease-in-out infinite;
+                transition: transform 0.4s ease, filter 0.4s ease;
             }
-            @keyframes hyno-spin {
-                0%, 100% { transform: rotateY(0) translateY(0); }
-                25% { transform: rotateY(180deg) translateY(-26px); }
-                50% { transform: rotateY(360deg) translateY(0); }
-                75% { transform: scale(1.06, .94); }
+            .hyno-mascot-img:hover {
+                transform: translateY(-8px) scale(1.03);
+                filter: drop-shadow(0 16px 50px rgba(19, 212, 255, 0.65));
             }
-            @keyframes hyno-hop {
-                0%, 100% { transform: translateY(0) scale(1.04, .94); }
-                50% { transform: translateY(-34px) scale(.97, 1.04); }
+            @keyframes hyno-glow-pulse {
+                0% {
+                    transform: scale(0.9);
+                    opacity: 0.6;
+                }
+                100% {
+                    transform: scale(1.15);
+                    opacity: 1;
+                }
             }
-            @keyframes hyno-armL {
-                0%, 100% { transform: rotate(-70deg); }
-                50% { transform: rotate(25deg); }
-            }
-            @keyframes hyno-armR {
-                0%, 100% { transform: rotate(-25deg); }
-                50% { transform: rotate(70deg); }
-            }
-            @keyframes hyno-legL {
-                0%, 100% { transform: rotate(0); }
-                50% { transform: rotate(-10deg) translateY(-6px); }
-            }
-            @keyframes hyno-legR {
-                0%, 100% { transform: rotate(10deg) translateY(-6px); }
-                50% { transform: rotate(0); }
-            }
-            @keyframes hyno-blink {
-                0%, 94%, 100% { transform: scaleY(1); }
-                97% { transform: scaleY(.1); }
-            }
-            @keyframes hyno-mouth {
-                0% { opacity: 1; }
-                33.3% { opacity: 0; }
-            }
-            @keyframes hyno-floor {
-                0%, 100% { transform: scale(1); opacity: 1; }
-                50% { transform: scale(.82); opacity: .7; }
-            }
-            @keyframes hyno-pulse {
-                0%, 100% { transform: scale(1); }
-                50% { transform: scale(1.06); }
-            }
-            @keyframes hyno-twinkle {
-                0%, 100% { transform: scale(1) rotate(0); }
-                50% { transform: scale(1.25) rotate(20deg); }
-            }
-            @keyframes hyno-note {
-                0% { opacity: 0; transform: translateY(20px); }
-                20% { opacity: 1; }
-                100% { opacity: 0; transform: translateY(-90px) rotate(15deg); }
+            @keyframes hyno-float {
+                0%, 100% {
+                    transform: translateY(0px);
+                }
+                50% {
+                    transform: translateY(-14px);
+                }
             }
             @media (max-width: 820px) {
                 .hyno-slide {
@@ -5132,7 +5086,7 @@ void main(){
                     text-align: center;
                     padding-top: 20px;
                 }
-                .hyno-eyebrow, .hyno-chips {
+                .hyno-eyebrow {
                     justify-content: center;
                 }
                 p.hyno-desc {
@@ -5152,60 +5106,14 @@ void main(){
                     <p class="hyno-desc"><b>HYNO</b> is a futuristic, friendly robot created to represent the identity, creativity and innovative spirit of <b>Hyna Studio Technologies</b>.</p>
                 </div>
 
-                <div class="hyno-stage hyno-dance" id="hynoStage">
-                    <div class="aura"></div><div class="floor"></div>
-                    <span class="note n1">♪</span><span class="note n2">♫</span><span class="note n3">♪</span>
-                    <svg class="hyno-svg" viewBox="0 0 400 460" aria-label="HYNO mascot dancing">
-                        <defs>
-                            <filter id="hynoGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-                            <filter id="hynoSoft"><feGaussianBlur stdDeviation="9"/></filter>
-                            <radialGradient id="hynoGlass" cx="50%" cy="8%" r="95%"><stop offset="0" stop-color="#b8fbff"/><stop offset=".25" stop-color="#2fdcff"/><stop offset=".6" stop-color="#0f86c9" stop-opacity=".7"/><stop offset="1" stop-color="#06304f" stop-opacity=".25"/></radialGradient>
-                            <linearGradient id="hynoBody" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1b3556"/><stop offset=".18" stop-color="#070d18"/><stop offset=".8" stop-color="#02050a"/><stop offset="1" stop-color="#16406a"/></linearGradient>
-                            <radialGradient id="hynoFace" cx="50%" cy="35%" r="70%"><stop offset="0" stop-color="#0d1a2e"/><stop offset="1" stop-color="#010307"/></radialGradient>
-                            <linearGradient id="hynoHand" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b4a78"/><stop offset="1" stop-color="#3fe0ff"/></linearGradient>
-                        </defs>
-                        <g class="all">
-                            <!-- legs -->
-                            <g class="legL"><path d="M132 360 h56 v34 q0 22 -28 22 q-28 0 -28 -22z" fill="#04070e"/><ellipse cx="160" cy="412" rx="26" ry="6" fill="#2fdcff" filter="url(#hynoGlow)"/></g>
-                            <g class="legR"><path d="M212 360 h56 v34 q0 22 -28 22 q-28 0 -28 -22z" fill="#04070e"/><ellipse cx="240" cy="412" rx="26" ry="6" fill="#2fdcff" filter="url(#hynoGlow)"/></g>
-                            <!-- arms -->
-                            <g class="armL"><path d="M116 238 Q78 262 52 300" stroke="#050912" stroke-width="30" stroke-linecap="round" fill="none"/><path d="M116 238 Q78 262 52 300" stroke="#2fdcff" stroke-opacity=".25" stroke-width="2" fill="none" transform="translate(-13 0)"/><g stroke="url(#hynoHand)" stroke-width="7" stroke-linecap="round"><path d="M47 308 l-10 14"/><path d="M52 311 l-4 17"/><path d="M58 309 l4 15"/></g></g>
-                            <g class="armR"><path d="M284 238 Q322 262 348 300" stroke="#050912" stroke-width="30" stroke-linecap="round" fill="none"/><g stroke="url(#hynoHand)" stroke-width="7" stroke-linecap="round"><path d="M353 308 l10 14"/><path d="M348 311 l4 17"/><path d="M342 309 l-4 15"/></g></g>
-                            <!-- body -->
-                            <path d="M104 200 C88 270 96 340 122 375 C150 392 250 392 278 375 C304 340 312 270 296 200 Z" fill="#2fdcff" opacity=".35" filter="url(#hynoSoft)"/>
-                            <path d="M104 200 C88 270 96 340 122 375 C150 392 250 392 278 375 C304 340 312 270 296 200 Z" fill="url(#hynoBody)"/>
-                            <path d="M120 250 C112 300 118 340 132 362" stroke="#fff" stroke-opacity=".12" stroke-width="9" stroke-linecap="round" fill="none"/>
-                            <!-- neck ring -->
-                            <ellipse cx="200" cy="206" rx="98" ry="22" fill="#02050b"/><ellipse cx="200" cy="203" rx="98" ry="20" fill="none" stroke="#2fdcff" stroke-opacity=".3" stroke-width="2"/>
-                            <!-- helmet -->
-                            <ellipse cx="200" cy="138" rx="108" ry="96" fill="url(#hynoGlass)"/>
-                            <ellipse cx="200" cy="138" rx="108" ry="96" fill="none" stroke="#9ff6ff" stroke-opacity=".8" stroke-width="3" filter="url(#hynoGlow)"/>
-                            <ellipse cx="200" cy="152" rx="84" ry="72" fill="url(#hynoFace)"/>
-                            <path d="M122 120 A84 72 0 0 1 278 120" stroke="#000" stroke-opacity=".7" stroke-width="8" fill="none" opacity=".6"/>
-                            <ellipse cx="150" cy="80" rx="30" ry="12" fill="#fff" opacity=".35" transform="rotate(-28 150 80)"/>
-                            <g class="eyes" fill="#4cecff" filter="url(#hynoGlow)"><circle cx="172" cy="152" r="6.5"/><circle cx="228" cy="152" r="6.5"/></g>
-                            <path class="mouth a" d="M184 178 Q200 192 216 178" stroke="#4cecff" stroke-width="5" stroke-linecap="round" fill="none" filter="url(#hynoGlow)"/>
-                            <path class="mouth b" d="M178 176 Q200 204 222 176 Z" fill="#4cecff" filter="url(#hynoGlow)"/>
-                            <ellipse class="mouth c" cx="200" cy="182" rx="6" ry="6" fill="none" stroke="#4cecff" stroke-width="3.5" filter="url(#hynoGlow)"/>
-                        </g>
-                    </svg>
+                <div class="hyno-stage" id="hynoStage">
+                    <div class="hyno-mascot-img-wrap">
+                        <div class="hyno-mascot-glow"></div>
+                        <img src="hyno.png" alt="HYNO - Hyna Studio Mascot" class="hyno-mascot-img" loading="lazy">
+                    </div>
                 </div>
             </div>
         </section>
-        <script>
-            (function(){
-                var s = document.getElementById('hynoStage');
-                if (s) {
-                    var i = 0, c = ['', 'm2', 'm3'];
-                    s.style.cursor = 'pointer';
-                    s.title = 'Click HYNO to change dance move!';
-                    s.addEventListener('click', function(){
-                        i = (i + 1) % 3;
-                        s.className = 'hyno-stage hyno-dance ' + c[i];
-                    });
-                }
-            })();
-        </script>
         <!-- ══════════ END HYNO MASCOT SECTION ══════════ -->
 
 
